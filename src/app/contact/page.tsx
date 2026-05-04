@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Mail, MessageCircle, Code2 as Github, Send, Linkedin, Video, Twitter, Instagram, Facebook } from "lucide-react";
+import { Mail, MessageCircle, Code2 as Github, Send, Video } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact — PiEEG",
@@ -295,7 +295,6 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold transition-all"
             >
-              <Linkedin className="w-5 h-5" />
               LinkedIn
             </a>
 
@@ -315,7 +314,6 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-sky-600 text-sky-600 hover:bg-sky-600 hover:text-white font-semibold transition-all"
             >
-              <Twitter className="w-5 h-5" />
               Twitter/X
             </a>
 
@@ -325,7 +323,6 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white font-semibold transition-all"
             >
-              <Instagram className="w-5 h-5" />
               Instagram
             </a>
 
@@ -335,7 +332,6 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white font-semibold transition-all"
             >
-              <Facebook className="w-5 h-5" />
               Facebook
             </a>
           </div>

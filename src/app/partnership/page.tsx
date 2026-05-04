@@ -241,55 +241,6 @@ export default function PartnershipPage() {
           </div>
         </div>
       </section>
-              </div>
-              <div>
-                <label className="block text-sm font-semibold mb-2">Email</label>
-                <input
-                  type="email"
-                  className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  placeholder="your@email.com"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold mb-2">Organization</label>
-              <input
-                type="text"
-                className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                placeholder="University, Company, or Institution"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold mb-2">Partnership Type</label>
-              <select className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                <option>Select...</option>
-                <option>University / Research</option>
-                <option>Startup / Innovation</option>
-                <option>Enterprise Solution</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold mb-2">Tell us about your project</label>
-              <textarea
-                rows={6}
-                className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                placeholder="What are you building? How many units do you need? Any specific requirements?"
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              className="w-full px-8 py-4 rounded-lg bg-linear-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold shadow-lg transition-all"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section>
     </main>
   );
 }

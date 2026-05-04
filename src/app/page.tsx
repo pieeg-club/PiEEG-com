@@ -998,18 +998,18 @@ function SignalsSection() {
                 key={signal.abbr}
                 onMouseEnter={() => setHoveredSignal(signal.abbr)}
                 onMouseLeave={() => setHoveredSignal(null)}
-                className={`group relative flex flex-col gap-6 rounded-2xl border-2 p-8 transition-all duration-500 ease-out ${colors.card} ${
-                  isHovered ? `shadow-2xl ${colors.glow} scale-105 -translate-y-2` : 'shadow-md hover:shadow-xl'
+                className={`group relative flex flex-col gap-6 rounded-2xl border-2 p-8 transition-all duration-300 ${colors.card} ${
+                  isHovered ? `shadow-xl ${colors.glow}` : 'shadow-md hover:shadow-lg'
                 }`}
               >
-                {/* Live Signal Streaming - Activated on Hover */}
-                <div className={`absolute top-0 left-0 right-0 h-24 overflow-hidden rounded-t-2xl transition-all duration-500 ${
-                  isHovered ? 'opacity-60' : 'opacity-20'
+                {/* Live Signal Streaming - Always Playing */}
+                <div className={`absolute top-0 left-0 right-0 h-24 overflow-hidden rounded-t-2xl transition-opacity duration-300 ${
+                  isHovered ? 'opacity-50' : 'opacity-30'
                 }`}>
                   <div className="w-full h-full">
                     <MiniSignalCanvas 
                       mode={signalMode} 
-                      isActive={isHovered}
+                      isActive={true}
                       color={signal.color}
                     />
                   </div>
@@ -1018,41 +1018,35 @@ function SignalsSection() {
                 {/* Content */}
                 <div className="relative flex flex-col gap-5 pt-12">
                   {/* Abbreviation badge */}
-                  <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl ${colors.accent} text-white shadow-lg transition-all duration-500 ${
-                    isHovered ? 'scale-110 shadow-2xl rotate-3' : ''
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl ${colors.accent} text-white shadow-md transition-all duration-300 ${
+                    isHovered ? 'shadow-lg' : ''
                   }`}>
-                    <span className="font-mono text-3xl font-black tracking-tight">
+                    <span className="font-mono text-2xl font-semibold tracking-tight">
                       {signal.abbr}
                     </span>
                   </div>
 
                   {/* Text content */}
                   <div className="flex flex-col gap-3">
-                    <h3 className="text-base font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+                    <h3 className="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
                       {signal.name}
                     </h3>
-                    <p className={`text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed transition-all duration-300 ${
-                      isHovered ? 'text-zinc-700 dark:text-zinc-300' : ''
-                    }`}>
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                       {signal.description}
                     </p>
                   </div>
 
-                  {/* Live indicator badge - shows when hovering */}
-                  <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 self-start transition-all duration-500 ${
-                    isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
-                  }`}>
-                    <div className={`w-1.5 h-1.5 rounded-full bg-linear-to-r ${colors.gradient} ${
-                      isHovered ? 'animate-pulse' : ''
-                    }`} />
+                  {/* Live indicator badge - always visible */}
+                  <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 self-start">
+                    <div className={`w-1.5 h-1.5 rounded-full bg-linear-to-r ${colors.gradient} animate-pulse`} />
                     <span className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">
-                      Live Stream
+                      Live
                     </span>
                   </div>
                 </div>
 
                 {/* Hover indicator */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1.5 rounded-b-2xl transition-all duration-500 bg-linear-to-r ${colors.gradient} ${
+                <div className={`absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl transition-opacity duration-300 bg-linear-to-r ${colors.gradient} ${
                   isHovered ? 'opacity-100' : 'opacity-0'
                 }`} />
               </div>

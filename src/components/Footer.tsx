@@ -1,29 +1,31 @@
+import Link from "next/link";
+
 const footerLinks = {
   Products: [
-    { label: "PiEEG-16", href: "#" },
-    { label: "ironbci-32", href: "#" },
-    { label: "ironbci", href: "#" },
-    { label: "ardEEG", href: "#" },
-    { label: "JNEEG", href: "#" },
-    { label: "MicroBCI", href: "#" },
+    { label: "PiEEG", href: "/products#pieeg" },
+    { label: "IronBCI-32", href: "/products#ironbci-32" },
+    { label: "PiEEG-16", href: "/products#pieeg-16" },
+    { label: "ardEEG", href: "/products#ardeeg" },
+    { label: "JNEEG", href: "/products#jneeg" },
+    { label: "MicroBCI", href: "/products#microbci" },
   ],
   Resources: [
-    { label: "Documentation", href: "#" },
-    { label: "Examples", href: "#" },
+    { label: "Documentation", href: "/docs" },
+    { label: "Signals Guide", href: "/signals" },
     { label: "GitHub", href: "https://github.com/pieeg-club" },
-    { label: "BrainFlow SDK", href: "https://brainflow.org" },
+    { label: "Community", href: "/open-source" },
   ],
   Community: [
-    { label: "Discord", href: "#" },
-    { label: "YouTube", href: "#" },
-    { label: "Twitter / X", href: "#" },
-    { label: "LinkedIn", href: "#" },
+    { label: "Discord", href: "https://discord.gg/pieeg" },
+    { label: "YouTube", href: "https://youtube.com/@pieeg" },
+    { label: "LinkedIn", href: "https://linkedin.com/company/pieeg" },
+    { label: "Open Source", href: "/open-source" },
   ],
   Company: [
-    { label: "About", href: "#" },
-    { label: "News", href: "#" },
-    { label: "Partnership", href: "#" },
-    { label: "Liabilities", href: "#" },
+    { label: "About", href: "/about" },
+    { label: "News", href: "/news" },
+    { label: "Partnership", href: "/partnership" },
+    { label: "Contact", href: "/contact" },
   ],
 };
 
@@ -53,16 +55,31 @@ export function Footer() {
                 {category}
               </p>
               <ul className="flex flex-col gap-2.5">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
+                {links.map((link) => {
+                  const isExternal = link.href.startsWith('http');
+                  
+                  return (
+                    <li key={link.label}>
+                      {isExternal ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors"
+                        >
+                          {link.label}
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}

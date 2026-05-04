@@ -16,10 +16,10 @@ function GitHubIcon({ className }: { className?: string }) {
 }
 
 const navLinks = [
-  { href: "#products", label: "Products" },
-  { href: "#signals", label: "Signals" },
-  { href: "#features", label: "Open Source" },
-  { href: "https://pieeg.com/docs", label: "Docs" },
+  { href: "/products", label: "Products" },
+  { href: "/signals", label: "Signals" },
+  { href: "/open-source", label: "Open Source" },
+  { href: "/docs", label: "Docs" },
 ];
 
 export function Navbar() {

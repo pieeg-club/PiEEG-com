@@ -15,8 +15,6 @@ function GitHubIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -777,6 +775,34 @@ function HeroSection() {
         </div>
 
       </div>
+
+      {/* Featured In Section */}
+      <div className="relative z-10 w-full border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 overflow-hidden mt-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col items-center gap-6">
+            {/* Label */}
+            <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-600">
+              Featured In
+            </p>
+            
+            {/* Animated Scrolling Logos */}
+            <div className="relative w-full overflow-hidden">
+              <div className="flex gap-12 md:gap-16 animate-scroll-slow hover:[animation-play-state:paused]">
+                {[...featuredIn, ...featuredIn].map(({ name, logo }, index) => (
+                  <div
+                    key={`${name}-${index}`}
+                    className="group relative flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-110 shrink-0"
+                  >
+                    <span className="text-sm md:text-base font-semibold text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-700 dark:group-hover:text-zinc-400 transition-colors duration-300 whitespace-nowrap">
+                      {logo}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
@@ -1442,19 +1468,14 @@ function CtaSection() {
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
-      <main className="flex-1">
-        <HeroSection />
-        <FeaturedInBar />
-        <ProductsSection />
-        <SignalsSection />
-        <FeaturesSection />
-        <FeaturedSection />
-        <CtaSection />
-      </main>
-      <Footer />
-    </>
+    <main className="flex-1">
+      <HeroSection />
+      <ProductsSection />
+      <SignalsSection />
+      <FeaturesSection />
+      <FeaturedSection />
+      <CtaSection />
+    </main>
   );
 }
 

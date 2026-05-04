@@ -138,6 +138,9 @@ const featuredIn = [
   { name: "Raspberry Pi", logo: "Raspberry Pi" },
   { name: "Hackaday", logo: "Hackaday" },
   { name: "Hackster.io", logo: "Hackster.io" },
+  { name: "Electronics Weekly", logo: "Electronics Weekly" },
+  { name: "Arduino", logo: "Arduino" },
+  { name: "CNX Software", logo: "CNX Software" },
 ];
 
 const features = [
@@ -763,8 +766,11 @@ function HeroSection() {
 }
 
 function FeaturedInBar() {
+  // Duplicate the array for seamless infinite scroll
+  const duplicatedLogos = [...featuredIn, ...featuredIn];
+  
   return (
-    <div className="border-y border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
+    <div className="border-y border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col items-center gap-6">
           {/* Label */}
@@ -772,18 +778,20 @@ function FeaturedInBar() {
             Featured In
           </p>
           
-          {/* Logos Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12 items-center justify-items-center w-full">
-            {featuredIn.map(({ name, logo }) => (
-              <div
-                key={name}
-                className="group relative flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-110"
-              >
-                <span className="text-sm md:text-base font-semibold text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-700 dark:group-hover:text-zinc-400 transition-colors duration-300 whitespace-nowrap">
-                  {logo}
-                </span>
-              </div>
-            ))}
+          {/* Animated Scrolling Logos */}
+          <div className="relative w-full overflow-hidden">
+            <div className="flex gap-12 md:gap-16 animate-scroll-slow hover:[animation-play-state:paused]">
+              {duplicatedLogos.map(({ name, logo }, index) => (
+                <div
+                  key={`${name}-${index}`}
+                  className="group relative flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-110 shrink-0"
+                >
+                  <span className="text-sm md:text-base font-semibold text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-700 dark:group-hover:text-zinc-400 transition-colors duration-300 whitespace-nowrap">
+                    {logo}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -1422,6 +1430,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         <HeroSection />
+        <FeaturedInBar />
         <ProductsSection />
         <SignalsSection />
         <FeaturesSection />

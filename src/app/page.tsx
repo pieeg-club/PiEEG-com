@@ -163,6 +163,133 @@ const features = [
 
 // ─── Components ───────────────────────────────────────────────────────────────
 
+// Mini signal streaming component for signal cards
+function MiniSignalCanvas({ mode, isActive, color }: { mode: 'eeg' | 'emg' | 'ecg' | 'eog', isActive: boolean, color: string }) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animationRef = useRef<number>(0);
+  const bufferRef = useRef<Float32Array>(new Float32Array(200));
+  const writeIndexRef = useRef(0);
+  const timeRef = useRef(0);
+
+  const generateSample = useRef((t: number, signalMode: string): number => {
+    if (signalMode === 'eeg') {
+      return (Math.sin(t * 0.02) * 8 + Math.cos(t * 0.01) * 5) + (Math.random() - 0.5) * 2;
+    } else if (signalMode === 'ecg') {
+      const bpm = 72;
+      const beatInterval = (60 / bpm) * 250;
+      const phase = (t % beatInterval) / beatInterval;
+      
+      if (phase < 0.1) return Math.sin(phase * Math.PI * 10) * 15;
+      if (phase > 0.15 && phase < 0.25) {
+        const qrsPhase = (phase - 0.15) / 0.1;
+        return Math.sin(qrsPhase * Math.PI) * 40;
+      }
+      if (phase > 0.3 && phase < 0.45) return Math.sin((phase - 0.3) * Math.PI * 6.67) * 20;
+      return (Math.random() - 0.5) * 3;
+    } else if (signalMode === 'emg') {
+      const base = Math.sin(t * 0.03) * 5;
+      return base + (Math.random() < 0.02 ? (Math.random() - 0.5) * 60 : 0);
+    } else if (signalMode === 'eog') {
+      const blinkInterval = 4 * 250;
+      const blinkPhase = (t % blinkInterval) / blinkInterval;
+      
+      if (blinkPhase < 0.05) return Math.sin(blinkPhase * Math.PI * 20) * 50;
+      
+      const saccadeBase = Math.floor(t / 100) * 100;
+      if (t - saccadeBase < 25) return ((t - saccadeBase) / 25) * 30 * (Math.random() > 0.5 ? 1 : -1);
+      
+      return Math.sin(t * 0.01) * 8 + (Math.random() - 0.5) * 3;
+    }
+    return 0;
+  }).current;
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+
+    const w = rect.width;
+    const h = rect.height;
+
+    const draw = () => {
+      ctx.clearRect(0, 0, w, h);
+
+      if (!isActive) {
+        animationRef.current = requestAnimationFrame(draw);
+        return;
+      }
+
+      const samplesPerFrame = 3;
+      
+      for (let s = 0; s < samplesPerFrame; s++) {
+        timeRef.current++;
+        const writeIdx = writeIndexRef.current;
+        bufferRef.current[writeIdx] = generateSample(timeRef.current, mode);
+        writeIndexRef.current = (writeIdx + 1) % 200;
+      }
+
+      const colorMap: Record<string, string> = {
+        cyan: 'rgba(20, 184, 166, 0.8)',
+        blue: 'rgba(59, 130, 246, 0.8)',
+        rose: 'rgba(244, 63, 94, 0.8)',
+        violet: 'rgba(139, 92, 246, 0.8)',
+      };
+
+      ctx.strokeStyle = colorMap[color] || 'rgba(20, 184, 166, 0.8)';
+      ctx.lineWidth = 2;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.beginPath();
+
+      const pixelsPerSample = w / 200;
+      let started = false;
+      const currentWriteIdx = writeIndexRef.current;
+
+      for (let i = 0; i < 200; i++) {
+        const idx = (currentWriteIdx - 200 + i + 1 + 200) % 200;
+        const value = bufferRef.current[idx];
+        
+        if (timeRef.current < 200 && idx > currentWriteIdx) continue;
+        
+        const x = i * pixelsPerSample;
+        const y = h / 2 - value * 0.8;
+        
+        if (!started) {
+          ctx.moveTo(x, y);
+          started = true;
+        } else {
+          ctx.lineTo(x, y);
+        }
+      }
+      ctx.stroke();
+
+      animationRef.current = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
+  }, [mode, isActive, color, generateSample]);
+
+  return (
+    <canvas 
+      ref={canvasRef}
+      className="w-full h-full"
+      style={{ display: 'block' }}
+    />
+  );
+}
+
 function EEGVisualization() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>(0);
@@ -805,46 +932,34 @@ function ProductsSection() {
 function SignalsSection() {
   const [hoveredSignal, setHoveredSignal] = useState<string | null>(null);
 
-  const signalPaths: Record<string, string> = {
-    EEG: "M0,20 Q5,10 10,20 T20,20 Q25,15 30,20 T40,20 Q45,25 50,20 T60,20 Q65,18 70,20 T80,20",
-    EMG: "M0,20 L15,20 L15.5,5 L16,35 L16.5,8 L17,32 L17.5,12 L18,28 L20,20 L35,20 L35.5,3 L36,37 L36.5,10 L37,30 L37.5,15 L38,25 L40,20 L55,20 L55.5,7 L56,33 L56.5,13 L57,27 L60,20 L75,20 L75.5,6 L76,34 L76.5,11 L77,29 L80,20",
-    ECG: "M0,20 L20,20 L22,18 L24,20 L26,15 L28,35 L30,18 L32,20 L35,25 L38,20 L60,20 L62,18 L64,20 L66,15 L68,35 L70,18 L72,20 L75,25 L78,20",
-    EOG: "M0,20 Q10,20 15,8 T25,20 Q35,20 40,32 T50,20 Q60,20 65,12 T75,20",
-  };
-
   const colorMap: Record<string, { 
     card: string;
     accent: string;
     glow: string;
-    path: string;
     gradient: string;
   }> = {
     cyan: {
       card: "bg-linear-to-br from-cyan-50/80 to-cyan-100/50 dark:from-cyan-950/20 dark:to-cyan-900/10 border-cyan-200/60 dark:border-cyan-800/30",
       accent: "bg-linear-to-br from-cyan-500 to-cyan-600 dark:from-cyan-400 dark:to-cyan-500",
       glow: "shadow-cyan-500/20",
-      path: "stroke-cyan-400/60 dark:stroke-cyan-400/40",
       gradient: "from-cyan-400 to-cyan-600"
     },
     blue: {
       card: "bg-linear-to-br from-blue-50/80 to-blue-100/50 dark:from-blue-950/20 dark:to-blue-900/10 border-blue-200/60 dark:border-blue-800/30",
       accent: "bg-linear-to-br from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500",
       glow: "shadow-blue-500/20",
-      path: "stroke-blue-400/60 dark:stroke-blue-400/40",
       gradient: "from-blue-400 to-blue-600"
     },
     rose: {
       card: "bg-linear-to-br from-rose-50/80 to-rose-100/50 dark:from-rose-950/20 dark:to-rose-900/10 border-rose-200/60 dark:border-rose-800/30",
       accent: "bg-linear-to-br from-rose-500 to-rose-600 dark:from-rose-400 dark:to-rose-500",
       glow: "shadow-rose-500/20",
-      path: "stroke-rose-400/60 dark:stroke-rose-400/40",
       gradient: "from-rose-400 to-rose-600"
     },
     violet: {
       card: "bg-linear-to-br from-violet-50/80 to-violet-100/50 dark:from-violet-950/20 dark:to-violet-900/10 border-violet-200/60 dark:border-violet-800/30",
       accent: "bg-linear-to-br from-violet-500 to-violet-600 dark:from-violet-400 dark:to-violet-500",
       glow: "shadow-violet-500/20",
-      path: "stroke-violet-400/60 dark:stroke-violet-400/40",
       gradient: "from-violet-400 to-violet-600"
     },
   };
@@ -876,39 +991,35 @@ function SignalsSection() {
           {signals.map((signal) => {
             const colors = colorMap[signal.color];
             const isHovered = hoveredSignal === signal.abbr;
+            const signalMode = signal.abbr.toLowerCase() as 'eeg' | 'emg' | 'ecg' | 'eog';
             
             return (
               <div
                 key={signal.abbr}
                 onMouseEnter={() => setHoveredSignal(signal.abbr)}
                 onMouseLeave={() => setHoveredSignal(null)}
-                className={`group relative flex flex-col gap-6 rounded-2xl border-2 p-8 transition-all duration-300 ${colors.card} ${
-                  isHovered ? `shadow-2xl ${colors.glow} scale-105` : 'shadow-md hover:shadow-xl'
+                className={`group relative flex flex-col gap-6 rounded-2xl border-2 p-8 transition-all duration-500 ease-out ${colors.card} ${
+                  isHovered ? `shadow-2xl ${colors.glow} scale-105 -translate-y-2` : 'shadow-md hover:shadow-xl'
                 }`}
               >
-                {/* Signal wave decoration */}
-                <div className="absolute top-0 left-0 right-0 h-20 overflow-hidden opacity-30 rounded-t-2xl">
-                  <svg
-                    viewBox="0 0 80 40"
-                    className="w-full h-full"
-                    preserveAspectRatio="none"
-                  >
-                    <path
-                      d={signalPaths[signal.abbr]}
-                      fill="none"
-                      strokeWidth="2"
-                      className={`${colors.path} transition-all duration-300 ${
-                        isHovered ? 'stroke-3' : ''
-                      }`}
+                {/* Live Signal Streaming - Activated on Hover */}
+                <div className={`absolute top-0 left-0 right-0 h-24 overflow-hidden rounded-t-2xl transition-all duration-500 ${
+                  isHovered ? 'opacity-60' : 'opacity-20'
+                }`}>
+                  <div className="w-full h-full">
+                    <MiniSignalCanvas 
+                      mode={signalMode} 
+                      isActive={isHovered}
+                      color={signal.color}
                     />
-                  </svg>
+                  </div>
                 </div>
 
                 {/* Content */}
-                <div className="relative flex flex-col gap-5 pt-8">
+                <div className="relative flex flex-col gap-5 pt-12">
                   {/* Abbreviation badge */}
-                  <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl ${colors.accent} text-white shadow-lg transition-all duration-300 ${
-                    isHovered ? 'scale-110 shadow-xl' : ''
+                  <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl ${colors.accent} text-white shadow-lg transition-all duration-500 ${
+                    isHovered ? 'scale-110 shadow-2xl rotate-3' : ''
                   }`}>
                     <span className="font-mono text-3xl font-black tracking-tight">
                       {signal.abbr}
@@ -920,32 +1031,33 @@ function SignalsSection() {
                     <h3 className="text-base font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
                       {signal.name}
                     </h3>
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    <p className={`text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed transition-all duration-300 ${
+                      isHovered ? 'text-zinc-700 dark:text-zinc-300' : ''
+                    }`}>
                       {signal.description}
                     </p>
+                  </div>
+
+                  {/* Live indicator badge - shows when hovering */}
+                  <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 self-start transition-all duration-500 ${
+                    isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+                  }`}>
+                    <div className={`w-1.5 h-1.5 rounded-full bg-linear-to-r ${colors.gradient} ${
+                      isHovered ? 'animate-pulse' : ''
+                    }`} />
+                    <span className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">
+                      Live Stream
+                    </span>
                   </div>
                 </div>
 
                 {/* Hover indicator */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1.5 rounded-b-2xl transition-all duration-300 bg-linear-to-r ${colors.gradient} ${
+                <div className={`absolute bottom-0 left-0 right-0 h-1.5 rounded-b-2xl transition-all duration-500 bg-linear-to-r ${colors.gradient} ${
                   isHovered ? 'opacity-100' : 'opacity-0'
                 }`} />
               </div>
             );
           })}
-        </div>
-
-        {/* Live EEG Visualization Demo */}
-        <div className="mt-20 w-full max-w-5xl mx-auto">
-          <div className="mb-8 text-center">
-            <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 mb-2">
-              Live Demo
-            </p>
-            <h3 className="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-50">
-              See it in action
-            </h3>
-          </div>
-          <EEGVisualization />
         </div>
 
       </div>

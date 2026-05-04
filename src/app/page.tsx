@@ -586,13 +586,29 @@ function HeroSection() {
   };
 
   return (
-    <section className="relative flex flex-col items-center justify-center text-center overflow-hidden min-h-[calc(100svh-3.5rem)] px-4 bg-linear-to-b from-cyan-50/30 via-blue-50/20 to-purple-50/30 dark:from-cyan-950/20 dark:via-blue-950/10 dark:to-purple-950/20">
+    <section className="relative flex flex-col items-center justify-center text-center overflow-hidden min-h-[calc(100svh-3.5rem)] px-4">
       
-      {/* Animated gradient orbs */}
+      {/* Background images */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-125 h-125 bg-cyan-400/20 dark:bg-cyan-400/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-125 h-125 bg-purple-400/20 dark:bg-purple-400/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-blue-400/10 dark:bg-blue-400/5 rounded-full blur-3xl" />
+        {/* Light theme background */}
+        <div 
+          className="absolute inset-0 bg-no-repeat dark:hidden"
+          style={{ 
+            backgroundImage: 'url(/hero-bg-light.png)',
+            backgroundPosition: 'right 0 bottom 0',
+            backgroundSize: '100%'
+          }}
+        />
+        {/* Dark theme background */}
+        <div 
+          className="hidden dark:block absolute inset-0 bg-no-repeat"
+          style={{ 
+            backgroundImage: 'url(/hero-bg-dark.png)',
+            backgroundPosition: 'right 0 bottom 0',
+            backgroundSize: '100%',
+            opacity: 0.4,
+          }}
+        />
       </div>
 
       {/* Content */}

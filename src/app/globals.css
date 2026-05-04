@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+/* Class-based dark mode — works with next-themes attribute="class" */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
+}
+
+/* ── Neural network pattern ────────────────────────────────── */
+.neural-bg {
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(20, 184, 166, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(20, 184, 166, 0.03) 0%, transparent 50%);
+}
+.dark .neural-bg {
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(45, 212, 191, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(45, 212, 191, 0.02) 0%, transparent 50%);
+}
+
+/* ── EEG wave pattern ──────────────────────────────────────── */
+.wave-pattern {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 10px,
+    rgba(20, 184, 166, 0.03) 10px,
+    rgba(20, 184, 166, 0.03) 11px
+  );
+}
+.dark .wave-pattern {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 10px,
+    rgba(45, 212, 191, 0.04) 10px,
+    rgba(45, 212, 191, 0.04) 11px
+  );
+}
+
+/* ── Clipped corners ───────────────────────────────────────── */
+.clip-corner {
+  clip-path: polygon(
+    0 8px,
+    8px 0,
+    100% 0,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    0 100%
+  );
+}
+
+.clip-corner-sm {
+  clip-path: polygon(
+    0 4px,
+    4px 0,
+    100% 0,
+    100% calc(100% - 4px),
+    calc(100% - 4px) 100%,
+    0 100%
+  );
+}
+
+/* ── Hex border ────────────────────────────────────────────── */
+.hex-border {
+  position: relative;
+}
+.hex-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(135deg, #14b8a6, #14b8a6);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  border-radius: 0.75rem;
+  opacity: 0.3;
+}
+
+/* ── Signal glow ───────────────────────────────────────────── */
+.signal-glow {
+  box-shadow: 
+    0 0 20px rgba(20, 184, 166, 0.15);
+}
+.dark .signal-glow {
+  box-shadow: 
+    0 0 20px rgba(45, 212, 191, 0.2);
+}
+
+/* ── Hero glow ─────────────────────────────────────────────── */
+.hero-glow {
+  background: radial-gradient(
+    ellipse 85% 55% at 50% -5%,
+    rgba(20, 184, 166, 0.12),
+    transparent
+  );
+}
+.dark .hero-glow {
+  background: radial-gradient(
+    ellipse 85% 55% at 50% -5%,
+    rgba(45, 212, 191, 0.1),
+    transparent
+  );
+}
+
+/* ── Grid background ───────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.dark .grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ── Animations ────────────────────────────────────────────── */
+@keyframes signal-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.signal-scroll {
+  animation: signal-scroll 9s linear infinite;
+  will-change: transform;
+}
+
+@keyframes scan {
+  from { left: 0%; }
+  to   { left: 100%; }
+}
+.animate-scan {
+  animation: scan 3s linear infinite;
+}
+
+/* ── EEG waveform streaming animation ────────────────────── */
+@keyframes eeg-stream {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50px); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.40s; }
+.delay-6 { animation-delay: 0.48s; }
+.delay-7 { animation-delay: 0.56s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}

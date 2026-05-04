@@ -29,6 +29,7 @@ const products = [
     description:
       "High-density cortical mapping. 32 channels at 500 Hz. 4× AD7771 ADCs. FreeEEG protocol. Pure Python driver—no BrainFlow dependency.",
     featured: true,
+    slug: "ironbci-32",
   },
   {
     name: "IronBCI",
@@ -40,6 +41,7 @@ const products = [
     description:
       "Untethered biosignals. 8 channels over BLE. Walk, move, live—your data follows you. STM32 + ADS1299 ADC.",
     featured: false,
+    slug: "ironbci",
   },
   {
     name: "PiEEG-16",
@@ -51,6 +53,7 @@ const products = [
     description:
       "The flagship. Real-time 16-channel acquisition. 2× ADS1299 ADCs. Powered by pieeg-server. One command—live dashboard in your browser.",
     featured: true,
+    slug: "pieeg-16",
   },
   {
     name: "PiEEG",
@@ -62,6 +65,7 @@ const products = [
     description:
       "Where it started. The original open-source shield. 8 channels, ADS1299 ADC, SPI interface, proven in labs worldwide.",
     featured: false,
+    slug: "pieeg",
   },
   {
     name: "ardEEG",
@@ -73,6 +77,7 @@ const products = [
     description:
       "BCI for the Arduino ecosystem. Same ADS1299 precision. Sketch-friendly. Perfect for embedded projects.",
     featured: false,
+    slug: "ardeeg",
   },
   {
     name: "JNEEG",
@@ -84,6 +89,7 @@ const products = [
     description:
       "Neural networks meet neural signals. Stream EEG directly into TensorFlow. Real-time inference on-device.",
     featured: false,
+    slug: "jneeg",
   },
   {
     name: "MicroBCI",
@@ -95,6 +101,7 @@ const products = [
     description:
       "Bare-metal BCI. Ultra-low-power STM32. Build custom firmware from scratch. Total hardware control.",
     featured: false,
+    slug: "microbci",
   },
 ];
 
@@ -879,7 +886,7 @@ function ProductsSection() {
             return (
               <a
                 key={product.name}
-                href="#"
+                href={`/products/${product.slug}`}
                 className="group relative flex flex-col gap-6 rounded-2xl border-2 border-cyan-200/60 dark:border-cyan-800/40 bg-linear-to-br from-cyan-50/80 via-white to-blue-50/50 dark:from-cyan-950/20 dark:via-zinc-900/40 dark:to-blue-950/20 p-8 hover:border-cyan-400 dark:hover:border-cyan-600 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 overflow-hidden"
               >
                 {/* Background decoration */}
@@ -940,7 +947,7 @@ function ProductsSection() {
             return (
               <a
                 key={product.name}
-                href="#"
+                href={`/products/${product.slug}`}
                 className="group relative flex flex-col gap-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 p-6 hover:border-zinc-400 dark:hover:border-zinc-600 hover:shadow-xl hover:shadow-zinc-500/10 transition-all duration-200"
               >
                 {/* Icon & Badge */}

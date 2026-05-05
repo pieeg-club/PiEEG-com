@@ -135,37 +135,6 @@ export default function JNEEGProductPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white dark:bg-zinc-950">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8">Potential Applications</h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-8">
-            Research papers:
-          </p>
-          <ul className="space-y-4">
-            <li className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
-              <p className="text-zinc-700 dark:text-zinc-300">
-                "EEG Control of a Robotic Wheelchair"
-              </p>
-            </li>
-            <li className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
-              <p className="text-zinc-700 dark:text-zinc-300">
-                "A portable, self-contained neuroprosthetic hand with deep learning-based finger control"
-              </p>
-            </li>
-            <li className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
-              <p className="text-zinc-700 dark:text-zinc-300">
-                "Auditory Brainwave Entrainment System using Time-Series Analysis of EEG Signal"
-              </p>
-            </li>
-            <li className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
-              <p className="text-zinc-700 dark:text-zinc-300">
-                "Personalized Real-Time Federated Learning for Epileptic Seizure Detection"
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
       <section className="py-12 bg-yellow-50 dark:bg-yellow-950/20 border-y border-yellow-200 dark:border-yellow-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-4">

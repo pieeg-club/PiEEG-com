@@ -147,38 +147,6 @@ export default function PiEEGProductPage() {
         </div>
       </section>
 
-      {/* Potential Applications */}
-      <section className="py-20 bg-white dark:bg-zinc-950">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8">Potential Applications</h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-8">
-            Research papers demonstrating PiEEG use:
-          </p>
-          <ul className="space-y-4">
-            <li className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
-              <p className="text-zinc-700 dark:text-zinc-300">
-                "A Novel EEG-Based Real-Time Emotion Recognition Approach Using Deep Neural Networks on Raspberry Pi"
-              </p>
-            </li>
-            <li className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
-              <p className="text-zinc-700 dark:text-zinc-300">
-                "A Raspberry Pi-Based Traumatic Brain Injury Detection System for Single-Channel Electroencephalogram"
-              </p>
-            </li>
-            <li className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
-              <p className="text-zinc-700 dark:text-zinc-300">
-                "EEG-based Brain Computer Interface Prosthetic Hand using Raspberry Pi 4"
-              </p>
-            </li>
-            <li className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
-              <p className="text-zinc-700 dark:text-zinc-300">
-                "A Wearable EEG Real-time Measure and Analysis Platform for Home Applications"
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
       {/* Warning */}
       <section className="py-12 bg-yellow-50 dark:bg-yellow-950/20 border-y border-yellow-200 dark:border-yellow-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

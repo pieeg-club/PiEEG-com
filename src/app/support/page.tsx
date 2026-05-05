@@ -449,7 +449,7 @@ export default function DocsPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
-                    href="/docs/api"
+                    href="/support/api"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-semibold shadow-lg transition-all"
                   >
                     Browse API Docs

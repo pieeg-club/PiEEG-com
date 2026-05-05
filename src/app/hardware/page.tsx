@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, Cpu, Zap, Code, ChevronRight, ExternalLink } from "lucide-react";
+import { ArrowRight, Cpu, Zap, Code, ChevronRight, ExternalLink, ShoppingCart, Package } from "lucide-react";
+import ProductsGrid from "@/components/ProductsGrid";
 
 export const metadata: Metadata = {
   title: "Products — PiEEG",
@@ -9,7 +9,8 @@ export const metadata: Metadata = {
     "Explore our line of open-source brain-computer interface hardware. From 8 to 32 channels, compatible with Raspberry Pi, Arduino, and Jetson Nano.",
 };
 
-const products = [
+// Hardware Products
+const hardwareProducts = [
   {
     id: "pieeg",
     name: "PiEEG",
@@ -33,7 +34,8 @@ const products = [
     image: "/products/pieeg.png",
     purchaseUrl: "https://www.elecrow.com/pieeg.html",
     github: "https://github.com/pieeg-club/PiEEG",
-    youtube: "https://youtu.be/0ocAPWok5YU"
+    youtube: "https://youtu.be/0ocAPWok5YU",
+    categories: ["raspberry-pi", "8ch"]
   },
   {
     id: "pieeg-16",
@@ -57,7 +59,8 @@ const products = [
     image: "/products/pieeg-16.png",
     purchaseUrl: "https://www.elecrow.com/pieeg-16.html",
     github: "https://github.com/pieeg-club/PiEEG-16",
-    youtube: "https://youtu.be/tjCazk2Efqs"
+    youtube: "https://youtu.be/tjCazk2Efqs",
+    categories: ["raspberry-pi", "16ch+"]
   },
   {
     id: "ironbci",
@@ -82,7 +85,8 @@ const products = [
     image: "/products/ironbci.jpg",
     purchaseUrl: "https://www.elecrow.com/ironbci.html",
     github: "https://github.com/pieeg-club/ironbci",
-    youtube: "https://www.youtube.com/watch?v=gWpfsLuq_eE"
+    youtube: "https://www.youtube.com/watch?v=gWpfsLuq_eE",
+    categories: ["wireless", "8ch"]
   },
   {
     id: "ironbci-32",
@@ -106,7 +110,8 @@ const products = [
     bgGradient: "from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30",
     image: "/products/ironbci-32.png",
     purchaseUrl: "https://www.elecrow.com/ironbci-32.html",
-    github: "https://github.com/pieeg-club/ironbci-32"
+    github: "https://github.com/pieeg-club/ironbci-32",
+    categories: ["16ch+"]
   },
   {
     id: "microbci",
@@ -129,7 +134,8 @@ const products = [
     bgGradient: "from-teal-50 to-cyan-50 dark:from-teal-950/30 dark:to-cyan-950/30",
     image: "/products/microbci.png",
     purchaseUrl: "https://www.elecrow.com/microbci-eeg-with-stm32.html",
-    github: "https://github.com/pieeg-club/MicroBCI"
+    github: "https://github.com/pieeg-club/MicroBCI",
+    categories: ["wireless", "8ch"]
   },
   {
     id: "ardeeg",
@@ -153,7 +159,8 @@ const products = [
     image: "/products/ardeeg.png",
     purchaseUrl: "https://www.elecrow.com/ardeeg.html",
     github: "https://github.com/Ildaron/ardEEG",
-    youtube: "https://youtu.be/s_5mDDUFp6E"
+    youtube: "https://youtu.be/s_5mDDUFp6E",
+    categories: ["8ch"]
   },
   {
     id: "jneeg",
@@ -177,34 +184,48 @@ const products = [
     image: "/products/jneeg.png",
     purchaseUrl: "https://www.elecrow.com/jneeg.html",
     github: "https://github.com/Pi-EEG/EEG-with-JetsonNano",
-    youtube: "https://youtu.be/f3stVQCsfrM"
+    youtube: "https://youtu.be/f3stVQCsfrM",
+    categories: ["8ch"]
   }
 ];
 
+// Accessories & Add-ons
 const accessories = [
   {
-    name: "EEG Cap Kit",
-    description: "Professional textile cap with pre-positioned electrode holders",
-    specs: "8 or 16 channel configurations",
-    gradient: "from-cyan-500 to-blue-500"
+    id: "8ch-dry-cap",
+    name: "8 Channel Dry EEG Cap Kit",
+    description: "EEG dry electrodes cap with dry comfort press-fit electrodes. Ready to use, no conductive gel needed.",
+    specs: "8 channels • Dry electrodes • Adjustable size",
+    gradient: "from-cyan-500 to-blue-500",
+    purchaseUrl: "https://www.elecrow.com/cap-eeg-kit-8-channels-dry-electrodes.html",
+    status: "Available"
   },
   {
-    name: "Wet Electrodes",
-    description: "Gold-plated sintered Ag/AgCl electrodes for superior signal quality",
-    specs: "Medical-grade, reusable",
-    gradient: "from-blue-500 to-indigo-500"
+    id: "8ch-wet-cap",
+    name: "8 Channel Wet EEG Cap Kit",
+    description: "Professional textile cap with sintered Ag/AgCl gold-plated wet electrodes for superior signal quality.",
+    specs: "8 channels • Wet electrodes • Includes gel",
+    gradient: "from-blue-500 to-indigo-500",
+    purchaseUrl: "https://www.elecrow.com/cap-eeg-kit-8-channels-with-wet-electrodes.html",
+    status: "Available"
   },
   {
-    name: "Conductive Gel",
-    description: "Low-impedance electrolyte gel for optimal electrode contact",
-    specs: "100ml bottle, skin-safe",
-    gradient: "from-purple-500 to-pink-500"
+    id: "16ch-cap",
+    name: "16 Channel EEG Cap",
+    description: "Low-cost 16 channel textile EEG cap with gold-plated sintered Ag/AgCl electrodes.",
+    specs: "16 channels • Professional grade • Reusable",
+    gradient: "from-purple-500 to-pink-500",
+    purchaseUrl: "https://www.elecrow.com/low-cost-16-channels-eeg-cap.html",
+    status: "Available"
   },
   {
-    name: "Protective Case",
-    description: "Custom-fit enclosure for your PiEEG hardware",
-    specs: "Stackable, ventilated",
-    gradient: "from-green-500 to-emerald-500"
+    id: "conductive-gel",
+    name: "Conductive Gel for EEG",
+    description: "Low-impedance electrolyte gel for optimal electrode-skin contact with wet electrodes.",
+    specs: "100ml bottle • Medical grade • Skin-safe",
+    gradient: "from-green-500 to-emerald-500",
+    purchaseUrl: "https://www.elecrow.com/conductive-gel-for-eeg.html",
+    status: "Coming Soon"
   }
 ];
 
@@ -218,7 +239,7 @@ export default function ProductsPage() {
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-200 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/50 mb-6">
               <Cpu className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
               <span className="text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
-                Hardware Lineup
+                Complete Catalog
               </span>
             </div>
             
@@ -231,19 +252,19 @@ export default function ProductsPage() {
             </h1>
             
             <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 mb-8">
-              From hobbyist projects to research labs. Choose the platform that fits your needs, from Arduino to NVIDIA Jetson.
+              11 products: 7 hardware platforms and 4 accessories. All open-source.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="#products"
+                href="#hardware"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold shadow-lg shadow-cyan-500/30 transition-all"
               >
                 Explore Products
                 <ChevronRight className="w-4 h-4" />
               </Link>
               <Link
-                href="/docs"
+                href="/support"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 font-semibold transition-all"
               >
                 Documentation
@@ -254,127 +275,19 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Products Grid */}
-      <section id="products" className="py-20 sm:py-24 bg-white dark:bg-zinc-950">
+      {/* Hardware Products Section */}
+      <section id="hardware" className="py-20 sm:py-24 bg-white dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Complete Hardware Catalog
+              Hardware Platforms
             </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+            <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto mb-8">
               Every device is fully open-source, extensively documented, and backed by our community.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {products.map((product) => (
-              <div
-                key={product.id}
-                className={`relative group rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-gradient-to-br ${product.bgGradient} overflow-hidden hover:shadow-xl transition-all duration-300`}
-              >
-                {product.badge && (
-                  <div className="absolute top-4 left-4 z-10">
-                    <div className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide text-white bg-gradient-to-r ${product.gradient} shadow-lg`}>
-                      {product.badge}
-                    </div>
-                  </div>
-                )}
-
-                <div className="p-8">
-                  <div className="flex items-start gap-6 mb-4">
-                    {/* Product Image - Compact Avatar Style */}
-                    {product.image && (
-                      <div className="flex-shrink-0">
-                        <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-white dark:bg-zinc-900 p-2 shadow-md border border-zinc-200 dark:border-zinc-700">
-                          <Image
-                            src={product.image}
-                            alt={product.name}
-                            width={80}
-                            height={80}
-                            className="object-contain w-full h-full"
-                          />
-                        </div>
-                      </div>
-                    )}
-                    
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-2xl font-bold mb-2">{product.name}</h3>
-                      <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400 mb-4">
-                        {product.tagline}
-                      </p>
-                    </div>
-                  </div>
-
-                  <p className="text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed">
-                    {product.description}
-                  </p>
-
-                  {/* Specs */}
-                  <div className="grid grid-cols-2 gap-4 mb-6 p-4 rounded-lg bg-white/50 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/50">
-                    <div>
-                      <div className="text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-1">
-                        Channels
-                      </div>
-                      <div className="font-bold text-zinc-900 dark:text-zinc-100">
-                        {product.channels}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-1">
-                        Platform
-                      </div>
-                      <div className="font-bold text-zinc-900 dark:text-zinc-100">
-                        {product.platform}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Signals */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {product.signals.map((signal) => (
-                      <span
-                        key={signal}
-                        className="px-3 py-1 rounded-full text-xs font-semibold bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700"
-                      >
-                        {signal}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Features */}
-                  <ul className="space-y-2 mb-6">
-                    {product.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm">
-                        <Zap className="w-4 h-4 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" />
-                        <span className="text-zinc-700 dark:text-zinc-300">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA */}
-                  <div className="flex items-center gap-3">
-                    <Link
-                      href={`/products/${product.id}`}
-                      className={`flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r ${product.gradient} text-white font-semibold shadow-lg hover:shadow-xl transition-all`}
-                    >
-                      Learn More
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                    {product.status === "Available" && (
-                      <a
-                        href={product.purchaseUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-3 rounded-lg border-2 border-zinc-900 dark:border-zinc-100 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 font-semibold transition-all"
-                      >
-                        Buy
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProductsGrid products={hardwareProducts} />
         </div>
       </section>
 
@@ -386,26 +299,41 @@ export default function ProductsPage() {
               Accessories & Add-ons
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              Complete your setup with professional-grade electrodes, caps, and cases.
+              Professional EEG caps and electrodes to complete your setup.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {accessories.map((accessory, idx) => (
+            {accessories.map((accessory) => (
               <div
-                key={idx}
+                key={accessory.id}
                 className="group p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg transition-all"
               >
                 <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${accessory.gradient} mb-4 flex items-center justify-center text-white shadow-lg`}>
-                  <Cpu className="w-6 h-6" />
+                  <Package className="w-6 h-6" />
                 </div>
                 <h3 className="font-bold text-lg mb-2">{accessory.name}</h3>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-3">
                   {accessory.description}
                 </p>
-                <p className="text-xs font-semibold text-zinc-500 dark:text-zinc-500">
+                <p className="text-xs font-semibold text-zinc-500 dark:text-zinc-500 mb-4">
                   {accessory.specs}
                 </p>
+                {accessory.status === "Available" ? (
+                  <a
+                    href={accessory.purchaseUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r ${accessory.gradient} text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all`}
+                  >
+                    <ShoppingCart className="w-4 h-4" />
+                    Shop Now
+                  </a>
+                ) : (
+                  <div className="px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400 font-semibold text-sm text-center">
+                    {accessory.status}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -422,7 +350,7 @@ export default function ProductsPage() {
               </h2>
               <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-950 flex items-center justify-center">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-950 flex items-center justify-center">
                     <Code className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                   </div>
                   <div>
@@ -434,7 +362,7 @@ export default function ProductsPage() {
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-950 flex items-center justify-center">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-950 flex items-center justify-center">
                     <Zap className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                   </div>
                   <div>
@@ -446,7 +374,7 @@ export default function ProductsPage() {
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-950 flex items-center justify-center">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-950 flex items-center justify-center">
                     <Cpu className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                   </div>
                   <div>
@@ -489,14 +417,14 @@ export default function ProductsPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/docs"
+              href="/support"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-blue-600 hover:bg-zinc-100 font-bold shadow-xl transition-all"
             >
               Get Started
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/open-source"
+              href="/community"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-white hover:bg-white/10 font-bold transition-all"
             >
               Join Community

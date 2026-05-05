@@ -18,10 +18,10 @@ function GitHubIcon({ className }: { className?: string }) {
 }
 
 const navLinks = [
-  { href: "/products", label: "Products" },
-  { href: "/signals", label: "Brain Signals" },
-  { href: "/open-source", label: "Open Hardware" },
-  { href: "/docs", label: "Documentation" },
+  { href: "/hardware", label: "Hardware" },
+  { href: "/software", label: "Software" },
+  { href: "/community", label: "Community" },
+  { href: "/support", label: "Support" },
   { href: "/news", label: "News" },
 ];
 

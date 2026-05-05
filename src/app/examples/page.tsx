@@ -123,7 +123,7 @@ export default function ExamplesPage() {
                 Browse All Examples on GitHub
               </Link>
               <Link
-                href="/docs"
+                href="/support"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 font-semibold transition-all"
               >
                 Documentation
@@ -357,7 +357,7 @@ export default function ExamplesPage() {
               Fork on GitHub
             </a>
             <Link
-              href="/docs"
+              href="/support"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-white hover:bg-white/10 font-bold transition-all"
             >
               Read the Docs

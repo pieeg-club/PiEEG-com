@@ -190,14 +190,14 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/open-source"
+              href="/community"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-blue-600 hover:bg-zinc-100 font-bold shadow-xl transition-all"
             >
               Get Involved
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/products"
+              href="/hardware"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-white hover:bg-white/10 font-bold transition-all"
             >
               Browse Hardware

@@ -233,7 +233,7 @@ export default function PartnershipPage() {
               partnerships@pieeg.com
             </a>
             <Link
-              href="/products"
+              href="/hardware"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-white hover:bg-white/10 font-bold transition-all"
             >
               View Products

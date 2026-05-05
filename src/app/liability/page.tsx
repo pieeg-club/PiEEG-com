@@ -206,7 +206,7 @@ export default function LiabilityPage() {
             By continuing to use our website and products, you acknowledge that you have read and understood this liability statement.
           </p>
           <Link
-            href="/products"
+            href="/hardware"
             className="inline-block px-8 py-4 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-bold hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all"
           >
             I Understand — View Products

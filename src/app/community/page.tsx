@@ -330,7 +330,7 @@ export default function OpenSourcePage() {
                     {item.description}
                   </p>
                   <Link
-                    href="/docs/contributing"
+                    href="/support/contributing"
                     className={`inline-flex items-center gap-2 font-semibold bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent group-hover:gap-3 transition-all`}
                   >
                     Get Started
@@ -451,7 +451,7 @@ export default function OpenSourcePage() {
             </a>
 
             <Link
-              href="/docs"
+              href="/support"
               className="p-8 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg hover:border-zinc-300 dark:hover:border-zinc-700 transition-all group"
             >
               <BookOpen className="w-12 h-12 mx-auto mb-4 text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors" />

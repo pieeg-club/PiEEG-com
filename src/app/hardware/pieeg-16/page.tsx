@@ -165,7 +165,7 @@ export default function PiEEG16ProductPage() {
               <ExternalLink className="w-5 h-5" />
             </a>
             <Link
-              href="/docs"
+              href="/support"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-white hover:bg-white/10 font-bold transition-all"
             >
               View Documentation

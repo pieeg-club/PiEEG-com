@@ -890,7 +890,7 @@ function ProductsSection() {
             return (
               <a
                 key={product.name}
-                href={`/products/${product.slug}`}
+                href={`/hardware/${product.slug}`}
                 className="group relative flex flex-col gap-6 rounded-2xl border-2 border-cyan-200/60 dark:border-cyan-800/40 bg-linear-to-br from-cyan-50/80 via-white to-blue-50/50 dark:from-cyan-950/20 dark:via-zinc-900/40 dark:to-blue-950/20 p-8 hover:border-cyan-400 dark:hover:border-cyan-600 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 overflow-hidden"
               >
                 {/* Background decoration */}
@@ -951,7 +951,7 @@ function ProductsSection() {
             return (
               <a
                 key={product.name}
-                href={`/products/${product.slug}`}
+                href={`/hardware/${product.slug}`}
                 className="group relative flex flex-col gap-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 p-6 hover:border-zinc-400 dark:hover:border-zinc-600 hover:shadow-xl hover:shadow-zinc-500/10 transition-all duration-200"
               >
                 {/* Icon & Badge */}

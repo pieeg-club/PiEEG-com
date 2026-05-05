@@ -1,25 +1,25 @@
 import Link from "next/link";
 
 const footerLinks = {
-  Products: [
-    { label: "PiEEG", href: "/products#pieeg" },
-    { label: "IronBCI-32", href: "/products#ironbci-32" },
-    { label: "PiEEG-16", href: "/products#pieeg-16" },
-    { label: "ardEEG", href: "/products#ardeeg" },
-    { label: "JNEEG", href: "/products#jneeg" },
-    { label: "MicroBCI", href: "/products#microbci" },
+  Hardware: [
+    { label: "PiEEG", href: "/hardware#pieeg" },
+    { label: "IronBCI-32", href: "/hardware#ironbci-32" },
+    { label: "PiEEG-16", href: "/hardware#pieeg-16" },
+    { label: "ardEEG", href: "/hardware#ardeeg" },
+    { label: "JNEEG", href: "/hardware#jneeg" },
+    { label: "MicroBCI", href: "/hardware#microbci" },
   ],
   Resources: [
-    { label: "Documentation", href: "/docs" },
-    { label: "Signals Guide", href: "/signals" },
+    { label: "Documentation", href: "/support" },
+    { label: "Software", href: "/software" },
     { label: "GitHub", href: "https://github.com/pieeg-club" },
-    { label: "Community", href: "/open-source" },
+    { label: "Community", href: "/community" },
   ],
   Community: [
     { label: "Discord", href: "https://discord.gg/neJ45FR6Sv" },
     { label: "YouTube", href: "https://youtube.com/@pieeg" },
     { label: "LinkedIn", href: "https://linkedin.com/company/pieeg" },
-    { label: "Open Source", href: "/open-source" },
+    { label: "Open Source", href: "/community" },
   ],
   Company: [
     { label: "About", href: "/about" },

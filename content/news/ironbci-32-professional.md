@@ -17,7 +17,7 @@ IronBCI-32 combines affordability with professional-grade performance, making hi
 
 - **32 Channels**: Full international 10-20 system coverage
 - **24-bit ADC**: Research-grade precision
-- **16 kHz Sampling**: Per-channel sample rate
+- **500 Hz Sampling**: Firmware-fixed sample rate
 - **Low Noise**: <0.8 µVpp input-referred noise
 - **Impedance Testing**: Built-in electrode quality monitoring
 

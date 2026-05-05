@@ -5,7 +5,7 @@ import { Brain, Activity, Heart, Eye, Zap, ArrowRight, Code2, Terminal, Wifi, Pl
 export const metadata: Metadata = {
   title: "PiEEG Server — Real-time Biosignal Streaming",
   description:
-    "Stream EEG, EMG, ECG, EOG at 250 Hz over WebSocket. One pip install. Browser dashboard. Works on Raspberry Pi, Linux, macOS, Windows.",
+    "Stream EEG, EMG, ECG, EOG at 250–500 Hz over WebSocket. One pip install. Browser dashboard. Works on Raspberry Pi, Linux, macOS, Windows.",
 };
 
 const features = [
@@ -18,7 +18,7 @@ const features = [
   {
     icon: Wifi,
     title: "WebSocket Streaming",
-    description: "Plain JSON at 250 Hz. No SDK, no binary protocol. Works in any language with WebSocket support.",
+    description: "Plain JSON at 250–500 Hz. No SDK, no binary protocol. Works in any language with WebSocket support.",
     gradient: "from-purple-500 to-pink-600"
   },
   {
@@ -226,7 +226,7 @@ export default function SignalsPage() {
             </h1>
             
             <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 mb-8">
-              Real-time EEG/EMG/ECG/EOG streaming at 250 Hz. WebSocket API. Browser dashboard. Works on Raspberry Pi, Linux, macOS, Windows.
+              Real-time EEG/EMG/ECG/EOG streaming at 250–500 Hz. WebSocket API. Browser dashboard. Works on Raspberry Pi, Linux, macOS, Windows.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

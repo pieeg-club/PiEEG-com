@@ -6,7 +6,7 @@ import { ExternalLink, Code2 as GitHubIcon, Cpu, Signal, Shield, Zap } from "luc
 export const metadata: Metadata = {
   title: "IronBCI-32 — 32-Channel Professional EEG System — PiEEG",
   description:
-    "Research-grade 32-channel EEG development kit. 4× AD7771 ADCs, STM32H7, Brainflow integrated. 512 SPS per channel. Available at Elecrow.",
+    "Research-grade 32-channel EEG development kit. 4× AD7771 ADCs, STM32H7, Brainflow integrated. 500 Hz per channel. Available at Elecrow.",
 };
 
 export default function IronBCI32ProductPage() {
@@ -78,7 +78,7 @@ export default function IronBCI32ProductPage() {
               ironbci-32 integrates four 8-channel AD7771 analog-to-digital converters (ADCs), each with ultra-low-noise sources, ensuring highly accurate signal capture. The core is powered by the STM32H7 ARM Cortex-M7 microcontroller.
             </p>
             <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              Fully integrated into the open-source Brainflow Library, making it compatible with the broader neuroscience ecosystem. Optimized firmware delivers 512 SPS per channel when running all 32 channels simultaneously.
+              Fully integrated into the open-source Brainflow Library, making it compatible with the broader neuroscience ecosystem. Optimized firmware delivers 500 Hz per channel when running all 32 channels simultaneously.
             </p>
           </div>
         </div>
@@ -109,8 +109,8 @@ export default function IronBCI32ProductPage() {
 
             <div className="p-6 rounded-xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
               <Shield className="w-8 h-8 text-blue-600 dark:text-blue-400 mb-4" />
-              <h3 className="font-bold mb-2">512 SPS per Channel</h3>
-              <p className="text-zinc-600 dark:text-zinc-400">When running all 32 channels</p>
+              <h3 className="font-bold mb-2">500 Hz per Channel</h3>
+              <p className="text-zinc-600 dark:text-zinc-400">Firmware-fixed sampling rate (all 32 channels)</p>
             </div>
 
             <div className="p-6 rounded-xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">

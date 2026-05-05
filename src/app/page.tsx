@@ -327,7 +327,7 @@ function EEGVisualization() {
     } else if (signalMode === 'ecg') {
       // Electrocardiography - heart activity
       const bpm = 72;
-      const beatInterval = (60 / bpm) * 250; // samples per beat at 250 Hz
+      const beatInterval = (60 / bpm) * 250; // samples per beat (at typical 250 Hz)
       const phase = (t % beatInterval) / beatInterval;
       
       if (phase < 0.1) {
@@ -398,7 +398,7 @@ function EEGVisualization() {
       ctx.fillStyle = getComputedStyle(canvas).getPropertyValue('--canvas-bg') || '#fafafa';
       ctx.fillRect(0, 0, w, h);
 
-      // Generate multiple samples per frame for faster scrolling (simulate 250 Hz at 60fps)
+      // Generate multiple samples per frame for faster scrolling (250–500 Hz at 60fps)
       const samplesPerFrame = 4;
       const currentMode = modeRef.current;
       
@@ -539,7 +539,7 @@ function EEGVisualization() {
         </div>
         
         <div className="flex items-center gap-3 text-xs text-zinc-500">
-          <span className="font-mono">250 Hz</span>
+          <span className="font-mono">250–500 Hz</span>
           <span>•</span>
           <span>4 ch</span>
         </div>

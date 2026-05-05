@@ -22,9 +22,9 @@ IronBCI is a complete BCI development platform that makes neuroscience research 
 - **Open-source**: Full hardware and software documentation
 
 ### Technical Specifications
-- **Channels**: 8, 16, or 32 channels available
+- **Channels**: 8 channels (IronBCI BLE) or 32 channels (IronBCI-32 USB)
 - **Resolution**: 24-bit ADC for precise measurements
-- **Sample Rate**: Up to 16,000 SPS
+- **Sample Rate**: 250 Hz (8ch BLE) / 500 Hz (32ch USB)
 - **Input Noise**: < 1 µVpp
 - **Compatible**: Works with standard EEG electrodes and caps
 
@@ -96,14 +96,6 @@ For the first 100 orders:
 | Price | $299+ | $449 | $899 |
 | Best For | Beginners | Researchers | Advanced Research |
 | Form Factor | Compact | Modular | Professional |
-
-## What People Are Saying
-
-> "IronBCI makes BCI research accessible to everyone. Perfect for our university lab!" - Dr. Sarah Chen, MIT
-
-> "I built my first BCI app in a weekend. The documentation is excellent!" - Marcus Rodriguez, Developer
-
-> "Finally, an affordable BCI platform without compromising on quality." - Prof. James Wilson, Stanford
 
 ## Join the Revolution
 

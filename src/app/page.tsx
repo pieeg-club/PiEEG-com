@@ -723,7 +723,7 @@ function HeroSection() {
         {/* CTAs */}
         <div className="flex flex-wrap items-center justify-center gap-3 mt-4">
           <a
-            href="https://pieeg.vercel.app/"
+            href="https://cloud.pieeg.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative flex items-center gap-2 h-12 bg-linear-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 px-6 text-sm font-semibold text-white dark:text-zinc-950 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105 transition-all duration-200 rounded-lg overflow-hidden"
@@ -1438,7 +1438,7 @@ function CtaSection() {
         {/* CTAs */}
         <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
           <a
-            href="https://pieeg.vercel.app/"
+            href="https://cloud.pieeg.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative flex items-center gap-3 h-16 bg-linear-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 px-10 text-lg font-semibold text-white dark:text-zinc-950 hover:shadow-2xl hover:shadow-cyan-500/30 hover:scale-105 transition-all duration-200 rounded-xl overflow-hidden"

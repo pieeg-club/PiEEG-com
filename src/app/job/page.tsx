@@ -253,11 +253,11 @@ export default function JobPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="mailto:jobs@pieeg.com"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-green-600 hover:bg-zinc-100 font-bold shadow-xl transition-all"
+              href="mailto:pieeg@pieeg.com"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-purple-600 hover:bg-zinc-100 font-bold shadow-xl transition-all"
             >
               <Mail className="w-5 h-5" />
-              jobs@pieeg.com
+              pieeg@pieeg.com
             </a>
             <Link
               href="/about"

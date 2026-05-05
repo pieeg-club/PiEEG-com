@@ -28,8 +28,8 @@ const contactMethods = [
     icon: Mail,
     title: "Email Support",
     description: "For technical support and general inquiries",
-    action: "support@pieeg.com",
-    href: "mailto:support@pieeg.com",
+    action: "pieeg@pieeg.com",
+    href: "mailto:pieeg@pieeg.com",
     gradient: "from-cyan-500 to-blue-600"
   }
 ];
@@ -222,7 +222,7 @@ export default function ContactPage() {
 
           <div className="grid md:grid-cols-3 gap-6">
             <a
-              href="mailto:support@pieeg.com"
+              href="mailto:pieeg@pieeg.com"
               className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg transition-all text-center"
             >
               <Mail className="w-8 h-8 text-cyan-600 dark:text-cyan-400 mx-auto mb-3" />
@@ -231,12 +231,12 @@ export default function ContactPage() {
                 Technical questions, troubleshooting, general inquiries
               </p>
               <span className="text-sm text-cyan-600 dark:text-cyan-400 font-mono">
-                support@pieeg.com
+                pieeg@pieeg.com
               </span>
             </a>
 
             <a
-              href="mailto:partnerships@pieeg.com"
+              href="mailto:pieeg@pieeg.com"
               className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg transition-all text-center"
             >
               <Mail className="w-8 h-8 text-purple-600 dark:text-purple-400 mx-auto mb-3" />
@@ -245,12 +245,12 @@ export default function ContactPage() {
                 Distribution, research collaborations, integrations
               </p>
               <span className="text-sm text-purple-600 dark:text-purple-400 font-mono">
-                partnerships@pieeg.com
+                pieeg@pieeg.com
               </span>
             </a>
 
             <a
-              href="mailto:jobs@pieeg.com"
+              href="mailto:pieeg@pieeg.com"
               className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg transition-all text-center"
             >
               <Mail className="w-8 h-8 text-green-600 dark:text-green-400 mx-auto mb-3" />
@@ -259,7 +259,7 @@ export default function ContactPage() {
                 Job opportunities, internships, volunteer positions
               </p>
               <span className="text-sm text-green-600 dark:text-green-400 font-mono">
-                jobs@pieeg.com
+                pieeg@pieeg.com
               </span>
             </a>
           </div>

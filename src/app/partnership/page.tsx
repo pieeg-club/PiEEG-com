@@ -37,94 +37,6 @@ export default function PartnershipPage() {
         </div>
       </section>
 
-      {/* End-to-End BCI Solutions */}
-      <section className="py-20 bg-white dark:bg-zinc-950">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              End-to-End BCI Solutions
-            </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
-              From hardware to software, we lead the complete BCI stack
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="p-8 rounded-2xl border-2 border-cyan-200 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/30">
-              <div className="w-12 h-12 rounded-lg bg-cyan-600 dark:bg-cyan-500 flex items-center justify-center text-white mb-4">
-                <Rocket className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Hardware</h3>
-              <ul className="space-y-2 text-zinc-700 dark:text-zinc-300">
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <span>Research-grade EEG, EMG, ECG devices</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <span>8 to 32 channels, wired & wireless</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <span>Open-source schematics & firmware</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-cyan-600 dark:text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <span>Ready to ship globally</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="p-8 rounded-2xl border-2 border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/30">
-              <div className="w-12 h-12 rounded-lg bg-blue-600 dark:bg-blue-500 flex items-center justify-center text-white mb-4">
-                <GitFork className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Software</h3>
-              <ul className="space-y-2 text-zinc-700 dark:text-zinc-300">
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span>PiEEG Server for data acquisition</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span>Python SDK & signal processing</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span>Brainflow integration</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span>ML/AI pipeline examples</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="p-8 rounded-2xl bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/30 dark:to-blue-950/30 border border-purple-200 dark:border-purple-800">
-            <h3 className="text-2xl font-bold mb-4 text-center">You Bring + We Bring = Faster Path to Market</h3>
-            <div className="grid md:grid-cols-2 gap-8 mt-6">
-              <div>
-                <h4 className="font-bold text-lg mb-3 text-purple-600 dark:text-purple-400">You Bring:</h4>
-                <ul className="space-y-2 text-zinc-700 dark:text-zinc-300">
-                  <li>• The idea</li>
-                  <li>• The application software</li>
-                  <li>• The market</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-bold text-lg mb-3 text-blue-600 dark:text-blue-400">We Bring:</h4>
-                <ul className="space-y-2 text-zinc-700 dark:text-zinc-300">
-                  <li>• EEG hardware</li>
-                  <li>• Research-grade signals</li>
-                  <li>• A much faster path to market</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Who We Partner With */}
       <section className="py-20 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -356,11 +268,11 @@ export default function PartnershipPage() {
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="mailto:partnerships@pieeg.com"
+              href="mailto:pieeg@pieeg.com"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-purple-600 hover:bg-zinc-100 font-bold shadow-xl transition-all"
             >
               <Mail className="w-5 h-5" />
-              partnerships@pieeg.com
+              pieeg@pieeg.com
             </a>
             <Link
               href="/contact"

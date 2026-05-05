@@ -185,10 +185,10 @@ export default function LiabilityPage() {
                 If you have questions about safe use of PiEEG devices, contact us at:
               </p>
               <a
-                href="mailto:support@pieeg.com"
+                href="mailto:pieeg@pieeg.com"
                 className="inline-block px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all"
               >
-                support@pieeg.com
+                pieeg@pieeg.com
               </a>
               <p className="mt-6 text-sm text-zinc-600 dark:text-zinc-400">
                 <strong>Last Updated:</strong> January 2026

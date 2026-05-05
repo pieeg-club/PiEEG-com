@@ -472,13 +472,13 @@ export default function DocsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-br from-blue-500 via-cyan-600 to-purple-600 text-white">
+      <section className="py-20 bg-linear-to-br from-blue-500 via-cyan-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Can't find what you're looking for?
+            Can&apos;t find what you&apos;re looking for?
           </h2>
           <p className="text-lg text-cyan-50 mb-8 max-w-2xl mx-auto">
-            Ask the community on Discord or open an issue on GitHub. We're here to help.
+            Ask the community on Discord or open an issue on GitHub. We&apos;re here to help.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a

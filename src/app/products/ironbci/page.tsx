@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink, Code2 as GitHubIcon, Cpu, Zap, Signal, Shield, Bluetooth, Radio } from "lucide-react";
+import { ExternalLink, Code2 as GitHubIcon, Cpu, Zap, Signal, Shield, Bluetooth, Radio, Smartphone } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "IronBCI — 8-Channel Wearable Wireless EEG — PiEEG",

@@ -40,7 +40,7 @@ export function Footer() {
             <span className="font-mono text-sm font-bold tracking-[0.2em] text-cyan-500 dark:text-cyan-400 uppercase">
               PiEEG
             </span>
-            <p className="text-xs text-zinc-400 dark:text-zinc-500 leading-5 max-w-[180px]">
+            <p className="text-xs text-zinc-400 dark:text-zinc-500 leading-5 max-w-45">
               Open-source brain-computer interface hardware for researchers, engineers, and brain hackers.
             </p>
             <p className="text-[11px] font-medium text-zinc-300 dark:text-zinc-600 uppercase tracking-wider">

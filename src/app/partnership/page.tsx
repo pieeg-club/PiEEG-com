@@ -23,7 +23,7 @@ export default function PartnershipPage() {
             </div>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Be with PiEEG
+              Partner with PiEEG
             </h1>
             
             <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 mb-8">

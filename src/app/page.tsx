@@ -733,7 +733,7 @@ function HeroSection() {
             <span className="relative z-10">Try Live Demo</span>
           </a>
           <a
-            href="https://pieeg-server-doc.vercel.app/"
+            href="/support"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-6 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
@@ -742,7 +742,7 @@ function HeroSection() {
             <ArrowRight className="w-4 h-4" />
           </a>
           <a
-            href="https://pieeg.com/pieeg-shop/"
+            href="/hardware"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-6 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
@@ -1448,7 +1448,7 @@ function CtaSection() {
             <span className="relative z-10">Try Live Demo</span>
           </a>
           <a
-            href="https://pieeg-server-doc.vercel.app/"
+            href="/support"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 h-16 border-2 border-zinc-300 dark:border-zinc-700 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm px-10 text-lg font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-xl"
@@ -1457,7 +1457,7 @@ function CtaSection() {
             <ArrowRight className="w-5 h-5" />
           </a>
           <a
-            href="https://pieeg.com/shop"
+            href="/hardware"
             className="flex items-center gap-3 h-16 border-2 border-zinc-300 dark:border-zinc-700 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm px-10 text-lg font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-xl"
           >
             Shop Hardware

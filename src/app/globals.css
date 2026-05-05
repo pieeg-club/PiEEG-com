@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* Class-based dark mode — works with next-themes attribute="class" */
 @custom-variant dark (&:where(.dark, .dark *));
@@ -46,6 +47,53 @@ body {
     rgba(45, 212, 191, 0.04) 10px,
     rgba(45, 212, 191, 0.04) 11px
   );
+}
+
+/* ── Article Content Enhancements ──────────────────────────── */
+.article-content h2 {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(20, 184, 166, 0.1);
+}
+
+.article-content h3 {
+  margin-top: 2rem;
+}
+
+.article-content ul ul,
+.article-content ul ol,
+.article-content ol ul,
+.article-content ol ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.article-content img {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .article-content img {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.article-content a:hover {
+  text-decoration-color: rgba(20, 184, 166, 0.4);
+}
+
+.article-content code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.article-content pre code {
+  white-space: pre;
+}
+
+.article-content table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 /* ── Clipped corners ───────────────────────────────────────── */

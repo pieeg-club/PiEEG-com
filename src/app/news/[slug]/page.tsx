@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, ArrowLeft, Tag, Share2 } from 'lucide-react';
 import { getAllNews, getNewsBySlug } from '@/lib/news';
-import ReactMarkdown from 'react-markdown';
+import ArticleContent from '@/components/ArticleContent';
 
 export async function generateStaticParams() {
   const news = getAllNews();
@@ -109,9 +109,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
       {/* Article Content */}
       <section className="py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="prose prose-lg dark:prose-invert prose-headings:font-bold prose-a:text-cyan-600 dark:prose-a:text-cyan-400 prose-img:rounded-lg max-w-none">
-            <ReactMarkdown>{article.content}</ReactMarkdown>
-          </div>
+          <ArticleContent content={article.content} />
 
           {/* Tags */}
           {article.tags && article.tags.length > 0 && (

@@ -5,7 +5,7 @@ import { Users, Target, Lightbulb, Globe, ArrowRight, Shield } from "lucide-reac
 export const metadata: Metadata = {
   title: "About — PiEEG",
   description:
-    "Learn about PiEEG's mission to democratize neuroscience technology through open-source brain-computer interface hardware.",
+    "PiEEG provides access to neurobiology through a universal, open-source shield compatible with various electrodes for EEG, EMG, ECG, allowing the study and application of data in real-world conditions.",
 };
 
 export default function AboutPage() {
@@ -42,37 +42,37 @@ export default function AboutPage() {
                 </span>
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-                Democratize Neuroscience
+                Breaking Down Barriers to Neuroscience
               </h2>
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed mb-6">
-                  We believe that cutting-edge neurotechnology should not be locked behind paywalls. By making our hardware open-source and software freely available, we empower individuals worldwide to explore the brain, build brain-computer interfaces (BCIs), and contribute to neuroscience research.
+                  For years, the PiEEG team has been dedicated to breaking down the barriers of neuroscience. We believe that measuring the human body&apos;s signals—whether it&apos;s the brain (EEG), muscles (EMG), or eyes (EOG)—shouldn&apos;t be restricted to high-cost equipment.
                 </p>
                 <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                  PiEEG provides access to neurobiology through a universal, open-source shield compatible with various electrodes for EEG, EMG, ECG, allowing the study and application of data in real-world conditions.
+                  Our mission is to make PiEEG the universal bridge between biology and technology for research purposes. Designed for simplicity and compatible with a vast range of electrodes, our open-source hardware lets you go from unboxing to data-tracking in minutes. If you can run a Python script, you can explore the human nervous system.
                 </p>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-6">
               <div className="p-6 rounded-xl bg-cyan-50 dark:bg-cyan-950/30 border border-cyan-200 dark:border-cyan-800">
-                <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">2000+</div>
-                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Discord Members</div>
-                <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">active community</div>
+                <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">11+</div>
+                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Science Papers</div>
+                <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">academic citations</div>
               </div>
               <div className="p-6 rounded-xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">50+</div>
-                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Universities</div>
-                <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">using PiEEG worldwide</div>
+                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">28+</div>
+                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Media Features</div>
+                <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">podcasts & outlets</div>
               </div>
               <div className="p-6 rounded-xl bg-purple-50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-800">
-                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">5000+</div>
-                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">GitHub Stars</div>
-                <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">across repositories</div>
+                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">100%</div>
+                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Open Source</div>
+                <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">hardware & software</div>
               </div>
               <div className="p-6 rounded-xl bg-pink-50 dark:bg-pink-950/30 border border-pink-200 dark:border-pink-800">
-                <div className="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-2">11+</div>
-                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Research Papers</div>
-                <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">peer-reviewed</div>
+                <div className="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-2">Global</div>
+                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Community</div>
+                <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">worldwide reach</div>
               </div>
             </div>
           </div>
@@ -140,19 +140,19 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Our Story
+              About Us
             </h2>
           </div>
 
           <div className="prose prose-lg dark:prose-invert max-w-none">
             <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
-              PiEEG started in 2018 as a weekend project to build a low-cost EEG system using a Raspberry Pi. What began as a simple 8-channel prototype has evolved into a full ecosystem of biosignal acquisition hardware used in universities and research labs worldwide.
+              PiEEG provides access to neurobiology through a universal, open-source shield compatible with various electrodes for EEG, EMG, ECG, allowing the study and application of data in real-world conditions.
             </p>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
-              We saw talented researchers and students unable to pursue their ideas because commercial BCI systems cost $20,000+. We knew there had to be a better way. By leveraging open-source hardware, commodity components, and community collaboration, we've created tools that deliver 90% of the performance at 10% of the cost.
+              PiEEG is a project born from a shared interest in hardware engineering, signal processing, and neuroscience. Our team consists of researchers and engineers who believe that the tools for exploring biosignals should be accessible to everyone.
             </p>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              Today, PiEEG powers everything from undergraduate neuroscience labs to cutting-edge BCI research. Our community has grown to thousands of users across 50+ countries, and we're just getting started.
+              Over the years, we have contributed to the field by publishing our findings on Brain-Computer Interfaces (BCIs) and developing open-source hardware. Our goal isn&apos;t just to build devices, but to provide a transparent platform where others can experiment and build their own neural interfaces. By combining our experience in hardware design with machine learning, we work to ensure PiEEG remains a reliable, entry-level tool for non-medical research and exploration.
             </p>
           </div>
         </div>

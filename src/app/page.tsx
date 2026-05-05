@@ -601,7 +601,9 @@ function HeroSection() {
           style={{ 
             backgroundImage: 'url(/hero-bg-light.png)',
             backgroundPosition: 'right 0 bottom 0',
-            backgroundSize: '100%'
+            backgroundSize: '100%',
+            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,1) 60%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,1) 60%)',
           }}
         />
         {/* Dark theme background */}
@@ -612,6 +614,8 @@ function HeroSection() {
             backgroundPosition: 'right 0 bottom 0',
             backgroundSize: '100%',
             opacity: 0.4,
+            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,1) 60%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,1) 60%)',
           }}
         />
       </div>

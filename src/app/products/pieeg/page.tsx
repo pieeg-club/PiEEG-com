@@ -62,6 +62,20 @@ export default function PiEEGProductPage() {
                 </a>
               </div>
             </div>
+            
+            {/* Product Image */}
+            <div className="flex items-center justify-center">
+              <div className="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 p-8 shadow-2xl border border-zinc-200 dark:border-zinc-700">
+                <Image
+                  src="/products/pieeg.png"
+                  alt="PiEEG 8-Channel Board"
+                  width={400}
+                  height={400}
+                  className="object-contain w-full h-full"
+                  priority
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>

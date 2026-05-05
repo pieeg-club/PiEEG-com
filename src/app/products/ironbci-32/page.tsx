@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ExternalLink, Code2 as GitHubIcon, Cpu, Signal, Shield, Zap } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -49,6 +50,20 @@ export default function IronBCI32ProductPage() {
                   <GitHubIcon className="w-5 h-5" />
                   GitHub
                 </a>
+              </div>
+            </div>
+            
+            {/* Product Image */}
+            <div className="flex items-center justify-center">
+              <div className="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 p-8 shadow-2xl border border-zinc-200 dark:border-zinc-700">
+                <Image
+                  src="/products/ironbci-32.png"
+                  alt="IronBCI-32 32-Channel Board"
+                  width={400}
+                  height={400}
+                  className="object-contain w-full h-full"
+                  priority
+                />
               </div>
             </div>
           </div>

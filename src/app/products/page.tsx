@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Cpu, Zap, Code, ChevronRight, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -29,6 +30,7 @@ const products = [
     badge: "Most Popular",
     gradient: "from-cyan-500 to-blue-600",
     bgGradient: "from-cyan-50 to-blue-50 dark:from-cyan-950/30 dark:to-blue-950/30",
+    image: "/products/pieeg.png",
     purchaseUrl: "https://www.elecrow.com/pieeg.html",
     github: "https://github.com/pieeg-club/PiEEG",
     youtube: "https://youtu.be/0ocAPWok5YU"
@@ -52,6 +54,7 @@ const products = [
     status: "Available",
     gradient: "from-blue-500 to-indigo-600",
     bgGradient: "from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30",
+    image: "/products/pieeg-16.png",
     purchaseUrl: "https://www.elecrow.com/pieeg-16.html",
     github: "https://github.com/pieeg-club/PiEEG-16",
     youtube: "https://youtu.be/tjCazk2Efqs"
@@ -76,6 +79,7 @@ const products = [
     badge: "Wireless",
     gradient: "from-purple-500 to-pink-600",
     bgGradient: "from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30",
+    image: "/products/ironbci.jpg",
     purchaseUrl: "https://www.elecrow.com/ironbci.html",
     github: "https://github.com/pieeg-club/ironbci",
     youtube: "https://www.youtube.com/watch?v=gWpfsLuq_eE"
@@ -100,6 +104,7 @@ const products = [
     badge: "Research Grade",
     gradient: "from-red-500 to-orange-600",
     bgGradient: "from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30",
+    image: "/products/ironbci-32.png",
     purchaseUrl: "https://www.elecrow.com/ironbci-32.html",
     github: "https://github.com/pieeg-club/ironbci-32"
   },
@@ -122,6 +127,7 @@ const products = [
     status: "Available",
     gradient: "from-teal-500 to-cyan-600",
     bgGradient: "from-teal-50 to-cyan-50 dark:from-teal-950/30 dark:to-cyan-950/30",
+    image: "/products/microbci.png",
     purchaseUrl: "https://www.elecrow.com/microbci-eeg-with-stm32.html",
     github: "https://github.com/pieeg-club/MicroBCI"
   },
@@ -144,6 +150,7 @@ const products = [
     status: "Available",
     gradient: "from-green-500 to-emerald-600",
     bgGradient: "from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30",
+    image: "/products/ardeeg.png",
     purchaseUrl: "https://www.elecrow.com/ardeeg.html",
     github: "https://github.com/Ildaron/ardEEG",
     youtube: "https://youtu.be/s_5mDDUFp6E"
@@ -167,6 +174,7 @@ const products = [
     status: "Available",
     gradient: "from-orange-500 to-red-600",
     bgGradient: "from-orange-50 to-red-50 dark:from-orange-950/30 dark:to-red-950/30",
+    image: "/products/jneeg.png",
     purchaseUrl: "https://www.elecrow.com/jneeg.html",
     github: "https://github.com/Pi-EEG/EEG-with-JetsonNano",
     youtube: "https://youtu.be/f3stVQCsfrM"
@@ -265,7 +273,7 @@ export default function ProductsPage() {
                 className={`relative group rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-gradient-to-br ${product.bgGradient} overflow-hidden hover:shadow-xl transition-all duration-300`}
               >
                 {product.badge && (
-                  <div className="absolute top-4 right-4 z-10">
+                  <div className="absolute top-4 left-4 z-10">
                     <div className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide text-white bg-gradient-to-r ${product.gradient} shadow-lg`}>
                       {product.badge}
                     </div>
@@ -273,8 +281,23 @@ export default function ProductsPage() {
                 )}
 
                 <div className="p-8">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
+                  <div className="flex items-start gap-6 mb-4">
+                    {/* Product Image - Compact Avatar Style */}
+                    {product.image && (
+                      <div className="flex-shrink-0">
+                        <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-white dark:bg-zinc-900 p-2 shadow-md border border-zinc-200 dark:border-zinc-700">
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            width={80}
+                            height={80}
+                            className="object-contain w-full h-full"
+                          />
+                        </div>
+                      </div>
+                    )}
+                    
+                    <div className="flex-1 min-w-0">
                       <h3 className="text-2xl font-bold mb-2">{product.name}</h3>
                       <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400 mb-4">
                         {product.tagline}

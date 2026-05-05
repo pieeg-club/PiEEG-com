@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ThemeToggle } from "./ThemeToggle";
-import { useState, useRef, useEffect } from "react";
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -18,148 +17,15 @@ function GitHubIcon({ className }: { className?: string }) {
   );
 }
 
-const megaMenuContent = {
-  products: {
-    label: "BCI Systems",
-    description: "Professional brain-computer interfaces",
-    sections: [
-      {
-        title: "Professional Series",
-        items: [
-          { href: "/products/ironbci-32", label: "IronBCI 32", description: "32-channel professional system" },
-          { href: "/products/ironbci-16", label: "IronBCI 16", description: "16-channel portable solution" },
-        ]
-      },
-      {
-        title: "Development Kits",
-        items: [
-          { href: "/products/microbci", label: "MicroBCI", description: "STM32-based development kit" },
-          { href: "/products/pieeg", label: "PiEEG", description: "Raspberry Pi EEG shield" },
-        ]
-      },
-      {
-        title: "Accessories",
-        items: [
-          { href: "/products/electrodes", label: "Electrodes", description: "Premium dry & wet electrodes" },
-          { href: "/products/headsets", label: "Headsets", description: "3D printable & ready-made" },
-        ]
-      }
-    ]
-  },
-  resources: {
-    label: "Resources",
-    description: "Documentation and guides",
-    sections: [
-      {
-        title: "Documentation",
-        items: [
-          { href: "/docs/getting-started", label: "Getting Started", description: "Quick start guide" },
-          { href: "/docs/api", label: "API Reference", description: "Complete API docs" },
-          { href: "/docs/tutorials", label: "Tutorials", description: "Step-by-step guides" },
-        ]
-      },
-      {
-        title: "Learning",
-        items: [
-          { href: "/docs/courses", label: "Courses", description: "ML & EEG training" },
-          { href: "/docs/examples", label: "Examples", description: "Sample projects" },
-          { href: "/docs/research", label: "Research", description: "Scientific papers" },
-        ]
-      }
-    ]
-  }
-};
-
-const simpleLinks = [
+const navLinks = [
+  { href: "/products", label: "Products" },
   { href: "/signals", label: "Brain Signals" },
   { href: "/open-source", label: "Open Hardware" },
+  { href: "/docs", label: "Documentation" },
+  { href: "/news", label: "News" },
 ];
 
-type MegaMenuKey = 'products' | 'resources';
-
-function MegaMenu({ 
-  content, 
-  isOpen, 
-  onMouseEnter, 
-  onMouseLeave 
-}: { 
-  content: typeof megaMenuContent[MegaMenuKey], 
-  isOpen: boolean,
-  onMouseEnter: () => void,
-  onMouseLeave: () => void
-}) {
-  return (
-    <div 
-      className={`absolute left-1/2 -translate-x-1/2 top-full pt-3 transition-all duration-300 ${isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
-      <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-2xl shadow-zinc-900/10 dark:shadow-zinc-950/50 border border-zinc-200/50 dark:border-zinc-800/50 overflow-hidden backdrop-blur-xl">
-        {/* Header */}
-        <div className="bg-gradient-to-br from-cyan-50 via-blue-50 to-purple-50 dark:from-zinc-900 dark:via-cyan-950/30 dark:to-blue-950/20 px-6 py-4 border-b border-zinc-200/50 dark:border-zinc-800/50">
-          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">{content.label}</h3>
-          <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-0.5">{content.description}</p>
-        </div>
-
-        {/* Menu Grid */}
-        <div className="grid grid-cols-2 gap-6 p-6 min-w-[520px]">
-          {content.sections.map((section, idx) => (
-            <div key={idx} className="space-y-3">
-              <h4 className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider px-3">
-                {section.title}
-              </h4>
-              <div className="space-y-1">
-                {section.items.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="group flex flex-col px-3 py-2.5 rounded-xl hover:bg-gradient-to-br hover:from-cyan-50 hover:to-blue-50 dark:hover:from-cyan-950/20 dark:hover:to-blue-950/20 transition-all duration-200"
-                  >
-                    <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100 group-hover:text-cyan-700 dark:group-hover:text-cyan-400 transition-colors">
-                      {item.label}
-                    </span>
-                    <span className="text-xs text-zinc-500 dark:text-zinc-500 group-hover:text-zinc-600 dark:group-hover:text-zinc-400 transition-colors">
-                      {item.description}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function Navbar() {
-  const [activeMenu, setActiveMenu] = useState<MegaMenuKey | null>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  const handleMouseEnter = (menu: MegaMenuKey) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-    setActiveMenu(menu);
-  };
-
-  const handleMouseLeave = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    timeoutRef.current = setTimeout(() => {
-      setActiveMenu(null);
-    }, 150);
-  };
-
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, []);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-zinc-200/60 dark:border-zinc-800/60 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl backdrop-saturate-150">
@@ -181,31 +47,7 @@ export function Navbar() {
           {/* Centered Nav */}
           <nav className="hidden lg:flex items-center justify-center absolute left-1/2 -translate-x-1/2">
             <div className="flex items-center gap-1 bg-zinc-50/50 dark:bg-zinc-900/30 rounded-full px-2 py-1.5 border border-zinc-200/50 dark:border-zinc-800/50">
-              {/* BCI Systems - Mega Menu */}
-              <div
-                className="relative"
-                onMouseEnter={() => handleMouseEnter('products')}
-                onMouseLeave={handleMouseLeave}
-              >
-                <button
-                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                    activeMenu === 'products'
-                      ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-50 shadow-sm'
-                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
-                  }`}
-                >
-                  <span className="relative z-10">{megaMenuContent.products.label}</span>
-                </button>
-                <MegaMenu 
-                  content={megaMenuContent.products} 
-                  isOpen={activeMenu === 'products'}
-                  onMouseEnter={() => handleMouseEnter('products')}
-                  onMouseLeave={handleMouseLeave}
-                />
-              </div>
-
-              {/* Simple Links */}
-              {simpleLinks.map((link) => (
+              {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -214,29 +56,6 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
-
-              {/* Resources - Mega Menu */}
-              <div
-                className="relative"
-                onMouseEnter={() => handleMouseEnter('resources')}
-                onMouseLeave={handleMouseLeave}
-              >
-                <button
-                  className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                    activeMenu === 'resources'
-                      ? 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-50 shadow-sm'
-                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200'
-                  }`}
-                >
-                  <span className="relative z-10">{megaMenuContent.resources.label}</span>
-                </button>
-                <MegaMenu 
-                  content={megaMenuContent.resources} 
-                  isOpen={activeMenu === 'resources'}
-                  onMouseEnter={() => handleMouseEnter('resources')}
-                  onMouseLeave={handleMouseLeave}
-                />
-              </div>
             </div>
           </nav>
 

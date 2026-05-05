@@ -111,5 +111,5 @@ The site uses `react-markdown` with support for:
 ## Need Help?
 
 - Check existing articles for examples
-- Join our Discord: https://discord.gg/pieeg
+- Join our Discord: https://discord.gg/neJ45FR6Sv
 - Read the Next.js documentation: https://nextjs.org/docs

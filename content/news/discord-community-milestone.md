@@ -53,7 +53,7 @@ Find collaborators for:
 
 Whether you're just getting started or you're an experienced researcher, our community welcomes you.
 
-**[Join Discord](https://discord.gg/pieeg)**
+**[Join Discord](https://discord.gg/neJ45FR6Sv)**
 
 ## Community Guidelines
 

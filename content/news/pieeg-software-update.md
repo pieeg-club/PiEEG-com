@@ -55,4 +55,4 @@ For users with automatic updates enabled, the software will update automatically
 
 This release includes over 30 feature requests and bug fixes suggested by our community. Special thanks to all contributors who helped test the beta versions!
 
-Join our [Discord community](https://discord.gg/pieeg) to discuss the new features and share your feedback.
+Join our [Discord community](https://discord.gg/neJ45FR6Sv) to discuss the new features and share your feedback.

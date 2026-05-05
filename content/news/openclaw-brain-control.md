@@ -68,7 +68,7 @@ In keeping with the open-source philosophy of both PiEEG and OpenClaw, all code,
 
 Interested in BCI research? Join our community:
 - Download the code from our [GitHub repository](https://github.com/pieeg-club)
-- Join discussions on our [Discord server](https://discord.gg/pieeg)
+- Join discussions on our [Discord server](https://discord.gg/neJ45FR6Sv)
 - Check out our [tutorials and documentation](https://pieeg.com/docs)
 
 This is just the beginning of what's possible when we combine open-source hardware, advanced signal processing, and machine learning. We can't wait to see what the community builds next!

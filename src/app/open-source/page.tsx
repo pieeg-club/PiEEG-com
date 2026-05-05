@@ -201,7 +201,7 @@ export default function OpenSourcePage() {
                 View on GitHub
               </a>
               <a
-                href="https://discord.gg/RnCdpwbywx"
+                href="https://discord.gg/neJ45FR6Sv"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 font-semibold transition-all"
@@ -398,7 +398,7 @@ export default function OpenSourcePage() {
                     <ExternalLink className="w-4 h-4" />
                   </a>
                   <a
-                    href="https://discord.gg/RnCdpwbywx"
+                    href="https://discord.gg/neJ45FR6Sv"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-green-300 dark:border-green-700 hover:bg-green-100 dark:hover:bg-green-950/50 font-semibold transition-all"
@@ -438,7 +438,7 @@ export default function OpenSourcePage() {
             </a>
 
             <a
-              href="https://discord.gg/RnCdpwbywx"
+              href="https://discord.gg/neJ45FR6Sv"
               target="_blank"
               rel="noopener noreferrer"
               className="p-8 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg hover:border-zinc-300 dark:hover:border-zinc-700 transition-all group"

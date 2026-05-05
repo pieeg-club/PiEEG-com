@@ -109,4 +109,4 @@ For the first 100 orders:
 
 IronBCI represents our commitment to democratizing neuroscience and making BCI technology accessible to all. Order yours today and join thousands of researchers, students, and makers exploring the frontier of brain-computer interfaces!
 
-[Order Now](https://pieeg.com/shop/ironbci) | [View Documentation](https://pieeg.com/docs/ironbci) | [Join Community](https://discord.gg/pieeg)
+[Order Now](https://pieeg.com/shop/ironbci) | [View Documentation](https://pieeg.com/docs/ironbci) | [Join Community](https://discord.gg/neJ45FR6Sv)

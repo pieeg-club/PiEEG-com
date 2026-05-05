@@ -183,7 +183,7 @@ const resources = [
     title: "Community Forum",
     description: "Ask questions and share knowledge",
     icon: ExternalLink,
-    href: "https://discord.gg/pieeg",
+    href: "https://discord.gg/neJ45FR6Sv",
     external: true
   }
 ];
@@ -482,7 +482,7 @@ export default function DocsPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://discord.gg/pieeg"
+              href="https://discord.gg/neJ45FR6Sv"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-blue-600 hover:bg-zinc-100 font-bold shadow-xl transition-all"

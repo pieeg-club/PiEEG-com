@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ExternalLink, Code2 as GitHubIcon, Cpu, Zap, Signal, Shield, Code, Video } from "lucide-react";
+import { ExternalLink, Code2 as GitHubIcon, Cpu, Zap, Signal, Shield, Code } from "lucide-react";
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -51,28 +51,20 @@ export default function PiEEGProductPage() {
                   <GitHubIcon className="w-5 h-5" />
                   GitHub
                 </a>
-                <a
-                  href="https://youtu.be/0ocAPWok5YU"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white font-bold transition-all"
-                >
-                  <Video className="w-5 h-5" />
-                  Watch Video
-                </a>
               </div>
             </div>
             
-            {/* Product Image */}
+            {/* Product Video */}
             <div className="flex items-center justify-center">
-              <div className="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden bg-white dark:bg-zinc-900 p-8 shadow-2xl border border-zinc-200 dark:border-zinc-700">
-                <Image
-                  src="/products/pieeg.png"
-                  alt="PiEEG 8-Channel Board"
-                  width={400}
-                  height={400}
-                  className="object-contain w-full h-full"
-                  priority
+              <div className="relative w-full max-w-md aspect-video rounded-2xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-zinc-700">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src="https://www.youtube.com/embed/0ocAPWok5YU"
+                  title="PiEEG Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
                 />
               </div>
             </div>

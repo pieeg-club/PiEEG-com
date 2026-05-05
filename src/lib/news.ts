@@ -42,7 +42,7 @@ export function getNewsBySlug(slug: string): NewsArticle | null {
       date: data.date || '',
       category: data.category || 'News',
       excerpt: data.excerpt || '',
-      image: data.image || '/news-images/placeholder.jpg',
+      image: data.image || '/news-images/pieeg-software.jpg',
       content,
       tags: data.tags || [],
       featured: data.featured || false,

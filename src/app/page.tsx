@@ -137,6 +137,15 @@ const signals = [
 ];
 
 const featuredIn = [
+  { name: "Tom's Hardware", logo: "Tom's Hardware" },
+  { name: "IEEE Spectrum", logo: "IEEE Spectrum" },
+  { name: "VICE", logo: "VICE" },
+  { name: "Raspberry Pi", logo: "Raspberry Pi" },
+  { name: "Hackaday", logo: "Hackaday" },
+  { name: "Hackster.io", logo: "Hackster.io" },
+  { name: "Electronics Weekly", logo: "Electronics Weekly" },
+  { name: "Arduino", logo: "Arduino" },
+  { name: "CNX Software", logo: "CNX Software" },
 ];
 
 const features = [
@@ -1189,6 +1198,15 @@ function FeaturesSection() {
 
 function FeaturedSection() {
   const publications = [
+    "Tom's Hardware",
+    "IEEE Spectrum",
+    "VICE",
+    "Raspberry Pi",
+    "Hackaday",
+    "Electronics Weekly",
+    "Hackster.io",
+    "Arduino",
+    "CNX Software",
   ];
 
   return (

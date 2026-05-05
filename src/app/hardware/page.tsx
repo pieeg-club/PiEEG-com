@@ -233,7 +233,7 @@ export default function ProductsPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-900 dark:to-zinc-950">
+      <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-900 dark:to-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-200 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/50 mb-6">
@@ -246,7 +246,7 @@ export default function ProductsPage() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
               Open-source biosignal
               <br />
-              <span className="bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500 bg-clip-text text-transparent">
                 hardware for everyone
               </span>
             </h1>
@@ -258,7 +258,7 @@ export default function ProductsPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="#hardware"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold shadow-lg shadow-cyan-500/30 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-linear-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold shadow-lg shadow-cyan-500/30 transition-all"
               >
                 Explore Products
                 <ChevronRight className="w-4 h-4" />
@@ -309,7 +309,7 @@ export default function ProductsPage() {
                 key={accessory.id}
                 className="group p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg transition-all"
               >
-                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${accessory.gradient} mb-4 flex items-center justify-center text-white shadow-lg`}>
+                <div className={`w-12 h-12 rounded-lg bg-linear-to-br ${accessory.gradient} mb-4 flex items-center justify-center text-white shadow-lg`}>
                   <Package className="w-6 h-6" />
                 </div>
                 <h3 className="font-bold text-lg mb-2">{accessory.name}</h3>
@@ -324,7 +324,7 @@ export default function ProductsPage() {
                     href={accessory.purchaseUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r ${accessory.gradient} text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all`}
+                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-linear-to-r ${accessory.gradient} text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all`}
                   >
                     <ShoppingCart className="w-4 h-4" />
                     Shop Now
@@ -388,9 +388,9 @@ export default function ProductsPage() {
             </div>
 
             <div className="relative">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-cyan-100 to-blue-100 dark:from-cyan-950 dark:to-blue-950 flex items-center justify-center">
+              <div className="aspect-square rounded-2xl bg-linear-to-br from-cyan-100 to-blue-100 dark:from-cyan-950 dark:to-blue-950 flex items-center justify-center">
                 <div className="text-center p-8">
-                  <div className="text-6xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent mb-4">
+                  <div className="text-6xl font-bold bg-linear-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent mb-4">
                     1000+
                   </div>
                   <p className="text-xl font-semibold text-zinc-700 dark:text-zinc-300 mb-2">
@@ -407,7 +407,7 @@ export default function ProductsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-cyan-500 via-blue-600 to-purple-600 text-white">
+      <section className="py-20 bg-linear-to-br from-cyan-500 via-blue-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Ready to start measuring biosignals?

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Code2 as Github, MessageCircle, BookOpen, Users, Code, GitFork, Star, Heart, ExternalLink, ArrowRight } from "lucide-react";
+import { Code2 as Github, MessageCircle, BookOpen, Code, GitFork, Star, Heart, ExternalLink, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Open Source — PiEEG",
@@ -10,60 +10,108 @@ export const metadata: Metadata = {
 
 const repositories = [
   {
-    name: "pieeg-server",
-    description: "Python server for real-time biosignal streaming from PiEEG hardware",
+    name: "EEGwithRaspberryPI",
+    description: "Measure 8 EEG channels with Shield PiEEG and RaspberryPi in C library (not actively supported)",
     language: "Python",
-    stars: "245",
-    forks: "67",
+    stars: "935",
+    forks: "89",
     color: "bg-blue-500"
   },
   {
-    name: "pieeg-hardware",
-    description: "Open-source schematics, PCB layouts, and BOM for all PiEEG devices",
-    language: "KiCad",
-    stars: "189",
-    forks: "42",
+    name: "ironbci",
+    description: "Wearable (BLE) Brain-Computer Interface, ADS1299 and STM32 with SDK for mobile application",
+    language: "Python",
+    stars: "595",
+    forks: "57",
+    color: "bg-blue-500"
+  },
+  {
+    name: "EEG-with-JetsonNano",
+    description: "With deep learning to neuroscience world with shield for Jetson Nano - JNEEG",
+    language: "Python",
+    stars: "58",
+    forks: "8",
+    color: "bg-blue-500"
+  },
+  {
+    name: "PiEEG-16",
+    description: "Measure 16 EEG channels with Shield PiEEG-16 and RaspberryPi",
+    language: "Python",
+    stars: "57",
+    forks: "11",
+    color: "bg-blue-500"
+  },
+  {
+    name: "ardEEG",
+    description: "Arduino for measure EEG, EMG, and ECG bio-signals",
+    language: "Python",
+    stars: "51",
+    forks: "9",
+    color: "bg-blue-500"
+  },
+  {
+    name: "PiEEG_Kit",
+    description: "BioLab in home to measure EEG, EMG, EKG, EOG, PPG",
+    language: "Python",
+    stars: "51",
+    forks: "7",
+    color: "bg-blue-500"
+  },
+  {
+    name: "PiEEG-server",
+    description: "One-line install streaming server, terminal monitor, and browser dashboard for the PiEEG shields",
+    language: "TypeScript",
+    stars: "33",
+    forks: "7",
+    color: "bg-blue-600"
+  },
+  {
+    name: "PiEEG",
+    description: "Measure 8 EEG channels with Shield PiEEG and RaspberryPi",
+    language: "Python",
+    stars: "30",
+    forks: "5",
+    color: "bg-blue-500"
+  },
+  {
+    name: "ironbci-32",
+    description: "32 EEG channels low-cost brain-computer interface",
+    language: "Python",
+    stars: "19",
+    forks: "2",
+    color: "bg-blue-500"
+  },
+  {
+    name: "ironbci_3D_EEG_Printable_Headset",
+    description: "Fully open, 3D-printable EEG headset for ironbci — designed for DIY neuroscience and BCI experiments",
+    language: "3D Print",
+    stars: "17",
+    forks: "2",
     color: "bg-purple-500"
   },
   {
-    name: "pieeg-firmware",
-    description: "Embedded firmware for PiEEG, ardEEG, and JNEEG platforms",
-    language: "C++",
-    stars: "156",
-    forks: "38",
-    color: "bg-pink-500"
+    name: "BioRon_EEG",
+    description: "Active electrode to measure EEG. Low-noise power supply, 2 stage Amplifier, DRL, Band-Pass Filter, ADC",
+    language: "Hardware",
+    stars: "14",
+    forks: "3",
+    color: "bg-purple-500"
   },
   {
-    name: "pieeg-python",
-    description: "High-level Python SDK for signal processing and BCI applications",
+    name: "ChatGPT_PiEEG",
+    description: "Connect brain-computer interface to ChatGPT",
     language: "Python",
-    stars: "312",
-    forks: "89",
-    color: "bg-cyan-500"
-  },
-  {
-    name: "pieeg-web-ui",
-    description: "Web-based real-time signal visualizer and configuration tool",
-    language: "TypeScript",
-    stars: "128",
-    forks: "31",
+    stars: "12",
+    forks: "2",
     color: "bg-blue-500"
-  },
-  {
-    name: "pieeg-docs",
-    description: "Community-maintained documentation, tutorials, and examples",
-    language: "Markdown",
-    stars: "94",
-    forks: "56",
-    color: "bg-green-500"
   }
 ];
 
 const contributors = [
-  { role: "Core Team", count: 8, description: "Full-time maintainers" },
-  { role: "Contributors", count: 120, description: "Community code contributors" },
-  { role: "Discord Members", count: "2.5K", description: "Active community members" },
-  { role: "Research Labs", count: 45, description: "Using PiEEG in research" }
+  { role: "Repositories", count: 17, description: "Open-source projects" },
+  { role: "GitHub Stars", count: "2.5K", description: "Across all repositories" },
+  { role: "Followers", count: 170, description: "GitHub community" },
+  { role: "Community", count: "1K+", description: "Discord & social media" }
 ];
 
 const contribute = [
@@ -153,7 +201,7 @@ export default function OpenSourcePage() {
                 View on GitHub
               </a>
               <a
-                href="https://discord.gg/pieeg"
+                href="https://discord.gg/RnCdpwbywx"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 font-semibold transition-all"
@@ -195,7 +243,7 @@ export default function OpenSourcePage() {
               Our Repositories
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              All MIT licensed. Fork, modify, and build upon our work.
+              17 open-source projects. Mix of MIT and other permissive licenses. Fork, modify, and build upon our work.
             </p>
           </div>
 
@@ -262,7 +310,7 @@ export default function OpenSourcePage() {
               Ways to Contribute
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              You don't need to be a developer. Everyone can contribute to open-source neuroscience.
+              You don&apos;t need to be a developer. Everyone can contribute to open-source neuroscience.
             </p>
           </div>
 
@@ -335,26 +383,29 @@ export default function OpenSourcePage() {
                 <BookOpen className="w-8 h-8" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold mb-4">MIT Licensed</h2>
+                <h2 className="text-3xl font-bold mb-4">Open Source Licensed</h2>
                 <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed">
-                  All PiEEG hardware designs, firmware, and software are released under the permissive MIT License. You're free to use, modify, distribute, and even sell products based on our work — commercially or otherwise.
+                  PiEEG hardware designs, firmware, and software are released under permissive open-source licenses (primarily MIT and Other). You&apos;re free to use, modify, distribute, and build upon our work for research, education, and commercial purposes.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href="https://github.com/pieeg-club/pieeg-hardware/blob/main/LICENSE"
+                    href="https://github.com/pieeg-club"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-green-500 to-cyan-600 hover:from-green-600 hover:to-cyan-700 text-white font-semibold shadow-lg transition-all"
                   >
-                    Read License
+                    View on GitHub
                     <ExternalLink className="w-4 h-4" />
                   </a>
-                  <Link
-                    href="/docs/licensing"
+                  <a
+                    href="https://discord.gg/RnCdpwbywx"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-green-300 dark:border-green-700 hover:bg-green-100 dark:hover:bg-green-950/50 font-semibold transition-all"
                   >
-                    Learn More
-                  </Link>
+                    <MessageCircle className="w-4 h-4" />
+                    Join Community
+                  </a>
                 </div>
               </div>
             </div>
@@ -387,7 +438,7 @@ export default function OpenSourcePage() {
             </a>
 
             <a
-              href="https://discord.gg/pieeg"
+              href="https://discord.gg/RnCdpwbywx"
               target="_blank"
               rel="noopener noreferrer"
               className="p-8 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg hover:border-zinc-300 dark:hover:border-zinc-700 transition-all group"
@@ -423,12 +474,12 @@ export default function OpenSourcePage() {
             Every bug report, documentation fix, and feature request helps make neuroscience more accessible.
           </p>
           <a
-            href="https://github.com/pieeg-club/pieeg-server/blob/main/CONTRIBUTING.md"
+            href="https://github.com/pieeg-club/PiEEG-server"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-cyan-600 hover:bg-zinc-100 font-bold shadow-xl transition-all"
           >
-            Contribution Guide
+            View PiEEG Server
             <ArrowRight className="w-5 h-5" />
           </a>
         </div>

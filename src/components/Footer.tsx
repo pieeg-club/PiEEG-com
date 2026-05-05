@@ -42,7 +42,7 @@ export function Footer() {
               PiEEG
             </span>
             <p className="text-xs text-zinc-400 dark:text-zinc-500 leading-5 max-w-45">
-              Open-source brain-computer interface hardware for researchers, engineers, and brain hackers.
+              Low-cost brain-computer interface hardware for researchers, engineers, and neuroscience labs.
             </p>
             <p className="text-[11px] font-medium text-zinc-300 dark:text-zinc-600 uppercase tracking-wider">
               Not a medical device

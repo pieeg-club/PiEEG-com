@@ -16,12 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PiEEG \u2014 Open-Source Brain-Computer Interface",
+  title: "PiEEG — Low-Cost Brain-Computer Interface Hardware for Research",
   description:
-    "PiEEG turns a Raspberry Pi, Arduino, or Jetson Nano into a biosignal acquisition platform for EEG, EMG, ECG, and EOG. Open-source, low-cost, Python-first.",
+    "PiEEG offers affordable, research-grade BCI hardware for EEG, EMG, ECG, and EOG. High-quality biosignal acquisition on Raspberry Pi, Arduino, STM32, and more. For research purposes only.",
   openGraph: {
-    title: "PiEEG \u2014 Open-Source Brain-Computer Interface",
-    description: "Measure the human nervous system. With Python.",
+    title: "PiEEG — Low-Cost Brain-Computer Interface Hardware for Research",
+    description: "High-quality, research-grade BCI hardware. Easy setup. For researchers and engineers.",
     siteName: "PiEEG",
   },
 };

@@ -163,9 +163,9 @@ const features = [
   },
   {
     Icon: Zap,
-    title: "Open. Hackable. Proven.",
+    title: "Proven in Research.",
     description:
-      "MIT/AGPL licensed. Full source on GitHub. Cited in peer-reviewed research. Used in universities, makerspaces, and research labs worldwide. No proprietary lock-in. Ever.",
+      "Used in universities and research labs worldwide. Cited in peer-reviewed publications. Ready-made hardware or build it yourself. For research and engineering—not a medical device.",
   },
 ];
 
@@ -625,20 +625,20 @@ function HeroSection() {
 
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-200/60 dark:border-cyan-800/40 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm shadow-lg shadow-cyan-500/10">
-          <span className="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">[Open Source]</span>
+          <span className="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">[Research Hardware]</span>
         </div>
 
         {/* Headline */}
         <div className="flex flex-col gap-4">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] text-zinc-900 dark:text-zinc-50">
-            Stream brain signals
+            Low-Cost Brain Computer Interfaces
             <br />
             <span className="bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500 bg-clip-text text-transparent">
-              in 60 seconds
+              for Research
             </span>
           </h1>
           <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-            Open-source neuroscience hardware. Real-time EEG, EMG, ECG, EOG on Raspberry Pi, Arduino, and more. One pip install. Zero lock-in.
+            High-quality research-grade BCI hardware with easy setup. Real-time EEG, EMG, ECG, EOG on Raspberry Pi, Arduino, STM32, and more. For research and engineering purposes only.
           </p>
         </div>
 

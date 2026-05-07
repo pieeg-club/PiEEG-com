@@ -71,15 +71,17 @@ export function Navbar() {
               <GitHubIcon className="w-[18px] h-[18px]" />
             </a>
             <ThemeToggle />
-            <a
-              href="https://www.elecrow.com/store/PiEEG"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative overflow-hidden flex h-9 items-center rounded-full bg-gradient-to-r from-cyan-500 via-cyan-600 to-blue-600 dark:from-cyan-400 dark:via-cyan-500 dark:to-blue-500 px-5 text-sm font-semibold text-white dark:text-zinc-950 hover:scale-105 shadow-lg shadow-cyan-500/25 dark:shadow-cyan-400/20 transition-all duration-200 hover:shadow-xl hover:shadow-cyan-500/40 dark:hover:shadow-cyan-400/30 group"
-            >
-              <span className="relative z-10">Shop</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 dark:from-cyan-300 dark:via-blue-400 dark:to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </a>
+            <span className="shop-ring p-[2px] rounded-full inline-flex hover:scale-105 transition-transform duration-200">
+              <a
+                href="https://www.elecrow.com/store/PiEEG"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative overflow-hidden flex h-9 items-center rounded-full bg-gradient-to-r from-cyan-500 via-cyan-600 to-blue-600 dark:from-cyan-400 dark:via-cyan-500 dark:to-blue-500 px-5 text-sm font-semibold text-white dark:text-zinc-950 shadow-lg shadow-cyan-500/25 dark:shadow-cyan-400/20 group"
+              >
+                <span className="relative z-10">Shop</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 dark:from-cyan-300 dark:via-blue-400 dark:to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </a>
+            </span>
           </div>
 
         </div>

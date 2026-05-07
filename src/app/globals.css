@@ -241,3 +241,23 @@ body {
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
+
+/* ── Shop button — rotating border shimmer ─────────────────── */
+@property --shop-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes shop-spin {
+  to { --shop-angle: 360deg; }
+}
+.shop-ring {
+  background: conic-gradient(
+    from var(--shop-angle),
+    #06b6d4 0%,
+    #3b82f6 30%,
+    #a855f7 55%,
+    #06b6d4 100%
+  );
+  animation: shop-spin 3s linear infinite;
+}

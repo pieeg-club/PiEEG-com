@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Briefcase, Code, BookOpen, Users, MessageSquare, Heart, Mail, ArrowRight } from "lucide-react";
+import { Briefcase, Code, BookOpen, Users, MessageSquare, Mail, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Careers — Join PiEEG",
@@ -42,13 +42,13 @@ export default function JobPage() {
             <div className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-center">
               <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">Global</div>
               <div className="text-sm text-zinc-600 dark:text-zinc-400">Impact</div>
-              <p className="text-xs text-zinc-500 dark:text-zinc-500 mt-2">50+ universities, 2000+ community members worldwide</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-500 mt-2">Universities, researchers, and makers worldwide</p>
             </div>
 
             <div className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-center">
               <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">Open Source</div>
               <div className="text-sm text-zinc-600 dark:text-zinc-400">Culture</div>
-              <p className="text-xs text-zinc-500 dark:text-zinc-500 mt-2">5000+ GitHub stars, MIT licensed, transparent development</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-500 mt-2">MIT licensed, transparent development</p>
             </div>
 
             <div className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-center">
@@ -116,7 +116,7 @@ export default function JobPage() {
                 Discord moderation, GitHub issue triage, social media, event organization
               </p>
               <ul className="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
-                <li>• Discord community support (2000+ members)</li>
+                <li>• Discord community support</li>
                 <li>• Workshop and webinar coordination</li>
                 <li>• User feedback collection</li>
               </ul>
@@ -174,7 +174,7 @@ export default function JobPage() {
             <div className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
               <h3 className="font-bold mb-2">🌟 Global Impact</h3>
               <p className="text-zinc-600 dark:text-zinc-400">
-                Help 50+ universities, thousands of students, and researchers worldwide explore neuroscience without barriers.
+                Help universities, students, and researchers worldwide explore neuroscience without barriers.
               </p>
             </div>
 
@@ -184,19 +184,6 @@ export default function JobPage() {
                 Work with cutting-edge neuroscience, embedded systems, signal processing, and machine learning technologies.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Internships */}
-      <section className="py-10 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <Heart className="w-12 h-12 text-red-500 dark:text-red-400 mx-auto mb-4" />
-            <h2 className="text-3xl font-bold mb-4">Internships & Student Positions</h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
-              We welcome students and early-career professionals. Gain hands-on experience with real-world neurotechnology projects while contributing to open-source software and working with our hardware.
-            </p>
           </div>
         </div>
       </section>

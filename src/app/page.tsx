@@ -2,6 +2,7 @@
 
 import { ArrowRight, Zap, Cpu, Terminal, ExternalLink, Play, Bluetooth, Usb, CircuitBoard, Radio, Copy, Check } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -624,24 +625,24 @@ function HeroSection() {
       <div className="relative z-10 flex flex-col items-center gap-8 max-w-4xl mx-auto py-12">
 
         {/* Event Banner */}
-        <a href="/news/neuroscience-hackathon-announcement" className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow group">
+        <Link href="/news/neuroscience-hackathon-announcement" className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm transition-colors hover:border-zinc-300 dark:hover:border-zinc-600 group">
           <span className="px-2.5 py-0.5 rounded-full bg-cyan-600 dark:bg-cyan-500 text-white text-xs font-bold uppercase tracking-wide">Events</span>
           <span className="text-sm text-zinc-700 dark:text-zinc-300 font-medium">Neuroscience Hackathon is coming to Ottawa</span>
           <span className="flex items-center gap-1 text-sm font-semibold text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-600 rounded-full px-3 py-0.5 group-hover:bg-zinc-100 dark:group-hover:bg-zinc-800 transition-colors">
             Learn more <ArrowRight className="w-3.5 h-3.5" />
           </span>
-        </a>
+        </Link>
 
         {/* Headline */}
-        <div className="flex flex-col gap-4">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] text-zinc-900 dark:text-zinc-50">
+        <div className="flex flex-col gap-5 text-center">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.02] text-zinc-900 dark:text-zinc-50">
             Affordable BCI
             <br />
-            <span className="bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
               Hardware for Research
             </span>
           </h1>
-          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto leading-relaxed">
             High-quality research-grade BCI hardware with easy setup. Real-time EEG, EMG, ECG, EOG on Raspberry Pi, Arduino, STM32, and more. For research and engineering purposes only.
           </p>
         </div>
@@ -694,34 +695,22 @@ function HeroSection() {
         </div>
 
         {/* 3-step process */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-3xl mt-6">
-          <div className="flex flex-col items-center gap-3 p-4">
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-linear-to-br from-cyan-500 to-cyan-600 dark:from-cyan-400 dark:to-cyan-500 text-white font-bold shadow-lg shadow-cyan-500/30">
-              1
+        <div className="grid grid-cols-3 gap-3 w-full max-w-lg mt-4">
+          {[
+            { n: "1", label: "Install", sub: "One pip command", from: "from-cyan-500", to: "to-cyan-600", glow: "shadow-cyan-500/20" },
+            { n: "2", label: "Connect", sub: "Auto-detects hardware", from: "from-blue-500", to: "to-blue-600", glow: "shadow-blue-500/20" },
+            { n: "3", label: "Stream", sub: "Live in your browser", from: "from-violet-500", to: "to-violet-600", glow: "shadow-violet-500/20" },
+          ].map(({ n, label, sub, from, to, glow }) => (
+            <div key={n} className="flex flex-col items-center gap-2.5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm px-4 py-5">
+              <div className={`flex items-center justify-center w-9 h-9 rounded-xl bg-linear-to-br ${from} ${to} text-white text-sm font-bold shadow-md ${glow}`}>
+                {n}
+              </div>
+              <div className="flex flex-col items-center gap-0.5">
+                <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wide">{label}</span>
+                <span className="text-[11px] text-zinc-500 dark:text-zinc-400 text-center">{sub}</span>
+              </div>
             </div>
-            <div className="flex flex-col items-center gap-1">
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wide">Install</h3>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">One pip command</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center gap-3 p-4">
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-linear-to-br from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 text-white font-bold shadow-lg shadow-blue-500/30">
-              2
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wide">Connect</h3>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">Auto-detects hardware</p>
-            </div>
-          </div>
-          <div className="flex flex-col items-center gap-3 p-4">
-            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-linear-to-br from-purple-500 to-purple-600 dark:from-purple-400 dark:to-purple-500 text-white font-bold shadow-lg shadow-purple-500/30">
-              3
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wide">Stream</h3>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400">Live in your browser</p>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* CTAs */}

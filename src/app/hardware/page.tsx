@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Cpu, Code, ChevronRight, ExternalLink, ShoppingCart, Package, Tag, BookOpen } from "lucide-react";
 import ProductsGrid from "@/components/ProductsGrid";
+import HardwareSelectorButton from "@/components/HardwareSelectorButton";
 
 export const metadata: Metadata = {
   title: "Products — PiEEG",
@@ -256,6 +257,7 @@ export default function ProductsPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <HardwareSelectorButton />
               <Link
                 href="#hardware"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-md"

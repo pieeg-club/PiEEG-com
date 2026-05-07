@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Cpu, Zap, Code, ChevronRight, ExternalLink, ShoppingCart, Package } from "lucide-react";
+import { ArrowRight, Cpu, Code, ChevronRight, ExternalLink, ShoppingCart, Package, Tag, BookOpen } from "lucide-react";
 import ProductsGrid from "@/components/ProductsGrid";
 
 export const metadata: Metadata = {
@@ -351,24 +351,36 @@ export default function ProductsPage() {
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="shrink-0 w-10 h-10 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex items-center justify-center">
-                    <Code className="w-5 h-5 text-cyan-500" />
+                    <Tag className="w-5 h-5 text-green-500" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-1 text-sm">MIT-Licensed Software</h3>
+                    <h3 className="font-bold mb-1 text-sm">Affordable by Design</h3>
                     <p className="text-zinc-500 dark:text-zinc-400 text-sm">
-                      Software and SDKs are MIT licensed. Fork, modify, and build on our code.
+                      Research-grade biosignal hardware at a fraction of the cost of traditional systems. Low price, no compromise on signal quality.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex gap-4">
                   <div className="shrink-0 w-10 h-10 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex items-center justify-center">
-                    <Zap className="w-5 h-5 text-blue-500" />
+                    <Code className="w-5 h-5 text-cyan-500" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-1 text-sm">Research-Grade Quality</h3>
+                    <h3 className="font-bold mb-1 text-sm">Open-Source Software</h3>
                     <p className="text-zinc-500 dark:text-zinc-400 text-sm">
-                      24-bit ADCs, medical-grade components, and rigorous testing. Used in peer-reviewed research worldwide.
+                      All software and SDKs are MIT licensed and published on GitHub. Fork, modify, and build freely.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="shrink-0 w-10 h-10 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex items-center justify-center">
+                    <BookOpen className="w-5 h-5 text-blue-500" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold mb-1 text-sm">Research Validated</h3>
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm">
+                      Cited in 11+ peer-reviewed academic papers. Used by universities, research labs, and BCI startups worldwide.
                     </p>
                   </div>
                 </div>
@@ -378,9 +390,9 @@ export default function ProductsPage() {
                     <Cpu className="w-5 h-5 text-violet-500" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-1 text-sm">Platform Flexibility</h3>
+                    <h3 className="font-bold mb-1 text-sm">7 Hardware Platforms</h3>
                     <p className="text-zinc-500 dark:text-zinc-400 text-sm">
-                      Choose your compute platform: Raspberry Pi for versatility, Arduino for embedded, Jetson for AI.
+                      Raspberry Pi, Arduino, STM32, Jetson Nano, and wireless BLE5 — one ecosystem with a platform for every use case.
                     </p>
                   </div>
                 </div>
@@ -388,18 +400,27 @@ export default function ProductsPage() {
             </div>
 
             <div className="relative">
-              <div className="aspect-square rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="text-5xl font-extrabold bg-linear-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent mb-3">
-                    1000+
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { value: "11+", label: "Science Papers", sub: "peer-reviewed citations", from: "from-cyan-500", to: "to-blue-600" },
+                  { value: "28+", label: "Media Features", sub: "podcasts & outlets", from: "from-blue-500", to: "to-indigo-600" },
+                  { value: "1800+", label: "GitHub Stars", sub: "across all repositories", from: "from-violet-500", to: "to-purple-600" },
+                  { value: "7", label: "Platforms", sub: "hardware options", from: "from-green-500", to: "to-emerald-600" },
+                ].map(({ value, label, sub, from, to }) => (
+                  <div key={label} className="aspect-square rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex items-center justify-center p-6">
+                    <div className="text-center">
+                      <div className={`text-3xl font-extrabold bg-linear-to-br ${from} ${to} bg-clip-text text-transparent mb-1`}>
+                        {value}
+                      </div>
+                      <p className="text-sm font-bold text-zinc-700 dark:text-zinc-300">
+                        {label}
+                      </p>
+                      <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+                        {sub}
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-lg font-semibold text-zinc-700 dark:text-zinc-300 mb-1">
-                    Researchers worldwide
-                  </p>
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                    From hobbyists to universities
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
           </div>

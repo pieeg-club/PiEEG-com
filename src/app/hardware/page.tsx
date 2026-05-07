@@ -6,7 +6,7 @@ import ProductsGrid from "@/components/ProductsGrid";
 export const metadata: Metadata = {
   title: "Products — PiEEG",
   description:
-    "Explore our line of open-source brain-computer interface hardware. From 8 to 32 channels, compatible with Raspberry Pi, Arduino, and Jetson Nano.",
+    "Explore our line of research-grade brain-computer interface hardware. From 8 to 32 channels, compatible with Raspberry Pi, Arduino, and Jetson Nano.",
 };
 
 // Hardware Products
@@ -244,7 +244,7 @@ export default function ProductsPage() {
             </div>
             
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Open-source biosignal
+              Research-grade biosignal
               <br />
               <span className="bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500 bg-clip-text text-transparent">
                 hardware for everyone
@@ -252,7 +252,7 @@ export default function ProductsPage() {
             </h1>
             
             <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 mb-8">
-              11 products: 7 hardware platforms and 4 accessories. All open-source.
+              11 products: 7 hardware platforms and 4 accessories. MIT-licensed software included.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -283,7 +283,7 @@ export default function ProductsPage() {
               Hardware Platforms
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto mb-8">
-              Every device is fully open-source, extensively documented, and backed by our community.
+              Every device is extensively documented and backed by our community.
             </p>
           </div>
 
@@ -354,9 +354,9 @@ export default function ProductsPage() {
                     <Code className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-2">Fully Open Source</h3>
+                    <h3 className="font-bold mb-2">MIT-Licensed Software</h3>
                     <p className="text-zinc-600 dark:text-zinc-400 text-sm">
-                      Hardware schematics, firmware, and software are all MIT licensed. Fork, modify, and build on our work.
+                      Software and SDKs are MIT licensed. Fork, modify, and build on our code. Hardware designs are proprietary.
                     </p>
                   </div>
                 </div>

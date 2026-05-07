@@ -5,7 +5,7 @@ import { Briefcase, Code, BookOpen, Users, MessageSquare, Heart, Mail, ArrowRigh
 export const metadata: Metadata = {
   title: "Careers — Join PiEEG",
   description:
-    "Join the PiEEG team. Help democratize neuroscience through open-source hardware and software. Remote-friendly positions and volunteer opportunities.",
+    "Join the PiEEG team. Help democratize neuroscience through research-grade hardware and MIT-licensed software. Remote-friendly positions and volunteer opportunities.",
 };
 
 export default function JobPage() {
@@ -195,7 +195,7 @@ export default function JobPage() {
             <Heart className="w-12 h-12 text-red-500 dark:text-red-400 mx-auto mb-4" />
             <h2 className="text-3xl font-bold mb-4">Internships & Student Positions</h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400">
-              We welcome students and early-career professionals. Gain hands-on experience with real-world neurotechnology projects while contributing to open-source hardware and software.
+              We welcome students and early-career professionals. Gain hands-on experience with real-world neurotechnology projects while contributing to open-source software and working with our hardware.
             </p>
           </div>
         </div>

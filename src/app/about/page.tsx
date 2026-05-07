@@ -5,7 +5,7 @@ import { Users, Target, Lightbulb, Globe, ArrowRight, Shield } from "lucide-reac
 export const metadata: Metadata = {
   title: "About — PiEEG",
   description:
-    "PiEEG provides access to neurobiology through a universal, open-source shield compatible with various electrodes for EEG, EMG, ECG, allowing the study and application of data in real-world conditions.",
+    "PiEEG provides access to neurobiology through research-grade biosignal hardware compatible with various electrodes for EEG, EMG, ECG, allowing the study and application of data in real-world conditions.",
 };
 
 export default function AboutPage() {
@@ -24,7 +24,7 @@ export default function AboutPage() {
             </h1>
             
             <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 mb-8">
-              PiEEG is an open-source initiative making brain-computer interface technology accessible to researchers, students, and makers worldwide.
+              PiEEG is an initiative making brain-computer interface technology accessible to researchers, students, and makers worldwide.
             </p>
           </div>
         </div>
@@ -49,7 +49,7 @@ export default function AboutPage() {
                   For years, the PiEEG team has been dedicated to breaking down the barriers of neuroscience. We believe that measuring the human body&apos;s signals—whether it&apos;s the brain (EEG), muscles (EMG), or eyes (EOG)—shouldn&apos;t be restricted to high-cost equipment.
                 </p>
                 <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                  Our mission is to make PiEEG the universal bridge between biology and technology for research purposes. Designed for simplicity and compatible with a vast range of electrodes, our open-source hardware lets you go from unboxing to data-tracking in minutes. If you can run a Python script, you can explore the human nervous system.
+                  Our mission is to make PiEEG the universal bridge between biology and technology for research purposes. Designed for simplicity and compatible with a vast range of electrodes, our hardware lets you go from unboxing to data-tracking in minutes. If you can run a Python script, you can explore the human nervous system.
                 </p>
               </div>
             </div>
@@ -65,9 +65,9 @@ export default function AboutPage() {
                 <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">podcasts & outlets</div>
               </div>
               <div className="p-6 rounded-xl bg-purple-50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-800">
-                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">100%</div>
-                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Open Source</div>
-                <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">hardware & software</div>
+                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">MIT</div>
+                <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Open Software</div>
+                <div className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">MIT-licensed software</div>
               </div>
               <div className="p-6 rounded-xl bg-pink-50 dark:bg-pink-950/30 border border-pink-200 dark:border-pink-800">
                 <div className="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-2">Global</div>
@@ -98,7 +98,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-bold mb-3">Open & Transparent</h3>
               <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                Every schematic, firmware line, and design decision is public. No black boxes, no vendor lock-in. Our GitHub repositories are the source of truth.
+                Software and SDKs are MIT licensed and fully public. No vendor lock-in. Our GitHub repositories are the source of truth for every line of code.
               </p>
             </div>
 
@@ -146,13 +146,13 @@ export default function AboutPage() {
 
           <div className="prose prose-lg dark:prose-invert max-w-none">
             <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
-              PiEEG provides access to neurobiology through a universal, open-source shield compatible with various electrodes for EEG, EMG, ECG, allowing the study and application of data in real-world conditions.
+              PiEEG provides access to neurobiology through research-grade biosignal hardware compatible with various electrodes for EEG, EMG, ECG, allowing the study and application of data in real-world conditions.
             </p>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
               PiEEG is a project born from a shared interest in hardware engineering, signal processing, and neuroscience. Our team consists of researchers and engineers who believe that the tools for exploring biosignals should be accessible to everyone.
             </p>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              Over the years, we have contributed to the field by publishing our findings on Brain-Computer Interfaces (BCIs) and developing open-source hardware. Our goal isn&apos;t just to build devices, but to provide a transparent platform where others can experiment and build their own neural interfaces. By combining our experience in hardware design with machine learning, we work to ensure PiEEG remains a reliable, entry-level tool for non-medical research and exploration.
+              Over the years, we have contributed to the field by publishing our findings on Brain-Computer Interfaces (BCIs) and developing open-source software tools. Our goal isn&apos;t just to build devices, but to provide a transparent platform where others can experiment with neural interfaces. By combining our experience in hardware design with machine learning, we work to ensure PiEEG remains a reliable, entry-level tool for non-medical research and exploration.
             </p>
           </div>
         </div>

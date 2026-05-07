@@ -5,7 +5,7 @@ import { Code2 as Github, MessageCircle, BookOpen, Code, GitFork, Star, Heart, E
 export const metadata: Metadata = {
   title: "Open Source — PiEEG",
   description:
-    "Join the PiEEG community. Contribute to open-source neuroscience hardware and software. MIT licensed, community-driven, built in the open.",
+    "Join the PiEEG community. Contribute to open-source neuroscience software. MIT-licensed pieeg-server and SDKs. Community-driven, built in the open.",
 };
 
 const repositories = [
@@ -144,7 +144,7 @@ const contribute = [
 const principles = [
   {
     title: "Truly Open",
-    description: "MIT licensed hardware and software. No vendor lock-in. Fork freely.",
+    description: "MIT-licensed software (pieeg-server and SDKs). Hardware is proprietary. Fork and build freely on the software side.",
     icon: "🔓"
   },
   {
@@ -187,7 +187,7 @@ export default function OpenSourcePage() {
             </h1>
             
             <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 mb-8">
-              Every schematic, every line of code, every decision — made in the open. Join thousands of researchers, makers, and neuroscience enthusiasts building the future of BCI.
+              Every line of code, every software decision — made in the open. Join thousands of researchers, makers, and neuroscience enthusiasts building the future of BCI.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -243,7 +243,7 @@ export default function OpenSourcePage() {
               Our Repositories
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              17 open-source projects. Mix of MIT and other permissive licenses. Fork, modify, and build upon our work.
+              17 repositories. Software and SDKs are MIT licensed. Fork, modify, and build upon our code.
             </p>
           </div>
 
@@ -383,9 +383,9 @@ export default function OpenSourcePage() {
                 <BookOpen className="w-8 h-8" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold mb-4">Open Source Licensed</h2>
+                <h2 className="text-3xl font-bold mb-4">MIT-Licensed Software</h2>
                 <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed">
-                  PiEEG hardware designs, firmware, and software are released under permissive open-source licenses (primarily MIT and Other). You&apos;re free to use, modify, distribute, and build upon our work for research, education, and commercial purposes.
+                  PiEEG software and SDKs — including pieeg-server — are MIT licensed. You&apos;re free to use, modify, distribute, and build upon our code for research, education, and commercial purposes. Hardware designs are proprietary.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a

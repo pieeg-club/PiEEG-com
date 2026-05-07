@@ -63,7 +63,7 @@ const products = [
     spec: "250 Hz • 24-bit",
     icon: "circuit",
     description:
-      "Where it started. The original open-source shield. 8 channels, ADS1299 ADC, SPI interface, proven in labs worldwide.",
+      "Where it started. The original PiEEG shield. 8 channels, ADS1299 ADC, SPI interface, proven in labs worldwide.",
     featured: false,
     slug: "pieeg",
   },
@@ -159,7 +159,7 @@ const features = [
     Icon: Cpu,
     title: "Research-Grade ADCs.",
     description:
-      "24-bit delta-sigma converters (ADS1299, AD7771). 1 µV resolution. The same chips in $10,000 systems. Published schematics, clean layout. Build it yourself or buy ready-made.",
+      "24-bit delta-sigma converters (ADS1299, AD7771). 1 µV resolution. The same chips in $10,000 systems. MIT-licensed software—no lock-in, no subscriptions.",
   },
   {
     Icon: Zap,
@@ -631,10 +631,10 @@ function HeroSection() {
         {/* Headline */}
         <div className="flex flex-col gap-4">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] text-zinc-900 dark:text-zinc-50">
-            Low-Cost Brain Computer Interfaces
+            Affordable BCI
             <br />
             <span className="bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500 bg-clip-text text-transparent">
-              for Research
+              Hardware for Research
             </span>
           </h1>
           <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -1137,7 +1137,7 @@ function FeaturesSection() {
             The simplest path to<br />neurotechnology.
           </h2>
           <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            No proprietary lock-in. No expensive subscriptions. Just open hardware and software that works.
+            No proprietary lock-in. No expensive subscriptions. MIT-licensed software paired with research-grade hardware.
           </p>
         </div>
 
@@ -1183,7 +1183,7 @@ function FeaturesSection() {
                   Research-grade precision at maker prices
                 </h3>
                 <p className="text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                  The same 24-bit ADCs used in $10,000+ systems. Published schematics. Clean layouts. Build it yourself or buy ready-made. 
+                  The same 24-bit ADCs used in $10,000+ systems. MIT-licensed software, no lock-in. Ready-made hardware at maker-friendly prices.
                   Used in universities, research labs, and hackerspaces worldwide.
                 </p>
               </div>

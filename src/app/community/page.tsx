@@ -389,7 +389,7 @@ export default function OpenSourcePage() {
               <div>
                 <h2 className="text-3xl font-bold mb-4">MIT-Licensed Software</h2>
                 <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed">
-                  PiEEG software and SDKs — including pieeg-server — are MIT licensed. You&apos;re free to use, modify, distribute, and build upon our code for research, education, and commercial purposes. Hardware designs are proprietary.
+                  PiEEG software and SDKs — including pieeg-server — are MIT licensed. You&apos;re free to use, modify, distribute, and build upon our code for research, education, and commercial purposes.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a

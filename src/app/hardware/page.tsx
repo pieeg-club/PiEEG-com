@@ -356,7 +356,7 @@ export default function ProductsPage() {
                   <div>
                     <h3 className="font-bold mb-1 text-sm">MIT-Licensed Software</h3>
                     <p className="text-zinc-500 dark:text-zinc-400 text-sm">
-                      Software and SDKs are MIT licensed. Fork, modify, and build on our code. Hardware designs are proprietary.
+                      Software and SDKs are MIT licensed. Fork, modify, and build on our code.
                     </p>
                   </div>
                 </div>

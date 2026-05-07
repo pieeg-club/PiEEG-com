@@ -751,7 +751,7 @@ function HeroSection() {
         </p>
 
         {/* Stats moved to bottom */}
-        <div className="grid grid-cols-3 gap-12 w-full max-w-2xl mt-8 pt-8 border-t border-zinc-200/50 dark:border-zinc-800/50">
+        <div className="grid grid-cols-3 gap-8 w-full max-w-2xl mt-6 pt-6 border-t border-zinc-200/50 dark:border-zinc-800/50">
           <div className="flex flex-col items-center gap-1.5">
             <div className="text-3xl font-bold bg-linear-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
               28+
@@ -855,11 +855,11 @@ function ProductsSection() {
   };
 
   return (
-    <section id="products" className="py-32 px-4 bg-linear-to-b from-white via-zinc-50/50 to-white dark:from-zinc-950 dark:via-zinc-900/50 dark:to-zinc-950">
+    <section id="products" className="py-10 px-4 bg-linear-to-b from-white via-zinc-50/50 to-white dark:from-zinc-950 dark:via-zinc-900/50 dark:to-zinc-950">
       <div className="mx-auto max-w-7xl">
 
         {/* Header - Centered */}
-        <div className="mb-20 flex flex-col gap-5 max-w-3xl mx-auto text-center">
+        <div className="mb-10 flex flex-col gap-5 max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center justify-center gap-2 mx-auto">
             <div className="h-px w-8 bg-linear-to-r from-transparent via-cyan-500 to-transparent" />
             <p className="text-xs font-semibold uppercase tracking-widest text-cyan-600 dark:text-cyan-400">
@@ -877,7 +877,7 @@ function ProductsSection() {
         </div>
 
         {/* Featured Products - Large Cards */}
-        <div className="mb-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="mb-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
           {products.filter(p => p.featured).map((product) => {
             const IconComponent = iconMap[product.icon as keyof typeof iconMap] || CircuitBoard;
             return (
@@ -1021,11 +1021,11 @@ function SignalsSection() {
   return (
     <section
       id="signals"
-      className="py-32 px-4 bg-white dark:bg-zinc-950"
+      className="py-10 px-4 bg-white dark:bg-zinc-950"
     >
       <div className="mx-auto max-w-7xl">
 
-        <div className="mb-20 flex flex-col gap-5 max-w-3xl mx-auto text-center">
+        <div className="mb-10 flex flex-col gap-5 max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center justify-center gap-2 mx-auto">
             <div className="h-px w-8 bg-linear-to-r from-transparent via-blue-500 to-transparent" />
             <p className="text-xs font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400">
@@ -1115,10 +1115,10 @@ function SignalsSection() {
 
 function FeaturesSection() {
   return (
-    <section id="features" className="py-32 px-4 bg-linear-to-b from-zinc-50/50 via-white to-zinc-50/50 dark:from-zinc-900/50 dark:via-zinc-950 dark:to-zinc-900/50">
+    <section id="features" className="py-10 px-4 bg-linear-to-b from-zinc-50/50 via-white to-zinc-50/50 dark:from-zinc-900/50 dark:via-zinc-950 dark:to-zinc-900/50">
       <div className="mx-auto max-w-7xl">
 
-        <div className="mb-20 flex flex-col gap-5 max-w-3xl mx-auto text-center">
+        <div className="mb-10 flex flex-col gap-5 max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center justify-center gap-2 mx-auto">
             <div className="h-px w-8 bg-linear-to-r from-transparent via-purple-500 to-transparent" />
             <p className="text-xs font-semibold uppercase tracking-widest text-purple-600 dark:text-purple-400">
@@ -1203,10 +1203,10 @@ function FeaturedSection() {
   ];
 
   return (
-    <section className="py-32 px-4 bg-linear-to-b from-white via-blue-50/30 to-white dark:from-zinc-950 dark:via-blue-950/10 dark:to-zinc-950">
+    <section className="py-10 px-4 bg-linear-to-b from-white via-blue-50/30 to-white dark:from-zinc-950 dark:via-blue-950/10 dark:to-zinc-950">
       <div className="mx-auto max-w-7xl">
         
-        <div className="flex flex-col items-center text-center gap-16">
+        <div className="flex flex-col items-center text-center gap-10">
           <div className="flex flex-col gap-6 max-w-3xl">
             <div className="inline-flex items-center justify-center gap-2 mx-auto">
               <div className="h-px w-12 bg-linear-to-r from-transparent via-blue-500 to-transparent" />
@@ -1307,14 +1307,14 @@ function CtaSection() {
   };
 
   return (
-    <section className="py-32 px-4 bg-linear-to-b from-white via-zinc-50 to-white dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 relative overflow-hidden">
+    <section className="py-10 px-4 bg-linear-to-b from-white via-zinc-50 to-white dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-cyan-400/10 dark:bg-cyan-400/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/2 right-1/4 w-96 h-96 bg-purple-400/10 dark:bg-purple-400/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl flex flex-col items-center text-center gap-12">
+      <div className="relative z-10 mx-auto max-w-5xl flex flex-col items-center text-center gap-8">
 
         <div className="flex flex-col gap-6">
           <div className="inline-flex items-center justify-center gap-2 mx-auto">

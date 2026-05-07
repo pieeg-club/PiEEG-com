@@ -13,7 +13,7 @@ export default function PartnershipPage() {
     <main className="flex-1">
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-900 dark:to-zinc-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-purple-200 dark:border-purple-800 bg-purple-50 dark:bg-purple-950/50 mb-6">
               <Building2 className="w-4 h-4 text-purple-600 dark:text-purple-400" />
@@ -22,7 +22,7 @@ export default function PartnershipPage() {
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
               Partner with PiEEG
             </h1>
             
@@ -38,9 +38,9 @@ export default function PartnershipPage() {
       </section>
 
       {/* Who We Partner With */}
-      <section className="py-20 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
+      <section className="py-10 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-12 text-center">Who We Partner With</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Who We Partner With</h2>
           
           <div className="space-y-8">
             {/* Startups & Companies */}
@@ -160,7 +160,7 @@ export default function PartnershipPage() {
       </section>
 
       {/* What We're Not Looking For */}
-      <section className="py-16 bg-white dark:bg-zinc-950">
+      <section className="py-10 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-8 rounded-2xl border-2 border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900">
             <h2 className="text-2xl font-bold mb-4">What We&apos;re Not Looking For</h2>
@@ -178,7 +178,7 @@ export default function PartnershipPage() {
       </section>
 
       {/* Current Partners */}
-      <section className="py-20 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
+      <section className="py-10 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-8">Current Partners</h2>
           
@@ -254,7 +254,7 @@ export default function PartnershipPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-linear-to-br from-purple-500 via-blue-600 to-cyan-600 text-white">
+      <section className="py-10 bg-linear-to-br from-purple-500 via-blue-600 to-cyan-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-4">Let&apos;s Talk</h2>
           <div className="text-lg text-purple-50 mb-8 max-w-2xl mx-auto">

@@ -91,7 +91,7 @@ export default function ExamplesPage() {
     <main className="flex-1">
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-900 dark:to-zinc-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950/50 mb-6">
               <Code2 className="w-4 h-4 text-green-600 dark:text-green-400" />
@@ -100,7 +100,7 @@ export default function ExamplesPage() {
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
               Learn by
               <br />
               <span className="bg-linear-to-r from-green-500 via-cyan-600 to-blue-600 dark:from-green-400 dark:via-cyan-500 dark:to-blue-500 bg-clip-text text-transparent">
@@ -134,9 +134,9 @@ export default function ExamplesPage() {
       </section>
 
       {/* Featured Projects */}
-      <section className="py-20 sm:py-24 bg-white dark:bg-zinc-950">
+      <section className="py-10 sm:py-14 bg-white dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
+          <div className="mb-8">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Research Applications
             </h2>
@@ -145,7 +145,7 @@ export default function ExamplesPage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+          <div className="grid lg:grid-cols-2 gap-8 mb-10">
             <div className="p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
               <h3 className="text-2xl font-bold mb-6">Real-World Projects</h3>
               <div className="space-y-6">
@@ -214,9 +214,9 @@ export default function ExamplesPage() {
       </section>
 
       {/* Example Categories */}
-      <section className="py-20 sm:py-24 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
+      <section className="py-10 sm:py-14 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Examples by Category
             </h2>
@@ -277,9 +277,9 @@ export default function ExamplesPage() {
       </section>
 
       {/* Learning Path */}
-      <section className="py-20 sm:py-24 bg-white dark:bg-zinc-950">
+      <section className="py-10 sm:py-14 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Recommended Learning Path
             </h2>
@@ -338,7 +338,7 @@ export default function ExamplesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-linear-to-br from-green-500 via-cyan-600 to-blue-600 text-white">
+      <section className="py-10 bg-linear-to-br from-green-500 via-cyan-600 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Ready to build?

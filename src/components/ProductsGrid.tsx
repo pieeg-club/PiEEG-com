@@ -40,7 +40,7 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
   return (
     <>
       {/* Filter Buttons */}
-      <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+      <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
         <button
           onClick={() => setFilter("all")}
           className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg border-2 font-semibold transition-all ${

@@ -25,8 +25,8 @@ export default function LiabilityPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-900 dark:to-zinc-950">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center mb-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-950/50 mb-6">
               <AlertTriangle className="w-4 h-4 text-red-600 dark:text-red-400" />
               <span className="text-xs font-semibold uppercase tracking-wider text-red-600 dark:text-red-400">
@@ -34,7 +34,7 @@ export default function LiabilityPage() {
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
               Liabilities & Safety
             </h1>
           </div>
@@ -42,12 +42,12 @@ export default function LiabilityPage() {
       </section>
 
       {/* Content */}
-      <section className="py-20 bg-white dark:bg-zinc-950">
+      <section className="py-10 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-zinc dark:prose-invert prose-lg max-w-none">
             
             {/* NOT A MEDICAL DEVICE */}
-            <div className="p-8 rounded-xl bg-red-50 dark:bg-red-950/20 border-2 border-red-200 dark:border-red-800 mb-12">
+            <div className="p-8 rounded-xl bg-red-50 dark:bg-red-950/20 border-2 border-red-200 dark:border-red-800 mb-8">
               <h2 className="text-2xl font-bold text-red-900 dark:text-red-100 mb-4 flex items-center gap-3">
                 <ShieldAlert className="w-6 h-6" />
                 NOT A MEDICAL DEVICE
@@ -58,7 +58,7 @@ export default function LiabilityPage() {
             </div>
 
             {/* Intended Use */}
-            <div className="mb-12">
+            <div className="mb-8">
               <h2 className="text-2xl font-bold mb-6">Intended Use</h2>
               
               <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -88,7 +88,7 @@ export default function LiabilityPage() {
             </div>
 
             {/* User Responsibility */}
-            <div className="mb-12">
+            <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">User Responsibility</h2>
               <p className="mb-4">
                 By purchasing and using any PiEEG device, you acknowledge and agree that:
@@ -103,7 +103,7 @@ export default function LiabilityPage() {
             </div>
 
             {/* Safety Precautions */}
-            <div className="mb-12">
+            <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">Safety Precautions</h2>
               <div className="bg-yellow-50 dark:bg-yellow-950/20 border border-yellow-200 dark:border-yellow-800 rounded-xl p-6 mb-6">
                 <h3 className="font-bold text-yellow-900 dark:text-yellow-100 mb-3">⚠️ Critical Safety Rules:</h3>
@@ -125,7 +125,7 @@ export default function LiabilityPage() {
             </div>
 
             {/* Electrodes & Skin Contact */}
-            <div className="mb-12">
+            <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">Electrodes & Skin Contact</h2>
               <ul className="space-y-2">
                 <li>• Use only recommended electrodes</li>
@@ -137,7 +137,7 @@ export default function LiabilityPage() {
             </div>
 
             {/* Data Privacy */}
-            <div className="mb-12">
+            <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">Data Privacy</h2>
               <ul className="space-y-2">
                 <li>• Users are responsible for protecting any collected data</li>
@@ -148,7 +148,7 @@ export default function LiabilityPage() {
             </div>
 
             {/* Disclaimer */}
-            <div className="mb-12 p-8 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700">
+            <div className="mb-8 p-8 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700">
               <h2 className="text-2xl font-bold mb-4">Disclaimer of Warranties</h2>
               <p className="text-sm leading-relaxed">
                 PiEEG devices are provided "AS IS" without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.
@@ -156,7 +156,7 @@ export default function LiabilityPage() {
             </div>
 
             {/* Limitation of Liability */}
-            <div className="mb-12 p-8 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700">
+            <div className="mb-8 p-8 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700">
               <h2 className="text-2xl font-bold mb-4">Limitation of Liability</h2>
               <p className="text-sm leading-relaxed">
                 In no event shall PiEEG, its developers, manufacturers, or distributors be liable for any damages (including direct, indirect, incidental, consequential, or punitive damages) arising from the use or inability to use PiEEG devices, even if advised of the possibility of such damages.
@@ -164,7 +164,7 @@ export default function LiabilityPage() {
             </div>
 
             {/* Regulatory Compliance */}
-            <div className="mb-12">
+            <div className="mb-8">
               <h2 className="text-2xl font-bold mb-4">Regulatory Compliance</h2>
               <p className="mb-4">
                 Users are responsible for ensuring compliance with all applicable local regulations regarding:

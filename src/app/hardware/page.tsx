@@ -235,16 +235,16 @@ export default function ProductsPage() {
     <main className="flex-1">
       {/* Hero Section */}
       <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-4">
               <Cpu className="w-4 h-4 text-cyan-500" />
               <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
                 Complete Catalog
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-4">
               Research-grade biosignal
               <br />
               <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
@@ -252,7 +252,7 @@ export default function ProductsPage() {
               </span>
             </h1>
             
-            <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 mb-8 max-w-xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 mb-5 max-w-xl mx-auto leading-relaxed">
               11 products: 7 hardware platforms and 4 accessories. MIT-licensed software included.
             </p>
 
@@ -278,9 +278,9 @@ export default function ProductsPage() {
       </section>
 
       {/* Hardware Products Section */}
-      <section id="hardware" className="py-20 sm:py-24">
+      <section id="hardware" className="py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Hardware Platforms
             </h2>
@@ -294,9 +294,9 @@ export default function ProductsPage() {
       </section>
 
       {/* Accessories Section */}
-      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
+      <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Accessories & Add-ons
             </h2>
@@ -343,11 +343,11 @@ export default function ProductsPage() {
       </section>
 
       {/* Why Choose PiEEG */}
-      <section className="py-20 sm:py-24">
+      <section className="py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6">
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
                 Why choose PiEEG hardware?
               </h2>
               <div className="space-y-6">
@@ -430,7 +430,7 @@ export default function ProductsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
+      <section className="py-10 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             Ready to start measuring biosignals?

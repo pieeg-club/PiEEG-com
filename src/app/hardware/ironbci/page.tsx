@@ -13,8 +13,8 @@ export default function IronBCIProductPage() {
   return (
     <main className="flex-1">
       <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-900 dark:to-zinc-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-purple-200 dark:border-purple-800 bg-purple-50 dark:bg-purple-950/50 mb-6">
                 <Radio className="w-4 h-4 text-purple-600 dark:text-purple-400" />
@@ -71,7 +71,7 @@ export default function IronBCIProductPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white dark:bg-zinc-950">
+      <section className="py-10 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-6">Why is IronBCI</h2>
           <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -98,9 +98,9 @@ export default function IronBCIProductPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
+      <section className="py-10 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-12 text-center">Features & Specifications</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Features & Specifications</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-6 rounded-xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
@@ -161,7 +161,7 @@ export default function IronBCIProductPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-linear-to-br from-purple-500 via-pink-600 to-red-600 text-white">
+      <section className="py-10 bg-linear-to-br from-purple-500 via-pink-600 to-red-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-4">Ready to Go Wireless?</h2>
           <p className="text-lg text-purple-50 mb-8">

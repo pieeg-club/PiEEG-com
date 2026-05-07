@@ -13,7 +13,7 @@ export default function JobPage() {
     <main className="flex-1">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-900 dark:to-zinc-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-950/50 mb-6">
               <Briefcase className="w-4 h-4 text-green-600 dark:text-green-400" />
@@ -22,7 +22,7 @@ export default function JobPage() {
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
               Join the PiEEG Team
             </h1>
             
@@ -34,11 +34,11 @@ export default function JobPage() {
       </section>
 
       {/* Why Join Us */}
-      <section className="py-20 bg-white dark:bg-zinc-950">
+      <section className="py-10 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-8 text-center">Why Join PiEEG?</h2>
           
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-center">
               <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">Global</div>
               <div className="text-sm text-zinc-600 dark:text-zinc-400">Impact</div>
@@ -65,9 +65,9 @@ export default function JobPage() {
       </section>
 
       {/* Areas of Interest */}
-      <section className="py-20 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
+      <section className="py-10 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-12 text-center">Areas of Interest</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Areas of Interest</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="p-6 rounded-xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
@@ -152,7 +152,7 @@ export default function JobPage() {
       </section>
 
       {/* What We Offer */}
-      <section className="py-20 bg-white dark:bg-zinc-950">
+      <section className="py-10 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-8 text-center">What We Offer</h2>
           
@@ -189,7 +189,7 @@ export default function JobPage() {
       </section>
 
       {/* Internships */}
-      <section className="py-20 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
+      <section className="py-10 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <Heart className="w-12 h-12 text-red-500 dark:text-red-400 mx-auto mb-4" />
@@ -202,7 +202,7 @@ export default function JobPage() {
       </section>
 
       {/* Volunteer */}
-      <section className="py-20 bg-white dark:bg-zinc-950">
+      <section className="py-10 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-8 text-center">Volunteer & Contributor Opportunities</h2>
           
@@ -245,7 +245,7 @@ export default function JobPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-linear-to-br from-green-500 via-cyan-600 to-blue-600 text-white">
+      <section className="py-10 bg-linear-to-br from-green-500 via-cyan-600 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-4">Interested in Joining Us?</h2>
           <p className="text-lg text-green-50 mb-8">

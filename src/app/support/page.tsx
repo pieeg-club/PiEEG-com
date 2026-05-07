@@ -189,7 +189,7 @@ export default function SupportPage() {
     <main className="flex-1">
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-900 dark:to-zinc-950">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/50 mb-6">
               <BookOpen className="w-4 h-4 text-blue-600 dark:text-blue-400" />
@@ -198,7 +198,7 @@ export default function SupportPage() {
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
               Get help with
               <br />
               <span className="bg-linear-to-r from-blue-500 via-cyan-600 to-purple-600 dark:from-blue-400 dark:via-cyan-500 dark:to-purple-500 bg-clip-text text-transparent">
@@ -234,9 +234,9 @@ export default function SupportPage() {
       </section>
 
       {/* Quick Start */}
-      <section id="quickstart" className="py-20 sm:py-24 bg-white dark:bg-zinc-950">
+      <section id="quickstart" className="py-10 sm:py-14 bg-white dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Quick Start Guide
             </h2>
@@ -245,7 +245,7 @@ export default function SupportPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {quickStart.map((step, idx) => {
               const Icon = step.icon;
               return (
@@ -304,9 +304,9 @@ export default function SupportPage() {
       </section>
 
       {/* Documentation Categories */}
-      <section id="guides" className="py-20 sm:py-24 bg-zinc-50 dark:bg-zinc-900">
+      <section id="guides" className="py-10 sm:py-14 bg-zinc-50 dark:bg-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Complete Documentation
             </h2>
@@ -361,9 +361,9 @@ export default function SupportPage() {
       </section>
 
       {/* Additional Resources */}
-      <section className="py-20 sm:py-24 bg-white dark:bg-zinc-950">
+      <section className="py-10 sm:py-14 bg-white dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
               Additional Resources
             </h2>
@@ -398,7 +398,7 @@ export default function SupportPage() {
       </section>
 
       {/* API Reference Teaser */}
-      <section className="py-20 sm:py-24 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
+      <section className="py-10 sm:py-14 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-12 rounded-2xl bg-linear-to-br from-blue-50 to-cyan-50 dark:from-blue-950/30 dark:to-cyan-950/30 border border-blue-200 dark:border-blue-800">
             <div className="flex items-start gap-6">
@@ -437,7 +437,7 @@ export default function SupportPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-linear-to-br from-blue-500 via-cyan-600 to-purple-600 text-white">
+      <section className="py-10 bg-linear-to-br from-blue-500 via-cyan-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Can&apos;t find what you&apos;re looking for?

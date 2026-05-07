@@ -208,16 +208,16 @@ export default function SignalsPage() {
     <main className="flex-1">
       {/* Hero Section */}
       <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-4">
               <Terminal className="w-4 h-4 text-cyan-500" />
               <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
                 PiEEG Server
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-4">
               Stream biosignals
               <br />
               <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
@@ -225,7 +225,7 @@ export default function SignalsPage() {
               </span>
             </h1>
             
-            <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 mb-8 max-w-xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 mb-5 max-w-xl mx-auto leading-relaxed">
               Real-time EEG/EMG/ECG/EOG streaming at 250–500 Hz. WebSocket API. Browser dashboard. Works on Raspberry Pi, Linux, macOS, Windows.
             </p>
 
@@ -254,9 +254,9 @@ export default function SignalsPage() {
       </section>
 
       {/* Quick Start */}
-      <section className="py-20 sm:py-24">
+      <section className="py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Quick Start
             </h2>
@@ -288,9 +288,9 @@ export default function SignalsPage() {
       </section>
 
       {/* Features */}
-      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
+      <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Server Features
             </h2>
@@ -324,9 +324,9 @@ export default function SignalsPage() {
       </section>
 
       {/* WebSocket API */}
-      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800">
+      <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               WebSocket API
             </h2>
@@ -420,9 +420,9 @@ export default function SignalsPage() {
       </section>
 
       {/* Supported Devices */}
-      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
+      <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Supported Devices
             </h2>
@@ -457,9 +457,9 @@ export default function SignalsPage() {
       </section>
 
       {/* WebSocket Commands */}
-      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800">
+      <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Real-time Control
             </h2>
@@ -486,9 +486,9 @@ export default function SignalsPage() {
       </section>
 
       {/* Integrations */}
-      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
+      <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Integrations
             </h2>
@@ -518,9 +518,9 @@ export default function SignalsPage() {
       </section>
 
       {/* Signal Types Reference */}
-      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800">
+      <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Supported Signal Types
             </h2>
@@ -574,12 +574,12 @@ export default function SignalsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
+      <section className="py-10 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             Start streaming in 60 seconds
           </h2>
-          <p className="text-zinc-500 dark:text-zinc-400 mb-8 max-w-xl mx-auto leading-relaxed">
+          <p className="text-zinc-500 dark:text-zinc-400 mb-5 max-w-xl mx-auto leading-relaxed">
             No hardware? Try the live demo with synthetic EEG data.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">

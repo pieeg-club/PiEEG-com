@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = {
   Hardware: [
@@ -38,9 +39,15 @@ export function Footer() {
 
           {/* Brand */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
-            <span className="font-mono text-sm font-bold tracking-[0.2em] text-cyan-500 dark:text-cyan-400 uppercase">
-              PiEEG
-            </span>
+            <Link href="/" className="flex items-center shrink-0">
+              <Image
+                src="/logo-without-bg.png"
+                alt="PiEEG Logo"
+                width={120}
+                height={32}
+                className="h-8 w-auto dark:brightness-0 dark:invert"
+              />
+            </Link>
             <p className="text-xs text-zinc-400 dark:text-zinc-500 leading-5 max-w-45">
               Low-cost brain-computer interface hardware for researchers, engineers, and neuroscience labs.
             </p>

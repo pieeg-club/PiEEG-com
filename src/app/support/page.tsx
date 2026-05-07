@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "Documentation, guides, and support resources for PiEEG biosignal acquisition hardware and software.",
 };
 
-const DOCS_BASE = "https://pieeg-club.github.io/PiEEG-docs";
+const DOCS_BASE = "https://docs.pieeg.com";
 
 const quickStart = [
   {
@@ -158,7 +158,7 @@ const resources = [
     title: "Full Documentation",
     description: "Hardware guides, software reference, API, and integrations",
     icon: BookOpen,
-    href: "https://pieeg-club.github.io/PiEEG-docs/",
+    href: "https://docs.pieeg.com/",
     external: true
   },
   {

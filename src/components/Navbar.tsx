@@ -145,7 +145,7 @@ export function Navbar() {
                 }`}
               >
                 <Sparkles className={`w-3.5 h-3.5 transition-all duration-300 ${megaOpen ? "text-cyan-500 scale-110" : ""}`} />
-                Explore
+                More
                 <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaOpen ? "rotate-180 text-cyan-500" : ""}`} />
               </button>
             </div>

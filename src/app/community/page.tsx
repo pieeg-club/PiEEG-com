@@ -330,7 +330,9 @@ export default function OpenSourcePage() {
                     {item.description}
                   </p>
                   <Link
-                    href="/support/contributing"
+                    href="https://github.com/pieeg-club"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`inline-flex items-center gap-2 font-semibold bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent group-hover:gap-3 transition-all`}
                   >
                     Get Started

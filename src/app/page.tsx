@@ -623,10 +623,14 @@ function HeroSection() {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center gap-8 max-w-4xl mx-auto py-12">
 
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-200/60 dark:border-cyan-800/40 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm shadow-lg shadow-cyan-500/10">
-          <span className="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">[Research Hardware]</span>
-        </div>
+        {/* Event Banner */}
+        <a href="/news/neuroscience-hackathon-announcement" className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow group">
+          <span className="px-2.5 py-0.5 rounded-full bg-cyan-600 dark:bg-cyan-500 text-white text-xs font-bold uppercase tracking-wide">Events</span>
+          <span className="text-sm text-zinc-700 dark:text-zinc-300 font-medium">Neuroscience Hackathon is coming to Ottawa</span>
+          <span className="flex items-center gap-1 text-sm font-semibold text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-600 rounded-full px-3 py-0.5 group-hover:bg-zinc-100 dark:group-hover:bg-zinc-800 transition-colors">
+            Learn more <ArrowRight className="w-3.5 h-3.5" />
+          </span>
+        </a>
 
         {/* Headline */}
         <div className="flex flex-col gap-4">

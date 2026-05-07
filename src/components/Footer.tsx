@@ -19,8 +19,8 @@ const footerLinks = {
   ],
   Community: [
     { label: "Discord", href: "https://discord.gg/neJ45FR6Sv" },
-    { label: "YouTube", href: "https://youtube.com/@pieeg" },
-    { label: "LinkedIn", href: "https://linkedin.com/company/pieeg" },
+    { label: "YouTube", href: "https://www.youtube.com/@pieeg" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/pieeg/" },
     { label: "Open Source", href: "/community" },
   ],
   Company: [

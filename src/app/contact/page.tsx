@@ -108,170 +108,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Form */}
-      <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
-              Send Us a Message
-            </h2>
-            <p className="text-zinc-500 dark:text-zinc-400">
-              For detailed inquiries, fill out the form below and we&apos;ll respond within 24 hours
-            </p>
-          </div>
-
-          <form className="space-y-5 p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-semibold mb-2">
-                  Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:focus:ring-cyan-400"
-                  placeholder="Your full name"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold mb-2">
-                  Email *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:focus:ring-cyan-400"
-                  placeholder="your@email.com"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="subject" className="block text-sm font-semibold mb-2">
-                Subject *
-              </label>
-              <select
-                id="subject"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:focus:ring-cyan-400"
-              >
-                <option value="">Select a topic...</option>
-                <option value="sales">Sales Inquiry</option>
-                <option value="technical">Technical Support</option>
-                <option value="partnership">Partnership Opportunity</option>
-                <option value="press">Press / Media</option>
-                <option value="research">Research Collaboration</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="organization" className="block text-sm font-semibold mb-2">
-                Organization (optional)
-              </label>
-              <input
-                type="text"
-                id="organization"
-                className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:focus:ring-cyan-400"
-                placeholder="University, Company, or Institution"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-semibold mb-2">
-                Message *
-              </label>
-              <textarea
-                id="message"
-                required
-                rows={8}
-                className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:focus:ring-cyan-400"
-                placeholder="Please provide as much detail as possible..."
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-bold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-md"
-            >
-              <Send className="w-4 h-4" />
-              Send Message
-            </button>
-
-            <p className="text-xs text-center text-zinc-500 dark:text-zinc-400">
-              We typically respond within 24 hours during business days
-            </p>
-          </form>
-        </div>
-      </section>
-
-      {/* Email Addresses */}
-      <section className="py-10 border-t border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-extrabold tracking-tight mb-2">
-              Email Us Directly
-            </h2>
-            <p className="text-zinc-500 dark:text-zinc-400">
-              Choose the right email for your inquiry
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-5">
-            <a
-              href="mailto:pieeg@pieeg.com"
-              className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200 text-center flex flex-col items-center gap-3"
-            >
-              <Mail className="w-7 h-7 text-cyan-500" />
-              <div>
-                <h3 className="font-bold mb-1">General Support</h3>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
-                  Technical questions, troubleshooting, general inquiries
-                </p>
-                <span className="text-sm text-zinc-700 dark:text-zinc-300 font-mono">
-                  pieeg@pieeg.com
-                </span>
-              </div>
-            </a>
-
-            <a
-              href="mailto:pieeg@pieeg.com"
-              className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200 text-center flex flex-col items-center gap-3"
-            >
-              <Mail className="w-7 h-7 text-violet-500" />
-              <div>
-                <h3 className="font-bold mb-1">Partnerships</h3>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
-                  Distribution, research collaborations, integrations
-                </p>
-                <span className="text-sm text-zinc-700 dark:text-zinc-300 font-mono">
-                  pieeg@pieeg.com
-                </span>
-              </div>
-            </a>
-
-            <a
-              href="mailto:pieeg@pieeg.com"
-              className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200 text-center flex flex-col items-center gap-3"
-            >
-              <Mail className="w-7 h-7 text-emerald-500" />
-              <div>
-                <h3 className="font-bold mb-1">Careers</h3>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
-                  Job opportunities, internships, volunteer positions
-                </p>
-                <span className="text-sm text-zinc-700 dark:text-zinc-300 font-mono">
-                  pieeg@pieeg.com
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* Social Media */}
       <section className="py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -315,7 +151,7 @@ export default function ContactPage() {
             </a>
 
             <a
-              href="https://twitter.com/pieeg"
+              href="https://x.com/pieeg_official"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
@@ -324,7 +160,7 @@ export default function ContactPage() {
             </a>
 
             <a
-              href="https://www.instagram.com/pieeg"
+              href="https://www.instagram.com/pieeg_official/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
@@ -333,7 +169,7 @@ export default function ContactPage() {
             </a>
 
             <a
-              href="https://www.facebook.com/pieeg"
+              href="https://www.facebook.com/groups/pieeg"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"

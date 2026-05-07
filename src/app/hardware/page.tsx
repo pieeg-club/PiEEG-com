@@ -233,39 +233,39 @@ export default function ProductsPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-900 dark:to-zinc-950">
+      <section className="border-b border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-200 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/50 mb-6">
-              <Cpu className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-6">
+              <Cpu className="w-4 h-4 text-cyan-500" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
                 Complete Catalog
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-6">
               Research-grade biosignal
               <br />
-              <span className="bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
                 hardware for everyone
               </span>
             </h1>
             
-            <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 mb-8">
+            <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 mb-8 max-w-xl mx-auto leading-relaxed">
               11 products: 7 hardware platforms and 4 accessories. MIT-licensed software included.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href="#hardware"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-linear-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold shadow-lg shadow-cyan-500/30 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-md"
               >
                 Explore Products
                 <ChevronRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/support"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 font-semibold transition-all"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
               >
                 Documentation
                 <ExternalLink className="w-4 h-4" />
@@ -276,13 +276,13 @@ export default function ProductsPage() {
       </section>
 
       {/* Hardware Products Section */}
-      <section id="hardware" className="py-20 sm:py-24 bg-white dark:bg-zinc-950">
+      <section id="hardware" className="py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Hardware Platforms
             </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto mb-8">
+            <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
               Every device is extensively documented and backed by our community.
             </p>
           </div>
@@ -292,31 +292,31 @@ export default function ProductsPage() {
       </section>
 
       {/* Accessories Section */}
-      <section className="py-20 sm:py-24 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
+      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Accessories & Add-ons
             </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+            <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
               Professional EEG caps and electrodes to complete your setup.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {accessories.map((accessory) => (
               <div
                 key={accessory.id}
-                className="group p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg transition-all"
+                className="group p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200 flex flex-col"
               >
-                <div className={`w-12 h-12 rounded-lg bg-linear-to-br ${accessory.gradient} mb-4 flex items-center justify-center text-white shadow-lg`}>
-                  <Package className="w-6 h-6" />
+                <div className={`w-10 h-10 rounded-xl bg-linear-to-br ${accessory.gradient} mb-4 flex items-center justify-center text-white shadow-md`}>
+                  <Package className="w-5 h-5" />
                 </div>
-                <h3 className="font-bold text-lg mb-2">{accessory.name}</h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-3">
+                <h3 className="font-bold text-sm mb-2">{accessory.name}</h3>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2 flex-1 leading-relaxed">
                   {accessory.description}
                 </p>
-                <p className="text-xs font-semibold text-zinc-500 dark:text-zinc-500 mb-4">
+                <p className="text-[11px] font-semibold text-zinc-400 dark:text-zinc-500 mb-4">
                   {accessory.specs}
                 </p>
                 {accessory.status === "Available" ? (
@@ -324,13 +324,13 @@ export default function ProductsPage() {
                     href={accessory.purchaseUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-linear-to-r ${accessory.gradient} text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all`}
+                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold text-xs hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
                   >
-                    <ShoppingCart className="w-4 h-4" />
+                    <ShoppingCart className="w-3.5 h-3.5" />
                     Shop Now
                   </a>
                 ) : (
-                  <div className="px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400 font-semibold text-sm text-center">
+                  <div className="px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-400 dark:text-zinc-500 font-semibold text-xs text-center">
                     {accessory.status}
                   </div>
                 )}
@@ -341,45 +341,45 @@ export default function ProductsPage() {
       </section>
 
       {/* Why Choose PiEEG */}
-      <section className="py-20 sm:py-24 bg-white dark:bg-zinc-950">
+      <section className="py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6">
                 Why choose PiEEG hardware?
               </h2>
               <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-cyan-100 dark:bg-cyan-950 flex items-center justify-center">
-                    <Code className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+                  <div className="shrink-0 w-10 h-10 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex items-center justify-center">
+                    <Code className="w-5 h-5 text-cyan-500" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-2">MIT-Licensed Software</h3>
-                    <p className="text-zinc-600 dark:text-zinc-400 text-sm">
+                    <h3 className="font-bold mb-1 text-sm">MIT-Licensed Software</h3>
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm">
                       Software and SDKs are MIT licensed. Fork, modify, and build on our code. Hardware designs are proprietary.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-950 flex items-center justify-center">
-                    <Zap className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <div className="shrink-0 w-10 h-10 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex items-center justify-center">
+                    <Zap className="w-5 h-5 text-blue-500" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-2">Research-Grade Quality</h3>
-                    <p className="text-zinc-600 dark:text-zinc-400 text-sm">
+                    <h3 className="font-bold mb-1 text-sm">Research-Grade Quality</h3>
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm">
                       24-bit ADCs, medical-grade components, and rigorous testing. Used in peer-reviewed research worldwide.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-950 flex items-center justify-center">
-                    <Cpu className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                  <div className="shrink-0 w-10 h-10 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex items-center justify-center">
+                    <Cpu className="w-5 h-5 text-violet-500" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-2">Platform Flexibility</h3>
-                    <p className="text-zinc-600 dark:text-zinc-400 text-sm">
+                    <h3 className="font-bold mb-1 text-sm">Platform Flexibility</h3>
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm">
                       Choose your compute platform: Raspberry Pi for versatility, Arduino for embedded, Jetson for AI.
                     </p>
                   </div>
@@ -388,15 +388,15 @@ export default function ProductsPage() {
             </div>
 
             <div className="relative">
-              <div className="aspect-square rounded-2xl bg-linear-to-br from-cyan-100 to-blue-100 dark:from-cyan-950 dark:to-blue-950 flex items-center justify-center">
+              <div className="aspect-square rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex items-center justify-center">
                 <div className="text-center p-8">
-                  <div className="text-6xl font-bold bg-linear-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent mb-4">
+                  <div className="text-5xl font-extrabold bg-linear-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent mb-3">
                     1000+
                   </div>
-                  <p className="text-xl font-semibold text-zinc-700 dark:text-zinc-300 mb-2">
+                  <p className="text-lg font-semibold text-zinc-700 dark:text-zinc-300 mb-1">
                     Researchers worldwide
                   </p>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400">
                     From hobbyists to universities
                   </p>
                 </div>
@@ -407,25 +407,25 @@ export default function ProductsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-linear-to-br from-cyan-500 via-blue-600 to-purple-600 text-white">
+      <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             Ready to start measuring biosignals?
           </h2>
-          <p className="text-lg text-cyan-50 mb-8 max-w-2xl mx-auto">
+          <p className="text-zinc-500 dark:text-zinc-400 mb-8 max-w-2xl mx-auto leading-relaxed">
             Join the community of researchers, makers, and neuroscience enthusiasts building the future of open BCI.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               href="/support"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-blue-600 hover:bg-zinc-100 font-bold shadow-xl transition-all"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-bold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-lg"
             >
               Get Started
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/community"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-white hover:bg-white/10 font-bold transition-all"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
               Join Community
             </Link>

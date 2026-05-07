@@ -43,36 +43,36 @@ export default async function NewsPage({
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-linear-to-br from-zinc-50 via-white to-blue-50 dark:from-zinc-900 dark:via-zinc-950 dark:to-blue-950/20">
-        <div className="absolute inset-0 bg-[url('/hero-bg-light.png')] dark:bg-[url('/hero-bg-dark.png')] bg-cover opacity-40"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 relative z-10">
+      <section className="border-b border-zinc-200 dark:border-zinc-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/50 mb-6">
-              <Newspaper className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-6">
+              <Newspaper className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
                 Latest Updates
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-6">
               PiEEG
               <br />
-              <span className="bg-linear-to-r from-blue-500 via-cyan-600 to-purple-600 dark:from-blue-400 dark:via-cyan-500 dark:to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
                 News & Updates
               </span>
             </h1>
             
-            <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 mb-8">
-              Product launches, research breakthroughs, and community highlights from the world of open-source brain-computer interfaces
+            <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 mb-8 max-w-xl mx-auto leading-relaxed">
+              Product launches, research breakthroughs, and community highlights from the world of open-source brain-computer interfaces.
             </p>
 
-            <div className="flex items-center justify-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
-              <div className="flex items-center gap-2">
-                <Award className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-                <span>Featured in {mediaFeatures.length}+ media outlets</span>
+            <div className="flex items-center justify-center gap-6 text-sm text-zinc-500 dark:text-zinc-400">
+              <div className="flex items-center gap-1.5">
+                <Award className="w-4 h-4 text-cyan-500" />
+                <span>{mediaFeatures.length}+ media outlets</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Users className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+              <div className="w-px h-4 bg-zinc-300 dark:bg-zinc-700" />
+              <div className="flex items-center gap-1.5">
+                <Users className="w-4 h-4 text-cyan-500" />
                 <span>1000+ researchers worldwide</span>
               </div>
             </div>
@@ -81,20 +81,17 @@ export default async function NewsPage({
       </section>
 
       {/* Media Features Section */}
-      <section className="py-12 bg-linear-to-r from-cyan-50 via-blue-50 to-purple-50 dark:from-cyan-950/20 dark:via-blue-950/20 dark:to-purple-950/20 border-b border-zinc-200 dark:border-zinc-800">
+      <section className="py-10 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold mb-2">Featured In</h2>
-            <p className="text-zinc-600 dark:text-zinc-400">Read about PiEEG in leading tech publications</p>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+          <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-600 text-center mb-6">Featured In</p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
             {mediaFeatures.map((media) => (
               <a
                 key={media.name}
                 href={media.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-600 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 font-medium text-sm sm:text-base transition-colors"
+                className="px-3 py-1.5 rounded-full text-xs font-semibold border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 hover:border-cyan-400 hover:text-cyan-600 dark:hover:text-cyan-400 dark:hover:border-cyan-700 transition-colors bg-white dark:bg-zinc-900"
               >
                 {media.name}
               </a>
@@ -107,33 +104,32 @@ export default async function NewsPage({
       {featuredNews.length > 0 && (
         <section className="py-16 border-b border-zinc-200 dark:border-zinc-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-12">
-              <h2 className="text-3xl font-bold mb-2">Featured Stories</h2>
-              <div className="h-1 w-20 bg-linear-to-r from-cyan-500 to-blue-600 rounded-full"></div>
+            <div className="flex items-center justify-between mb-10">
+              <h2 className="text-2xl font-extrabold">Featured Stories</h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {featuredNews.map((article) => (
                 <Link
                   key={article.slug}
                   href={`/news/${article.slug}`}
-                  className="group bg-white dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+                  className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-lg transition-all duration-200"
                 >
-                  <div className="relative h-48 bg-linear-to-br from-cyan-500 to-blue-600 overflow-hidden">
+                  <div className="relative h-44 bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
                     <Image
                       src={article.image}
                       alt={article.title}
                       fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
 
-                  <div className="p-6">
+                  <div className="flex flex-col flex-1 p-5">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-cyan-100 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-300">
+                      <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full border border-cyan-200 dark:border-cyan-800 text-cyan-700 dark:text-cyan-300 bg-transparent">
                         {article.category}
                       </span>
-                      <span className="text-xs text-zinc-500 dark:text-zinc-500">
+                      <span className="text-xs text-zinc-400 dark:text-zinc-500">
                         {new Date(article.date).toLocaleDateString('en-US', {
                           year: 'numeric',
                           month: 'short',
@@ -142,17 +138,17 @@ export default async function NewsPage({
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                    <h3 className="text-base font-bold mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors leading-snug">
                       {article.title}
                     </h3>
 
-                    <p className="text-zinc-600 dark:text-zinc-400 text-sm mb-4 line-clamp-3">
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm mb-4 line-clamp-2 flex-1">
                       {article.excerpt}
                     </p>
 
-                    <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 text-sm font-medium">
+                    <div className="flex items-center gap-1.5 text-cyan-600 dark:text-cyan-400 text-sm font-semibold mt-auto">
                       Read more
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </Link>
@@ -165,9 +161,8 @@ export default async function NewsPage({
       {/* All News */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-2">All News</h2>
-            <div className="h-1 w-20 bg-linear-to-r from-cyan-500 to-blue-600 rounded-full"></div>
+          <div className="mb-10">
+            <h2 className="text-2xl font-extrabold">All News</h2>
           </div>
 
           <div className="space-y-6">
@@ -175,7 +170,7 @@ export default async function NewsPage({
               <Link
                 key={article.slug}
                 href={`/news/${article.slug}`}
-                className="flex flex-col md:flex-row gap-6 p-6 bg-white dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:shadow-lg hover:border-cyan-500 dark:hover:border-cyan-500 transition-all group"
+                className="flex flex-col md:flex-row gap-6 p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200 group"
               >
                 <div className="md:w-48 h-32 md:h-auto rounded-lg bg-linear-to-br from-cyan-500 to-blue-600 shrink-0 overflow-hidden">
                   <Image
@@ -243,23 +238,25 @@ export default async function NewsPage({
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-20 bg-linear-to-br from-cyan-600 to-blue-700 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Newspaper className="w-12 h-12 mx-auto mb-6 opacity-90" />
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Stay Updated</h2>
-          <p className="text-lg text-blue-100 mb-8">
-            Get the latest PiEEG news, product launches, and research highlights delivered to your inbox
+      <section className="py-16 border-t border-zinc-200 dark:border-zinc-800">
+        <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm mb-6">
+            <Newspaper className="w-5 h-5 text-cyan-500" />
+          </div>
+          <h2 className="text-2xl font-extrabold mb-3">Stay Updated</h2>
+          <p className="text-zinc-500 dark:text-zinc-400 mb-8 leading-relaxed">
+            Get the latest PiEEG news, product launches, and research highlights.
           </p>
 
-          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <form className="flex flex-col sm:flex-row gap-2">
             <input
               type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-lg bg-white/10 backdrop-blur border border-white/20 text-white placeholder:text-blue-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+              placeholder="your@email.com"
+              className="flex-1 px-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm"
             />
             <button
               type="submit"
-              className="px-6 py-3 rounded-lg bg-white text-cyan-600 font-semibold hover:bg-blue-50 transition-colors"
+              className="px-5 py-2.5 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold text-sm hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
             >
               Subscribe
             </button>
@@ -268,25 +265,20 @@ export default async function NewsPage({
       </section>
 
       {/* Community Stats */}
-      <section className="py-12 border-t border-zinc-200 dark:border-zinc-800">
+      <section className="py-10 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">{allNews.length}+</div>
-              <div className="text-sm text-zinc-600 dark:text-zinc-400">News Articles</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">1000+</div>
-              <div className="text-sm text-zinc-600 dark:text-zinc-400">Researchers</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">{mediaFeatures.length}+</div>
-              <div className="text-sm text-zinc-600 dark:text-zinc-400">Media Features</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">50+</div>
-              <div className="text-sm text-zinc-600 dark:text-zinc-400">Countries</div>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {[
+              { value: `${allNews.length}+`, label: "Articles" },
+              { value: "1000+", label: "Researchers" },
+              { value: `${mediaFeatures.length}+`, label: "Media Features" },
+              { value: "50+", label: "Countries" },
+            ].map(({ value, label }) => (
+              <div key={label} className="flex flex-col gap-1">
+                <span className="text-2xl font-extrabold bg-linear-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">{value}</span>
+                <span className="text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400 font-medium">{label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

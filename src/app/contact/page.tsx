@@ -38,44 +38,44 @@ export default function ContactPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-900 dark:to-zinc-950">
+      <section className="border-b border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-200 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/50 mb-6">
-              <Send className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-6">
+              <Send className="w-4 h-4 text-cyan-500" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
                 Get in Touch
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              We're here
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-6">
+              We&apos;re here
               <br />
-              <span className="bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
                 to help
               </span>
             </h1>
             
-            <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400">
-              Questions about hardware? Need technical support? Want to partner? Reach out and we'll get back to you quickly.
+            <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto leading-relaxed">
+              Questions about hardware? Need technical support? Want to partner? Reach out and we&apos;ll get back to you quickly.
             </p>
           </div>
         </div>
       </section>
 
       {/* Quick Contact Methods */}
-      <section className="py-20 sm:py-24 bg-white dark:bg-zinc-950">
+      <section className="py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Choose Your Channel
             </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
+            <p className="text-zinc-500 dark:text-zinc-400">
               Multiple ways to reach us, depending on your needs
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-5">
             {contactMethods.map((method, idx) => {
               const Icon = method.icon;
               return (
@@ -84,23 +84,23 @@ export default function ContactPage() {
                   href={method.href}
                   target={method.href.startsWith('http') ? '_blank' : undefined}
                   rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="group p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 hover:shadow-xl hover:border-zinc-300 dark:hover:border-zinc-700 transition-all"
+                  className="group p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200 flex gap-5"
                 >
-                  <div className={`w-14 h-14 rounded-xl bg-linear-to-br ${method.gradient} flex items-center justify-center text-white shadow-lg mb-6`}>
-                    <Icon className="w-7 h-7" />
+                  <div className={`w-11 h-11 rounded-xl bg-linear-to-br ${method.gradient} flex items-center justify-center text-white shadow-md flex-shrink-0`}>
+                    <Icon className="w-5 h-5" />
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                    {method.title}
-                  </h3>
-                  
-                  <p className="text-zinc-600 dark:text-zinc-400 mb-6">
-                    {method.description}
-                  </p>
-                  
-                  <span className={`inline-block font-semibold bg-linear-to-r ${method.gradient} bg-clip-text text-transparent`}>
-                    {method.action} →
-                  </span>
+                  <div>
+                    <h3 className="font-bold mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                      {method.title}
+                    </h3>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-3 leading-relaxed">
+                      {method.description}
+                    </p>
+                    <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                      {method.action} →
+                    </span>
+                  </div>
                 </a>
               );
             })}
@@ -109,18 +109,18 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form */}
-      <section className="py-20 sm:py-24 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
+      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Send Us a Message
             </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
-              For detailed inquiries, fill out the form below and we'll respond within 24 hours
+            <p className="text-zinc-500 dark:text-zinc-400">
+              For detailed inquiries, fill out the form below and we&apos;ll respond within 24 hours
             </p>
           </div>
 
-          <form className="space-y-6 p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
+          <form className="space-y-5 p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold mb-2">
@@ -195,9 +195,9 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-linear-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold shadow-lg transition-all"
+              className="w-full inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-bold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-md"
             >
-              <Send className="w-5 h-5" />
+              <Send className="w-4 h-4" />
               Send Message
             </button>
 
@@ -209,83 +209,89 @@ export default function ContactPage() {
       </section>
 
       {/* Email Addresses */}
-      <section className="py-20 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
+      <section className="py-16 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-extrabold tracking-tight mb-2">
               Email Us Directly
             </h2>
-            <p className="text-zinc-600 dark:text-zinc-400">
+            <p className="text-zinc-500 dark:text-zinc-400">
               Choose the right email for your inquiry
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-5">
             <a
               href="mailto:pieeg@pieeg.com"
-              className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg transition-all text-center"
+              className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200 text-center flex flex-col items-center gap-3"
             >
-              <Mail className="w-8 h-8 text-cyan-600 dark:text-cyan-400 mx-auto mb-3" />
-              <h3 className="font-bold mb-2">General Support</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-3">
-                Technical questions, troubleshooting, general inquiries
-              </p>
-              <span className="text-sm text-cyan-600 dark:text-cyan-400 font-mono">
-                pieeg@pieeg.com
-              </span>
+              <Mail className="w-7 h-7 text-cyan-500" />
+              <div>
+                <h3 className="font-bold mb-1">General Support</h3>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
+                  Technical questions, troubleshooting, general inquiries
+                </p>
+                <span className="text-sm text-zinc-700 dark:text-zinc-300 font-mono">
+                  pieeg@pieeg.com
+                </span>
+              </div>
             </a>
 
             <a
               href="mailto:pieeg@pieeg.com"
-              className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg transition-all text-center"
+              className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200 text-center flex flex-col items-center gap-3"
             >
-              <Mail className="w-8 h-8 text-purple-600 dark:text-purple-400 mx-auto mb-3" />
-              <h3 className="font-bold mb-2">Partnerships</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-3">
-                Distribution, research collaborations, integrations
-              </p>
-              <span className="text-sm text-purple-600 dark:text-purple-400 font-mono">
-                pieeg@pieeg.com
-              </span>
+              <Mail className="w-7 h-7 text-violet-500" />
+              <div>
+                <h3 className="font-bold mb-1">Partnerships</h3>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
+                  Distribution, research collaborations, integrations
+                </p>
+                <span className="text-sm text-zinc-700 dark:text-zinc-300 font-mono">
+                  pieeg@pieeg.com
+                </span>
+              </div>
             </a>
 
             <a
               href="mailto:pieeg@pieeg.com"
-              className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg transition-all text-center"
+              className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200 text-center flex flex-col items-center gap-3"
             >
-              <Mail className="w-8 h-8 text-green-600 dark:text-green-400 mx-auto mb-3" />
-              <h3 className="font-bold mb-2">Careers</h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-3">
-                Job opportunities, internships, volunteer positions
-              </p>
-              <span className="text-sm text-green-600 dark:text-green-400 font-mono">
-                pieeg@pieeg.com
-              </span>
+              <Mail className="w-7 h-7 text-emerald-500" />
+              <div>
+                <h3 className="font-bold mb-1">Careers</h3>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
+                  Job opportunities, internships, volunteer positions
+                </p>
+                <span className="text-sm text-zinc-700 dark:text-zinc-300 font-mono">
+                  pieeg@pieeg.com
+                </span>
+              </div>
             </a>
           </div>
         </div>
       </section>
 
       {/* Social Media */}
-      <section className="py-20 bg-white dark:bg-zinc-950">
+      <section className="py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-extrabold tracking-tight mb-2">
               Follow Us
             </h2>
-            <p className="text-zinc-600 dark:text-zinc-400">
+            <p className="text-zinc-500 dark:text-zinc-400">
               Stay updated with our latest news, tutorials, and community highlights
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <a
               href="https://www.youtube.com/@pieeg"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white font-semibold transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
-              <Video className="w-5 h-5" />
+              <Video className="w-4 h-4" />
               YouTube
             </a>
 
@@ -293,7 +299,7 @@ export default function ContactPage() {
               href="https://www.linkedin.com/company/pieeg"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
               LinkedIn
             </a>
@@ -302,9 +308,9 @@ export default function ContactPage() {
               href="https://github.com/pieeg-club"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-zinc-900 dark:border-zinc-100 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 font-semibold transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
-              <Github className="w-5 h-5" />
+              <Github className="w-4 h-4" />
               GitHub
             </a>
 
@@ -312,7 +318,7 @@ export default function ContactPage() {
               href="https://twitter.com/pieeg"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-sky-600 text-sky-600 hover:bg-sky-600 hover:text-white font-semibold transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
               Twitter/X
             </a>
@@ -321,7 +327,7 @@ export default function ContactPage() {
               href="https://www.instagram.com/pieeg"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-pink-600 text-pink-600 hover:bg-pink-600 hover:text-white font-semibold transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
               Instagram
             </a>
@@ -330,7 +336,7 @@ export default function ContactPage() {
               href="https://www.facebook.com/pieeg"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white font-semibold transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
               Facebook
             </a>
@@ -339,50 +345,50 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Snippet */}
-      <section className="py-20 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+      <section className="py-16 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-extrabold tracking-tight mb-2">
               Common Questions
             </h2>
-            <p className="text-zinc-600 dark:text-zinc-400">
+            <p className="text-zinc-500 dark:text-zinc-400">
               Quick answers before you reach out
             </p>
           </div>
 
-          <div className="space-y-4">
-            <details className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
-              <summary className="font-semibold cursor-pointer">
-                What's the typical delivery time for hardware?
+          <div className="space-y-3">
+            <details className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm">
+              <summary className="font-semibold cursor-pointer text-sm">
+                What&apos;s the typical delivery time for hardware?
               </summary>
-              <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
                 In-stock items ship within 1-2 business days. Custom configurations typically ship within 2-3 weeks. International shipping adds 5-14 days depending on location.
               </p>
             </details>
 
-            <details className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
-              <summary className="font-semibold cursor-pointer">
+            <details className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm">
+              <summary className="font-semibold cursor-pointer text-sm">
                 Do you offer educational discounts?
               </summary>
-              <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
                 Yes! Universities and educational institutions qualify for 20-30% discounts on bulk orders. Contact us with your institution email for details.
               </p>
             </details>
 
-            <details className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
-              <summary className="font-semibold cursor-pointer">
+            <details className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm">
+              <summary className="font-semibold cursor-pointer text-sm">
                 Can I get technical support for my PiEEG?
               </summary>
-              <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
                 Absolutely! Join our Discord for community support, or email us for dedicated technical assistance. All hardware purchases include 1 year of email support.
               </p>
             </details>
 
-            <details className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
-              <summary className="font-semibold cursor-pointer">
+            <details className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm">
+              <summary className="font-semibold cursor-pointer text-sm">
                 Is PiEEG FDA/CE approved for medical use?
               </summary>
-              <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
                 PiEEG is designed for research and engineering purposes only. It is not a medical device and is not FDA/CE certified for clinical use. For compliance consulting, contact our partnership team.
               </p>
             </details>

@@ -207,43 +207,43 @@ export default function SignalsPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-900 dark:to-zinc-950">
+      <section className="border-b border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-200 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/50 mb-6">
-              <Terminal className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-6">
+              <Terminal className="w-4 h-4 text-cyan-500" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
                 PiEEG Server
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-6">
               Stream biosignals
               <br />
-              <span className="bg-linear-to-r from-cyan-500 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-500 dark:to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
                 in 60 seconds
               </span>
             </h1>
             
-            <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 mb-8">
+            <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 mb-8 max-w-xl mx-auto leading-relaxed">
               Real-time EEG/EMG/ECG/EOG streaming at 250–500 Hz. WebSocket API. Browser dashboard. Works on Raspberry Pi, Linux, macOS, Windows.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
                 href="https://cloud.pieeg.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-linear-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold shadow-lg shadow-cyan-500/30 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-md"
               >
-                <Play className="w-5 h-5" />
+                <Play className="w-4 h-4" />
                 Try Live Demo
               </a>
               <a
                 href="https://github.com/pieeg-club/PiEEG-server"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 font-semibold transition-all"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
               >
                 View on GitHub
                 <ArrowRight className="w-4 h-4" />
@@ -254,31 +254,31 @@ export default function SignalsPage() {
       </section>
 
       {/* Quick Start */}
-      <section className="py-20 sm:py-24 bg-white dark:bg-zinc-950">
+      <section className="py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Quick Start
             </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
+            <p className="text-zinc-500 dark:text-zinc-400">
               Three commands to live EEG streaming
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {quickStart.map((item) => (
               <div
                 key={item.step}
-                className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg transition-all"
+                className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200"
               >
-                <div className={`inline-flex items-center justify-center w-10 h-10 rounded-lg bg-linear-to-br from-${item.color}-500 to-${item.color}-600 text-white font-bold mb-4 shadow-lg`}>
+                <div className={`inline-flex items-center justify-center w-9 h-9 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-bold text-sm mb-4 shadow-md`}>
                   {item.step}
                 </div>
-                <h3 className="font-bold text-lg mb-3">{item.title}</h3>
+                <h3 className="font-bold mb-3">{item.title}</h3>
                 <div className="p-3 rounded-lg bg-zinc-900 dark:bg-zinc-950 border border-zinc-700 mb-3 font-mono text-sm text-cyan-400 overflow-x-auto">
                   {item.code}
                 </div>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">
                   {item.description}
                 </p>
               </div>
@@ -288,32 +288,34 @@ export default function SignalsPage() {
       </section>
 
       {/* Features */}
-      <section className="py-20 sm:py-24 bg-zinc-50 dark:bg-zinc-900">
+      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Server Features
             </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
+            <p className="text-zinc-500 dark:text-zinc-400">
               Everything you need for real-time biosignal acquisition
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
                 <div
                   key={feature.title}
-                  className="p-8 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg transition-all"
+                  className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200 flex gap-5"
                 >
-                  <div className={`w-14 h-14 rounded-xl bg-linear-to-br ${feature.gradient} flex items-center justify-center text-white shadow-lg mb-6`}>
-                    <Icon className="w-7 h-7" />
+                  <div className={`w-11 h-11 rounded-xl bg-linear-to-br ${feature.gradient} flex items-center justify-center text-white shadow-md flex-shrink-0`}>
+                    <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-bold text-xl mb-3">{feature.title}</h3>
-                  <p className="text-zinc-600 dark:text-zinc-400 font-mono text-sm">
-                    {feature.description}
-                  </p>
+                  <div>
+                    <h3 className="font-bold mb-2">{feature.title}</h3>
+                    <p className="text-zinc-500 dark:text-zinc-400 font-mono text-xs leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
                 </div>
               );
             })}
@@ -322,13 +324,13 @@ export default function SignalsPage() {
       </section>
 
       {/* WebSocket API */}
-      <section className="py-20 sm:py-24 bg-white dark:bg-zinc-950">
+      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               WebSocket API
             </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
+            <p className="text-zinc-500 dark:text-zinc-400">
               Plain JSON. No SDK. Works in any language.
             </p>
           </div>
@@ -394,23 +396,23 @@ export default function SignalsPage() {
           </div>
 
           {/* Data Format */}
-          <div className="mt-12 p-8 rounded-xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800">
-            <h3 className="font-bold text-lg mb-4">Data Format</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+          <div className="mt-10 p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm">
+            <h3 className="font-bold mb-3">Data Format</h3>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
               Every frame is a JSON object with three fields:
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="p-4 rounded-lg bg-white dark:bg-zinc-900 border border-blue-200 dark:border-blue-800">
-                <code className="text-sm font-mono text-blue-600 dark:text-blue-400">t</code>
-                <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">Unix timestamp (seconds)</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50/80 dark:bg-zinc-900/80">
+                <code className="text-sm font-mono text-cyan-600 dark:text-cyan-400">t</code>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Unix timestamp (seconds)</p>
               </div>
-              <div className="p-4 rounded-lg bg-white dark:bg-zinc-900 border border-blue-200 dark:border-blue-800">
-                <code className="text-sm font-mono text-blue-600 dark:text-blue-400">n</code>
-                <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">Sample number (monotonic)</p>
+              <div className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50/80 dark:bg-zinc-900/80">
+                <code className="text-sm font-mono text-cyan-600 dark:text-cyan-400">n</code>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Sample number (monotonic)</p>
               </div>
-              <div className="p-4 rounded-lg bg-white dark:bg-zinc-900 border border-blue-200 dark:border-blue-800">
-                <code className="text-sm font-mono text-blue-600 dark:text-blue-400">channels</code>
-                <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">Array of µV values</p>
+              <div className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-50/80 dark:bg-zinc-900/80">
+                <code className="text-sm font-mono text-cyan-600 dark:text-cyan-400">channels</code>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Array of µV values</p>
               </div>
             </div>
           </div>
@@ -418,34 +420,34 @@ export default function SignalsPage() {
       </section>
 
       {/* Supported Devices */}
-      <section className="py-20 sm:py-24 bg-zinc-50 dark:bg-zinc-900">
+      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Supported Devices
             </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
+            <p className="text-zinc-500 dark:text-zinc-400">
               One server, multiple hardware platforms
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {devices.map((device) => (
               <div
                 key={device.name}
-                className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950"
+                className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="font-bold text-xl">{device.name}</h3>
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400">{device.description}</p>
+                    <h3 className="font-bold">{device.name}</h3>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400">{device.description}</p>
                   </div>
                   <div className="text-right">
                     <div className="text-sm font-semibold text-cyan-600 dark:text-cyan-400">{device.channels} ch</div>
-                    <div className="text-xs text-zinc-500">{device.connection}</div>
+                    <div className="text-xs text-zinc-400">{device.connection}</div>
                   </div>
                 </div>
-                <div className="p-3 rounded-lg bg-zinc-900 dark:bg-zinc-950 border border-zinc-700 font-mono text-sm text-green-400 overflow-x-auto">
+                <div className="p-3 rounded-xl bg-zinc-900 dark:bg-zinc-950 border border-zinc-700 font-mono text-sm text-green-400 overflow-x-auto">
                   $ {device.command}
                 </div>
               </div>
@@ -455,26 +457,26 @@ export default function SignalsPage() {
       </section>
 
       {/* WebSocket Commands */}
-      <section className="py-20 sm:py-24 bg-white dark:bg-zinc-950">
+      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Real-time Control
             </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
+            <p className="text-zinc-500 dark:text-zinc-400">
               Send commands to the server over WebSocket
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {commands.map((cmd) => (
               <div
                 key={cmd.category}
-                className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950"
+                className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm"
               >
-                <h3 className="font-bold text-lg mb-2">{cmd.category}</h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">{cmd.description}</p>
-                <div className="p-4 rounded-lg bg-zinc-900 dark:bg-zinc-950 border border-zinc-700 font-mono text-xs text-purple-400 overflow-x-auto whitespace-pre">
+                <h3 className="font-bold mb-1">{cmd.category}</h3>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">{cmd.description}</p>
+                <div className="p-4 rounded-xl bg-zinc-900 dark:bg-zinc-950 border border-zinc-700 font-mono text-xs text-purple-400 overflow-x-auto whitespace-pre">
                   {cmd.code}
                 </div>
               </div>
@@ -484,29 +486,29 @@ export default function SignalsPage() {
       </section>
 
       {/* Integrations */}
-      <section className="py-20 sm:py-24 bg-zinc-50 dark:bg-zinc-900">
+      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Integrations
             </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
+            <p className="text-zinc-500 dark:text-zinc-400">
               Connect to your favorite tools and platforms
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {integrations.map((integration) => (
               <div
                 key={integration.name}
-                className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:shadow-lg transition-all text-center"
+                className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200 text-center"
               >
-                <div className="text-4xl mb-4">{integration.icon}</div>
-                <h3 className="font-bold mb-2">{integration.name}</h3>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-3">
+                <div className="text-3xl mb-3">{integration.icon}</div>
+                <h3 className="font-bold mb-1 text-sm">{integration.name}</h3>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-3 leading-relaxed">
                   {integration.description}
                 </p>
-                <code className="text-xs px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300">
+                <code className="text-xs px-2.5 py-1 rounded-full border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400">
                   {integration.flag}
                 </code>
               </div>
@@ -516,49 +518,49 @@ export default function SignalsPage() {
       </section>
 
       {/* Signal Types Reference */}
-      <section className="py-20 sm:py-24 bg-white dark:bg-zinc-950">
+      <section className="py-20 sm:py-24 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
               Supported Signal Types
             </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
+            <p className="text-zinc-500 dark:text-zinc-400">
               Acquire any biosignal with the same hardware
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {signalTypes.map((signal) => {
               const Icon = signal.icon;
               return (
                 <div
                   key={signal.type}
-                  className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950"
+                  className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className={`w-12 h-12 rounded-lg bg-${signal.color}-500 flex items-center justify-center text-white shrink-0`}>
-                      <Icon className="w-6 h-6" />
+                    <div className={`w-10 h-10 rounded-xl bg-${signal.color}-500 flex items-center justify-center text-white shrink-0`}>
+                      <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-xl">{signal.type}</h3>
-                      <p className="text-sm text-zinc-600 dark:text-zinc-400">{signal.name}</p>
+                      <h3 className="font-bold">{signal.type}</h3>
+                      <p className="text-sm text-zinc-500 dark:text-zinc-400">{signal.name}</p>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="grid grid-cols-2 gap-3 mb-4">
                     <div>
-                      <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-1">Amplitude</div>
+                      <div className="text-xs text-zinc-400 dark:text-zinc-500 mb-1 uppercase tracking-wide">Amplitude</div>
                       <div className="font-mono text-sm font-semibold">{signal.amplitude}</div>
                     </div>
                     <div>
-                      <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-1">Frequency</div>
+                      <div className="text-xs text-zinc-400 dark:text-zinc-500 mb-1 uppercase tracking-wide">Frequency</div>
                       <div className="font-mono text-sm font-semibold">{signal.frequency}</div>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5">
                     {signal.bands.map((band) => (
                       <span
                         key={band}
-                        className={`text-xs px-3 py-1 rounded-full bg-${signal.color}-100 dark:bg-${signal.color}-950 text-${signal.color}-700 dark:text-${signal.color}-300 border border-${signal.color}-200 dark:border-${signal.color}-800`}
+                        className="text-xs px-2.5 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400"
                       >
                         {band}
                       </span>
@@ -572,29 +574,29 @@ export default function SignalsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-linear-to-br from-cyan-500 via-blue-600 to-purple-600 text-white">
+      <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
             Start streaming in 60 seconds
           </h2>
-          <p className="text-lg text-cyan-50 mb-8 max-w-2xl mx-auto">
+          <p className="text-zinc-500 dark:text-zinc-400 mb-8 max-w-xl mx-auto leading-relaxed">
             No hardware? Try the live demo with synthetic EEG data.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href="https://cloud.pieeg.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-blue-600 font-semibold shadow-lg hover:shadow-xl transition-all"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-bold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-lg"
             >
-              <Play className="w-5 h-5" />
+              <Play className="w-4 h-4" />
               Try Live Demo
             </a>
             <a
               href="https://pieeg-server-doc.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-white text-white font-semibold hover:bg-white hover:text-blue-600 transition-all"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
               Read Documentation
               <ArrowRight className="w-4 h-4" />

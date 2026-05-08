@@ -235,53 +235,87 @@ export default function ProductsPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
-        {/* Background video — loops with fade-dim transition between repeats */}
+      <section className="relative flex flex-col items-center justify-center min-h-[60vh] overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
+        {/* Background video */}
         <HeroVideo />
-        {/* Artistic gradient overlays */}
-        <div className="absolute inset-0 bg-linear-to-br from-cyan-500/10 via-transparent to-violet-600/10 dark:from-cyan-500/15 dark:to-violet-600/15 pointer-events-none" />
-        <div className="absolute inset-0 bg-linear-to-t from-white/80 via-white/20 to-white/60 dark:from-zinc-950/85 dark:via-zinc-950/20 dark:to-zinc-950/60 pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-          <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-4">
-              <Cpu className="w-4 h-4 text-cyan-500" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
-                Complete Catalog
-              </span>
-            </div>
-            
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-4">
-              Research-grade biosignal
-              <br />
-              <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
-                hardware for everyone
-              </span>
-            </h1>
-            
-            <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 mb-5 max-w-xl mx-auto leading-relaxed">
-              11 products: 7 hardware platforms and 4 accessories. MIT-licensed software included.
-            </p>
+        {/* Layered cinematic overlays */}
+        <div className="absolute inset-0 bg-linear-to-br from-cyan-400/8 via-blue-500/5 to-violet-600/8 dark:from-cyan-400/12 dark:via-blue-500/8 dark:to-violet-600/12 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-t from-white via-white/10 to-white/50 dark:from-zinc-950 dark:via-zinc-950/10 dark:to-zinc-950/50 pointer-events-none" />
+        {/* Subtle radial glow behind the content */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-175 h-125 rounded-full bg-cyan-400/5 dark:bg-cyan-400/8 blur-[120px]" />
+        </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <HardwareSelectorButton />
-              <Link
-                href="#hardware"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-md"
-              >
-                Explore Products
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/support"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-              >
-                Documentation
-                <ExternalLink className="w-4 h-4" />
-              </Link>
-            </div>
+        {/* Content */}
+        <div className="relative w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 flex flex-col items-center text-center">
+
+          {/* Eyebrow pill */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-200/80 dark:border-zinc-700/80 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md mb-8 shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+            <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-zinc-500 dark:text-zinc-400">
+              Open-Source BCI Hardware
+            </span>
+          </div>
+
+          {/* Headline */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-[0.97] mb-5">
+            <span className="text-zinc-900 dark:text-white">Research-grade</span>
+            <br />
+            <span className="bg-linear-to-r from-cyan-400 via-blue-500 to-violet-500 bg-clip-text text-transparent">
+              biosignal hardware
+            </span>
+            <br />
+            <span className="text-zinc-900 dark:text-white">for everyone.</span>
+          </h1>
+
+          {/* Sub-headline */}
+          <p className="text-lg sm:text-xl text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-10 font-light">
+            Seven platforms. Four accessories. One mission — make brain-computer interfaces
+            accessible, open, and beautiful.
+          </p>
+
+          {/* CTA buttons */}
+          <div className="flex flex-col sm:flex-row items-center gap-3 mb-16">
+            <HardwareSelectorButton />
+            <Link
+              href="#hardware"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-semibold hover:bg-zinc-700 dark:hover:bg-zinc-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-px"
+            >
+              Explore Products
+              <ChevronRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/support"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-zinc-300 dark:border-zinc-700 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 backdrop-blur-sm transition-all hover:-translate-y-px"
+            >
+              Documentation
+              <ExternalLink className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {/* Stats row */}
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-center">
+            {[
+              { value: "7", label: "Hardware Platforms" },
+              { value: "32", label: "Channels Max" },
+              { value: "24-bit", label: "ADC Resolution" },
+              { value: "MIT", label: "Open-Source SDK" },
+            ].map(({ value, label }) => (
+              <div key={label} className="flex flex-col items-center gap-0.5">
+                <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+                  {value}
+                </span>
+                <span className="text-[11px] uppercase tracking-[0.12em] font-medium text-zinc-400 dark:text-zinc-500">
+                  {label}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
+
+        {/* Bottom fade into page */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-white dark:from-zinc-950 to-transparent pointer-events-none" />
       </section>
 
       {/* Hardware Products Section */}

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Code2, Brain, Activity, Eye, Zap, GitFork } from "lucide-react";
+import { Code2, Brain, Activity, Eye, Zap, GitFork, ExternalLink, Music, Sparkles, Globe, Webhook } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Examples — PiEEG",
@@ -8,55 +8,114 @@ export const metadata: Metadata = {
     "Real-world examples, tutorials, and BCI applications built with PiEEG hardware. From basic signal acquisition to advanced brain-computer interfaces.",
 };
 
-const categories = [
+const BASE_EXP_URL =
+  "https://github.com/pieeg-club/PiEEG-server/tree/main/dashboard/src/experiences";
+
+const liveExperiences = [
   {
-    icon: Brain,
-    title: "EEG Applications",
-    description: "Brain signal processing and BCI paradigms",
-    gradient: "from-purple-500 to-pink-600",
-    examples: [
-      { name: "Alpha Wave Neurofeedback", difficulty: "Beginner", time: "30 min" },
-      { name: "P300 Speller", difficulty: "Intermediate", time: "2 hrs" },
-      { name: "Motor Imagery Classifier", difficulty: "Advanced", time: "4 hrs" },
-      { name: "Sleep Stage Detection", difficulty: "Intermediate", time: "3 hrs" }
-    ]
-  },
-  {
-    icon: Activity,
-    title: "EMG Control",
-    description: "Muscle signal processing for gesture recognition",
+    slug: "blink-scroll",
+    name: "Blink Scroll",
+    description:
+      "Control browser scrolling using eye blinks detected from frontal EEG channels.",
+    tag: "Blink / EOG",
     gradient: "from-cyan-500 to-blue-600",
-    examples: [
-      { name: "Basic Gesture Recognition", difficulty: "Beginner", time: "45 min" },
-      { name: "Prosthetic Hand Control", difficulty: "Advanced", time: "5 hrs" },
-      { name: "Muscle Fatigue Monitor", difficulty: "Intermediate", time: "2 hrs" },
-      { name: "Hand Pose Classification", difficulty: "Advanced", time: "4 hrs" }
-    ]
-  },
-  {
-    icon: Zap,
-    title: "Real-time Processing",
-    description: "Live filtering, FFT, and feature extraction",
-    gradient: "from-green-500 to-emerald-600",
-    examples: [
-      { name: "50/60 Hz Notch Filter", difficulty: "Beginner", time: "20 min" },
-      { name: "Real-time FFT Visualization", difficulty: "Beginner", time: "30 min" },
-      { name: "Band Power Calculation", difficulty: "Intermediate", time: "1 hr" },
-      { name: "ICA Artifact Removal", difficulty: "Advanced", time: "3 hrs" }
-    ]
-  },
-  {
     icon: Eye,
-    title: "Multimodal Systems",
-    description: "Combining EEG, EMG, ECG, and EOG",
-    gradient: "from-orange-500 to-red-600",
-    examples: [
-      { name: "Heart Rate + Brain Activity", difficulty: "Intermediate", time: "2 hrs" },
-      { name: "Gaze-Directed BCI", difficulty: "Advanced", time: "6 hrs" },
-      { name: "Stress Detection System", difficulty: "Intermediate", time: "3 hrs" },
-      { name: "Full Polysomnography", difficulty: "Advanced", time: "8 hrs" }
-    ]
-  }
+  },
+  {
+    slug: "eye-track",
+    name: "Eye Track",
+    description:
+      "Real-time EOG gaze estimation — polynomial ridge regression on Fp1/Fp2 with online learning and localStorage persistence.",
+    tag: "EOG",
+    gradient: "from-purple-500 to-indigo-600",
+    icon: Eye,
+  },
+  {
+    slug: "mindcast",
+    name: "MindCast",
+    description:
+      "Attention-driven podcast playback — your focus level controls audio playback speed and clarity.",
+    tag: "Focus",
+    gradient: "from-orange-500 to-pink-600",
+    icon: Brain,
+  },
+  {
+    slug: "neural-sonification",
+    name: "Neural Sonification",
+    description:
+      "Turn your brainwaves into music — live EEG band powers mapped to audio synthesis in real time.",
+    tag: "Audio",
+    gradient: "from-green-500 to-teal-600",
+    icon: Music,
+  },
+  {
+    slug: "northern-lights",
+    name: "Northern Lights",
+    description:
+      "A mesmerizing aurora display driven by your live EEG rhythms and band power fluctuations.",
+    tag: "Visual",
+    gradient: "from-emerald-500 to-cyan-600",
+    icon: Sparkles,
+  },
+  {
+    slug: "p300-mini-game",
+    name: "P300 Mini Game",
+    description:
+      "Classic P300 oddball paradigm reimagined as an interactive mini-game with a swappable ML backend.",
+    tag: "BCI",
+    gradient: "from-yellow-500 to-orange-600",
+    icon: Zap,
+  },
+  {
+    slug: "spoon-bend",
+    name: "Spoon Bend",
+    description:
+      "Focus hard enough to bend a virtual spoon — a telekinetic experience powered by your attention index.",
+    tag: "Focus",
+    gradient: "from-red-500 to-pink-600",
+    icon: Brain,
+  },
+  {
+    slug: "vrchat-osc",
+    name: "VRChat OSC",
+    description:
+      "Stream live EEG data into VRChat via OSC to animate avatars and environments with real brainwaves.",
+    tag: "VR / 3D",
+    gradient: "from-violet-500 to-purple-600",
+    icon: Globe,
+  },
+  {
+    slug: "webhook-wizard",
+    name: "Webhook Wizard",
+    description:
+      "Trigger any HTTP webhook from EEG events — blinks, focus spikes, relaxation peaks, and custom thresholds.",
+    tag: "Automation",
+    gradient: "from-slate-500 to-zinc-600",
+    icon: Webhook,
+  },
+];
+
+const comingSoonExperiences = [
+  {
+    name: "Alpha Neurofeedback",
+    description: "Real-time alpha wave training loop with visual reward feedback.",
+    tag: "EEG",
+  },
+  {
+    name: "Motor Imagery Classifier",
+    description: "Left/right hand imagery with live ML inference and visual cues.",
+    tag: "BCI",
+  },
+  {
+    name: "EMG Gesture Recognition",
+    description: "Surface EMG hand pose classification — up to 15 gestures.",
+    tag: "EMG",
+  },
+  {
+    name: "Sleep Stage Scorer",
+    description: "Automatic AASM sleep stage classification from overnight EEG.",
+    tag: "Sleep",
+  },
 ];
 
 const featuredProjects = [
@@ -213,65 +272,78 @@ export default function ExamplesPage() {
         </div>
       </section>
 
-      {/* Example Categories */}
+      {/* Live Dashboard Experiences */}
       <section className="py-10 sm:py-14 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Examples by Category
+              Live Dashboard Experiences
             </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
-              Step-by-step tutorials for every skill level
+            <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+              Interactive BCI experiences built on PiEEG hardware. Click any card to explore its source code on GitHub.
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            {categories.map((category, idx) => {
-              const Icon = category.icon;
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {liveExperiences.map((exp) => {
+              const Icon = exp.icon;
               return (
-                <div
-                  key={idx}
-                  className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden"
+                <a
+                  key={exp.slug}
+                  href={`${BASE_EXP_URL}/${exp.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-lg transition-all"
                 >
-                  <div className={`p-6 bg-linear-to-r ${category.gradient}`}>
-                    <div className="flex items-center gap-4 text-white">
-                      <Icon className="w-8 h-8" />
-                      <div>
-                        <h3 className="text-2xl font-bold">{category.title}</h3>
-                        <p className="text-white/90 text-sm">{category.description}</p>
+                  <div className={`h-1.5 bg-linear-to-r ${exp.gradient}`} />
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className={`p-2 rounded-lg bg-linear-to-br ${exp.gradient}`}>
+                        <Icon className="w-5 h-5 text-white" />
                       </div>
+                      <ExternalLink className="w-4 h-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors" />
                     </div>
+                    <h3 className="font-bold text-lg mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                      {exp.name}
+                    </h3>
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400 flex-1 mb-4">
+                      {exp.description}
+                    </p>
+                    <span className="self-start px-2.5 py-1 rounded-full text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                      {exp.tag}
+                    </span>
                   </div>
-                  
-                  <div className="p-6">
-                    <ul className="space-y-3">
-                      {category.examples.map((example, i) => (
-                        <li
-                          key={i}
-                          className="flex items-center justify-between p-4 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-all group cursor-pointer"
-                        >
-                          <div>
-                            <div className="font-semibold text-sm group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                              {example.name}
-                            </div>
-                            <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-                              {example.time}
-                            </div>
-                          </div>
-                          <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
-                            example.difficulty === 'Beginner' ? 'bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-400' :
-                            example.difficulty === 'Intermediate' ? 'bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-400' :
-                            'bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-400'
-                          }`}>
-                            {example.difficulty}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                </a>
               );
             })}
+
+            {comingSoonExperiences.map((exp, i) => (
+              <div
+                key={i}
+                className="flex flex-col rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 overflow-hidden opacity-60"
+              >
+                <div className="h-1.5 bg-zinc-200 dark:bg-zinc-800" />
+                <div className="p-6 flex flex-col flex-1">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="p-2 rounded-lg bg-zinc-200 dark:bg-zinc-800">
+                      <Activity className="w-5 h-5 text-zinc-400" />
+                    </div>
+                    <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
+                      Coming Soon
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-lg mb-2 text-zinc-500 dark:text-zinc-400">
+                    {exp.name}
+                  </h3>
+                  <p className="text-sm text-zinc-400 dark:text-zinc-500 flex-1 mb-4">
+                    {exp.description}
+                  </p>
+                  <span className="self-start px-2.5 py-1 rounded-full text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-400">
+                    {exp.tag}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

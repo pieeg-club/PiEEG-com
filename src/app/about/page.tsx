@@ -26,7 +26,7 @@ const team = [
   {
     name: "Youssef El Abbassi",
     role: "Software Architect",
-    bio: "Polymath software architect and BCI developer building the open-source software ecosystem around PiEEG. Creator of PiEEG-Server, PhantomLoop, a real-time BCI decoder visualization tool, and PhantomMusic, a real-time BCI-to-music streaming system. I’m focused on pushing the boundaries of what’s possible with consumer-grade biosignal hardware and making advanced brain-computer interface tools more accessible to developers, researchers, and creators.",
+    bio: "Software architect and BCI developer building the open-source software ecosystem around PiEEG. Creator of PiEEG-Server, PhantomLoop, a real-time BCI decoder visualization tool, and PhantomMusic, a real-time BCI-to-music streaming system. I’m focused on pushing the boundaries of what’s possible with consumer-grade biosignal hardware and making advanced brain-computer interface tools more accessible to developers, researchers, and creators.",
     location: "Remote",
     github: "https://github.com/yelabb/",
     linkedin: "https://www.linkedin.com/in/yelabb",

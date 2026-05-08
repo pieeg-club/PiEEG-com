@@ -3,7 +3,10 @@ const fs = require('fs');
 const path = require('path');
 
 const THRESHOLD_BYTES = 1 * 1024 * 1024; // 1 MB
-const PUBLIC_DIR = path.join(__dirname, '../public');
+const SCAN_DIRS = [
+  path.join(__dirname, '../public'),
+  path.join(__dirname, '../src/app'),
+];
 const SUPPORTED_EXTS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.jfif']);
 
 async function getFilesRecursive(dir) {
@@ -20,7 +23,7 @@ async function getFilesRecursive(dir) {
   return files;
 }
 
-async function optimizeImage(filePath) {
+async function optimizeImage(filePath, baseDir) {
   const sizeBefore = fs.statSync(filePath).size;
   if (sizeBefore <= THRESHOLD_BYTES) return;
 
@@ -50,32 +53,44 @@ async function optimizeImage(filePath) {
     if (sizeAfter < sizeBefore) {
       fs.renameSync(tmpPath, filePath);
       const saved = ((sizeBefore - sizeAfter) / 1024).toFixed(1);
-      console.log(`  ✅ ${path.relative(PUBLIC_DIR, filePath)}: ${(sizeBefore / 1024).toFixed(1)} KB → ${(sizeAfter / 1024).toFixed(1)} KB (saved ${saved} KB)`);
+      console.log(`  ✅ ${path.relative(baseDir, filePath)}: ${(sizeBefore / 1024).toFixed(1)} KB → ${(sizeAfter / 1024).toFixed(1)} KB (saved ${saved} KB)`);
     } else {
       fs.unlinkSync(tmpPath);
-      console.log(`  ⏭  ${path.relative(PUBLIC_DIR, filePath)}: already optimal, skipped`);
+      console.log(`  ⏭  ${path.relative(baseDir, filePath)}: already optimal, skipped`);
     }
   } catch (err) {
     if (fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
-    console.error(`  ❌ ${path.relative(PUBLIC_DIR, filePath)}: ${err.message}`);
+    console.error(`  ❌ ${path.relative(baseDir, filePath)}: ${err.message}`);
   }
 }
 
 async function main() {
-  console.log(`Scanning ${PUBLIC_DIR} for images > 1 MB...\n`);
-  const files = await getFilesRecursive(PUBLIC_DIR);
-  const large = files.filter((f) => fs.statSync(f).size > THRESHOLD_BYTES);
+  let totalLarge = 0;
 
-  if (large.length === 0) {
-    console.log('No images exceed 1 MB. Nothing to do.');
-    return;
+  for (const dir of SCAN_DIRS) {
+    if (!fs.existsSync(dir)) continue;
+    console.log(`Scanning ${dir} for images > 1 MB...\n`);
+    const files = await getFilesRecursive(dir);
+    const large = files.filter((f) => fs.statSync(f).size > THRESHOLD_BYTES);
+
+    if (large.length === 0) {
+      console.log('  No images exceed 1 MB in this directory.\n');
+      continue;
+    }
+
+    totalLarge += large.length;
+    console.log(`  Found ${large.length} image(s) to optimize:\n`);
+    for (const file of large) {
+      await optimizeImage(file, dir);
+    }
+    console.log('');
   }
 
-  console.log(`Found ${large.length} image(s) to optimize:\n`);
-  for (const file of large) {
-    await optimizeImage(file);
+  if (totalLarge === 0) {
+    console.log('No images exceed 1 MB anywhere. Nothing to do.');
+  } else {
+    console.log('Done.');
   }
-  console.log('\nDone.');
 }
 
 main();

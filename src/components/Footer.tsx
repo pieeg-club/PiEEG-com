@@ -3,13 +3,13 @@ import Image from "next/image";
 
 const footerLinks = {
   Hardware: [
-    { label: "PiEEG", href: "/hardware#pieeg" },
-    { label: "IronBCI", href: "/hardware#ironbci" },
-    { label: "IronBCI-32", href: "/hardware#ironbci-32" },
-    { label: "PiEEG-16", href: "/hardware#pieeg-16" },
-    { label: "ardEEG", href: "/hardware#ardeeg" },
-    { label: "JNEEG", href: "/hardware#jneeg" },
-    { label: "MicroBCI", href: "/hardware#microbci" },
+    { label: "PiEEG", href: "/hardware/pieeg" },
+    { label: "IronBCI", href: "/hardware/ironbci" },
+    { label: "IronBCI-32", href: "/hardware/ironbci-32" },
+    { label: "PiEEG-16", href: "/hardware/pieeg-16" },
+    { label: "ardEEG", href: "/hardware/ardeeg" },
+    { label: "JNEEG", href: "/hardware/jneeg" },
+    { label: "MicroBCI", href: "/hardware/microbci" },
   ],
   Resources: [
     { label: "Documentation", href: "/support" },

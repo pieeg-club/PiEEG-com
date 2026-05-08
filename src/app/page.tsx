@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Zap, Cpu, Terminal, ExternalLink, Play, Bluetooth, Usb, CircuitBoard, Radio, Copy, Check } from "lucide-react";
+import { ArrowRight, Zap, Cpu, Terminal, ExternalLink, Play, Bluetooth, Usb, CircuitBoard, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
@@ -1187,6 +1187,212 @@ function FeaturesSection() {
   );
 }
 
+// ─── Web BCI Experiences ───────────────────────────────────────────────────────
+
+const BASE_EXP_URL =
+  "https://github.com/pieeg-club/PiEEG-server/tree/main/dashboard/src/experiences";
+
+const webExperiences = [
+  {
+    slug: "blink-scroll",
+    name: "Blink Scroll",
+    tag: "EOG",
+    gradient: "from-cyan-500 to-blue-600",
+    Icon: Eye,
+    description: "Control browser scrolling using eye blinks detected from frontal EEG channels.",
+  },
+  {
+    slug: "eye-track",
+    name: "Eye Track",
+    tag: "EOG",
+    gradient: "from-purple-500 to-indigo-600",
+    Icon: Eye,
+    description: "Real-time gaze estimation — polynomial regression on Fp1/Fp2 with online learning.",
+  },
+  {
+    slug: "mindcast",
+    name: "MindCast",
+    tag: "Focus",
+    gradient: "from-orange-500 to-pink-600",
+    Icon: Brain,
+    description: "Your focus level controls podcast playback speed and audio clarity in real time.",
+  },
+  {
+    slug: "neural-sonification",
+    name: "Neural Sonification",
+    tag: "Audio",
+    gradient: "from-green-500 to-teal-600",
+    Icon: Music,
+    description: "Turn your brainwaves into live music — EEG band powers mapped to audio synthesis.",
+  },
+  {
+    slug: "northern-lights",
+    name: "Northern Lights",
+    tag: "Visual",
+    gradient: "from-emerald-500 to-cyan-600",
+    Icon: Sparkles,
+    description: "A mesmerizing aurora display driven by your live EEG rhythms and band powers.",
+  },
+  {
+    slug: "p300-mini-game",
+    name: "P300 Mini Game",
+    tag: "BCI",
+    gradient: "from-yellow-500 to-orange-600",
+    Icon: Zap,
+    description: "Classic P300 oddball paradigm reimagined as an interactive mini-game with swappable ML.",
+  },
+  {
+    slug: "spoon-bend",
+    name: "Spoon Bend",
+    tag: "Focus",
+    gradient: "from-red-500 to-pink-600",
+    Icon: Brain,
+    description: "Focus hard enough to bend a virtual spoon. Telekinesis powered by your attention index.",
+  },
+  {
+    slug: "vrchat-osc",
+    name: "VRChat OSC",
+    tag: "VR / 3D",
+    gradient: "from-violet-500 to-purple-600",
+    Icon: Globe,
+    description: "Stream live EEG into VRChat via OSC to animate avatars with real brainwaves.",
+  },
+  {
+    slug: "webhook-wizard",
+    name: "Webhook Wizard",
+    tag: "Automation",
+    gradient: "from-slate-500 to-zinc-600",
+    Icon: Webhook,
+    description: "Trigger any HTTP webhook from blinks, focus spikes, and relaxation peaks.",
+  },
+];
+
+function WebBCISection() {
+  const row2 = [
+    ...webExperiences.slice(5),
+    ...webExperiences.slice(0, 5),
+  ];
+
+  return (
+    <section className="py-16 bg-linear-to-b from-white via-slate-50/60 to-white dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 overflow-hidden">
+      {/* Header */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-12 text-center">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-200 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/50 mb-6">
+          <Sparkles className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+          <span className="text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
+            Web BCI Experiences
+          </span>
+        </div>
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+          Raw EEG in. Working BCI out.<br />
+          <span className="bg-linear-to-r from-cyan-500 via-violet-500 to-pink-500 dark:from-cyan-400 dark:via-violet-400 dark:to-pink-400 bg-clip-text text-transparent">
+            JavaScript. Open-source. Yours.
+          </span>
+        </h2>
+        <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+          Real-time BCI experiences for researchers, students &amp; hackers. From sensor stream to running app — open-source JavaScript, ready to clone and extend.
+        </p>
+      </div>
+
+      {/* Dual scrolling rows */}
+      <div className="relative space-y-4">
+        {/* Edge fade masks */}
+        <div className="absolute inset-y-0 left-0 w-24 sm:w-40 bg-linear-to-r from-white dark:from-zinc-950 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-24 sm:w-40 bg-linear-to-l from-white dark:from-zinc-950 to-transparent z-10 pointer-events-none" />
+
+        {/* Row 1 — scrolls left */}
+        <div className="overflow-hidden">
+          <div className="flex gap-4 animate-scroll-slow hover:[animation-play-state:paused]">
+            {[...webExperiences, ...webExperiences].map((exp, i) => {
+              const Icon = exp.Icon;
+              return (
+                <a
+                  key={i}
+                  href={`${BASE_EXP_URL}/${exp.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group w-72 shrink-0 flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer"
+                >
+                  <div className={`h-1 bg-linear-to-r ${exp.gradient}`} />
+                  <div className="p-5 flex flex-col gap-3">
+                    <div className="flex items-start justify-between">
+                      <div className={`p-2 rounded-lg bg-linear-to-br ${exp.gradient}`}>
+                        <Icon className="w-4 h-4 text-white" />
+                      </div>
+                      <ExternalLink className="w-3.5 h-3.5 text-zinc-400 opacity-0 group-hover:opacity-100 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-all" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-zinc-900 dark:text-zinc-100 mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                        {exp.name}
+                      </h3>
+                      <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed line-clamp-2">
+                        {exp.description}
+                      </p>
+                    </div>
+                    <span className="self-start px-2 py-0.5 rounded-full text-[10px] font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
+                      {exp.tag}
+                    </span>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Row 2 — scrolls right (offset order) */}
+        <div className="overflow-hidden">
+          <div className="flex gap-4 animate-scroll-slow-reverse hover:[animation-play-state:paused]">
+            {[...row2, ...row2].map((exp, i) => {
+              const Icon = exp.Icon;
+              return (
+                <a
+                  key={i}
+                  href={`${BASE_EXP_URL}/${exp.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group w-72 shrink-0 flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer"
+                >
+                  <div className={`h-1 bg-linear-to-r ${exp.gradient}`} />
+                  <div className="p-5 flex flex-col gap-3">
+                    <div className="flex items-start justify-between">
+                      <div className={`p-2 rounded-lg bg-linear-to-br ${exp.gradient}`}>
+                        <Icon className="w-4 h-4 text-white" />
+                      </div>
+                      <ExternalLink className="w-3.5 h-3.5 text-zinc-400 opacity-0 group-hover:opacity-100 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-all" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-zinc-900 dark:text-zinc-100 mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                        {exp.name}
+                      </h3>
+                      <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed line-clamp-2">
+                        {exp.description}
+                      </p>
+                    </div>
+                    <span className="self-start px-2 py-0.5 rounded-full text-[10px] font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
+                      {exp.tag}
+                    </span>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div className="text-center mt-12 px-4">
+        <Link
+          href="/examples"
+          className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-semibold text-sm hover:bg-zinc-700 dark:hover:bg-zinc-100 transition-all hover:scale-105 shadow-lg shadow-zinc-900/20 dark:shadow-white/10"
+        >
+          Explore all experiences
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
+    </section>
+  );
+}
+
 function FeaturedSection() {
   const publications = [
     "Tom's Hardware",
@@ -1475,6 +1681,7 @@ export default function Home() {
       <ProductsSection />
       <SignalsSection />
       <FeaturesSection />
+      <WebBCISection />
       <FeaturedSection />
       <CtaSection />
     </main>

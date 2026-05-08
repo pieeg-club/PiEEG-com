@@ -210,6 +210,15 @@ body {
   will-change: transform;
 }
 
+@keyframes scroll-slow-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+.animate-scroll-slow-reverse {
+  animation: scroll-slow-reverse 40s linear infinite;
+  will-change: transform;
+}
+
 /* ── EEG waveform streaming animation ────────────────────── */
 @keyframes eeg-stream {
   from { transform: translateX(0); }

@@ -192,7 +192,83 @@ export default function ExamplesPage() {
         </div>
       </section>
 
-      {/* Featured Projects */}
+      {/* Live Dashboard Experiences */}
+      <section className="py-10 sm:py-14 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Live Dashboard Experiences
+            </h2>
+            <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+              Interactive BCI experiences built on PiEEG hardware. Click any card to explore its source code on GitHub.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {liveExperiences.map((exp) => {
+              const Icon = exp.icon;
+              return (
+                <a
+                  key={exp.slug}
+                  href={`${BASE_EXP_URL}/${exp.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-lg transition-all"
+                >
+                  <div className={`h-1.5 bg-linear-to-r ${exp.gradient}`} />
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className={`p-2 rounded-lg bg-linear-to-br ${exp.gradient}`}>
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors" />
+                    </div>
+                    <h3 className="font-bold text-lg mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                      {exp.name}
+                    </h3>
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400 flex-1 mb-4">
+                      {exp.description}
+                    </p>
+                    <span className="self-start px-2.5 py-1 rounded-full text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                      {exp.tag}
+                    </span>
+                  </div>
+                </a>
+              );
+            })}
+
+            {comingSoonExperiences.map((exp, i) => (
+              <div
+                key={i}
+                className="flex flex-col rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 overflow-hidden opacity-60"
+              >
+                <div className="h-1.5 bg-zinc-200 dark:bg-zinc-800" />
+                <div className="p-6 flex flex-col flex-1">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="p-2 rounded-lg bg-zinc-200 dark:bg-zinc-800">
+                      <Activity className="w-5 h-5 text-zinc-400" />
+                    </div>
+                    <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
+                      Coming Soon
+                    </span>
+                  </div>
+                  <h3 className="font-bold text-lg mb-2 text-zinc-500 dark:text-zinc-400">
+                    {exp.name}
+                  </h3>
+                  <p className="text-sm text-zinc-400 dark:text-zinc-500 flex-1 mb-4">
+                    {exp.description}
+                  </p>
+                  <span className="self-start px-2.5 py-1 rounded-full text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-400">
+                    {exp.tag}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Research Applications */}
       <section className="py-10 sm:py-14 bg-white dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
@@ -268,82 +344,6 @@ export default function ExamplesPage() {
               </Link>{" "}
               to share your projects and get support from fellow developers and researchers.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Live Dashboard Experiences */}
-      <section className="py-10 sm:py-14 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Live Dashboard Experiences
-            </h2>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              Interactive BCI experiences built on PiEEG hardware. Click any card to explore its source code on GitHub.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {liveExperiences.map((exp) => {
-              const Icon = exp.icon;
-              return (
-                <a
-                  key={exp.slug}
-                  href={`${BASE_EXP_URL}/${exp.slug}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-lg transition-all"
-                >
-                  <div className={`h-1.5 bg-linear-to-r ${exp.gradient}`} />
-                  <div className="p-6 flex flex-col flex-1">
-                    <div className="flex items-start justify-between mb-3">
-                      <div className={`p-2 rounded-lg bg-linear-to-br ${exp.gradient}`}>
-                        <Icon className="w-5 h-5 text-white" />
-                      </div>
-                      <ExternalLink className="w-4 h-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors" />
-                    </div>
-                    <h3 className="font-bold text-lg mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                      {exp.name}
-                    </h3>
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400 flex-1 mb-4">
-                      {exp.description}
-                    </p>
-                    <span className="self-start px-2.5 py-1 rounded-full text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
-                      {exp.tag}
-                    </span>
-                  </div>
-                </a>
-              );
-            })}
-
-            {comingSoonExperiences.map((exp, i) => (
-              <div
-                key={i}
-                className="flex flex-col rounded-2xl border border-dashed border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 overflow-hidden opacity-60"
-              >
-                <div className="h-1.5 bg-zinc-200 dark:bg-zinc-800" />
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="p-2 rounded-lg bg-zinc-200 dark:bg-zinc-800">
-                      <Activity className="w-5 h-5 text-zinc-400" />
-                    </div>
-                    <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
-                      Coming Soon
-                    </span>
-                  </div>
-                  <h3 className="font-bold text-lg mb-2 text-zinc-500 dark:text-zinc-400">
-                    {exp.name}
-                  </h3>
-                  <p className="text-sm text-zinc-400 dark:text-zinc-500 flex-1 mb-4">
-                    {exp.description}
-                  </p>
-                  <span className="self-start px-2.5 py-1 rounded-full text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-400">
-                    {exp.tag}
-                  </span>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

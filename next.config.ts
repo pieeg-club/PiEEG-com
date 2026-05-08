@@ -11,8 +11,8 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // ── Home ────────────────────────────────────────────────────────────────
-      { source: "/index.html", destination: "", permanent: true },
-      { source: "/embed/index.html", destination: "", permanent: true },
+      { source: "/index.html", destination: "/", permanent: true },
+      { source: "/embed/index.html", destination: "/", permanent: true },
 
       // ── Main navigation pages ────────────────────────────────────────────────
       { source: "/contact-to-pieeg", destination: "/contact", permanent: true },

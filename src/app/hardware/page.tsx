@@ -228,6 +228,17 @@ const accessories = [
     status: "Available"
   },
   {
+    id: "32ch-wet-cap",
+    name: "32 Channel Wet EEG Cap Kit",
+    description: "Professional nylon EEG cap with 32 wet Ag/AgCl electrodes and 2 ear clip references. Plug-and-play with IronBCI-32.",
+    specs: "32 channels • Wet Ag/AgCl • 2.54mm pitch • IronBCI-32",
+    gradient: "from-red-500 to-orange-500",
+    image: "/products/cap32-wet.webp",
+    purchaseUrl: "https://www.elecrow.com/cap-eeg-kit-32-channels-with-32-wet-electrodes-and-2-clips-electrode.html",
+    href: "/hardware/32ch-wet-cap",
+    status: "Available"
+  },
+  {
     id: "conductive-gel",
     name: "Conductive Gel for EEG",
     description: "Low-impedance electrolyte gel for optimal electrode-skin contact with wet electrodes.",

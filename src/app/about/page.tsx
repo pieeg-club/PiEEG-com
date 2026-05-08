@@ -59,47 +59,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="py-10 sm:py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-4">
-                <Target className="w-4 h-4 text-cyan-500" />
-                <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
-                  Our Mission
-                </span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
-                Breaking Down Barriers to Neuroscience
-              </h2>
-              <div className="space-y-4">
-                <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                  For years, the PiEEG team has been dedicated to breaking down the barriers of neuroscience. We believe that measuring the human body&apos;s signals—whether it&apos;s the brain (EEG), muscles (EMG), or eyes (EOG)—shouldn&apos;t be restricted to high-cost equipment.
-                </p>
-                <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                  Our mission is to make PiEEG the universal bridge between biology and technology for research purposes. Designed for simplicity and compatible with a vast range of electrodes, our hardware lets you go from unboxing to data-tracking in minutes. If you can run a Python script, you can explore the human nervous system.
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { value: "11+", label: "Science Papers", sub: "peer-reviewed citations", from: "from-cyan-500", to: "to-blue-500" },
-                { value: "28+", label: "Media Features", sub: "podcasts & outlets", from: "from-blue-500", to: "to-indigo-500" },
-                { value: "MIT", label: "Open Software", sub: "MIT-licensed SDKs", from: "from-violet-500", to: "to-purple-500" },
-                { value: "Global", label: "Community", sub: "worldwide researchers", from: "from-pink-500", to: "to-rose-500" },
-              ].map(({ value, label, sub, from, to }) => (
-                <div key={label} className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex flex-col gap-1">
-                  <div className={`text-2xl font-extrabold bg-linear-to-br ${from} ${to} bg-clip-text text-transparent`}>{value}</div>
-                  <div className="text-sm font-bold text-zinc-900 dark:text-zinc-100">{label}</div>
-                  <div className="text-xs text-zinc-500 dark:text-zinc-400">{sub}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Team */}
       <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -198,6 +157,47 @@ export default function AboutPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mission */}
+      <section className="py-10 sm:py-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-4">
+                <Target className="w-4 h-4 text-cyan-500" />
+                <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
+                  Our Mission
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+                Breaking Down Barriers to Neuroscience
+              </h2>
+              <div className="space-y-4">
+                <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                  For years, the PiEEG team has been dedicated to breaking down the barriers of neuroscience. We believe that measuring the human body&apos;s signals—whether it&apos;s the brain (EEG), muscles (EMG), or eyes (EOG)—shouldn&apos;t be restricted to high-cost equipment.
+                </p>
+                <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                  Our mission is to make PiEEG the universal bridge between biology and technology for research purposes. Designed for simplicity and compatible with a vast range of electrodes, our hardware lets you go from unboxing to data-tracking in minutes. If you can run a Python script, you can explore the human nervous system.
+                </p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { value: "11+", label: "Science Papers", sub: "peer-reviewed citations", from: "from-cyan-500", to: "to-blue-500" },
+                { value: "28+", label: "Media Features", sub: "podcasts & outlets", from: "from-blue-500", to: "to-indigo-500" },
+                { value: "MIT", label: "Open Software", sub: "MIT-licensed SDKs", from: "from-violet-500", to: "to-purple-500" },
+                { value: "Global", label: "Community", sub: "worldwide researchers", from: "from-pink-500", to: "to-rose-500" },
+              ].map(({ value, label, sub, from, to }) => (
+                <div key={label} className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex flex-col gap-1">
+                  <div className={`text-2xl font-extrabold bg-linear-to-br ${from} ${to} bg-clip-text text-transparent`}>{value}</div>
+                  <div className="text-sm font-bold text-zinc-900 dark:text-zinc-100">{label}</div>
+                  <div className="text-xs text-zinc-500 dark:text-zinc-400">{sub}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

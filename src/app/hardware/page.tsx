@@ -85,7 +85,7 @@ const hardwareProducts = [
     badge: "Wireless",
     gradient: "from-purple-500 to-pink-600",
     bgGradient: "from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30",
-    image: "/products/ironbci.jpg",
+    image: "/products/ironbci-top.jpg",
     purchaseUrl: "https://www.elecrow.com/ironbci.html",
     github: "https://github.com/pieeg-club/ironbci",
     youtube: "https://www.youtube.com/watch?v=gWpfsLuq_eE",

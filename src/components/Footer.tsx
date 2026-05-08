@@ -28,6 +28,7 @@ const footerLinks = {
     { label: "News", href: "/news" },
     { label: "Partnership", href: "/partnership" },
     { label: "Contact", href: "/contact" },
+    { label: "Liability", href: "/liability" },
   ],
 };
 

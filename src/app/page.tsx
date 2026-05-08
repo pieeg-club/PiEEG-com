@@ -586,7 +586,7 @@ function HeroSection() {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("pip install pieeg-server");
+    navigator.clipboard.writeText("curl -sSL https://raw.githubusercontent.com/pieeg-club/PiEEG-server/main/install.sh | bash");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -687,7 +687,7 @@ function HeroSection() {
               <div className="px-6 py-6 bg-white dark:bg-zinc-950">
                 <div className="flex items-center gap-2 font-mono text-sm sm:text-base">
                   <span className="text-purple-500 dark:text-purple-400">$</span>
-                  <span className="text-zinc-900 dark:text-zinc-100">pip install pieeg-server</span>
+                  <span className="text-zinc-900 dark:text-zinc-100">curl -sSL https://raw.githubusercontent.com/pieeg-club/PiEEG-server/main/install.sh | bash</span>
                 </div>
               </div>
             </div>
@@ -1298,7 +1298,7 @@ function FeaturedSection() {
 
 function CtaSection() {
   const [copied, setCopied] = useState(false);
-  const installCommand = "pip install pieeg-server";
+  const installCommand = "curl -sSL https://raw.githubusercontent.com/pieeg-club/PiEEG-server/main/install.sh | bash";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(installCommand);

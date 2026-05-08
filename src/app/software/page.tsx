@@ -40,7 +40,7 @@ const quickStart = [
   {
     step: "1",
     title: "Install",
-    code: "pip install pieeg-server",
+    code: "curl -sSL https://raw.githubusercontent.com/pieeg-club/PiEEG-server/main/install.sh | bash",
     description: "Requires Python 3.10+. Auto-detects your hardware.",
     color: "cyan"
   },

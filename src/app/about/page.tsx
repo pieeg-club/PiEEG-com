@@ -9,6 +9,21 @@ export const metadata: Metadata = {
     "PiEEG provides access to neurobiology through research-grade biosignal hardware compatible with various electrodes for EEG, EMG, ECG, allowing the study and application of data in real-world conditions.",
 };
 
+const products = [
+  { name: "PiEEG",       img: "/products/pieeg.png",        href: "/hardware/pieeg" },
+  { name: "PiEEG 16",    img: "/products/pieeg-16.png",     href: "/hardware/pieeg-16" },
+  { name: "IronBCI",     img: "/products/ironbci.jpg",      href: "/hardware/ironbci" },
+  { name: "IronBCI 32",  img: "/products/ironbci-32.png",   href: "/hardware/ironbci-32" },
+  { name: "MicroBCI",    img: "/products/microbci.png",     href: "/hardware/microbci" },
+  { name: "JnEEG",       img: "/products/jneeg.png",        href: "/hardware/jneeg" },
+  { name: "ArdEEG",      img: "/products/ardeeg.png",       href: "/hardware/ardeeg" },
+  { name: "16ch Cap",    img: "/products/cap16.png",        href: "/hardware/16ch-cap" },
+  { name: "8ch Dry Cap", img: "/products/cap8-dry.png",     href: "/hardware/8ch-dry-cap" },
+  { name: "8ch Wet Cap", img: "/products/cap8-wet.jpg",     href: "/hardware/8ch-wet-cap" },
+  { name: "EMG Kit",     img: "/products/emg-kit.jpg",      href: "/hardware/emg-kit" },
+  { name: "Gel",         img: "/products/gel.png",          href: "/hardware/conductive-gel" },
+];
+
 const team = [
   {
     name: "Ildar Rakhmatulin",
@@ -58,6 +73,32 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Product Image Strip */}
+      <div className="marquee-fade overflow-hidden border-b border-zinc-200 dark:border-zinc-800 py-5">
+        <div className="flex gap-5 animate-marquee w-max px-5">
+          {[...products, ...products].map((p, i) => (
+            <Link
+              key={i}
+              href={p.href}
+              className="flex flex-col items-center gap-2 group shrink-0"
+            >
+              <div className="w-20 h-20 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-sm group-hover:shadow-md group-hover:scale-105 group-hover:border-cyan-400 dark:group-hover:border-cyan-500 transition-all duration-200">
+                <Image
+                  src={p.img}
+                  alt={p.name}
+                  width={80}
+                  height={80}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <span className="text-[10px] font-semibold text-zinc-400 dark:text-zinc-500 group-hover:text-cyan-500 transition-colors text-center leading-tight max-w-[80px]">
+                {p.name}
+              </span>
+            </Link>
+          ))}
+        </div>
+      </div>
 
       {/* Team */}
       <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">

@@ -9,6 +9,47 @@ import {
   Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid,
 } from "lucide-react";
 
+const ANNOUNCEMENT_KEY = "announcement-hackathon-ottawa-dismissed";
+
+function AnnouncementBar() {
+  const [visible, setVisible] = useState(false);
+
+  // Runs once on mount (client only) — avoids SSR mismatch
+  const initialized = useRef(false);
+  if (typeof window !== "undefined" && !initialized.current) {
+    initialized.current = true;
+    if (!sessionStorage.getItem(ANNOUNCEMENT_KEY)) {
+      // We mutate state via a ref trick only before first render is committed
+    }
+  }
+
+  useEffect(() => {
+    if (!sessionStorage.getItem(ANNOUNCEMENT_KEY)) setVisible(true);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <div className="relative flex items-center justify-center gap-3 px-4 py-2 bg-cyan-600 dark:bg-cyan-700 text-white text-sm">
+      <Link
+        href="/news/neuroscience-hackathon-announcement"
+        className="flex items-center gap-2 hover:underline underline-offset-2"
+      >
+        <span className="px-2 py-0.5 rounded-full bg-white/20 text-[11px] font-bold uppercase tracking-wide">Events</span>
+        <span className="font-medium">Neuroscience Hackathon is coming to Ottawa</span>
+        <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+      </Link>
+      <button
+        onClick={() => { sessionStorage.setItem(ANNOUNCEMENT_KEY, "1"); setVisible(false); }}
+        className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-white/20 transition-colors"
+        aria-label="Dismiss announcement"
+      >
+        <X className="w-3.5 h-3.5" />
+      </button>
+    </div>
+  );
+}
+
 function GitHubIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -103,6 +144,7 @@ export function Navbar() {
       ref={headerRef}
       className="sticky top-0 z-50 w-full border-b border-zinc-200/60 dark:border-zinc-800/60 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl backdrop-saturate-150"
     >
+      <AnnouncementBar />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
 

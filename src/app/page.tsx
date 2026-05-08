@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Zap, Cpu, Terminal, ExternalLink, Play, Bluetooth, Usb, CircuitBoard, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook } from "lucide-react";
+import { type LucideIcon, ArrowRight, Zap, Cpu, Terminal, ExternalLink, Play, Bluetooth, Usb, CircuitBoard, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
@@ -582,24 +582,44 @@ function SignalWave() {
 
 // ─── Sections ─────────────────────────────────────────────────────────────────
 
-function HeroSection() {
-  const [copied, setCopied] = useState(false);
+// ── Vitruvian service node ────────────────────────────────────────────────────
+const VITRUVIAN_ACCENTS: Record<string, { bg: string; border: string; text: string }> = {
+  violet:  { bg: "bg-violet-500",  border: "border-violet-200/60 dark:border-violet-800/40",   text: "text-violet-700 dark:text-violet-300"  },
+  cyan:    { bg: "bg-cyan-500",    border: "border-cyan-200/60 dark:border-cyan-800/40",        text: "text-cyan-700 dark:text-cyan-300"     },
+  blue:    { bg: "bg-blue-500",    border: "border-blue-200/60 dark:border-blue-800/40",        text: "text-blue-700 dark:text-blue-300"     },
+  sky:     { bg: "bg-sky-500",     border: "border-sky-200/60 dark:border-sky-800/40",          text: "text-sky-700 dark:text-sky-300"       },
+  teal:    { bg: "bg-teal-500",    border: "border-teal-200/60 dark:border-teal-800/40",        text: "text-teal-700 dark:text-teal-300"     },
+  emerald: { bg: "bg-emerald-500", border: "border-emerald-200/60 dark:border-emerald-800/40", text: "text-emerald-700 dark:text-emerald-300" },
+  amber:   { bg: "bg-amber-500",   border: "border-amber-200/60 dark:border-amber-800/40",     text: "text-amber-700 dark:text-amber-300"   },
+  rose:    { bg: "bg-rose-500",    border: "border-rose-200/60 dark:border-rose-800/40",        text: "text-rose-700 dark:text-rose-300"     },
+};
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText("pip install pieeg-server");
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
+function VitruvianNode({ icon: Icon, title, sub, accent }: {
+  icon: LucideIcon; title: string; sub: string; accent: string;
+}) {
+  const s = VITRUVIAN_ACCENTS[accent] ?? VITRUVIAN_ACCENTS.cyan;
   return (
-    <section className="relative flex flex-col items-center justify-center text-center overflow-hidden min-h-[calc(100svh-3.5rem)] px-4">
-      
+    <div className={`flex flex-col items-center gap-2.5 p-4 rounded-2xl border ${s.border} bg-white/70 dark:bg-zinc-900/60 backdrop-blur-sm text-center shadow-sm hover:shadow-md transition-shadow`}>
+      <div className={`w-10 h-10 rounded-xl ${s.bg} flex items-center justify-center shadow-sm shrink-0`}>
+        <Icon className="w-5 h-5 text-white" />
+      </div>
+      <div>
+        <p className={`text-xs font-bold ${s.text} leading-tight`}>{title}</p>
+        <p className="text-[10px] text-zinc-500 dark:text-zinc-400 mt-0.5 leading-tight">{sub}</p>
+      </div>
+    </div>
+  );
+}
+
+function HeroSection() {
+  return (
+    <section className="relative flex flex-col items-center justify-center overflow-hidden min-h-[calc(100svh-3.5rem)] px-4 py-12">
+
       {/* Background images */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Light theme background */}
-        <div 
+        <div
           className="absolute inset-0 bg-no-repeat dark:hidden"
-          style={{ 
+          style={{
             backgroundImage: 'url(/hero-bg-light.png)',
             backgroundPosition: 'right 0 bottom 0',
             backgroundSize: '100%',
@@ -607,10 +627,9 @@ function HeroSection() {
             WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,1) 60%)',
           }}
         />
-        {/* Dark theme background */}
-        <div 
+        <div
           className="hidden dark:block absolute inset-0 bg-no-repeat"
-          style={{ 
+          style={{
             backgroundImage: 'url(/hero-bg-dark.png)',
             backgroundPosition: 'right 0 bottom 0',
             backgroundSize: '100%',
@@ -621,183 +640,183 @@ function HeroSection() {
         />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center gap-8 max-w-4xl mx-auto py-12">
+      {/* Main content */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center gap-6 py-4">
 
-        {/* Event Banner */}
-        <Link href="/news/neuroscience-hackathon-announcement" className="flex items-center gap-2 w-fit max-w-[calc(100vw-2rem)] px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm transition-colors hover:border-zinc-300 dark:hover:border-zinc-600 group overflow-hidden">
-          <span className="shrink-0 px-2.5 py-0.5 rounded-full bg-cyan-600 dark:bg-cyan-500 text-white text-xs font-bold uppercase tracking-wide">Events</span>
-          <span className="text-sm text-zinc-700 dark:text-zinc-300 font-medium truncate min-w-0">Neuroscience Hackathon is coming to Ottawa</span>
-          <ArrowRight className="w-3.5 h-3.5 shrink-0 text-zinc-900 dark:text-zinc-100" />
-        </Link>
+        {/* ── Vitruvian Grid ─────────────────────────────────────────────────────── */}
+        <div className="relative w-full">
 
-        {/* Headline */}
-        <div className="flex flex-col gap-5 text-center">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.02] text-zinc-900 dark:text-zinc-50">
-            Affordable BCI
-            <br />
-            <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
-              Hardware for Research
-            </span>
-          </h1>
-          <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto leading-relaxed">
-            High-quality research-grade BCI hardware with easy setup. Real-time EEG, EMG, ECG, EOG on Raspberry Pi, Arduino, STM32, and more. For research and engineering purposes only.
-          </p>
-        </div>
+          {/* da Vinci construction lines — desktop only */}
+          <div className="absolute inset-0 pointer-events-none hidden lg:block" aria-hidden="true">
+            {/* Straight lines with preserveAspectRatio=none (distortion acceptable) */}
+            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 600" preserveAspectRatio="none">
+              {/* Outer square / bounding box */}
+              <rect x="3" y="3" width="994" height="594" fill="none"
+                stroke="rgba(180,140,40,0.22)" strokeWidth="0.9" strokeDasharray="10 7" />
+              {/* Center cross */}
+              <line x1="500" y1="3" x2="500" y2="597" stroke="rgba(180,140,40,0.13)" strokeWidth="0.5" />
+              <line x1="3" y1="300" x2="997" y2="300" stroke="rgba(180,140,40,0.13)" strokeWidth="0.5" />
+              {/* Diagonals */}
+              <line x1="3" y1="3" x2="997" y2="597" stroke="rgba(180,140,40,0.09)" strokeWidth="0.4" />
+              <line x1="997" y1="3" x2="3" y2="597" stroke="rgba(180,140,40,0.09)" strokeWidth="0.4" />
+              {/* Tick marks — top edge */}
+              {[100,200,300,400,500,600,700,800,900].map(x => (
+                <line key={`tx${x}`} x1={x} y1="3" x2={x} y2="13" stroke="rgba(180,140,40,0.25)" strokeWidth="0.6" />
+              ))}
+              {/* Tick marks — left edge */}
+              {[100,200,300,400,500].map(y => (
+                <line key={`ty${y}`} x1="3" y1={y} x2="13" y2={y} stroke="rgba(180,140,40,0.25)" strokeWidth="0.6" />
+              ))}
+              {/* Corner arcs — da Vinci draughting detail */}
+              <path d="M3,72 A69,69 0 0 1 72,3"   fill="none" stroke="rgba(180,140,40,0.18)" strokeWidth="0.6" />
+              <path d="M928,3 A69,69 0 0 1 997,72"  fill="none" stroke="rgba(180,140,40,0.18)" strokeWidth="0.6" />
+              <path d="M997,528 A69,69 0 0 1 928,597" fill="none" stroke="rgba(180,140,40,0.18)" strokeWidth="0.6" />
+              <path d="M72,597 A69,69 0 0 1 3,528"   fill="none" stroke="rgba(180,140,40,0.18)" strokeWidth="0.6" />
+              {/* Center dot */}
+              <circle cx="500" cy="300" r="4" fill="rgba(180,140,40,0.18)" />
+              {/* Cardinal point markers */}
+              <circle cx="500" cy="3"   r="3.5" fill="none" stroke="rgba(180,140,40,0.25)" strokeWidth="0.7" />
+              <circle cx="500" cy="597" r="3.5" fill="none" stroke="rgba(180,140,40,0.25)" strokeWidth="0.7" />
+              <circle cx="3"   cy="300" r="3.5" fill="none" stroke="rgba(180,140,40,0.25)" strokeWidth="0.7" />
+              <circle cx="997" cy="300" r="3.5" fill="none" stroke="rgba(180,140,40,0.25)" strokeWidth="0.7" />
+            </svg>
+            {/* Vitruvian circle — CSS (stays circular regardless of container ratio) */}
+            <div
+              className="absolute rounded-full"
+              style={{
+                left: '50%', top: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 'min(62%, 520px)',
+                aspectRatio: '1 / 1',
+                border: '1px solid rgba(180,140,40,0.20)',
+              }}
+            />
+            {/* Inner navel ring */}
+            <div
+              className="absolute rounded-full"
+              style={{
+                left: '50%', top: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 'min(36%, 300px)',
+                aspectRatio: '1 / 1',
+                border: '0.5px dashed rgba(20,184,166,0.18)',
+              }}
+            />
+          </div>
 
-        {/* Terminal mockup with install command */}
-        <div className="w-full max-w-2xl mt-4">
-          <div className="relative group">
-            {/* Glow effect */}
-            <div className="absolute -inset-1 bg-linear-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition duration-300"></div>
-            
-            {/* Terminal */}
-            <div className="relative rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl">
-              {/* Terminal header */}
-              <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
-                <div className="flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                  </div>
-                  <span className="text-xs text-zinc-500 dark:text-zinc-400 ml-2">terminal</span>
-                </div>
-                <button
-                  onClick={handleCopy}
-                  className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors text-xs font-medium text-zinc-600 dark:text-zinc-400"
+          {/* 3 × 3 Vitruvian grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(140px,160px)_1fr_minmax(140px,160px)] lg:grid-rows-[auto_1fr_auto] gap-4 lg:gap-5 items-center">
+
+            {/* ── Row 1 ── */}
+            <div className="hidden lg:block lg:col-start-1 lg:row-start-1">
+              <VitruvianNode icon={Eye}      title="Real-time ML"    sub="On-device inference"     accent="violet" />
+            </div>
+            <div className="hidden lg:flex justify-center lg:col-start-2 lg:row-start-1">
+              <VitruvianNode icon={Brain}    title="Neural Signals"  sub="EEG · EMG · ECG · EOG"    accent="cyan"   />
+            </div>
+            <div className="hidden lg:block lg:col-start-3 lg:row-start-1">
+              <VitruvianNode icon={Sparkles} title="AI Pipeline"     sub="TensorFlow · PyTorch"      accent="blue"   />
+            </div>
+
+            {/* ── Row 2 ── */}
+            <div className="hidden lg:block lg:col-start-1 lg:row-start-2">
+              <VitruvianNode icon={Zap}      title="Multi-Platform"  sub="Pi · Arduino · STM32"      accent="rose"   />
+            </div>
+
+            {/* ── CENTER ── */}
+            <div className="lg:col-start-2 lg:row-start-2 flex flex-col items-center gap-8 text-center py-14 px-4">
+              {/* Headline */}
+              <div className="flex flex-col gap-5">
+                <h1 className="text-5xl sm:text-6xl lg:text-5xl xl:text-7xl font-extrabold tracking-tight leading-[1.02] text-zinc-900 dark:text-zinc-50">
+                  Affordable BCI
+                  <br />
+                  <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
+                    Hardware for Research
+                  </span>
+                </h1>
+                <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 max-w-xs mx-auto leading-relaxed">
+                  Research-grade EEG, EMG, ECG &amp; EOG on Raspberry Pi, Arduino, STM32, and more.
+                </p>
+              </div>
+
+              {/* CTAs */}
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <a
+                  href="https://cloud.pieeg.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex items-center gap-2 h-11 bg-linear-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 px-5 text-sm font-semibold text-white dark:text-zinc-950 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105 transition-all duration-200 rounded-lg overflow-hidden"
                 >
-                  {copied ? (
-                    <>
-                      <Check className="w-3 h-3" />
-                      Copied
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3 h-3" />
-                      Copy
-                    </>
-                  )}
-                </button>
+                  <div className="absolute inset-0 bg-linear-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <Play className="w-3.5 h-3.5 relative z-10" />
+                  <span className="relative z-10">Try Live Demo</span>
+                </a>
+                <a
+                  href="/support"
+                  className="flex items-center gap-2 h-11 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-5 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
+                >
+                  Documentation <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href="/hardware"
+                  className="flex items-center gap-2 h-11 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-5 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
+                >
+                  Shop Hardware <ArrowRight className="w-3.5 h-3.5" />
+                </a>
               </div>
-              
-              {/* Terminal content */}
-              <div className="px-6 py-6 bg-white dark:bg-zinc-950">
-                <div className="flex items-center gap-2 font-mono text-sm sm:text-base">
-                  <span className="text-purple-500 dark:text-purple-400">$</span>
-                  <span className="text-zinc-900 dark:text-zinc-100">pip install pieeg-server</span>
-                </div>
-              </div>
+
+              {/* Disclaimer */}
+              <p className="text-[10px] text-zinc-400 dark:text-zinc-600 font-mono">
+                // Not a medical device. Research &amp; engineering use only.
+              </p>
             </div>
+
+            <div className="hidden lg:block lg:col-start-3 lg:row-start-2">
+              <VitruvianNode icon={Cpu}     title="24-bit · 500 Hz" sub="Research-grade ADC"        accent="sky"     />
+            </div>
+
+            {/* ── Row 3 ── */}
+            <div className="hidden lg:block lg:col-start-1 lg:row-start-3">
+              <VitruvianNode icon={Radio}   title="Wireless BCI"    sub="Bluetooth LE · Wearable"   accent="amber"   />
+            </div>
+            <div className="hidden lg:flex justify-center lg:col-start-2 lg:row-start-3">
+              <VitruvianNode icon={Webhook} title="Open Protocol"   sub="FreeEEG · BrainFlow"        accent="emerald" />
+            </div>
+            <div className="hidden lg:block lg:col-start-3 lg:row-start-3">
+              <VitruvianNode icon={Globe}   title="Live API"         sub="WebSocket streaming"        accent="teal"    />
+            </div>
+
           </div>
         </div>
 
-        {/* 3-step process */}
-        <div className="grid grid-cols-3 gap-2 sm:gap-3 w-full mt-4">
-          {[
-            { n: "1", label: "Install", sub: "One pip command", from: "from-cyan-500", to: "to-cyan-600", glow: "shadow-cyan-500/20" },
-            { n: "2", label: "Connect", sub: "Auto-detects hardware", from: "from-blue-500", to: "to-blue-600", glow: "shadow-blue-500/20" },
-            { n: "3", label: "Stream", sub: "Live in your browser", from: "from-violet-500", to: "to-violet-600", glow: "shadow-violet-500/20" },
-          ].map(({ n, label, sub, from, to, glow }) => (
-            <div key={n} className="flex flex-col items-center gap-2 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm px-2 py-4 sm:px-4 sm:py-5">
-              <div className={`flex items-center justify-center w-9 h-9 rounded-xl bg-linear-to-br ${from} ${to} text-white text-sm font-bold shadow-md ${glow}`}>
-                {n}
-              </div>
-              <div className="flex flex-col items-center gap-0.5">
-                <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 uppercase tracking-wide">{label}</span>
-                <span className="text-[11px] text-zinc-500 dark:text-zinc-400 text-center">{sub}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* CTAs */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mt-4">
-          <a
-            href="https://cloud.pieeg.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative flex items-center gap-2 h-12 bg-linear-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 px-6 text-sm font-semibold text-white dark:text-zinc-950 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105 transition-all duration-200 rounded-lg overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-linear-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-            <Play className="w-4 h-4 relative z-10" />
-            <span className="relative z-10">Try Live Demo</span>
-          </a>
-          <a
-            href="/support"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-6 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
-          >
-            Documentation
-            <ArrowRight className="w-4 h-4" />
-          </a>
-          <a
-            href="/hardware"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-6 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
-          >
-            Shop Hardware
-            <ArrowRight className="w-4 h-4" />
-          </a>
-        </div>
-
-        {/* Legal disclaimer */}
-        <p className="text-xs text-zinc-400 dark:text-zinc-600 mt-6 font-mono">
-          // Not a medical device. For research and engineering purposes only.
-        </p>
-
-        {/* Stats moved to bottom */}
-        <div className="grid grid-cols-3 gap-4 sm:gap-8 w-full max-w-2xl mt-6 pt-6 border-t border-zinc-200/50 dark:border-zinc-800/50">
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-4 sm:gap-8 w-full max-w-2xl mt-4 pt-6 border-t border-zinc-200/50 dark:border-zinc-800/50">
           <div className="flex flex-col items-center gap-1.5">
-            <div className="text-3xl font-bold bg-linear-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
-              28+
-            </div>
-            <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">
-              Media features
-            </div>
+            <div className="text-3xl font-bold bg-linear-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">28+</div>
+            <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">Media features</div>
           </div>
           <div className="flex flex-col items-center gap-1.5">
-            <div className="text-3xl font-bold bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-              11+
-            </div>
-            <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">
-              Scientific papers
-            </div>
+            <div className="text-3xl font-bold bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">11+</div>
+            <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">Scientific papers</div>
           </div>
           <div className="flex flex-col items-center gap-1.5">
-            <div className="text-3xl font-bold bg-linear-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-              7
-            </div>
-            <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">
-              Hardware platforms
-            </div>
+            <div className="text-3xl font-bold bg-linear-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">7</div>
+            <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">Hardware platforms</div>
           </div>
         </div>
 
       </div>
 
-      {/* Featured In Section */}
-      <div className="relative z-10 w-full border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 overflow-hidden mt-12">
+      {/* Featured In */}
+      <div className="relative z-10 w-full border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 overflow-hidden mt-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col items-center gap-6">
-            {/* Label */}
-            <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-600">
-              Featured In
-            </p>
-            
-            {/* Animated Scrolling Logos */}
+            <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-600">Featured In</p>
             <div className="relative w-full overflow-hidden">
               <div className="flex gap-12 md:gap-16 animate-scroll-slow hover:[animation-play-state:paused]">
                 {[...featuredIn, ...featuredIn].map(({ name, logo }, index) => (
-                  <div
-                    key={`${name}-${index}`}
-                    className="group relative flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-110 shrink-0"
-                  >
-                    <span className="text-sm md:text-base font-semibold text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-700 dark:group-hover:text-zinc-400 transition-colors duration-300 whitespace-nowrap">
-                      {logo}
-                    </span>
+                  <div key={`${name}-${index}`} className="group relative flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-110 shrink-0">
+                    <span className="text-sm md:text-base font-semibold text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-700 dark:group-hover:text-zinc-400 transition-colors duration-300 whitespace-nowrap">{logo}</span>
                   </div>
                 ))}
               </div>

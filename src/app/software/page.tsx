@@ -13,7 +13,7 @@ const features = [
   {
     icon: Terminal,
     title: "One-Line Install",
-    description: "curl -sSL https://raw.githubusercontent.com/pieeg-club/PiEEG-server/main/install.sh | bash",
+    description: "pip install pieeg-server",
     gradient: "from-cyan-500 to-blue-600"
   },
   {
@@ -40,7 +40,7 @@ const quickStart = [
   {
     step: "1",
     title: "Install",
-    code: "curl -sSL https://raw.githubusercontent.com/pieeg-club/PiEEG-server/main/install.sh | bash",
+    code: "pip install pieeg-server",
     description: "Requires Python 3.10+. Auto-detects your hardware.",
     color: "cyan"
   },

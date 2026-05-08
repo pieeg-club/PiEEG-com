@@ -26,6 +26,8 @@ interface ProductDetailLayoutProps {
   description: ReactNode;
   image: string;
   imageAlt: string;
+  /** Additional gallery images. images[0] = large panel, images[1] = top-right, images[2] = bottom-right */
+  images?: string[];
   videoId?: string;
   specs: Spec[];
   features: Feature[];
@@ -52,6 +54,7 @@ export default function ProductDetailLayout({
   description,
   image,
   imageAlt,
+  images,
   videoId,
   specs,
   features,
@@ -203,7 +206,7 @@ export default function ProductDetailLayout({
               Product Gallery
             </h2>
             <span className="text-sm text-zinc-400 dark:text-zinc-500 hidden sm:block">
-              {videoId ? "3 views including demo" : "3 product views"}
+              {videoId ? `${images && images.length > 0 ? images.length : 1} photos + demo` : `${images && images.length > 0 ? images.length : 3} product views`}
             </span>
           </div>
 
@@ -213,8 +216,8 @@ export default function ProductDetailLayout({
             <div className="lg:col-span-2 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 overflow-hidden flex flex-col min-h-[280px] lg:min-h-[440px]">
               <div className="flex-1 flex items-center justify-center p-12">
                 <Image
-                  src={image}
-                  alt={`${name} — standard product view`}
+                  src={images && images[0] ? images[0] : image}
+                  alt={`${name} — product view`}
                   width={520}
                   height={400}
                   className="object-contain max-h-72 w-auto drop-shadow-xl"
@@ -222,23 +225,23 @@ export default function ProductDetailLayout({
               </div>
               <div className="px-5 py-3.5 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 flex items-center justify-between">
                 <span className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
-                  Standard View
+                  {images && images[0] ? "Product Photo" : "Standard View"}
                 </span>
-                <span className="text-xs text-zinc-300 dark:text-zinc-600">1 / 3</span>
+                <span className="text-xs text-zinc-300 dark:text-zinc-600">1 / {images && images.length > 0 ? (videoId ? images.length + 1 : images.length) : 3}</span>
               </div>
             </div>
 
             {/* Right column: stacked panels */}
             <div className="flex flex-col gap-4">
-              {/* Dark showcase panel */}
+              {/* Second image panel */}
               <div className="rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden flex flex-col min-h-[200px] lg:min-h-0 lg:flex-1">
                 <div className="flex-1 flex items-center justify-center p-6 relative overflow-hidden">
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-15`}
                   />
                   <Image
-                    src={image}
-                    alt={`${name} — dark showcase`}
+                    src={images && images[1] ? images[1] : image}
+                    alt={`${name} — alternate view`}
                     width={260}
                     height={200}
                     className="object-contain max-h-28 w-auto relative z-10"
@@ -247,13 +250,13 @@ export default function ProductDetailLayout({
                 </div>
                 <div className="px-4 py-2.5 border-t border-zinc-800 flex items-center justify-between">
                   <span className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
-                    Dark Showcase
+                    {images && images[1] ? "Alternate View" : "Dark Showcase"}
                   </span>
-                  <span className="text-xs text-zinc-700">2 / 3</span>
+                  <span className="text-xs text-zinc-700">2 / {images && images.length > 0 ? (videoId ? images.length + 1 : images.length) : 3}</span>
                 </div>
               </div>
 
-              {/* Video embed or Close-up detail */}
+              {/* Video embed or third image */}
               {videoId ? (
                 <div className="rounded-2xl border border-zinc-800 overflow-hidden relative min-h-[200px] lg:min-h-0 lg:flex-1">
                   <iframe
@@ -267,7 +270,27 @@ export default function ProductDetailLayout({
                     <span className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
                       Product Demo
                     </span>
-                    <span className="text-xs text-zinc-600">3 / 3</span>
+                    <span className="text-xs text-zinc-600">{images && images.length > 0 ? images.length + 1 : 3} / {images && images.length > 0 ? images.length + 1 : 3}</span>
+                  </div>
+                </div>
+              ) : images && images[2] ? (
+                <div className="rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden flex flex-col min-h-[200px] lg:min-h-0 lg:flex-1">
+                  <div className="flex-1 flex items-center justify-center p-6 relative overflow-hidden">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-10`} />
+                    <Image
+                      src={images[2]}
+                      alt={`${name} — detail view`}
+                      width={260}
+                      height={200}
+                      className="object-contain max-h-28 w-auto relative z-10"
+                      style={{ filter: "drop-shadow(0 0 20px rgba(255,255,255,0.08))" }}
+                    />
+                  </div>
+                  <div className="px-4 py-2.5 border-t border-zinc-800 flex items-center justify-between">
+                    <span className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
+                      Detail View
+                    </span>
+                    <span className="text-xs text-zinc-700">3 / {images.length}</span>
                   </div>
                 </div>
               ) : (

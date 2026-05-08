@@ -21,6 +21,7 @@ export default function PiEEGProductPage() {
       ctaButtonTextColor="text-blue-600"
       image="/products/pieeg.png"
       imageAlt="PiEEG 8-Channel Raspberry Pi EEG Shield"
+      images={["/products/pieeg.png", "/products/pieeg-clean.png", "/products/pieeg-pinout.jpg"]}
       videoId="0ocAPWok5YU"
       channels="8 channels"
       platform="Raspberry Pi 3/4/5"

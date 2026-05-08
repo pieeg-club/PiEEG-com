@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Cpu, Code, ChevronRight, ExternalLink, ShoppingCart, Package, Tag, BookOpen } from "lucide-react";
 import ProductsGrid from "@/components/ProductsGrid";
 import HardwareSelectorButton from "@/components/HardwareSelectorButton";
@@ -199,6 +200,7 @@ const accessories = [
     description: "EEG dry electrodes cap with dry comfort press-fit electrodes. Ready to use, no conductive gel needed.",
     specs: "8 channels • Dry electrodes • Adjustable size",
     gradient: "from-cyan-500 to-blue-500",
+    image: "/products/cap8-dry.png",
     purchaseUrl: "https://www.elecrow.com/cap-eeg-kit-8-channels-dry-electrodes.html",
     status: "Available"
   },
@@ -208,6 +210,7 @@ const accessories = [
     description: "Professional textile cap with sintered Ag/AgCl gold-plated wet electrodes for superior signal quality.",
     specs: "8 channels • Wet electrodes • Includes gel",
     gradient: "from-blue-500 to-indigo-500",
+    image: "/products/cap8-wet.jpg",
     purchaseUrl: "https://www.elecrow.com/cap-eeg-kit-8-channels-with-wet-electrodes.html",
     status: "Available"
   },
@@ -217,6 +220,7 @@ const accessories = [
     description: "Low-cost 16 channel textile EEG cap with gold-plated sintered Ag/AgCl electrodes.",
     specs: "16 channels • Professional grade • Reusable",
     gradient: "from-purple-500 to-pink-500",
+    image: "/products/cap16.png",
     purchaseUrl: "https://www.elecrow.com/low-cost-16-channels-eeg-cap.html",
     status: "Available"
   },
@@ -226,8 +230,19 @@ const accessories = [
     description: "Low-impedance electrolyte gel for optimal electrode-skin contact with wet electrodes.",
     specs: "100ml bottle • Medical grade • Skin-safe",
     gradient: "from-green-500 to-emerald-500",
+    image: "/products/gel.png",
     purchaseUrl: "https://www.elecrow.com/conductive-gel-for-eeg.html",
     status: "Coming Soon"
+  },
+  {
+    id: "emg-kit",
+    name: "EMG / ECG / EKG Kit",
+    description: "Measure electromyography, electrocardiography, and electroencephalography signals with this all-in-one biosignal kit.",
+    specs: "Multi-signal • Plug & play • Compatible with PiEEG",
+    gradient: "from-orange-500 to-red-500",
+    image: "/products/emg-kit.jpg",
+    purchaseUrl: "https://www.elecrow.com/kit-to-measure-emg-ecg-ekg.html",
+    status: "Available"
   }
 ];
 
@@ -271,7 +286,7 @@ export default function ProductsPage() {
 
           {/* Sub-headline */}
           <p className="text-lg sm:text-xl text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-10 font-light">
-            Seven platforms. Four accessories. One mission — make brain-computer interfaces
+            Seven platforms. Five accessories. One mission — make brain-computer interfaces
             accessible, open, and beautiful.
           </p>
 
@@ -346,37 +361,54 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
             {accessories.map((accessory) => (
               <div
                 key={accessory.id}
-                className="group p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200 flex flex-col"
+                className="group rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-lg transition-all duration-200 flex flex-col overflow-hidden"
               >
-                <div className={`w-10 h-10 rounded-xl bg-linear-to-br ${accessory.gradient} mb-4 flex items-center justify-center text-white shadow-md`}>
-                  <Package className="w-5 h-5" />
+                {/* Product image panel */}
+                <div className={`relative bg-linear-to-br ${accessory.gradient} flex items-center justify-center overflow-hidden`} style={{minHeight: "160px"}}>
+                  <div className="absolute inset-0 bg-black/10" />
+                  <Image
+                    src={accessory.image}
+                    alt={accessory.name}
+                    width={200}
+                    height={160}
+                    className="object-contain w-full h-40 p-4 relative z-10 group-hover:scale-105 transition-transform duration-300"
+                    style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.3))" }}
+                  />
+                  {accessory.status !== "Available" && (
+                    <span className="absolute top-2 right-2 z-20 px-2 py-0.5 rounded-full bg-black/50 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider">
+                      {accessory.status}
+                    </span>
+                  )}
                 </div>
-                <h3 className="font-bold text-sm mb-2">{accessory.name}</h3>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2 flex-1 leading-relaxed">
-                  {accessory.description}
-                </p>
-                <p className="text-[11px] font-semibold text-zinc-400 dark:text-zinc-500 mb-4">
-                  {accessory.specs}
-                </p>
-                {accessory.status === "Available" ? (
-                  <a
-                    href={accessory.purchaseUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold text-xs hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
-                  >
-                    <ShoppingCart className="w-3.5 h-3.5" />
-                    Shop Now
-                  </a>
-                ) : (
-                  <div className="px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-400 dark:text-zinc-500 font-semibold text-xs text-center">
-                    {accessory.status}
-                  </div>
-                )}
+                {/* Card body */}
+                <div className="p-4 flex flex-col flex-1">
+                  <h3 className="font-bold text-sm mb-1.5">{accessory.name}</h3>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2 flex-1 leading-relaxed">
+                    {accessory.description}
+                  </p>
+                  <p className="text-[11px] font-semibold text-zinc-400 dark:text-zinc-500 mb-3">
+                    {accessory.specs}
+                  </p>
+                  {accessory.status === "Available" ? (
+                    <a
+                      href={accessory.purchaseUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold text-xs hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
+                    >
+                      <ShoppingCart className="w-3.5 h-3.5" />
+                      Shop Now
+                    </a>
+                  ) : (
+                    <div className="px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-400 dark:text-zinc-500 font-semibold text-xs text-center">
+                      {accessory.status}
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>

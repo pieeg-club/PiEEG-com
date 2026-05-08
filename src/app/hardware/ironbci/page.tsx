@@ -98,6 +98,83 @@ export default function IronBCIProductPage() {
         </div>
       </section>
 
+      {/* Product Gallery */}
+      <section className="py-16 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">Product Gallery</h2>
+            <span className="text-sm text-zinc-400 dark:text-zinc-500 hidden sm:block">3 photos + demo</span>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div className="lg:col-span-2 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 overflow-hidden flex flex-col min-h-70 lg:min-h-110">
+              <div className="flex-1 flex items-center justify-center p-12">
+                <Image
+                  src="/products/ironbci-angle.jpg"
+                  alt="IronBCI — PCB front view"
+                  width={520}
+                  height={400}
+                  className="object-contain max-h-72 w-auto drop-shadow-xl rounded-xl"
+                />
+              </div>
+              <div className="px-5 py-3.5 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 flex items-center justify-between">
+                <span className="text-xs font-semibold uppercase tracking-widest text-zinc-400">PCB Front</span>
+                <span className="text-xs text-zinc-300 dark:text-zinc-600">1 / 4</span>
+              </div>
+            </div>
+            <div className="flex flex-col gap-4">
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden flex flex-col min-h-50 lg:min-h-0 lg:flex-1">
+                <div className="flex-1 flex items-center justify-center p-6 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-linear-to-br from-purple-500 to-pink-600 opacity-15" />
+                  <Image
+                    src="/products/ironbci-top.jpg"
+                    alt="IronBCI — stacked assembly"
+                    width={260}
+                    height={200}
+                    className="object-contain max-h-28 w-auto relative z-10 rounded-lg"
+                    style={{ filter: "drop-shadow(0 0 20px rgba(255,255,255,0.08))" }}
+                  />
+                </div>
+                <div className="px-4 py-2.5 border-t border-zinc-800 flex items-center justify-between">
+                  <span className="text-xs font-semibold uppercase tracking-widest text-zinc-500">Stacked Assembly</span>
+                  <span className="text-xs text-zinc-700">2 / 4</span>
+                </div>
+              </div>
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden flex flex-col min-h-50 lg:min-h-0 lg:flex-1">
+                <div className="flex-1 flex items-center justify-center p-6 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-linear-to-br from-purple-500 to-pink-600 opacity-10" />
+                  <Image
+                    src="/products/ironbci-worn.jpg"
+                    alt="IronBCI — wearable BCI"
+                    width={260}
+                    height={200}
+                    className="object-contain max-h-28 w-auto relative z-10"
+                    style={{ filter: "drop-shadow(0 0 20px rgba(255,255,255,0.08))" }}
+                  />
+                </div>
+                <div className="px-4 py-2.5 border-t border-zinc-800 flex items-center justify-between">
+                  <span className="text-xs font-semibold uppercase tracking-widest text-zinc-500">Wearable BCI</span>
+                  <span className="text-xs text-zinc-700">3 / 4</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* 4th image: full-width demo video */}
+          <div className="mt-4 rounded-2xl border border-zinc-800 overflow-hidden relative" style={{height: "240px"}}>
+            <iframe
+              src="https://www.youtube.com/embed/gWpfsLuq_eE"
+              title="IronBCI product demo"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full"
+            />
+            <div className="absolute bottom-0 left-0 right-0 px-4 py-2.5 bg-zinc-950/80 backdrop-blur-sm flex items-center justify-between pointer-events-none">
+              <span className="text-xs font-semibold uppercase tracking-widest text-zinc-400">Product Demo</span>
+              <span className="text-xs text-zinc-600">4 / 4</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-10 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-8 text-center">Features & Specifications</h2>
@@ -145,7 +222,7 @@ export default function IronBCIProductPage() {
       <section className="py-12 bg-yellow-50 dark:bg-yellow-950/20 border-y border-yellow-200 dark:border-yellow-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-start gap-4">
-            <Shield className="w-6 h-6 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-1" />
+            <Shield className="w-6 h-6 text-yellow-600 dark:text-yellow-400 shrink-0 mt-1" />
             <div>
               <p className="text-yellow-900 dark:text-yellow-100 font-semibold mb-2">
                 Important Notice

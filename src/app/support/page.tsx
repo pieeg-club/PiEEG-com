@@ -120,7 +120,7 @@ const codeExamples = [
   {
     title: "Install & Launch",
     language: "Shell",
-    code: `curl -sSL https://raw.githubusercontent.com/pieeg-club/PiEEG-server/main/install.sh | bash
+    code: `pip install pieeg-server
 sudo reboot          # first time only, enables SPI
 pieeg-server         # or: pieeg-server --mock (no hardware)`
   },

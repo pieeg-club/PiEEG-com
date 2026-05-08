@@ -20,6 +20,7 @@ export default function PiEEG16ProductPage() {
       ctaButtonTextColor="text-indigo-600"
       image="/products/pieeg16.jpg"
       imageAlt="PiEEG-16 16-Channel Raspberry Pi EEG Shield"
+      images={["/products/pieeg16-angle.jpg", "/products/pieeg16-top.jpg", "/products/pieeg16-demo.png"]}
       videoId="tjCazk2Efqs"
       channels="16 channels"
       platform="Raspberry Pi 5"

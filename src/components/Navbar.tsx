@@ -174,15 +174,14 @@ export function Navbar() {
               {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
 
-            <span className="shop-ring p-0.5 rounded-full inline-flex hover:scale-105 transition-transform duration-200">
+            <span className="shop-aurora hover:scale-105 transition-transform duration-200">
               <a
                 href="https://www.elecrow.com/store/PiEEG"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative overflow-hidden flex h-9 items-center rounded-full bg-linear-to-r from-cyan-500 via-cyan-600 to-blue-600 dark:from-cyan-400 dark:via-cyan-500 dark:to-blue-500 px-5 text-sm font-semibold text-white dark:text-zinc-950 shadow-lg shadow-cyan-500/25 dark:shadow-cyan-400/20 group"
+                className="flex h-9 items-center rounded-full bg-white dark:bg-zinc-950 px-5 text-sm font-semibold text-zinc-900 dark:text-zinc-100"
               >
-                <span className="relative z-10">Shop</span>
-                <div className="absolute inset-0 bg-linear-to-r from-cyan-600 via-blue-600 to-purple-600 dark:from-cyan-300 dark:via-blue-400 dark:to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                Shop
               </a>
             </span>
           </div>

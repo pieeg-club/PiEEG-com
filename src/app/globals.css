@@ -247,7 +247,7 @@ body {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* ── Shop button — rotating border shimmer ─────────────────── */
+/* ── Shop button — aurora border ───────────────────────────── */
 @property --shop-angle {
   syntax: "<angle>";
   initial-value: 0deg;
@@ -256,13 +256,35 @@ body {
 @keyframes shop-spin {
   to { --shop-angle: 360deg; }
 }
-.shop-ring {
+.shop-aurora {
+  position: relative;
+  border-radius: 9999px;
+  display: inline-flex;
+  padding: 1.5px;
   background: conic-gradient(
     from var(--shop-angle),
-    #06b6d4 0%,
-    #3b82f6 30%,
-    #a855f7 55%,
-    #06b6d4 100%
+    #22d3ee 0%,
+    #818cf8 40%,
+    #c084fc 70%,
+    #22d3ee 100%
   );
-  animation: shop-spin 3s linear infinite;
+  animation: shop-spin 5s linear infinite;
+  isolation: isolate;
+}
+.shop-aurora::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from var(--shop-angle),
+    #22d3ee 0%,
+    #818cf8 40%,
+    #c084fc 70%,
+    #22d3ee 100%
+  );
+  animation: shop-spin 5s linear infinite;
+  filter: blur(14px);
+  opacity: 0.5;
+  z-index: -1;
 }

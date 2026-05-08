@@ -58,7 +58,7 @@ const hardwareProducts = [
     status: "Available",
     gradient: "from-blue-500 to-indigo-600",
     bgGradient: "from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30",
-    image: "/products/pieeg-16.png",
+    image: "/products/pieeg16.jpg",
     purchaseUrl: "https://www.elecrow.com/pieeg-16.html",
     github: "https://github.com/pieeg-club/PiEEG-16",
     youtube: "https://youtu.be/tjCazk2Efqs",

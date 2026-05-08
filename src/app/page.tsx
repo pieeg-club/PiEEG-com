@@ -625,12 +625,10 @@ function HeroSection() {
       <div className="relative z-10 flex flex-col items-center gap-8 max-w-4xl mx-auto py-12">
 
         {/* Event Banner */}
-        <Link href="/news/neuroscience-hackathon-announcement" className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm transition-colors hover:border-zinc-300 dark:hover:border-zinc-600 group">
-          <span className="px-2.5 py-0.5 rounded-full bg-cyan-600 dark:bg-cyan-500 text-white text-xs font-bold uppercase tracking-wide">Events</span>
-          <span className="text-sm text-zinc-700 dark:text-zinc-300 font-medium">Neuroscience Hackathon is coming to Ottawa</span>
-          <span className="flex items-center gap-1 text-sm font-semibold text-zinc-900 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-600 rounded-full px-3 py-0.5 group-hover:bg-zinc-100 dark:group-hover:bg-zinc-800 transition-colors">
-            Learn more <ArrowRight className="w-3.5 h-3.5" />
-          </span>
+        <Link href="/news/neuroscience-hackathon-announcement" className="flex items-center gap-2 w-fit max-w-[calc(100vw-2rem)] px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm transition-colors hover:border-zinc-300 dark:hover:border-zinc-600 group overflow-hidden">
+          <span className="shrink-0 px-2.5 py-0.5 rounded-full bg-cyan-600 dark:bg-cyan-500 text-white text-xs font-bold uppercase tracking-wide">Events</span>
+          <span className="text-sm text-zinc-700 dark:text-zinc-300 font-medium truncate min-w-0">Neuroscience Hackathon is coming to Ottawa</span>
+          <ArrowRight className="w-3.5 h-3.5 shrink-0 text-zinc-900 dark:text-zinc-100" />
         </Link>
 
         {/* Headline */}
@@ -695,13 +693,13 @@ function HeroSection() {
         </div>
 
         {/* 3-step process */}
-        <div className="grid grid-cols-3 gap-3 w-full max-w-lg mt-4">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 w-full mt-4">
           {[
             { n: "1", label: "Install", sub: "One pip command", from: "from-cyan-500", to: "to-cyan-600", glow: "shadow-cyan-500/20" },
             { n: "2", label: "Connect", sub: "Auto-detects hardware", from: "from-blue-500", to: "to-blue-600", glow: "shadow-blue-500/20" },
             { n: "3", label: "Stream", sub: "Live in your browser", from: "from-violet-500", to: "to-violet-600", glow: "shadow-violet-500/20" },
           ].map(({ n, label, sub, from, to, glow }) => (
-            <div key={n} className="flex flex-col items-center gap-2.5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm px-4 py-5">
+            <div key={n} className="flex flex-col items-center gap-2 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm px-2 py-4 sm:px-4 sm:py-5">
               <div className={`flex items-center justify-center w-9 h-9 rounded-xl bg-linear-to-br ${from} ${to} text-white text-sm font-bold shadow-md ${glow}`}>
                 {n}
               </div>
@@ -751,7 +749,7 @@ function HeroSection() {
         </p>
 
         {/* Stats moved to bottom */}
-        <div className="grid grid-cols-3 gap-8 w-full max-w-2xl mt-6 pt-6 border-t border-zinc-200/50 dark:border-zinc-800/50">
+        <div className="grid grid-cols-3 gap-4 sm:gap-8 w-full max-w-2xl mt-6 pt-6 border-t border-zinc-200/50 dark:border-zinc-800/50">
           <div className="flex flex-col items-center gap-1.5">
             <div className="text-3xl font-bold bg-linear-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
               28+

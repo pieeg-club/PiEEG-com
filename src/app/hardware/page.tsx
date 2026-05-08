@@ -301,6 +301,13 @@ export default function ProductsPage() {
               <ChevronRight className="w-4 h-4" />
             </Link>
             <Link
+              href="#accessories"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-zinc-300 dark:border-zinc-700 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 backdrop-blur-sm transition-all hover:-translate-y-px"
+            >
+              Accessories
+              <Package className="w-4 h-4" />
+            </Link>
+            <Link
               href="/support"
               className="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-zinc-300 dark:border-zinc-700 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 backdrop-blur-sm transition-all hover:-translate-y-px"
             >
@@ -333,6 +340,26 @@ export default function ProductsPage() {
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-white dark:from-zinc-950 to-transparent pointer-events-none" />
       </section>
 
+      {/* Section navigation */}
+      <div className="sticky top-16 z-30 border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-1 overflow-x-auto scrollbar-none py-0">
+            <a
+              href="#hardware"
+              className="shrink-0 px-5 py-3.5 text-sm font-semibold border-b-2 border-transparent hover:border-zinc-400 dark:hover:border-zinc-500 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all"
+            >
+              Hardware Platforms
+            </a>
+            <a
+              href="#accessories"
+              className="shrink-0 px-5 py-3.5 text-sm font-semibold border-b-2 border-transparent hover:border-zinc-400 dark:hover:border-zinc-500 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all"
+            >
+              Accessories
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Hardware Products Section */}
       <section id="hardware" className="py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -350,7 +377,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Accessories Section */}
-      <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
+      <section id="accessories" className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">

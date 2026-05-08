@@ -130,6 +130,36 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
         </div>
       </section>
 
+      {/* Hackathon Registration CTA */}
+      {slug === 'neuroscience-hackathon-announcement' && (
+        <section className="py-14 border-t border-zinc-200 dark:border-zinc-800">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-cyan-200 dark:border-cyan-800 p-8 sm:p-10 text-center">
+              <div className="text-4xl mb-4">🧠</div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
+                Ready to Participate?
+              </h2>
+              <p className="text-zinc-600 dark:text-zinc-400 mb-7 max-w-xl mx-auto leading-relaxed">
+                Register your interest now to secure your spot at the Neuroscience Hackathon this Autumn in Ottawa, Canada.
+              </p>
+              <a
+                href="https://forms.gle/KPr39g1xL5FnywXJ9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-sm transition-colors shadow-lg shadow-cyan-500/20"
+              >
+                Register Your Interest
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Related Articles */}
       {relatedNews.length > 0 && (
         <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">

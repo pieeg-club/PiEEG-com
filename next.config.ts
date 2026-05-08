@@ -38,6 +38,7 @@ const nextConfig: NextConfig = {
       { source: "/liability-pieeg/index.html", destination: "/liability", permanent: true },
       { source: "/liability/index.html", destination: "/liability", permanent: true },
 
+      { source: "/news-bci-neuroscience", destination: "/news", permanent: true },
       { source: "/news-bci-neuroscience/", destination: "/news", permanent: true },
       { source: "/news-bci-neuroscience/index.html", destination: "/news", permanent: true },
       { source: "/index.html@p=54", destination: "/news", permanent: true },
@@ -66,6 +67,7 @@ const nextConfig: NextConfig = {
       { source: "/hardware/cases/index.html", destination: "/examples", permanent: true },
       { source: "/hardware/collobarations/", destination: "/partnership", permanent: true },
       { source: "/hardware/collobarations/index.html", destination: "/partnership", permanent: true },
+      { source: "/hardware/software-for-eeg", destination: "/software", permanent: true },
       { source: "/hardware/software-for-eeg/", destination: "/software", permanent: true },
       { source: "/hardware/software-for-eeg/index.html", destination: "/software", permanent: true },
       { source: "/hardware/eeg_courses/", destination: "/software", permanent: true },

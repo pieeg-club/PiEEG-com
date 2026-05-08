@@ -3,6 +3,7 @@
 import { type LucideIcon, ArrowRight, Zap, Cpu, Terminal, ExternalLink, Play, Bluetooth, Usb, CircuitBoard, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -27,6 +28,7 @@ const products = [
     badge: "32ch",
     spec: "500 Hz • 24-bit",
     icon: "usb",
+    image: "/products/ironbci-32-main.png",
     description:
       "High-density cortical mapping. 32 channels at 500 Hz. 4× AD7771 ADCs. FreeEEG protocol. Pure Python driver—no BrainFlow dependency.",
     featured: true,
@@ -39,6 +41,7 @@ const products = [
     badge: "8ch BLE",
     spec: "250 Hz • 24-bit",
     icon: "bluetooth",
+    image: "/products/ironbci.jpg",
     description:
       "Untethered biosignals. 8 channels over BLE. Walk, move, live—your data follows you. STM32 + ADS1299 ADC.",
     featured: false,
@@ -51,6 +54,7 @@ const products = [
     badge: "16ch",
     spec: "250 Hz • 24-bit",
     icon: "circuit",
+    image: "/products/pieeg16.jpg",
     description:
       "The flagship. Real-time 16-channel acquisition. 2× ADS1299 ADCs. Powered by pieeg-server. One command—live dashboard in your browser.",
     featured: true,
@@ -63,6 +67,7 @@ const products = [
     badge: "8ch",
     spec: "250 Hz • 24-bit",
     icon: "circuit",
+    image: "/products/pieeg.png",
     description:
       "Where it started. The original PiEEG shield. 8 channels, ADS1299 ADC, SPI interface, proven in labs worldwide.",
     featured: false,
@@ -75,6 +80,7 @@ const products = [
     badge: "Arduino",
     spec: "8 channels",
     icon: "circuit",
+    image: "/products/ardeeg.png",
     description:
       "BCI for the Arduino ecosystem. Same ADS1299 precision. Sketch-friendly. Perfect for embedded projects.",
     featured: false,
@@ -87,6 +93,7 @@ const products = [
     badge: "GPU ML",
     spec: "1 µV noise",
     icon: "cpu",
+    image: "/products/jneeg.png",
     description:
       "Neural networks meet neural signals. Stream EEG directly into TensorFlow. Real-time inference on-device.",
     featured: false,
@@ -99,6 +106,7 @@ const products = [
     badge: "STM32",
     spec: "Low power",
     icon: "radio",
+    image: "/products/microbci.png",
     description:
       "Bare-metal BCI. Ultra-low-power STM32. Build custom firmware from scratch. Total hardware control.",
     featured: false,
@@ -864,14 +872,6 @@ function FeaturedInBar() {
 }
 
 function ProductsSection() {
-  const iconMap = {
-    usb: Usb,
-    bluetooth: Bluetooth,
-    circuit: CircuitBoard,
-    cpu: Cpu,
-    radio: Radio,
-  };
-
   return (
     <section id="products" className="py-10 px-4 bg-linear-to-b from-white via-zinc-50/50 to-white dark:from-zinc-950 dark:via-zinc-900/50 dark:to-zinc-950">
       <div className="mx-auto max-w-7xl">
@@ -897,7 +897,6 @@ function ProductsSection() {
         {/* Featured Products - Large Cards */}
         <div className="mb-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
           {products.filter(p => p.featured).map((product) => {
-            const IconComponent = iconMap[product.icon as keyof typeof iconMap] || CircuitBoard;
             return (
               <a
                 key={product.name}
@@ -911,8 +910,15 @@ function ProductsSection() {
                   {/* Header */}
                   <div className="flex items-start justify-between gap-4 mb-6">
                     <div className="flex items-center gap-4">
-                      <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-linear-to-br from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 text-white shadow-lg shadow-cyan-500/30">
-                        <IconComponent className="w-7 h-7" />
+                      {/* Product image thumbnail */}
+                      <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-zinc-950 overflow-hidden shrink-0 shadow-lg">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          width={56}
+                          height={56}
+                          className="object-contain w-full h-full p-1"
+                        />
                       </div>
                       <div>
                         <h3 className="font-mono text-2xl font-bold text-zinc-900 dark:text-zinc-50 tracking-tight">
@@ -926,6 +932,18 @@ function ProductsSection() {
                     <span className="px-3 py-1.5 rounded-lg bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 text-xs font-bold uppercase tracking-widest">
                       {product.badge}
                     </span>
+                  </div>
+
+                  {/* Large product image */}
+                  <div className="relative w-full h-48 rounded-xl bg-zinc-950 overflow-hidden mb-6 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-linear-to-br from-cyan-500/10 to-blue-600/10" />
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      width={480}
+                      height={192}
+                      className="object-contain w-full h-full p-6 group-hover:scale-[1.04] transition-transform duration-500 drop-shadow-xl relative z-10"
+                    />
                   </div>
 
                   {/* Description */}
@@ -958,17 +976,22 @@ function ProductsSection() {
         {/* Other Products - Compact Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
           {products.filter(p => !p.featured).map((product) => {
-            const IconComponent = iconMap[product.icon as keyof typeof iconMap] || CircuitBoard;
             return (
               <a
                 key={product.name}
                 href={`/hardware/${product.slug}`}
-                className="group relative flex flex-col gap-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 p-6 hover:border-zinc-400 dark:hover:border-zinc-600 hover:shadow-xl hover:shadow-zinc-500/10 transition-all duration-200"
+                className="group relative flex flex-col gap-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 p-6 hover:border-zinc-400 dark:hover:border-zinc-600 hover:shadow-xl hover:shadow-zinc-500/10 transition-all duration-200 overflow-hidden"
               >
-                {/* Icon & Badge */}
+                {/* Product image */}
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 group-hover:bg-cyan-100 group-hover:border-cyan-300 group-hover:text-cyan-600 dark:group-hover:bg-cyan-900/30 dark:group-hover:border-cyan-700 dark:group-hover:text-cyan-400 transition-all">
-                    <IconComponent className="w-5 h-5" />
+                  <div className="relative flex items-center justify-center w-10 h-10 rounded-lg bg-zinc-950 overflow-hidden shrink-0 border border-zinc-200 dark:border-zinc-700">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      width={40}
+                      height={40}
+                      className="object-contain w-full h-full p-0.5"
+                    />
                   </div>
                   <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
                     {product.badge}

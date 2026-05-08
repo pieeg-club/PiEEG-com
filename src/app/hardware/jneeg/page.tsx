@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   title: "JNEEG — 8-Channel Jetson Nano EEG Shield — PiEEG",
   description:
     "Brain-computer interface shield for Jetson Nano. 8 channels, 250 SPS to 16 kSPS, ML/DL optimized. NVIDIA GPU-accelerated EEG. Available at Elecrow.",
+  openGraph: {
+    title: "JNEEG — 8-Channel Jetson Nano EEG Shield",
+    description:
+      "Brain-computer interface shield for Jetson Nano. 8 channels, 250 SPS to 16 kSPS, ML/DL optimized. NVIDIA GPU-accelerated EEG.",
+    images: [{ url: "/products/jneeg-board.jpg", width: 1200, height: 630, alt: "JNEEG Jetson Nano EEG shield" }],
+  },
 };
 
 export default function JNEEGProductPage() {

@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   title: "IronBCI-32 — 32-Channel Professional EEG System — PiEEG",
   description:
     "Research-grade 32-channel EEG development kit. 4× AD7771 ADCs, STM32H7, Brainflow integrated. 500 Hz per channel. Available at Elecrow.",
+  openGraph: {
+    title: "IronBCI-32 — 32-Channel Professional EEG System",
+    description:
+      "Research-grade 32-channel EEG development kit. 4× AD7771 ADCs, STM32H7, Brainflow integrated. 500 Hz per channel.",
+    images: [{ url: "/products/ironbci-32.png", width: 1200, height: 630, alt: "IronBCI-32 professional EEG system" }],
+  },
 };
 
 export default function IronBCI32ProductPage() {

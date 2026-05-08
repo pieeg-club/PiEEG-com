@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   title: "ardEEG — 8-Channel Arduino EEG Shield — PiEEG",
   description:
     "EEG with Arduino UNO R4 WiFi. 8 channels, SPI protocol, ultra-low power wearable design. Arduino tools for learning biosciences. Available at Elecrow.",
+  openGraph: {
+    title: "ardEEG — 8-Channel Arduino EEG Shield",
+    description:
+      "EEG with Arduino UNO R4 WiFi. 8 channels, SPI protocol, ultra-low power wearable design. Arduino tools for learning biosciences.",
+    images: [{ url: "/products/ardeeg-top.png", width: 1200, height: 630, alt: "ardEEG Arduino EEG shield" }],
+  },
 };
 
 export default function ArdEEGProductPage() {

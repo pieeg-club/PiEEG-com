@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   title: "MicroBCI — 8-Channel STM32 EEG Shield — PiEEG",
   description:
     "Measure EEG with STM32 NUCLEO-WB55. 8 channels, SPI 250 SPS, Python + Mobile SDK. Brain-computer interface for STM32. Available at Elecrow.",
+  openGraph: {
+    title: "MicroBCI — 8-Channel STM32 EEG Shield",
+    description:
+      "Measure EEG with STM32 NUCLEO-WB55. 8 channels, SPI 250 SPS, Python + Mobile SDK. Brain-computer interface for STM32.",
+    images: [{ url: "/products/microbci.png", width: 1200, height: 630, alt: "MicroBCI STM32 EEG shield" }],
+  },
 };
 
 export default function MicroBCIProductPage() {

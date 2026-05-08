@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: "PiEEG — 8-Channel Raspberry Pi EEG Shield — PiEEG",
   description:
     "Transform your Raspberry Pi into a brain-computer interface. 8 channels, 24-bit resolution, 250 SPS to 16 kSPS. Open-source Python SDK. Available at Elecrow.",
+  openGraph: {
+    title: "PiEEG — 8-Channel Raspberry Pi EEG Shield",
+    description:
+      "Transform your Raspberry Pi into a brain-computer interface. 8 channels, 24-bit resolution, 250 SPS to 16 kSPS. Open-source Python SDK.",
+    images: [{ url: "/products/pieeg.png", width: 1200, height: 630, alt: "PiEEG board" }],
+  },
 };
 
 export default function PiEEGProductPage() {

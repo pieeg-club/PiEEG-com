@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: "PiEEG-16 — 16-Channel Raspberry Pi EEG Shield | PiEEG",
   description:
     "16-channel EEG shield for Raspberry Pi 5. Double the channels for complex neuroscience projects. 24-bit resolution, 250 SPS to 16 kSPS. Buy at Elecrow.",
+  openGraph: {
+    title: "PiEEG-16 — 16-Channel Raspberry Pi EEG Shield",
+    description:
+      "16-channel EEG shield for Raspberry Pi 5. Double the channels for complex neuroscience projects. 24-bit resolution, 250 SPS to 16 kSPS.",
+    images: [{ url: "/products/pieeg16.jpg", width: 1200, height: 630, alt: "PiEEG-16 board" }],
+  },
 };
 
 export default function PiEEG16ProductPage() {

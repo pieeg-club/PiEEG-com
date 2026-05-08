@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   title: "IronBCI — 8-Channel Wearable Wireless EEG — PiEEG",
   description:
     "Wearable Brain-Computer Interface with BLE 5.0. 8 channels, Python + Android SDK, 50mm diameter. Portable neuroscience research. Available at Elecrow.",
+  openGraph: {
+    title: "IronBCI — 8-Channel Wearable Wireless EEG",
+    description:
+      "Wearable Brain-Computer Interface with BLE 5.0. 8 channels, Python + Android SDK, 50mm diameter. Portable neuroscience research.",
+    images: [{ url: "/products/ironbci-angle.jpg", width: 1200, height: 630, alt: "IronBCI wearable EEG device" }],
+  },
 };
 
 export default function IronBCIProductPage() {

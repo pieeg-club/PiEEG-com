@@ -33,7 +33,7 @@ const team = [
     scholar: undefined,
     gradient: "from-violet-500 to-purple-600",
     initials: "YA",
-    photo: "/youssef.jfif",
+    photo: "/youssef.png",
     tags: ["Biosignals", "Real-Time Systems", "PiEEG-Server", "Open Source", "Edge AI", "XR Development"],
   },
 ];

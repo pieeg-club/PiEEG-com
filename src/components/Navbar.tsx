@@ -176,9 +176,7 @@ export function Navbar() {
 
             <span className="shop-aurora hover:scale-105 transition-transform duration-200">
               <a
-                href="https://www.elecrow.com/store/PiEEG"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/hardware"
                 className="flex h-9 items-center rounded-full bg-white dark:bg-zinc-950 px-5 text-sm font-semibold text-zinc-900 dark:text-zinc-100"
               >
                 Shop

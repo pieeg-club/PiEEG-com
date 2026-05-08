@@ -3,7 +3,7 @@ title: "Neuroscience Hackathon Announcement"
 date: "2026-05-07"
 category: "Events"
 excerpt: "Exciting news! We're planning a Neuroscience Hackathon this Autumn in Ottawa, Canada, focused on revolutionizing neuroscience through low-cost BCI and open-source software."
-image: "/news-images/hackathon.jfif"
+image: "/news-images/hackathon.jpg"
 featured: true
 tags: ["Hackathon", "Neuroscience", "BCI", "Ottawa", "Canada", "Innovation"]
 ---

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Cpu, Code, ChevronRight, ExternalLink, ShoppingCart, Package, Tag, BookOpen } from "lucide-react";
+import { ArrowRight, Cpu, Code, ChevronRight, ExternalLink, Package, Tag, BookOpen } from "lucide-react";
 import ProductsGrid from "@/components/ProductsGrid";
 import HardwareSelectorButton from "@/components/HardwareSelectorButton";
 import HeroVideo from "@/components/HeroVideo";
@@ -202,6 +202,7 @@ const accessories = [
     gradient: "from-cyan-500 to-blue-500",
     image: "/products/cap8-dry.png",
     purchaseUrl: "https://www.elecrow.com/cap-eeg-kit-8-channels-dry-electrodes.html",
+    href: "/hardware/8ch-dry-cap",
     status: "Available"
   },
   {
@@ -212,6 +213,7 @@ const accessories = [
     gradient: "from-blue-500 to-indigo-500",
     image: "/products/cap8-wet.jpg",
     purchaseUrl: "https://www.elecrow.com/cap-eeg-kit-8-channels-with-wet-electrodes.html",
+    href: "/hardware/8ch-wet-cap",
     status: "Available"
   },
   {
@@ -222,6 +224,7 @@ const accessories = [
     gradient: "from-purple-500 to-pink-500",
     image: "/products/cap16.png",
     purchaseUrl: "https://www.elecrow.com/low-cost-16-channels-eeg-cap.html",
+    href: "/hardware/16ch-cap",
     status: "Available"
   },
   {
@@ -232,6 +235,7 @@ const accessories = [
     gradient: "from-green-500 to-emerald-500",
     image: "/products/gel.png",
     purchaseUrl: "https://www.elecrow.com/conductive-gel-for-eeg.html",
+    href: "/hardware/conductive-gel",
     status: "Coming Soon"
   },
   {
@@ -242,6 +246,7 @@ const accessories = [
     gradient: "from-orange-500 to-red-500",
     image: "/products/emg-kit.jpg",
     purchaseUrl: "https://www.elecrow.com/kit-to-measure-emg-ecg-ekg.html",
+    href: "/hardware/emg-kit",
     status: "Available"
   }
 ];
@@ -420,21 +425,12 @@ export default function ProductsPage() {
                   <p className="text-[11px] font-semibold text-zinc-400 dark:text-zinc-500 mb-3">
                     {accessory.specs}
                   </p>
-                  {accessory.status === "Available" ? (
-                    <a
-                      href={accessory.purchaseUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold text-xs hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
-                    >
-                      <ShoppingCart className="w-3.5 h-3.5" />
-                      Shop Now
-                    </a>
-                  ) : (
-                    <div className="px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-400 dark:text-zinc-500 font-semibold text-xs text-center">
-                      {accessory.status}
-                    </div>
-                  )}
+                  <Link
+                    href={accessory.href}
+                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold text-xs hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
+                  >
+                    View Details
+                  </Link>
                 </div>
               </div>
             ))}

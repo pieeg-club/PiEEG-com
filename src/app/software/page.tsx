@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Brain, Activity, Heart, Eye, Zap, ArrowRight, Code2, Terminal, Wifi, Play, Database } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -207,16 +208,17 @@ export default function SignalsPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-          <div className="text-center max-w-3xl mx-auto">
+      <section className="overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14">
+          {/* Text content */}
+          <div className="text-center max-w-3xl mx-auto mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-4">
               <Terminal className="w-4 h-4 text-cyan-500" />
               <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
                 PiEEG Server
               </span>
             </div>
-            
+
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-4">
               Stream biosignals
               <br />
@@ -224,8 +226,8 @@ export default function SignalsPage() {
                 in 60 seconds
               </span>
             </h1>
-            
-            <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 mb-5 max-w-xl mx-auto leading-relaxed">
+
+            <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 mb-6 max-w-xl mx-auto leading-relaxed">
               Real-time EEG/EMG/ECG/EOG streaming at 250–500 Hz. WebSocket API. Browser dashboard. Works on Raspberry Pi, Linux, macOS, Windows.
             </p>
 
@@ -249,6 +251,60 @@ export default function SignalsPage() {
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
+          </div>
+
+          {/* Dashboard Browser Mockup */}
+          <div className="relative mx-auto max-w-5xl">
+            <div className="rounded-t-2xl overflow-hidden border border-zinc-200 dark:border-zinc-700 shadow-2xl ring-1 ring-black/5 dark:ring-white/5">
+              {/* Browser chrome bar */}
+              <div className="flex items-center gap-3 px-4 py-3 bg-zinc-100 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700">
+                <div className="flex gap-1.5 shrink-0">
+                  <div className="w-3 h-3 rounded-full bg-red-400" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                  <div className="w-3 h-3 rounded-full bg-green-400" />
+                </div>
+                <div className="flex-1 mx-4 px-3 py-1 rounded-md bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-600 text-xs text-zinc-500 dark:text-zinc-400 text-center font-mono select-none">
+                  cloud.pieeg.com
+                </div>
+                <div className="flex gap-2 shrink-0">
+                  <div className="w-4 h-4 rounded-sm bg-zinc-300 dark:bg-zinc-600" />
+                  <div className="w-4 h-4 rounded-sm bg-zinc-300 dark:bg-zinc-600" />
+                </div>
+              </div>
+              {/* Screenshot */}
+              <Image
+                src="/pieeg-server-screenshot.png"
+                alt="PiEEG Server — live 16-channel EEG dashboard with spectrogram, mental state and signal statistics"
+                width={1400}
+                height={900}
+                className="w-full object-cover object-top"
+                priority
+              />
+            </div>
+            {/* Bottom fade overlay to blend into next section */}
+            <div className="absolute bottom-0 left-0 right-0 h-28 bg-linear-to-t from-white dark:from-zinc-950 to-transparent pointer-events-none" />
+          </div>
+        </div>
+      </section>
+
+      {/* Dashboard Highlights Strip */}
+      <section className="py-8 border-b border-zinc-200 dark:border-zinc-800">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+            {[
+              { label: "Live Waveforms", sublabel: "All channels, real-time", color: "text-cyan-500", bg: "bg-cyan-500/10" },
+              { label: "Spectrogram", sublabel: "Full frequency map", color: "text-violet-500", bg: "bg-violet-500/10" },
+              { label: "Mental State", sublabel: "Focus & Relax scores", color: "text-green-500", bg: "bg-green-500/10" },
+              { label: "Signal Stats", sublabel: "Per-channel metrics", color: "text-orange-500", bg: "bg-orange-500/10" },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className={`rounded-xl px-4 py-3 ${item.bg} border border-transparent`}
+              >
+                <div className={`font-bold text-sm ${item.color}`}>{item.label}</div>
+                <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{item.sublabel}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -307,7 +363,7 @@ export default function SignalsPage() {
                   key={feature.title}
                   className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all duration-200 flex gap-5"
                 >
-                  <div className={`w-11 h-11 rounded-xl bg-linear-to-br ${feature.gradient} flex items-center justify-center text-white shadow-md flex-shrink-0`}>
+                  <div className={`w-11 h-11 rounded-xl bg-linear-to-br ${feature.gradient} flex items-center justify-center text-white shadow-md shrink-0`}>
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>

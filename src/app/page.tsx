@@ -911,13 +911,20 @@ function ProductsSection() {
                   <div className="flex items-start justify-between gap-4 mb-6">
                     <div className="flex items-center gap-4">
                       {/* Product image thumbnail */}
-                      <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-zinc-950 overflow-hidden shrink-0 shadow-lg">
+                      <div className="relative flex items-center justify-center w-14 h-14 rounded-xl overflow-hidden shrink-0 shadow-lg">
+                        <Image
+                          src={product.image}
+                          alt=""
+                          fill
+                          className="object-cover scale-150 blur-xl opacity-60"
+                          aria-hidden="true"
+                        />
                         <Image
                           src={product.image}
                           alt={product.name}
                           width={56}
                           height={56}
-                          className="object-contain w-full h-full p-1"
+                          className="object-contain w-full h-full p-1 relative z-10"
                         />
                       </div>
                       <div>
@@ -935,8 +942,16 @@ function ProductsSection() {
                   </div>
 
                   {/* Large product image */}
-                  <div className="relative w-full h-48 rounded-xl bg-zinc-950 overflow-hidden mb-6 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-linear-to-br from-cyan-500/10 to-blue-600/10" />
+                  <div className="relative w-full h-48 rounded-xl overflow-hidden mb-6 flex items-center justify-center">
+                    {/* Blurred backdrop */}
+                    <Image
+                      src={product.image}
+                      alt=""
+                      fill
+                      className="object-cover scale-150 blur-2xl opacity-60"
+                      aria-hidden="true"
+                    />
+                    <div className="absolute inset-0 bg-white/20 dark:bg-black/20" />
                     <Image
                       src={product.image}
                       alt={product.name}
@@ -984,13 +999,20 @@ function ProductsSection() {
               >
                 {/* Product image */}
                 <div className="flex items-center justify-between">
-                  <div className="relative flex items-center justify-center w-10 h-10 rounded-lg bg-zinc-950 overflow-hidden shrink-0 border border-zinc-200 dark:border-zinc-700">
+                  <div className="relative flex items-center justify-center w-10 h-10 rounded-lg overflow-hidden shrink-0 border border-zinc-200 dark:border-zinc-700">
+                    <Image
+                      src={product.image}
+                      alt=""
+                      fill
+                      className="object-cover scale-150 blur-xl opacity-60"
+                      aria-hidden="true"
+                    />
                     <Image
                       src={product.image}
                       alt={product.name}
                       width={40}
                       height={40}
-                      className="object-contain w-full h-full p-0.5"
+                      className="object-contain w-full h-full p-0.5 relative z-10"
                     />
                   </div>
                   <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">

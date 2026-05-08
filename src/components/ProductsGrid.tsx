@@ -71,28 +71,27 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
             key={product.id}
             className="group relative flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-zinc-900/40 transition-all duration-300"
           >
-            {/* Image area — full width, dark bg */}
-            <div className="relative bg-zinc-950 overflow-hidden" style={{ aspectRatio: "16/9" }}>
-              {/* Accent glow */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${product.gradient} opacity-10`}
-              />
-              {/* Subtle grid */}
-              <div
-                className="absolute inset-0 opacity-20"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px)",
-                  backgroundSize: "32px 32px",
-                }}
-              />
+            {/* Image area — blurred backdrop */}
+            <div className="relative overflow-hidden" style={{ aspectRatio: "16/9" }}>
+              {/* Blurred backdrop — same image, zoomed + blurred */}
+              {product.image && (
+                <Image
+                  src={product.image}
+                  alt=""
+                  fill
+                  className="object-cover scale-150 blur-2xl opacity-60"
+                  aria-hidden="true"
+                />
+              )}
+              {/* Soft brightness overlay */}
+              <div className="absolute inset-0 bg-white/25 dark:bg-black/25" />
               {product.image && (
                 <Image
                   src={product.image}
                   alt={product.name}
                   width={640}
                   height={360}
-                  className="absolute inset-0 w-full h-full object-contain p-8 drop-shadow-2xl group-hover:scale-[1.03] transition-transform duration-500"
+                  className="absolute inset-0 w-full h-full object-contain p-8 drop-shadow-2xl group-hover:scale-[1.03] transition-transform duration-500 z-10"
                 />
               )}
               {/* Badge */}

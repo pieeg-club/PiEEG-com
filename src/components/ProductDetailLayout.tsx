@@ -213,14 +213,23 @@ export default function ProductDetailLayout({
           {/* Asymmetric 2-col grid: large left + stacked right */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {/* Large primary panel */}
-            <div className="lg:col-span-2 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 overflow-hidden flex flex-col min-h-[280px] lg:min-h-[440px]">
-              <div className="flex-1 flex items-center justify-center p-12">
+            <div className="lg:col-span-2 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden flex flex-col min-h-[280px] lg:min-h-[440px]">
+              <div className="relative flex-1 flex items-center justify-center p-12 overflow-hidden">
+                {/* Blurred backdrop */}
+                <Image
+                  src={images && images[0] ? images[0] : image}
+                  alt=""
+                  fill
+                  className="object-cover scale-150 blur-2xl opacity-50"
+                  aria-hidden="true"
+                />
+                <div className="absolute inset-0 bg-white/30 dark:bg-black/30" />
                 <Image
                   src={images && images[0] ? images[0] : image}
                   alt={`${name} — product view`}
                   width={520}
                   height={400}
-                  className="object-contain max-h-72 w-auto drop-shadow-xl"
+                  className="object-contain max-h-72 w-auto drop-shadow-xl relative z-10"
                 />
               </div>
               <div className="px-5 py-3.5 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 flex items-center justify-between">
@@ -234,23 +243,28 @@ export default function ProductDetailLayout({
             {/* Right column: stacked panels */}
             <div className="flex flex-col gap-4">
               {/* Second image panel */}
-              <div className="rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden flex flex-col min-h-[200px] lg:min-h-0 lg:flex-1">
-                <div className="flex-1 flex items-center justify-center p-6 relative overflow-hidden">
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-15`}
+              <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden flex flex-col min-h-[200px] lg:min-h-0 lg:flex-1">
+                <div className="relative flex-1 flex items-center justify-center p-6 overflow-hidden">
+                  {/* Blurred backdrop */}
+                  <Image
+                    src={images && images[1] ? images[1] : image}
+                    alt=""
+                    fill
+                    className="object-cover scale-150 blur-2xl opacity-50"
+                    aria-hidden="true"
                   />
+                  <div className="absolute inset-0 bg-white/30 dark:bg-black/30" />
                   <Image
                     src={images && images[1] ? images[1] : image}
                     alt={`${name} — alternate view`}
                     width={260}
                     height={200}
-                    className="object-contain max-h-28 w-auto relative z-10"
-                    style={{ filter: "drop-shadow(0 0 20px rgba(255,255,255,0.08))" }}
+                    className="object-contain max-h-28 w-auto relative z-10 drop-shadow-xl"
                   />
                 </div>
-                <div className="px-4 py-2.5 border-t border-zinc-800 flex items-center justify-between">
+                <div className="px-4 py-2.5 border-t border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60 backdrop-blur-sm flex items-center justify-between">
                   <span className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
-                    {images && images[1] ? "Alternate View" : "Dark Showcase"}
+                    {images && images[1] ? "Alternate View" : "Showcase"}
                   </span>
                   <span className="text-xs text-zinc-700">2 / {images && images.length > 0 ? (videoId ? images.length + 1 : images.length) : 3}</span>
                 </div>
@@ -258,7 +272,7 @@ export default function ProductDetailLayout({
 
               {/* Video embed or third image */}
               {videoId ? (
-                <div className="rounded-2xl border border-zinc-800 overflow-hidden relative min-h-[200px] lg:min-h-0 lg:flex-1">
+                <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden relative min-h-[200px] lg:min-h-0 lg:flex-1">
                   <iframe
                     src={`https://www.youtube.com/embed/${videoId}`}
                     title={`${name} product demo`}
@@ -274,19 +288,26 @@ export default function ProductDetailLayout({
                   </div>
                 </div>
               ) : images && images[2] ? (
-                <div className="rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden flex flex-col min-h-[200px] lg:min-h-0 lg:flex-1">
-                  <div className="flex-1 flex items-center justify-center p-6 relative overflow-hidden">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-10`} />
+                <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden flex flex-col min-h-[200px] lg:min-h-0 lg:flex-1">
+                  <div className="relative flex-1 flex items-center justify-center p-6 overflow-hidden">
+                    {/* Blurred backdrop */}
+                    <Image
+                      src={images[2]}
+                      alt=""
+                      fill
+                      className="object-cover scale-150 blur-2xl opacity-50"
+                      aria-hidden="true"
+                    />
+                    <div className="absolute inset-0 bg-white/30 dark:bg-black/30" />
                     <Image
                       src={images[2]}
                       alt={`${name} — detail view`}
                       width={260}
                       height={200}
-                      className="object-contain max-h-28 w-auto relative z-10"
-                      style={{ filter: "drop-shadow(0 0 20px rgba(255,255,255,0.08))" }}
+                      className="object-contain max-h-28 w-auto relative z-10 drop-shadow-xl"
                     />
                   </div>
-                  <div className="px-4 py-2.5 border-t border-zinc-800 flex items-center justify-between">
+                  <div className="px-4 py-2.5 border-t border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60 backdrop-blur-sm flex items-center justify-between">
                     <span className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
                       Detail View
                     </span>
@@ -294,9 +315,16 @@ export default function ProductDetailLayout({
                   </div>
                 </div>
               ) : (
-                <div className="rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden flex flex-col min-h-[200px] lg:min-h-0 lg:flex-1">
-                  <div className="flex-1 flex items-center justify-center overflow-hidden p-2 relative">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-10`} />
+                <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden flex flex-col min-h-[200px] lg:min-h-0 lg:flex-1">
+                  <div className="relative flex-1 flex items-center justify-center overflow-hidden p-2">
+                    <Image
+                      src={image}
+                      alt=""
+                      fill
+                      className="object-cover scale-150 blur-2xl opacity-50"
+                      aria-hidden="true"
+                    />
+                    <div className="absolute inset-0 bg-white/30 dark:bg-black/30" />
                     <div className="scale-[1.8] origin-center relative z-10">
                       <Image
                         src={image}
@@ -307,7 +335,7 @@ export default function ProductDetailLayout({
                       />
                     </div>
                   </div>
-                  <div className="px-4 py-2.5 border-t border-zinc-800 flex items-center justify-between">
+                  <div className="px-4 py-2.5 border-t border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-950/60 backdrop-blur-sm flex items-center justify-between">
                     <span className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
                       Close-up Detail
                     </span>

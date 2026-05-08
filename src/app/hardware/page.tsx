@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Cpu, Code, ChevronRight, ExternalLink, ShoppingCart, Package, Tag, BookOpen } from "lucide-react";
 import ProductsGrid from "@/components/ProductsGrid";
 import HardwareSelectorButton from "@/components/HardwareSelectorButton";
+import HeroVideo from "@/components/HeroVideo";
 
 export const metadata: Metadata = {
   title: "Products — PiEEG",
@@ -234,8 +235,14 @@ export default function ProductsPage() {
   return (
     <main className="flex-1">
       {/* Hero Section */}
-      <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+      <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
+        {/* Background video — loops with fade-dim transition between repeats */}
+        <HeroVideo />
+        {/* Artistic gradient overlays */}
+        <div className="absolute inset-0 bg-linear-to-br from-cyan-500/10 via-transparent to-violet-600/10 dark:from-cyan-500/15 dark:to-violet-600/15 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-t from-white/80 via-white/20 to-white/60 dark:from-zinc-950/85 dark:via-zinc-950/20 dark:to-zinc-950/60 pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-4">
               <Cpu className="w-4 h-4 text-cyan-500" />

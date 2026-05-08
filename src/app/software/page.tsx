@@ -648,15 +648,13 @@ export default function SignalsPage() {
               <Play className="w-4 h-4" />
               Try Live Demo
             </a>
-            <a
-              href="https://pieeg-server-doc.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/support"
               className="inline-flex items-center gap-2 px-7 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
               Read Documentation
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>

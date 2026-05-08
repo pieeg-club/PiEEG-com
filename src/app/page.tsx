@@ -742,26 +742,27 @@ function HeroSection() {
               {/* CTAs */}
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <a
-                  href="https://cloud.pieeg.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/hardware"
                   className="group relative flex items-center gap-2 h-11 bg-linear-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 px-5 text-sm font-semibold text-white dark:text-zinc-950 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105 transition-all duration-200 rounded-lg overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-linear-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <Play className="w-3.5 h-3.5 relative z-10" />
-                  <span className="relative z-10">Try Live Demo</span>
+                  <ArrowRight className="w-3.5 h-3.5 relative z-10" />
+                  <span className="relative z-10">Shop Hardware</span>
+                </a>
+                <a
+                  href="https://cloud.pieeg.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 h-11 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-5 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
+                >
+                  <Play className="w-3.5 h-3.5" />
+                  Try Live Demo
                 </a>
                 <a
                   href="/support"
                   className="flex items-center gap-2 h-11 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-5 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
                 >
                   Documentation <ArrowRight className="w-3.5 h-3.5" />
-                </a>
-                <a
-                  href="/hardware"
-                  className="flex items-center gap-2 h-11 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-5 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
-                >
-                  Shop Hardware <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
 

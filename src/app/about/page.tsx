@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Users, Target, Lightbulb, Globe, ArrowRight, Shield, Code2 as Github, MapPin, BookOpen, Cpu, GraduationCap } from "lucide-react";
 
@@ -19,6 +20,7 @@ const team = [
     scholar: "https://scholar.google.com/citations?user=L8q-KSoAAAAJ&hl=en",
     gradient: "from-cyan-500 to-blue-600",
     initials: "IR",
+    photo: "/ildar.png",
     tags: ["PhD", "Hardware Design", "Signal Processing", "Machine Learning", "Udemy Instructor"],
   },
   {
@@ -31,6 +33,7 @@ const team = [
     scholar: undefined,
     gradient: "from-violet-500 to-purple-600",
     initials: "YA",
+    photo: "/youssef.jfif",
     tags: ["TypeScript", "BCI Software", "Real-Time Systems", "PiEEG-Server", "Open Source"],
   },
 ];
@@ -117,9 +120,21 @@ export default function AboutPage() {
               >
                 {/* Header */}
                 <div className="flex items-start gap-4">
-                  <div className={`w-14 h-14 rounded-2xl bg-linear-to-br ${member.gradient} flex items-center justify-center text-white font-extrabold text-lg shadow-md shrink-0`}>
-                    {member.initials}
-                  </div>
+                    {member.photo ? (
+                    <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-md shrink-0">
+                      <Image
+                        src={member.photo}
+                        alt={member.name}
+                        width={80}
+                        height={80}
+                        className="w-full h-full object-cover grayscale"
+                      />
+                    </div>
+                  ) : (
+                    <div className={`w-20 h-20 rounded-2xl bg-linear-to-br ${member.gradient} flex items-center justify-center text-white font-extrabold text-lg shadow-md shrink-0`}>
+                      {member.initials}
+                    </div>
+                  )}
                   <div>
                     <h3 className="text-base font-extrabold text-zinc-900 dark:text-zinc-100">{member.name}</h3>
                     <p className={`text-sm font-semibold bg-linear-to-r ${member.gradient} bg-clip-text text-transparent`}>

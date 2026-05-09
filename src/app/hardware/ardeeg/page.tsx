@@ -1,16 +1,16 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink, Code2 as GitHubIcon, Cpu, Signal, Shield, Zap } from "lucide-react";
+import { ExternalLink, Code2 as GitHubIcon, Cpu, Signal, Shield, Zap, Wifi } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "ardEEG — 8-Channel Arduino EEG Shield — PiEEG",
   description:
-    "EEG with Arduino UNO R4 WiFi. 8 channels, SPI protocol, ultra-low power wearable design. Arduino tools for learning biosciences. Available at Elecrow.",
+    "EEG with Arduino UNO R4 WiFi. 8 channels, wireless WiFi data transfer, ultra-low power wearable design. Arduino tools for learning biosciences. Available at Elecrow.",
   openGraph: {
     title: "ardEEG — 8-Channel Arduino EEG Shield",
     description:
-      "EEG with Arduino UNO R4 WiFi. 8 channels, SPI protocol, ultra-low power wearable design. Arduino tools for learning biosciences.",
+      "EEG with Arduino UNO R4 WiFi. 8 channels, wireless WiFi data transfer, ultra-low power wearable design. Arduino tools for learning biosciences.",
     images: [{ url: "/products/ardeeg-top.png", width: 1200, height: 630, alt: "ardEEG Arduino EEG shield" }],
   },
 };
@@ -34,7 +34,7 @@ export default function ArdEEGProductPage() {
               </h1>
               
               <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-8">
-                EEG with Arduino. Shield for Arduino to measure EEG, EMG, and ECG bio-signals with 8 channels
+                EEG with Arduino. Shield for Arduino UNO R4 WiFi to measure EEG, EMG, and ECG bio-signals with 8 channels and wireless data transfer
               </p>
 
               <div className="flex flex-wrap gap-4 mb-8">
@@ -178,9 +178,9 @@ export default function ArdEEGProductPage() {
             </div>
 
             <div className="p-6 rounded-xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
-              <Zap className="w-8 h-8 text-purple-600 dark:text-purple-400 mb-4" />
-              <h3 className="font-bold mb-2">SPI Data Transfer</h3>
-              <p className="text-zinc-600 dark:text-zinc-400">Fast serial communication</p>
+              <Wifi className="w-8 h-8 text-purple-600 dark:text-purple-400 mb-4" />
+              <h3 className="font-bold mb-2">WiFi Data Transfer</h3>
+              <p className="text-zinc-600 dark:text-zinc-400">Wireless data streaming via Arduino UNO R4 built-in WiFi</p>
             </div>
 
             <div className="p-6 rounded-xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">

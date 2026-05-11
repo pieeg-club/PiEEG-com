@@ -127,7 +127,7 @@ export default function AboutPage() {
                         alt={member.name}
                         width={80}
                         height={80}
-                        className="w-full h-full object-cover grayscale"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                   ) : (

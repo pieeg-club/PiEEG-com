@@ -1,7 +1,8 @@
-<img width="1447" height="989" alt="image" src="https://github.com/user-attachments/assets/08636c7f-4a60-4c2f-896c-e88fa152a808" />
+<img width="3810" height="1972" alt="image" src="https://github.com/user-attachments/assets/5f9ea975-93bf-49a0-bc2c-39fb9f3ff9c0" />
 
 
-# PiEEG Website — Content Manager
+
+# PiEEG Website
 
 Welcome! This README is your **CMS dashboard**. Click any section below to open the corresponding folder and its guide.
 

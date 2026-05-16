@@ -24,9 +24,7 @@ This headset design brings professional-grade electrode positioning to makers an
 ## Download & Print
 
 Files available on:
-- [Thingiverse](https://www.thingiverse.com/pieeg)
-- [Printables](https://www.printables.com/pieeg)
-- [GitHub](https://github.com/pieeg-club/3d-headset)
+- [GitHub](https://github.com/pieeg-club/ironbci_3D_EEG_Printable_Headset)
 
 Print time: 6-12 hours depending on configuration
 Material: PLA, PETG, or TPU recommended
@@ -35,4 +33,4 @@ Material: PLA, PETG, or TPU recommended
 
 Complete assembly instructions with photos and videos available in our documentation. Average assembly time: 30 minutes.
 
-[Download Files](https://github.com/pieeg-club/3d-headset) | [Assembly Guide](https://pieeg.com/docs/3d-headset)
+[Download Files](https://github.com/pieeg-club/ironbci_3D_EEG_Printable_Headset)

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Users, Target, Lightbulb, Globe, ArrowRight, Shield, Code2 as Github, MapPin, BookOpen, Cpu, GraduationCap } from "lucide-react";
+import { Users, Target, Lightbulb, Globe, ArrowRight, Shield, Code2 as Github, MapPin, BookOpen, Cpu, GraduationCap, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About — PiEEG",
@@ -30,6 +30,7 @@ const team = [
     role: "Founder & Lead Engineer",
     bio: "PhD scientist, engineer, and entrepreneur in bioscience. With an academic background spanning Imperial College London, Heriot-Watt University, and the University of Edinburgh, Ildar has published numerous papers on deep neural networks for EEG feature extraction, low-cost brain-computer interfaces, and applied AI. His work is widely cited in neurotechnology and BCI research. He launched PiEEG on CrowdSupply and raised 5× the initial goal.",
     location: "Edinburgh, Scotland, UK",
+    email: "ildar@pieeg.com",
     github: "https://github.com/Ildaron",
     linkedin: "https://www.linkedin.com/in/ildar-rakhmatulin-262a66112",
     scholar: "https://scholar.google.com/citations?user=L8q-KSoAAAAJ&hl=en",
@@ -43,6 +44,7 @@ const team = [
     role: "Software Architect",
     bio: "Software architect and BCI developer building the open-source software ecosystem around PiEEG. Creator of PiEEG-Server, he is focused on making advanced brain-computer interface tools more accessible to developers, researchers, and creators.",
     location: "Remote",
+    email: "youssef@pieeg.com",
     github: "https://github.com/yelabb/",
     linkedin: "https://www.linkedin.com/in/yelabb",
     scholar: undefined,
@@ -195,6 +197,13 @@ export default function AboutPage() {
                       Scholar
                     </a>
                   )}
+                  <a
+                    href={`mailto:${member.email}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                  >
+                    <Mail className="w-3.5 h-3.5" />
+                    {member.email}
+                  </a>
                 </div>
               </div>
             ))}

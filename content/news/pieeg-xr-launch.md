@@ -29,6 +29,6 @@ Join **1,000+ developers** already hacking this technology in our Discord commun
 
 We're live on **Kickstarter prelaunch**. If you're a developer, a VR enthusiast, or just tired of mechanical inputs, get in early.
 
-**[Join the Kickstarter Campaign →](https://www.kickstarter.com/projects/42415505/pieeg-xr-neural-face-interface-for-spatial-computing)**
+**[Join the Kickstarter Campaign →](https://xr.pieeg.com)**
 
 This is the future of spatial computing—and it starts with direct neural control.

@@ -3,7 +3,7 @@ title: "PiEEG XR: Neural Interface for Meta Quest VR"
 date: "2026-05-29"
 category: "Product Launch"
 excerpt: "After years of prototyping, PiEEG XR transforms brain signals and facial micro-expressions into real-time avatar control for Meta Quest VR—no controllers needed."
-image: "/news-images/neural-face-interface-computing.png"
+image: "/news-images/neural-face-interface-computing-1.png"
 featured: true
 tags: ["Product Launch", "VR", "BCI", "Meta Quest", "PiEEG XR", "Kickstarter"]
 ---

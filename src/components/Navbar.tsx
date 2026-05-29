@@ -9,10 +9,24 @@ import {
   Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid,
 } from "lucide-react";
 
-const ANNOUNCEMENT_KEY = "announcement-hackathon-ottawa-dismissed";
+const ANNOUNCEMENT_KEY = "announcements-dismissed";
+
+const ANNOUNCEMENTS = [
+  {
+    href: "/news/pieeg-xr-launch",
+    badge: "🚀 Prelaunch",
+    text: "PiEEG XR: Neural Face Interface for Meta Quest VR — Now on Kickstarter"
+  },
+  {
+    href: "/news/neuroscience-hackathon-announcement",
+    badge: "Events",
+    text: "Neuroscience Hackathon is coming to Ottawa"
+  }
+];
 
 function AnnouncementBar() {
   const [visible, setVisible] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Runs once on mount (client only) — avoids SSR mismatch
   const initialized = useRef(false);
@@ -27,16 +41,27 @@ function AnnouncementBar() {
     if (!sessionStorage.getItem(ANNOUNCEMENT_KEY)) setVisible(true);
   }, []);
 
+  // Rotate announcements every 5 seconds
+  useEffect(() => {
+    if (!visible) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % ANNOUNCEMENTS.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [visible]);
+
   if (!visible) return null;
+
+  const announcement = ANNOUNCEMENTS[currentIndex];
 
   return (
     <div className="relative flex items-center justify-center gap-3 px-4 py-2 bg-cyan-600 dark:bg-cyan-700 text-white text-sm">
       <Link
-        href="/news/neuroscience-hackathon-announcement"
+        href={announcement.href}
         className="flex items-center gap-2 hover:underline underline-offset-2"
       >
-        <span className="px-2 py-0.5 rounded-full bg-white/20 text-[11px] font-bold uppercase tracking-wide">Events</span>
-        <span className="font-medium">Neuroscience Hackathon is coming to Ottawa</span>
+        <span className="px-2 py-0.5 rounded-full bg-white/20 text-[11px] font-bold uppercase tracking-wide">{announcement.badge}</span>
+        <span className="font-medium">{announcement.text}</span>
         <ArrowRight className="w-3.5 h-3.5 shrink-0" />
       </Link>
       <button

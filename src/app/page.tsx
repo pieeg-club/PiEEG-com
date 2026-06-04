@@ -4,6 +4,7 @@ import { type LucideIcon, ArrowRight, Zap, Cpu, Terminal, ExternalLink, Play, Bl
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import HeroVideo from "@/components/HeroVideo";
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -187,6 +188,7 @@ function MiniSignalCanvas({ mode, isActive, color }: { mode: 'eeg' | 'emg' | 'ec
   const bufferRef = useRef<Float32Array>(new Float32Array(200));
   const writeIndexRef = useRef(0);
   const timeRef = useRef(0);
+  const [isVisible, setIsVisible] = useState(false);
 
   const generateSample = useRef((t: number, signalMode: string): number => {
     if (signalMode === 'eeg') {
@@ -220,6 +222,27 @@ function MiniSignalCanvas({ mode, isActive, color }: { mode: 'eeg' | 'emg' | 'ec
     return 0;
   }).current;
 
+  // Intersection Observer to pause animation when not visible
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsVisible(entry.isIntersecting);
+        });
+      },
+      { threshold: 0.1, rootMargin: '100px' } // Start animating slightly before visible
+    );
+
+    observer.observe(canvas);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -239,7 +262,8 @@ function MiniSignalCanvas({ mode, isActive, color }: { mode: 'eeg' | 'emg' | 'ec
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
 
-      if (!isActive) {
+      // Only animate when both active AND visible
+      if (!isActive || !isVisible) {
         animationRef.current = requestAnimationFrame(draw);
         return;
       }
@@ -296,7 +320,7 @@ function MiniSignalCanvas({ mode, isActive, color }: { mode: 'eeg' | 'emg' | 'ec
     return () => {
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [mode, isActive, color, generateSample]);
+  }, [mode, isActive, color, generateSample, isVisible]);
 
   return (
     <canvas 
@@ -623,29 +647,15 @@ function HeroSection() {
   return (
     <section className="relative flex flex-col items-center justify-center overflow-hidden min-h-[calc(100svh-3.5rem)] px-4 py-12">
 
-      {/* Background images */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute inset-0 bg-no-repeat dark:hidden"
-          style={{
-            backgroundImage: 'url(/hero-bg-light.png)',
-            backgroundPosition: 'right 0 bottom 0',
-            backgroundSize: '100%',
-            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,1) 60%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,1) 60%)',
-          }}
-        />
-        <div
-          className="hidden dark:block absolute inset-0 bg-no-repeat"
-          style={{
-            backgroundImage: 'url(/hero-bg-dark.png)',
-            backgroundPosition: 'right 0 bottom 0',
-            backgroundSize: '100%',
-            opacity: 0.4,
-            maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,1) 60%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,1) 60%)',
-          }}
-        />
+      {/* Background video */}
+      <HeroVideo />
+
+      {/* Layered cinematic overlays */}
+      <div className="absolute inset-0 bg-linear-to-br from-cyan-400/8 via-blue-500/5 to-violet-600/8 dark:from-cyan-400/12 dark:via-blue-500/8 dark:to-violet-600/12 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-t from-white via-white/10 to-white/50 dark:from-zinc-950 dark:via-zinc-950/10 dark:to-zinc-950/50 pointer-events-none" />
+      {/* Subtle radial glow behind the content */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-175 h-125 rounded-full bg-cyan-400/5 dark:bg-cyan-400/8 blur-[120px]" />
       </div>
 
       {/* Main content */}

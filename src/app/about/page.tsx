@@ -47,7 +47,7 @@ const team = [
     email: "youssef@pieeg.com",
     github: "https://github.com/yelabb/",
     linkedin: "https://www.linkedin.com/in/yelabb",
-    scholar: undefined,
+    scholar: "https://scholar.google.ca/citations?user=qGJWrOYAAAAJ",
     gradient: "from-violet-500 to-purple-600",
     initials: "YA",
     photo: "/youssef.png",

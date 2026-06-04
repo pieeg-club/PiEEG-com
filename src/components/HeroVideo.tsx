@@ -13,9 +13,14 @@ export default function HeroVideo() {
     if (!video) return;
 
     let fadingOut = false;
+    let lastCheckTime = 0;
 
-    // Start fade-out when near the end
+    // Throttled timeupdate - only check every 100ms to reduce CPU load
     const handleTimeUpdate = () => {
+      const now = performance.now();
+      if (now - lastCheckTime < 100) return; // Throttle
+      lastCheckTime = now;
+
       if (isNaN(video.duration) || fadingOut) return;
       if (video.duration - video.currentTime <= FADE_S) {
         fadingOut = true;
@@ -52,11 +57,14 @@ export default function HeroVideo() {
   return (
     <video
       ref={videoRef}
-      src="https://pieeg.lon1.cdn.digitaloceanspaces.com/ironbci-video.mp4"
+      src="https://pieeg.lon1.cdn.digitaloceanspaces.com/ironbci-video-tiny.mp4"
       autoPlay
       muted
       playsInline
-      style={{ opacity: BASE_OPACITY }}
+      preload="auto"
+      disablePictureInPicture
+      disableRemotePlayback
+      style={{ opacity: BASE_OPACITY, willChange: 'opacity' }}
       className="absolute inset-0 w-full h-full object-cover scale-105 blur-[1px]"
     />
   );

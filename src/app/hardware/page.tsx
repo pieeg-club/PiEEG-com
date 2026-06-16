@@ -163,7 +163,7 @@ const hardwareProducts = [
     purchaseUrl: "https://www.elecrow.com/ardeeg.html",
     github: "https://github.com/Ildaron/ardEEG",
     youtube: "https://youtu.be/s_5mDDUFp6E",
-    categories: ["8ch"]
+    categories: ["wireless", "8ch"]
   },
   {
     id: "jneeg",

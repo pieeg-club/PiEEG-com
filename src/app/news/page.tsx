@@ -12,15 +12,28 @@ export const metadata: Metadata = {
 };
 
 const mediaFeatures = [
+  // VR & XR Media (PiEEG XR Coverage)
+  { name: "UploadVR", url: "https://www.uploadvr.com/pieeg-xr-makes-your-vr-avatar-expressive-without-face-tracking/" },
+  { name: "Notebookcheck", url: "https://www.notebookcheck.net/For-VR-PiEEG-XR-measures-brain-activity-in-real-time.1311211.0.html" },
+  { name: "Mogura VR", url: "https://www.moguravr.com/pieeg-xr-kickstarter-en/" },
+  { name: "UK Rifter", url: "https://www.ukrifter.com/revolutionising-avatar-control-pieegs-brain-computer-interface-for-quest-headsets/" },
+  
+  // Tech Media
   { name: "Tom's Hardware", url: "https://www.tomshardware.com/news/control-a-raspberry-pi-with-your-mind-and-pieeg" },
+  { name: "Tom's Hardware", url: "https://www.tomshardware.com/raspberry-pi/raspberry-pi-powers-briefcase-sized-pieeg-bio-lab-project" },
   { name: "IEEE Spectrum", url: "https://spectrum.ieee.org/neurotechnology-diy" },
   { name: "VICE", url: "https://www.vice.com/en/article/88x99k/this-affordable-device-will-let-anyone-connect-their-brain-to-a-computer" },
+  { name: "It's FOSS", url: "https://itsfoss.com/news/pieeg-kit/" },
+  
+  // Maker & Hardware Media
   { name: "Raspberry Pi", url: "https://www.raspberrypi.com/news/raspberry-pi-to-brain-interface/" },
   { name: "Hackaday", url: "https://hackaday.com/2024/05/08/ardeeg-lowers-the-cost-of-brain-computer-interfaces/" },
-  { name: "Electronics Weekly", url: "https://www.electronicsweekly.com/blogs/gadget-master/arduino/measuring-eeg-and-biosignals-with-arduino-ardeeg-shield-2024-05/" },
+  { name: "Hackaday", url: "https://hackaday.com/tag/pieeg/" },
   { name: "Hackster.io", url: "https://www.hackster.io/news/ildar-rakhmatulin-is-back-with-more-low-cost-brain-computer-interface-tech-meet-the-ardeeg-6fb1427a52a7" },
+  { name: "Hackster.io", url: "https://www.hackster.io/news/ildar-rakhmatulin-launches-a-new-16-channel-pieeg-for-the-most-advanced-brain-machine-interfaces-3327547fb52d" },
+  { name: "Electronics Weekly", url: "https://www.electronicsweekly.com/blogs/gadget-master/arduino/measuring-eeg-and-biosignals-with-arduino-ardeeg-shield-2024-05/" },
   { name: "Arduino Blog", url: "https://blog.arduino.cc/2024/05/10/ardeeg-is-an-arduino-uno-r4-wifi-shield-for-measuring-biosignals/" },
-  { name: "CNX Software", url: "https://www.cnx-software.com/2024/05/15/ardeeg-shield-works-with-arduino-uno-r4-wifi-for-biosignals-measurement/" }
+  { name: "CNX Software", url: "https://www.cnx-software.com/2024/05/15/ardeeg-shield-works-with-arduino-uno-r4-wifi-for-biosignals-measurement/" },
 ];
 
 export default async function NewsPage({

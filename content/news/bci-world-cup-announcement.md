@@ -42,4 +42,4 @@ This could be the beginning of competitive neural sports—democratized, open-so
 
 ---
 
-*Want to build your own BCI games or join the competition? [Join our community](https://discord.gg/pieeg) and get started with PiEEG hardware.*
+*Want to build your own BCI games or join the competition? [Join our community](https://discord.gg/neJ45FR6Sv) and get started with PiEEG hardware.*

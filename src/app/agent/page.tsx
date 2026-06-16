@@ -143,7 +143,7 @@ const FEATURES = [
   {
     icon: BookOpen,
     title: "Jupyter Notebooks",
-    description: "Auto-generate publication-ready analysis notebooks",
+    description: "Auto-generate analysis notebooks",
     color: "text-indigo-600 dark:text-indigo-400",
     bg: "bg-indigo-500/10",
   },
@@ -364,7 +364,7 @@ export default function AgentPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">See It In Action</h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400">
-              Watch realistic conversations with your brain copilot — live demos auto-play as you scroll
+              Watch realistic conversations with your brain copilot
             </p>
           </div>
 

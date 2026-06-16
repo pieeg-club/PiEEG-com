@@ -100,7 +100,7 @@ export default async function NewsPage({
           <div className="flex flex-wrap items-center justify-center gap-3">
             {mediaFeatures.map((media) => (
               <a
-                key={media.name}
+                key={media.url}
                 href={media.url}
                 target="_blank"
                 rel="noopener noreferrer"

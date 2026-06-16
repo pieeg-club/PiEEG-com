@@ -147,15 +147,18 @@ const signals = [
 ];
 
 const featuredIn = [
-  { name: "Tom's Hardware", logo: "Tom's Hardware" },
-  { name: "IEEE Spectrum", logo: "IEEE Spectrum" },
-  { name: "VICE", logo: "VICE" },
-  { name: "Raspberry Pi", logo: "Raspberry Pi" },
-  { name: "Hackaday", logo: "Hackaday" },
-  { name: "Hackster.io", logo: "Hackster.io" },
-  { name: "Electronics Weekly", logo: "Electronics Weekly" },
-  { name: "Arduino", logo: "Arduino" },
-  { name: "CNX Software", logo: "CNX Software" },
+  { name: "UploadVR", logo: "UploadVR", url: "https://www.uploadvr.com/pieeg-xr-makes-your-vr-avatar-expressive-without-face-tracking/" },
+  { name: "Tom's Hardware", logo: "Tom's Hardware", url: "https://www.tomshardware.com/raspberry-pi/raspberry-pi-powers-briefcase-sized-pieeg-bio-lab-project" },
+  { name: "IEEE Spectrum", logo: "IEEE Spectrum", url: "https://spectrum.ieee.org/neurotechnology-diy" },
+  { name: "VICE", logo: "VICE", url: "https://www.vice.com/en/article/88x99k/this-affordable-device-will-let-anyone-connect-their-brain-to-a-computer" },
+  { name: "Raspberry Pi", logo: "Raspberry Pi", url: "https://www.raspberrypi.com/news/raspberry-pi-to-brain-interface/" },
+  { name: "Hackaday", logo: "Hackaday", url: "https://hackaday.com/tag/pieeg/" },
+  { name: "Hackster.io", logo: "Hackster.io", url: "https://www.hackster.io/news/ildar-rakhmatulin-launches-a-new-16-channel-pieeg-for-the-most-advanced-brain-machine-interfaces-3327547fb52d" },
+  { name: "Arduino Blog", logo: "Arduino", url: "https://blog.arduino.cc/2024/05/10/ardeeg-is-an-arduino-uno-r4-wifi-shield-for-measuring-biosignals/" },
+  { name: "CNX Software", logo: "CNX Software", url: "https://www.cnx-software.com/2024/05/15/ardeeg-shield-works-with-arduino-uno-r4-wifi-for-biosignals-measurement/" },
+  { name: "Notebookcheck", logo: "Notebookcheck", url: "https://www.notebookcheck.net/For-VR-PiEEG-XR-measures-brain-activity-in-real-time.1311211.0.html" },
+  { name: "It's FOSS", logo: "It's FOSS", url: "https://itsfoss.com/news/pieeg-kit/" },
+  { name: "Electronics Weekly", logo: "Electronics Weekly", url: "https://www.electronicsweekly.com/blogs/gadget-master/arduino/measuring-eeg-and-biosignals-with-arduino-ardeeg-shield-2024-05/" },
 ];
 
 const features = [
@@ -832,11 +835,17 @@ function HeroSection() {
           <div className="flex flex-col items-center gap-6">
             <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-600">Featured In</p>
             <div className="relative w-full overflow-hidden">
-              <div className="flex gap-12 md:gap-16 animate-scroll-slow hover:[animation-play-state:paused]">
-                {[...featuredIn, ...featuredIn].map(({ name, logo }, index) => (
-                  <div key={`${name}-${index}`} className="group relative flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-110 shrink-0">
+              <div className="flex gap-12 md:gap-16 animate-scroll-slow">
+                {[...featuredIn, ...featuredIn].map(({ name, logo, url }, index) => (
+                  <a 
+                    key={`${name}-${index}`} 
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-110 shrink-0"
+                  >
                     <span className="text-sm md:text-base font-semibold text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-700 dark:group-hover:text-zinc-400 transition-colors duration-300 whitespace-nowrap">{logo}</span>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -862,16 +871,19 @@ function FeaturedInBar() {
           
           {/* Animated Scrolling Logos */}
           <div className="relative w-full overflow-hidden">
-            <div className="flex gap-12 md:gap-16 animate-scroll-slow hover:[animation-play-state:paused]">
-              {duplicatedLogos.map(({ name, logo }, index) => (
-                <div
+            <div className="flex gap-12 md:gap-16 animate-scroll-slow">
+              {duplicatedLogos.map(({ name, logo, url }, index) => (
+                <a
                   key={`${name}-${index}`}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-110 shrink-0"
                 >
                   <span className="text-sm md:text-base font-semibold text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-700 dark:group-hover:text-zinc-400 transition-colors duration-300 whitespace-nowrap">
                     {logo}
                   </span>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -1377,7 +1389,7 @@ function WebBCISection() {
 
         {/* Row 1 — scrolls left */}
         <div className="overflow-hidden">
-          <div className="flex gap-4 animate-scroll-slow hover:[animation-play-state:paused]">
+          <div className="flex gap-4 animate-scroll-slow">
             {[...webExperiences, ...webExperiences].map((exp, i) => {
               const Icon = exp.Icon;
               return (
@@ -1416,7 +1428,7 @@ function WebBCISection() {
 
         {/* Row 2 — scrolls right (offset order) */}
         <div className="overflow-hidden">
-          <div className="flex gap-4 animate-scroll-slow-reverse hover:[animation-play-state:paused]">
+          <div className="flex gap-4 animate-scroll-slow-reverse">
             {[...row2, ...row2].map((exp, i) => {
               const Icon = exp.Icon;
               return (
@@ -1470,15 +1482,18 @@ function WebBCISection() {
 
 function FeaturedSection() {
   const publications = [
-    "Tom's Hardware",
-    "IEEE Spectrum",
-    "VICE",
-    "Raspberry Pi",
-    "Hackaday",
-    "Electronics Weekly",
-    "Hackster.io",
-    "Arduino",
-    "CNX Software",
+    { name: "UploadVR", url: "https://www.uploadvr.com/pieeg-xr-makes-your-vr-avatar-expressive-without-face-tracking/" },
+    { name: "Tom's Hardware", url: "https://www.tomshardware.com/raspberry-pi/raspberry-pi-powers-briefcase-sized-pieeg-bio-lab-project" },
+    { name: "IEEE Spectrum", url: "https://spectrum.ieee.org/neurotechnology-diy" },
+    { name: "VICE", url: "https://www.vice.com/en/article/88x99k/this-affordable-device-will-let-anyone-connect-their-brain-to-a-computer" },
+    { name: "Raspberry Pi", url: "https://www.raspberrypi.com/news/raspberry-pi-to-brain-interface/" },
+    { name: "Hackaday", url: "https://hackaday.com/tag/pieeg/" },
+    { name: "Hackster.io", url: "https://www.hackster.io/news/ildar-rakhmatulin-launches-a-new-16-channel-pieeg-for-the-most-advanced-brain-machine-interfaces-3327547fb52d" },
+    { name: "Arduino Blog", url: "https://blog.arduino.cc/2024/05/10/ardeeg-is-an-arduino-uno-r4-wifi-shield-for-measuring-biosignals/" },
+    { name: "CNX Software", url: "https://www.cnx-software.com/2024/05/15/ardeeg-shield-works-with-arduino-uno-r4-wifi-for-biosignals-measurement/" },
+    { name: "Notebookcheck", url: "https://www.notebookcheck.net/For-VR-PiEEG-XR-measures-brain-activity-in-real-time.1311211.0.html" },
+    { name: "It's FOSS", url: "https://itsfoss.com/news/pieeg-kit/" },
+    { name: "Electronics Weekly", url: "https://www.electronicsweekly.com/blogs/gadget-master/arduino/measuring-eeg-and-biosignals-with-arduino-ardeeg-shield-2024-05/" },
   ];
 
   return (
@@ -1500,12 +1515,10 @@ function FeaturedSection() {
             <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
               Featured in 28+ media publications and cited in 11+ scientific papers.{" "}
               <a 
-                href="https://www.google.com/search?q=pieeg&tbm=nws" 
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/news" 
                 className="text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1.5 font-mono"
               >
-                [view_coverage]
+                [view_all_coverage]
                 <ExternalLink className="w-4 h-4" />
               </a>
             </p>
@@ -1550,20 +1563,23 @@ function FeaturedSection() {
 
           {/* Publication logos grid */}
           <div className="w-full max-w-5xl">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {publications.map((pub, idx) => (
-                <div
-                  key={pub}
+                <a
+                  key={pub.name}
+                  href={pub.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative rounded-xl"
                   style={{ animationDelay: `${idx * 0.05}s` }}
                 >
                   <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300" />
                   <div className="relative flex items-center justify-center h-24 px-4 border-2 border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 backdrop-blur-sm hover:border-blue-300 dark:hover:border-blue-700 rounded-xl transition-all duration-200">
                     <span className="font-semibold text-sm text-center text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
-                      {pub}
+                      {pub.name}
                     </span>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>

@@ -91,6 +91,7 @@ function GitHubIcon({ className }: { className?: string }) {
 const navLinks = [
   { href: "/hardware", label: "Hardware" },
   { href: "/software", label: "Software" },
+  { href: "/agent", label: "Agent" },
   { href: "/community", label: "Community" },
   { href: "/support", label: "Support" },
   { href: "/news", label: "News" },

@@ -2,7 +2,7 @@
 
 import { Metadata } from "next";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Brain,
   MessageSquare,
@@ -12,7 +12,6 @@ import {
   FileBarChart,
   BookOpen,
   Terminal,
-  Play,
   Code,
   ExternalLink,
   CheckCircle2,
@@ -150,35 +149,49 @@ const FEATURES = [
   },
 ];
 
-function ChatMessage({ role, text }: { role: string; text: string }) {
-  return (
-    <div className={`flex gap-3 ${role === "user" ? "justify-end" : "justify-start"}`}>
-      <div
-        className={`max-w-[85%] rounded-2xl px-4 py-3 ${
-          role === "user"
-            ? "bg-cyan-600 text-white"
-            : "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100"
-        }`}
-      >
-        <p className="text-sm whitespace-pre-line leading-relaxed">{text}</p>
-      </div>
-    </div>
-  );
-}
-
 function ChatDemo({ demo }: { demo: typeof CHAT_DEMOS[0] }) {
   const [currentMessage, setCurrentMessage] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
+  // Auto-play when visible, restart when scrolling back into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Reset and start playing when visible
+            setCurrentMessage(0);
+            setIsPlaying(true);
+          } else {
+            // Pause when not visible
+            setIsPlaying(false);
+          }
+        });
+      },
+      { threshold: 0.5 } // Trigger when 50% visible
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Animation loop
   useEffect(() => {
     if (!isPlaying) return;
 
     if (currentMessage >= demo.messages.length) {
-      setIsPlaying(false);
-      return;
+      // Restart after a pause
+      const restartTimer = setTimeout(() => {
+        setCurrentMessage(0);
+      }, 2000);
+      return () => clearTimeout(restartTimer);
     }
 
-    const delay = demo.messages[currentMessage].role === "user" ? 1500 : 2500;
+    const delay = demo.messages[currentMessage].role === "user" ? 1200 : 1800;
     const timer = setTimeout(() => {
       setCurrentMessage((prev) => prev + 1);
     }, delay);
@@ -186,41 +199,68 @@ function ChatDemo({ demo }: { demo: typeof CHAT_DEMOS[0] }) {
     return () => clearTimeout(timer);
   }, [isPlaying, currentMessage, demo.messages]);
 
-  const handlePlay = () => {
-    if (currentMessage >= demo.messages.length) {
-      setCurrentMessage(0);
-    }
-    setIsPlaying(true);
-  };
-
   return (
-    <div className="relative h-full flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 overflow-hidden">
-      {/* Header */}
-      <div className={`px-6 py-4 bg-linear-to-r ${demo.gradient}`}>
+    <div
+      ref={containerRef}
+      className="group relative h-full flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 overflow-hidden hover:shadow-xl transition-shadow duration-300"
+    >
+      {/* Compact Header */}
+      <div className={`px-5 py-3 bg-linear-to-r ${demo.gradient}`}>
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-white/20 backdrop-blur-sm">
-            <demo.icon className="w-5 h-5 text-white" />
+          <div className="p-1.5 rounded-lg bg-white/20 backdrop-blur-sm">
+            <demo.icon className="w-4 h-4 text-white" />
           </div>
-          <div className="flex-1">
-            <h3 className="font-semibold text-white">{demo.title}</h3>
-            <p className="text-sm text-white/80">{demo.description}</p>
+          <div>
+            <h3 className="font-semibold text-white text-sm">{demo.title}</h3>
+            <p className="text-xs text-white/80">{demo.description}</p>
           </div>
-          <button
-            onClick={handlePlay}
-            disabled={isPlaying && currentMessage < demo.messages.length}
-            className="p-2 rounded-lg bg-white/20 hover:bg-white/30 disabled:opacity-50 transition-colors"
-          >
-            <Play className="w-5 h-5 text-white" />
-          </button>
         </div>
       </div>
 
-      {/* Chat messages */}
-      <div className="flex-1 p-6 space-y-4 overflow-y-auto min-h-75">
-        {demo.messages.slice(0, currentMessage).map((msg, idx) => (
-          <ChatMessage key={idx} role={msg.role} text={msg.text} />
+      {/* Chat messages - always show content */}
+      <div className="flex-1 p-5 space-y-3 overflow-hidden">
+        {demo.messages.slice(0, Math.max(currentMessage, 2)).map((msg, idx) => (
+          <div
+            key={idx}
+            className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"} ${
+              idx < currentMessage ? "opacity-100" : "opacity-40"
+            } transition-opacity duration-300`}
+          >
+            <div
+              className={`max-w-[85%] rounded-xl px-3 py-2 text-xs ${
+                msg.role === "user"
+                  ? "bg-linear-to-r from-cyan-600 to-cyan-500 text-white"
+                  : "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100"
+              }`}
+            >
+              <p className="whitespace-pre-line leading-relaxed">{msg.text}</p>
+            </div>
+          </div>
         ))}
+        
+        {/* Typing indicator when playing */}
+        {isPlaying && currentMessage < demo.messages.length && demo.messages[currentMessage]?.role === "assistant" && (
+          <div className="flex gap-2 justify-start">
+            <div className="bg-zinc-100 dark:bg-zinc-800 rounded-xl px-3 py-2">
+              <div className="flex gap-1">
+                <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-bounce" style={{ animationDelay: "0ms" }} />
+                <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-bounce" style={{ animationDelay: "150ms" }} />
+                <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-bounce" style={{ animationDelay: "300ms" }} />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
+
+      {/* Subtle live indicator */}
+      {isPlaying && (
+        <div className="absolute top-3 right-3">
+          <div className="flex items-center gap-1.5 px-2 py-1 rounded-full bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm border border-zinc-200/50 dark:border-zinc-700/50">
+            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+            <span className="text-[10px] font-medium text-zinc-600 dark:text-zinc-400">Live</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -324,8 +364,7 @@ export default function AgentPage() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">See It In Action</h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400">
-              Click <Play className="inline w-4 h-4" /> to watch realistic conversations with your
-              brain copilot
+              Watch realistic conversations with your brain copilot — live demos auto-play as you scroll
             </p>
           </div>
 
@@ -364,70 +403,6 @@ export default function AgentPage() {
         </div>
       </section>
 
-      {/* Scientific Honesty */}
-      <section className="py-24">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-2xl border border-amber-200 dark:border-amber-900/50 bg-linear-to-br from-amber-50 to-orange-50 dark:from-amber-950/20 dark:to-orange-950/20 p-8 lg:p-12">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="p-3 rounded-xl bg-amber-500/10">
-                <AlertCircle className="w-6 h-6 text-amber-600 dark:text-amber-400" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold mb-2">Scientifically Honest Metrics</h2>
-                <p className="text-zinc-600 dark:text-zinc-400">
-                  No overfitting. No false promises. Every number you see is validated.
-                </p>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <div className="flex gap-3">
-                <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="font-semibold mb-1">Within-Session Relative Indices</h3>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    Focus, relax, engagement normalized to your session's own range — not absolute
-                    or clinical values. Warm-up periods clearly flagged.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-3">
-                <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="font-semibold mb-1">Cross-Validated Pattern Classifiers</h3>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    L2 + group-lasso regularization. Leave-one-rep-out CV (no temporal leakage).
-                    Balanced accuracy immune to class imbalance.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-3">
-                <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="font-semibold mb-1">Effect Sizes with Caveats</h3>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    Session comparisons report within-session Cohen's d with clear disclaimers:
-                    "This does NOT mean the effect generalizes."
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-3">
-                <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="font-semibold mb-1">Event Detection with Hysteresis</h3>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    Threshold crossing + 2-second dwell time + quality floor. No spurious events
-                    from noise.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Quick Start */}
       <section className="py-24 bg-zinc-900 dark:bg-black text-white">
@@ -459,7 +434,7 @@ export default function AgentPage() {
             <div className="rounded-2xl border border-zinc-800 bg-zinc-950/50 overflow-hidden">
               <div className="flex items-center justify-between px-6 py-3 bg-zinc-800/50 border-b border-zinc-700">
                 <div className="flex items-center gap-2">
-                  <Play className="w-4 h-4 text-purple-400" />
+                  <Terminal className="w-4 h-4 text-purple-400" />
                   <span className="text-sm font-medium">Launch Web Interface</span>
                 </div>
                 <CopyButton text="pieeg-agent web" />

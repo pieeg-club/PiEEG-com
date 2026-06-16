@@ -4,6 +4,7 @@ import { Calendar, ArrowRight, Newspaper, Award, Users } from "lucide-react";
 import Image from "next/image";
 import { getAllNews, getFeaturedNews } from '@/lib/news';
 import NewsPagination from '@/components/NewsPagination';
+import NewsletterForm from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
   title: "News — PiEEG",
@@ -251,31 +252,7 @@ export default async function NewsPage({
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-10 border-t border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm mb-4">
-            <Newspaper className="w-5 h-5 text-cyan-500" />
-          </div>
-          <h2 className="text-2xl font-extrabold mb-3">Stay Updated</h2>
-          <p className="text-zinc-500 dark:text-zinc-400 mb-8 leading-relaxed">
-            Get the latest PiEEG news, product launches, and research highlights.
-          </p>
-
-          <form className="flex flex-col sm:flex-row gap-2">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              className="flex-1 px-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 text-sm"
-            />
-            <button
-              type="submit"
-              className="px-5 py-2.5 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold text-sm hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </section>
+      <NewsletterForm />
 
       {/* Community Stats */}
       <section className="py-10 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">

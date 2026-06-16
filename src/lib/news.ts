@@ -19,7 +19,7 @@ const newsDirectory = path.join(process.cwd(), 'content/news');
 export function getAllNews(): NewsArticle[] {
   const fileNames = fs.readdirSync(newsDirectory);
   const allNews = fileNames
-    .filter(fileName => fileName.endsWith('.md'))
+    .filter(fileName => fileName.endsWith('.md') && fileName !== 'README.md')
     .map(fileName => {
       const slug = fileName.replace(/\.md$/, '');
       return getNewsBySlug(slug);

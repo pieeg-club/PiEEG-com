@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "private-user-images.githubusercontent.com",
+      },
+    ],
+  },
   
   // SEO-critical redirects from old WordPress site to new Next.js structure
   async redirects() {

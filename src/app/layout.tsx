@@ -39,6 +39,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <Script id="theme-script" strategy="beforeInteractive">
+          {`(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t='light';}var e=document.documentElement;e.classList.remove('light','dark');e.classList.add(t);e.style.colorScheme=t;}catch(_){}})();`}
+        </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-6E5NEF184J"
           strategy="afterInteractive"

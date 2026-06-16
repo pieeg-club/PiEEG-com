@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* Class-based dark mode — works with next-themes attribute="class" */
+/* Class-based dark mode — toggled by the `dark` class on <html> */
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {

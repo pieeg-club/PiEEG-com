@@ -233,42 +233,7 @@ export default function BrowserPage() {
         </div>
       </section>
 
-      {/* Brain Indices */}
-      <section className="py-10 sm:py-14 border-b border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">How Brain Insights Stays Honest</h2>
-            <p className="text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto">
-              Every reading is a ratio-based index, normalised against your own session baseline (EWMA z-score → logistic). All relative to <em>you</em>.
-            </p>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-zinc-200 dark:border-zinc-800">
-                  <th className="text-left py-3 px-4 font-semibold text-zinc-700 dark:text-zinc-300">Index</th>
-                  <th className="text-left py-3 px-4 font-semibold text-zinc-700 dark:text-zinc-300">Formula</th>
-                  <th className="text-left py-3 px-4 font-semibold text-zinc-700 dark:text-zinc-300">Reference</th>
-                </tr>
-              </thead>
-              <tbody>
-                {brainIndices.map((idx, i) => (
-                  <tr key={idx.name} className={`border-b border-zinc-100 dark:border-zinc-900 ${i % 2 === 0 ? "bg-zinc-50/50 dark:bg-zinc-900/30" : ""}`}>
-                    <td className="py-3 px-4 font-medium">{idx.name}</td>
-                    <td className="py-3 px-4 font-mono text-violet-600 dark:text-violet-400 text-xs">{idx.formula}</td>
-                    <td className="py-3 px-4 text-zinc-500 dark:text-zinc-400 text-xs">{idx.ref}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <p className="mt-4 text-xs text-zinc-400 dark:text-zinc-500 text-center">
-            Confidence reflects baseline coverage and live signal stability. Trends compare fast vs slow EMA with a deadband to avoid jitter. All formulas shown in the overlay&apos;s expandable details panel.
-          </p>
-        </div>
-      </section>
+  
 
       {/* Updating */}
       <section className="py-10 sm:py-14 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">

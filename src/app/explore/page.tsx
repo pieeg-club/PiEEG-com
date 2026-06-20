@@ -43,7 +43,7 @@ const sections = [
     bg: "bg-violet-50 dark:bg-violet-950/30",
     dot: "bg-violet-500",
     items: [
-      { href: "/software", label: "Software Overview", desc: "All tools & SDKs", Icon: Globe },
+      { href: "/server", label: "Server Overview", desc: "All tools & SDKs", Icon: Globe },
       { href: "/examples", label: "Examples & Demos", desc: "Real-world BCI code & tutorials", Icon: Zap },
       { href: "/community", label: "Open Source", desc: "GitHub repos & contributions", Icon: Code2 },
     ],

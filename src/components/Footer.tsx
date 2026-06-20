@@ -13,7 +13,7 @@ const footerLinks = {
   ],
   Resources: [
     { label: "Documentation", href: "/support" },
-    { label: "Software", href: "/software" },
+    { label: "Server", href: "/server" },
     { label: "GitHub", href: "https://github.com/pieeg-club" },
     { label: "Community", href: "/community" },
   ],

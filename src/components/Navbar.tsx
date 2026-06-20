@@ -90,7 +90,8 @@ function GitHubIcon({ className }: { className?: string }) {
 
 const navLinks = [
   { href: "/hardware", label: "Hardware" },
-  { href: "/software", label: "Software" },
+  { href: "/server", label: "Server" },
+  { href: "/browser", label: "Browser" },
   { href: "/agent", label: "Agent" },
   { href: "/community", label: "Community" },
   { href: "/support", label: "Support" },
@@ -126,7 +127,7 @@ const megaMenuSections = [
     accent: "bg-emerald-500",
     textAccent: "text-emerald-600 dark:text-emerald-400",
     items: [
-      { href: "/software", label: "Software & SDKs", desc: "Tools, dashboards & integrations", Icon: Globe },
+      { href: "/server", label: "Server & SDKs", desc: "Tools, dashboards & integrations", Icon: Globe },
       { href: "/support", label: "Support", desc: "Docs, FAQ & troubleshooting", Icon: BookOpen },
       { href: "/news", label: "Latest News", desc: "Updates & announcements", Icon: Newspaper },
     ],

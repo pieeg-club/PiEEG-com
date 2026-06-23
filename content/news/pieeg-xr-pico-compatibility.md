@@ -18,23 +18,6 @@ The community made this happen. PICO XR has a large and passionate user base, es
 
 PICO XR headsets share a similar form factor to Meta Quest, which means the PiEEG XR face gasket fits cleanly and the electrode placement stays consistent. No compromises on signal quality.
 
-## What's Being Tested
-
-We're running the full PiEEG XR pipeline on PICO XR right now:
-
-- **Smile detection** ,  already hitting 98% confidence in early trials
-- **Blink detection** ,  onset/offset logic tuned for PICO's display refresh
-- **Real-time avatar control** ,  biosignal-to-expression mapping live in the headset
-- **EEG + fEMG signal quality** ,  validating SNR across electrode positions with the new fit
-
-The image says it all: *Enhanced Neural Tracking. Perfected for PICO XR.*
-
-## What This Means for You
-
-If you're a PICO XR user, PiEEG XR is on its way to your platform. We'll share a full compatibility guide once testing wraps up, same level of depth as our [Meta Quest setup guide](/news/pieeg-xr-setup-guide).
-
-If you're still undecided on which headset to pair with PiEEG XR, both platforms are now on the table. Tell us which VR headset you use, we want to know where the community is.
-
 ## One Neural Interface. Multiple Platforms.
 
 This is the direction we're heading: a single open neural face interface that works across the major XR platforms. Brain signals don't care which headset you're wearing, and neither should your BCI.

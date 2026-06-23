@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, Fragment } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import {
   ChevronDown, Users, Mail, Briefcase, Building2, Code2,
-  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid,
+  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor,
 } from "lucide-react";
 
 const ANNOUNCEMENT_KEY = "announcements-dismissed";
@@ -88,15 +88,21 @@ function GitHubIcon({ className }: { className?: string }) {
   );
 }
 
-const navLinks = [
-  { href: "/hardware", label: "Hardware" },
-  { href: "/server", label: "Server" },
-  { href: "/browser", label: "Browser" },
-  { href: "/agent", label: "Agent" },
-  { href: "/community", label: "Community" },
-  { href: "/support", label: "Support" },
-  { href: "/news", label: "News" },
+const navGroups = [
+  [
+    { href: "/hardware", label: "Hardware" },
+    { href: "/server", label: "Server" },
+    { href: "/browser", label: "Browser" },
+    { href: "/agent", label: "Agent" },
+  ],
+  [
+    { href: "/community", label: "Community" },
+    { href: "/support", label: "Support" },
+    { href: "/news", label: "News" },
+  ],
 ];
+
+const navLinks = navGroups.flat();
 
 const megaMenuSections = [
   {
@@ -127,6 +133,7 @@ const megaMenuSections = [
     accent: "bg-emerald-500",
     textAccent: "text-emerald-600 dark:text-emerald-400",
     items: [
+      { href: "/browser", label: "Browser App", desc: "BCI right in your browser, no install", Icon: Monitor },
       { href: "/server", label: "Server & SDKs", desc: "Tools, dashboards & integrations", Icon: Globe },
       { href: "/support", label: "Support", desc: "Docs, FAQ & troubleshooting", Icon: BookOpen },
       { href: "/news", label: "Latest News", desc: "Updates & announcements", Icon: Newspaper },
@@ -189,16 +196,23 @@ export function Navbar() {
 
           {/* Desktop Centered Nav */}
           <nav className="hidden lg:flex items-center justify-center absolute left-1/2 -translate-x-1/2" aria-label="Main navigation">
-            <div className="flex items-center gap-1 bg-zinc-50/50 dark:bg-zinc-900/30 rounded-full px-2 py-1.5 border border-zinc-200/50 dark:border-zinc-800/50">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={closeMega}
-                  className="relative px-4 py-2 rounded-full text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-white/60 dark:hover:bg-zinc-800/60 transition-all duration-200"
-                >
-                  {link.label}
-                </Link>
+            <div className="flex items-center gap-0 bg-zinc-50/50 dark:bg-zinc-900/30 rounded-full px-2 py-1.5 border border-zinc-200/50 dark:border-zinc-800/50">
+              {navGroups.map((group, gi) => (
+                <Fragment key={gi}>
+                  {gi > 0 && (
+                    <span aria-hidden="true" className="w-px h-3.5 rounded-full bg-zinc-300/80 dark:bg-zinc-700/80 mx-1 shrink-0" />
+                  )}
+                  {group.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={closeMega}
+                      className="relative px-3 py-1.5 rounded-full text-[13px] font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-white/60 dark:hover:bg-zinc-800/60 transition-all duration-200"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </Fragment>
               ))}
 
               {/* ── Explore mega-menu trigger ── */}

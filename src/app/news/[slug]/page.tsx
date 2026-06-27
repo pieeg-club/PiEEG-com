@@ -2,9 +2,10 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, ArrowLeft, Tag, Share2 } from 'lucide-react';
+import { Calendar, ArrowLeft, Tag } from 'lucide-react';
 import { getAllNews, getNewsBySlug } from '@/lib/news';
 import ArticleContent from '@/components/ArticleContent';
+import ShareButton from '@/components/ShareButton';
 
 export async function generateStaticParams() {
   const news = getAllNews();
@@ -82,10 +83,11 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
                 </time>
               </div>
               
-              <button className="flex items-center gap-1.5 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
-                <Share2 className="w-4 h-4" />
-                Share
-              </button>
+              <ShareButton
+                title={article.title}
+                text={article.excerpt}
+                url={`https://pieeg.com/news/${slug}`}
+              />
             </div>
           </div>
         </div>

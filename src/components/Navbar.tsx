@@ -55,7 +55,7 @@ function AnnouncementBar() {
   const announcement = ANNOUNCEMENTS[currentIndex];
 
   return (
-    <div className="relative flex items-center justify-center gap-3 px-4 py-2 bg-cyan-600 dark:bg-cyan-700 text-white text-sm">
+    <div className="relative hidden md:flex items-center justify-center gap-3 px-4 py-2 bg-cyan-600 dark:bg-cyan-700 text-white text-sm">
       <Link
         href={announcement.href}
         className="flex items-center gap-2 hover:underline underline-offset-2"

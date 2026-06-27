@@ -257,6 +257,15 @@ export function Navbar() {
               {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
 
+            <a
+              href="https://cloud.pieeg.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex h-9 items-center rounded-full bg-cyan-600 dark:bg-cyan-600 hover:bg-cyan-700 dark:hover:bg-cyan-700 px-5 text-sm font-semibold text-white transition-colors duration-200"
+            >
+              Connect
+            </a>
+
             <span className="shop-aurora hover:scale-105 transition-transform duration-200">
               <a
                 href="/hardware"

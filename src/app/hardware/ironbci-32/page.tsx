@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink, Code2 as GitHubIcon, Cpu, Signal, Shield, Zap } from "lucide-react";
+import { ExternalLink, Code2 as GitHubIcon, Cpu, Signal, Shield, Zap, Globe, Cloud } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "IronBCI-32 — 32-Channel Professional EEG System — PiEEG",
@@ -83,8 +83,11 @@ export default function IronBCI32ProductPage() {
             <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed mb-6">
               ironbci-32 integrates four 8-channel AD7771 analog-to-digital converters (ADCs), each with ultra-low-noise sources, ensuring highly accurate signal capture. The core is powered by the STM32H7 ARM Cortex-M7 microcontroller.
             </p>
+            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed mb-6">
+              Connect instantly through your browser with <strong>Web Serial API</strong>—no drivers, no installation. Visit <a href="https://cloud.pieeg.com" target="_blank" rel="noopener noreferrer" className="text-red-600 dark:text-red-400 font-semibold hover:underline">cloud.pieeg.com</a> for zero-setup access to P300 games, neurofeedback avatars, and real-time signal processing.
+            </p>
             <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              Fully integrated into the open-source Brainflow Library, making it compatible with the broader neuroscience ecosystem. Optimized firmware delivers 500 Hz per channel when running all 32 channels simultaneously.
+              For custom applications, integrate with Brainflow Library, PiEEG Server, or build your own browser-based BCI. Optimized firmware delivers 500 Hz per channel across all 32 channels simultaneously.
             </p>
           </div>
         </div>
@@ -164,19 +167,59 @@ export default function IronBCI32ProductPage() {
             </div>
 
             <div className="p-6 rounded-xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
-              <Signal className="w-8 h-8 text-green-600 dark:text-green-400 mb-4" />
-              <h3 className="font-bold mb-2">Serial Port Data Transfer</h3>
-              <p className="text-zinc-600 dark:text-zinc-400">Reliable communication protocol</p>
+              <Globe className="w-8 h-8 text-green-600 dark:text-green-400 mb-4" />
+              <h3 className="font-bold mb-2">Web Serial API</h3>
+              <p className="text-zinc-600 dark:text-zinc-400">Browser-native connection—no drivers needed</p>
+            </div>
+
+            <div className="p-6 rounded-xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
+              <Cloud className="w-8 h-8 text-indigo-600 dark:text-indigo-400 mb-4" />
+              <h3 className="font-bold mb-2">Direct Cloud Access</h3>
+              <p className="text-zinc-600 dark:text-zinc-400">
+                <a href="https://cloud.pieeg.com" target="_blank" rel="noopener noreferrer" className="underline">
+                  cloud.pieeg.com
+                </a> — instant BCI experiences
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold mb-6">Software Ecosystem</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
+              <Cloud className="w-8 h-8 text-red-600 dark:text-red-400 mb-4" />
+              <h3 className="font-bold mb-2">Direct Cloud</h3>
+              <p className="text-zinc-600 dark:text-zinc-400 text-sm mb-3">
+                Zero-installation browser-based BCI. Connect via Web Serial and access P300 games, neurofeedback, and signal visualization instantly.
+              </p>
+              <a href="https://cloud.pieeg.com" target="_blank" rel="noopener noreferrer" className="text-red-600 dark:text-red-400 text-sm font-semibold hover:underline">
+                cloud.pieeg.com →
+              </a>
+            </div>
+
+            <div className="p-6 rounded-xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
+              <Signal className="w-8 h-8 text-orange-600 dark:text-orange-400 mb-4" />
+              <h3 className="font-bold mb-2">PiEEG Server</h3>
+              <p className="text-zinc-600 dark:text-zinc-400 text-sm mb-3">
+                Real-time signal processing server for custom BCI applications. Handles streaming, filtering, feature extraction, and ML inference.
+              </p>
+              <a href="https://github.com/pieeg-club" target="_blank" rel="noopener noreferrer" className="text-orange-600 dark:text-orange-400 text-sm font-semibold hover:underline">
+                Documentation →
+              </a>
             </div>
 
             <div className="p-6 rounded-xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
               <GitHubIcon className="w-8 h-8 text-indigo-600 dark:text-indigo-400 mb-4" />
-              <h3 className="font-bold mb-2">Brainflow Integrated</h3>
-              <p className="text-zinc-600 dark:text-zinc-400">
-                <a href="https://brainflow.readthedocs.io/en/stable/SupportedBoards.html#ironbci" target="_blank" rel="noopener noreferrer" className="underline">
-                  Official Brainflow support
-                </a>
+              <h3 className="font-bold mb-2">Brainflow</h3>
+              <p className="text-zinc-600 dark:text-zinc-400 text-sm mb-3">
+                Open-source library for biosignal acquisition. Python, C++, Java, and more. Official IronBCI-32 support included.
               </p>
+              <a href="https://brainflow.readthedocs.io/en/stable/SupportedBoards.html#ironbci" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-indigo-400 text-sm font-semibold hover:underline">
+                Brainflow Docs →
+              </a>
             </div>
           </div>
         </div>
@@ -206,7 +249,7 @@ export default function IronBCI32ProductPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-4">Professional Research Starts Here</h2>
           <p className="text-lg text-red-50 mb-8">
-            Purchase IronBCI-32 from our official manufacturing partner Elecrow
+            Purchase IronBCI-32 or try it instantly in your browser
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
@@ -219,12 +262,13 @@ export default function IronBCI32ProductPage() {
               <ExternalLink className="w-5 h-5" />
             </a>
             <a
-              href="https://brainflow.readthedocs.io/en/stable/SupportedBoards.html#ironbci"
+              href="https://cloud.pieeg.com"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-white hover:bg-white/10 font-bold transition-all"
             >
-              View Brainflow Docs
+              <Cloud className="w-5 h-5" />
+              Try cloud.pieeg.com
             </a>
           </div>
         </div>

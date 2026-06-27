@@ -41,9 +41,9 @@ const team = [
   },
   {
     name: "Youssef El Abbassi",
-    role: "Software Architect",
+    role: "Co-Founder & Software Architect",
     bio: "Software architect and BCI developer building the open-source software ecosystem around PiEEG. Creator of PiEEG-Server, he is focused on making advanced brain-computer interface tools more accessible to developers, researchers, and creators.",
-    location: "Remote",
+    location: "Gatineau, Quebec, Canada",
     email: "youssef@pieeg.com",
     github: "https://github.com/yelabb/",
     linkedin: "https://www.linkedin.com/in/yelabb",

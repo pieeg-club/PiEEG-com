@@ -1,24 +1,33 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const BASE_OPACITY = 0.15;
 const FADE_S = 1.5;
 
 export default function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const rafRef = useRef<number>(0);
+
+  // Lazy load video after initial render to improve perceived performance
+  useEffect(() => {
+    // Delay video load slightly to prioritize critical content
+    const timer = setTimeout(() => setShouldLoad(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !shouldLoad) return;
 
     let fadingOut = false;
     let lastCheckTime = 0;
 
-    // Throttled timeupdate - only check every 100ms to reduce CPU load
+    // Throttled timeupdate - only check every 200ms to reduce CPU load
     const handleTimeUpdate = () => {
       const now = performance.now();
-      if (now - lastCheckTime < 100) return; // Throttle
+      if (now - lastCheckTime < 200) return; // Increased throttle
       lastCheckTime = now;
 
       if (isNaN(video.duration) || fadingOut) return;
@@ -29,30 +38,36 @@ export default function HeroVideo() {
       }
     };
 
-    // On end: reset, play, fade back in
+    // On end: reset, play, fade back in - use single RAF instead of double
     const handleEnded = () => {
       video.style.transition = "none";
       video.style.opacity = "0";
       video.currentTime = 0;
       video.play().catch(() => {});
-      // Two rAF frames so the transition:none takes effect before we set the new opacity
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          video.style.transition = `opacity ${FADE_S}s linear`;
-          video.style.opacity = String(BASE_OPACITY);
-          fadingOut = false;
-        });
+      
+      rafRef.current = requestAnimationFrame(() => {
+        video.style.transition = `opacity ${FADE_S}s linear`;
+        video.style.opacity = String(BASE_OPACITY);
+        fadingOut = false;
       });
     };
 
-    video.addEventListener("timeupdate", handleTimeUpdate);
+    video.addEventListener("timeupdate", handleTimeUpdate, { passive: true });
     video.addEventListener("ended", handleEnded);
 
     return () => {
       video.removeEventListener("timeupdate", handleTimeUpdate);
       video.removeEventListener("ended", handleEnded);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [shouldLoad]);
+
+  if (!shouldLoad) {
+    // Render placeholder with same background color to prevent layout shift
+    return (
+      <div className="absolute inset-0 w-full h-full bg-zinc-950" style={{ opacity: BASE_OPACITY }} />
+    );
+  }
 
   return (
     <video
@@ -61,10 +76,10 @@ export default function HeroVideo() {
       autoPlay
       muted
       playsInline
-      preload="auto"
+      preload="metadata"
       disablePictureInPicture
       disableRemotePlayback
-      style={{ opacity: BASE_OPACITY, willChange: 'opacity' }}
+      style={{ opacity: BASE_OPACITY }}
       className="absolute inset-0 w-full h-full object-cover scale-105 blur-[1px]"
     />
   );

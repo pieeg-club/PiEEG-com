@@ -11,6 +11,8 @@
 
 html {
   overflow-x: hidden;
+  /* Optimize scrolling performance */
+  -webkit-overflow-scrolling: touch;
 }
 
 html {
@@ -19,6 +21,8 @@ html {
 
 body {
   font-family: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
+  /* Reduce paint area */
+  transform: translateZ(0);
 }
 
 /* ── Neural network pattern ────────────────────────────────── */
@@ -205,7 +209,8 @@ body {
 }
 .signal-scroll {
   animation: signal-scroll 9s linear infinite;
-  will-change: transform;
+  /* Remove will-change to reduce memory pressure on low-RAM devices */
+  /* will-change: transform; */
 }
 
 @keyframes scan {
@@ -222,7 +227,8 @@ body {
 }
 .animate-scroll-slow {
   animation: scroll-slow 20s linear infinite;
-  will-change: transform;
+  /* Remove will-change to reduce memory pressure on low-RAM devices */
+  /* will-change: transform; */
 }
 .animate-scroll-slow:hover {
   animation-play-state: paused;
@@ -234,7 +240,8 @@ body {
 }
 .animate-scroll-slow-reverse {
   animation: scroll-slow-reverse 40s linear infinite;
-  will-change: transform;
+  /* Remove will-change to reduce memory pressure on low-RAM devices */
+  /* will-change: transform; */
 }
 .animate-scroll-slow-reverse:hover {
   animation-play-state: paused;

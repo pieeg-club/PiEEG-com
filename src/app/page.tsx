@@ -334,256 +334,6 @@ function MiniSignalCanvas({ mode, isActive, color }: { mode: 'eeg' | 'emg' | 'ec
   );
 }
 
-function EEGVisualization() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>(0);
-  const [mode, setMode] = useState<'eeg' | 'emg' | 'ecg' | 'eog'>('eeg');
-  const modeRef = useRef(mode);
-  
-  // Data buffers for 4 channels
-  const buffersRef = useRef<Float32Array[]>([
-    new Float32Array(500),
-    new Float32Array(500),
-    new Float32Array(500),
-    new Float32Array(500),
-  ]);
-  const writeIndexRef = useRef(0);
-  const timeRef = useRef(0);
-
-  // Update mode ref when mode changes (without restarting animation)
-  useEffect(() => {
-    modeRef.current = mode;
-  }, [mode]);
-
-  // Signal generation function
-  const generateSample = useRef((channel: number, t: number, signalMode: string): number => {
-    if (signalMode === 'eeg') {
-      // Electroencephalography - brain waves (alpha, beta rhythms)
-      return (Math.sin(t * 0.02 + channel) * 8 + Math.cos(t * 0.01) * 5) + (Math.random() - 0.5) * 2;
-    } else if (signalMode === 'ecg') {
-      // Electrocardiography - heart activity
-      const bpm = 72;
-      const beatInterval = (60 / bpm) * 250; // samples per beat (at typical 250 Hz)
-      const phase = (t % beatInterval) / beatInterval;
-      
-      if (phase < 0.1) {
-        // P wave
-        return Math.sin(phase * Math.PI * 10) * 15;
-      } else if (phase > 0.15 && phase < 0.25) {
-        // QRS complex
-        const qrsPhase = (phase - 0.15) / 0.1;
-        return Math.sin(qrsPhase * Math.PI) * 40 * (channel === 1 ? 1.2 : 1);
-      } else if (phase > 0.3 && phase < 0.45) {
-        // T wave
-        return Math.sin((phase - 0.3) * Math.PI * 6.67) * 20;
-      }
-      return (Math.random() - 0.5) * 3;
-    } else if (signalMode === 'emg') {
-      // Electromyography - muscle activity with bursts
-      const base = Math.sin(t * 0.03 + channel) * 5;
-      return base + (Math.random() < 0.02 ? (Math.random() - 0.5) * 60 : 0);
-    } else if (signalMode === 'eog') {
-      // Electrooculography - eye movements (saccades and blinks)
-      const blinkInterval = 4 * 250; // blink every ~4 seconds
-      const blinkPhase = (t % blinkInterval) / blinkInterval;
-      
-      // Occasional blinks
-      if (blinkPhase < 0.05) {
-        return Math.sin(blinkPhase * Math.PI * 20) * 50;
-      }
-      
-      // Saccadic movements
-      const saccadeBase = Math.floor(t / 100) * 100;
-      if (t - saccadeBase < 25) {
-        return ((t - saccadeBase) / 25) * 30 * (Math.random() > 0.5 ? 1 : -1);
-      }
-      
-      return Math.sin(t * 0.01) * 8 + (Math.random() - 0.5) * 3;
-    }
-    return 0;
-  }).current;
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d', { alpha: false });
-    if (!ctx) return;
-
-    // Detect dark mode
-    const isDark = document.documentElement.classList.contains('dark');
-    
-    // Set CSS variables for colors
-    canvas.style.setProperty('--canvas-bg', isDark ? 'rgba(24, 24, 27, 0.5)' : '#fafafa');
-    canvas.style.setProperty('--canvas-grid', isDark ? 'rgba(63, 63, 70, 0.5)' : 'rgba(0,0,0,0.05)');
-    canvas.style.setProperty('--canvas-text', isDark ? 'rgba(113, 113, 122, 1)' : 'rgba(0,0,0,0.4)');
-
-    // Set canvas resolution
-    const dpr = window.devicePixelRatio || 1;
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
-
-    const w = rect.width;
-    const h = rect.height;
-    const channelHeight = h / 4;
-
-    const draw = () => {
-      // Clear
-      ctx.fillStyle = getComputedStyle(canvas).getPropertyValue('--canvas-bg') || '#fafafa';
-      ctx.fillRect(0, 0, w, h);
-
-      // Generate multiple samples per frame for faster scrolling (250–500 Hz at 60fps)
-      const samplesPerFrame = 4;
-      const currentMode = modeRef.current;
-      
-      for (let s = 0; s < samplesPerFrame; s++) {
-        timeRef.current++;
-        const writeIdx = writeIndexRef.current;
-        
-        for (let ch = 0; ch < 4; ch++) {
-          buffersRef.current[ch][writeIdx] = generateSample(ch, timeRef.current, currentMode);
-        }
-        
-        writeIndexRef.current = (writeIdx + 1) % 500;
-      }
-
-      // Draw each channel
-      const colors = ['rgb(20, 184, 166)', 'rgb(59, 130, 246)', 'rgb(168, 85, 247)', 'rgb(236, 72, 153)'];
-      const labels = ['C3', 'Cz', 'C4', 'Pz'];
-
-      for (let ch = 0; ch < 4; ch++) {
-        const yOffset = ch * channelHeight + channelHeight / 2;
-        const buffer = buffersRef.current[ch];
-
-        // Grid line
-        ctx.strokeStyle = getComputedStyle(canvas).getPropertyValue('--canvas-grid') || 'rgba(0,0,0,0.05)';
-        ctx.lineWidth = 0.5;
-        ctx.beginPath();
-        ctx.moveTo(0, yOffset);
-        ctx.lineTo(w, yOffset);
-        ctx.stroke();
-
-        // Channel label
-        ctx.fillStyle = getComputedStyle(canvas).getPropertyValue('--canvas-text') || 'rgba(0,0,0,0.4)';
-        ctx.font = '10px ui-monospace, monospace';
-        ctx.fillText(labels[ch], 8, yOffset - channelHeight / 2 + 14);
-
-        // Waveform - continuous scrolling
-        ctx.strokeStyle = colors[ch];
-        ctx.lineWidth = 1.5;
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-        ctx.beginPath();
-
-        const pixelsPerSample = w / 500;
-        let started = false;
-        const currentWriteIdx = writeIndexRef.current;
-
-        for (let i = 0; i < 500; i++) {
-          const idx = (currentWriteIdx - 500 + i + 1 + 500) % 500;
-          const value = buffer[idx];
-          
-          // Skip uninitialized samples (first few frames)
-          if (timeRef.current < 500 && idx > currentWriteIdx) continue;
-          
-          const x = i * pixelsPerSample;
-          const y = yOffset - value * 1.5;
-          
-          if (!started) {
-            ctx.moveTo(x, y);
-            started = true;
-          } else {
-            ctx.lineTo(x, y);
-          }
-        }
-        ctx.stroke();
-      }
-
-      animationRef.current = requestAnimationFrame(draw);
-    };
-
-    // Start animation immediately
-    draw();
-
-    return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
-    };
-  }, []); // Empty deps - only run once on mount
-
-  return (
-    <div className="relative w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden shadow-xl">
-      {/* Synthetic Data Badge */}
-      <div className="absolute top-4 left-4 z-10 px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 border border-amber-300 dark:border-amber-700 flex items-center gap-1.5">
-        <div className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-        <span className="text-[10px] font-medium text-amber-700 dark:text-amber-400 uppercase tracking-wide">
-          Demo Mode • Synthetic Data
-        </span>
-      </div>
-
-      {/* Canvas */}
-      <canvas 
-        ref={canvasRef}
-        className="w-full h-64"
-        style={{ display: 'block' }}
-      />
-
-      {/* Interactive Controls */}
-      <div className="flex items-center justify-between px-6 py-3 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setMode('eeg')}
-            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
-              mode === 'eeg'
-                ? 'bg-cyan-500 text-white shadow-lg shadow-cyan-500/30'
-                : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-700'
-            }`}
-          >
-            EEG
-          </button>
-          <button
-            onClick={() => setMode('ecg')}
-            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
-              mode === 'ecg'
-                ? 'bg-rose-500 text-white shadow-lg shadow-rose-500/30'
-                : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-700'
-            }`}
-          >
-            ECG
-          </button>
-          <button
-            onClick={() => setMode('emg')}
-            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
-              mode === 'emg'
-                ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/30'
-                : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-700'
-            }`}
-          >
-            EMG
-          </button>
-          <button
-            onClick={() => setMode('eog')}
-            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
-              mode === 'eog'
-                ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/30'
-                : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-700'
-            }`}
-          >
-            EOG
-          </button>
-        </div>
-        
-        <div className="flex items-center gap-3 text-xs text-zinc-500">
-          <span className="font-mono">250–500 Hz</span>
-          <span>•</span>
-          <span>4 ch</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function SignalWave() {
   const path =
     "M0,32 L20,32 L26,32 L30,8 L34,56 L38,20 L42,32 L80,32 L86,30 L90,44 L94,18 L98,32 L140,32 L145,16 L149,48 L153,32 L190,32 L196,32 L201,20 L206,44 L211,32 L260,32 L268,28 L274,38 L280,32 L330,32 L335,32 L339,4 L343,60 L347,26 L351,38 L355,32 L410,32 L417,32 L421,22 L425,42 L429,32 L480,32 L486,30 L490,34 L494,32 L550,32 L556,32 L560,10 L564,54 L568,24 L572,40 L576,32 L630,32 L636,30 L642,38 L648,26 L654,32 L700,32 L706,32 L710,20 L714,44 L718,32 L760,32 L766,30 L770,34 L774,32 L800,32";
@@ -634,7 +384,7 @@ function VitruvianNode({ icon: Icon, title, sub, accent }: {
 }) {
   const s = VITRUVIAN_ACCENTS[accent] ?? VITRUVIAN_ACCENTS.cyan;
   return (
-    <div className={`flex flex-col items-center gap-2.5 p-4 rounded-2xl border ${s.border} bg-white/70 dark:bg-zinc-900/60 backdrop-blur-sm text-center shadow-sm hover:shadow-md transition-shadow`}>
+    <div className={`flex flex-col items-center gap-2.5 p-4 rounded-2xl border ${s.border} bg-white/70 dark:bg-zinc-900/60 text-center shadow-sm hover:shadow-md transition-shadow`}>
       <div className={`w-10 h-10 rounded-xl ${s.bg} flex items-center justify-center shadow-sm shrink-0`}>
         <Icon className="w-5 h-5 text-white" />
       </div>
@@ -648,7 +398,7 @@ function VitruvianNode({ icon: Icon, title, sub, accent }: {
 
 function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center overflow-hidden min-h-[calc(100svh-3.5rem)] px-4 py-12">
+    <section className="relative flex flex-col items-center justify-center overflow-hidden min-h-[calc(100svh-3.5rem)] px-4 py-12" style={{ contain: 'layout style' }}>
 
       {/* Background video */}
       <HeroVideo />
@@ -656,9 +406,9 @@ function HeroSection() {
       {/* Layered cinematic overlays */}
       <div className="absolute inset-0 bg-linear-to-br from-cyan-400/8 via-blue-500/5 to-violet-600/8 dark:from-cyan-400/12 dark:via-blue-500/8 dark:to-violet-600/12 pointer-events-none" />
       <div className="absolute inset-0 bg-linear-to-t from-white via-white/10 to-white/50 dark:from-zinc-950 dark:via-zinc-950/10 dark:to-zinc-950/50 pointer-events-none" />
-      {/* Subtle radial glow behind the content */}
+      {/* Subtle radial glow behind the content - simplified for performance */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-175 h-125 rounded-full bg-cyan-400/5 dark:bg-cyan-400/8 blur-[120px]" />
+        <div className="w-175 h-125 rounded-full bg-cyan-400/5 dark:bg-cyan-400/8 blur-[80px]" />
       </div>
 
       {/* Main content */}
@@ -830,11 +580,11 @@ function HeroSection() {
       </div>
 
       {/* Featured In */}
-      <div className="relative z-10 w-full border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 overflow-hidden mt-8">
+      <div className="relative z-10 w-full border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 overflow-hidden mt-8" style={{ contain: 'layout paint' }}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col items-center gap-6">
             <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-600">Featured In</p>
-            <div className="relative w-full overflow-hidden">
+            <div className="relative w-full overflow-hidden" style={{ contain: 'layout paint' }}>
               <div className="flex gap-12 md:gap-16 animate-scroll-slow">
                 {[...featuredIn, ...featuredIn].map(({ name, logo, url }, index) => (
                   <a 
@@ -842,9 +592,9 @@ function HeroSection() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-110 shrink-0"
+                    className="group relative flex items-center justify-center px-4 py-2 shrink-0 hover:text-zinc-700 dark:hover:text-zinc-400"
                   >
-                    <span className="text-sm md:text-base font-semibold text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-700 dark:group-hover:text-zinc-400 transition-colors duration-300 whitespace-nowrap">{logo}</span>
+                    <span className="text-sm md:text-base font-semibold text-zinc-400 dark:text-zinc-600 whitespace-nowrap">{logo}</span>
                   </a>
                 ))}
               </div>
@@ -861,7 +611,7 @@ function FeaturedInBar() {
   const duplicatedLogos = [...featuredIn, ...featuredIn];
   
   return (
-    <div className="border-y border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 overflow-hidden">
+    <div className="border-y border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 overflow-hidden" style={{ contain: 'layout paint' }}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col items-center gap-6">
           {/* Label */}
@@ -870,7 +620,7 @@ function FeaturedInBar() {
           </p>
           
           {/* Animated Scrolling Logos */}
-          <div className="relative w-full overflow-hidden">
+          <div className="relative w-full overflow-hidden" style={{ contain: 'layout paint' }}>
             <div className="flex gap-12 md:gap-16 animate-scroll-slow">
               {duplicatedLogos.map(({ name, logo, url }, index) => (
                 <a
@@ -878,9 +628,9 @@ function FeaturedInBar() {
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex items-center justify-center px-4 py-2 transition-all duration-300 hover:scale-110 shrink-0"
+                  className="relative flex items-center justify-center px-4 py-2 shrink-0 hover:text-zinc-700 dark:hover:text-zinc-400"
                 >
-                  <span className="text-sm md:text-base font-semibold text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-700 dark:group-hover:text-zinc-400 transition-colors duration-300 whitespace-nowrap">
+                  <span className="text-sm md:text-base font-semibold text-zinc-400 dark:text-zinc-600 whitespace-nowrap">
                     {logo}
                   </span>
                 </a>

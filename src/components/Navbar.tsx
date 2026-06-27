@@ -195,7 +195,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Centered Nav */}
-          <nav className="hidden lg:flex items-center justify-center absolute left-1/2 -translate-x-1/2" aria-label="Main navigation">
+          <nav className="hidden xl:flex items-center justify-center absolute left-1/2 -translate-x-1/2" aria-label="Main navigation">
             <div className="flex items-center gap-0 bg-zinc-50/50 dark:bg-zinc-900/30 rounded-full px-2 py-1.5 border border-zinc-200/50 dark:border-zinc-800/50">
               {navGroups.map((group, gi) => (
                 <Fragment key={gi}>
@@ -250,7 +250,7 @@ export function Navbar() {
             {/* Mobile hamburger */}
             <button
               onClick={() => { setMobileOpen((v) => !v); closeMega(); }}
-              className="lg:hidden flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-200"
+              className="xl:hidden flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-200"
               aria-label="Toggle menu"
               aria-expanded={mobileOpen}
             >
@@ -373,7 +373,7 @@ export function Navbar() {
           MOBILE DRAWER
       ═══════════════════════════════════════ */}
       <div
-        className={`lg:hidden border-t border-zinc-200/60 dark:border-zinc-800/60 bg-white/98 dark:bg-zinc-950/98 backdrop-blur-xl overflow-hidden transition-all duration-300 ${
+        className={`xl:hidden border-t border-zinc-200/60 dark:border-zinc-800/60 bg-white/98 dark:bg-zinc-950/98 backdrop-blur-xl overflow-hidden transition-all duration-300 ${
           mobileOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >

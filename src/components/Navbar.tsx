@@ -18,9 +18,9 @@ const ANNOUNCEMENTS = [
     text: "PiEEG XR: Neural Face Interface for Meta Quest VR — Now on Kickstarter"
   },
   {
-    href: "/news/neuroscience-hackathon-announcement",
-    badge: "Events",
-    text: "Neuroscience Hackathon is coming to Ottawa"
+    href: "/news/browser-native-hardware",
+    badge: "Technology",
+    text: "Zero-Installation BCI: Browser-Native Hardware Support Arrives"
   }
 ];
 

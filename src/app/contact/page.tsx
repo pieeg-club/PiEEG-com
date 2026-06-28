@@ -176,6 +176,24 @@ export default function ContactPage() {
             >
               Facebook
             </a>
+
+            <a
+              href="https://www.reddit.com/r/PiEEG_club/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            >
+              Reddit
+            </a>
+
+            <a
+              href="https://www.thingiverse.com/PiEEG/designs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            >
+              Thingiverse
+            </a>
           </div>
         </div>
       </section>

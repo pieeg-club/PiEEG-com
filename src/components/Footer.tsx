@@ -12,6 +12,7 @@ const footerLinks = {
     { label: "MicroBCI", href: "/hardware/microbci" },
   ],
   Resources: [
+    { label: "Cloud", href: "/cloud" },
     { label: "Documentation", href: "/support" },
     { label: "Server", href: "/server" },
     { label: "GitHub", href: "https://github.com/pieeg-club" },

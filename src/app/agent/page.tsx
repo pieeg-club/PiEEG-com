@@ -23,6 +23,7 @@ import {
   Copy,
   Check,
   ArrowRight,
+  Bot,
 } from "lucide-react";
 
 // Chat demo data - realistic conversations from the docs
@@ -322,11 +323,22 @@ export default function AgentPage() {
 
             {/* CTAs */}
             <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+              <a
+                href="https://buddy.pieeg.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-cyan-600 to-purple-600 text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200"
+              >
+                <Bot className="w-5 h-5" />
+                Meet Buddy
+                <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+
               <Link
                 href="https://github.com/pieeg-club/PiEEG-agent"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-cyan-600 to-purple-600 text-white font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200"
+                className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-zinc-300 dark:border-zinc-700 hover:border-cyan-500 dark:hover:border-cyan-500 transition-colors"
               >
                 <Code className="w-5 h-5" />
                 View on GitHub

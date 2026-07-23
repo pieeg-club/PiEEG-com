@@ -176,14 +176,18 @@ export function Navbar() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 w-full border-b border-zinc-200/60 dark:border-zinc-800/60 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl backdrop-saturate-150"
+      className="sticky top-0 z-50 w-full border-b border-zinc-200/60 dark:border-zinc-800/60 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl backdrop-saturate-150"
     >
+      {/* Futuristic top accent + sweeping neural scan-line */}
+      <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-cyan-500/40 to-transparent" />
+      <span aria-hidden="true" className="header-scanline" />
+
       <AnnouncementBar />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" onClick={() => { closeMega(); closeMobile(); }} className="flex items-center shrink-0 group">
+          <Link href="/" onClick={() => { closeMega(); closeMobile(); }} className="flex items-center gap-2.5 shrink-0 group">
             <Image
               src="/logo-without-bg.png"
               alt="PiEEG Logo"
@@ -192,11 +196,20 @@ export function Navbar() {
               className="h-8 w-auto dark:brightness-0 dark:invert transition-transform duration-200 group-hover:scale-[1.02]"
               priority
             />
+            <span aria-hidden="true" className="hidden sm:flex items-center gap-1.5 pl-2.5 border-l border-zinc-200 dark:border-zinc-800">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-500" />
+              </span>
+              <span className="nav-tech text-[9px] font-semibold text-zinc-400 dark:text-zinc-500">
+                Neurotech
+              </span>
+            </span>
           </Link>
 
           {/* Desktop Centered Nav */}
           <nav className="hidden xl:flex items-center justify-center absolute left-1/2 -translate-x-1/2" aria-label="Main navigation">
-            <div className="flex items-center gap-0 bg-zinc-50/50 dark:bg-zinc-900/30 rounded-full px-2 py-1.5 border border-zinc-200/50 dark:border-zinc-800/50">
+            <div className="nav-glass flex items-center gap-0 bg-zinc-50/60 dark:bg-zinc-900/40 rounded-full px-2 py-1.5 border border-zinc-200/50 dark:border-zinc-800/60">
               {navGroups.map((group, gi) => (
                 <Fragment key={gi}>
                   {gi > 0 && (
@@ -207,7 +220,7 @@ export function Navbar() {
                       key={link.href}
                       href={link.href}
                       onClick={closeMega}
-                      className="relative px-3 py-1.5 rounded-full text-[13px] font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-white/60 dark:hover:bg-zinc-800/60 transition-all duration-200"
+                      className="nav-tech nav-underline relative px-3 py-1.5 rounded-full text-[11px] font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors duration-200"
                     >
                       {link.label}
                     </Link>
@@ -218,14 +231,14 @@ export function Navbar() {
                       href="/agent"
                       rel="noopener noreferrer"
                       onClick={closeMega}
-                      className="group/buddy relative flex items-center gap-1.5 ml-1 pl-2.5 pr-3 py-1.5 rounded-full text-[13px] font-semibold bg-linear-to-r from-cyan-500/10 to-purple-500/10 dark:from-cyan-500/15 dark:to-purple-500/15 ring-1 ring-inset ring-cyan-500/25 dark:ring-cyan-400/25 hover:from-cyan-500/20 hover:to-purple-500/20 hover:ring-cyan-500/50 dark:hover:ring-cyan-400/50 transition-all duration-200"
+                      className="group/buddy relative flex items-center gap-1.5 ml-1 pl-2.5 pr-3 py-1.5 rounded-full text-[11px] font-semibold bg-linear-to-r from-cyan-500/10 to-purple-500/10 dark:from-cyan-500/15 dark:to-purple-500/15 ring-1 ring-inset ring-cyan-500/25 dark:ring-cyan-400/25 hover:from-cyan-500/20 hover:to-purple-500/20 hover:ring-cyan-500/50 dark:hover:ring-cyan-400/50 transition-all duration-200"
                     >
                       <span className="relative flex items-center justify-center">
                         <Bot className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 transition-transform duration-200 group-hover/buddy:scale-110" />
                         <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-green-500 ring-2 ring-white dark:ring-zinc-950" />
                       </span>
-                      <span className="bg-clip-text text-transparent bg-linear-to-r from-cyan-600 to-purple-600 dark:from-cyan-400 dark:to-purple-400">
-                        Meet Buddy
+                      <span className="nav-tech bg-clip-text text-transparent bg-linear-to-r from-cyan-600 to-purple-600 dark:from-cyan-400 dark:to-purple-400">
+                        Buddy
                       </span>
                     </a>
                   )}
@@ -238,10 +251,10 @@ export function Navbar() {
                 aria-expanded={megaOpen}
                 aria-haspopup="true"
                 aria-controls="mega-menu-panel"
-                className={`relative flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 select-none ${
+                className={`nav-tech relative flex items-center gap-1.5 px-3.5 py-2 rounded-full text-[11px] font-medium transition-all duration-200 select-none ${
                   megaOpen
                     ? "text-zinc-900 dark:text-zinc-100 bg-white/80 dark:bg-zinc-800/80 shadow-sm ring-1 ring-zinc-200/70 dark:ring-zinc-700/70"
-                    : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-white/60 dark:hover:bg-zinc-800/60"
+                    : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-white/60 dark:hover:bg-zinc-800/60"
                 }`}
               >
                 <Sparkles className={`w-3.5 h-3.5 transition-all duration-300 ${megaOpen ? "text-cyan-500 scale-110" : ""}`} />
@@ -278,7 +291,7 @@ export function Navbar() {
               href="https://cloud.pieeg.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex h-9 items-center rounded-full bg-cyan-600 dark:bg-cyan-600 hover:bg-cyan-700 dark:hover:bg-cyan-700 px-5 text-sm font-semibold text-white transition-colors duration-200"
+              className="nav-tech hidden sm:flex h-9 items-center rounded-full bg-cyan-600 dark:bg-cyan-600 hover:bg-cyan-700 dark:hover:bg-cyan-700 px-5 text-[11px] font-semibold text-white transition-colors duration-200"
             >
               Connect
             </a>
@@ -286,7 +299,7 @@ export function Navbar() {
             <span className="shop-aurora hover:scale-105 transition-transform duration-200">
               <a
                 href="/hardware"
-                className="flex h-9 items-center rounded-full bg-white dark:bg-zinc-950 px-5 text-sm font-semibold text-zinc-900 dark:text-zinc-100"
+                className="nav-tech flex h-9 items-center rounded-full bg-white dark:bg-zinc-950 px-5 text-[11px] font-semibold text-zinc-900 dark:text-zinc-100"
               >
                 Shop
               </a>

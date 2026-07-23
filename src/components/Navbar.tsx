@@ -6,7 +6,7 @@ import { useState, useEffect, useRef, useCallback, Fragment } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import {
   ChevronDown, Users, Mail, Briefcase, Building2, Code2,
-  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot,
+  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses,
 } from "lucide-react";
 
 const ANNOUNCEMENT_KEY = "announcements-dismissed";
@@ -93,6 +93,7 @@ const navGroups = [
     { href: "/hardware", label: "Hardware" },
     { href: "/server", label: "Server" },
     { href: "/cloud", label: "Cloud" },
+    { href: "/xr", label: "XR" },
   ],
   [
     { href: "/community", label: "Community" },
@@ -132,6 +133,7 @@ const megaMenuSections = [
     textAccent: "text-emerald-600 dark:text-emerald-400",
     items: [
       { href: "/cloud", label: "Cloud Platform", desc: "Zero-install BCI in your browser", Icon: Cloud },
+      { href: "/xr", label: "PiEEG XR", desc: "Neural face interface for VR", Icon: Glasses },
       { href: "/agent", label: "Meet Buddy", desc: "Your AI copilot for brain data", Icon: Bot },
       { href: "/browser", label: "Browser Extension", desc: "Brain state overlay on every page", Icon: Monitor },
       { href: "/server", label: "Server & SDKs", desc: "Tools, dashboards & integrations", Icon: Globe },

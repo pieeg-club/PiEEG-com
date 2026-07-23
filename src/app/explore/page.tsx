@@ -3,7 +3,7 @@ import Link from "next/link";
 import {
   Users, Mail, Briefcase, Building2, Code2, Zap, Globe,
   BookOpen, Newspaper, Cpu, Layers, LifeBuoy, MessageCircle,
-  ArrowRight, Sparkles, ExternalLink, Cloud, Bot, Monitor,
+  ArrowRight, Sparkles, ExternalLink, Cloud, Bot, Monitor, Glasses,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -44,6 +44,7 @@ const sections = [
     dot: "bg-violet-500",
     items: [
       { href: "/cloud", label: "PiEEG Cloud", desc: "Zero-install browser BCI platform", Icon: Cloud },
+      { href: "/xr", label: "PiEEG XR", desc: "Neural face interface for VR", Icon: Glasses },
       { href: "/agent", label: "Meet Buddy", desc: "AI copilot for your brain data", Icon: Bot },
       { href: "/browser", label: "Browser Extension", desc: "Brain state overlay on every page", Icon: Monitor },
       { href: "/server", label: "Server Overview", desc: "All tools & SDKs", Icon: Globe },

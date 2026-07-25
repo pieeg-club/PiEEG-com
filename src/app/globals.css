@@ -22,8 +22,6 @@ html {
 
 body {
   font-family: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
-  /* Reduce paint area */
-  transform: translateZ(0);
 }
 
 /* ── Neural network pattern ────────────────────────────────── */

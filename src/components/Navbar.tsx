@@ -55,22 +55,57 @@ function AnnouncementBar() {
   const announcement = ANNOUNCEMENTS[currentIndex];
 
   return (
-    <div className="relative hidden md:flex items-center justify-center gap-3 px-4 py-2 bg-cyan-600 dark:bg-cyan-700 text-white text-sm">
-      <Link
-        href={announcement.href}
-        className="flex items-center gap-2 hover:underline underline-offset-2"
-      >
-        <span className="px-2 py-0.5 rounded-full bg-white/20 text-[11px] font-bold uppercase tracking-wide">{announcement.badge}</span>
-        <span className="font-medium">{announcement.text}</span>
-        <ArrowRight className="w-3.5 h-3.5 shrink-0" />
-      </Link>
-      <button
-        onClick={() => { sessionStorage.setItem(ANNOUNCEMENT_KEY, "1"); setVisible(false); }}
-        className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-white/20 transition-colors"
-        aria-label="Dismiss announcement"
-      >
-        <X className="w-3.5 h-3.5" />
-      </button>
+    <div className="relative hidden md:block overflow-hidden border-b border-white/6 bg-zinc-950 text-white">
+      {/* Subtle aurora glow bleeding from the top edge */}
+      <span aria-hidden="true" className="announce-glow pointer-events-none absolute inset-0" />
+      {/* Hairline gradient accent along the top */}
+      <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-cyan-500/40 to-transparent" />
+
+      <div className="relative mx-auto flex max-w-450 items-center justify-center px-12 py-2.5">
+        {/* Rotation indicators */}
+        {ANNOUNCEMENTS.length > 1 && (
+          <div className="absolute left-4 top-1/2 hidden -translate-y-1/2 items-center gap-1.5 lg:flex">
+            {ANNOUNCEMENTS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                aria-label={`Show announcement ${i + 1}`}
+                className={`h-1 rounded-full transition-all duration-300 ${
+                  i === currentIndex ? "w-4 bg-white/80" : "w-1 bg-white/25 hover:bg-white/40"
+                }`}
+              />
+            ))}
+          </div>
+        )}
+
+        <Link
+          href={announcement.href}
+          className="group inline-flex items-center gap-2.5"
+        >
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/7 px-2.5 py-0.5 ring-1 ring-inset ring-white/10 backdrop-blur">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
+            </span>
+            <span className="nav-tech text-[10px] font-semibold text-cyan-300">{announcement.badge}</span>
+          </span>
+          <span
+            key={currentIndex}
+            className="announce-text text-[13px] font-medium text-zinc-300 transition-colors duration-200 group-hover:text-white"
+          >
+            {announcement.text}
+          </span>
+          <ArrowRight className="h-3.5 w-3.5 shrink-0 text-zinc-500 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-white" />
+        </Link>
+
+        <button
+          onClick={() => { sessionStorage.setItem(ANNOUNCEMENT_KEY, "1"); setVisible(false); }}
+          className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-1 text-zinc-500 transition-colors hover:bg-white/10 hover:text-white"
+          aria-label="Dismiss announcement"
+        >
+          <X className="h-3.5 w-3.5" />
+        </button>
+      </div>
     </div>
   );
 }
@@ -186,7 +221,7 @@ export function Navbar() {
       <span aria-hidden="true" className="header-scanline" />
 
       <AnnouncementBar />
-      <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-10">
+      <div className="mx-auto max-w-450 px-4 sm:px-6 lg:px-10">
         <div className="flex h-16 items-center justify-between">
 
           {/* Logo */}

@@ -6,7 +6,7 @@ import { useState, useEffect, useRef, useCallback, Fragment } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import {
   ChevronDown, Users, Mail, Briefcase, Building2, Code2,
-  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses,
+  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu,
 } from "lucide-react";
 
 const ANNOUNCEMENT_KEY = "announcements-dismissed";
@@ -133,6 +133,7 @@ const megaMenuSections = [
     textAccent: "text-emerald-600 dark:text-emerald-400",
     items: [
       { href: "/cloud", label: "Cloud Platform", desc: "Zero-install BCI in your browser", Icon: Cloud },
+      { href: "https://firmware.pieeg.com/", label: "Octopus-16 Firmware", desc: "Flash 16-ch EEG over Bluetooth", Icon: Cpu, external: true },
       { href: "/xr", label: "PiEEG XR", desc: "Neural face interface for VR", Icon: Glasses },
       { href: "/agent", label: "Meet Buddy", desc: "Your AI copilot for brain data", Icon: Bot },
       { href: "/browser", label: "Browser Extension", desc: "Brain state overlay on every page", Icon: Monitor },
@@ -330,23 +331,45 @@ export function Navbar() {
                 <ul className="space-y-1">
                   {section.items.map((item) => (
                     <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        onClick={closeMega}
-                        className="group flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
-                      >
-                        <span className="mt-0.5 flex items-center justify-center w-8 h-8 shrink-0 rounded-lg bg-zinc-100 dark:bg-zinc-800/80 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700 transition-colors">
-                          <item.Icon className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
-                        </span>
-                        <span className="flex-1 min-w-0">
-                          <span className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                            {item.label}
+                      {("external" in item && item.external) ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={closeMega}
+                          className="group flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
+                        >
+                          <span className="mt-0.5 flex items-center justify-center w-8 h-8 shrink-0 rounded-lg bg-zinc-100 dark:bg-zinc-800/80 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700 transition-colors">
+                            <item.Icon className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
                           </span>
-                          <span className="block text-xs text-zinc-500 dark:text-zinc-500 mt-0.5 leading-snug">
-                            {item.desc}
+                          <span className="flex-1 min-w-0">
+                            <span className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                              {item.label}
+                            </span>
+                            <span className="block text-xs text-zinc-500 dark:text-zinc-500 mt-0.5 leading-snug">
+                              {item.desc}
+                            </span>
                           </span>
-                        </span>
-                      </Link>
+                        </a>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          onClick={closeMega}
+                          className="group flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
+                        >
+                          <span className="mt-0.5 flex items-center justify-center w-8 h-8 shrink-0 rounded-lg bg-zinc-100 dark:bg-zinc-800/80 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700 transition-colors">
+                            <item.Icon className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
+                          </span>
+                          <span className="flex-1 min-w-0">
+                            <span className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                              {item.label}
+                            </span>
+                            <span className="block text-xs text-zinc-500 dark:text-zinc-500 mt-0.5 leading-snug">
+                              {item.desc}
+                            </span>
+                          </span>
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -419,15 +442,29 @@ export function Navbar() {
           <div className="pt-3 border-t border-zinc-100 dark:border-zinc-800 mt-3">
             <p className="px-4 pb-2 text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">More</p>
             {mobileExtraLinks.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={closeMobile}
-                className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
-              >
-                <item.Icon className="w-4 h-4 text-zinc-400 shrink-0" />
-                {item.label}
-              </Link>
+              ("external" in item && item.external) ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMobile}
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
+                >
+                  <item.Icon className="w-4 h-4 text-zinc-400 shrink-0" />
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeMobile}
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
+                >
+                  <item.Icon className="w-4 h-4 text-zinc-400 shrink-0" />
+                  {item.label}
+                </Link>
+              )
             ))}
             <Link
               href="/explore"

@@ -135,7 +135,7 @@ const megaMenuSections = [
       { href: "/cloud", label: "Cloud Platform", desc: "Zero-install BCI in your browser", Icon: Cloud },
       { href: "https://firmware.pieeg.com/", label: "Octopus-16 Firmware", desc: "Flash 16-ch EEG over Bluetooth", Icon: Cpu, external: true },
       { href: "/xr", label: "PiEEG XR", desc: "Neural face interface for VR", Icon: Glasses },
-      { href: "/agent", label: "Meet Buddy", desc: "Your AI copilot for brain data", Icon: Bot },
+      { href: "/agent", label: "AI Agent", desc: "Your AI copilot for brain data", Icon: Bot },
       { href: "/browser", label: "Browser Extension", desc: "Brain state overlay on every page", Icon: Monitor },
       { href: "/server", label: "Server & SDKs", desc: "Tools, dashboards & integrations", Icon: Globe },
       { href: "/support", label: "Support", desc: "Docs, FAQ & troubleshooting", Icon: BookOpen },
@@ -186,7 +186,7 @@ export function Navbar() {
       <span aria-hidden="true" className="header-scanline" />
 
       <AnnouncementBar />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-10">
         <div className="flex h-16 items-center justify-between">
 
           {/* Logo */}
@@ -228,7 +228,7 @@ export function Navbar() {
                       {link.label}
                     </Link>
                   ))}
-                  {/* ── Meet Buddy — AI agent (styled distinctly, right after Cloud) ── */}
+                  {/* ── AI Agent (styled distinctly, right after Cloud) ── */}
                   {gi === 0 && (
                     <a
                       href="/agent"
@@ -241,7 +241,7 @@ export function Navbar() {
                         <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-green-500 ring-2 ring-white dark:ring-zinc-950" />
                       </span>
                       <span className="nav-tech bg-clip-text text-transparent bg-linear-to-r from-cyan-600 to-purple-600 dark:from-cyan-400 dark:to-purple-400">
-                        Buddy
+                        AI
                       </span>
                     </a>
                   )}

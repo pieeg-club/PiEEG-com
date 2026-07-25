@@ -18,9 +18,34 @@ const ANNOUNCEMENTS = [
     text: "PiEEG XR: Neural Face Interface for Meta Quest VR — Now on Kickstarter"
   },
   {
+    href: "/news/octopus-16-firmware",
+    badge: "Software",
+    text: "Octopus-16 Firmware Brings 16-Channel EEG to PiEEG Cloud over Bluetooth"
+  },
+  {
     href: "/news/browser-native-hardware",
     badge: "Technology",
     text: "Zero-Installation BCI: Browser-Native Hardware Support Arrives"
+  },
+  {
+    href: "/news/pieeg-agent-launch",
+    badge: "New",
+    text: "Introducing PiEEG-Agent: Talk to Your Brain Data in Plain English"
+  },
+  {
+    href: "/news/pieeg-js-browser-sdk",
+    badge: "Developers",
+    text: "pieeg.js: Zero-Dependency Web Bluetooth SDK for Neural States"
+  },
+  {
+    href: "/news/coin-sized-16ch-eeg",
+    badge: "Innovation",
+    text: "Coin-Sized 16-Channel EEG: Brain Monitoring Goes Pocket-Size"
+  },
+  {
+    href: "/news/neuroscience-hackathon-announcement",
+    badge: "Events",
+    text: "Neuroscience Hackathon Coming This Autumn to Ottawa, Canada"
   }
 ];
 

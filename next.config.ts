@@ -53,6 +53,7 @@ const nextConfig: NextConfig = {
       { source: "/index.html@p=54", destination: "/news", permanent: true },
       { source: "/index.html@p=54.html", destination: "/news", permanent: true },
 
+      { source: "/shop", destination: "/hardware", permanent: true },
       { source: "/pieeg-shop", destination: "/hardware", permanent: true },
       { source: "/pieeg-shop", destination: "/hardware", permanent: true },
       { source: "/pieeg-shop/index.html", destination: "/hardware", permanent: true },      { source: "/products", destination: "/hardware", permanent: true },

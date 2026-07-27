@@ -499,14 +499,14 @@ function HeroSection() {
               {/* Headline */}
               <div className="flex flex-col gap-5">
                 <h1 className="text-5xl sm:text-6xl lg:text-5xl xl:text-7xl font-extrabold tracking-tight leading-[1.02] text-zinc-900 dark:text-zinc-50">
-                  Affordable BCI
+                  Browser-Native
                   <br />
                   <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
-                    Hardware for Research
+                    BCI Hardware
                   </span>
                 </h1>
                 <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 max-w-xs mx-auto leading-relaxed">
-                  Research-grade EEG, EMG, ECG &amp; EOG on Raspberry Pi, Arduino, STM32, and more.
+                  Research-grade biosignals. Zero installation. ESP32, STM32 BLE, and multi-platform devices.
                 </p>
               </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { type LucideIcon, ArrowRight, Zap, Cpu, Terminal, ExternalLink, Play, Bluetooth, Usb, CircuitBoard, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook } from "lucide-react";
+import { ArrowRight, Zap, Cpu, Terminal, ExternalLink, Play, Bluetooth, Usb, CircuitBoard, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -367,35 +367,6 @@ function SignalWave() {
 
 // ─── Sections ─────────────────────────────────────────────────────────────────
 
-// ── Vitruvian service node ────────────────────────────────────────────────────
-const VITRUVIAN_ACCENTS: Record<string, { bg: string; border: string; text: string }> = {
-  violet:  { bg: "bg-violet-500",  border: "border-violet-200/60 dark:border-violet-800/40",   text: "text-violet-700 dark:text-violet-300"  },
-  cyan:    { bg: "bg-cyan-500",    border: "border-cyan-200/60 dark:border-cyan-800/40",        text: "text-cyan-700 dark:text-cyan-300"     },
-  blue:    { bg: "bg-blue-500",    border: "border-blue-200/60 dark:border-blue-800/40",        text: "text-blue-700 dark:text-blue-300"     },
-  sky:     { bg: "bg-sky-500",     border: "border-sky-200/60 dark:border-sky-800/40",          text: "text-sky-700 dark:text-sky-300"       },
-  teal:    { bg: "bg-teal-500",    border: "border-teal-200/60 dark:border-teal-800/40",        text: "text-teal-700 dark:text-teal-300"     },
-  emerald: { bg: "bg-emerald-500", border: "border-emerald-200/60 dark:border-emerald-800/40", text: "text-emerald-700 dark:text-emerald-300" },
-  amber:   { bg: "bg-amber-500",   border: "border-amber-200/60 dark:border-amber-800/40",     text: "text-amber-700 dark:text-amber-300"   },
-  rose:    { bg: "bg-rose-500",    border: "border-rose-200/60 dark:border-rose-800/40",        text: "text-rose-700 dark:text-rose-300"     },
-};
-
-function VitruvianNode({ icon: Icon, title, sub, accent }: {
-  icon: LucideIcon; title: string; sub: string; accent: string;
-}) {
-  const s = VITRUVIAN_ACCENTS[accent] ?? VITRUVIAN_ACCENTS.cyan;
-  return (
-    <div className={`flex flex-col items-center gap-2.5 p-4 rounded-2xl border ${s.border} bg-white/70 dark:bg-zinc-900/60 text-center shadow-sm hover:shadow-md transition-shadow`}>
-      <div className={`w-10 h-10 rounded-xl ${s.bg} flex items-center justify-center shadow-sm shrink-0`}>
-        <Icon className="w-5 h-5 text-white" />
-      </div>
-      <div>
-        <p className={`text-xs font-bold ${s.text} leading-tight`}>{title}</p>
-        <p className="text-[10px] text-zinc-500 dark:text-zinc-400 mt-0.5 leading-tight">{sub}</p>
-      </div>
-    </div>
-  );
-}
-
 function HeroSection() {
   return (
     <section className="relative flex flex-col items-center justify-center overflow-hidden min-h-[calc(100svh-3.5rem)] px-4 py-12" style={{ contain: 'layout style' }}>
@@ -414,151 +385,72 @@ function HeroSection() {
       {/* Main content */}
       <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center gap-6 py-4">
 
-        {/* ── Vitruvian Grid ─────────────────────────────────────────────────────── */}
-        <div className="relative w-full">
+        {/* ── Hero content ─────────────────────────────────────────────────────── */}
+        <div className="flex flex-col items-center gap-7 text-center py-12 sm:py-20 px-4 max-w-4xl mx-auto">
 
-          {/* da Vinci construction lines — desktop only */}
-          <div className="absolute inset-0 pointer-events-none hidden lg:block" aria-hidden="true">
-            {/* Straight lines with preserveAspectRatio=none (distortion acceptable) */}
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1000 600" preserveAspectRatio="none">
-              {/* Outer square / bounding box */}
-              <rect x="3" y="3" width="994" height="594" fill="none"
-                stroke="rgba(180,140,40,0.22)" strokeWidth="0.9" strokeDasharray="10 7" />
-              {/* Center cross */}
-              <line x1="500" y1="3" x2="500" y2="597" stroke="rgba(180,140,40,0.13)" strokeWidth="0.5" />
-              <line x1="3" y1="300" x2="997" y2="300" stroke="rgba(180,140,40,0.13)" strokeWidth="0.5" />
-              {/* Diagonals */}
-              <line x1="3" y1="3" x2="997" y2="597" stroke="rgba(180,140,40,0.09)" strokeWidth="0.4" />
-              <line x1="997" y1="3" x2="3" y2="597" stroke="rgba(180,140,40,0.09)" strokeWidth="0.4" />
-              {/* Tick marks — top edge */}
-              {[100,200,300,400,500,600,700,800,900].map(x => (
-                <line key={`tx${x}`} x1={x} y1="3" x2={x} y2="13" stroke="rgba(180,140,40,0.25)" strokeWidth="0.6" />
-              ))}
-              {/* Tick marks — left edge */}
-              {[100,200,300,400,500].map(y => (
-                <line key={`ty${y}`} x1="3" y1={y} x2="13" y2={y} stroke="rgba(180,140,40,0.25)" strokeWidth="0.6" />
-              ))}
-              {/* Corner arcs — da Vinci draughting detail */}
-              <path d="M3,72 A69,69 0 0 1 72,3"   fill="none" stroke="rgba(180,140,40,0.18)" strokeWidth="0.6" />
-              <path d="M928,3 A69,69 0 0 1 997,72"  fill="none" stroke="rgba(180,140,40,0.18)" strokeWidth="0.6" />
-              <path d="M997,528 A69,69 0 0 1 928,597" fill="none" stroke="rgba(180,140,40,0.18)" strokeWidth="0.6" />
-              <path d="M72,597 A69,69 0 0 1 3,528"   fill="none" stroke="rgba(180,140,40,0.18)" strokeWidth="0.6" />
-              {/* Center dot */}
-              <circle cx="500" cy="300" r="4" fill="rgba(180,140,40,0.18)" />
-              {/* Cardinal point markers */}
-              <circle cx="500" cy="3"   r="3.5" fill="none" stroke="rgba(180,140,40,0.25)" strokeWidth="0.7" />
-              <circle cx="500" cy="597" r="3.5" fill="none" stroke="rgba(180,140,40,0.25)" strokeWidth="0.7" />
-              <circle cx="3"   cy="300" r="3.5" fill="none" stroke="rgba(180,140,40,0.25)" strokeWidth="0.7" />
-              <circle cx="997" cy="300" r="3.5" fill="none" stroke="rgba(180,140,40,0.25)" strokeWidth="0.7" />
-            </svg>
-            {/* Vitruvian circle — CSS (stays circular regardless of container ratio) */}
-            <div
-              className="absolute rounded-full"
-              style={{
-                left: '50%', top: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: 'min(62%, 520px)',
-                aspectRatio: '1 / 1',
-                border: '1px solid rgba(180,140,40,0.20)',
-              }}
-            />
-            {/* Inner navel ring */}
-            <div
-              className="absolute rounded-full"
-              style={{
-                left: '50%', top: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: 'min(36%, 300px)',
-                aspectRatio: '1 / 1',
-                border: '0.5px dashed rgba(20,184,166,0.18)',
-              }}
-            />
+          {/* Eyebrow — latest news */}
+          <a
+            href="https://xr.pieeg.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-50/70 dark:bg-cyan-950/40 px-3.5 py-1.5 text-xs font-medium text-cyan-700 dark:text-cyan-300 backdrop-blur-sm hover:border-cyan-500/60 transition-colors"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500" />
+            </span>
+            New — PiEEG XR: neural control for Meta Quest
+            <ArrowRight className="w-3 h-3 opacity-60 group-hover:translate-x-0.5 transition-transform" />
+          </a>
+
+          {/* Headline */}
+          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-extrabold tracking-tight leading-[0.95] text-zinc-900 dark:text-zinc-50">
+            Turn brainwaves
+            <br />
+            <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
+              into action.
+            </span>
+          </h1>
+
+          {/* Subheadline */}
+          <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl leading-relaxed">
+            Research-grade EEG, EMG &amp; ECG — streamed to your browser, decoded by AI, ready for VR.
+            No drivers. No lock-in. Just your mind.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+            <a
+              href="https://cloud.pieeg.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex items-center gap-2 h-12 bg-linear-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 px-6 text-sm font-semibold text-white dark:text-zinc-950 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105 transition-all duration-200 rounded-lg overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-linear-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <Play className="w-4 h-4 relative z-10" />
+              <span className="relative z-10">Try Live Demo</span>
+            </a>
+            <a
+              href="/hardware"
+              className="flex items-center gap-2 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-6 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
+            >
+              Shop Hardware <ArrowRight className="w-3.5 h-3.5" />
+            </a>
           </div>
 
-          {/* 3 × 3 Vitruvian grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(140px,160px)_1fr_minmax(140px,160px)] lg:grid-rows-[auto_1fr_auto] gap-4 lg:gap-5 items-center">
-
-            {/* ── Row 1 ── */}
-            <div className="hidden lg:block lg:col-start-1 lg:row-start-1">
-              <VitruvianNode icon={Eye}      title="Real-time ML"    sub="On-device inference"     accent="violet" />
-            </div>
-            <div className="hidden lg:flex justify-center lg:col-start-2 lg:row-start-1">
-              <VitruvianNode icon={Brain}    title="Neural Signals"  sub="EEG · EMG · ECG · EOG"    accent="cyan"   />
-            </div>
-            <div className="hidden lg:block lg:col-start-3 lg:row-start-1">
-              <VitruvianNode icon={Sparkles} title="AI Pipeline"     sub="TensorFlow · PyTorch"      accent="blue"   />
-            </div>
-
-            {/* ── Row 2 ── */}
-            <div className="hidden lg:block lg:col-start-1 lg:row-start-2">
-              <VitruvianNode icon={Zap}      title="Multi-Platform"  sub="Pi · Arduino · STM32"      accent="rose"   />
-            </div>
-
-            {/* ── CENTER ── */}
-            <div className="lg:col-start-2 lg:row-start-2 flex flex-col items-center gap-8 text-center py-14 px-4">
-              {/* Headline */}
-              <div className="flex flex-col gap-5">
-                <h1 className="text-5xl sm:text-6xl lg:text-5xl xl:text-7xl font-extrabold tracking-tight leading-[1.02] text-zinc-900 dark:text-zinc-50">
-                  Browser-Native
-                  <br />
-                  <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
-                    BCI Hardware
-                  </span>
-                </h1>
-                <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 max-w-xs mx-auto leading-relaxed">
-                  Research-grade biosignals. Zero installation. ESP32, STM32 BLE, and multi-platform devices.
-                </p>
-              </div>
-
-              {/* CTAs */}
-              <div className="flex flex-wrap items-center justify-center gap-3">
-                <a
-                  href="/hardware"
-                  className="group relative flex items-center gap-2 h-11 bg-linear-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 px-5 text-sm font-semibold text-white dark:text-zinc-950 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105 transition-all duration-200 rounded-lg overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-linear-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <ArrowRight className="w-3.5 h-3.5 relative z-10" />
-                  <span className="relative z-10">Shop Hardware</span>
-                </a>
-                <a
-                  href="https://cloud.pieeg.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 h-11 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-5 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
-                >
-                  <Play className="w-3.5 h-3.5" />
-                  Try Live Demo
-                </a>
-                <a
-                  href="/support"
-                  className="flex items-center gap-2 h-11 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-5 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
-                >
-                  Documentation <ArrowRight className="w-3.5 h-3.5" />
-                </a>
-              </div>
-
-              {/* Disclaimer */}
-              <p className="text-[10px] text-zinc-400 dark:text-zinc-600 font-mono">
-                // Not a medical device. Research &amp; engineering use only.
-              </p>
-            </div>
-
-            <div className="hidden lg:block lg:col-start-3 lg:row-start-2">
-              <VitruvianNode icon={Cpu}     title="24-bit · 500 Hz" sub="Research-grade ADC"        accent="sky"     />
-            </div>
-
-            {/* ── Row 3 ── */}
-            <div className="hidden lg:block lg:col-start-1 lg:row-start-3">
-              <VitruvianNode icon={Radio}   title="Wireless BCI"    sub="Bluetooth LE · Wearable"   accent="amber"   />
-            </div>
-            <div className="hidden lg:flex justify-center lg:col-start-2 lg:row-start-3">
-              <VitruvianNode icon={Webhook} title="Open Protocol"   sub="FreeEEG · BrainFlow"        accent="emerald" />
-            </div>
-            <div className="hidden lg:block lg:col-start-3 lg:row-start-3">
-              <VitruvianNode icon={Globe}   title="Live API"         sub="WebSocket streaming"        accent="teal"    />
-            </div>
-
+          {/* Capability strip */}
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 pt-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+            <span className="inline-flex items-center gap-1.5"><Globe className="w-3.5 h-3.5 text-cyan-500" /> Browser-native</span>
+            <span className="inline-flex items-center gap-1.5"><Radio className="w-3.5 h-3.5 text-amber-500" /> Wireless BLE + USB</span>
+            <span className="inline-flex items-center gap-1.5"><Cpu className="w-3.5 h-3.5 text-sky-500" /> 24-bit · up to 500 Hz</span>
+            <span className="inline-flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-violet-500" /> Real-time ML &amp; AI copilot</span>
+            <span className="inline-flex items-center gap-1.5"><GitHubIcon className="w-3.5 h-3.5 text-emerald-500" /> MIT open-source</span>
           </div>
+
+          {/* Disclaimer */}
+          <p className="text-[10px] text-zinc-400 dark:text-zinc-600 font-mono pt-1">
+            // Not a medical device. Research &amp; engineering use only.
+          </p>
         </div>
 
         {/* Stats */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Zap, Cpu, Terminal, ExternalLink, Play, Bluetooth, Usb, CircuitBoard, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook } from "lucide-react";
+import { ArrowRight, Zap, Cpu, Terminal, ExternalLink, Play, Bluetooth, Usb, CircuitBoard, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook, BookOpen } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -435,6 +435,14 @@ function HeroSection() {
               className="flex items-center gap-2 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-6 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
             >
               Shop Hardware <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="https://docs.pieeg.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-6 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
+            >
+              <BookOpen className="w-4 h-4" /> Docs
             </a>
           </div>
 

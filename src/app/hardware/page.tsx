@@ -189,6 +189,31 @@ const hardwareProducts = [
     github: "https://github.com/Pi-EEG/EEG-with-JetsonNano",
     youtube: "https://youtu.be/f3stVQCsfrM",
     categories: ["8ch"]
+  },
+  {
+    id: "octopus-16",
+    name: "Octopus 16",
+    tagline: "16-channel wireless ESP32 BCI",
+    description:
+      "High-density 16-channel biosignal acquisition on the Seeed Studio XIAO ESP32-S3. Portable, wireless, and low-cost EEG data acquisition with Bluetooth streaming.",
+    channels: "16 channels",
+    platform: "Seeed Studio XIAO ESP32-S3",
+    signals: ["EEG", "EMG", "ECG"],
+    features: [
+      "2× ADS131M08 24-bit ADCs",
+      "Wireless Bluetooth streaming",
+      "Battery-powered & wearable",
+      "PiEEG-Server integrated",
+      "Open-source Python SDK"
+    ],
+    status: "Available",
+    badge: "Wireless",
+    gradient: "from-violet-500 to-fuchsia-600",
+    bgGradient: "from-violet-50 to-fuchsia-50 dark:from-violet-950/30 dark:to-fuchsia-950/30",
+    image: "/products/octopus16.png",
+    purchaseUrl: "https://www.elecrow.com/octopus-16.html",
+    github: "https://github.com/pieeg-club/Octopus-16",
+    categories: ["wireless", "16ch+"]
   }
 ];
 
@@ -302,7 +327,7 @@ export default function ProductsPage() {
 
           {/* Sub-headline */}
           <p className="text-lg sm:text-xl text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-10 font-light">
-            Seven platforms. Five accessories. One mission — make brain-computer interfaces
+            Eight platforms. Five accessories. One mission — make brain-computer interfaces
             accessible, open, and beautiful.
           </p>
 
@@ -335,7 +360,7 @@ export default function ProductsPage() {
           {/* Stats row */}
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-center">
             {[
-              { value: "7", label: "Hardware Platforms" },
+              { value: "8", label: "Hardware Platforms" },
               { value: "32", label: "Channels Max" },
               { value: "24-bit", label: "ADC Resolution" },
               { value: "MIT", label: "Open-Source SDK" },

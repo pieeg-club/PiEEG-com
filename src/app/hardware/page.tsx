@@ -203,7 +203,7 @@ const hardwareProducts = [
       "2× ADS131M08 24-bit ADCs",
       "Wireless Bluetooth streaming",
       "Battery-powered & wearable",
-      "PiEEG-Server integrated",
+      "PiEEG Cloud compatible",
       "Open-source Python SDK"
     ],
     status: "Available",
@@ -211,8 +211,8 @@ const hardwareProducts = [
     gradient: "from-violet-500 to-fuchsia-600",
     bgGradient: "from-violet-50 to-fuchsia-50 dark:from-violet-950/30 dark:to-fuchsia-950/30",
     image: "/products/octopus16.png",
-    purchaseUrl: "https://www.elecrow.com/octopus-16.html",
-    github: "https://github.com/pieeg-club/Octopus-16",
+    purchaseUrl: "https://www.elecrow.com/octopus-16-brain-computer-interface-with-16-eeg-channel.html",
+    github: "https://github.com/pieeg-club/Octopus_16",
     categories: ["wireless", "16ch+"]
   }
 ];

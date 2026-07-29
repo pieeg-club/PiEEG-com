@@ -30,8 +30,8 @@ export default function Octopus16ProductPage() {
       channels="16 channels"
       platform="Seeed Studio XIAO ESP32-S3"
       signals={["EEG", "EMG", "ECG"]}
-      purchaseUrl="https://www.elecrow.com/octopus-16.html"
-      githubUrl="https://github.com/pieeg-club/Octopus-16"
+      purchaseUrl="https://www.elecrow.com/octopus-16-brain-computer-interface-with-16-eeg-channel.html"
+      githubUrl="https://github.com/pieeg-club/Octopus_16"
       description={
         <>
           <p>
@@ -43,7 +43,7 @@ export default function Octopus16ProductPage() {
           <p>
             Ideal for researchers, students, and developers building advanced BCI prototypes,
             wireless neural-interface applications, and multi-channel embedded BCI setups. Octopus 16
-            is fully integrated with PiEEG-Server for browser-based visualization.
+            is fully compatible with PiEEG Cloud and PiEEG-Server for browser-based visualization.
           </p>
         </>
       }
@@ -55,7 +55,7 @@ export default function Octopus16ProductPage() {
         { label: "Signals", value: "EEG, EMG, ECG" },
         { label: "Platform", value: "Seeed Studio XIAO ESP32-S3" },
         { label: "Power", value: "Battery-powered (5V, ≤300 mAh)" },
-        { label: "Software", value: "Open-source Python SDK + PiEEG-Server" },
+        { label: "Software", value: "PiEEG Cloud, PiEEG-Server & Python SDK" },
       ]}
       features={[
         {
@@ -85,8 +85,8 @@ export default function Octopus16ProductPage() {
         },
         {
           icon: <Signal className="w-5 h-5 text-teal-600 dark:text-teal-400" />,
-          title: "PiEEG-Server Integrated",
-          description: "Stream and visualize data directly through the PiEEG browser server.",
+          title: "PiEEG Cloud Compatible",
+          description: "Connect and stream straight from your browser via Web Bluetooth—zero install.",
         },
       ]}
       ctaTitle="Ready to Get Started?"

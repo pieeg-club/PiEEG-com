@@ -2,6 +2,7 @@
 
 import ReactMarkdown from 'react-markdown';
 import { Components } from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface ArticleContentProps {
   content: string;
@@ -88,7 +89,7 @@ export default function ArticleContent({ content }: ArticleContentProps) {
       />
     ),
     hr: () => (
-      <hr className="my-8 border-t border-zinc-200 dark:border-zinc-800" />
+      <hr className="mt-8 mb-0 border-t border-zinc-200 dark:border-zinc-800" />
     ),
     table: ({ children }) => (
       <div className="overflow-x-auto mb-6">
@@ -127,8 +128,8 @@ export default function ArticleContent({ content }: ArticleContentProps) {
   };
 
   return (
-    <div className="prose prose-lg dark:prose-invert max-w-none article-content">
-      <ReactMarkdown components={components}>{content}</ReactMarkdown>
+    <div className="max-w-none article-content">
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>{content}</ReactMarkdown>
     </div>
   );
 }

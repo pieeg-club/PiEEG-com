@@ -6,7 +6,7 @@ import { useState, useEffect, useRef, useCallback, Fragment } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import {
   ChevronDown, Users, Mail, Briefcase, Building2, Code2,
-  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart,
+  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap,
 } from "lucide-react";
 
 const ANNOUNCEMENT_KEY = "announcements-dismissed";
@@ -184,6 +184,7 @@ const megaMenuSections = [
       { href: "/partnership", label: "Partnership", desc: "Become a partner or reseller", Icon: Building2 },
       { href: "/community", label: "Open Source", desc: "Contribute on GitHub", Icon: Code2 },
       { href: "/examples", label: "Examples & Demos", desc: "Real-world BCI applications", Icon: Zap },
+      { href: "/tutorials", label: "Tutorials", desc: "Step-by-step guides & how-tos", Icon: GraduationCap },
     ],
   },
   {

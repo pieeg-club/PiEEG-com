@@ -48,6 +48,21 @@ TouchDesigner's `OSC In CHOP` creates one channel per unique OSC address it rece
 2. Connect your device from the Session Lobby — enter your server URL, pair over BLE, or hit **▶ Use Demo Server** to try it without hardware.
 3. Confirm you see live waveforms scrolling in the dashboard.
 
+> **Important — stop background throttling.** Once you switch to TouchDesigner, the browser tab loses focus and Chromium throttles its background timers, collapsing your stream to ~2 fps. Launch the browser with the `--disable-background-timer-throttling` flag so the dashboard keeps streaming at full rate while it sits behind TouchDesigner:
+>
+> ```bash
+> # Windows
+> chrome.exe --disable-background-timer-throttling
+>
+> # macOS
+> open -a "Google Chrome" --args --disable-background-timer-throttling
+>
+> # Linux
+> google-chrome --disable-background-timer-throttling
+> ```
+>
+> For Edge, substitute `msedge.exe` (Windows) or `"Microsoft Edge"` (macOS). Close all existing browser windows first so the flag takes effect.
+
 ## Step 2 — Launch the Local Bridge
 
 Neural Stream never streams your data through the cloud. Instead it forwards frames to a tiny app on your own machine over a **direct, encrypted P2P WebRTC channel**.
@@ -104,6 +119,7 @@ Smooth incoming channels with a `Filter` or `Lag CHOP` before driving visuals �
 | No channels in the OSC In CHOP | Confirm the Local Bridge dot is green **and** the Neural Stream master switch says *Streaming*. |
 | Bridge won't connect | Re-open the Local Bridge to refresh the 6-char code (codes expire after 24 h), then reconnect. |
 | Channels arrive but never change | Check the dashboard shows live waveforms — Neural Stream only forwards what the device sends. |
+| Stream drops to ~2 fps when TouchDesigner is focused | Chromium is throttling the backgrounded tab. Relaunch the browser with `--disable-background-timer-throttling` (see Step 1). |
 | Port mismatch | The `OSC In CHOP` **Network Port** must equal the Bridge's forwarding port (7000 for the TouchDesigner preset). |
 | Too many channels / dropped signals | Lower the rate or turn off per-channel groups; the panel truncates per-channel signals first when over budget. |
 

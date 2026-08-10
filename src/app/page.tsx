@@ -390,16 +390,14 @@ function HeroSection() {
 
           {/* Eyebrow — latest news */}
           <a
-            href="https://xr.pieeg.com/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/tutorials/run-pieeg-xr-meta-quest"
             className="group inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-50/70 dark:bg-cyan-950/40 px-3.5 py-1.5 text-xs font-medium text-cyan-700 dark:text-cyan-300 backdrop-blur-sm hover:border-cyan-500/60 transition-colors"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500" />
             </span>
-            New — PiEEG XR: neural control for Meta Quest
+            New — Run PiEEG XR inside Meta Quest
             <ArrowRight className="w-3 h-3 opacity-60 group-hover:translate-x-0.5 transition-transform" />
           </a>
 

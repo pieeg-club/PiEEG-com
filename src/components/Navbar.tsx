@@ -6,7 +6,7 @@ import { useState, useEffect, useRef, useCallback, Fragment } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import {
   ChevronDown, Users, Mail, Briefcase, Building2, Code2,
-  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap,
+  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone,
 } from "lucide-react";
 
 const ANNOUNCEMENT_KEY = "announcements-dismissed";
@@ -173,34 +173,35 @@ const megaMenuSections = [
       { href: "/about", label: "About PiEEG", desc: "Our mission, team & story", Icon: Users },
       { href: "/contact", label: "Contact", desc: "Reach us directly", Icon: Mail },
       { href: "/job", label: "Careers", desc: "Join our growing team", Icon: Briefcase },
+      { href: "/partnership", label: "Partnership", desc: "Become a partner or reseller", Icon: Building2 },
     ],
   },
   {
-    id: "collaborate",
-    heading: "Collaborate",
+    id: "products",
+    heading: "Products & Platforms",
     accent: "bg-purple-500",
     textAccent: "text-purple-600 dark:text-purple-400",
     items: [
-      { href: "/partnership", label: "Partnership", desc: "Become a partner or reseller", Icon: Building2 },
-      { href: "/community", label: "Open Source", desc: "Contribute on GitHub", Icon: Code2 },
-      { href: "/examples", label: "Examples & Demos", desc: "Real-world BCI applications", Icon: Zap },
-      { href: "/tutorials", label: "Tutorials", desc: "Step-by-step guides & how-tos", Icon: GraduationCap },
+      { href: "/cloud", label: "Cloud Platform", desc: "Zero-install BCI in your browser", Icon: Cloud },
+      { href: "/xr", label: "PiEEG XR", desc: "Neural face interface for VR", Icon: Glasses },
+      { href: "/agent", label: "AI Agent", desc: "Your AI copilot for brain data", Icon: Bot },
+      { href: "https://play.google.com/store/apps/details?id=com.bodypress.governorhq", label: "BodyPress Mobile", desc: "Neural data on your phone", Icon: Smartphone, external: true },
+      { href: "/browser", label: "Browser Extension", desc: "Brain state overlay on every page", Icon: Monitor },
+      { href: "/server", label: "Server & SDKs", desc: "Tools, dashboards & integrations", Icon: Globe },
     ],
   },
   {
-    id: "learn",
-    heading: "Learn & Discover",
+    id: "resources",
+    heading: "Resources & Community",
     accent: "bg-emerald-500",
     textAccent: "text-emerald-600 dark:text-emerald-400",
     items: [
-      { href: "/cloud", label: "Cloud Platform", desc: "Zero-install BCI in your browser", Icon: Cloud },
-      { href: "https://firmware.pieeg.com/", label: "Octopus-16 Firmware", desc: "Flash 16-ch EEG over Bluetooth", Icon: Cpu, external: true },
-      { href: "/xr", label: "PiEEG XR", desc: "Neural face interface for VR", Icon: Glasses },
-      { href: "/agent", label: "AI Agent", desc: "Your AI copilot for brain data", Icon: Bot },
-      { href: "/browser", label: "Browser Extension", desc: "Brain state overlay on every page", Icon: Monitor },
-      { href: "/server", label: "Server & SDKs", desc: "Tools, dashboards & integrations", Icon: Globe },
+      { href: "/tutorials", label: "Tutorials", desc: "Step-by-step guides & how-tos", Icon: GraduationCap },
+      { href: "/examples", label: "Examples & Demos", desc: "Real-world BCI applications", Icon: Zap },
       { href: "/support", label: "Support", desc: "Docs, FAQ & troubleshooting", Icon: BookOpen },
       { href: "/news", label: "Latest News", desc: "Updates & announcements", Icon: Newspaper },
+      { href: "/community", label: "Open Source", desc: "Contribute on GitHub", Icon: Code2 },
+      { href: "https://firmware.pieeg.com/", label: "Octopus-16 Firmware", desc: "Flash 16-ch EEG over Bluetooth", Icon: Cpu, external: true },
     ],
   },
 ];

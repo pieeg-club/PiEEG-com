@@ -8,6 +8,30 @@ interface ArticleContentProps {
   content: string;
 }
 
+function getYouTubeId(url: string): string | null {
+  const match = url.match(
+    /(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/)|youtu\.be\/)([\w-]{11})/
+  );
+  return match ? match[1] : null;
+}
+
+function YouTubeEmbed({ id }: { id: string }) {
+  return (
+    <div
+      className="relative my-6 w-full overflow-hidden rounded-lg shadow-lg"
+      style={{ paddingBottom: '56.25%' }}
+    >
+      <iframe
+        className="absolute inset-0 h-full w-full"
+        src={`https://www.youtube.com/embed/${id}`}
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      />
+    </div>
+  );
+}
+
 export default function ArticleContent({ content }: ArticleContentProps) {
   const components: Components = {
     h1: ({ children }) => (
@@ -30,11 +54,25 @@ export default function ArticleContent({ content }: ArticleContentProps) {
         {children}
       </h4>
     ),
-    p: ({ children }) => (
-      <p className="mb-4 text-base leading-7 text-zinc-700 dark:text-zinc-300">
-        {children}
-      </p>
-    ),
+    p: ({ node, children }) => {
+      // A paragraph containing only a YouTube link becomes an embedded player.
+      const only =
+        node?.children?.length === 1 ? node.children[0] : undefined;
+      if (
+        only &&
+        only.type === 'element' &&
+        only.tagName === 'a' &&
+        typeof only.properties?.href === 'string'
+      ) {
+        const id = getYouTubeId(only.properties.href);
+        if (id) return <YouTubeEmbed id={id} />;
+      }
+      return (
+        <p className="mb-4 text-base leading-7 text-zinc-700 dark:text-zinc-300">
+          {children}
+        </p>
+      );
+    },
     ul: ({ children }) => (
       <ul className="list-disc list-inside mb-4 space-y-2 text-zinc-700 dark:text-zinc-300">
         {children}

@@ -3,7 +3,7 @@ title: "BodyPress App: Your Neural Data, Now in Your Pocket"
 date: "2026-08-10"
 category: "Product Launch"
 excerpt: "BodyPress mobile app launches on Google Play with full PiEEG device support. Read real-time biodata from all PiEEG devices—including PiEEG XR in VR—directly on your mobile phone."
-image: "/news-images/bodypress.jfif"
+image: "/news-images/bodypress.png"
 featured: true
 tags: ["Product Launch", "Mobile", "Android", "PiEEG", "Health", "BodyPress"]
 ---

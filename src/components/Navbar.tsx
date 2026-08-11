@@ -13,8 +13,13 @@ const ANNOUNCEMENT_KEY = "announcements-dismissed";
 
 const ANNOUNCEMENTS = [
   {
+    href: "/news/bodypress-meta-quest-launch",
+    badge: "🚀 New",
+    text: "BodyPress Now on Meta Quest — Neural Data Visualization in VR"
+  },
+  {
     href: "/news/pieeg-xr-launch",
-    badge: "🚀 Prelaunch",
+    badge: "Prelaunch",
     text: "PiEEG XR: Neural Face Interface for Meta Quest VR — Now on Kickstarter"
   },
   {
@@ -29,7 +34,7 @@ const ANNOUNCEMENTS = [
   },
   {
     href: "/news/pieeg-agent-launch",
-    badge: "New",
+    badge: "AI",
     text: "Introducing PiEEG-Agent: Talk to Your Brain Data in Plain English"
   },
   {
@@ -144,6 +149,32 @@ function GitHubIcon({ className }: { className?: string }) {
       aria-hidden="true"
     >
       <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
+    </svg>
+  );
+}
+
+function MetaQuestIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 32 32"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M5,19.5c0-4.6,2.3-9.4,5-9.4c1.5,0,2.7,0.9,4.6,3.6c-1.8,2.8-2.9,4.5-2.9,4.5c-2.4,3.8-3.2,4.6-4.5,4.6C5.9,22.9,5,21.7,5,19.5 M20.7,17.8L19,15c-0.4-0.7-0.9-1.4-1.3-2c1.5-2.3,2.7-3.5,4.2-3.5c3,0,5.4,4.5,5.4,10.1c0,2.1-0.7,3.3-2.1,3.3S23.3,22,20.7,17.8 M16.4,11c-2.2-2.9-4.1-4-6.3-4C5.5,7,2,13.1,2,19.5c0,4,1.9,6.5,5.1,6.5c2.3,0,3.9-1.1,6.9-6.3c0,0,1.2-2.2,2.1-3.7c0.3,0.5,0.6,1,0.9,1.6l1.4,2.4c2.7,4.6,4.2,6.1,6.9,6.1c3.1,0,4.8-2.6,4.8-6.7C30,12.6,26.4,7,22.1,7C19.8,7,18,8.8,16.4,11"/>
+    </svg>
+  );
+}
+
+function PlayStoreIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.919V2.733a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"/>
     </svg>
   );
 }
@@ -340,6 +371,29 @@ export function Navbar() {
             >
               <GitHubIcon className="w-4.5 h-4.5" />
             </a>
+            
+            {/* Meta Quest Store */}
+            <a
+              href="https://www.meta.com/experiences/bodypress/1271355469389420"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
+              aria-label="BodyPress on Meta Quest"
+            >
+              <MetaQuestIcon className="w-4.5 h-4.5" />
+            </a>
+            
+            {/* Google Play Store */}
+            <a
+              href="https://play.google.com/store/apps/details?id=com.bodypress.governorhq"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
+              aria-label="BodyPress on Google Play"
+            >
+              <PlayStoreIcon className="w-4.5 h-4.5" />
+            </a>
+            
             <ThemeToggle />
 
             {/* Mobile hamburger */}

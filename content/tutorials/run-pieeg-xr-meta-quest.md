@@ -97,11 +97,10 @@ Your PC pairs PiEEG XR, and the Quest's **built-in** browser only loads a web pa
 
 BodyPress talks Bluetooth Low Energy and pairs straight with PiEEG XR. Its **Live Signal** screen offers waveform, FFT spectral, neural-state, and signal-quality views.
 
-1. **Enable Developer Mode** (Meta Horizon app → **Menu → Devices → your headset → Developer Mode → On**; reboot).
-2. **Sideload the APK** — [download the release build](https://pieeg.lon1.cdn.digitaloceanspaces.com/bodypress/app-release.apk) and install via SideQuest or ADB. Full guide: [Run BodyPress on Meta Quest](/tutorials/bodypress-meta-quest-sideload).
-3. Launch BodyPress, open **Live Signal**, and pair `PiEEG XR`. Read live biosignals in the headset — no PC, no browser.
+1. **Install from the Meta Quest store** — [get BodyPress](https://www.meta.com/experiences/bodypress/1271355469389420) and install it like any other Quest app. No Developer Mode, no sideloading.
+2. Launch BodyPress, open **Live Signal**, and pair `PiEEG XR`. Read live biosignals in the headset — no PC, no browser.
 
-> Also on [Google Play](https://play.google.com/store/apps/details?id=com.bodypress.governorhq) for phones and tablets.
+> **Sideloading is no longer required** now that BodyPress is on the Meta Quest store. If you need it anyway (older headset, offline install, or a self-built APK), the full sideload walkthrough lives in [Run BodyPress on Meta Quest](/tutorials/bodypress-meta-quest-sideload). Also on [Google Play](https://play.google.com/store/apps/details?id=com.bodypress.governorhq) for phones and tablets.
 
 ### Multitasking tip
 

@@ -23,6 +23,8 @@ tags:
 
 For the PiEEG community the interesting part is the radio. BodyPress talks **Bluetooth Low Energy**, so it pairs directly with any BLE Heart Rate Profile strap (Polar H10, Wahoo TICKR, Garmin) **and** with community BCI hardware through its plugin system (ADS1299, PiEEG-XR, IronBCI, Octopus-16, and more). Its **Live Signal** screen offers four visualisation modes — time-domain waveforms, real-time FFT spectral analysis, a neural-state decoding demo, and a signal-quality monitor — all running over the same BLE connection. That makes a Meta Quest, which is an Android device with a full BLE stack, a perfectly good host for reading live biosignals in a headset.
 
+> **⚠️ Sideloading is no longer required.** BodyPress is now **officially available on the Meta Quest store** — [get it here](https://www.meta.com/experiences/bodypress/1271355469389420) and install it like any other Quest app, no Developer Mode, SideQuest, or ADB needed. This sideload guide is kept for reference (older headsets, offline installs, or building from source), but for most users the official store install is the recommended path.
+
 ## What BodyPress Does
 
 | Capability               | What it means on a Quest                                                                                                                                                                   |
@@ -37,13 +39,14 @@ For the PiEEG community the interesting part is the radio. BodyPress talks **Blu
 
 ## Where to Get BodyPress
 
-| Channel          | Link                                                                                                                                              | Use it for                                                            |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| **Google Play**  | [play.google.com/store/apps/details?id=com.bodypress.governorhq](https://play.google.com/store/apps/details?id=com.bodypress.governorhq&hl=en_CA) | Phones and tablets — the normal install path.                         |
-| **Sideload APK** | [pieeg.lon1.cdn.digitaloceanspaces.com/bodypress/app-release.apk](https://pieeg.lon1.cdn.digitaloceanspaces.com/bodypress/app-release.apk)        | Meta Quest and any device without Play Store access.                  |
-| **Source (MIT)** | [https://github.com/pieeg-club/bodyPress](https://github.com/pieeg-club/bodyPress)                                              | Build it yourself, audit the code, or contribute a new signal source. |
+| Channel             | Link                                                                                                                                              | Use it for                                                            |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| **Meta Quest store** _(recommended)_ | [meta.com/experiences/bodypress](https://www.meta.com/experiences/bodypress/1271355469389420)                                 | Meta Quest — the official one-tap install, no sideloading needed.     |
+| **Google Play**     | [play.google.com/store/apps/details?id=com.bodypress.governorhq](https://play.google.com/store/apps/details?id=com.bodypress.governorhq&hl=en_CA) | Phones and tablets — the normal install path.                         |
+| **Sideload APK**    | [pieeg.lon1.cdn.digitaloceanspaces.com/bodypress/app-release.apk](https://pieeg.lon1.cdn.digitaloceanspaces.com/bodypress/app-release.apk)        | Older headsets, offline installs, or devices without store access.    |
+| **Source (MIT)**    | [https://github.com/pieeg-club/bodyPress](https://github.com/pieeg-club/bodyPress)                                              | Build it yourself, audit the code, or contribute a new signal source. |
 
-> The Quest has no Google Play Store for phone apps, so the headset install is always a **sideload** of the APK above. It is the same release build you would get from Play — just delivered as a file.
+> BodyPress is now published on the **Meta Quest store**, so the official install above is the fastest path. The **sideload** route below stays available for headsets without store access, offline installs, or when you want to run a self-built APK.
 
 ## Prerequisites
 

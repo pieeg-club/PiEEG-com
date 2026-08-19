@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import HeroVideo from "@/components/HeroVideo";
+import HeroOctopusCard from "@/components/HeroOctopusCard";
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -381,6 +382,9 @@ function HeroSection() {
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-175 h-125 rounded-full bg-cyan-400/5 dark:bg-cyan-400/8 blur-[80px]" />
       </div>
+
+      {/* Floating product spotlight */}
+      <HeroOctopusCard />
 
       {/* Main content */}
       <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center gap-6 py-4">

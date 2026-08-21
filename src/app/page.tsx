@@ -402,12 +402,8 @@ function HeroSection() {
           </a>
 
           {/* Headline */}
-         <h1 className="text-6xl sm:text-7xl xl:text-8xl font-extrabold tracking-tight leading-[0.95] text-zinc-900 dark:text-zinc-50">
-            Turn brainwaves
-            <br />
-            <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
-              into action.
-            </span>
+          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-stretch-200% tracking-tight leading-[0.95] text-zinc-900 dark:text-zinc-50">
+            AI-Native BCI
           </h1>
 
           {/* Subheadline */}

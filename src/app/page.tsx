@@ -409,7 +409,7 @@ function HeroSection() {
           {/* Subheadline */}
           <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl leading-relaxed">
             Research-grade EEG, EMG &amp; ECG — streamed to your browser, decoded by AI, ready for VR.
-            No drivers. No lock-in. Just your mind.
+            No drivers. No lock-in.
           </p>
 
           {/* CTAs */}

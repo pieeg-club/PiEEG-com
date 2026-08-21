@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ChatAgent } from "@/components/ChatAgent";
+import HeroOctopusCard from "@/components/HeroOctopusCard";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -70,6 +71,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <ChatAgent />
+          <HeroOctopusCard />
         </ThemeProvider>
       </body>
     </html>

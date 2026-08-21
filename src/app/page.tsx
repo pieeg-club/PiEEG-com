@@ -5,7 +5,6 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import HeroVideo from "@/components/HeroVideo";
-import HeroOctopusCard from "@/components/HeroOctopusCard";
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -383,9 +382,6 @@ function HeroSection() {
         <div className="w-175 h-125 rounded-full bg-cyan-400/5 dark:bg-cyan-400/8 blur-[80px]" />
       </div>
 
-      {/* Floating product spotlight */}
-      <HeroOctopusCard />
-
       {/* Main content */}
       <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center gap-6 py-4">
 
@@ -406,7 +402,7 @@ function HeroSection() {
           </a>
 
           {/* Headline */}
-          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-extrabold tracking-tight leading-[0.95] text-zinc-900 dark:text-zinc-50">
+         <h1 className="text-6xl sm:text-7xl xl:text-8xl font-extrabold tracking-tight leading-[0.95] text-zinc-900 dark:text-zinc-50">
             Turn brainwaves
             <br />
             <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">

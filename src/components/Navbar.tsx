@@ -195,9 +195,9 @@ function DiscordIcon({ className }: { className?: string }) {
 const navGroups = [
   [
     { href: "/hardware", label: "Hardware" },
-    { href: "/server", label: "Server" },
     { href: "/cloud", label: "Cloud" },
-    { href: "/xr", label: "XR" },
+    { href: "/agent", label: "AI" },
+    { href: "/server", label: "Server" },
   ],
   [
     { href: "/community", label: "Community" },
@@ -334,20 +334,20 @@ export function Navbar() {
                       {link.label}
                     </Link>
                   ))}
-                  {/* ── AI Agent (styled distinctly, right after Cloud) ── */}
+                  {/* ── XR (styled distinctly, right after Hardware) ── */}
                   {gi === 0 && (
                     <a
-                      href="/agent"
+                      href="/xr"
                       rel="noopener noreferrer"
                       onClick={closeMega}
-                      className="group/buddy relative flex items-center gap-1.5 ml-1 pl-2.5 pr-3 py-1.5 rounded-full text-[11px] font-semibold bg-linear-to-r from-cyan-500/10 to-purple-500/10 dark:from-cyan-500/15 dark:to-purple-500/15 ring-1 ring-inset ring-cyan-500/25 dark:ring-cyan-400/25 hover:from-cyan-500/20 hover:to-purple-500/20 hover:ring-cyan-500/50 dark:hover:ring-cyan-400/50 transition-all duration-200"
+                      className="group/xr relative flex items-center gap-1.5 ml-1 pl-2.5 pr-3 py-1.5 rounded-full text-[11px] font-semibold bg-linear-to-r from-cyan-500/10 to-purple-500/10 dark:from-cyan-500/15 dark:to-purple-500/15 ring-1 ring-inset ring-cyan-500/25 dark:ring-cyan-400/25 hover:from-cyan-500/20 hover:to-purple-500/20 hover:ring-cyan-500/50 dark:hover:ring-cyan-400/50 transition-all duration-200"
                     >
                       <span className="relative flex items-center justify-center">
-                        <Bot className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 transition-transform duration-200 group-hover/buddy:scale-110" />
+                        <Glasses className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 transition-transform duration-200 group-hover/xr:scale-110" />
                         <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-green-500 ring-2 ring-white dark:ring-zinc-950" />
                       </span>
                       <span className="nav-tech bg-clip-text text-transparent bg-linear-to-r from-cyan-600 to-purple-600 dark:from-cyan-400 dark:to-purple-400">
-                        AI
+                        XR
                       </span>
                     </a>
                   )}

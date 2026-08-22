@@ -403,3 +403,20 @@ body {
     inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
     0 0 0 1px rgba(34, 211, 238, 0.04);
 }
+
+/* ── Discord pulse ─────────────────────────────────────────── */
+@keyframes discord-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(88, 101, 242, 0);
+  }
+  50% { 
+    box-shadow: 0 0 0 3px rgba(88, 101, 242, 0.15);
+  }
+}
+.discord-pulse {
+  animation: discord-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.dark .discord-pulse:hover {
+  color: rgb(88, 101, 242);
+  border-color: rgb(88, 101, 242, 0.5);
+}

@@ -370,6 +370,7 @@ function SignalWave() {
 function HeroSection() {
   return (
     <section className="relative flex flex-col items-center justify-center overflow-hidden min-h-[calc(100svh-3.5rem)] px-4 py-12" style={{ contain: 'layout style' }}>
+  
 
       {/* Background video */}
       <HeroVideo />
@@ -402,8 +403,13 @@ function HeroSection() {
           </a>
 
           {/* Headline */}
-          <h1 className="text-6xl sm:text-7xl xl:text-8xl font-stretch-200% tracking-tight leading-[0.95] text-zinc-900 dark:text-zinc-50">
-            AI-Native BCI
+          <h1 className="hero-fade text-zinc-900 dark:text-zinc-50 tracking-[-0.045em] leading-[0.88]">
+            <span className="block text-[clamp(3.4rem,12vw,7.5rem)] font-semibold">
+              BCI
+            </span>
+            <span className="block mt-1 text-[clamp(1.65rem,5.4vw,3.35rem)] font-medium tracking-[-0.035em] text-zinc-700 dark:text-zinc-200">
+              Developer Platform
+            </span>
           </h1>
 
           {/* Subheadline */}

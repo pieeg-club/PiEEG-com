@@ -65,7 +65,7 @@ export default function HeroVideo() {
   if (!shouldLoad) {
     // Render placeholder with same background color to prevent layout shift
     return (
-      <div className="absolute inset-0 w-full h-full bg-zinc-950" style={{ opacity: BASE_OPACITY }} />
+      <div className="absolute inset-0 w-full h-full bg-zinc-950" style={{ opacity: 0 }} />
     );
   }
 

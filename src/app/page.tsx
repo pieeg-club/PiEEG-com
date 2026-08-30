@@ -405,7 +405,7 @@ function HeroSection() {
           {/* Headline */}
           <h1 className="hero-fade text-zinc-900 dark:text-zinc-50 tracking-[-0.045em] leading-[0.88]">
             <span className="block text-[clamp(3.4rem,12vw,7.5rem)] font-semibold">
-              BCI
+              BIO DATA
             </span>
             <span className="block mt-1 text-[clamp(1.65rem,5.4vw,3.35rem)] font-medium tracking-[-0.035em] text-zinc-700 dark:text-zinc-200">
               Developer Platform

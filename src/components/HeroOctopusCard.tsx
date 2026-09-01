@@ -3,10 +3,28 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Play, X } from "lucide-react";
 
+const VIDEOS = [
+  {
+    src: "https://pieeg.lon1.cdn.digitaloceanspaces.com/octopus-16-vid.mp4",
+    title: "Meet Octopus",
+    subtitle: "Coin-sized neural interface",
+    link: "https://octopus.pieeg.com/",
+    badge: "16-CH EEG",
+  },
+  {
+    src: "https://pieeg.lon1.cdn.digitaloceanspaces.com/pieeg-xr-video.mp4",
+    title: "PiEEG XR",
+    subtitle: "Neural face interface for VR",
+    link: "https://xr.pieeg.com",
+    badge: "8-CH fEMG",
+  },
+];
+
 export default function HeroOctopusCard() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
+  const [selectedVideo] = useState(() => VIDEOS[Math.floor(Math.random() * VIDEOS.length)]);
 
   // Defer the video so it never competes with the critical hero paint.
   useEffect(() => {
@@ -33,10 +51,10 @@ export default function HeroOctopusCard() {
       </button>
 
       <a
-        href="https://octopus.pieeg.com/"
+        href={selectedVideo.link}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Meet Octopus — 16-channel neural interface"
+        aria-label={`${selectedVideo.title} — ${selectedVideo.subtitle}`}
         className="block"
       >
         <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-xl shadow-zinc-950/10 dark:shadow-zinc-950/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
@@ -45,7 +63,7 @@ export default function HeroOctopusCard() {
             {shouldLoad && (
               <video
                 ref={videoRef}
-                src="https://pieeg.lon1.cdn.digitaloceanspaces.com/octopus-16-vid.mp4"
+                src={selectedVideo.src}
                 autoPlay
                 muted
                 loop
@@ -73,15 +91,15 @@ export default function HeroOctopusCard() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
               </span>
-              16-CH EEG
+              {selectedVideo.badge}
             </div>
           </div>
 
           {/* Footer */}
           <div className="flex items-center justify-between gap-2 px-3 py-2.5">
             <div className="min-w-0">
-              <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">Meet Octopus</div>
-              <div className="truncate text-[10px] text-zinc-500 dark:text-zinc-400">Coin-sized neural interface</div>
+              <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">{selectedVideo.title}</div>
+              <div className="truncate text-[10px] text-zinc-500 dark:text-zinc-400">{selectedVideo.subtitle}</div>
             </div>
             <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400 transition-all duration-300 group-hover:border-teal-500 group-hover:text-teal-600 dark:group-hover:text-teal-400">
               <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

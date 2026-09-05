@@ -6,7 +6,7 @@ import { useState, useEffect, useRef, useCallback, Fragment } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import {
   ChevronDown, Users, Mail, Briefcase, Building2, Code2,
-  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal,
+  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal, Watch,
 } from "lucide-react";
 
 const ANNOUNCEMENT_KEY = "announcements-dismissed";
@@ -228,6 +228,7 @@ const megaMenuSections = [
     items: [
       { href: "/cloud", label: "Cloud Platform", desc: "Zero-install BCI in your browser", Icon: Cloud },
       { href: "/xr", label: "PiEEG XR", desc: "Neural face interface for VR", Icon: Glasses },
+      { href: "https://aura.pieeg.com", label: "Aura VR", desc: "EMG + IMU wristband for XR", Icon: Watch, external: true },
       { href: "/agent", label: "AI Agent", desc: "Your AI copilot for brain data", Icon: Bot },
       { href: "https://play.google.com/store/apps/details?id=com.bodypress.governorhq", label: "BodyPress Mobile", desc: "Neural data on your phone", Icon: Smartphone, external: true },
       { href: "/browser", label: "Browser Extension", desc: "Brain state overlay on every page", Icon: Monitor },

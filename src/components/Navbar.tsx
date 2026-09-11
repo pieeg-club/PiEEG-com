@@ -9,48 +9,13 @@ import {
   Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal, Watch,
 } from "lucide-react";
 
-const ANNOUNCEMENT_KEY = "announcements-dismissed";
+const ANNOUNCEMENT_KEY = "announcements-dismissed-v2";
 
 const ANNOUNCEMENTS = [
   {
-    href: "/news/bodypress-meta-quest-launch",
-    badge: "🚀 New",
-    text: "BodyPress Now on Meta Quest — Neural Data Visualization in VR"
-  },
-  {
-    href: "/news/pieeg-xr-launch",
-    badge: "Prelaunch",
-    text: "PiEEG XR: Neural Face Interface for Meta Quest VR — Now on Kickstarter"
-  },
-  {
-    href: "/news/octopus-16-firmware",
-    badge: "Software",
-    text: "Octopus-16 Firmware Brings 16-Channel EEG to PiEEG Cloud over Bluetooth"
-  },
-  {
-    href: "/news/browser-native-hardware",
-    badge: "Technology",
-    text: "Zero-Installation BCI: Browser-Native Hardware Support Arrives"
-  },
-  {
-    href: "/news/pieeg-agent-launch",
-    badge: "AI",
-    text: "Introducing PiEEG-Agent: Talk to Your Brain Data in Plain English"
-  },
-  {
-    href: "/news/pieeg-js-browser-sdk",
-    badge: "Developers",
-    text: "pieeg.js: Zero-Dependency Web Bluetooth SDK for Neural States"
-  },
-  {
-    href: "/news/coin-sized-16ch-eeg",
-    badge: "Innovation",
-    text: "Coin-Sized 16-Channel EEG: Brain Monitoring Goes Pocket-Size"
-  },
-  {
-    href: "/news/neuroscience-hackathon-announcement",
-    badge: "Events",
-    text: "Neuroscience Hackathon Coming This Autumn to Ottawa, Canada"
+    href: "https://v2.pieeg.com",
+    badge: "New",
+    text: "Try our new website look"
   }
 ];
 
@@ -108,7 +73,7 @@ function AnnouncementBar() {
           </div>
         )}
 
-        <Link
+        <a
           href={announcement.href}
           className="group inline-flex items-center gap-2.5"
         >
@@ -126,7 +91,7 @@ function AnnouncementBar() {
             {announcement.text}
           </span>
           <ArrowRight className="h-3.5 w-3.5 shrink-0 text-zinc-500 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-white" />
-        </Link>
+        </a>
 
         <button
           onClick={() => { sessionStorage.setItem(ANNOUNCEMENT_KEY, "1"); setVisible(false); }}

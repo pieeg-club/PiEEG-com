@@ -6,6 +6,7 @@ import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
 import HardwareBench from "@/components/home/HardwareBench";
 import PlatformBench from "@/components/home/PlatformBench";
+import AcademicCustomers from "@/components/home/AcademicCustomers";
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -693,6 +694,7 @@ export default function Home() {
       <HeroSection />
       <HardwareBench />
       <PlatformBench />
+      <AcademicCustomers />
       <WebBCISection />
       <FeaturedSection />
       <CtaSection />

@@ -44,3 +44,4 @@ next-env.d.ts
 /old
 
 .vercel
+tmp

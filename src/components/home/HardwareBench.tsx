@@ -16,10 +16,10 @@ export default function HardwareBench() {
   return (
     <section
       id="hardware-on-body"
-      className="py-16 px-4 bg-linear-to-b from-white via-zinc-50/50 to-white dark:from-zinc-950 dark:via-zinc-900/40 dark:to-zinc-950"
+      className="scroll-mt-20 pt-10 pb-12 px-4 bg-linear-to-b from-white via-zinc-50/50 to-white dark:from-zinc-950 dark:via-zinc-900/40 dark:to-zinc-950"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="mb-10 flex flex-col gap-5 max-w-3xl mx-auto text-center">
+        <div className="mb-8 flex flex-col gap-4 max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center justify-center gap-2 mx-auto">
             <div className="h-px w-8 bg-linear-to-r from-transparent via-cyan-500 to-transparent" />
             <p className="text-xs font-semibold uppercase tracking-widest text-cyan-600 dark:text-cyan-400">

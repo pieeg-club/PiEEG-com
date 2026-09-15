@@ -41,8 +41,7 @@ const featuredIn = [
 
 function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center overflow-hidden min-h-[calc(100svh-3.5rem)] px-4 py-12" style={{ contain: 'layout style' }}>
-  
+    <section className="relative flex flex-col overflow-hidden min-h-[calc(100svh-4rem)]" style={{ contain: 'layout style' }}>
 
       {/* Background video */}
       <HeroVideo />
@@ -55,11 +54,11 @@ function HeroSection() {
         <div className="w-175 h-125 rounded-full bg-cyan-400/5 dark:bg-cyan-400/8 blur-[80px]" />
       </div>
 
-      {/* Main content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center gap-6 py-4">
+      {/* Main content — fills leftover height so Featured In stays on the first fold */}
+      <div className="relative z-10 flex-1 w-full max-w-6xl mx-auto flex flex-col items-center justify-center gap-5 px-4 py-8">
 
         {/* ── Hero content ─────────────────────────────────────────────────────── */}
-        <div className="flex flex-col items-center gap-7 text-center py-12 sm:py-20 px-4 max-w-4xl mx-auto">
+        <div className="flex flex-col items-center gap-5 text-center py-4 sm:py-8 px-4 max-w-4xl mx-auto">
 
           {/* Eyebrow — latest news */}
           <a
@@ -134,7 +133,7 @@ function HeroSection() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 sm:gap-8 w-full max-w-2xl mt-4 pt-6 border-t border-zinc-200/50 dark:border-zinc-800/50">
+        <div className="grid grid-cols-3 gap-4 sm:gap-8 w-full max-w-2xl mt-2 pt-5 border-t border-zinc-200/50 dark:border-zinc-800/50">
           <div className="flex flex-col items-center gap-1.5">
             <div className="text-3xl font-bold bg-linear-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">28+</div>
             <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">Media features</div>
@@ -151,10 +150,10 @@ function HeroSection() {
 
       </div>
 
-      {/* Featured In */}
-      <div className="relative z-10 w-full border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 overflow-hidden mt-8" style={{ contain: 'layout paint' }}>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex flex-col items-center gap-6">
+      {/* Featured In — pinned to the bottom of the first fold */}
+      <div className="relative z-10 mt-auto w-full border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 overflow-hidden" style={{ contain: 'layout paint' }}>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-5 pb-4">
+          <div className="flex flex-col items-center gap-4">
             <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-600">Featured In</p>
             <div className="relative w-full overflow-hidden" style={{ contain: 'layout paint' }}>
               <div className="flex gap-12 md:gap-16 animate-scroll-slow">
@@ -170,6 +169,25 @@ function HeroSection() {
                   </a>
                 ))}
               </div>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-1">
+              <a
+                href="#hardware-on-body"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+              >
+                Hardware
+                <span className="font-normal text-zinc-400 dark:text-zinc-500">on-body</span>
+                <ArrowRight className="w-3.5 h-3.5 opacity-50 group-hover:translate-x-0.5 group-hover:opacity-100 transition-all" />
+              </a>
+              <span aria-hidden="true" className="hidden sm:block h-4 w-px bg-zinc-200 dark:bg-zinc-800" />
+              <a
+                href="#platform"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
+              >
+                Platform
+                <span className="font-normal text-zinc-400 dark:text-zinc-500">signal path</span>
+                <ArrowRight className="w-3.5 h-3.5 opacity-50 group-hover:translate-x-0.5 group-hover:opacity-100 transition-all" />
+              </a>
             </div>
           </div>
         </div>

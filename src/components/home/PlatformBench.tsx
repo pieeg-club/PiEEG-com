@@ -16,10 +16,10 @@ export default function PlatformBench() {
   return (
     <section
       id="platform"
-      className="py-16 px-4 bg-white dark:bg-zinc-950"
+      className="scroll-mt-20 pt-10 pb-12 px-4 bg-white dark:bg-zinc-950"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="mb-10 flex flex-col gap-5 max-w-3xl mx-auto text-center">
+        <div className="mb-8 flex flex-col gap-4 max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center justify-center gap-2 mx-auto">
             <div className="h-px w-8 bg-linear-to-r from-transparent via-violet-500 to-transparent" />
             <p className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400">

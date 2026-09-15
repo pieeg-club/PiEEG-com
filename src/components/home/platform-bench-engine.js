@@ -13,7 +13,9 @@ export function mountPlatformBench(root) {
 const DOCS = 'https://docs.pieeg.com';
 const SITE = {
   server:'/server', dashboard:'/server', cloud:'/cloud', buddy:'https://buddy.pieeg.com/',
-  agent:'/agent', chrome:'/browser', experiences:'/examples', sdk:'/browser'
+  agent:'/agent', chrome:'/browser', experiences:'/examples', sdk:'/browser',
+  xr:'/xr', bioide:'https://ide.pieeg.com', aura:'https://aura.pieeg.com',
+  bodypress:'https://play.google.com/store/apps/details?id=com.bodypress.governorhq'
 };
 function hrefFor(l){
   if(l.ext) return l.h;
@@ -110,9 +112,10 @@ const PARTS = [
       {id:'tab', c:2, t:'Chromium tab', s:'Web Bluetooth, Web Serial', ic:'browser', part:'runtime'},
       {id:'engine', c:3, t:'cloud.pieeg.com', s:'decode, DSP and FFT, here', ic:'cloud', part:'runtime', core:true},
       {id:'views', c:4, t:'Dashboard views', s:'waveforms, topomap, gallery', ic:'wave', part:'out', go:'dashboard'},
+      {id:'bud', c:4, t:'Buddy', s:'read-only tools on the stream', ic:'robot', part:'out', go:'buddy'},
       {id:'lb', c:4, t:'Local Bridge', s:'OSC back to your machine', ic:'net', part:'out', go:'bridge'}
     ],
-    links:[['ble','tab','BLE','air'],['usb','tab','USB','wire'],['demo','tab','','wire'],['tab','engine','','net'],['engine','views','','wire'],['engine','lb','P2P','net']]
+    links:[['ble','tab','BLE','air'],['usb','tab','USB','wire'],['demo','tab','','wire'],['tab','engine','','net'],['engine','views','','wire'],['engine','bud','','wire'],['engine','lb','P2P','net']]
   },
   rows:[
     ['runtime','Runs in','Chrome, Edge, Brave or Opera, over HTTPS'],
@@ -183,6 +186,121 @@ const PARTS = [
   links:[{t:'Agent docs', h:'/software/integrations/pieeg-agent', primary:true},{t:'Compare with Buddy', h:'/cloud/buddy'}]
 },
 {
+  id:'bioide', name:'bioIDE', meta:'browser IDE', badge:'No install', fam:'build',
+  tagline:'JavaScript against a live EEG frame',
+  filters:['browser','build'],
+  summary:'Open ide.pieeg.com, pair a board or start a mock stream, and run JavaScript in a Web Worker against the latest frame. The sandbox injects EEG, bio, TensorFlow.js, plot() and console. There is no backend.',
+  caption:'Board or mock → pieeg.js → a worker that can plot, classify and log',
+  scene:{
+    nodes:[
+      {id:'ble', c:1, t:'Your board', s:'Web Bluetooth or Web Serial', ic:'chip', part:'source'},
+      {id:'mock', c:1, t:'Mock stream', s:'synthetic EEG, no hardware', ic:'chip', part:'source'},
+      {id:'js', c:2, t:'pieeg.js', s:'the same browser SDK', ic:'code', part:'source', go:'sdk'},
+      {id:'ide', c:3, t:'bioIDE', s:'editor, worker, recipes', ic:'browser', part:'runtime', core:true},
+      {id:'api', c:4, t:'EEG, bio, tf', s:'frame, features, models', ic:'code', part:'out'},
+      {id:'plot', c:4, t:'plot() and console', s:'in the tab, as you run', ic:'wave', part:'out'}
+    ],
+    links:[['ble','js','BLE','air'],['mock','js','','wire'],['js','ide','frames','wire'],['ide','api','','wire'],['ide','plot','','wire']]
+  },
+  rows:[
+    ['runtime','Runs in','A Chromium browser tab, at <code>ide.pieeg.com</code>'],
+    ['source','Reads','A live board through pieeg.js, or a mock stream'],
+    ['out','Injects','<code>EEG</code> (latest frame), <code>bio</code> (windows, features, small models), <code>tf</code> (TensorFlow.js on CPU), <code>plot()</code> and <code>console</code>'],
+    ['runtime','Run','<code>Ctrl+Enter</code> / <code>⌘↵</code>. Student code stays in a Web Worker'],
+    ['out','Needs','No server, no account, no install']
+  ],
+  gets:['Recipes for blink, focus and a small classifier','A mock button, so you can write before the board arrives','The same SDK the dashboard uses, so numbers match'],
+  note:{h:'Code stays in the tab', p:'There is no backend. Hardware arrives through the JavaScript SDK. The live site is the editor, not a frozen syllabus.'},
+  panel:{mode:'console', title:'What the worker sees', note:'A recipe reading the live frame', gen:'bioide'},
+  links:[{t:'Open bioIDE', h:'https://ide.pieeg.com', ext:true, primary:true},{t:'JavaScript SDK', h:'/software/api/javascript-sdk'}]
+},
+{
+  id:'xr', name:'PiEEG XR', meta:'face interface', fam:'stream',
+  tagline:'Facial EMG and frontal EEG on a VR headset',
+  filters:['run','stream'],
+  summary:'A silicone mask with ten flat dry electrodes replaces the headset facial interface. Expressions and focus leave over Bluetooth LE, into OSC, WebXR, or a headset app.',
+  caption:'Mask → Bluetooth LE → OSC, WebXR, or the headset app',
+  scene:{
+    nodes:[
+      {id:'mask', c:1, t:'Face mask', s:'10 dry Ag/AgCl pads', ic:'chip', part:'source'},
+      {id:'ble', c:2, t:'Bluetooth LE 5', s:'advertises as PiEEG XR', ic:'plug', part:'runtime'},
+      {id:'host', c:3, t:'Headset or PC', s:'browser, OSC, or app', ic:'browser', part:'runtime', core:true},
+      {id:'osc', c:4, t:'OSC out', s:'avatar parameters', ic:'game', part:'out', go:'osc'},
+      {id:'webxr', c:4, t:'WebXR', s:'experiences in the headset', ic:'globe', part:'out', go:'experiences'},
+      {id:'bp', c:4, t:'BodyPress', s:'live signal in the headset', ic:'wave', part:'out', go:'bodypress'}
+    ],
+    links:[['mask','ble','EMG','air'],['ble','host','BLE','air'],['host','osc','OSC','osc'],['host','webxr','','wire'],['host','bp','','wire']]
+  },
+  rows:[
+    ['runtime','Runs on','A VR headset or a PC, over Bluetooth LE'],
+    ['source','Reads','Facial EMG from the mask pads, and frontal EEG from the same forehead contacts'],
+    ['out','Sends','OSC parameters, WebXR input, or a live view in BodyPress'],
+    ['runtime','Pairs as','Bluetooth LE 5, advertising as PiEEG XR'],
+    ['out','Rate','250 samples per second, 24-bit']
+  ],
+  gets:['Expressions and focus without a handheld controller','The same OSC path the server already uses for avatars','A headset app path through BodyPress, on the same radio'],
+  note:{h:'The mask is the sensor', p:'This page is the software path. The hardware itself is the face interface on the boards map, not a separate acquisition stack.'},
+  panel:{mode:'bands', title:'What the headset sees', note:'Band powers and state from the mask'},
+  links:[{t:'PiEEG XR', h:'/xr', primary:true},{t:'VRChat OSC', h:'/software/integrations/vrchat-osc'}]
+},
+{
+  id:'aura', name:'Aura VR', meta:'wrist EMG + IMU', badge:'Not shipping', fam:'stream',
+  tagline:'Grip, pinch, flick and wrist motion, from the forearm',
+  filters:['stream'],
+  summary:'A wristband with four dry EMG contacts and a 6-axis IMU. Forearm muscle activity and wrist kinematics leave as one live stream into XR. Hardware is not shipping yet.',
+  caption:'Wristband → EMG + IMU stream → XR runtime',
+  scene:{
+    nodes:[
+      {id:'band', c:1, t:'Aura wristband', s:'4 dry EMG, 6-axis IMU', ic:'chip', part:'source'},
+      {id:'radio', c:2, t:'Live stream', s:'muscle + kinematics', ic:'plug', part:'runtime'},
+      {id:'rt', c:3, t:'XR runtime', s:'headset or PC', ic:'game', part:'runtime', core:true},
+      {id:'gest', c:4, t:'Grip, pinch, flick', s:'from forearm EMG', ic:'wave', part:'out'},
+      {id:'kin', c:4, t:'Wrist motion', s:'accel and gyro', ic:'globe', part:'out'}
+    ],
+    links:[['band','radio','EMG','air'],['radio','rt','IMU','air'],['rt','gest','','wire'],['rt','kin','','wire']]
+  },
+  rows:[
+    ['runtime','Runs in','An XR runtime on a headset or PC, once the band ships'],
+    ['source','Reads','Four dry EMG contacts around the wrist, plus a 6-axis IMU in the puck'],
+    ['out','Sends','Gesture estimates and wrist kinematics as one timestamped stream'],
+    ['runtime','Form','Textile strap, four contacts, one puck'],
+    ['out','Status','Early access signup only. No hardware in the field yet']
+  ],
+  gets:['Muscle activity and wrist motion on the same clock','No cameras on the hands, so no occlusion from that path','A signup on aura.pieeg.com for when units are ready to try'],
+  note:{h:'Not shipping yet', p:'Nothing on this card is a product you can buy. The map shows where the stream is designed to land, not a current device.'},
+  panel:{mode:'console', title:'What the stream carries', note:'Simulated forearm EMG and IMU, not a recording', gen:'aura'},
+  links:[{t:'Open Aura', h:'https://aura.pieeg.com', ext:true, primary:true}]
+},
+{
+  id:'bodypress', name:'BodyPress', meta:'phone and headset app', fam:'browser',
+  tagline:'Live biosignals on a phone or a VR headset',
+  filters:['run','browser'],
+  summary:'Pairs over Bluetooth LE with PiEEG boards and heart-rate straps. Live waveforms, spectra, electrode quality, and a daily journal written from captures the app actually took.',
+  caption:'Board or strap → BLE → BodyPress on phone or headset',
+  scene:{
+    nodes:[
+      {id:'board', c:1, t:'PiEEG board', s:'8 to 32 ch, Bluetooth LE', ic:'chip', part:'source'},
+      {id:'xr', c:1, t:'PiEEG XR', s:'mask on a headset', ic:'chip', part:'source', go:'xr'},
+      {id:'hr', c:1, t:'Heart-rate strap', s:'BLE Heart Rate Profile', ic:'plug', part:'source'},
+      {id:'app', c:2, t:'BodyPress', s:'phone or headset', ic:'browser', part:'runtime', core:true},
+      {id:'live', c:3, t:'Live Signal', s:'waveform, FFT, quality', ic:'wave', part:'out'},
+      {id:'log', c:4, t:'Journal', s:'from captured signals', ic:'disk', part:'out'}
+    ],
+    links:[['board','app','BLE','air'],['xr','app','BLE','air'],['hr','app','BLE','air'],['app','live','','wire'],['live','log','','wire']]
+  },
+  rows:[
+    ['runtime','Runs on','A phone, or a VR headset, over Bluetooth LE'],
+    ['source','Pairs with','PiEEG boards, PiEEG XR, BLE heart-rate straps, or a demo stream'],
+    ['out','Shows','Time-domain waveforms, spectra, electrode quality, and a journal from those captures'],
+    ['runtime','Install','The phone store, the headset store, or a sideload APK'],
+    ['out','Licence','MIT']
+  ],
+  gets:['A live view without the Python server','Electrode quality on the same screen as the trace','Demo mode, so the UI is usable with no hardware','Headset processing stays on the device'],
+  note:{h:'It writes from captures', p:'The journal is generated from signals the app recorded. It is not a clinical reading, and it does not write back into a health store.'},
+  panel:{mode:'chat', title:'What a capture reads like', note:'Journal text from signals the app captured', script:'bodypress'},
+  links:[{t:'Phone app', h:'https://play.google.com/store/apps/details?id=com.bodypress.governorhq', ext:true, primary:true},{t:'Headset app', h:'https://www.meta.com/experiences/bodypress/1271355469389420', ext:true}]
+},
+{
   id:'bridge', name:'Local Bridge', meta:'Rust, 5 MB', fam:'browser',
   tagline:'The browser reaches your desktop apps',
   filters:['browser','stream'],
@@ -222,9 +340,10 @@ const PARTS = [
       {id:'ser', c:1, t:'IronBCI-32', s:'32 ch at 500 Hz, USB', ic:'chip', part:'source'},
       {id:'js', c:2, t:'pieeg.js', s:'one file, no dependencies', ic:'code', part:'runtime', core:true},
       {id:'chain', c:3, t:'Signal chain', s:'Hampel → bandpass → notch', ic:'wave', part:'runtime'},
-      {id:'app', c:4, t:'Your web app', s:'band powers, focus, relax', ic:'browser', part:'out'}
+      {id:'app', c:4, t:'Your web app', s:'band powers, focus, relax', ic:'browser', part:'out'},
+      {id:'ide', c:4, t:'bioIDE', s:'write JS against the frame', ic:'code', part:'out', go:'bioide'}
     ],
-    links:[['ble','js','BLE','air'],['ser','js','USB','wire'],['js','chain','','wire'],['chain','app','','wire']]
+    links:[['ble','js','BLE','air'],['ser','js','USB','wire'],['js','chain','','wire'],['chain','app','','wire'],['chain','ide','','wire']]
   },
   rows:[
     ['runtime','Runs in','Chromium browsers, in a secure context, from a user gesture'],
@@ -667,6 +786,23 @@ const GEN={
     if(k===1) return `<span class="c">Connected to Octopus 16 — 16 ch @ 250 Hz</span>`;
     return `Alpha <span class="n">${f2(s.Alpha)}</span>  Beta <span class="n">${f2(s.Beta)}</span>   focus <span class="n">${f2(s.focus)}</span>  relax <span class="n">${f2(s.relax)}</span>`;
   },
+  bioide:t=>{
+    const s=sim(t), k=frameN++%6;
+    if(k===0) return `<span class="c">// recipe: blink</span>`;
+    if(k===1) return `<span class="hl">plot</span>(EEG.channels[0])`;
+    if(k===2) return `<span class="c">frame</span>  n=<span class="n">${frameN}</span>  ch0 <span class="n">${uv(t,0)}</span> µV`;
+    if(k===3) return `alpha <span class="n">${f2(s.Alpha)}</span>  beta <span class="n">${f2(s.Beta)}</span>`;
+    if(k===4) return `<span class="c">bio.features()</span>  lineLength <span class="n">${(s.Beta*12).toFixed(2)}</span>`;
+    return `<span class="c">console</span>  blink p <span class="n">${f2(0.2+s.Gamma)}</span>`;
+  },
+  aura:t=>{
+    const emg=(0.12+0.55*Math.max(0,Math.sin(t*1.7))).toFixed(3);
+    const k=frameN++%4;
+    if(k===0) return `<span class="c">ch0–ch3 RMS</span>  <span class="n">${emg}</span>  <span class="n">${(emg*0.72).toFixed(3)}</span>  <span class="n">${(emg*0.41).toFixed(3)}</span>  <span class="n">${(emg*0.18).toFixed(3)}</span>`;
+    if(k===1) return `<span class="c">accel g</span>  x <span class="n">${(Math.sin(t*2.1)*0.4).toFixed(3)}</span>  y <span class="n">${(Math.sin(t*1.3)*0.2).toFixed(3)}</span>  z <span class="n">${(0.98+Math.sin(t)*.02).toFixed(3)}</span>`;
+    if(k===2) return `<span class="c">gyro °/s</span>  x <span class="n">${(Math.sin(t*3.4+1)*42).toFixed(1)}</span>  y <span class="n">${(Math.sin(t*2.2)*18).toFixed(1)}</span>  z <span class="n">${(Math.sin(t*1.1)*9).toFixed(1)}</span>`;
+    return `<span class="c">window</span>  grip envelope <span class="n">${emg}</span>  <span class="c">this session, not a classifier claim</span>`;
+  },
   bench:()=>{
     const k=frameN++%5;
     if(k===0) return `<span class="c">$</span> python -m scripts.bench_native --seconds 5`;
@@ -704,6 +840,13 @@ const SCRIPTS={
     ['copilot','Pattern trained. Balanced accuracy 0.89, leave-one-rep-out. Top cue: alpha rising in O1 and O2.'],
     ['you','create a notebook analysing it'],
     ['copilot','Created meditation_analysis.ipynb — ROC curve, feature importance, band power over time.']
+  ],
+  bodypress:[
+    ['app','BLE connected. 8 channels at 250 Hz. Quality 0.91.'],
+    ['you','what did this capture hold?'],
+    ['app','Alpha dominant for 6 of 8 minutes. Two channels dropped below 0.6 quality at minute 4.'],
+    ['you','heart rate?'],
+    ['app','Strap on. Mean 68 bpm, RMSSD 41 ms, from RR intervals this session.']
   ]
 };
 let panel={mode:null}, conLines=[], conTimer=0, chatState=null;
@@ -814,6 +957,10 @@ const HOST={
   cloud:'A Chromium browser tab, nothing installed',
   buddy:'A Chromium browser tab, with your own API key',
   agent:'Your computer, beside the server',
+  bioide:'A Chromium browser tab, nothing installed',
+  xr:'A VR headset or a PC, over Bluetooth LE',
+  aura:'An XR runtime, once the band ships',
+  bodypress:'A phone or a VR headset, over Bluetooth LE',
   bridge:'Windows, macOS or Linux, in the system tray',
   sdk:'A Chromium browser, no server at all',
   ws:'Anything that can open a WebSocket',

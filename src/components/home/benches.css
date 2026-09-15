@@ -838,6 +838,53 @@
   color: var(--dim);
 }
 
+/* Picker sits on the page background, not inside the dark instrument. */
+html:not(.dark) .home-bench .filters {
+  background: #fff;
+  border-color: rgba(24, 24, 27, 0.14);
+}
+
+html:not(.dark) .home-bench .filters button {
+  color: #52525b;
+}
+
+html:not(.dark) .home-bench .filters button:hover {
+  color: #18181b;
+}
+
+html:not(.dark) .home-bench .filters button[aria-pressed="true"] {
+  background: #18181b;
+  color: #fafafa;
+}
+
+html:not(.dark) .home-bench .dev {
+  color: #18181b;
+  border-color: rgba(24, 24, 27, 0.16);
+  background: #fff;
+}
+
+html:not(.dark) .home-bench .dev span {
+  color: #71717a;
+}
+
+html:not(.dark) .home-bench .dev:hover {
+  border-color: rgba(24, 24, 27, 0.3);
+  background: #f4f4f5;
+}
+
+html:not(.dark) .home-bench .dev[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--mode) 70%, #0891b2);
+  background: color-mix(in srgb, var(--mode) 12%, #fff);
+}
+
+html:not(.dark) .home-bench .dev[aria-pressed="true"] span {
+  color: #52525b;
+}
+
+html:not(.dark) .home-bench .bench-note {
+  color: #71717a;
+}
+
 @media (max-width: 1080px) {
   .home-bench .bench {
     grid-template-columns: 1fr;

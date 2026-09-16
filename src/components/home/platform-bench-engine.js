@@ -15,6 +15,7 @@ const SITE = {
   server:'/server', dashboard:'/server', cloud:'/cloud', buddy:'https://buddy.pieeg.com/',
   agent:'/agent', chrome:'/browser', experiences:'/examples', sdk:'/browser',
   xr:'/xr', bioide:'https://ide.pieeg.com', aura:'https://aura.pieeg.com',
+  biopose:'https://cloud.pieeg.com/experiences/biopose-recorder',
   bodypress:'https://play.google.com/store/apps/details?id=com.bodypress.governorhq'
 };
 function hrefFor(l){
@@ -270,6 +271,35 @@ const PARTS = [
   note:{h:'Not shipping yet', p:'Nothing on this card is a product you can buy. The map shows where the stream is designed to land, not a current device.'},
   panel:{mode:'console', title:'What the stream carries', note:'Simulated forearm EMG and IMU, not a recording', gen:'aura'},
   links:[{t:'Open Aura', h:'https://aura.pieeg.com', ext:true, primary:true}]
+},
+{
+  id:'biopose', name:'BioPose', meta:'camera pose + bio', fam:'browser',
+  tagline:'A body stick next to the live traces',
+  filters:['browser','run'],
+  summary:'A recording bench in the cloud tab. A camera estimates a body stick while the board stream paints beside it. Review, mark, and export the aligned session. Pose is a vision estimate. Pixels are not stored.',
+  caption:'Camera + board → aligned pose and bio → review, mark, export',
+  scene:{
+    nodes:[
+      {id:'cam', c:1, t:'Camera', s:'webcam, in the tab', ic:'globe', part:'source'},
+      {id:'board', c:1, t:'PiEEG board', s:'live EEG or EMG', ic:'chip', part:'source', go:'cloud'},
+      {id:'pose', c:2, t:'Pose estimator', s:'joints from pixels', ic:'code', part:'runtime'},
+      {id:'rec', c:3, t:'BioPose', s:'aligned pose + bio', ic:'disk', part:'runtime', core:true},
+      {id:'mark', c:4, t:'Review & mark', s:'timeline in the tab', ic:'browser', part:'out'},
+      {id:'exp', c:4, t:'Export', s:'JSON or CSV, no pixels', ic:'disk', part:'out'}
+    ],
+    links:[['cam','pose','','wire'],['pose','rec','joints','wire'],['board','rec','bio','air'],['rec','mark','','wire'],['rec','exp','','wire']]
+  },
+  rows:[
+    ['runtime','Runs in','A Chromium browser tab, at <code>cloud.pieeg.com</code>'],
+    ['source','Reads','A webcam for the body stick, and a live PiEEG stream for the traces'],
+    ['out','Writes','A marked session you can export. Pose keypoints, not video'],
+    ['runtime','Open it','<code>cloud.pieeg.com/experiences/biopose-recorder</code>'],
+    ['out','Keeps','Keypoints and traces. Camera pixels are not stored']
+  ],
+  gets:['A body stick drawn over the camera view, next to live bio traces','Review and markers on the same timeline as the signal','Export of pose and bio, without keeping the video','The same cloud pairing path as the dashboard'],
+  note:{h:'Pose is an estimate', p:'The stick is a vision model reading the camera, not motion capture. Treat joint angles as approximate. Pixels never leave the tab as a recording.'},
+  panel:{mode:'console', title:'What a take holds', note:'Simulated pose keypoints and bio traces, not a recording', gen:'biopose'},
+  links:[{t:'Open BioPose', h:'https://cloud.pieeg.com/experiences/biopose-recorder', ext:true, primary:true},{t:'Experiences', h:'/examples', ext:true}]
 },
 {
   id:'bodypress', name:'BodyPress', meta:'phone and headset app', fam:'browser',
@@ -803,6 +833,16 @@ const GEN={
     if(k===2) return `<span class="c">gyro °/s</span>  x <span class="n">${(Math.sin(t*3.4+1)*42).toFixed(1)}</span>  y <span class="n">${(Math.sin(t*2.2)*18).toFixed(1)}</span>  z <span class="n">${(Math.sin(t*1.1)*9).toFixed(1)}</span>`;
     return `<span class="c">window</span>  grip envelope <span class="n">${emg}</span>  <span class="c">this session, not a classifier claim</span>`;
   },
+  biopose:t=>{
+    const k=frameN++%4;
+    const hip=(Math.sin(t*1.1)*18).toFixed(1);
+    const knee=(42+Math.sin(t*1.4)*12).toFixed(1);
+    const rms=(12+8*Math.max(0,Math.sin(t*2.2))).toFixed(1);
+    if(k===0) return `<span class="c">pose</span>  L hip <span class="n">${hip}</span>°  L knee <span class="n">${knee}</span>°  <span class="c">vision estimate</span>`;
+    if(k===1) return `<span class="c">bio</span>  ch0 RMS <span class="n">${rms}</span> µV  <span class="n">${(rms*0.8).toFixed(1)}</span>  <span class="n">${(rms*0.55).toFixed(1)}</span>`;
+    if(k===2) return `<span class="c">mark</span>  t=<span class="n">${(t%60).toFixed(2)}</span>s  <span class="s">stand</span>`;
+    return `<span class="c">export</span>  keypoints + traces  <span class="c">pixels not stored</span>`;
+  },
   bench:()=>{
     const k=frameN++%5;
     if(k===0) return `<span class="c">$</span> python -m scripts.bench_native --seconds 5`;
@@ -960,6 +1000,7 @@ const HOST={
   bioide:'A Chromium browser tab, nothing installed',
   xr:'A VR headset or a PC, over Bluetooth LE',
   aura:'An XR runtime, once the band ships',
+  biopose:'A Chromium browser tab, with a camera',
   bodypress:'A phone or a VR headset, over Bluetooth LE',
   bridge:'Windows, macOS or Linux, in the system tray',
   sdk:'A Chromium browser, no server at all',

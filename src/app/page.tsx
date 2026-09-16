@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Zap, Cpu, ExternalLink, Play, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook, BookOpen } from "lucide-react";
+import { ArrowRight, Zap, Cpu, ExternalLink, Play, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook, BookOpen, Shield, Fingerprint, Mic, FlaskConical, Waves, User, Compass, ScanFace, Hand, Camera, Database, Gamepad2, PenTool, Lock, Orbit } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
@@ -201,6 +201,7 @@ function HeroSection() {
 
 const BASE_EXP_URL =
   "https://github.com/pieeg-club/PiEEG-server/tree/main/dashboard/src/experiences";
+const CLOUD_EXP_URL = "https://cloud.pieeg.com/experiences";
 
 const webExperiences = [
   {
@@ -275,12 +276,229 @@ const webExperiences = [
     Icon: Webhook,
     description: "Trigger any HTTP webhook from blinks, focus spikes, and relaxation peaks.",
   },
+  {
+    slug: "mushroom-body-decoder",
+    name: "Mushroom Body Decoder",
+    tag: "BCI / Connectome",
+    gradient: "from-orange-500 to-pink-600",
+    Icon: Brain,
+    href: `${CLOUD_EXP_URL}/mushroom-body-decoder`,
+    description: "Live EEG drives a fruit-fly mushroom-body circuit. Sparse Kenyon-cell code, trained readout.",
+  },
+  {
+    slug: "octo-captcha",
+    name: "octoCaptcha",
+    tag: "EOG / Liveness",
+    gradient: "from-emerald-400 to-teal-600",
+    Icon: Shield,
+    href: `${CLOUD_EXP_URL}/octo-captcha`,
+    description: "Random blink-count nonce after a GO cue, verified from Fp1/Fp2 EOG morphology.",
+  },
+  {
+    slug: "octo-auth",
+    name: "octoAuth",
+    tag: "BCI / Biometric",
+    gradient: "from-emerald-500 to-sky-500",
+    Icon: Fingerprint,
+    href: `${CLOUD_EXP_URL}/octo-auth`,
+    description: "16-channel neck EMG identity challenge: random isometric actions plus a person-specific map.",
+  },
+  {
+    slug: "silent-speech",
+    name: "Silent Speech Interface",
+    tag: "BCI / sEMG",
+    gradient: "from-violet-500 to-cyan-500",
+    Icon: Mic,
+    href: `${CLOUD_EXP_URL}/silent-speech`,
+    description: "Closed-vocabulary subvocal sEMG decoder. Enrol a command set, then silently mouth words.",
+  },
+  {
+    slug: "signal-lab",
+    name: "Signal Lab",
+    tag: "Learn / Game",
+    gradient: "from-blue-500 to-violet-500",
+    Icon: BookOpen,
+    href: `${CLOUD_EXP_URL}/signal-lab`,
+    description: "EEG DSP as a course: time domain, cleaning, frequency domain. Live sandbox on your stream.",
+  },
+  {
+    slug: "ar-buddy",
+    name: "Room Buddy (AR)",
+    tag: "AR",
+    gradient: "from-sky-500 to-cyan-400",
+    Icon: Sparkles,
+    href: `${CLOUD_EXP_URL}/ar-buddy`,
+    description: "Place a buddy in your room. It waves, hops on focus, and flinches on blinks.",
+  },
+  {
+    slug: "virtual-lab",
+    name: "PiEEG Virtual Lab",
+    tag: "Lab / VR",
+    gradient: "from-blue-600 to-sky-400",
+    Icon: FlaskConical,
+    href: `${CLOUD_EXP_URL}/virtual-lab`,
+    description: "Walk a photoreal lab and sit at a workstation running the live dashboard.",
+  },
+  {
+    slug: "xr-wave-view",
+    name: "Neural Wave Space",
+    tag: "VR / 3D",
+    gradient: "from-violet-600 to-blue-500",
+    Icon: Waves,
+    href: `${CLOUD_EXP_URL}/xr-wave-view`,
+    description: "Immersive 3D EEG visualization: waves curve around you in a starfield.",
+  },
+  {
+    slug: "neural-genesis",
+    name: "Neural Flight",
+    tag: "VR / AR",
+    gradient: "from-blue-600 to-cyan-400",
+    Icon: Globe,
+    href: `${CLOUD_EXP_URL}/neural-genesis`,
+    description: "First-person flight. Focus is lift; lose it and gravity takes over.",
+  },
+  {
+    slug: "mind-reader",
+    name: "Mind Reader",
+    tag: "BCI / ML",
+    gradient: "from-violet-600 to-yellow-400",
+    Icon: Brain,
+    href: `${CLOUD_EXP_URL}/mind-reader`,
+    description: "P300 number guess: think 1-9; shrinkage-LDA plus Bayesian accumulation reads the ERP.",
+  },
+  {
+    slug: "avatar-foundation",
+    name: "Avatar Neurofeedback Studio",
+    tag: "BCI / Avatar",
+    gradient: "from-indigo-500 to-cyan-400",
+    Icon: User,
+    href: `${CLOUD_EXP_URL}/avatar-foundation`,
+    description: "Map electrode x band to facial expressions on a VRM avatar.",
+  },
+  {
+    slug: "premeditatio-malorum",
+    name: "Premeditatio Malorum",
+    tag: "XR / Stoic",
+    gradient: "from-cyan-400 to-violet-400",
+    Icon: Compass,
+    href: `${CLOUD_EXP_URL}/premeditatio-malorum`,
+    description: "Paired 360 scenes. Score is how fast a beta spike decays back to baseline.",
+  },
+  {
+    slug: "glitching-reality",
+    name: "The Glitching Reality",
+    tag: "MR / Shader",
+    gradient: "from-rose-500 to-cyan-400",
+    Icon: Zap,
+    href: `${CLOUD_EXP_URL}/glitching-reality`,
+    description: "Passthrough plus a shader: load tears the room; a breath restores it.",
+  },
+  {
+    slug: "face-trainer",
+    name: "Face Trainer",
+    tag: "BCI / Face",
+    gradient: "from-cyan-400 to-green-500",
+    Icon: ScanFace,
+    href: `${CLOUD_EXP_URL}/face-trainer`,
+    description: "Placement-agnostic facial EMG. Per-expression L2 + group-lasso detectors.",
+  },
+  {
+    slug: "face-trainer-v2",
+    name: "Face Trainer v2",
+    tag: "BCI / Face",
+    gradient: "from-violet-500 to-cyan-400",
+    Icon: ScanFace,
+    href: `${CLOUD_EXP_URL}/face-trainer-v2`,
+    description: "Same fEMG pipeline with a 3-2-1 recording rhythm. Independent storage from v1.",
+  },
+  {
+    slug: "hand-trainer",
+    name: "Hand Trainer",
+    tag: "BCI / sEMG",
+    gradient: "from-amber-500 to-cyan-400",
+    Icon: Hand,
+    href: `${CLOUD_EXP_URL}/hand-trainer`,
+    description: "Palm sEMG grip decoder for Aura: fist, open, pinch, point, thumb-up.",
+  },
+  {
+    slug: "aura-imu-lab",
+    name: "Aura IMU Lab",
+    tag: "IMU / Debug",
+    gradient: "from-amber-500 to-cyan-400",
+    Icon: Compass,
+    href: `${CLOUD_EXP_URL}/aura-imu-lab`,
+    description: "6-axis IMU lab: still-hold calibration, gravity-compensated accel, ZUPT.",
+  },
+  {
+    slug: "biopose-recorder",
+    name: "BioPose Recorder",
+    tag: "Lab / Pose",
+    gradient: "from-cyan-400 to-indigo-400",
+    Icon: Camera,
+    href: `${CLOUD_EXP_URL}/biopose-recorder`,
+    description: "Camera body stick plus live bio traces. Review, mark, export.",
+  },
+  {
+    slug: "aura-dataset-lab",
+    name: "Aura Dataset Lab",
+    tag: "sEMG / Dataset",
+    gradient: "from-amber-500 to-cyan-400",
+    Icon: Database,
+    href: `${CLOUD_EXP_URL}/aura-dataset-lab`,
+    description: "Guided EMG + IMU records with rest/hold labels. Export JSON or 50 Hz CSV.",
+  },
+  {
+    slug: "hand-of-god",
+    name: "Hand of God",
+    tag: "BCI / Game",
+    gradient: "from-sky-400 to-amber-500",
+    Icon: Gamepad2,
+    href: `${CLOUD_EXP_URL}/hand-of-god`,
+    description: "Hang-ball punch game. Optional Aura fist training.",
+  },
+  {
+    slug: "handwriting-trainer",
+    name: "Aura Handwriting",
+    tag: "IMU / sEMG",
+    gradient: "from-amber-500 to-zinc-300",
+    Icon: PenTool,
+    href: `${CLOUD_EXP_URL}/handwriting-trainer`,
+    description: "Palm sEMG gates pen-down; wrist rates draw a unistroke. 1-NN DTW.",
+  },
+  {
+    slug: "penalty-shooters",
+    name: "Penalty Shooters",
+    tag: "BCI / Game",
+    gradient: "from-green-500 to-amber-500",
+    Icon: Gamepad2,
+    href: `${CLOUD_EXP_URL}/penalty-shooters`,
+    description: "Blink-controlled penalty kicks. Trainless adaptive detector. Press start.",
+  },
+  {
+    slug: "neural-maze-lock",
+    name: "Neural Maze Lock",
+    tag: "BCI / Game",
+    gradient: "from-cyan-300 to-blue-700",
+    Icon: Lock,
+    href: `${CLOUD_EXP_URL}/neural-maze-lock`,
+    description: "EOG gaze steers a maze. Focus, calm, and blink gates confirm intent.",
+  },
+  {
+    slug: "orb-control",
+    name: "Orb Control",
+    tag: "BCI / EOG",
+    gradient: "from-violet-500 to-cyan-400",
+    Icon: Orbit,
+    href: `${CLOUD_EXP_URL}/orb-control`,
+    description: "Focus grabs an orb, EOG gaze moves it, calm steadies it, a blink releases charge.",
+  },
 ];
 
 function WebBCISection() {
+  const offset = Math.ceil(webExperiences.length / 2);
   const row2 = [
-    ...webExperiences.slice(5),
-    ...webExperiences.slice(0, 5),
+    ...webExperiences.slice(offset),
+    ...webExperiences.slice(0, offset),
   ];
 
   return (
@@ -300,7 +518,7 @@ function WebBCISection() {
           </span>
         </h2>
         <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-          Real-time BCI experiences for researchers, students &amp; hackers. From sensor stream to running app — open-source JavaScript, ready to clone and extend.
+          Real-time BCI from a live sensor stream. MIT Server gallery plus Cloud experiences: decoders, trainers, XR, and labs.
         </p>
       </div>
 
@@ -318,7 +536,7 @@ function WebBCISection() {
               return (
                 <a
                   key={i}
-                  href={`${BASE_EXP_URL}/${exp.slug}`}
+                  href={"href" in exp && exp.href ? exp.href : `${BASE_EXP_URL}/${exp.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group w-72 shrink-0 flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer"
@@ -357,7 +575,7 @@ function WebBCISection() {
               return (
                 <a
                   key={i}
-                  href={`${BASE_EXP_URL}/${exp.slug}`}
+                  href={"href" in exp && exp.href ? exp.href : `${BASE_EXP_URL}/${exp.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group w-72 shrink-0 flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer"

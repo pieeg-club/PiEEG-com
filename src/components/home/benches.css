@@ -297,24 +297,12 @@
 .home-bench .flow {
   fill: none;
   stroke-dasharray: 3 13;
-  animation: home-bench-flow 1.15s linear infinite;
-}
-
-.home-bench .flow.slow {
-  animation-duration: 2s;
 }
 
 .home-bench .air {
   fill: none;
   stroke-dasharray: 1 9;
   stroke-linecap: round;
-  animation: home-bench-flow 1.4s linear infinite;
-}
-
-@keyframes home-bench-flow {
-  to {
-    stroke-dashoffset: -32;
-  }
 }
 
 .home-bench .fade-in {
@@ -940,10 +928,6 @@ html:not(.dark) .home-bench .bench-note {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-bench .flow,
-  .home-bench .air {
-    animation: none;
-  }
   .home-bench .fade-in,
   .home-bench .console div,
   .home-bench .msg {

@@ -882,7 +882,7 @@ function paintConsole(){
   c.innerHTML=conLines.map(l=>`<div>${l}</div>`).join('');
 }
 function tickConsole(dt){
-  if(state.paused||reduce) return;
+  if(state.paused) return;
   conTimer-=dt;
   if(conTimer<=0){
     conTimer=.62;
@@ -926,7 +926,7 @@ function tickChat(dt){
 /* ============================================================
    UI
    ============================================================ */
-const state={part:null, filter:'all', focus:null, layer:null, paused:reduce};
+const state={part:null, filter:'all', focus:null, layer:null, paused:false};
 function renderRail(){
   const rail=$('#plat-rail'); rail.innerHTML='';
   PARTS.forEach(p=>{
@@ -1015,10 +1015,16 @@ function select(id){
    Loop
    ============================================================ */
 $('#plat-pause').addEventListener('click',e=>{ state.paused=!state.paused; e.target.textContent=state.paused?'Resume':'Pause'; });
-if(reduce) $('#plat-pause').textContent='Resume';
+function tickFlow(){
+  root.querySelectorAll('.flow, .air').forEach(p=>{
+    const dur = p.classList.contains('slow') ? 2 : (p.classList.contains('air') ? 1.4 : 1.15);
+    p.style.strokeDashoffset = (-((simT * 32 / dur) % 32)).toFixed(2);
+  });
+}
 function frame(now){
   const dt=Math.min(.05,(now-(lastNow||now))/1000); lastNow=now;
   if(!state.paused) simT+=dt;
+  tickFlow();
   if(panel.mode==='console') tickConsole(dt);
   else if(panel.mode==='bands'){ if(!state.paused) tickBands(); }
   else if(panel.mode==='chat') tickChat(dt);
@@ -1038,8 +1044,7 @@ if(reduce){ tickBands(); }
     raf = requestAnimationFrame(function tick(now) {
       raf = 0;
       if (stopped) return;
-      if (!visible) return;
-      frame(now);
+      if (visible) frame(now);
       raf = requestAnimationFrame(tick);
     });
   }

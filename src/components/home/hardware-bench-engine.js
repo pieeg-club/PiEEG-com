@@ -870,10 +870,17 @@ pauseBtn.addEventListener('click',()=>{
 /* ============================================================
    Loop
    ============================================================ */
+function tickFlow(){
+  root.querySelectorAll('.flow, .air').forEach(p=>{
+    const dur = p.classList.contains('slow') ? 2 : (p.classList.contains('air') ? 1.4 : 1.15);
+    p.style.strokeDashoffset = (-((simT * 32 / dur) % 32)).toFixed(2);
+  });
+}
 function frame(now){
   const dt=Math.min(.05,(now-(lastNow||now))/1000);
   lastNow=now;
   if(!state.paused) simT+=dt;
+  tickFlow();
   if(stepTween(now)) drawGeometry();
   drawTraces();
   drawScreens();

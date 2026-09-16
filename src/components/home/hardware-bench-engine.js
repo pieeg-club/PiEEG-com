@@ -4,7 +4,6 @@ export function mountHardwareBench(root) {
   let raf = 0;
   let stopped = false;
   let visible = true;
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 
 /* ============================================================
@@ -455,7 +454,7 @@ function applyState(animate=true){
     o.fx=o.x; o.fy=o.y; o.fo=o.o;
     if(t){ o.tx=t.x; o.ty=t.y; o.to=(t.visible===false)?0:1; o.label=t.label; o.active=true; o.visible=t.visible!==false; }
     else { o.tx=L.collector.x; o.ty=L.collector.y; o.to=0; o.active=false; o.visible=false; }
-    o.delay = animate&&!reduce ? (o.kind==='ch'? i*14 : 60) : 0;
+    o.delay = animate ? (o.kind==='ch'? i*14 : 60) : 0;
     // style
     const wet = state.gel==='wet';
     const R = o.kind==='ch' ? (small?5.6:7.2) : 7;
@@ -473,7 +472,7 @@ function applyState(animate=true){
     o.R=R;
   });
   collector.fx=collector.x; collector.fy=collector.y; collector.tx=L.collector.x; collector.ty=L.collector.y;
-  tween={t0:performance.now(), dur: animate&&!reduce?760:0, active:true};
+  tween={t0:performance.now(), dur: animate?760:0, active:true};
   drawWear(dev,mode);
   drawMap(L);
   renderStatic();
@@ -743,48 +742,57 @@ function selectDevice(id, animate=true){
 }
 
 /* ============================================================
-   Simulated signals
+   Simulated signals — live scrolling 4 s window
    ============================================================ */
-function rng(seed){ return ()=>{ seed=(seed*1664525+1013904223)>>>0; return seed/4294967296; }; }
 function hash(n){ const s=Math.sin(n*127.1)*43758.5453; return (s-Math.floor(s))*2-1; }
 const g1=(x,m,s)=>{const z=(x-m)/s;return Math.exp(-z*z);};
 let traceCh=[];
 function setupTraces(){
   const L=current, dev=state.dev, mode=state.mode;
-  const r=rng(dev.id.length*97+mode.charCodeAt(1)*13);
   traceCh = L.ch.map((c,i)=>{
-    const f=[],a=[],p=[];
-    for(let k=0;k<6;k++){ const fr=1+r()*28; f.push(fr); a.push(1/Math.pow(fr,.7)); p.push(r()*6.28); }
-    const norm=a.reduce((s,v)=>s+v,0); for(let k=0;k<6;k++) a[k]/=norm;
+    const seed = (dev.id.length*97 + mode.charCodeAt(0)*13 + i*19) >>> 0;
     const ty = c.topo? c.topo[1] : 0;
-    return { label:c.label, i, f,a,p, p0:r()*6.28, p1:r()*6.28,
+    return {
+      label:c.label, i,
+      p0: seed*.017, p1: seed*.031,
       alphaW: c.topo? Math.max(.15,.4-ty*.55) : .3,
       blinkW: c.topo? Math.max(0,(ty-.55)*2.4) : (dev.rig==='xr' && i<4 ? .9 : 0),
-      lag:r()*.5, gain:.55+r()*.45, group: dev.rig==='xr'? (i<4?0:i<6?1:2) : i%3 };
+      lag: (i%5)*.11, gain:.7+(i%4)*.1, group: dev.rig==='xr'? (i<4?0:i<6?1:2) : i%3
+    };
   });
   const n=traceCh.length;
   $('#hw-sigNote').textContent=`${n} channel${n>1?'s':''}, ${MODE_NAME[mode]} signal, ${dev.rate} SPS on the real device, 4 s window`;
   sizeCanvas();
 }
-function sEEG(t,c){ let bg=0; for(let k=0;k<6;k++) bg+=c.a[k]*Math.sin(6.283*c.f[k]*t+c.p[k]);
-  const env=.55+.45*Math.sin(6.283*.12*t+c.p0);
+function sEEG(t,c){
+  const bg = Math.sin(6.283*8.2*t+c.p0)*.35 + Math.sin(6.283*12.4*t+c.p1)*.22 + Math.sin(6.283*4.1*t+c.i)*.18;
+  const env=.55+.45*Math.sin(6.283*.18*t+c.p0);
   const alpha=c.alphaW*env*Math.sin(6.283*10.2*t+c.p1);
   const bt=(t%4.3)-1.2; const blink=c.blinkW*(g1(bt,0,.1)*1.6);
-  return bg*1.1+alpha*1.4+blink; }
-function sEMG(t,c){ const per=2.6, ph=((t+c.lag*(c.group+1)*.4)%per);
+  return bg+alpha*1.4+blink;
+}
+function sEMG(t,c){
+  const per=2.6, ph=((t+c.lag*(c.group+1)*.4)%per);
   const on=Math.min(1,Math.max(0,(ph-.5)/.12))*Math.min(1,Math.max(0,(1.5-ph)/.18));
   const n=hash(Math.floor(t*700)+c.i*7919)*.7+hash(Math.floor(t*700)*3+c.i)*.3;
-  return n*(.08+on*c.gain*1.05); }
-function sECG(t,c){ const hr=1.18, ph=((t+.1)*hr)%1;
+  return n*(.08+on*c.gain*1.05);
+}
+function sECG(t,c){
+  const hr=1.18, ph=((t+.1)*hr)%1;
   const gains=[.72,1,1.25][c.i]||1; const tw=[.28,.34,.45][c.i]||.3;
   const v=.12*g1(ph,.16,.028)-.12*g1(ph,.27,.009)+1*g1(ph,.29,.011)-.28*g1(ph,.312,.011)+tw*g1(ph,.53,.05);
-  return (v*gains-.12)*1.5+.05*Math.sin(6.283*.23*t)+hash(Math.floor(t*500)+c.i)*.02; }
-function gaze(t){ const seg=Math.floor(t/1.25), fr=t/1.25-seg; const lv=[-1,-.35,.4,1];
+  return (v*gains-.12)*1.5+.05*Math.sin(6.283*.23*t)+hash(Math.floor(t*500)+c.i)*.02;
+}
+function gaze(t){
+  const seg=Math.floor(t/1.25), fr=t/1.25-seg; const lv=[-1,-.35,.4,1];
   const a=lv[Math.floor((hash(seg)+1)*2)%4], b=lv[Math.floor((hash(seg+1)+1)*2)%4];
-  return fr<.9? a : lerp(a,b,Math.min(1,(fr-.9)/.06)); }
-function sEOG(t,c){ const gz=gaze(t)*.8, bt=(t%3.1)-2.2, blink=g1(bt,0,.09)*1.5;
+  return fr<.9? a : lerp(a,b,Math.min(1,(fr-.9)/.06));
+}
+function sEOG(t,c){
+  const gz=gaze(t)*.8, bt=(t%3.1)-2.2, blink=g1(bt,0,.09)*1.5;
   const n=hash(Math.floor(t*300)+c.i*31)*.03;
-  return [gz, -gz, blink+gz*.08, -blink*.55+gz*.05][c.i]+n; }
+  return [gz, -gz, blink+gz*.08, -blink*.55+gz*.05][c.i]+n;
+}
 function sample(t,c){
   const m=state.mode;
   if(m==='EEG') return sEEG(t,c)*.55;
@@ -797,25 +805,26 @@ function sample(t,c){
 const cv=$('#hw-traces'), cx=cv.getContext('2d');
 let CW=0,CH=0,DPR=1,rowH=30;
 function sizeCanvas(){
-  const n=traceCh.length;
+  const n=Math.max(1,traceCh.length);
   rowH = n>24?15 : n>12?21 : n>6?30 : 50;
   DPR=Math.min(2,window.devicePixelRatio||1);
-  CW=cv.clientWidth; CH=Math.max(120,n*rowH+16);
+  CW=Math.max(320, cv.clientWidth||cv.parentElement?.clientWidth||640);
+  CH=Math.max(120,n*rowH+16);
   cv.width=CW*DPR; cv.height=CH*DPR; cv.style.height=CH+'px';
   cx.setTransform(DPR,0,0,DPR,0,0);
 }
 window.addEventListener('resize',sizeCanvas);
 let simT=0, lastNow=0;
 function drawTraces(){
-  const n=traceCh.length, col=MODE_COLOR[state.mode], labelW=CW<520?84:118, W=CW-labelW-10, win=4;
+  if(!CW) sizeCanvas();
+  const n=traceCh.length, col=MODE_COLOR[state.mode], labelW=CW<520?84:118, W=Math.max(40,CW-labelW-10), win=4;
   cx.clearRect(0,0,CW,CH);
   const hi = state.hover && state.hover.kind==='ch' ? state.hover.i : -1;
   const amp = rowH*.42;
   cx.font=`${n>24?10.5:12.5}px -apple-system, BlinkMacSystemFont, sans-serif`; cx.textBaseline='middle';
-  // time grid
   cx.strokeStyle='rgba(255,255,255,.06)'; cx.lineWidth=1;
   for(let s=0;s<=win;s++){ const x=labelW+W*s/win; cx.beginPath(); cx.moveTo(x,6); cx.lineTo(x,CH-6); cx.stroke(); }
-  const pts=Math.min(520,Math.floor(W));
+  const pts=Math.min(360,Math.max(80,Math.floor(W)));
   for(let r=0;r<n;r++){
     const c=traceCh[r], y0=8+rowH*r+rowH/2;
     const dim = hi>=0 && hi!==r;
@@ -831,7 +840,6 @@ function drawTraces(){
     }
     cx.stroke(); cx.globalAlpha=1;
   }
-  cx.fillStyle='#626973'; cx.font='11px -apple-system, BlinkMacSystemFont, sans-serif';
 }
 function drawScreens(){
   const col=MODE_COLOR[state.mode];
@@ -852,44 +860,42 @@ cv.addEventListener('pointermove',e=>{
   if(o!==state.hover){ state.hover=o; root.querySelectorAll('.mapdot').forEach(d=>d.style.opacity=!o?1:(+d.dataset.i===o.i?1:.35)); drawGeometry(); }
 });
 cv.addEventListener('pointerleave',()=>{ state.hover=null; root.querySelectorAll('.mapdot').forEach(d=>d.style.opacity=1); drawGeometry(); });
-$('#hw-pause').addEventListener('click',e=>{ state.paused=!state.paused; e.target.textContent=state.paused?'Resume':'Pause'; });
+const pauseBtn=$('#hw-pause');
+pauseBtn.textContent='Pause';
+pauseBtn.addEventListener('click',()=>{
+  state.paused=!state.paused;
+  pauseBtn.textContent=state.paused?'Resume':'Pause';
+});
 
 /* ============================================================
    Loop
    ============================================================ */
 function frame(now){
-  const dt=Math.min(.05,(now-(lastNow||now))/1000); lastNow=now;
-  if(!state.paused && !reduce) simT+=dt;
+  const dt=Math.min(.05,(now-(lastNow||now))/1000);
+  lastNow=now;
+  if(!state.paused) simT+=dt;
   if(stepTween(now)) drawGeometry();
-  drawTraces(); drawScreens();
-  }
+  drawTraces();
+  drawScreens();
+}
 
 /* ============================================================
    Boot
    ============================================================ */
 drawFigure(); buildPool(); renderRail();
-if(reduce){ state.paused=true; $('#hw-pause').textContent='Resume'; simT=3.1; }
 selectDevice('pieeg', false);
 
-
-  function startLoop() {
-    if (stopped || raf) return;
-    lastNow = 0;
-    raf = requestAnimationFrame(function tick(now) {
-      raf = 0;
-      if (stopped) return;
-      if (!visible) return;
-      frame(now);
-      raf = requestAnimationFrame(tick);
-    });
+  function tick(now){
+    if(stopped) return;
+    if(visible) frame(now);
+    raf = requestAnimationFrame(tick);
   }
+  raf = requestAnimationFrame(tick);
 
   const io = new IntersectionObserver((entries) => {
     visible = entries.some((e) => e.isIntersecting);
-    if (visible) startLoop();
   }, { threshold: 0.08, rootMargin: "80px" });
   io.observe(root);
-  startLoop();
 
   return () => {
     stopped = true;

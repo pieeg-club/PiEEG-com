@@ -31,8 +31,12 @@ export default function HeroOctopusCard() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
-  const [selected] = useState(() => BANNERS[Math.floor(Math.random() * BANNERS.length)]);
-  const isImage = "image" in selected;
+  // Pick after mount so SSR HTML matches the first client render.
+  const [selected, setSelected] = useState<(typeof BANNERS)[number] | null>(null);
+
+  useEffect(() => {
+    setSelected(BANNERS[Math.floor(Math.random() * BANNERS.length)]);
+  }, []);
 
   // Defer the video so it never competes with the critical hero paint.
   useEffect(() => {
@@ -40,9 +44,11 @@ export default function HeroOctopusCard() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (isClosed) {
+  if (isClosed || !selected) {
     return null;
   }
+
+  const isImage = "image" in selected;
 
   return (
     <div className="group hidden lg:block fixed z-50 bottom-24 right-4 sm:right-6 w-64">

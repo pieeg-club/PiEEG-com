@@ -1,6 +1,35 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Code2, Brain, Activity, Eye, Zap, GitFork, ExternalLink, Music, Sparkles, Globe, Webhook } from "lucide-react";
+import {
+  Code2,
+  Brain,
+  Activity,
+  Eye,
+  Zap,
+  GitFork,
+  ExternalLink,
+  Music,
+  Sparkles,
+  Globe,
+  Webhook,
+  Cloud,
+  Shield,
+  Fingerprint,
+  Mic,
+  GraduationCap,
+  FlaskConical,
+  Waves,
+  User,
+  Compass,
+  ScanFace,
+  Hand,
+  Camera,
+  Database,
+  Gamepad2,
+  PenTool,
+  Lock,
+  Orbit,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Examples — PiEEG",
@@ -118,6 +147,251 @@ const comingSoonExperiences = [
   },
 ];
 
+const CLOUD_EXP_URL = "https://cloud.pieeg.com/experiences";
+
+const cloudExperiences = [
+  {
+    slug: "mushroom-body-decoder",
+    name: "Mushroom Body Decoder",
+    description:
+      "Live EEG band powers drive a fruit-fly mushroom-body circuit. Sparse Kenyon-cell code, trained KC-to-MBON readout, held-out balanced accuracy.",
+    tag: "BCI / Connectome",
+    gradient: "from-orange-500 to-pink-600",
+    icon: Brain,
+  },
+  {
+    slug: "octo-captcha",
+    name: "octoCaptcha",
+    description:
+      "Cognitive liveness check: a random blink-count nonce after a GO cue, verified from Fp1/Fp2 EOG morphology and timing.",
+    tag: "EOG / Liveness",
+    gradient: "from-emerald-400 to-teal-600",
+    icon: Shield,
+  },
+  {
+    slug: "octo-auth",
+    name: "octoAuth",
+    description:
+      "16-channel neck EMG identity challenge: random isometric actions plus a person-specific spatial signature.",
+    tag: "BCI / Biometric",
+    gradient: "from-emerald-500 to-sky-500",
+    icon: Fingerprint,
+  },
+  {
+    slug: "silent-speech",
+    name: "Silent Speech Interface",
+    description:
+      "Closed-vocabulary subvocal sEMG decoder. Enrol a command set, then silently mouth words onto the screen.",
+    tag: "BCI / sEMG",
+    gradient: "from-violet-500 to-cyan-500",
+    icon: Mic,
+  },
+  {
+    slug: "signal-lab",
+    name: "Signal Lab",
+    description:
+      "EEG DSP as a course: time domain, cleaning, and frequency domain. Live sandbox on your stream, then a quiz.",
+    tag: "Learn / Game",
+    gradient: "from-blue-500 to-violet-500",
+    icon: GraduationCap,
+  },
+  {
+    slug: "ar-buddy",
+    name: "Room Buddy (AR)",
+    description:
+      "Place a buddy in your room. It waves, hops on focus, and flinches on blinks from live EEG.",
+    tag: "AR",
+    gradient: "from-sky-500 to-cyan-400",
+    icon: Sparkles,
+  },
+  {
+    slug: "virtual-lab",
+    name: "PiEEG Virtual Lab",
+    description:
+      "Walk a photoreal lab and sit at a workstation running the live PiEEG dashboard. Desktop or VR.",
+    tag: "Lab / VR",
+    gradient: "from-blue-600 to-sky-400",
+    icon: FlaskConical,
+  },
+  {
+    slug: "xr-wave-view",
+    name: "Neural Wave Space",
+    description:
+      "Immersive 3D EEG visualization: waves curve around you in a starfield. VR with hand tracking.",
+    tag: "VR / 3D",
+    gradient: "from-violet-600 to-blue-500",
+    icon: Waves,
+  },
+  {
+    slug: "neural-genesis",
+    name: "Neural Flight",
+    description:
+      "First-person flight over a procedural world. Focus is lift; lose it and gravity takes over.",
+    tag: "VR / AR",
+    gradient: "from-blue-600 to-cyan-400",
+    icon: Globe,
+  },
+  {
+    slug: "vrchat-osc-regions",
+    name: "VRChat OSC · Brain Regions",
+    description:
+      "Per-region EEG band powers to avatar parameters, with montage presets and a sync-budget guide.",
+    tag: "VRChat",
+    gradient: "from-purple-700 to-blue-700",
+    icon: Globe,
+    requiresServer: true,
+  },
+  {
+    slug: "mind-reader",
+    name: "Mind Reader",
+    description:
+      "P300 number guess: think 1-9, count the flashes; shrinkage-LDA plus Bayesian accumulation reads the ERP.",
+    tag: "BCI / ML",
+    gradient: "from-violet-600 to-yellow-400",
+    icon: Brain,
+  },
+  {
+    slug: "avatar-foundation",
+    name: "Avatar Neurofeedback Studio",
+    description:
+      "Map electrode x band to facial expressions on a VRM avatar. Contrastive rest vs active ranking picks the strongest cue.",
+    tag: "BCI / Avatar",
+    gradient: "from-indigo-500 to-cyan-400",
+    icon: User,
+  },
+  {
+    slug: "avatar-foundation-v2",
+    name: "Avatar Neurofeedback Studio v2",
+    description:
+      "Second-generation avatar trainer with the same channel-band mapping studio as v1.",
+    tag: "BCI / Avatar",
+    gradient: "from-indigo-500 to-cyan-400",
+    icon: User,
+  },
+  {
+    slug: "premeditatio-malorum",
+    name: "Premeditatio Malorum",
+    description:
+      "Paired 360 scenes for Stoic drills. Score is how fast a beta spike decays back to your eyes-closed baseline.",
+    tag: "XR / Stoic",
+    gradient: "from-cyan-400 to-violet-400",
+    icon: Compass,
+  },
+  {
+    slug: "glitching-reality",
+    name: "The Glitching Reality",
+    description:
+      "Passthrough plus a shader: frontal alpha asymmetry keeps the room intact; load tears it. A breath restores it.",
+    tag: "MR / Shader",
+    gradient: "from-rose-500 to-cyan-400",
+    icon: Zap,
+  },
+  {
+    slug: "face-trainer",
+    name: "Face Trainer",
+    description:
+      "Placement-agnostic facial EMG: per-expression L2 + group-lasso detectors, leave-one-rep-out balanced accuracy.",
+    tag: "BCI / Face",
+    gradient: "from-cyan-400 to-green-500",
+    icon: ScanFace,
+  },
+  {
+    slug: "face-trainer-v2",
+    name: "Face Trainer v2",
+    description:
+      "Same fEMG pipeline with a 3-2-1 recording rhythm: more labelled samples per rep, independent storage from v1.",
+    tag: "BCI / Face",
+    gradient: "from-violet-500 to-cyan-400",
+    icon: ScanFace,
+  },
+  {
+    slug: "hand-trainer",
+    name: "Hand Trainer",
+    description:
+      "Palm sEMG grip decoder for Aura: fist, open, pinch, point, thumb-up. IMU owns wrist orientation.",
+    tag: "BCI / sEMG",
+    gradient: "from-amber-500 to-cyan-400",
+    icon: Hand,
+    requiresAura: true,
+  },
+  {
+    slug: "aura-imu-lab",
+    name: "Aura IMU Lab",
+    description:
+      "6-axis IMU lab: still-hold calibration, gravity-compensated accel, ZUPT, a 3D hand that translates. Position drifts.",
+    tag: "IMU / Debug",
+    gradient: "from-amber-500 to-cyan-400",
+    icon: Compass,
+    requiresAura: true,
+  },
+  {
+    slug: "biopose-recorder",
+    name: "BioPose Recorder",
+    description:
+      "Recording bench: camera body stick plus live bio traces. Review, mark, export. Pose is a vision estimate. Pixels are not stored.",
+    tag: "Lab / Pose",
+    gradient: "from-cyan-400 to-indigo-400",
+    icon: Camera,
+  },
+  {
+    slug: "aura-dataset-lab",
+    name: "Aura Dataset Lab",
+    description:
+      "Guided EMG + IMU records with rest/hold labels. Optional optical autolabel. Export JSON or 50 Hz synced CSV.",
+    tag: "sEMG / Dataset",
+    gradient: "from-amber-500 to-cyan-400",
+    icon: Database,
+    requiresAura: true,
+  },
+  {
+    slug: "hand-of-god",
+    name: "Hand of God",
+    description:
+      "Hang-ball punch game. Optional Aura fist training. Score only when the ball is high and the referee looks away.",
+    tag: "BCI / Game",
+    gradient: "from-sky-400 to-amber-500",
+    icon: Gamepad2,
+    requiresAura: true,
+  },
+  {
+    slug: "handwriting-trainer",
+    name: "Aura Handwriting",
+    description:
+      "Palm sEMG gates pen-down; wrist yaw/pitch rates draw a unistroke. 1-NN DTW on enrolled templates. EMG does not identify the glyph.",
+    tag: "IMU / sEMG",
+    gradient: "from-amber-500 to-zinc-300",
+    icon: PenTool,
+    requiresAura: true,
+  },
+  {
+    slug: "penalty-shooters",
+    name: "Penalty Shooters",
+    description:
+      "Blink-controlled penalty kicks. Trainless adaptive detector on frontal peak-to-peak. Press start and play.",
+    tag: "BCI / Game",
+    gradient: "from-green-500 to-amber-500",
+    icon: Gamepad2,
+  },
+  {
+    slug: "neural-maze-lock",
+    name: "Neural Maze Lock",
+    description:
+      "EOG gaze steers a maze. Focus, calm, and blink gates confirm intent. Tracks false triggers and completion time.",
+    tag: "BCI / Game",
+    gradient: "from-cyan-300 to-blue-700",
+    icon: Lock,
+  },
+  {
+    slug: "orb-control",
+    name: "Orb Control",
+    description:
+      "Focus grabs an orb, EOG gaze moves it, calm steadies it, frontal artifacts destabilize it, a blink releases charge.",
+    tag: "BCI / EOG",
+    gradient: "from-violet-500 to-cyan-400",
+    icon: Orbit,
+  },
+];
+
 const featuredProjects = [
   {
     title: "OpenClaw Brain-Controlled Robotic Hand",
@@ -192,15 +466,25 @@ export default function ExamplesPage() {
         </div>
       </section>
 
-      {/* Live Dashboard Experiences */}
+      {/* PiEEG Server (MIT) Experiences */}
       <section className="py-10 sm:py-14 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-950 mb-4">
+              <Code2 className="w-4 h-4 text-green-600 dark:text-green-400" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
+                PiEEG Server · MIT
+              </span>
+            </div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Live Dashboard Experiences
+              Server Experiences
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-              Interactive BCI experiences built on PiEEG hardware. Click any card to explore its source code on GitHub.
+              Open-source gallery shipped with{" "}
+              <Link href="/server" className="underline font-semibold">
+                PiEEG Server
+              </Link>
+              . Source on GitHub.
             </p>
           </div>
 
@@ -264,6 +548,76 @@ export default function ExamplesPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PiEEG Cloud Experiences */}
+      <section className="py-10 sm:py-14 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-200 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/50 mb-4">
+              <Cloud className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
+                PiEEG Cloud
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Cloud Experiences
+            </h2>
+            <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+              Additional experiences on{" "}
+              <Link href="/cloud" className="underline font-semibold">
+                PiEEG Cloud
+              </Link>
+              : decoders, trainers, XR, and labs that are not in the MIT server gallery. Open any card to launch it.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {cloudExperiences.map((exp) => {
+              const Icon = exp.icon;
+              return (
+                <a
+                  key={exp.slug}
+                  href={`${CLOUD_EXP_URL}/${exp.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-lg transition-all"
+                >
+                  <div className={`h-1.5 bg-linear-to-r ${exp.gradient}`} />
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex items-start justify-between mb-3">
+                      <div className={`p-2 rounded-lg bg-linear-to-br ${exp.gradient}`}>
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors" />
+                    </div>
+                    <h3 className="font-bold text-lg mb-2 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                      {exp.name}
+                    </h3>
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400 flex-1 mb-4">
+                      {exp.description}
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="self-start px-2.5 py-1 rounded-full text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                        {exp.tag}
+                      </span>
+                      {"requiresAura" in exp && exp.requiresAura ? (
+                        <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400">
+                          Aura
+                        </span>
+                      ) : null}
+                      {"requiresServer" in exp && exp.requiresServer ? (
+                        <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                          Local server
+                        </span>
+                      ) : null}
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>

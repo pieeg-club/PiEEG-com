@@ -20,7 +20,7 @@ const C = {power:'#34d399', data:'#38bdf8', neutral:'#a1a1aa'};
    ============================================================ */
 const DEVICES = [
 {
-  id:'pieeg', name:'PiEEG', meta:'8 ch, Pi 3/4/5', badge:'Most popular',
+  id:'pieeg', name:'PiEEG-8', meta:'8 ch, Pi 3/4/5', badge:'Most popular',
   tagline:'8-channel Raspberry Pi shield', filters:['rpi','8'], ch:8,
   summary:'Plugs onto the Raspberry Pi GPIO header and turns it into a biosignal lab. PiEEG Server streams and records the data.',
   modes:['EEG','EMG','ECG'], electrodes:['dry','wet'], rig:'shield-monitor',

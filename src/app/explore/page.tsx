@@ -25,7 +25,7 @@ const sections = [
     dot: "bg-cyan-500",
     items: [
       { href: "/hardware", label: "All Hardware", desc: "Browse every shield & kit", Icon: Cpu },
-      { href: "/hardware/pieeg", label: "PiEEG", desc: "Raspberry Pi EEG shield — 8 ch", Icon: Layers },
+      { href: "/hardware/pieeg", label: "PiEEG-8", desc: "Raspberry Pi EEG shield — 8 ch", Icon: Layers },
       { href: "/hardware/pieeg-16", label: "PiEEG-16", desc: "16-channel upgrade", Icon: Layers },
       { href: "/hardware/ironbci", label: "IronBCI", desc: "Wearable BLE BCI", Icon: Layers },
       { href: "/hardware/ironbci-32", label: "IronBCI-32", desc: "Professional 32-channel", Icon: Layers },

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const products = [
-  { name: "PiEEG",       img: "/products/pieeg.png",        href: "/hardware/pieeg" },
+  { name: "PiEEG-8",     img: "/products/pieeg.png",        href: "/hardware/pieeg" },
   { name: "PiEEG 16",    img: "/products/pieeg-16.png",     href: "/hardware/pieeg-16" },
   { name: "IronBCI",     img: "/products/ironbci.jpg",      href: "/hardware/ironbci" },
   { name: "IronBCI 32",  img: "/products/ironbci-32.png",   href: "/hardware/ironbci-32" },

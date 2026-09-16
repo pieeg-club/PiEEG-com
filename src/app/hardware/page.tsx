@@ -16,10 +16,10 @@ export const metadata: Metadata = {
 const hardwareProducts = [
   {
     id: "pieeg",
-    name: "PiEEG",
+    name: "PiEEG-8",
     tagline: "8-channel Raspberry Pi shield",
     description:
-      "The Raspberry Pi stands as one of the most esteemed single-board computers. PiEEG provides accessible real-time EEG data reading and signal processing directly on the Raspberry Pi.",
+      "The Raspberry Pi stands as one of the most esteemed single-board computers. PiEEG-8 provides accessible real-time EEG data reading and signal processing directly on the Raspberry Pi.",
     channels: "8 channels",
     platform: "Raspberry Pi 3/4/5",
     signals: ["EEG", "EMG", "ECG"],

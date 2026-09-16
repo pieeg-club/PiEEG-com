@@ -3,21 +3,21 @@ import { Cpu, Zap, Signal, Shield, Code } from "lucide-react";
 import ProductDetailLayout from "@/components/ProductDetailLayout";
 
 export const metadata: Metadata = {
-  title: "PiEEG — 8-Channel Raspberry Pi EEG Shield — PiEEG",
+  title: "PiEEG-8 — 8-Channel Raspberry Pi EEG Shield — PiEEG",
   description:
     "Transform your Raspberry Pi into a brain-computer interface. 8 channels, 24-bit resolution, 250 SPS to 16 kSPS. Open-source Python SDK. Available at Elecrow.",
   openGraph: {
-    title: "PiEEG — 8-Channel Raspberry Pi EEG Shield",
+    title: "PiEEG-8 — 8-Channel Raspberry Pi EEG Shield",
     description:
       "Transform your Raspberry Pi into a brain-computer interface. 8 channels, 24-bit resolution, 250 SPS to 16 kSPS. Open-source Python SDK.",
-    images: [{ url: "/products/pieeg.png", width: 1200, height: 630, alt: "PiEEG board" }],
+    images: [{ url: "/products/pieeg.png", width: 1200, height: 630, alt: "PiEEG-8 board" }],
   },
 };
 
 export default function PiEEGProductPage() {
   return (
     <ProductDetailLayout
-      name="PiEEG"
+      name="PiEEG-8"
       tagline="Brain-computer interface for EEG, EMG, and ECG bio-signals with 8 channels"
       badge="Most Popular"
       badgeClasses="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20"
@@ -26,7 +26,7 @@ export default function PiEEGProductPage() {
       ctaTextColor="text-cyan-50"
       ctaButtonTextColor="text-blue-600"
       image="/products/pieeg.png"
-      imageAlt="PiEEG 8-Channel Raspberry Pi EEG Shield"
+      imageAlt="PiEEG-8 8-Channel Raspberry Pi EEG Shield"
       images={["/products/pieeg.png", "/products/pieeg-clean.png", "/products/pieeg-pinout.jpg"]}
       videoId="0ocAPWok5YU"
       channels="8 channels"
@@ -38,7 +38,7 @@ export default function PiEEGProductPage() {
         <>
           <p>
             The Raspberry Pi stands as one of the most esteemed single-board computers in the world,
-            renowned for its reliability and user-friendliness. The utilization of PiEEG in
+            renowned for its reliability and user-friendliness. The utilization of PiEEG-8 in
             conjunction with Raspberry Pi provides an accessible avenue for delving into the realm of
             neuroscience.
           </p>
@@ -51,7 +51,7 @@ export default function PiEEGProductPage() {
           </p>
           <p>
             We provide comprehensive software packages, along with all requisite technical
-            documentation and extensive user support for PiEEG device enthusiasts.
+            documentation and extensive user support for PiEEG-8 device enthusiasts.
           </p>
         </>
       }

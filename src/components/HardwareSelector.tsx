@@ -216,7 +216,7 @@ type Product = {
 const products: Record<string, Product> = {
   pieeg: {
     id: "pieeg",
-    name: "PiEEG",
+    name: "PiEEG-8",
     tagline: "8-channel Raspberry Pi shield",
     why: "The most popular entry point — Python-friendly, well-documented, and backed by a large community.",
     channels: "8 channels",
@@ -230,7 +230,7 @@ const products: Record<string, Product> = {
     id: "pieeg-16",
     name: "PiEEG-16",
     tagline: "16-channel Raspberry Pi shield",
-    why: "Double the spatial resolution of PiEEG, still on Raspberry Pi. Ideal for richer research datasets.",
+    why: "Double the spatial resolution of PiEEG-8, still on Raspberry Pi. Ideal for richer research datasets.",
     channels: "16 channels",
     platform: "Raspberry Pi 5",
     gradient: "from-blue-500 to-indigo-600",

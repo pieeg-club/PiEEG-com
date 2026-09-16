@@ -18,7 +18,7 @@ const hardwareLinks = [
   { label: "IronBCI-32", href: "/hardware/ironbci-32" },
   { label: "IronBCI", href: "/hardware/ironbci" },
   { label: "PiEEG-16", href: "/hardware/pieeg-16" },
-  { label: "PiEEG", href: "/hardware/pieeg" },
+  { label: "PiEEG-8", href: "/hardware/pieeg" },
   { label: "ardEEG", href: "/hardware/ardeeg" },
   { label: "JNEEG", href: "/hardware/jneeg" },
   { label: "MicroBCI", href: "/hardware/microbci" },

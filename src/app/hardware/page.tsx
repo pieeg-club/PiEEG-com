@@ -226,7 +226,7 @@ const accessories = [
     specs: "8 channels • Dry electrodes • Adjustable size",
     gradient: "from-cyan-500 to-blue-500",
     image: "/products/cap8-dry.png",
-    purchaseUrl: "https://www.elecrow.com/cap-eeg-kit-8-channels-dry-electrodes.html",
+    purchaseUrl: "https://www.elecrow.com/cap-eeg-kit.html",
     href: "/hardware/8ch-dry-cap",
     status: "Available"
   },

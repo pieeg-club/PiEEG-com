@@ -248,7 +248,7 @@ const accessories = [
     specs: "16 channels • Professional grade • Reusable",
     gradient: "from-purple-500 to-pink-500",
     image: "/products/cap16.png",
-    purchaseUrl: "https://www.elecrow.com/low-cost-16-channels-eeg-cap.html",
+    purchaseUrl: "https://www.elecrow.com/cap-eeg-kit-16-channels.html",
     href: "/hardware/16ch-cap",
     status: "Available"
   },

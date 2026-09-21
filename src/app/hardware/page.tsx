@@ -237,7 +237,7 @@ const accessories = [
     specs: "8 channels • Wet electrodes • Includes gel",
     gradient: "from-blue-500 to-indigo-500",
     image: "/products/cap8-wet.jpg",
-    purchaseUrl: "https://www.elecrow.com/cap-eeg-kit-8-channels-with-wet-electrodes.html",
+    purchaseUrl: "https://www.elecrow.com/cap-eeg-kit-8-channels-with-8-wet-electrodes.html",
     href: "/hardware/8ch-wet-cap",
     status: "Available"
   },

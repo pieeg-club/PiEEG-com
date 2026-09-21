@@ -67,7 +67,7 @@ export default function Cap8WetPage() {
 
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://www.elecrow.com/cap-eeg-kit-8-channels-with-wet-electrodes.html"
+                  href="https://www.elecrow.com/cap-eeg-kit-8-channels-with-8-wet-electrodes.html"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-linear-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-bold shadow-lg transition-all"
@@ -211,7 +211,7 @@ export default function Cap8WetPage() {
           <p className="text-zinc-500 dark:text-zinc-400 mb-8">Gold-plated Ag/AgCl electrodes for maximum signal fidelity in every session.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="https://www.elecrow.com/cap-eeg-kit-8-channels-with-wet-electrodes.html"
+              href="https://www.elecrow.com/cap-eeg-kit-8-channels-with-8-wet-electrodes.html"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-bold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-lg"

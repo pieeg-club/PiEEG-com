@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 export default function PiEEG16ProductPage() {
   return (
     <ProductDetailLayout
+      productId="pieeg-16"
       name="PiEEG-16"
       tagline="16-channel EEG device for Raspberry Pi 5 — double the resolution for complex research"
       badgeClasses="bg-blue-500/10 text-blue-400 border border-blue-500/20"

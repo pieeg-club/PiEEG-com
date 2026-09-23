@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, ExternalLink, ShoppingCart, Activity, Zap, Shield } from "lucide-react";
+import { ProductJsonLd, ProductPrice } from "@/components/ProductOffer";
 
 export const metadata: Metadata = {
   title: "EMG / ECG / EKG Kit — PiEEG",
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 export default function EmgKitPage() {
   return (
     <main className="flex-1">
+      <ProductJsonLd productId="emg-kit" />
       {/* Breadcrumb */}
       <div className="border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
@@ -50,6 +52,8 @@ export default function EmgKitPage() {
               <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-8 leading-relaxed">
                 All-in-one kit for measuring electromyography, electrocardiography, and electroencephalography. Plug straight into any PiEEG hardware.
               </p>
+
+              <ProductPrice productId="emg-kit" />
 
               {/* Spec chips */}
               <div className="grid grid-cols-3 gap-3 mb-8">

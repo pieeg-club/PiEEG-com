@@ -5,6 +5,7 @@ import { ArrowRight, Cpu, Code, ChevronRight, ExternalLink, Package, Tag, BookOp
 import ProductsGrid from "@/components/ProductsGrid";
 import HardwareSelectorButton from "@/components/HardwareSelectorButton";
 import HeroVideo from "@/components/HeroVideo";
+import { ProductPrice } from "@/components/ProductOffer";
 
 export const metadata: Metadata = {
   title: "Products — PiEEG",
@@ -454,7 +455,10 @@ export default function ProductsPage() {
                 </div>
                 {/* Card body */}
                 <div className="p-4 flex flex-col flex-1">
-                  <h3 className="font-bold text-sm mb-1.5">{accessory.name}</h3>
+                  <div className="flex items-start justify-between gap-2 mb-1.5">
+                    <h3 className="font-bold text-sm">{accessory.name}</h3>
+                    <ProductPrice productId={accessory.id} variant="compact" />
+                  </div>
                   <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2 flex-1 leading-relaxed">
                     {accessory.description}
                   </p>

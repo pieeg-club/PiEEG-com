@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ShoppingCart, ChevronRight } from "lucide-react";
+import { ProductPrice } from "@/components/ProductOffer";
 
 interface Product {
   id: string;
@@ -116,9 +117,12 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
             <div className="flex flex-col flex-1 p-6">
               {/* Name + tagline */}
               <div className="mb-4">
-                <h3 className="text-2xl font-black tracking-tight text-zinc-900 dark:text-zinc-100 mb-1">
-                  {product.name}
-                </h3>
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-2xl font-black tracking-tight text-zinc-900 dark:text-zinc-100 mb-1">
+                    {product.name}
+                  </h3>
+                  <ProductPrice productId={product.id} variant="compact" />
+                </div>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">{product.tagline}</p>
               </div>
 

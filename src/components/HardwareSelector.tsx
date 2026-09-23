@@ -17,6 +17,7 @@ import {
   ExternalLink,
   Sparkles,
 } from "lucide-react";
+import { ProductPrice } from "@/components/ProductOffer";
 
 // ─── Decision tree ────────────────────────────────────────────────────────────
 
@@ -385,6 +386,9 @@ export default function HardwareSelector({ onClose }: { onClose: () => void }) {
                   <p className="text-sm text-zinc-500 dark:text-zinc-400">
                     {result.tagline}
                   </p>
+                  <div className="mt-1">
+                    <ProductPrice productId={result.id} variant="compact" />
+                  </div>
                 </div>
               </div>
 

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, ChevronRight, ShoppingCart, AlertTriangle } from "lucide-react";
 import { ReactNode } from "react";
+import { ProductJsonLd, ProductPrice } from "@/components/ProductOffer";
 
 interface Spec {
   label: string;
@@ -15,6 +16,7 @@ interface Feature {
 }
 
 interface ProductDetailLayoutProps {
+  productId: string;
   name: string;
   tagline: string;
   badge?: string;
@@ -43,6 +45,7 @@ interface ProductDetailLayoutProps {
 }
 
 export default function ProductDetailLayout({
+  productId,
   name,
   tagline,
   badge,
@@ -70,6 +73,7 @@ export default function ProductDetailLayout({
 }: ProductDetailLayoutProps) {
   return (
     <main className="flex-1">
+      <ProductJsonLd productId={productId} />
       {/* ── Breadcrumb ── */}
       <div className="border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
@@ -149,6 +153,8 @@ export default function ProductDetailLayout({
                   <div className="text-xs font-bold text-white">{signals.join(" · ")}</div>
                 </div>
               </div>
+
+              <ProductPrice productId={productId} variant="onDark" />
 
               {/* CTA buttons */}
               <div className="flex flex-wrap gap-4">

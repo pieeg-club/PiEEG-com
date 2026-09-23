@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, Code2 as GitHubIcon, Cpu, Zap, Signal, Shield, Smartphone } from "lucide-react";
+import { ProductJsonLd, ProductPrice } from "@/components/ProductOffer";
 
 export const metadata: Metadata = {
   title: "MicroBCI — 8-Channel STM32 EEG Shield — PiEEG",
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 export default function MicroBCIProductPage() {
   return (
     <main className="flex-1">
+      <ProductJsonLd productId="microbci" />
       <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-900 dark:to-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -36,6 +38,8 @@ export default function MicroBCIProductPage() {
               <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-8">
                 Measure EEG with STM32 via NUCLEO-WB55. Brain-computer interface for EEG, EMG, and ECG bio-signals
               </p>
+
+              <ProductPrice productId="microbci" />
 
               <div className="flex flex-wrap gap-4 mb-8">
                 <a

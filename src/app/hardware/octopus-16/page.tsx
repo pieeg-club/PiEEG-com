@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 export default function Octopus16ProductPage() {
   return (
     <ProductDetailLayout
+      productId="octopus-16"
       name="Octopus 16"
       tagline="16-channel wireless biosignal device for the Seeed Studio XIAO ESP32-S3"
       badgeClasses="bg-violet-500/10 text-violet-400 border border-violet-500/20"

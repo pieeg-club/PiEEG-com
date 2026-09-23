@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, ExternalLink, ShoppingCart, FlaskConical, Shield, Signal, Layers } from "lucide-react";
+import { ProductJsonLd, ProductPrice } from "@/components/ProductOffer";
 
 export const metadata: Metadata = {
   title: "32 Channel Wet EEG Cap Kit — PiEEG",
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 export default function Cap32WetPage() {
   return (
     <main className="flex-1">
+      <ProductJsonLd productId="32ch-wet-cap" />
       {/* Breadcrumb */}
       <div className="border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
@@ -51,12 +53,14 @@ export default function Cap32WetPage() {
                 Professional nylon EEG cap with 32 wet Ag/AgCl electrodes and 2 ear clip references. Plug-and-play with IronBCI-32 via 2.54mm pin pitch.
               </p>
 
+              <ProductPrice productId="32ch-wet-cap" />
+
               {/* Spec chips */}
               <div className="grid grid-cols-3 gap-3 mb-8">
                 {[
                   { label: "Channels", value: "32" },
                   { label: "Electrode Type", value: "Wet Ag/AgCl" },
-                  { label: "Price", value: "$480" },
+                  { label: "Pitch", value: "2.54 mm" },
                 ].map(({ label, value }) => (
                   <div key={label} className="px-4 py-3 rounded-xl bg-zinc-100 dark:bg-zinc-800/60 border border-zinc-200 dark:border-zinc-700">
                     <div className="text-[10px] uppercase tracking-widest text-zinc-400 mb-0.5">{label}</div>

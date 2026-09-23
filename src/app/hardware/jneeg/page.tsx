@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, Code2 as GitHubIcon, Cpu, Signal, Shield, Zap, Sparkles } from "lucide-react";
+import { ProductJsonLd, ProductPrice } from "@/components/ProductOffer";
 
 export const metadata: Metadata = {
   title: "JNEEG — 8-Channel Jetson Nano EEG Shield — PiEEG",
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 export default function JNEEGProductPage() {
   return (
     <main className="flex-1">
+      <ProductJsonLd productId="jneeg" />
       <section className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-linear-to-b from-zinc-50 to-white dark:from-zinc-900 dark:to-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -36,6 +38,8 @@ export default function JNEEGProductPage() {
               <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-8">
                 Brain-computer interface shield for Jetson Nano to measure EEG, EMG, and ECG bio-signals with 8 channels
               </p>
+
+              <ProductPrice productId="jneeg" />
 
               <div className="flex flex-wrap gap-4 mb-8">
                 <a

@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 export default function PiEEGProductPage() {
   return (
     <ProductDetailLayout
+      productId="pieeg"
       name="PiEEG-8"
       tagline="Brain-computer interface for EEG, EMG, and ECG bio-signals with 8 channels"
       badge="Most Popular"

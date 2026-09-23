@@ -1,0 +1,160 @@
+{
+  "currency": "USD",
+  "updatedAt": "2026-09-22T23:18:51.534Z",
+  "products": {
+    "pieeg": {
+      "name": "PiEEG-8",
+      "description": "8-channel Raspberry Pi EEG, EMG, and ECG shield. 24-bit resolution, 250 SPS to 16 kSPS, open-source Python SDK.",
+      "image": "/products/pieeg.png",
+      "path": "/hardware/pieeg",
+      "elecrowUrl": "https://www.elecrow.com/pieeg.html",
+      "sku": "CQA240229P1",
+      "price": 350,
+      "currency": "USD",
+      "availability": "InStock"
+    },
+    "pieeg-16": {
+      "name": "PiEEG-16",
+      "description": "16-channel EEG shield for Raspberry Pi 5. 24-bit resolution, 250 SPS to 16 kSPS.",
+      "image": "/products/pieeg16.jpg",
+      "path": "/hardware/pieeg-16",
+      "elecrowUrl": "https://www.elecrow.com/pieeg-16.html",
+      "sku": "CQA240229G16",
+      "price": 390,
+      "currency": "USD",
+      "availability": "InStock"
+    },
+    "ironbci": {
+      "name": "IronBCI",
+      "description": "8-channel wearable wireless BCI with BLE 5. 250 SPS, 24-bit resolution, Python and Android SDK.",
+      "image": "/products/ironbci-top.jpg",
+      "path": "/hardware/ironbci",
+      "elecrowUrl": "https://www.elecrow.com/ironbci.html",
+      "sku": "PIA24023P",
+      "price": 420,
+      "currency": "USD",
+      "availability": "InStock"
+    },
+    "ironbci-32": {
+      "name": "IronBCI-32",
+      "description": "32-channel professional EEG system. Four AD7771 ADCs, STM32H7, Brainflow integrated.",
+      "image": "/products/ironbci-32.png",
+      "path": "/hardware/ironbci-32",
+      "elecrowUrl": "https://www.elecrow.com/ironbci-32.html",
+      "sku": "PIA24025P",
+      "price": 480,
+      "currency": "USD",
+      "availability": "InStock"
+    },
+    "microbci": {
+      "name": "MicroBCI",
+      "description": "8-channel STM32 NUCLEO-WB55 EEG shield. SPI 250 SPS, Python and mobile SDK.",
+      "image": "/products/microbci.png",
+      "path": "/hardware/microbci",
+      "elecrowUrl": "https://www.elecrow.com/microbci-eeg-with-stm32.html",
+      "sku": "PIA24024P",
+      "price": 325,
+      "currency": "USD",
+      "availability": "InStock"
+    },
+    "ardeeg": {
+      "name": "ardEEG",
+      "description": "8-channel Arduino UNO R4 WiFi EEG shield. SPI transfer, programmable gain, ultra-low power.",
+      "image": "/products/ardeeg.png",
+      "path": "/hardware/ardeeg",
+      "elecrowUrl": "https://www.elecrow.com/ardeeg.html",
+      "sku": "CQA240229AR",
+      "price": 350,
+      "currency": "USD",
+      "availability": "InStock"
+    },
+    "jneeg": {
+      "name": "JNEEG",
+      "description": "8-channel Jetson Nano EEG shield for machine learning signal processing. 24-bit, 250 SPS to 16 kSPS.",
+      "image": "/products/jneeg.png",
+      "path": "/hardware/jneeg",
+      "elecrowUrl": "https://www.elecrow.com/jneeg.html",
+      "sku": "CQA240229JN",
+      "price": 350,
+      "currency": "USD",
+      "availability": "InStock"
+    },
+    "octopus-16": {
+      "name": "Octopus 16",
+      "description": "16-channel wireless ESP32-S3 BCI. Dual ADS131M08 24-bit ADCs, Bluetooth streaming, battery-powered.",
+      "image": "/products/octopus16.png",
+      "path": "/hardware/octopus-16",
+      "elecrowUrl": "https://www.elecrow.com/octopus-16-brain-computer-interface-with-16-eeg-channel.html",
+      "sku": "PIA24027P",
+      "price": 250,
+      "currency": "USD",
+      "availability": "InStock"
+    },
+    "8ch-dry-cap": {
+      "name": "8 Channel Dry EEG Cap Kit",
+      "description": "EEG dry electrode cap with press-fit electrodes. No conductive gel required.",
+      "image": "/products/cap8-dry.png",
+      "path": "/hardware/8ch-dry-cap",
+      "elecrowUrl": "https://www.elecrow.com/cap-eeg-kit.html",
+      "sku": "CQA240229CE",
+      "price": 370,
+      "currency": "USD",
+      "availability": "InStock"
+    },
+    "8ch-wet-cap": {
+      "name": "8 Channel Wet EEG Cap Kit",
+      "description": "Textile EEG cap with sintered Ag/AgCl gold-plated wet electrodes.",
+      "image": "/products/cap8-wet.jpg",
+      "path": "/hardware/8ch-wet-cap",
+      "elecrowUrl": "https://www.elecrow.com/cap-eeg-kit-8-channels-with-8-wet-electrodes.html",
+      "sku": "PDA24022P",
+      "price": 350,
+      "currency": "USD",
+      "availability": "InStock"
+    },
+    "16ch-cap": {
+      "name": "16 Channel EEG Cap",
+      "description": "16-channel textile EEG cap with gold-plated sintered Ag/AgCl electrodes.",
+      "image": "/products/cap16.png",
+      "path": "/hardware/16ch-cap",
+      "elecrowUrl": "https://www.elecrow.com/cap-eeg-kit-16-channels.html",
+      "sku": "CQA240229CK2",
+      "price": 460,
+      "currency": "USD",
+      "availability": "InStock"
+    },
+    "32ch-wet-cap": {
+      "name": "32 Channel Wet EEG Cap Kit",
+      "description": "Nylon EEG cap with 32 wet Ag/AgCl electrodes and 2 ear clip references. 2.54 mm pitch for IronBCI-32.",
+      "image": "/products/cap32-wet.webp",
+      "path": "/hardware/32ch-wet-cap",
+      "elecrowUrl": "https://www.elecrow.com/cap-eeg-kit-32-channels-with-32-wet-electrodes-and-2-clips-electrode.html",
+      "sku": "PIA24026P",
+      "price": 580,
+      "currency": "USD",
+      "availability": "InStock"
+    },
+    "emg-kit": {
+      "name": "EMG / ECG / EKG Kit",
+      "description": "Plug-and-play kit for EMG, ECG, and EEG measurements with PiEEG hardware.",
+      "image": "/products/emg-kit.jpg",
+      "path": "/hardware/emg-kit",
+      "elecrowUrl": "https://www.elecrow.com/kit-to-measure-emg-ecg-ekg.html",
+      "sku": "CQA240229EK",
+      "price": 85,
+      "currency": "USD",
+      "availability": "InStock"
+    },
+    "conductive-gel": {
+      "name": "Conductive Gel for EEG",
+      "description": "Low-impedance electrolyte gel for wet EEG electrodes. 100 ml bottle.",
+      "image": "/products/gel.png",
+      "path": "/hardware/conductive-gel",
+      "elecrowUrl": "https://www.elecrow.com/conductive-gel-for-eeg.html",
+      "sku": null,
+      "price": null,
+      "currency": "USD",
+      "availability": null
+    }
+  }
+}

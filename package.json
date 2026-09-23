@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "optimize-images": "node scripts/optimize-images.js"
+    "optimize-images": "node scripts/optimize-images.js",
+    "update-prices": "node scripts/update-elecrow-prices.mjs"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

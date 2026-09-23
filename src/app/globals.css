@@ -8,6 +8,8 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-tech: var(--font-tech);
+  --animate-marquee: marquee 36s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 42s linear infinite;
 }
 
 html {
@@ -61,11 +63,17 @@ body {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-.animate-marquee {
-  animation: marquee 36s linear infinite;
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
 }
-.animate-marquee:hover {
-  animation-play-state: paused;
+.academia-marquee-track {
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+.academia-marquee-track-reverse {
+  animation: marquee-reverse 34s linear infinite;
+  will-change: transform;
 }
 .marquee-fade {
   mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);

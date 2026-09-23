@@ -623,23 +623,75 @@ function WebBCISection() {
 
 function FeaturedSection() {
   const publications = [
-    { name: "UploadVR", url: "https://www.uploadvr.com/pieeg-xr-makes-your-vr-avatar-expressive-without-face-tracking/" },
-    { name: "Tom's Hardware", url: "https://www.tomshardware.com/raspberry-pi/raspberry-pi-powers-briefcase-sized-pieeg-bio-lab-project" },
-    { name: "IEEE Spectrum", url: "https://spectrum.ieee.org/neurotechnology-diy" },
-    { name: "VICE", url: "https://www.vice.com/en/article/88x99k/this-affordable-device-will-let-anyone-connect-their-brain-to-a-computer" },
-    { name: "Raspberry Pi", url: "https://www.raspberrypi.com/news/raspberry-pi-to-brain-interface/" },
-    { name: "Hackaday", url: "https://hackaday.com/tag/pieeg/" },
-    { name: "Hackster.io", url: "https://www.hackster.io/news/ildar-rakhmatulin-launches-a-new-16-channel-pieeg-for-the-most-advanced-brain-machine-interfaces-3327547fb52d" },
-    { name: "Arduino Blog", url: "https://blog.arduino.cc/2024/05/10/ardeeg-is-an-arduino-uno-r4-wifi-shield-for-measuring-biosignals/" },
-    { name: "CNX Software", url: "https://www.cnx-software.com/2024/05/15/ardeeg-shield-works-with-arduino-uno-r4-wifi-for-biosignals-measurement/" },
-    { name: "Notebookcheck", url: "https://www.notebookcheck.net/For-VR-PiEEG-XR-measures-brain-activity-in-real-time.1311211.0.html" },
-    { name: "It's FOSS", url: "https://itsfoss.com/news/pieeg-kit/" },
-    { name: "Electronics Weekly", url: "https://www.electronicsweekly.com/blogs/gadget-master/arduino/measuring-eeg-and-biosignals-with-arduino-ardeeg-shield-2024-05/" },
-  ];
+    { name: "UploadVR", kind: "VR press", url: "https://www.uploadvr.com/pieeg-xr-makes-your-vr-avatar-expressive-without-face-tracking/" },
+    { name: "Tom's Hardware", kind: "Hardware", url: "https://www.tomshardware.com/raspberry-pi/raspberry-pi-powers-briefcase-sized-pieeg-bio-lab-project" },
+    { name: "IEEE Spectrum", kind: "Science", url: "https://spectrum.ieee.org/neurotechnology-diy" },
+    { name: "VICE", kind: "Media", url: "https://www.vice.com/en/article/88x99k/this-affordable-device-will-let-anyone-connect-their-brain-to-a-computer" },
+    { name: "Raspberry Pi", kind: "Hardware", url: "https://www.raspberrypi.com/news/raspberry-pi-to-brain-interface/" },
+    { name: "Hackaday", kind: "Maker", url: "https://hackaday.com/tag/pieeg/" },
+    { name: "Hackster.io", kind: "Maker", url: "https://www.hackster.io/news/ildar-rakhmatulin-launches-a-new-16-channel-pieeg-for-the-most-advanced-brain-machine-interfaces-3327547fb52d" },
+    { name: "Arduino Blog", kind: "Hardware", url: "https://blog.arduino.cc/2024/05/10/ardeeg-is-an-arduino-uno-r4-wifi-shield-for-measuring-biosignals/" },
+    { name: "CNX Software", kind: "Embedded", url: "https://www.cnx-software.com/2024/05/15/ardeeg-shield-works-with-arduino-uno-r4-wifi-for-biosignals-measurement/" },
+    { name: "Notebookcheck", kind: "Tech", url: "https://www.notebookcheck.net/For-VR-PiEEG-XR-measures-brain-activity-in-real-time.1311211.0.html" },
+    { name: "It's FOSS", kind: "Open source", url: "https://itsfoss.com/news/pieeg-kit/" },
+    { name: "Electronics Weekly", kind: "Electronics", url: "https://www.electronicsweekly.com/blogs/gadget-master/arduino/measuring-eeg-and-biosignals-with-arduino-ardeeg-shield-2024-05/" },
+  ] as const;
+
+  const mediaRowOne = publications.filter((_, i) => i % 2 === 0);
+  const mediaRowTwo = publications.filter((_, i) => i % 2 === 1);
+
+  const MediaPill = ({ pub }: { pub: (typeof publications)[number] }) => (
+    <span className="inline-flex items-center gap-3 rounded-full border border-zinc-200 bg-white py-2 pr-4 pl-2 text-left shadow-[0_1px_0_rgba(0,0,0,0.04)] transition duration-200 group-hover:border-zinc-300 group-hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-none dark:group-hover:border-zinc-700 dark:group-hover:bg-zinc-800">
+      <span className="flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-zinc-50 text-[10px] font-semibold tracking-tight text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+        {pub.name.slice(0, 2).toUpperCase()}
+      </span>
+      <span className="flex min-w-0 flex-col leading-tight">
+        <span className="text-[13px] font-medium tracking-[-0.02em] text-zinc-900 dark:text-zinc-100">
+          {pub.name}
+        </span>
+        <span className="text-[11px] text-zinc-500 dark:text-zinc-400">
+          {pub.kind}
+        </span>
+      </span>
+    </span>
+  );
+
+  const MediaRow = ({
+    items,
+    reverse = false,
+  }: {
+    items: readonly (typeof publications)[number][];
+    reverse?: boolean;
+  }) => {
+    const loop = [...items, ...items, ...items, ...items];
+    return (
+      <div className="marquee-fade overflow-hidden">
+        <div
+          className={`flex w-max items-center gap-3 px-4 ${
+            reverse ? "academia-marquee-track-reverse" : "academia-marquee-track"
+          }`}
+        >
+          {loop.map((pub, i) => (
+            <a
+              key={`${pub.name}-${i}`}
+              href={pub.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-hidden={i >= items.length}
+              tabIndex={i >= items.length ? -1 : undefined}
+              className="group shrink-0"
+            >
+              <MediaPill pub={pub} />
+            </a>
+          ))}
+        </div>
+      </div>
+    );
+  };
 
   return (
-    <section className="py-10 px-4 bg-linear-to-b from-white via-blue-50/30 to-white dark:from-zinc-950 dark:via-blue-950/10 dark:to-zinc-950">
-      <div className="mx-auto max-w-7xl">
+    <section className="overflow-hidden py-20 bg-linear-to-b from-white via-blue-50/30 to-white dark:from-zinc-950 dark:via-blue-950/10 dark:to-zinc-950">
+      <div className="mx-auto max-w-7xl px-4">
         
         <div className="flex flex-col items-center text-center gap-10">
           <div className="flex flex-col gap-6 max-w-3xl">
@@ -702,31 +754,12 @@ function FeaturedSection() {
             </div>
           </div>
 
-          {/* Publication logos grid */}
-          <div className="w-full max-w-5xl">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-              {publications.map((pub, idx) => (
-                <a
-                  key={pub.url}
-                  href={pub.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative rounded-xl"
-                  style={{ animationDelay: `${idx * 0.05}s` }}
-                >
-                  <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300" />
-                  <div className="relative flex items-center justify-center h-24 px-4 border-2 border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 backdrop-blur-sm hover:border-blue-300 dark:hover:border-blue-700 rounded-xl transition-all duration-200">
-                    <span className="font-semibold text-sm text-center text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
-                      {pub.name}
-                    </span>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-
         </div>
+      </div>
 
+      <div className="mt-12 flex flex-col gap-3">
+        <MediaRow items={mediaRowOne} />
+        <MediaRow items={mediaRowTwo} reverse />
       </div>
     </section>
   );

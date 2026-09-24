@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Cpu, Zap, Signal, Shield, Layers, Bluetooth } from "lucide-react";
 import ProductDetailLayout from "@/components/ProductDetailLayout";
+import { enclosuresFor } from "@/lib/thingiverse";
 
 export const metadata: Metadata = {
   title: "Octopus 16 — 16-Channel Wireless ESP32 BCI | PiEEG",
@@ -33,6 +34,7 @@ export default function Octopus16ProductPage() {
       signals={["EEG", "EMG", "ECG"]}
       purchaseUrl="https://www.elecrow.com/octopus-16-brain-computer-interface-with-16-eeg-channel.html"
       githubUrl="https://github.com/pieeg-club/Octopus_16"
+      enclosureLinks={enclosuresFor("octopus-16")}
       description={
         <>
           <p>

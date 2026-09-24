@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, Code2 as GitHubIcon, Cpu, Signal, Shield, Zap, Wifi } from "lucide-react";
 import { ProductJsonLd, ProductPrice } from "@/components/ProductOffer";
+import { EnclosureLinks } from "@/components/EnclosureLink";
+import { enclosuresFor } from "@/lib/thingiverse";
 
 export const metadata: Metadata = {
   title: "ardEEG — 8-Channel Arduino EEG Shield — PiEEG",
@@ -61,6 +63,7 @@ export default function ArdEEGProductPage() {
                   GitHub
                 </a>
               </div>
+              <EnclosureLinks links={enclosuresFor("ardeeg")} className="mb-8 -mt-4" />
             </div>
             
             {/* Product Video */}
@@ -249,6 +252,7 @@ export default function ArdEEGProductPage() {
             >
               View Documentation
             </Link>
+          <EnclosureLinks links={enclosuresFor("ardeeg")} tone="oncolor" className="mt-5 justify-center" />
           </div>
         </div>
       </section>

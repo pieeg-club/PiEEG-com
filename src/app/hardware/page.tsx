@@ -6,6 +6,7 @@ import ProductsGrid from "@/components/ProductsGrid";
 import HardwareSelectorButton from "@/components/HardwareSelectorButton";
 import HeroVideo from "@/components/HeroVideo";
 import { ProductPrice } from "@/components/ProductOffer";
+import { enclosuresFor } from "@/lib/thingiverse";
 
 export const metadata: Metadata = {
   title: "Products — PiEEG",
@@ -37,6 +38,7 @@ const hardwareProducts = [
     bgGradient: "from-cyan-50 to-blue-50 dark:from-cyan-950/30 dark:to-blue-950/30",
     image: "/products/pieeg.png",
     purchaseUrl: "https://www.elecrow.com/pieeg.html",
+    enclosureLinks: enclosuresFor("pieeg"),
     github: "https://github.com/pieeg-club/PiEEG",
     youtube: "https://youtu.be/0ocAPWok5YU",
     categories: ["raspberry-pi", "8ch"]
@@ -87,6 +89,7 @@ const hardwareProducts = [
     gradient: "from-purple-500 to-pink-600",
     bgGradient: "from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30",
     image: "/products/ironbci-top.jpg",
+    enclosureLinks: enclosuresFor("ironbci"),
     purchaseUrl: "https://www.elecrow.com/ironbci.html",
     github: "https://github.com/pieeg-club/ironbci",
     youtube: "https://www.youtube.com/watch?v=gWpfsLuq_eE",
@@ -113,6 +116,7 @@ const hardwareProducts = [
     gradient: "from-red-500 to-orange-600",
     bgGradient: "from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30",
     image: "/products/ironbci-32.png",
+    enclosureLinks: enclosuresFor("ironbci-32"),
     purchaseUrl: "https://www.elecrow.com/ironbci-32.html",
     github: "https://github.com/pieeg-club/ironbci-32",
     categories: ["16ch+"]
@@ -160,6 +164,7 @@ const hardwareProducts = [
     status: "Available",
     gradient: "from-green-500 to-emerald-600",
     bgGradient: "from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30",
+    enclosureLinks: enclosuresFor("ardeeg"),
     image: "/products/ardeeg.png",
     purchaseUrl: "https://www.elecrow.com/ardeeg.html",
     github: "https://github.com/Ildaron/ardEEG",
@@ -210,6 +215,7 @@ const hardwareProducts = [
     status: "Available",
     badge: "Wireless",
     gradient: "from-violet-500 to-fuchsia-600",
+    enclosureLinks: enclosuresFor("octopus-16"),
     bgGradient: "from-violet-50 to-fuchsia-50 dark:from-violet-950/30 dark:to-fuchsia-950/30",
     image: "/products/octopus16.png",
     purchaseUrl: "https://www.elecrow.com/octopus-16-brain-computer-interface-with-16-eeg-channel.html",

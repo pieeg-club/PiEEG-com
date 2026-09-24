@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ShoppingCart, ChevronRight } from "lucide-react";
 import { ProductPrice } from "@/components/ProductOffer";
+import { EnclosureLinks } from "@/components/EnclosureLink";
+import type { EnclosureLink } from "@/lib/thingiverse";
 
 interface Product {
   id: string;
@@ -21,6 +23,7 @@ interface Product {
   bgGradient: string;
   image: string;
   purchaseUrl: string;
+  enclosureLinks?: EnclosureLink[];
   github?: string;
   youtube?: string;
   categories: string[];
@@ -181,6 +184,9 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
                   <ShoppingCart className="w-4 h-4" />
                   Buy
                 </a>
+              {product.enclosureLinks && product.enclosureLinks.length > 0 && (
+                <EnclosureLinks links={product.enclosureLinks} className="mt-3" />
+              )}
               </div>
             </div>
           </article>

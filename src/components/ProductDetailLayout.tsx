@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ExternalLink, ChevronRight, ShoppingCart, AlertTriangle } from "lucide-react";
 import { ReactNode } from "react";
 import { ProductJsonLd, ProductPrice } from "@/components/ProductOffer";
+import { EnclosureLinks } from "@/components/EnclosureLink";
+import type { EnclosureLink } from "@/lib/thingiverse";
 
 interface Spec {
   label: string;
@@ -38,6 +40,8 @@ interface ProductDetailLayoutProps {
   signals: string[];
   purchaseUrl: string;
   githubUrl?: string;
+  /** Thingiverse pages for a printable case. Rendered as a small link, not a second buy button. */
+  enclosureLinks?: EnclosureLink[];
   ctaTitle: string;
   ctaSubtitle: string;
   ctaSecondaryLabel?: string;
@@ -66,6 +70,7 @@ export default function ProductDetailLayout({
   signals,
   purchaseUrl,
   githubUrl,
+  enclosureLinks,
   ctaTitle,
   ctaSubtitle,
   ctaSecondaryLabel,
@@ -178,6 +183,9 @@ export default function ProductDetailLayout({
                     <ExternalLink className="w-4 h-4 opacity-60" />
                   </a>
                 )}
+              {enclosureLinks && enclosureLinks.length > 0 && (
+                <EnclosureLinks links={enclosureLinks} tone="ondark" className="mt-4" />
+              )}
               </div>
             </div>
 
@@ -475,6 +483,9 @@ export default function ProductDetailLayout({
               >
                 {ctaSecondaryLabel}
                 <ExternalLink className="w-4 h-4 opacity-60" />
+          {enclosureLinks && enclosureLinks.length > 0 && (
+            <EnclosureLinks links={enclosureLinks} tone="oncolor" className="mt-5 justify-center" />
+          )}
               </a>
             )}
           </div>

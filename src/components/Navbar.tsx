@@ -397,6 +397,16 @@ export function Navbar() {
               {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
 
+            <a
+              href="https://www.thingiverse.com/PiEEG/designs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-[11px] font-black tracking-tight text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
+              aria-label="3D designs on Thingiverse"
+            >
+              3D
+            </a>
+
             {/* Shopping Cart */}
             <a
               href="https://www.elecrow.com/store/PiEEG"
@@ -602,6 +612,15 @@ export function Navbar() {
             >
               <GitHubIcon className="w-4 h-4" />
               GitHub
+            </a>
+            <a
+              href="https://www.thingiverse.com/PiEEG/designs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
+            >
+              <span className="text-[11px] font-black tracking-tight">3D</span>
+              Thingiverse
             </a>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Cpu, Zap, Signal, Shield, Code } from "lucide-react";
 import ProductDetailLayout from "@/components/ProductDetailLayout";
+import { enclosuresFor } from "@/lib/thingiverse";
 
 export const metadata: Metadata = {
   title: "PiEEG-8 — 8-Channel Raspberry Pi EEG Shield — PiEEG",
@@ -35,6 +36,7 @@ export default function PiEEGProductPage() {
       signals={["EEG", "EMG", "ECG"]}
       purchaseUrl="https://www.elecrow.com/pieeg.html"
       githubUrl="https://github.com/pieeg-club/PiEEG"
+      enclosureLinks={enclosuresFor("pieeg")}
       description={
         <>
           <p>

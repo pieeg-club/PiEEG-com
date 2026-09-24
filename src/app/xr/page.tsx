@@ -6,6 +6,7 @@ import {
   ArrowRight, Code2, Radio, Cpu, Waves, BadgeCheck, Rocket, Package,
   Users, PlayCircle, ExternalLink, CircuitBoard,
 } from "lucide-react";
+import { EnclosureLinks } from "@/components/EnclosureLink";
 
 export const metadata: Metadata = {
   title: "PiEEG XR — Neural Face Interface for Spatial Computing",
@@ -388,6 +389,10 @@ export default function XRPage() {
                 <li className="flex items-center gap-2"><BadgeCheck className="w-4 h-4 text-violet-500" /> Focus-to-Action API</li>
                 <li className="flex items-center gap-2"><BadgeCheck className="w-4 h-4 text-violet-500" /> Snaps onto your VR headset</li>
               </ul>
+              <EnclosureLinks
+                links={[{ href: "https://www.thingiverse.com/thing:7392535", label: "3D model" }]}
+                className="mt-4"
+              />
             </div>
 
             <div className="flex flex-col p-7 rounded-2xl border-2 border-cyan-500/40 dark:border-cyan-400/40 bg-white/70 dark:bg-zinc-900/70 relative">
@@ -452,6 +457,14 @@ export default function XRPage() {
                 </a>
               </div>
 
+                <a
+                  href="https://www.thingiverse.com/thing:7392535"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 hover:text-zinc-800 dark:hover:text-zinc-200"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" /> 3D model
+                </a>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-zinc-500 dark:text-zinc-400">
                 <span className="inline-flex items-center gap-1.5"><Package className="w-3.5 h-3.5" /> Ships worldwide via Elecrow</span>
                 <span className="inline-flex items-center gap-1.5"><Code2 className="w-3.5 h-3.5" /> Fully open source</span>

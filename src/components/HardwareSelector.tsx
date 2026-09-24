@@ -18,6 +18,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import { ProductPrice } from "@/components/ProductOffer";
+import { EnclosureLinks } from "@/components/EnclosureLink";
+import { enclosuresFor } from "@/lib/thingiverse";
 
 // ─── Decision tree ────────────────────────────────────────────────────────────
 
@@ -429,6 +431,7 @@ export default function HardwareSelector({ onClose }: { onClose: () => void }) {
                   Learn More
                 </Link>
               </div>
+              <EnclosureLinks links={enclosuresFor(result.id)} />
 
               <button
                 onClick={() => { setHistory(["start"]); setResultId(null); }}

@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, Code2 as GitHubIcon, Cpu, Signal, Shield, Zap, Globe, Cloud } from "lucide-react";
 import { ProductJsonLd, ProductPrice } from "@/components/ProductOffer";
+import { EnclosureLinks } from "@/components/EnclosureLink";
+import { enclosuresFor } from "@/lib/thingiverse";
 
 export const metadata: Metadata = {
   title: "IronBCI-32 — 32-Channel Professional EEG System — PiEEG",
@@ -61,6 +63,7 @@ export default function IronBCI32ProductPage() {
                   GitHub
                 </a>
               </div>
+              <EnclosureLinks links={enclosuresFor("ironbci-32")} className="mb-8 -mt-4" />
             </div>
             
             {/* Product Image */}
@@ -274,6 +277,7 @@ export default function IronBCI32ProductPage() {
               <Cloud className="w-5 h-5" />
               Try cloud.pieeg.com
             </a>
+          <EnclosureLinks links={enclosuresFor("ironbci-32")} tone="oncolor" className="mt-5 justify-center" />
           </div>
         </div>
       </section>

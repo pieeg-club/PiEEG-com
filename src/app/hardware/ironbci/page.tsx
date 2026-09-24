@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ExternalLink, Code2 as GitHubIcon, Cpu, Zap, Signal, Shield, Bluetooth, Radio, Smartphone } from "lucide-react";
 import { ProductJsonLd, ProductPrice } from "@/components/ProductOffer";
+import { EnclosureLinks } from "@/components/EnclosureLink";
+import { enclosuresFor } from "@/lib/thingiverse";
 
 export const metadata: Metadata = {
   title: "IronBCI — 8-Channel Wearable Wireless EEG — PiEEG",
@@ -61,6 +63,7 @@ export default function IronBCIProductPage() {
                   GitHub
                 </a>
               </div>
+              <EnclosureLinks links={enclosuresFor("ironbci")} className="mb-8 -mt-4" />
             </div>
             
             {/* Product Video */}
@@ -102,8 +105,9 @@ export default function IronBCIProductPage() {
               <li>• Designed for long-term use and rapid development across platforms</li>
             </ul>
             <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed mt-6">
-              We also provide 3D design for the headset for Ironbci at the GitHub repository.
+              Printable case and headset files are on Thingiverse.
             </p>
+            <EnclosureLinks links={enclosuresFor("ironbci")} className="mt-3" />
           </div>
         </div>
       </section>
@@ -264,15 +268,8 @@ export default function IronBCIProductPage() {
               Buy on Elecrow
               <ExternalLink className="w-5 h-5" />
             </a>
-            <a
-              href="https://github.com/pieeg-club/ironbci_3D_EEG_Printable_Headset"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-white hover:bg-white/10 font-bold transition-all"
-            >
-              Download 3D Headset Design
-            </a>
           </div>
+          <EnclosureLinks links={enclosuresFor("ironbci")} tone="oncolor" className="mt-5 justify-center" />
         </div>
       </section>
     </main>

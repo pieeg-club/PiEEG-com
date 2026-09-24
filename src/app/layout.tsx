@@ -62,6 +62,36 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'G-6E5NEF184J');
             gtag('config', 'G-R2MG7QJ28E');
+            gtag('config', 'AW-18467963184');
+
+            if (!window.__pieegElecrowConversion) {
+              window.__pieegElecrowConversion = true;
+              document.addEventListener('click', function (event) {
+                var node = event.target;
+                if (!node || !node.closest) return;
+                var link = node.closest('a[href*="elecrow.com"]');
+                if (!link) return;
+                var href = link.href;
+                var newTab = link.target === '_blank' || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button === 1;
+                var payload = {
+                  send_to: 'AW-18467963184/NK-nCKfm5oIdELCCm-ZE',
+                  transport_type: 'beacon'
+                };
+                if (newTab) {
+                  gtag('event', 'conversion', payload);
+                  return;
+                }
+                event.preventDefault();
+                var done = false;
+                var go = function () {
+                  if (done) return;
+                  done = true;
+                  window.location.href = href;
+                };
+                gtag('event', 'conversion', Object.assign({ event_callback: go }, payload));
+                setTimeout(go, 1000);
+              });
+            }
           `}
         </Script>
       </head>

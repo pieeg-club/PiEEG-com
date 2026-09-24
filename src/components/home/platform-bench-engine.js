@@ -13,7 +13,7 @@ export function mountPlatformBench(root) {
 const DOCS = 'https://docs.pieeg.com';
 const SITE = {
   server:'/server', dashboard:'/server', cloud:'/cloud', buddy:'https://buddy.pieeg.com/',
-  agent:'/agent', chrome:'/browser', experiences:'/examples', sdk:'/browser',
+  agent:'/agent', mcp:'/agent', chrome:'/browser', experiences:'/examples', sdk:'/browser',
   xr:'/xr', bioide:'https://ide.pieeg.com', aura:'https://aura.pieeg.com',
   biopose:'https://cloud.pieeg.com/experiences/biopose-recorder',
   bodypress:'https://play.google.com/store/apps/details?id=com.bodypress.governorhq',
@@ -201,9 +201,10 @@ const PARTS = [
       {id:'lsl', c:2, t:'Lab Streaming Layer', s:'discovered on the network', ic:'net', part:'source', go:'lsl'},
       {id:'agent', c:3, t:'pieeg-agent web', s:'perception cascade, :8000', ic:'robot', part:'runtime', core:true},
       {id:'llm', c:4, t:'Your LLM provider', s:'cloud or local, your key', ic:'net', part:'out'},
-      {id:'out', c:4, t:'Sessions & notebooks', s:'patterns, CSV, .ipynb', ic:'disk', part:'out', go:'notebooks'}
+      {id:'out', c:4, t:'Sessions & notebooks', s:'patterns, CSV, .ipynb', ic:'disk', part:'out', go:'notebooks'},
+      {id:'mcp', c:4, t:'MCP tools', s:'your host calls these', ic:'plug', part:'out', go:'mcp'}
     ],
-    links:[['srv','lsl','','wire'],['lsl','agent','LSL','net'],['agent','llm','','ai'],['agent','out','','wire']]
+    links:[['srv','lsl','','wire'],['lsl','agent','LSL','net'],['agent','llm','','ai'],['agent','out','','wire'],['agent','mcp','MCP','net']]
   },
   rows:[
     ['runtime','Runs on','Linux, macOS, WSL or Windows, next to the server'],
@@ -216,6 +217,35 @@ const PARTS = [
   note:{h:'Device control is gated', p:'Actions are off by default. With <code>--allow-actions</code> the agent only previews what it would do. Executing needs <code>--execute</code>, and every action passes an allowlist, a cooldown, a dry run and an audit log.'},
   panel:{mode:'chat', title:'What a session sounds like', note:'Training a pattern, in the agent web UI', script:'agent'},
   links:[{t:'Agent docs', h:'/software/integrations/pieeg-agent', primary:true},{t:'Compare with Buddy', h:'/cloud/buddy'}]
+},
+{
+  id:'mcp', name:'MCP', meta:'Model Context Protocol', badge:'Protocol', fam:'ai',
+  tagline:'The host you already use, pointed at the stream',
+  filters:['ai','build'],
+  summary:'PiEEG Agent publishes its live analysis tools over MCP. An editor, a desktop agent, or a research agent you already run can call them. PiEEG does not replace that host. It hands it a live view of the stream.',
+  caption:'Agent owns the tools → MCP → the host you already trust',
+  scene:{
+    nodes:[
+      {id:'agent', c:1, t:'PiEEG Agent', s:'owns tools and the gate', ic:'robot', part:'source', go:'agent'},
+      {id:'mcp', c:2, t:'MCP tools', s:'JSON-RPC, host calls in', ic:'plug', part:'runtime', core:true},
+      {id:'read', c:3, t:'Read tools', s:'quality, state, spectra', ic:'wave', part:'out'},
+      {id:'act', c:3, t:'Device tools', s:'off until you switch on', ic:'chip', part:'out'},
+      {id:'ide', c:4, t:'Editor or IDE', s:'coding assistant', ic:'code', part:'out'},
+      {id:'desk', c:4, t:'Desktop agent', s:'the copilot you run', ic:'browser', part:'out'}
+    ],
+    links:[['agent','mcp','tools','wire'],['mcp','read','observe','net'],['mcp','act','gated','net'],['read','ide','','net'],['read','desk','','net']]
+  },
+  rows:[
+    ['runtime','Runs beside','PiEEG Agent. The host is whatever program already speaks MCP'],
+    ['source','Reads','The same Agent surface: quality, state metrics, patterns, sessions, spectra, connectivity'],
+    ['out','Returns','Tool results into the thread you are already writing in. No second chat window'],
+    ['runtime','Attach','Point that host at Agent. Leave device actions off until you need them'],
+    ['out','Default','Observational. Hardware actions are a separate switch, and each execution is still gated']
+  ],
+  gets:['Channel quality, and whether the spectrum looks like focus, rest, or noise','Which electrodes carried a pattern you just trained','How this block compares with the previous one, with an effect size','Spectra and connectivity, reachable as tools instead of a separate UI','Device actions absent until that switch is on: filter, capture, test tone, OSC','The analysis stays in Agent. MCP is only the doorway'],
+  note:{h:'Looking is not driving', p:'Connecting a host does not hand it the front panel. Read tools are open by default. Filtering, capture, the test tone, and an OSC feed stay off until you enable device tools, and each execution is still gated on its own.'},
+  panel:{mode:'console', title:'What the host is handed', note:'Simulated MCP tool calls, not a live session', gen:'mcp'},
+  links:[{t:'Open PiEEG Agent', h:'/agent', primary:true},{t:'How MCP is split', h:'/news/pieeg-agent-mcp', ext:true}]
 },
 {
   id:'bioide', name:'bioIDE', meta:'browser IDE', badge:'No install', fam:'build',
@@ -847,6 +877,15 @@ const GEN={
     if(k===1) return `<span class="c">Connected to Octopus 16 — 16 ch @ 250 Hz</span>`;
     return `Alpha <span class="n">${f2(s.Alpha)}</span>  Beta <span class="n">${f2(s.Beta)}</span>   focus <span class="n">${f2(s.focus)}</span>  relax <span class="n">${f2(s.relax)}</span>`;
   },
+  mcp:t=>{
+    const s=sim(t), k=frameN++%6;
+    if(k===0) return `<span class="c">host →</span> <span class="hl">quality</span>`;
+    if(k===1) return `<span class="c">←</span> channels <span class="s">good</span>  quality <span class="n">${f2(0.91+s.relax*0.06)}</span>`;
+    if(k===2) return `<span class="c">host →</span> <span class="hl">state</span>  <span class="c">bands, this session</span>`;
+    if(k===3) return `<span class="c">←</span> focus <span class="n">${f2(s.focus)}</span>  alpha <span class="n">${f2(s.Alpha)}</span>  <span class="c">not clinical</span>`;
+    if(k===4) return `<span class="c">host →</span> <span class="hl">arm recording</span>`;
+    return `<span class="c">← refused</span>  device tools <span class="s">off</span>  <span class="c">read tools still open</span>`;
+  },
   bioide:t=>{
     const s=sim(t), k=frameN++%6;
     if(k===0) return `<span class="c">// recipe: blink</span>`;
@@ -1039,6 +1078,7 @@ const HOST={
   simulation:'A browser tab, nothing installed',
   agent:'Your computer, beside the server',
   bioide:'A Chromium browser tab, nothing installed',
+  mcp:'The MCP host you already run, beside Agent',
   xr:'A VR headset or a PC, over Bluetooth LE',
   aura:'An XR runtime, once the band ships',
   biopose:'A Chromium browser tab, with a camera',

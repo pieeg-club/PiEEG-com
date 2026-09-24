@@ -16,7 +16,8 @@ const SITE = {
   agent:'/agent', chrome:'/browser', experiences:'/examples', sdk:'/browser',
   xr:'/xr', bioide:'https://ide.pieeg.com', aura:'https://aura.pieeg.com',
   biopose:'https://cloud.pieeg.com/experiences/biopose-recorder',
-  bodypress:'https://play.google.com/store/apps/details?id=com.bodypress.governorhq'
+  bodypress:'https://play.google.com/store/apps/details?id=com.bodypress.governorhq',
+  simulation:'https://cloud.pieeg.com/mock'
 };
 function hrefFor(l){
   if(l.ext) return l.h;
@@ -109,7 +110,7 @@ const PARTS = [
     nodes:[
       {id:'ble', c:1, t:'IronBCI, Octopus 16', s:'8 or 16 ch, Bluetooth LE', ic:'chip', part:'source'},
       {id:'usb', c:1, t:'IronBCI-32', s:'32 ch over USB serial', ic:'chip', part:'source'},
-      {id:'demo', c:1, t:'Demo signal', s:'synthetic, no hardware', ic:'chip', part:'source'},
+      {id:'demo', c:1, t:'Demo signal', s:'synthetic, no hardware', ic:'chip', part:'source', go:'simulation'},
       {id:'tab', c:2, t:'Chromium tab', s:'Web Bluetooth, Web Serial', ic:'browser', part:'runtime'},
       {id:'engine', c:3, t:'cloud.pieeg.com', s:'decode, DSP and FFT, here', ic:'cloud', part:'runtime', core:true},
       {id:'views', c:4, t:'Dashboard views', s:'waveforms, topomap, gallery', ic:'wave', part:'out', go:'dashboard'},
@@ -129,6 +130,36 @@ const PARTS = [
   note:{h:'Firefox and Safari cannot pair', p:'Web Bluetooth and Web Serial only exist in Chromium browsers. Everything else on the page still works with the demo signal.'},
   panel:{mode:'bands', title:'What runs in the tab', note:'The whole signal chain, client side'},
   links:[{t:'Open cloud.pieeg.com', h:'https://cloud.pieeg.com', ext:true, primary:true},{t:'Cloud overview', h:'/cloud'}]
+},
+{
+  id:'simulation', name:'Online Simulation', meta:'scripted EEG, no hardware', badge:'No hardware', fam:'browser',
+  tagline:'A board you write, then run',
+  filters:['browser','run'],
+  summary:'Open cloud.pieeg.com/mock and you get a scripted EEG board. Layers stack on background rhythms. Run feeds the same dashboard path as the 8, 16 and 32 demos. No hardware, no server.',
+  caption:'Rules and layers → synthetic µV at board rate → the same dashboard',
+  scene:{
+    nodes:[
+      {id:'starters', c:1, t:'Starters', s:'blink, alpha, SSVEP, mains', ic:'disk', part:'source'},
+      {id:'rules', c:1, t:'Rule editor', s:'board, bg, blink, tone', ic:'code', part:'source'},
+      {id:'layers', c:2, t:'Layer stack', s:'blink, pulse, tone, EMG', ic:'wave', part:'runtime'},
+      {id:'studio', c:3, t:'Custom mock', s:'µV at the board sample rate', ic:'chip', part:'runtime', core:true},
+      {id:'stream', c:4, t:'demo:program', s:'same path as the demos', ic:'plug', part:'out'},
+      {id:'dash', c:4, t:'Dashboard', s:'waveforms, FFT, gallery', ic:'browser', part:'out', go:'dashboard'},
+      {id:'cloud', c:4, t:'cloud.pieeg.com', s:'the tab that hosts it', ic:'cloud', part:'out', go:'cloud'}
+    ],
+    links:[['starters','layers','','wire'],['rules','layers','apply','wire'],['layers','studio','stack','wire'],['studio','stream','','wire'],['stream','dash','JSON','net'],['studio','cloud','','net']]
+  },
+  rows:[
+    ['runtime','Runs in','A browser tab, at <code>cloud.pieeg.com/mock</code>'],
+    ['source','Builds from','A starter, or New. Layers from the palette, or a rule block'],
+    ['out','Feeds','The same dashboard path as the 8 / 16 / 32 demos'],
+    ['runtime','Connect string','<code>demo:program</code>'],
+    ['out','Not this','A volume-conductor model, or recorded physiology']
+  ],
+  gets:['Starters for blink, occipital alpha, SSVEP, oddball pulse, 60 Hz mains, EMG bursts, quiet baseline','Layers that stack on δ θ α β γ, pink-ish noise and slow drift: they do not replace the background','Frontal maps to the first channels of the board, occipital to the last','Save stores a copy in this browser. Run starts the stream'],
+  note:{h:'Timing is exact unless you add jitter', p:'A blink layer is a frontal sine bump of the amplitude you set. Use it to drive detectors and pipelines under known conditions, not as a substitute for a skull and a volume conductor.'},
+  panel:{mode:'console', title:'What the studio emits', note:'Rules applied, then frames on demo:program', gen:'simulation'},
+  links:[{t:'Open the studio', h:'https://cloud.pieeg.com/mock', ext:true, primary:true},{t:'Cloud overview', h:'/cloud'}]
 },
 {
   id:'buddy', name:'Buddy', meta:'browser AI agent', badge:'AI agent', fam:'ai',
@@ -825,6 +856,15 @@ const GEN={
     if(k===4) return `<span class="c">bio.features()</span>  lineLength <span class="n">${(s.Beta*12).toFixed(2)}</span>`;
     return `<span class="c">console</span>  blink p <span class="n">${f2(0.2+s.Gamma)}</span>`;
   },
+  simulation:t=>{
+    const k=frameN++%6;
+    if(k===0) return `<span class="c">#</span> board <span class="n">8</span>ch <span class="n">250</span>Hz`;
+    if(k===1) return `<span class="c">bg</span>  delta <span class="n">12</span>  theta <span class="n">9</span>  alpha <span class="n">18</span>  noise <span class="n">6</span>  drift <span class="n">6</span>`;
+    if(k===2) return `<span class="hl">blink</span> every <span class="n">2</span>s  duration <span class="n">250</span>ms  amp <span class="n">180</span>  frontal`;
+    if(k===3) return `<span class="c">connect</span>  <span class="s">demo:program</span>`;
+    const ch=[0,1,2].map(i=>`<span class="n">${uv(t,i)}</span>`).join(', ');
+    return `{<span class="k">"n"</span>: <span class="n">${frameN}</span>, <span class="k">"channels"</span>: [${ch}, <span class="c">…</span>]} <span class="c">µV</span>`;
+  },
   aura:t=>{
     const emg=(0.12+0.55*Math.max(0,Math.sin(t*1.7))).toFixed(3);
     const k=frameN++%4;
@@ -996,6 +1036,7 @@ const HOST={
   dashboard:'Any browser on the same network',
   cloud:'A Chromium browser tab, nothing installed',
   buddy:'A Chromium browser tab, with your own API key',
+  simulation:'A browser tab, nothing installed',
   agent:'Your computer, beside the server',
   bioide:'A Chromium browser tab, nothing installed',
   xr:'A VR headset or a PC, over Bluetooth LE',

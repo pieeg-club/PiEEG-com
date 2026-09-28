@@ -7,6 +7,7 @@ import HeroVideo from "@/components/HeroVideo";
 import HardwareBench from "@/components/home/HardwareBench";
 import PlatformBench from "@/components/home/PlatformBench";
 import AcademicCustomers from "@/components/home/AcademicCustomers";
+import ResearchReview from "@/components/home/ResearchReview";
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -946,6 +947,7 @@ export default function Home() {
       <HardwareBench />
       <PlatformBench />
       <AcademicCustomers />
+      <ResearchReview />
       <WebBCISection />
       <FeaturedSection />
       <CtaSection />

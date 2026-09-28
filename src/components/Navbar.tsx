@@ -9,102 +9,6 @@ import {
   Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal, Watch,
 } from "lucide-react";
 
-const ANNOUNCEMENT_KEY = "announcements-dismissed-v2";
-
-const ANNOUNCEMENTS = [
-  {
-    href: "https://v2.pieeg.com",
-    badge: "New",
-    text: "Try our new website look"
-  }
-];
-
-function AnnouncementBar() {
-  const [visible, setVisible] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Runs once on mount (client only) — avoids SSR mismatch
-  const initialized = useRef(false);
-  if (typeof window !== "undefined" && !initialized.current) {
-    initialized.current = true;
-    if (!sessionStorage.getItem(ANNOUNCEMENT_KEY)) {
-      // We mutate state via a ref trick only before first render is committed
-    }
-  }
-
-  useEffect(() => {
-    if (!sessionStorage.getItem(ANNOUNCEMENT_KEY)) setVisible(true);
-  }, []);
-
-  // Rotate announcements every 5 seconds
-  useEffect(() => {
-    if (!visible) return;
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % ANNOUNCEMENTS.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [visible]);
-
-  if (!visible) return null;
-
-  const announcement = ANNOUNCEMENTS[currentIndex];
-
-  return (
-    <div className="relative hidden md:block overflow-hidden border-b border-white/6 bg-zinc-950 text-white">
-      {/* Subtle aurora glow bleeding from the top edge */}
-      <span aria-hidden="true" className="announce-glow pointer-events-none absolute inset-0" />
-      {/* Hairline gradient accent along the top */}
-      <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-cyan-500/40 to-transparent" />
-
-      <div className="relative mx-auto flex max-w-450 items-center justify-center px-12 py-2.5">
-        {/* Rotation indicators */}
-        {ANNOUNCEMENTS.length > 1 && (
-          <div className="absolute left-4 top-1/2 hidden -translate-y-1/2 items-center gap-1.5 lg:flex">
-            {ANNOUNCEMENTS.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentIndex(i)}
-                aria-label={`Show announcement ${i + 1}`}
-                className={`h-1 rounded-full transition-all duration-300 ${
-                  i === currentIndex ? "w-4 bg-white/80" : "w-1 bg-white/25 hover:bg-white/40"
-                }`}
-              />
-            ))}
-          </div>
-        )}
-
-        <a
-          href={announcement.href}
-          className="group inline-flex items-center gap-2.5"
-        >
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/7 px-2.5 py-0.5 ring-1 ring-inset ring-white/10 backdrop-blur">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-400" />
-            </span>
-            <span className="nav-tech text-[10px] font-semibold text-cyan-300">{announcement.badge}</span>
-          </span>
-          <span
-            key={currentIndex}
-            className="announce-text text-[13px] font-medium text-zinc-300 transition-colors duration-200 group-hover:text-white"
-          >
-            {announcement.text}
-          </span>
-          <ArrowRight className="h-3.5 w-3.5 shrink-0 text-zinc-500 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-white" />
-        </a>
-
-        <button
-          onClick={() => { sessionStorage.setItem(ANNOUNCEMENT_KEY, "1"); setVisible(false); }}
-          className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-1 text-zinc-500 transition-colors hover:bg-white/10 hover:text-white"
-          aria-label="Dismiss announcement"
-        >
-          <X className="h-3.5 w-3.5" />
-        </button>
-      </div>
-    </div>
-  );
-}
-
 function GitHubIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -258,7 +162,6 @@ export function Navbar() {
       <span aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-cyan-500/40 to-transparent" />
       <span aria-hidden="true" className="header-scanline" />
 
-      <AnnouncementBar />
       <div className="mx-auto max-w-450 px-4 sm:px-6 lg:px-10">
         <div className="flex h-16 items-center justify-between">
 
@@ -396,16 +299,6 @@ export function Navbar() {
             >
               {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
-
-            <a
-              href="https://www.thingiverse.com/PiEEG/designs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-[11px] font-black tracking-tight text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
-              aria-label="3D designs on Thingiverse"
-            >
-              3D
-            </a>
 
             {/* Shopping Cart */}
             <a

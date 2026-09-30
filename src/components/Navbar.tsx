@@ -101,9 +101,18 @@ const megaMenuSections = [
       { href: "/agent", label: "AI Agent", desc: "Your AI copilot for brain data", Icon: Bot },
       { href: "https://play.google.com/store/apps/details?id=com.bodypress.governorhq", label: "BodyPress Mobile", desc: "Neural data on your phone", Icon: Smartphone, external: true },
       { href: "/browser", label: "Browser Extension", desc: "Brain state overlay on every page", Icon: Monitor },
+      { href: "/server", label: "Server & SDKs", desc: "Tools, dashboards & integrations", Icon: Globe },
+    ],
+  },
+  {
+    id: "academy",
+    heading: "Academy",
+    accent: "bg-amber-500",
+    textAccent: "text-amber-600 dark:text-amber-400",
+    items: [
       { href: "https://ide.pieeg.com", label: "bioIDE", desc: "Write JavaScript against live EEG", Icon: Terminal, external: true },
       { href: "https://biocircuit.pieeg.com/", label: "bioCircuit", desc: "Browser lab: sensors, motors, blocks", Icon: CircuitBoard, external: true },
-      { href: "/server", label: "Server & SDKs", desc: "Tools, dashboards & integrations", Icon: Globe },
+      { href: "https://cloud.pieeg.com/experiences/signal-lab", label: "Signal Lab", desc: "EEG DSP course on your live stream", Icon: GraduationCap, external: true },
     ],
   },
   {
@@ -338,10 +347,10 @@ export function Navbar() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
 
-          {/* Three-column grid */}
-          <div className="grid grid-cols-3 gap-8 lg:gap-12">
+          {/* Four-column grid */}
+          <div className="grid lg:grid-cols-4 gap-6 lg:gap-8">
             {megaMenuSections.map((section) => (
-              <div key={section.id}>
+              <div key={section.id} className="min-w-0">
                 <div className="flex items-center gap-2 mb-5">
                   <span className={`w-1.5 h-1.5 rounded-full ${section.accent}`} />
                   <h3 className={`text-xs font-bold uppercase tracking-widest ${section.textAccent}`}>

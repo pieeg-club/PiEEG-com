@@ -6,7 +6,7 @@ import { useState, useEffect, useRef, useCallback, Fragment } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import {
   ChevronDown, Users, Mail, Briefcase, Building2, Code2,
-  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal, Watch, CircuitBoard,
+  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal, Watch, CircuitBoard, School,
 } from "lucide-react";
 
 function GitHubIcon({ className }: { className?: string }) {
@@ -110,6 +110,7 @@ const megaMenuSections = [
     accent: "bg-amber-500",
     textAccent: "text-amber-600 dark:text-amber-400",
     items: [
+      { href: "https://1020.pieeg.com", label: "1020 Academy", desc: "Learn BCI with live brain data", Icon: School, external: true },
       { href: "https://ide.pieeg.com", label: "bioIDE", desc: "Write JavaScript against live EEG", Icon: Terminal, external: true },
       { href: "https://biocircuit.pieeg.com/", label: "bioCircuit", desc: "Browser lab: sensors, motors, blocks", Icon: CircuitBoard, external: true },
       { href: "https://cloud.pieeg.com/experiences/signal-lab", label: "Signal Lab", desc: "EEG DSP course on your live stream", Icon: GraduationCap, external: true },

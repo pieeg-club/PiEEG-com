@@ -188,7 +188,7 @@ export function Navbar() {
       <span aria-hidden="true" className="header-scanline" />
 
       <div className="mx-auto max-w-450 px-4 sm:px-6 lg:px-10">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 items-center justify-between gap-3">
 
           {/* Logo */}
           <Link href="/" onClick={() => { closeMega(); closeMobile(); }} className="flex items-center gap-2.5 shrink-0 group">
@@ -200,7 +200,7 @@ export function Navbar() {
               className="h-8 w-auto dark:brightness-0 dark:invert transition-transform duration-200 group-hover:scale-[1.02]"
               priority
             />
-            <span aria-hidden="true" className="hidden sm:flex items-center gap-1.5 pl-2.5 border-l border-zinc-200 dark:border-zinc-800">
+            <span aria-hidden="true" className="hidden lg:flex items-center gap-1.5 pl-2.5 border-l border-zinc-200 dark:border-zinc-800">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75 animate-ping" />
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-500" />
@@ -211,8 +211,9 @@ export function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Centered Nav */}
-          <nav className="hidden xl:flex items-center justify-center absolute left-1/2 -translate-x-1/2" aria-label="Main navigation">
+          {/* Desktop nav: in-flow so it cannot overlay the action cluster.
+              Full pill needs ~2xl; below that the hamburger owns navigation. */}
+          <nav className="hidden 2xl:flex flex-1 items-center justify-center min-w-0" aria-label="Main navigation">
             <div className="nav-glass flex items-center gap-0 bg-zinc-50/60 dark:bg-zinc-900/40 rounded-full px-2 py-1.5 border border-zinc-200/50 dark:border-zinc-800/60">
               {navGroups.map((group, gi) => (
                 <Fragment key={gi}>
@@ -282,12 +283,12 @@ export function Navbar() {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 2xl:gap-2.5">
             <a
               href="https://github.com/pieeg-club"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
+              className="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
               aria-label="GitHub"
             >
               <GitHubIcon className="w-4.5 h-4.5" />
@@ -298,7 +299,7 @@ export function Navbar() {
               href="https://www.linkedin.com/company/pieeg"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
+              className="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
               aria-label="LinkedIn"
             >
               <LinkedInIcon className="w-4.5 h-4.5" />
@@ -309,7 +310,7 @@ export function Navbar() {
               href="https://discord.gg/neJ45FR6Sv"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200 discord-pulse"
+              className="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200 discord-pulse"
               aria-label="Join Discord Community"
             >
               <DiscordIcon className="w-4.5 h-4.5" />
@@ -320,7 +321,7 @@ export function Navbar() {
               href="https://www.meta.com/experiences/bodypress/1271355469389420"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
+              className="hidden 2xl:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
               aria-label="BodyPress on Meta Quest"
             >
               <MetaQuestIcon className="w-4.5 h-4.5" />
@@ -331,7 +332,7 @@ export function Navbar() {
               href="https://play.google.com/store/apps/details?id=com.bodypress.governorhq"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
+              className="hidden 2xl:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
               aria-label="BodyPress on Google Play"
             >
               <PlayStoreIcon className="w-4.5 h-4.5" />
@@ -342,7 +343,7 @@ export function Navbar() {
             {/* Mobile hamburger */}
             <button
               onClick={() => { setMobileOpen((v) => !v); closeMega(); }}
-              className="xl:hidden flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-200"
+              className="2xl:hidden flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-200"
               aria-label="Toggle menu"
               aria-expanded={mobileOpen}
             >
@@ -354,6 +355,7 @@ export function Navbar() {
               href="https://www.pieeg.com/hardware"
               target="_blank"
               rel="noopener noreferrer"
+              className="hidden mdrrer"
               className="hidden sm:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
               aria-label="Shop"
             >
@@ -489,7 +491,7 @@ export function Navbar() {
           MOBILE DRAWER
       ═══════════════════════════════════════ */}
       <div
-        className={`xl:hidden border-t border-zinc-200/60 dark:border-zinc-800/60 bg-white/98 dark:bg-zinc-950/98 backdrop-blur-xl overflow-hidden transition-all duration-300 ${
+        className={`2xl:hidden border-t border-zinc-200/60 dark:border-zinc-800/60 bg-white/98 dark:bg-zinc-950/98 backdrop-blur-xl overflow-hidden transition-all duration-300 ${
           mobileOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
       >

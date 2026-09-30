@@ -355,7 +355,6 @@ export function Navbar() {
               href="https://www.pieeg.com/hardware"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden mdrrer"
               className="hidden sm:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
               aria-label="Shop"
             >

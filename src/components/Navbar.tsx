@@ -6,7 +6,7 @@ import { useState, useEffect, useRef, useCallback, Fragment } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import {
   ChevronDown, Users, Mail, Briefcase, Building2, Code2,
-  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal, Watch,
+  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal, Watch, CircuitBoard,
 } from "lucide-react";
 
 function GitHubIcon({ className }: { className?: string }) {
@@ -102,6 +102,7 @@ const megaMenuSections = [
       { href: "https://play.google.com/store/apps/details?id=com.bodypress.governorhq", label: "BodyPress Mobile", desc: "Neural data on your phone", Icon: Smartphone, external: true },
       { href: "/browser", label: "Browser Extension", desc: "Brain state overlay on every page", Icon: Monitor },
       { href: "https://ide.pieeg.com", label: "bioIDE", desc: "Write JavaScript against live EEG", Icon: Terminal, external: true },
+      { href: "https://biocircuit.pieeg.com/", label: "bioCircuit", desc: "Browser lab: sensors, motors, blocks", Icon: CircuitBoard, external: true },
       { href: "/server", label: "Server & SDKs", desc: "Tools, dashboards & integrations", Icon: Globe },
     ],
   },

@@ -71,6 +71,7 @@ const navGroups = [
   [
     { href: "/community", label: "Community" },
     { href: "/news", label: "News" },
+    { href: "https://docs.pieeg.com", label: "Docs", external: true },
   ],
 ];
 
@@ -206,14 +207,27 @@ export function Navbar() {
                     <span aria-hidden="true" className="w-px h-3.5 rounded-full bg-zinc-300/80 dark:bg-zinc-700/80 mx-1 shrink-0" />
                   )}
                   {group.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={closeMega}
-                      className="nav-tech nav-underline relative px-3 py-1.5 rounded-full text-[11px] font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors duration-200"
-                    >
-                      {link.label}
-                    </Link>
+                    ("external" in link && link.external) ? (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={closeMega}
+                        className="nav-tech nav-underline relative px-3 py-1.5 rounded-full text-[11px] font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors duration-200"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={closeMega}
+                        className="nav-tech nav-underline relative px-3 py-1.5 rounded-full text-[11px] font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    )
                   ))}
                   {/* ── XR (styled distinctly, right after Hardware) ── */}
                   {gi === 0 && (
@@ -458,14 +472,27 @@ export function Navbar() {
         <div className="px-4 py-4 space-y-1">
           {/* Main links */}
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={closeMobile}
-              className="flex items-center px-4 py-3 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
-            >
-              {link.label}
-            </Link>
+            ("external" in link && link.external) ? (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMobile}
+                className="flex items-center px-4 py-3 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={closeMobile}
+                className="flex items-center px-4 py-3 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
+              >
+                {link.label}
+              </Link>
+            )
           ))}
 
           {/* Extra links from mega menu */}

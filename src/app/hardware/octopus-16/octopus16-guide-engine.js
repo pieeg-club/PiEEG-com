@@ -278,7 +278,7 @@ function renderReadout(){
     <div class="muted" style="margin-top:10px">Then open it in the notebooks: 01 load and plot, 02 detect blinks, 03 band power and alpha, 04 export features for ML.</div></div></div>`;
   if(k==='browser'){
     const st=M.ble; let body='';
-    const cards=[['IronBCI','8 ch, 250 Hz, Wireless'],['IronBCI-16','16 ch, 250 Hz, Wireless'],['PiEEG XR','8 ch, 250 Hz, Wireless'],['PiEEG XR-16','16 ch, 250 Hz, Wireless'],['Octopus 16','16 ch, 250 Hz, ESP32'],['IronBCI-32','32 ch, 500 Hz, USB']];
+    const cards=[['IronBCI','8 ch, 250 Hz, Wireless'],['IronBCI-16','16 ch, 250 Hz, Wireless'],['PiEEG XR','8 ch, 250 Hz, Wireless'],['Octopus 16','16 ch, 250 Hz, ESP32'],['IronBCI-32','32 ch, 500 Hz, USB']];
     if(st==='idle') body=`<div class="cards">${cards.map(([n,m])=>`<div class="dcard ${n==='Octopus 16'?'hl':''}"><b>${n}</b><span>${m}</span><button class="mini" data-n="${n}">Connect</button></div>`).join('')}</div><div class="bnote" id="bnote"></div>`;
     if(st==='picker') body=`<div class="picker"><b>cloud.pieeg.com wants to pair</b><div class="dev on"><span>Octopus-16-A3F2</span><i class="bars"><i></i><i></i><i></i></i></div><div class="dev"><span>Unknown or unsupported device</span></div><div class="pk-btns"><button class="ctl" id="bCancel">Cancel</button><button class="ctl primary" id="bPair">Pair</button></div></div>`;
     if(st==='connecting') body=`<div class="lobby"><span class="spin"></span><b>Connecting to Octopus 16</b><span>Subscribing to the data stream…</span></div>`;

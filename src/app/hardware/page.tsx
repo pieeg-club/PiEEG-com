@@ -49,33 +49,6 @@ const hardwareProducts = [
     categories: ["wireless", "8ch"]
   },
   {
-    id: "xr-16",
-    name: "PiEEG XR-16",
-    tagline: "16-channel XR face interface",
-    description:
-      "PiEEG XR face gasket plus eight sensors over the visual cortex. 16 channels of EEG and facial EMG for higher spatial coverage.",
-    channels: "16 channels",
-    platform: "VR headset · BLE 5",
-    signals: ["EEG", "EMG"],
-    features: [
-      "Face mask plus +8 visual-cortex sensors",
-      "16 channels, 24-bit, 250 SPS",
-      "BLE 5 wireless stream",
-      "Same gasket mount as PiEEG XR",
-      "Open-source firmware"
-    ],
-    status: "Coming Soon",
-    badge: "16-ch XR",
-    gradient: "from-cyan-500 to-blue-600",
-    bgGradient: "from-cyan-50 to-blue-50 dark:from-cyan-950/30 dark:to-blue-950/30",
-    image: "/products/xr-16.png",
-    purchaseUrl: XR_KICKSTARTER,
-    purchaseLabel: "Kickstarter",
-    priceLabel: "Coming soon",
-    github: "https://github.com/pieeg-club/ironbci",
-    categories: ["wireless", "16ch+"]
-  },
-  {
     id: "pieeg",
     name: "PiEEG-8",
     tagline: "8-channel Raspberry Pi shield",

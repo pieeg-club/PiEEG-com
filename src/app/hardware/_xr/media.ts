@@ -1,7 +1,7 @@
 export const XR_KICKSTARTER =
   "https://www.kickstarter.com/projects/42415505/pieeg-xr-neural-face-interface-for-spatial-computing";
 
-export const XR_GITHUB = "https://github.com/pieeg-club/ironbci";
+export const XR_GITHUB = "https://github.com/pieeg-club/PiEEG_XR_Hardware";
 
 export const XR_ENCLOSURE = {
   href: "https://www.thingiverse.com/thing:7392535",

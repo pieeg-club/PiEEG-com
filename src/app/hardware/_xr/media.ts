@@ -31,7 +31,7 @@ export const xrDemoVideos = [
 
 export const xrYoutube = [
   {
-    id: "X3xSN6h-QzM",
+    id: "vIsjf6Li-t8",
     title: "PiEEG XR neural face interface demo",
   },
   {

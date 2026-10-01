@@ -24,6 +24,9 @@ export const productEnclosures: Record<string, EnclosureLink[]> = {
   "octopus-16": [
     { href: "https://www.thingiverse.com/thing:7386761", label: "3D enclosure" },
   ],
+  "pieeg-xr": [
+    { href: "https://www.thingiverse.com/thing:7392535", label: "3D model" },
+  ],
 };
 
 export function enclosuresFor(productId: string): EnclosureLink[] {

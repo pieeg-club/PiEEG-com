@@ -302,7 +302,7 @@ function renderReadout(){
   if(k==='brainflow') r.innerHTML=`<div class="code"><pre class="bf">${BF_CODE.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</pre></div><pre class="console" id="bfOut">Press Run the script.</pre><p class="muted" style="margin:6px 0 0">Example output.</p>`;
   if(k==='browser'){
     const st=M.ble; let body='';
-    const cards=[['IronBCI','8 ch, 250 Hz, Wireless'],['IronBCI-16','16 ch, 250 Hz, Wireless'],['PiEEG XR','8 ch, 250 Hz, Wireless'],['PiEEG XR-16','16 ch, 250 Hz, Wireless'],['Octopus 16','16 ch, 250 Hz, ESP32'],['IronBCI-32','32 ch, 500 Hz, USB']];
+    const cards=[['IronBCI','8 ch, 250 Hz, Wireless'],['IronBCI-16','16 ch, 250 Hz, Wireless'],['PiEEG XR','8 ch, 250 Hz, Wireless'],['Octopus 16','16 ch, 250 Hz, ESP32'],['IronBCI-32','32 ch, 500 Hz, USB']];
     if(st==='idle') body=`<div class="cards">${cards.map(([n,m])=>`<div class="dcard ${n==='IronBCI-32'?'hl':''}"><b>${n}</b><span>${m}</span><button class="mini" data-n="${n}">Connect</button></div>`).join('')}</div><div class="bnote" id="bnote"></div>`;
     if(st==='picker') body=`<div class="picker"><b>cloud.pieeg.com wants to connect to a serial port</b><div class="dev on"><span>USB Serial Device (COM3)</span></div><div class="dev"><span>Bluetooth serial link (COM4)</span></div><div class="pk-btns"><button class="ctl" id="bCancel">Cancel</button><button class="ctl primary" id="bPair">Connect</button></div></div>`;
     if(st==='connecting') body=`<div class="lobby"><span class="spin"></span><b>Opening COM3 at 921,600 baud</b><span>Looking for the first frame…</span></div>`;

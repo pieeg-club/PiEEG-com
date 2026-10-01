@@ -3,6 +3,7 @@ import Image from "next/image";
 
 const footerLinks = {
   Hardware: [
+    { label: "PiEEG XR", href: "/hardware/pieeg-xr" },
     { label: "PiEEG-8", href: "/hardware/pieeg" },
     { label: "IronBCI", href: "/hardware/ironbci" },
     { label: "IronBCI-32", href: "/hardware/ironbci-32" },

@@ -15,6 +15,7 @@ import {
 
 const hardwareLinks = [
   { label: "All Boards", href: "/hardware" },
+  { label: "PiEEG XR", href: "/hardware/pieeg-xr" },
   { label: "IronBCI-32", href: "/hardware/ironbci-32" },
   { label: "IronBCI", href: "/hardware/ironbci" },
   { label: "PiEEG-16", href: "/hardware/pieeg-16" },

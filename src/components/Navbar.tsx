@@ -188,10 +188,10 @@ export function Navbar() {
       <span aria-hidden="true" className="header-scanline" />
 
       <div className="mx-auto max-w-450 px-4 sm:px-6 lg:px-10">
-        <div className="flex h-16 items-center justify-between gap-3">
+        <div className="grid h-16 grid-cols-[minmax(max-content,1fr)_auto_minmax(max-content,1fr)] items-center gap-3">
 
           {/* Logo */}
-          <Link href="/" onClick={() => { closeMega(); closeMobile(); }} className="flex items-center gap-2.5 shrink-0 group">
+          <Link href="/" onClick={() => { closeMega(); closeMobile(); }} className="col-start-1 justify-self-start flex items-center gap-2.5 shrink-0 group">
             <Image
               src="/logo-without-bg.png"
               alt="PiEEG Logo"
@@ -211,9 +211,11 @@ export function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop nav: in-flow so it cannot overlay the action cluster.
-              Full pill needs ~2xl; below that the hamburger owns navigation. */}
-          <nav className="hidden 2xl:flex flex-1 items-center justify-center min-w-0" aria-label="Main navigation">
+          {/* Desktop nav: center column so the pill is page-centered, independent
+              of logo vs action-cluster width. Full pill needs ~2xl; below that
+              the hamburger owns navigation. col-start-2 keeps the slot even
+              when this node is display:none. */}
+          <nav className="hidden 2xl:flex col-start-2 items-center justify-center" aria-label="Main navigation">
             <div className="nav-glass flex items-center gap-0 bg-zinc-50/60 dark:bg-zinc-900/40 rounded-full px-2 py-1.5 border border-zinc-200/50 dark:border-zinc-800/60">
               {navGroups.map((group, gi) => (
                 <Fragment key={gi}>
@@ -283,7 +285,7 @@ export function Navbar() {
           </nav>
 
           {/* Actions */}
-          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 2xl:gap-2.5">
+          <div className="col-start-3 justify-self-end flex shrink-0 items-center gap-1.5 sm:gap-2 2xl:gap-2.5">
             <a
               href="https://github.com/pieeg-club"
               target="_blank"

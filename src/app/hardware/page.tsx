@@ -14,8 +14,67 @@ export const metadata: Metadata = {
     "Explore our line of research-grade brain-computer interface hardware. From 8 to 32 channels, compatible with Raspberry Pi, Arduino, and Jetson Nano.",
 };
 
+const XR_KICKSTARTER =
+  "https://www.kickstarter.com/projects/42415505/pieeg-xr-neural-face-interface-for-spatial-computing";
+
 // Hardware Products
 const hardwareProducts = [
+  {
+    id: "pieeg-xr",
+    name: "PiEEG XR",
+    tagline: "Neural face interface for VR headsets",
+    description:
+      "Face gasket with dry electrodes for facial EMG and EEG. Snaps onto a VR headset. IronBCI analog front-end, BLE 5 stream.",
+    channels: "8 channels",
+    platform: "VR headset · BLE 5",
+    signals: ["EEG", "EMG"],
+    features: [
+      "Dry electrodes on the face gasket",
+      "24-bit, 250 SPS, BLE 5",
+      "Focus-to-Action API",
+      "Avatar expression from facial EMG",
+      "Open-source 3D model"
+    ],
+    status: "Coming Soon",
+    badge: "Newest",
+    gradient: "from-violet-500 to-cyan-600",
+    bgGradient: "from-violet-50 to-cyan-50 dark:from-violet-950/30 dark:to-cyan-950/30",
+    image: "/products/pieeg-xr.png",
+    purchaseUrl: XR_KICKSTARTER,
+    purchaseLabel: "Kickstarter",
+    priceLabel: "Coming soon",
+    enclosureLinks: enclosuresFor("pieeg-xr"),
+    github: "https://github.com/pieeg-club/ironbci",
+    youtube: "https://www.youtube.com/watch?v=X3xSN6h-QzM",
+    categories: ["wireless", "8ch"]
+  },
+  {
+    id: "xr-16",
+    name: "PiEEG XR-16",
+    tagline: "16-channel XR face interface",
+    description:
+      "PiEEG XR face gasket plus eight sensors over the visual cortex. 16 channels of EEG and facial EMG for higher spatial coverage.",
+    channels: "16 channels",
+    platform: "VR headset · BLE 5",
+    signals: ["EEG", "EMG"],
+    features: [
+      "Face mask plus +8 visual-cortex sensors",
+      "16 channels, 24-bit, 250 SPS",
+      "BLE 5 wireless stream",
+      "Same gasket mount as PiEEG XR",
+      "Open-source firmware"
+    ],
+    status: "Coming Soon",
+    badge: "16-ch XR",
+    gradient: "from-cyan-500 to-blue-600",
+    bgGradient: "from-cyan-50 to-blue-50 dark:from-cyan-950/30 dark:to-blue-950/30",
+    image: "/products/xr-16.png",
+    purchaseUrl: XR_KICKSTARTER,
+    purchaseLabel: "Kickstarter",
+    priceLabel: "Coming soon",
+    github: "https://github.com/pieeg-club/ironbci",
+    categories: ["wireless", "16ch+"]
+  },
   {
     id: "pieeg",
     name: "PiEEG-8",
@@ -367,7 +426,7 @@ export default function ProductsPage() {
           {/* Stats row */}
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-center">
             {[
-              { value: "8", label: "Hardware Platforms" },
+              { value: "10", label: "Hardware Platforms" },
               { value: "32", label: "Channels Max" },
               { value: "24-bit", label: "ADC Resolution" },
               { value: "MIT", label: "Open-Source SDK" },
@@ -534,7 +593,7 @@ export default function ProductsPage() {
                     <Cpu className="w-5 h-5 text-violet-500" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-1 text-sm">7 Hardware Platforms</h3>
+                    <h3 className="font-bold mb-1 text-sm">10 Hardware Platforms</h3>
                     <p className="text-zinc-500 dark:text-zinc-400 text-sm">
                       Raspberry Pi, Arduino, STM32, Jetson Nano, and wireless BLE5 — one ecosystem with a platform for every use case.
                     </p>
@@ -549,7 +608,7 @@ export default function ProductsPage() {
                   { value: "11+", label: "Science Papers", sub: "peer-reviewed citations", from: "from-cyan-500", to: "to-blue-600" },
                   { value: "28+", label: "Media Features", sub: "podcasts & outlets", from: "from-blue-500", to: "to-indigo-600" },
                   { value: "1800+", label: "GitHub Stars", sub: "across all repositories", from: "from-violet-500", to: "to-purple-600" },
-                  { value: "7", label: "Platforms", sub: "hardware options", from: "from-green-500", to: "to-emerald-600" },
+                  { value: "10", label: "Platforms", sub: "hardware options", from: "from-green-500", to: "to-emerald-600" },
                 ].map(({ value, label, sub, from, to }) => (
                   <div key={label} className="aspect-square rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex items-center justify-center p-6">
                     <div className="text-center">

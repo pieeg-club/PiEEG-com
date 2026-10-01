@@ -23,6 +23,8 @@ interface Product {
   bgGradient: string;
   image: string;
   purchaseUrl: string;
+  purchaseLabel?: string;
+  priceLabel?: string;
   enclosureLinks?: EnclosureLink[];
   github?: string;
   youtube?: string;
@@ -124,7 +126,13 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
                   <h3 className="text-2xl font-black tracking-tight text-zinc-900 dark:text-zinc-100 mb-1">
                     {product.name}
                   </h3>
-                  <ProductPrice productId={product.id} variant="compact" />
+                  {product.priceLabel ? (
+                    <p className="text-sm font-black tracking-tight text-zinc-500 dark:text-zinc-400">
+                      {product.priceLabel}
+                    </p>
+                  ) : (
+                    <ProductPrice productId={product.id} variant="compact" />
+                  )}
                 </div>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">{product.tagline}</p>
               </div>
@@ -179,10 +187,10 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-sm font-bold text-zinc-700 dark:text-zinc-300 transition-all"
-                  aria-label={`Buy ${product.name} on Elecrow`}
+                  aria-label={`${product.purchaseLabel ?? "Buy"} ${product.name}`}
                 >
                   <ShoppingCart className="w-4 h-4" />
-                  Buy
+                  {product.purchaseLabel ?? "Buy"}
                 </a>
               {product.enclosureLinks && product.enclosureLinks.length > 0 && (
                 <EnclosureLinks links={product.enclosureLinks} className="mt-3" />

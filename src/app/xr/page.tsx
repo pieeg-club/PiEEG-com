@@ -393,6 +393,13 @@ export default function XRPage() {
                 links={[{ href: "https://www.thingiverse.com/thing:7392535", label: "3D model" }]}
                 className="mt-4"
               />
+              <Link
+                href="/hardware/pieeg-xr"
+                className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-violet-600 dark:text-violet-400 hover:underline"
+              >
+                Product page
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
 
             <div className="flex flex-col p-7 rounded-2xl border-2 border-cyan-500/40 dark:border-cyan-400/40 bg-white/70 dark:bg-zinc-900/70 relative">
@@ -402,7 +409,7 @@ export default function XRPage() {
               <div className="w-11 h-11 rounded-xl bg-linear-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-md mb-4">
                 <Brain className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-xl mb-1">PiEEG XR 16R</h3>
+              <h3 className="font-bold text-xl mb-1">PiEEG XR-16</h3>
               <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-4">
                 Everything in PiEEG XR plus an additional 8 sensors covering the visual cortex area
                 for richer neural decoding.
@@ -412,6 +419,13 @@ export default function XRPage() {
                 <li className="flex items-center gap-2"><BadgeCheck className="w-4 h-4 text-cyan-500" /> Higher spatial resolution</li>
                 <li className="flex items-center gap-2"><BadgeCheck className="w-4 h-4 text-cyan-500" /> Ideal for research & advanced BCI</li>
               </ul>
+              <Link
+                href="/hardware/xr-16"
+                className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-cyan-600 dark:text-cyan-400 hover:underline"
+              >
+                Product page
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
           </div>
         </div>

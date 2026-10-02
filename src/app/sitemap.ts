@@ -3,6 +3,7 @@ import path from 'path';
 import type { MetadataRoute } from 'next';
 import { getAllNews } from '@/lib/news';
 import { getAllTutorials } from '@/lib/tutorials';
+import { getAllGuides } from '@/lib/guides';
 
 const BASE_URL = 'https://pieeg.com';
 
@@ -21,6 +22,7 @@ const STATIC_ROUTES = [
   'job',
   'liability',
   'news',
+  'guides',
   'partnership',
   'server',
   'support',
@@ -79,10 +81,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
+  const guideEntries: MetadataRoute.Sitemap = getAllGuides().map((guide) => ({
+    url: `${BASE_URL}/guides/${guide.slug}`,
+    lastModified: guide.updated ? new Date(guide.updated) : now,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }));
+
   return [
     ...staticEntries,
     ...hardwareEntries,
     ...newsEntries,
     ...tutorialEntries,
+    ...guideEntries,
   ];
 }

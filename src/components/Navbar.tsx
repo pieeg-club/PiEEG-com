@@ -6,7 +6,7 @@ import { useState, useEffect, useRef, useCallback, Fragment } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import {
   ChevronDown, Users, Mail, Briefcase, Building2, Code2,
-  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal, Watch, CircuitBoard, School,
+  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal, Watch, CircuitBoard, School, Scale,
 } from "lucide-react";
 
 function GitHubIcon({ className }: { className?: string }) {
@@ -136,6 +136,7 @@ const megaMenuSections = [
     accent: "bg-emerald-500",
     textAccent: "text-emerald-600 dark:text-emerald-400",
     items: [
+      { href: "/guides", label: "BCI guides", desc: "Platform comparisons: OpenBCI, Muse", Icon: Scale },
       { href: "/tutorials", label: "Tutorials", desc: "Step-by-step guides & how-tos", Icon: GraduationCap },
       { href: "/examples", label: "Examples & Demos", desc: "Real-world BCI applications", Icon: Zap },
       { href: "/support", label: "Support", desc: "Docs, FAQ & troubleshooting", Icon: BookOpen },

@@ -29,6 +29,7 @@ const footerLinks = {
   Company: [
     { label: "About", href: "/about" },
     { label: "News", href: "/news" },
+    { label: "BCI guides", href: "/guides" },
     { label: "Partnership", href: "/partnership" },
     { label: "Contact", href: "/contact" },
     { label: "Liability", href: "/liability" },

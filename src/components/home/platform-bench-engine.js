@@ -1,9 +1,11 @@
-/* Generated from tmp/new pages prototypes. Do not edit by hand. */
+/* Generated from tmp/new pages prototypes. MCP chip order and the MCP stage branch are site-side. */
+import { mountMcpStage } from "./mcp-stage.js";
 export function mountPlatformBench(root) {
   if (!root) return () => {};
   let raf = 0;
   let stopped = false;
   let visible = true;
+  let mcpStop = null;
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 
@@ -40,6 +42,35 @@ const LK = { /* link kinds */
    The platform, as documented
    ============================================================ */
 const PARTS = [
+{
+  id:'mcp', name:'MCP', meta:'Model Context Protocol', badge:'Protocol', fam:'ai',
+  tagline:'The host you already use, pointed at the stream',
+  filters:['ai','build'],
+  summary:'PiEEG Agent publishes its live analysis tools over MCP. An editor, a desktop agent, or a research agent you already run can call them. PiEEG does not replace that host. It hands it a live view of the stream.',
+  caption:'Agent owns the tools → MCP → the host you already trust',
+  scene:{
+    nodes:[
+      {id:'agent', c:1, t:'PiEEG Agent', s:'owns tools and the gate', ic:'robot', part:'source', go:'agent'},
+      {id:'mcp', c:2, t:'MCP tools', s:'JSON-RPC, host calls in', ic:'plug', part:'runtime', core:true},
+      {id:'read', c:3, t:'Read tools', s:'quality, state, spectra', ic:'wave', part:'out'},
+      {id:'act', c:3, t:'Device tools', s:'off until you switch on', ic:'chip', part:'out'},
+      {id:'ide', c:4, t:'Editor or IDE', s:'coding assistant', ic:'code', part:'out'},
+      {id:'desk', c:4, t:'Desktop agent', s:'the copilot you run', ic:'browser', part:'out'}
+    ],
+    links:[['agent','mcp','tools','wire'],['mcp','read','observe','net'],['mcp','act','gated','net'],['read','ide','','net'],['read','desk','','net']]
+  },
+  rows:[
+    ['runtime','Runs beside','PiEEG Agent. The host is whatever program already speaks MCP'],
+    ['source','Reads','The same Agent surface: quality, state metrics, patterns, sessions, spectra, connectivity'],
+    ['out','Returns','Tool results into the thread you are already writing in. No second chat window'],
+    ['runtime','Attach','Point that host at Agent. Leave device actions off until you need them'],
+    ['out','Default','Observational. Hardware actions are a separate switch, and each execution is still gated']
+  ],
+  gets:['Channel quality, and whether the spectrum looks like focus, rest, or noise','Which electrodes carried a pattern you just trained','How this block compares with the previous one, with an effect size','Spectra and connectivity, reachable as tools instead of a separate UI','Device actions absent until that switch is on: filter, capture, test tone, OSC','The analysis stays in Agent. MCP is only the doorway'],
+  note:{h:'Looking is not driving', p:'Connecting a host does not hand it the front panel. Read tools are open by default. Filtering, capture, the test tone, and an OSC feed stay off until you enable device tools, and each execution is still gated on its own.'},
+  panel:{mode:'console', title:'What the host is handed', note:'Simulated MCP tool calls, not a live session', gen:'mcp'},
+  links:[{t:'Open PiEEG Agent', h:'/agent', primary:true},{t:'How MCP is split', h:'/news/pieeg-agent-mcp', ext:true}]
+},
 {
   id:'server', name:'PiEEG Server', meta:'Python, the core', badge:'Start here', fam:'core',
   tagline:'The streaming core',
@@ -217,35 +248,6 @@ const PARTS = [
   note:{h:'Device control is gated', p:'Actions are off by default. With <code>--allow-actions</code> the agent only previews what it would do. Executing needs <code>--execute</code>, and every action passes an allowlist, a cooldown, a dry run and an audit log.'},
   panel:{mode:'chat', title:'What a session sounds like', note:'Training a pattern, in the agent web UI', script:'agent'},
   links:[{t:'Agent docs', h:'/software/integrations/pieeg-agent', primary:true},{t:'Compare with Buddy', h:'/cloud/buddy'}]
-},
-{
-  id:'mcp', name:'MCP', meta:'Model Context Protocol', badge:'Protocol', fam:'ai',
-  tagline:'The host you already use, pointed at the stream',
-  filters:['ai','build'],
-  summary:'PiEEG Agent publishes its live analysis tools over MCP. An editor, a desktop agent, or a research agent you already run can call them. PiEEG does not replace that host. It hands it a live view of the stream.',
-  caption:'Agent owns the tools → MCP → the host you already trust',
-  scene:{
-    nodes:[
-      {id:'agent', c:1, t:'PiEEG Agent', s:'owns tools and the gate', ic:'robot', part:'source', go:'agent'},
-      {id:'mcp', c:2, t:'MCP tools', s:'JSON-RPC, host calls in', ic:'plug', part:'runtime', core:true},
-      {id:'read', c:3, t:'Read tools', s:'quality, state, spectra', ic:'wave', part:'out'},
-      {id:'act', c:3, t:'Device tools', s:'off until you switch on', ic:'chip', part:'out'},
-      {id:'ide', c:4, t:'Editor or IDE', s:'coding assistant', ic:'code', part:'out'},
-      {id:'desk', c:4, t:'Desktop agent', s:'the copilot you run', ic:'browser', part:'out'}
-    ],
-    links:[['agent','mcp','tools','wire'],['mcp','read','observe','net'],['mcp','act','gated','net'],['read','ide','','net'],['read','desk','','net']]
-  },
-  rows:[
-    ['runtime','Runs beside','PiEEG Agent. The host is whatever program already speaks MCP'],
-    ['source','Reads','The same Agent surface: quality, state metrics, patterns, sessions, spectra, connectivity'],
-    ['out','Returns','Tool results into the thread you are already writing in. No second chat window'],
-    ['runtime','Attach','Point that host at Agent. Leave device actions off until you need them'],
-    ['out','Default','Observational. Hardware actions are a separate switch, and each execution is still gated']
-  ],
-  gets:['Channel quality, and whether the spectrum looks like focus, rest, or noise','Which electrodes carried a pattern you just trained','How this block compares with the previous one, with an effect size','Spectra and connectivity, reachable as tools instead of a separate UI','Device actions absent until that switch is on: filter, capture, test tone, OSC','The analysis stays in Agent. MCP is only the doorway'],
-  note:{h:'Looking is not driving', p:'Connecting a host does not hand it the front panel. Read tools are open by default. Filtering, capture, the test tone, and an OSC feed stay off until you enable device tools, and each execution is still gated on its own.'},
-  panel:{mode:'console', title:'What the host is handed', note:'Simulated MCP tool calls, not a live session', gen:'mcp'},
-  links:[{t:'Open PiEEG Agent', h:'/agent', primary:true},{t:'How MCP is split', h:'/news/pieeg-agent-mcp', ext:true}]
 },
 {
   id:'bioide', name:'bioIDE', meta:'browser IDE', badge:'No install', fam:'build',
@@ -1125,12 +1127,33 @@ function renderSpec(p){
     r.addEventListener('focus',on); r.addEventListener('blur',off);
   });
 }
+function showMcp(){
+  const host = root.querySelector('#plat-mcp');
+  const bench = root.querySelector('.bench');
+  const note = root.querySelector('.bench-note');
+  if(bench) bench.hidden = true;
+  if(note) note.hidden = true;
+  if(!host) return;
+  host.hidden = false;
+  if(!mcpStop) mcpStop = mountMcpStage(host, { reduce });
+}
+function hideMcp(){
+  const host = root.querySelector('#plat-mcp');
+  const bench = root.querySelector('.bench');
+  const note = root.querySelector('.bench-note');
+  if(mcpStop){ mcpStop(); mcpStop = null; }
+  if(host) host.hidden = true;
+  if(bench) bench.hidden = false;
+  if(note) note.hidden = false;
+}
 function select(id){
   const p=PARTS.find(x=>x.id===id); if(!p||p===state.part) return;
   state.part=p; state.focus=state.layer;
   root.style.setProperty('--mode',FAMILY[p.fam]);
-  
-  syncRail(); drawScene(p); renderBar(p); renderSpec(p); buildPanel(p); applyFocus();
+  syncRail();
+  if(p.id==='mcp'){ showMcp(); return; }
+  hideMcp();
+  drawScene(p); renderBar(p); renderSpec(p); buildPanel(p); applyFocus();
 }
 
 /* ============================================================
@@ -1144,6 +1167,7 @@ function tickFlow(){
   });
 }
 function frame(now){
+  if(state.part && state.part.id==='mcp') return;
   const dt=Math.min(.05,(now-(lastNow||now))/1000); lastNow=now;
   if(!state.paused) simT+=dt;
   tickFlow();
@@ -1156,9 +1180,8 @@ function frame(now){
    Boot
    ============================================================ */
 renderRail();
-select('server');
+select('mcp');
 if(reduce){ tickBands(); }
-
 
   function startLoop() {
     if (stopped || raf) return;
@@ -1182,7 +1205,7 @@ if(reduce){ tickBands(); }
     stopped = true;
     cancelAnimationFrame(raf);
     raf = 0;
+    if (mcpStop) mcpStop();
     io.disconnect();
-    
   };
 }

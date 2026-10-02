@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { mountPlatformBench } from "./platform-bench-engine.js";
 import "./benches.css";
+import "./mcp-stage.css";
 
 export default function PlatformBench() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -47,6 +48,8 @@ export default function PlatformBench() {
             </div>
             <div className="rail" id="plat-rail" />
           </nav>
+
+          <div id="plat-mcp" className="mcp-star" hidden />
 
           <div className="bench">
             <div className="maincol">

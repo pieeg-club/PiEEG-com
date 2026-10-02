@@ -123,20 +123,20 @@ export function mountMcpStage(root, opts = {}) {
     let L = "", N = "";
     L += `<g data-layer="src">
       <path id="mcp-p-head" d="${bez(HEAD.cx + HEAD.r, HEAD.cy, SRV.x, SRV.y + SRV.h/2)}" stroke="${C.eeg}" stroke-opacity=".25" stroke-width="1.6" fill="none"/>
-      <path class="flow" data-speed="0.8" d="${bez(HEAD.cx + HEAD.r, HEAD.cy, SRV.x, SRV.y + SRV.h/2)}" stroke="${C.eeg}" stroke-width="2.4" stroke-linecap="round"/>
+      <path class="flow" stroke-dasharray="3 13" data-speed="0.8" d="${bez(HEAD.cx + HEAD.r, HEAD.cy, SRV.x, SRV.y + SRV.h/2)}" stroke="${C.eeg}" stroke-width="2.4" stroke-linecap="round"/>
       <path id="mcp-p-srv" d="${bez(SRV.x + SRV.w, SRV.y + SRV.h/2, AG.x, AG.y + AG.h/2)}" stroke="${C.wire}" stroke-opacity=".25" stroke-width="1.6" fill="none"/>
-      <path class="flow" d="${bez(SRV.x + SRV.w, SRV.y + SRV.h/2, AG.x, AG.y + AG.h/2)}" stroke="${C.wire}" stroke-width="2.4" stroke-linecap="round"/>
+      <path class="flow" stroke-dasharray="3 13" d="${bez(SRV.x + SRV.w, SRV.y + SRV.h/2, AG.x, AG.y + AG.h/2)}" stroke="${C.wire}" stroke-width="2.4" stroke-linecap="round"/>
       ${pill("LSL", C.wire, (SRV.x + SRV.w + AG.x)/2, 284)}
     </g>`;
     L += `<g data-layer="mcp">
       <path id="mcp-p-ag" d="M${AG.x + AG.w},${P.cy} L${P.cx - 92},${P.cy}" stroke="${C.ai}" stroke-opacity=".3" stroke-width="1.6" fill="none"/>
-      <path class="flow" d="M${AG.x + AG.w},${P.cy} L${P.cx - 92},${P.cy}" stroke="${C.ai}" stroke-width="2.4" stroke-linecap="round"/>
+      <path class="flow" stroke-dasharray="3 13" d="M${AG.x + AG.w},${P.cy} L${P.cx - 92},${P.cy}" stroke="${C.ai}" stroke-width="2.4" stroke-linecap="round"/>
     </g>`;
     HOSTS.forEach((h) => {
       const d = bez(P.cx + 96, P.cy + (h.y - P.cy) * .28, h.x, h.y);
       L += `<g data-layer="host">
         <path id="mcp-p-${h.id}" d="${d}" stroke="${h.dev ? C.osc : C.net}" stroke-opacity=".22" stroke-width="1.6" fill="none"/>
-        <path class="flow" d="${d}" stroke="${C.net}" stroke-width="2" stroke-linecap="round" stroke-opacity=".8"/>
+        <path class="flow" stroke-dasharray="3 13" d="${d}" stroke="${C.net}" stroke-width="2" stroke-linecap="round" stroke-opacity=".8"/>
       </g>`;
     });
     $("#mcp-gLinks", hero).innerHTML = L;
@@ -284,106 +284,194 @@ export function mountMcpStage(root, opts = {}) {
     claude: ["claude", ""], claudecode: ["claude", ""], chatgpt: ["gpt", ""],
     cursor: ["gpt", ", using a GPT model"], vscode: ["claude", ", using a Claude model"], own: ["local", ", using Llama 3.1 8B in Ollama"],
   };
-  let answered = 0, runId = 0, qI = 0, hostId = "claude", lastTouch = -1e9, autoK = 0;
+  /* Seconds. The Q&A advances only from the frame clock, never from timers. */
+  const BEAT = {
+    think: 0.7,
+    hop: 0.95,
+    hopShort: 0.5,
+    typeCps: 46,
+    hold: 6.5,
+  };
+  let answered = 0, seq = 0, qI = 0, hostId = "claude", autoK = 0, userDrove = false, demo = null, flash = 0;
   const AUTO = [["claude", 0], ["chatgpt", 0], ["own", 0], ["claudecode", 1], ["cursor", 1], ["vscode", 2], ["claude", 3], ["chatgpt", 4], ["own", 1]];
   const packets = [];
 
-  function launch(pathIds, launchOpts) {
-    return new Promise((res) => {
-      if (reduce || stopped) { res(); return; }
-      const segs = pathIds.map(([id, rev]) => { const el = hero.getElementById(id); return { el, rev, len: el.getTotalLength() }; });
-      const total = segs.reduce((s, x) => s + x.len, 0);
-      const g = document.createElementNS(NS, "g"); g.setAttribute("class", "pkt");
-      const w = 6.8 * launchOpts.label.length + 18;
-      g.innerHTML = `<circle r="10" fill="${launchOpts.color}" fill-opacity=".18"/><circle r="4.4" fill="${launchOpts.color}"/>
-        <g transform="translate(0,-21)"><rect x="${-w/2}" y="-10" width="${w}" height="20" rx="10" fill="#0b0d11" stroke="${launchOpts.color}" stroke-opacity=".8"/>
-        <text x="0" y="4" text-anchor="middle" style="font-size:11px;font-weight:600;font-family:var(--mono)" fill="${launchOpts.color}">${launchOpts.label}</text></g>`;
-      $("#mcp-gFx", hero).appendChild(g);
-      packets.push({ g, segs, total, lim: total * (launchOpts.stop || 1), d: 0, speed: total / (launchOpts.dur || 1.1), onEnd: res });
-    });
+  function clearPackets() {
+    packets.forEach((p) => p.g.remove());
+    packets.length = 0;
   }
-  const sleep = (ms) => new Promise((r) => setTimeout(r, reduce || stopped ? 0 : ms));
-  const flashPortal = () => {
-    const po = hero.getElementById("mcp-portal");
-    if (!po) return;
-    po.setAttribute("stroke-width", 3.2);
-    setTimeout(() => po.setAttribute("stroke-width", 1.6), 380);
-  };
+  function spawn(pathId, rev, label, color, dur) {
+    const el = hero.getElementById(pathId);
+    const len = el ? el.getTotalLength() : 0;
+    if (!el || len < 1) return null;
+    const g = document.createElementNS(NS, "g");
+    g.setAttribute("class", "pkt");
+    const w = 6.8 * label.length + 18;
+    g.innerHTML = `<circle r="10" fill="${color}" fill-opacity=".18"/><circle r="4.4" fill="${color}"/>
+      <g transform="translate(0,-21)"><rect x="${-w/2}" y="-10" width="${w}" height="20" rx="10" fill="#0b0d11" stroke="${color}" stroke-opacity=".8"/>
+      <text x="0" y="4" text-anchor="middle" style="font-size:11px;font-weight:600;font-family:var(--mono)" fill="${color}">${label}</text></g>`;
+    $("#mcp-gFx", hero).appendChild(g);
+    const pkt = { g, segs: [{ el, rev, len }], total: len, lim: len, d: 0, speed: len / dur, arrived: false };
+    pkt.onEnd = () => { pkt.arrived = true; };
+    packets.push(pkt);
+    return pkt;
+  }
 
   $("#mcp-ask").insertAdjacentHTML("beforeend", EX.map((e, i) => `<button type="button" aria-pressed="${i === 0}" data-i="${i}">${e.q}</button>`).join(""));
   $("#mcp-ask").addEventListener("click", (e) => {
     const b = e.target.closest("button"); if (!b) return;
-    lastTouch = performance.now(); run(hostId, +b.dataset.i);
+    begin(hostId, +b.dataset.i, true);
   });
   hero.querySelectorAll(".host").forEach((el) => {
-    const go = () => { lastTouch = performance.now(); run(el.dataset.id, qI); };
+    const go = () => begin(el.dataset.id, qI, true);
     el.addEventListener("click", go);
     el.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
   });
 
-  async function run(hid, qi) {
-    const my = ++runId; hostId = hid; qI = qi;
-    const h = HOSTS.find((x) => x.id === hid), ex = EX[qi], [style, note] = STYLE[hid], r = ex.r[style];
-    const alive = () => my === runId && !stopped;
+  function legsFor(hid, ex, reply) {
+    const legs = [];
+    if (ex.dev) {
+      legs.push({ path: `mcp-p-${hid}`, rev: true, label: "tools/list", color: C.white, dur: BEAT.hop, kind: "dev-out" });
+      legs.push({ path: `mcp-p-${hid}`, rev: false, label: "no capture tool", color: C.red, dur: BEAT.hop, kind: "dev-back" });
+    }
+    for (const [name, arg] of reply.tools) {
+      const label = arg ? `${name} "${arg}"` : name;
+      legs.push({ path: `mcp-p-${hid}`, rev: true, label: name, chip: label, arg, color: C.white, dur: BEAT.hop, kind: "call" });
+      legs.push({ path: "mcp-p-ag", rev: true, label: name, color: C.ai, dur: BEAT.hopShort, kind: "in", flash: true });
+      legs.push({ path: "mcp-p-ag", rev: false, label: "live result", color: C.ai, dur: BEAT.hopShort, kind: "back" });
+      legs.push({ path: `mcp-p-${hid}`, rev: false, label: "result", name, color: C.net, dur: BEAT.hop, kind: "result" });
+    }
+    return legs;
+  }
+  function begin(hid, qi, fromUser) {
+    if (fromUser) userDrove = true;
+    clearPackets();
+    hostId = hid; qI = qi;
+    const id = ++seq;
+    const h = HOSTS.find((x) => x.id === hid);
+    const ex = EX[qi];
+    const [style, note] = STYLE[hid];
+    const reply = ex.r[style];
     $("#mcp-ask").querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", +b.dataset.i === qi));
     hero.querySelectorAll(".host").forEach((x) => x.classList.toggle("on", x.dataset.id === hid));
-    $("#mcp-qaHost").textContent = h.t; $("#mcp-qaWho").textContent = h.t; $("#mcp-qaModel").textContent = note;
+    $("#mcp-qaHost").textContent = h.t;
+    $("#mcp-qaWho").textContent = h.t;
+    $("#mcp-qaModel").textContent = note;
     $("#mcp-qaQ").textContent = ex.q;
-    $("#mcp-qaQ").style.animation = "none"; void $("#mcp-qaQ").offsetWidth; $("#mcp-qaQ").style.animation = "";
-    $("#mcp-qaTools").innerHTML = ""; $("#mcp-qaTags").innerHTML = "";
+    $("#mcp-qaTools").textContent = "";
+    $("#mcp-qaTags").textContent = "";
     $("#mcp-qaData").innerHTML = '<div class="none">What Agent returns shows up here</div>';
     $("#mcp-qaR").innerHTML = '<span class="think">Thinking about which tools to call</span><span class="caret"></span>';
-    let first = true;
-    const addData = (key) => {
-      const rows = ex.shared.filter(([k]) => k === key);
-      if (!rows.length) return;
-      if (first) { $("#mcp-qaData").innerHTML = ""; first = false; }
-      rows.forEach(([k, v]) => $("#mcp-qaData").insertAdjacentHTML("beforeend", `<div><span class="k">${k}</span>  ${v}</div>`));
-    };
-    await sleep(500); if (!alive()) return;
-
-    if (ex.dev) {
-      const chip = document.createElement("span"); chip.className = "tc ok run";
-      chip.innerHTML = '<span class="dot"></span>tools/list'; $("#mcp-qaTools").appendChild(chip);
-      await launch([[`mcp-p-${hid}`, true]], { label: "tools/list", color: C.white, dur: 1 }); if (!alive()) return;
-      flashPortal();
-      await launch([[`mcp-p-${hid}`, false]], { label: "no capture tool", color: C.red, dur: 1 }); if (!alive()) return;
-      chip.className = "tc no"; chip.innerHTML = '<span class="dot"></span>capture not available';
-      addData("tools/list");
+    demo = { id, hid, ex, reply, phase: "think", t: 0, leg: 0, legs: legsFor(hid, ex, reply), pkt: null, typed: -1, typeNode: null, dataOn: false };
+  }
+  function addData(d, key) {
+    const rows = d.ex.shared.filter(([k]) => k === key);
+    if (!rows.length) return;
+    const box = $("#mcp-qaData");
+    if (!d.dataOn) { box.textContent = ""; d.dataOn = true; }
+    rows.forEach(([k, v]) => box.insertAdjacentHTML("beforeend", `<div><span class="k">${k}</span>  ${v}</div>`));
+  }
+  function openLeg(d) {
+    const leg = d.legs[d.leg];
+    d.t = 0;
+    d.pkt = spawn(leg.path, leg.rev, leg.label, leg.color, leg.dur);
+    if (leg.kind === "dev-out" || leg.kind === "call") {
+      const chip = document.createElement("span");
+      chip.className = "tc ok run";
+      chip.innerHTML = `<span class="dot"></span>${leg.kind === "dev-out" ? "tools/list" : leg.chip}`;
+      $("#mcp-qaTools").appendChild(chip);
+      d.chip = chip;
+      d.chipLabel = leg.chip || "tools/list";
     }
-    for (const [name, arg] of r.tools) {
-      const chip = document.createElement("span"); chip.className = "tc ok run";
-      const label = `${name}${arg ? ` <span class="arg">"${arg}"</span>` : ""}`;
-      chip.innerHTML = `<span class="dot"></span>${label}`; $("#mcp-qaTools").appendChild(chip);
-      await launch([[`mcp-p-${hid}`, true]], { label: name, color: C.white, dur: 1 }); if (!alive()) return;
-      flashPortal();
-      await launch([["mcp-p-ag", true]], { label: name, color: C.ai, dur: .5 }); if (!alive()) return;
-      await launch([["mcp-p-ag", false]], { label: "live result", color: C.ai, dur: .5 }); if (!alive()) return;
-      await launch([[`mcp-p-${hid}`, false]], { label: "result", color: C.net, dur: .9 }); if (!alive()) return;
-      chip.className = "tc ok"; chip.innerHTML = `<span class="dot"></span>✓ ${label}`;
-      addData(name);
-      answered++; $("#mcp-callCount").textContent = `${answered} call${answered === 1 ? "" : "s"} answered`;
+    if (leg.flash) {
+      const po = hero.getElementById("mcp-portal");
+      if (po) po.setAttribute("stroke-width", "3.2");
+      flash = 0.38;
     }
-    const out = $("#mcp-qaR"), txt = r.text;
+  }
+  function closeLeg(d) {
+    const leg = d.legs[d.leg];
+    if (leg.kind === "dev-back" && d.chip) {
+      d.chip.className = "tc no";
+      d.chip.innerHTML = '<span class="dot"></span>capture not available';
+      addData(d, "tools/list");
+    }
+    if (leg.kind === "result" && d.chip) {
+      d.chip.className = "tc ok";
+      d.chip.innerHTML = `<span class="dot"></span>✓ ${d.chipLabel || leg.label}`;
+      addData(d, leg.name);
+      answered++;
+      const count = $("#mcp-callCount");
+      if (count) count.textContent = `${answered} call${answered === 1 ? "" : "s"} answered`;
+    }
+    d.pkt = null;
+    d.leg++;
+    d.t = 0;
+    if (d.leg < d.legs.length) d.phase = "gap";
+    else d.phase = "type";
+  }
+  function paintReply(d) {
+    const out = $("#mcp-qaR");
     out.innerHTML = '<span class="t"></span><span class="caret"></span>';
-    const t = $(".t", out);
-    for (let k = 0; k <= txt.length; k += reduce ? txt.length : 3) {
-      if (!alive()) return;
-      t.textContent = txt.slice(0, k); await sleep(12);
+    d.typeNode = $(".t", out);
+    d.typed = 0;
+    d.t = 0;
+    d.phase = "type";
+  }
+  function finishReply(d) {
+    if (d.typeNode) d.typeNode.textContent = d.reply.text;
+    $(".caret", $("#mcp-qaR"))?.remove();
+    const words = d.reply.text.split(/\s+/).filter(Boolean).length;
+    const tc = d.reply.tools.length + (d.ex.dev ? 1 : 0);
+    $("#mcp-qaTags").innerHTML = [[`${tc} tool call${tc === 1 ? "" : "s"}`], ...d.reply.tags, [`${words} words`]].map(([x, c]) => `<span class="chip ${c || ""}">${x}</span>`).join("");
+    hero.querySelector(`.host[data-id="${d.hid}"]`)?.classList.remove("on");
+    d.phase = "hold";
+    d.t = 0;
+  }
+  function demoStep(dt) {
+    const d = demo;
+    if (!d || d.id !== seq || stopped) return;
+    if (flash > 0) {
+      flash -= dt;
+      if (flash <= 0) hero.getElementById("mcp-portal")?.setAttribute("stroke-width", "1.6");
     }
-    t.textContent = txt; $(".caret", out)?.remove();
-    const words = txt.split(/\s+/).filter(Boolean).length;
-    const tc = r.tools.length + (ex.dev ? 1 : 0);
-    $("#mcp-qaTags").innerHTML = [[`${tc} tool call${tc === 1 ? "" : "s"}`], ...r.tags, [`${words} words`]].map(([x, c]) => `<span class="chip ${c || ""}">${x}</span>`).join("");
-    hero.querySelector(`.host[data-id="${hid}"]`)?.classList.remove("on");
-    if (reduce) return;
-    await sleep(4200); if (!alive()) return;
-    if (performance.now() - lastTouch > 25000 && !document.hidden && !stopped) {
-      const [nh, nq] = AUTO[++autoK % AUTO.length]; run(nh, nq);
+    d.t += dt;
+    if (d.phase === "think") {
+      if (d.t < BEAT.think) return;
+      if (!d.legs.length) { paintReply(d); return; }
+      d.phase = "fly";
+      openLeg(d);
+      return;
+    }
+    if (d.phase === "gap") {
+      if (d.t < 0.12) return;
+      d.phase = "fly";
+      openLeg(d);
+      return;
+    }
+    if (d.phase === "fly") {
+      const leg = d.legs[d.leg];
+      const arrived = !d.pkt || d.pkt.arrived;
+      if (d.t < leg.dur || !arrived) return;
+      closeLeg(d);
+      if (d.phase === "type") paintReply(d);
+      return;
+    }
+    if (d.phase === "type") {
+      const txt = d.reply.text;
+      const n = Math.min(txt.length, Math.floor(d.t * BEAT.typeCps));
+      if (n !== d.typed && d.typeNode) { d.typed = n; d.typeNode.textContent = txt.slice(0, n); }
+      if (n >= txt.length) finishReply(d);
+      return;
+    }
+    if (d.phase === "hold" && !userDrove && d.t >= BEAT.hold && !document.hidden) {
+      d.phase = "done";
+      const [nh, nq] = AUTO[++autoK % AUTO.length];
+      begin(nh, nq, false);
     }
   }
 
-  let stopped = false, raf = 0, last = 0, tt = 0;
+  let stopped = false, tt = 0;
   const sc = [0, 1, 2].map((i) => hero.getElementById("mcp-sc" + i));
   const flows = () => hero.querySelectorAll(".flow");
   function scope(t) {
@@ -398,18 +486,29 @@ export function mountMcpStage(root, opts = {}) {
       p.setAttribute("d", d);
     });
   }
-  function loop(now) {
-    const dt = Math.min(.05, (now - (last || now)) / 1000); last = now;
-    if (!reduce) tt += dt;
-    if (!reduce) {
-      const off = (-(32 * tt / 1.15) % 32).toFixed(2);
-      flows().forEach((p) => {
-        const speed = Number(p.dataset.speed) || 1.15;
-        p.style.strokeDashoffset = speed === 1.15 ? off : (-(32 * tt / speed) % 32).toFixed(2);
-      });
-      scope(tt);
-    } else if (!loop.once) { scope(0); loop.once = true; }
-    if (reduce) return;
+  function loop(dt) {
+    tt += dt;
+    flows().forEach((p) => {
+      p.setAttribute("stroke-dasharray", "3 13");
+      const speed = Number(p.dataset.speed) || 1.15;
+      p.style.strokeDashoffset = (-((tt * 32 / speed) % 32)).toFixed(2);
+    });
+    scope(tt);
+    hero.querySelectorAll(".spin").forEach((el) => {
+      const rev = el.classList.contains("rev");
+      const deg = (tt * (rev ? -360 / 26 : 360 / 40)) % 360;
+      el.setAttribute("transform", `rotate(${deg.toFixed(2)} ${P.cx} ${P.cy})`);
+    });
+    hero.querySelectorAll(".pulse").forEach((el) => {
+      const u = ((tt + (el.classList.contains("d2") ? 1.7 : 0)) % 3.4) / 3.4;
+      const scale = 0.7 + u * 0.75;
+      el.setAttribute("transform", `translate(${P.cx} ${P.cy}) scale(${scale.toFixed(3)}) translate(${-P.cx} ${-P.cy})`);
+      el.setAttribute("opacity", (0.5 * (1 - u)).toFixed(3));
+    });
+    hero.querySelectorAll(".elec").forEach((el, i) => {
+      const o = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin((tt + i * 0.13) * Math.PI * 2 / 2.2));
+      el.setAttribute("opacity", o.toFixed(3));
+    });
     for (let i = packets.length - 1; i >= 0; i--) {
       const p = packets[i];
       p.d = Math.min(p.lim, p.d + p.speed * dt);
@@ -423,20 +522,16 @@ export function mountMcpStage(root, opts = {}) {
       if (pt) p.g.setAttribute("transform", `translate(${pt.x.toFixed(1)},${pt.y.toFixed(1)})`);
       if (p.d >= p.lim) { p.g.remove(); packets.splice(i, 1); p.onEnd && p.onEnd(); }
     }
+    demoStep(dt);
   }
-  function tick(now) {
-    if (stopped) { raf = 0; return; }
-    loop(now);
-    raf = requestAnimationFrame(tick);
-  }
-  raf = requestAnimationFrame(tick);
-  run(AUTO[0][0], AUTO[0][1]);
+  root.__mcpFrame = (dt) => { if (!stopped) loop(dt); };
+  begin(AUTO[0][0], AUTO[0][1], false);
 
   return () => {
     stopped = true;
-    runId++;
-    cancelAnimationFrame(raf);
-    raf = 0;
+    seq++;
+    demo = null;
+    root.__mcpFrame = null;
     packets.forEach((p) => p.g.remove());
     packets.length = 0;
     root.innerHTML = "";

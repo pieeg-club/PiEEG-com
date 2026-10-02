@@ -304,47 +304,10 @@
   fill: #15131f;
 }
 
-.home-bench .mcp-star .spin {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: mcp-spin 40s linear infinite;
-}
-
-.home-bench .mcp-star .spin.rev {
-  animation-duration: 26s;
-  animation-direction: reverse;
-}
-
-@keyframes mcp-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.home-bench .mcp-star .pulse {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: mcp-pulse 3.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
-  opacity: 0;
-}
-
-.home-bench .mcp-star .pulse.d2 {
-  animation-delay: 1.7s;
-}
-
-@keyframes mcp-pulse {
-  0% {
-    transform: scale(0.7);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1.45);
-    opacity: 0;
-  }
-}
-
+.home-bench .mcp-star .spin,
+.home-bench .mcp-star .pulse,
 .home-bench .mcp-star .elec {
-  animation: mcp-blink 2.2s ease-in-out infinite;
+  animation: none;
 }
 
 @keyframes mcp-blink {
@@ -772,19 +735,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-bench .mcp-star .spin,
-  .home-bench .mcp-star .pulse,
-  .home-bench .mcp-star .elec,
   .home-bench .mcp-star .m,
   .home-bench .mcp-star .tc,
-  .home-bench .mcp-star .burst,
   .home-bench .mcp-star .qa .m,
   .home-bench .mcp-star .data div,
   .home-bench .mcp-star .chip {
     animation: none !important;
-  }
-
-  .home-bench .mcp-star .pulse {
-    opacity: 0;
   }
 }

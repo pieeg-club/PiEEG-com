@@ -1167,10 +1167,12 @@ function tickFlow(){
   });
 }
 function frame(now){
-  if(state.part && state.part.id==='mcp') return;
   const dt=Math.min(.05,(now-(lastNow||now))/1000); lastNow=now;
   if(!state.paused) simT+=dt;
   tickFlow();
+  const mcpHost = root.querySelector('#plat-mcp');
+  if(mcpHost && !mcpHost.hidden && mcpHost.__mcpFrame) mcpHost.__mcpFrame(state.paused ? 0 : dt);
+  if(state.part && state.part.id==='mcp') return;
   if(panel.mode==='console') tickConsole(dt);
   else if(panel.mode==='bands'){ if(!state.paused) tickBands(); }
   else if(panel.mode==='chat') tickChat(dt);

@@ -13,9 +13,11 @@ export default function CompareEegFilters({ rootId }: { rootId: string }) {
     const chips = Array.prototype.slice.call(
       root.querySelectorAll('.chip[data-need]'),
     ) as HTMLButtonElement[];
-    const clear = root.querySelector('#clear') as HTMLButtonElement | null;
-    const count = root.querySelector('#count');
-    if (!clear || !count) return;
+    const clearNode = root.querySelector('#clear');
+    const countNode = root.querySelector('#count');
+    if (!(clearNode instanceof HTMLButtonElement) || !countNode) return;
+    const clearButton: HTMLButtonElement = clearNode;
+    const countEl: Element = countNode;
 
     const total = rows.length;
     const tests: Record<string, (row: HTMLTableRowElement) => boolean> = {
@@ -42,13 +44,13 @@ export default function CompareEegFilters({ rootId }: { rootId: string }) {
           if (row.classList.contains('us-row')) ours += 1;
         }
       });
-      clear.hidden = active.length === 0;
-      if (!active.length) count.textContent = `Showing all ${total} devices.`;
+      clearButton.hidden = active.length === 0;
+      if (!active.length) countEl.textContent = `Showing all ${total} devices.`;
       else if (!match) {
-        count.textContent =
+        countEl.textContent =
           'No device meets every need. Remove one to see the closest options.';
       } else {
-        count.textContent = `${match} of ${total} devices match, ${ours} of them from PiEEG.`;
+        countEl.textContent = `${match} of ${total} devices match, ${ours} of them from PiEEG.`;
       }
     }
 
@@ -66,10 +68,10 @@ export default function CompareEegFilters({ rootId }: { rootId: string }) {
     };
 
     chips.forEach((chip) => chip.addEventListener('click', onChipClick));
-    clear.addEventListener('click', onClear);
+    clearButton.addEventListener('click', onClear);
     return () => {
       chips.forEach((chip) => chip.removeEventListener('click', onChipClick));
-      clear.removeEventListener('click', onClear);
+      clearButton.removeEventListener('click', onClear);
     };
   }, [rootId]);
 

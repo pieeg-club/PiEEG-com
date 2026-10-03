@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why PiEEG? EEG for Research vs OpenBCI, Emotiv and Muse (2026)</title>
+<meta name="description" content="PiEEG vs OpenBCI, Emotiv and Muse for research EEG: up to 10× lower price per channel, up to 16 kSPS sampling, 24-bit resolution, free raw data, open datasets, 3D-printable headsets and a 1,000+ member community.">
+<meta name="keywords" content="PiEEG, OpenBCI alternative, Emotiv alternative, Muse alternative, low-cost EEG, EEG for research, Raspberry Pi EEG, open source EEG, ADS1299, EEG dataset, 3D printed EEG headset, brain-computer interface">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="PiEEG">
+<link rel="canonical" href="https://pieeg.com/guides/pieeg-vs-openbci-emotiv-muse">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PiEEG">
+<meta property="og:title" content="Why PiEEG? Research EEG compared with OpenBCI, Emotiv and Muse">
+<meta property="og:description" content="Lower price per channel, 64× faster sampling, 24-bit resolution and free raw data. See the numbers.">
+<meta property="og:url" content="https://pieeg.com/guides/pieeg-vs-openbci-emotiv-muse">
+<meta property="og:image" content="https://pieeg.com/products/pieeg16.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why PiEEG? Research EEG compared with OpenBCI, Emotiv and Muse">
+<meta name="twitter:description" content="Lower price per channel, 64× faster sampling, 24-bit resolution and free raw data.">
+<meta name="twitter:image" content="https://pieeg.com/products/pieeg16.jpg">
+<meta name="theme-color" content="#ffffff">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebPage",
+   "@id": "https://pieeg.com/guides/pieeg-vs-openbci-emotiv-muse#webpage",
+   "url": "https://pieeg.com/guides/pieeg-vs-openbci-emotiv-muse",
+   "name": "Why PiEEG: EEG for research compared with OpenBCI, Emotiv and Muse",
+   "description": "Where PiEEG leads OpenBCI, Emotiv and Muse for research EEG: price per channel, sample rate, resolution, free raw data and an open ecosystem.",
+   "inLanguage": "en",
+   "dateModified": "2026-09-24",
+   "isPartOf": {
+    "@type": "WebSite",
+    "name": "PiEEG",
+    "url": "https://pieeg.com"
+   },
+   "publisher": {
+    "@id": "https://pieeg.com/#org"
+   }
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://pieeg.com/#org",
+   "name": "PiEEG",
+   "url": "https://pieeg.com",
+   "logo": "https://pieeg.com/logo.png",
+   "sameAs": [
+    "https://github.com/pieeg-club",
+    "https://www.youtube.com/@pieeg",
+    "https://www.linkedin.com/company/pieeg/",
+    "https://www.thingiverse.com/PiEEG/designs",
+    "https://www.kaggle.com/pieegbiolabplatform",
+    "https://discord.gg/neJ45FR6Sv"
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://pieeg.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Guides",
+     "item": "https://pieeg.com/guides"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Compare EEG devices",
+     "item": "https://pieeg.com/guides/pieeg-vs-openbci-emotiv-muse"
+    }
+   ]
+  },
+  {
+   "@type": "ItemList",
+   "name": "PiEEG research EEG devices",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "item": {
+      "@type": "Product",
+      "name": "PiEEG-8",
+      "brand": {
+       "@type": "Brand",
+       "name": "PiEEG"
+      },
+      "description": "8-channel 24-bit EEG, EMG and ECG shield for Raspberry Pi 3, 4 and 5, 250 SPS to 16 kSPS.",
+      "url": "https://pieeg.com/hardware/pieeg",
+      "image": "https://pieeg.com/products/pieeg.png",
+      "offers": {
+       "@type": "Offer",
+       "price": "350",
+       "priceCurrency": "USD",
+       "availability": "https://schema.org/InStock",
+       "url": "https://www.elecrow.com/pieeg.html"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "item": {
+      "@type": "Product",
+      "name": "PiEEG-16",
+      "brand": {
+       "@type": "Brand",
+       "name": "PiEEG"
+      },
+      "description": "16-channel 24-bit EEG shield for Raspberry Pi 5, 250 SPS to 16 kSPS.",
+      "url": "https://pieeg.com/hardware/pieeg-16",
+      "image": "https://pieeg.com/products/pieeg16.jpg",
+      "offers": {
+       "@type": "Offer",
+       "price": "390",
+       "priceCurrency": "USD",
+       "availability": "https://schema.org/InStock",
+       "url": "https://www.elecrow.com/pieeg-16.html"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "item": {
+      "@type": "Product",
+      "name": "IronBCI-8",
+      "brand": {
+       "@type": "Brand",
+       "name": "PiEEG"
+      },
+      "description": "8-channel wearable wireless EEG with Bluetooth LE 5, Python and Android SDK.",
+      "url": "https://pieeg.com/hardware/ironbci",
+      "image": "https://pieeg.com/products/ironbci-angle.jpg",
+      "offers": {
+       "@type": "Offer",
+       "price": "420",
+       "priceCurrency": "USD",
+       "availability": "https://schema.org/InStock",
+       "url": "https://www.elecrow.com/ironbci.html"
+      }
+     }
+    },
+    {
+     "@type": "ListItem",
+     "position": 4,
+     "item": {
+      "@type": "Product",
+      "name": "Octopus 16",
+      "brand": {
+       "@type": "Brand",
+       "name": "PiEEG"
+      },
+      "description": "16-channel wireless dry-electrode EEG on the Seeed Studio XIAO ESP32-S3.",
+      "url": "https://pieeg.com/hardware/octopus-16",
+      "image": "https://pieeg.com/products/octopus16.png",
+      "offers": {
+       "@type": "Offer",
+       "price": "250",
+       "priceCurrency": "USD",
+       "availability": "https://schema.org/InStock",
+       "url": "https://www.elecrow.com/octopus-16-brain-computer-interface-with-16-eeg-channel.html"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "@type": "Dataset",
+   "name": "PiEEG EEG datasets and notebooks",
+   "description": "Public EEG recordings and machine-learning notebooks recorded with PiEEG hardware.",
+   "url": "https://www.kaggle.com/pieegbiolabplatform/code",
+   "creator": {
+    "@id": "https://pieeg.com/#org"
+   },
+   "isAccessibleForFree": true
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Is PiEEG a good alternative to OpenBCI?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. PiEEG-8, PiEEG-16 and IronBCI use the same TI ADS1299 24-bit converter as the OpenBCI Cyton, and both are open source. PiEEG-16 costs $390 for 16 channels, compared with $2,499 for the 16-channel Cyton + Daisy, and samples up to 16 kSPS instead of 125 SPS."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I get raw EEG data from PiEEG without a licence?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Every PiEEG device streams raw samples through free, open-source tools in Python, the browser, Lab Streaming Layer and BrainFlow. There is no paid tier for raw data."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is there a public PiEEG EEG dataset?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. PiEEG publishes datasets and ready-to-run notebooks on Kaggle, so you can explore real PiEEG recordings and train models before buying hardware."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can I 3D print a headset for PiEEG?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Headsets, electrode holders and enclosures for almost every PiEEG device are free to download on Thingiverse."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Where can I get help with PiEEG?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Join the PiEEG Discord, where more than 1,000 researchers, students and developers share code, projects and troubleshooting tips. Documentation and source code are on GitHub."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which PiEEG device should I choose for research?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "PiEEG-16 for stationary lab work with a wet cap, PiEEG-8 or PiEEG-16 for EMG or anything above 250 SPS, IronBCI for participants who move, Octopus 16 for quick gel-free occipital recordings, and PiEEG XR for facial EMG and EEG inside VR."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<style>
+  :root {
+    --ink: #0f172a;
+    --body: #334155;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --soft: #f8fafc;
+    --brand: #0e7490;
+    --brand-bar: #06b6d4;
+    --brand-tint: #ecfeff;
+    --good: #047857;
+    --good-tint: #ecfdf5;
+    --warn: #b45309;
+    --warn-tint: #fffbeb;
+    --radius: 10px;
+    --font: "Inter", "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  body { margin: 0; background: #fff; color: var(--body); font: 17px/1.65 var(--font); -webkit-font-smoothing: antialiased; }
+  a { color: var(--brand); text-underline-offset: 3px; }
+  a:hover { color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--brand-bar); outline-offset: 2px; border-radius: 4px; }
+  h1, h2, h3 { color: var(--ink); line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
+  h1 { font-size: clamp(2.1rem, 4.6vw, 3.4rem); font-weight: 800; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 750; }
+  h3 { font-size: 1.12rem; font-weight: 700; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .narrow { max-width: 860px; }
+  section { padding: 72px 0; border-top: 1px solid var(--line); }
+  .lead { font-size: 1.15rem; color: var(--body); max-width: 60ch; }
+  .sub { color: var(--muted); max-width: 64ch; margin-top: 12px; }
+  .small { font-size: .82rem; color: var(--muted); }
+  .tnum { font-variant-numeric: tabular-nums; }
+
+  /* Breadcrumb */
+  .crumbs { padding-top: 28px; font-size: .85rem; color: var(--muted); }
+  .crumbs ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .crumbs li + li::before { content: "/"; margin-right: 6px; color: #cbd5e1; }
+  .crumbs a { color: var(--muted); text-decoration: none; }
+  .crumbs a:hover { color: var(--ink); text-decoration: underline; }
+
+  /* Hero */
+  .hero { border-top: 0; padding-top: 36px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 64px; align-items: start; }
+  .hero .lead + .lead { margin-top: 14px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  .btn { display: inline-block; padding: 12px 20px; border-radius: 8px; font-weight: 650; text-decoration: none; font-size: .98rem; border: 1px solid var(--ink); }
+  .btn-dark { background: var(--ink); color: #fff; }
+  .btn-dark:hover { background: #1e293b; color: #fff; }
+  .btn-line { color: var(--ink); background: #fff; border-color: #cbd5e1; }
+  .btn-line:hover { border-color: var(--ink); color: var(--ink); }
+  .updated { margin-top: 22px; }
+
+  /* Cost chart */
+  .chart { border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 24px 20px; background: #fff; }
+  .chart h2 { font-size: 1.2rem; letter-spacing: -0.01em; }
+  .chart ul { list-style: none; padding: 0; margin: 18px 0 0; }
+  .chart li { display: grid; grid-template-columns: 11.8rem 1fr 3.8rem; align-items: center; gap: 12px; font-size: .9rem; padding: 3px 0; }
+  .chart .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--muted); }
+  .chart .nm b { color: var(--ink); font-weight: 650; }
+  .chart .track { height: 16px; background: var(--soft); border-radius: 3px; overflow: hidden; }
+  .chart .bar { display: block; height: 100%; background: #cbd5e1; border-radius: 3px; }
+  .chart .us .bar { background: var(--brand-bar); }
+  .chart .val { text-align: right; font-variant-numeric: tabular-nums; color: var(--body); }
+  .chart .us .val { color: var(--brand); font-weight: 700; }
+  .chart .star { color: var(--warn); }
+
+  /* Verdict */
+  .verdict { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 36px; }
+  .col { border-radius: var(--radius); padding: 28px; border: 1px solid var(--line); }
+  .col.win { background: var(--good-tint); border-color: #a7f3d0; }
+  .col.lose { background: var(--warn-tint); border-color: #fde68a; }
+  .col h3 { font-size: 1.25rem; margin-bottom: 14px; }
+  .col.win h3 { color: var(--good); }
+  .col.lose h3 { color: var(--warn); }
+  .col ul { margin: 0; padding-left: 1.1em; }
+  .col li { margin: 0 0 12px; }
+  .col li:last-child { margin-bottom: 0; }
+  .col li strong { color: var(--ink); }
+
+  /* Filters + table */
+  .needs-label { font-weight: 600; color: var(--ink); margin: 28px 0 12px; font-size: .95rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font: inherit; font-size: .9rem; padding: 8px 14px; border-radius: 999px; border: 1px solid #cbd5e1; background: #fff; color: var(--body); cursor: pointer; }
+  .chip:hover { border-color: var(--ink); }
+  .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .chip.clear { border: 0; text-decoration: underline; text-underline-offset: 3px; color: var(--muted); }
+  .count { margin: 12px 0 18px; font-size: .9rem; color: var(--muted); min-height: 1.5em; }
+  .table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); }
+  table { width: 100%; min-width: 1240px; border-collapse: collapse; font-size: .9rem; }
+  thead th { background: var(--soft); color: var(--muted); font-weight: 650; text-align: left; padding: 12px; border-bottom: 1px solid var(--line); vertical-align: bottom; white-space: nowrap; }
+  td, tbody th { padding: 12px; border-top: 1px solid var(--line); vertical-align: top; text-align: left; font-weight: 400; }
+  tbody tr.group th { border-top: 1px solid var(--line); padding-top: 22px; font-size: 1rem; font-weight: 750; color: var(--ink); background: #fff; }
+  tbody tr.group.us th { color: var(--brand); }
+  tr.us-row td, tr.us-row th { background: #f7fdfe; }
+  .dev { position: sticky; left: 0; background: #fff; min-width: 180px; z-index: 1; }
+  tr.us-row .dev { background: #f7fdfe; }
+  .dev b { color: var(--ink); font-weight: 650; display: block; }
+  .dev span, .note { display: block; font-size: .78rem; color: var(--muted); }
+  .r { text-align: right; white-space: nowrap; }
+  .c { text-align: center; }
+  .nowrap { white-space: nowrap; }
+  .ok { color: var(--good); font-weight: 600; }
+  .paid { color: var(--warn); font-weight: 600; }
+  .yes { color: var(--good); font-weight: 700; }
+  .no { color: #cbd5e1; }
+  tr.dim { opacity: .28; }
+  tr[data-id] { transition: opacity .2s; }
+
+  /* Criteria */
+  .criteria { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 56px; margin-top: 36px; }
+  .criteria article { border-left: 3px solid var(--brand-bar); padding-left: 20px; }
+  .criteria p { margin-top: 8px; }
+
+  /* Head to head */
+  .h2h { margin-top: 32px; border-top: 1px solid var(--line); }
+  .h2h article { display: grid; grid-template-columns: 13rem 1fr; gap: 32px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+  .h2h h3 { font-size: 1.3rem; }
+  .h2h dl { margin: 14px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; }
+  .h2h dt { font-weight: 700; font-size: .85rem; padding-top: 2px; white-space: nowrap; }
+  .h2h dt.better { color: var(--good); }
+  .h2h dt.worse { color: var(--warn); }
+  .h2h dd { margin: 0; }
+
+  /* Fit list */
+  .fit { list-style: none; padding: 0; margin: 32px 0 0; border-top: 1px solid var(--line); }
+  .fit li { border-bottom: 1px solid var(--line); }
+  .fit a { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 16px 8px; text-decoration: none; color: var(--body); border-radius: 6px; }
+  .fit a:hover { background: var(--soft); }
+  .fit a strong { color: var(--ink); }
+  .fit a:hover strong { color: var(--brand); }
+  .tag { display: inline-block; font-size: .72rem; font-weight: 650; padding: 1px 8px; border-radius: 999px; background: var(--soft); border: 1px solid var(--line); color: var(--muted); margin-left: 6px; vertical-align: 2px; }
+
+  /* FAQ */
+  .faq details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+  .faq details:first-of-type { border-top: 1px solid var(--line); margin-top: 28px; }
+  .faq summary { cursor: pointer; font-weight: 650; color: var(--ink); font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; color: var(--muted); font-weight: 400; font-size: 1.4rem; line-height: 1; }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details p { margin-top: 10px; max-width: 70ch; }
+
+  /* CTA + footer */
+  .cta { background: var(--soft); }
+  .fine { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); display: grid; gap: 10px; max-width: 80ch; }
+
+  @media (max-width: 900px) {
+    .hero-grid, .verdict, .criteria { grid-template-columns: 1fr; gap: 32px; }
+    .h2h article { grid-template-columns: 1fr; gap: 8px; }
+    .fit a { grid-template-columns: 1fr; gap: 2px; }
+    section { padding: 56px 0; }
+  }
+  @media (max-width: 480px) {
+    .wrap { padding: 0 18px; }
+    .chart { padding: 18px; }
+    .chart li { grid-template-columns: 9.8rem 1fr 3.2rem; gap: 8px; font-size: .84rem; }
+  }
+
+  .chart h3, .chart .chart-h { font-size: 1.2rem; letter-spacing: -0.01em; }
+  figure.chart { margin: 0; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 36px; }
+  .wins { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 56px; margin-top: 32px; padding: 0; list-style: none; }
+  .wins li { padding: 18px 0 18px 34px; border-bottom: 1px solid var(--line); position: relative; }
+  .wins li::before { content: "✓"; position: absolute; left: 0; top: 17px; width: 22px; height: 22px; border-radius: 50%; background: var(--good-tint); color: var(--good); font-weight: 800; font-size: .8rem; display: grid; place-items: center; border: 1px solid #a7f3d0; }
+  .wins strong { color: var(--ink); display: block; margin-bottom: 2px; }
+  .eco { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 36px; }
+  .eco a { display: block; text-decoration: none; color: var(--body); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .eco a:hover { border-color: var(--brand-bar); background: #fbfeff; }
+  .eco .big { display: block; font-size: 2rem; font-weight: 800; color: var(--brand); letter-spacing: -0.03em; line-height: 1.1; }
+  .eco h3 { margin: 10px 0 6px; }
+  .eco .go { display: inline-block; margin-top: 12px; color: var(--brand); font-weight: 650; font-size: .92rem; }
+  .h2h dl { grid-template-columns: 1fr; }
+  .chart.sig li { grid-template-columns: 7rem 1fr 8.5rem; }
+  @media (max-width: 1000px) { .eco { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 900px) { .charts, .wins { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .eco { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="wrap crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="https://pieeg.com/">Home</a></li>
+    <li><a href="https://pieeg.com/guides">Guides</a></li>
+    <li aria-current="page">Compare EEG devices</li>
+  </ol>
+</nav>
+
+<div>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <header>
+        <h1>Why researchers choose PiEEG over OpenBCI, Emotiv and Muse</h1>
+        <p class="lead" style="margin-top:22px">PiEEG gives you research-grade 24-bit EEG, EMG and ECG at the lowest price per channel, with every raw sample free to use.</p>
+        <p class="lead">The Raspberry Pi shields sample up to 16,000 times per second, and everything around the hardware is open: code on GitHub, datasets on Kaggle, headsets on Thingiverse and a community of 1,000+ on Discord.</p>
+        <div class="btns">
+          <a class="btn btn-dark" href="#numbers">See the numbers</a>
+          <a class="btn btn-line" href="#specs">Compare all specs</a>
+        </div>
+        <p class="small updated">Last checked: <time datetime="2026-09-24">24 September 2026</time>. Prices in USD, before tax and shipping.</p>
+      </header>
+      <figure class="chart" aria-labelledby="c-cost">
+        <h2 id="c-cost" class="chart-h">What one EEG channel costs</h2>
+        <p class="small" style="margin-top:4px">List price divided by EEG channels. Devices on sale today.</p>
+        <ul><li class="us"><span class="nm"><b>PiEEG Octopus 16</b></span><span class="track"><span class="bar" style="width:10.0%"></span></span><span class="val">$16</span></li><li class="us"><span class="nm"><b>PiEEG-16</b></span><span class="track"><span class="bar" style="width:15.6%"></span></span><span class="val">$24</span></li><li class="us"><span class="nm"><b>PiEEG-8</b></span><span class="track"><span class="bar" style="width:28.0%"></span></span><span class="val">$44</span></li><li class="us"><span class="nm"><b>PiEEG IronBCI-8</b></span><span class="track"><span class="bar" style="width:33.6%"></span></span><span class="val">$52</span></li><li><span class="nm">Muse 2</span><span class="track"><span class="bar" style="width:40.0%"></span></span><span class="val">$62</span></li><li><span class="nm">Emotiv Flex 2</span><span class="track"><span class="bar" style="width:48.0%"></span></span><span class="val">$75<span class="star">*</span></span></li><li><span class="nm">Emotiv EPOC X</span><span class="track"><span class="bar" style="width:54.8%"></span></span><span class="val">$86<span class="star">*</span></span></li><li><span class="nm">Emotiv Insight</span><span class="track"><span class="bar" style="width:63.9%"></span></span><span class="val">$100<span class="star">*</span></span></li><li><span class="nm">Muse S Athena</span><span class="track"><span class="bar" style="width:76.0%"></span></span><span class="val">$119</span></li><li><span class="nm">OpenBCI Cyton</span><span class="track"><span class="bar" style="width:99.9%"></span></span><span class="val">$156</span></li><li><span class="nm">OpenBCI Cyton + Daisy</span><span class="track"><span class="bar" style="width:100.0%"></span></span><span class="val">$156</span></li><li><span class="nm">OpenBCI Ganglion</span><span class="track"><span class="bar" style="width:100.0%"></span></span><span class="val">$156</span></li></ul>
+        <figcaption class="small" style="margin-top:12px"><span class="star">*</span> Emotiv also charges a paid EmotivPRO subscription to export raw EEG.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="numbers">
+    <div class="wrap">
+      <h2>PiEEG by the numbers</h2>
+      <p class="sub">Manufacturer specs, side by side. PiEEG is highlighted in blue.</p>
+      <div class="charts">
+        <figure class="chart" aria-labelledby="c-rate">
+        <h3 id="c-rate">Fastest sample rate per channel</h3>
+        <p class="small" style="margin-top:4px">Highest streamed rate, samples per second. Linear scale.</p>
+        <ul><li class="us"><span class="nm"><b>PiEEG-8</b></span><span class="track"><span class="bar" style="width:100.0%"></span></span><span class="val">16,000</span></li><li class="us"><span class="nm"><b>PiEEG-16</b></span><span class="track"><span class="bar" style="width:100.0%"></span></span><span class="val">16,000</span></li><li><span class="nm">Emotiv EPOC X</span><span class="track"><span class="bar" style="width:1.6%"></span></span><span class="val">256</span></li><li><span class="nm">Muse 2 / S Athena</span><span class="track"><span class="bar" style="width:1.6%"></span></span><span class="val">256</span></li><li><span class="nm">OpenBCI Cyton</span><span class="track"><span class="bar" style="width:1.6%"></span></span><span class="val">250</span></li><li><span class="nm">OpenBCI Ganglion</span><span class="track"><span class="bar" style="width:1.5%"></span></span><span class="val">200</span></li><li><span class="nm">OpenBCI Cyton + Daisy</span><span class="track"><span class="bar" style="width:1.5%"></span></span><span class="val">125</span></li></ul>
+        <figcaption class="small" style="margin-top:12px">Up to 64× faster than any Emotiv, Muse or OpenBCI device. Enough for surface EMG, fast ECG and high-frequency EEG research.</figcaption>
+      </figure>
+        <figure class="chart" aria-labelledby="c-16">
+        <h3 id="c-16">Price of a 14–16 channel system</h3>
+        <p class="small" style="margin-top:4px">List price of the smallest setup with at least 14 EEG channels, USD.</p>
+        <ul><li class="us"><span class="nm"><b>PiEEG Octopus 16</b></span><span class="track"><span class="bar" style="width:10.0%"></span></span><span class="val">$250</span></li><li class="us"><span class="nm"><b>PiEEG-16</b></span><span class="track"><span class="bar" style="width:15.6%"></span></span><span class="val">$390</span></li><li><span class="nm">Emotiv EPOC X (14 ch)</span><span class="track"><span class="bar" style="width:48.0%"></span></span><span class="val">$1,199<span class="star">*</span></span></li><li><span class="nm">OpenBCI Cyton + Daisy</span><span class="track"><span class="bar" style="width:100.0%"></span></span><span class="val">$2,499</span></li></ul>
+        <figcaption class="small" style="margin-top:12px">PiEEG-16 costs about a sixth of the 16-channel OpenBCI system. <span class="star">*</span> EPOC X raw data needs a paid licence.</figcaption>
+      </figure>
+        <figure class="chart" aria-labelledby="c-res">
+        <h3 id="c-res">ADC resolution per sample</h3>
+        <p class="small" style="margin-top:4px">Bits per sample. Each extra bit doubles the number of voltage levels.</p>
+        <ul><li class="us"><span class="nm"><b>PiEEG (all EEG boards)</b></span><span class="track"><span class="bar" style="width:100.0%"></span></span><span class="val">24-bit</span></li><li><span class="nm">OpenBCI Cyton</span><span class="track"><span class="bar" style="width:100.0%"></span></span><span class="val">24-bit</span></li><li><span class="nm">Emotiv EPOC X / Flex 2</span><span class="track"><span class="bar" style="width:66.7%"></span></span><span class="val">16-bit</span></li><li><span class="nm">Emotiv Insight</span><span class="track"><span class="bar" style="width:58.3%"></span></span><span class="val">14-bit</span></li><li><span class="nm">Muse S Athena</span><span class="track"><span class="bar" style="width:58.3%"></span></span><span class="val">14-bit</span></li><li><span class="nm">Muse 2</span><span class="track"><span class="bar" style="width:50.0%"></span></span><span class="val">12-bit</span></li></ul>
+        <figcaption class="small" style="margin-top:12px">24-bit gives 256× more voltage levels than 16-bit and 4,096× more than 12-bit.</figcaption>
+      </figure>
+        <figure class="chart sig" aria-labelledby="c-sig">
+          <h3 id="c-sig">Signals from one board</h3>
+          <p class="small" style="margin-top:4px">Biosignal types each device can record.</p>
+          <ul>
+            <li class="us"><span class="nm"><b>PiEEG</b></span><span class="track"><span class="bar" style="width:100%"></span></span><span class="val">EEG · EMG · ECG</span></li>
+            <li><span class="nm">Emotiv</span><span class="track"><span class="bar" style="width:33.3%"></span></span><span class="val">EEG</span></li>
+            <li><span class="nm">Muse</span><span class="track"><span class="bar" style="width:33.3%"></span></span><span class="val">EEG</span></li>
+          </ul>
+          <figcaption class="small" style="margin-top:12px">Record brain, muscle and heart activity with the same hardware and the same software, instead of buying three systems.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="advantages">
+    <div class="wrap">
+      <h2>Where PiEEG is better</h2>
+      <ul class="wins">
+        <li><strong>Lowest cost per channel</strong>From $16 per channel with Octopus 16 and $24 with PiEEG-16, against $156 for every OpenBCI board.</li>
+        <li><strong>Raw data is free and always yours</strong>Every sample streams through open-source Python, browser, LSL and BrainFlow tools. No paid tier, account or cloud login.</li>
+        <li><strong>The research-standard ADS1299 chip</strong>PiEEG-8, PiEEG-16 and IronBCI use the TI ADS1299, the same converter as OpenBCI Cyton, with public noise and gain figures you can cite.</li>
+        <li><strong>Up to 64× faster sampling</strong>PiEEG-8 and PiEEG-16 reach 16 kSPS. Emotiv and Muse stop at 256 SPS, and 16-channel OpenBCI streams at 125 SPS.</li>
+        <li><strong>EEG, EMG and ECG on one board</strong>One device, one software stack for brain, muscle and heart signals.</li>
+        <li><strong>You choose the electrode sites</strong>Any 10-20 montage, wet or dry, with 8, 16 or 32-channel caps. No fixed headset positions.</li>
+        <li><strong>Processing on the device</strong>The Raspberry Pi filters and classifies in real time with no laptop, ideal for robotics and closed-loop BCI.</li>
+        <li><strong>Form factors nobody else offers</strong>A neural face mask for VR (PiEEG XR) and a coin-sized 16-channel dry board (Octopus 16).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="ecosystem">
+    <div class="wrap">
+      <h2>An open ecosystem around the hardware</h2>
+      <p class="sub">Start before your board arrives: download data, print a headset and ask the community.</p>
+      <div class="eco">
+        <a href="https://www.kaggle.com/pieegbiolabplatform/code" rel="noopener">
+          <span class="big">Kaggle</span>
+          <h3>Open EEG datasets</h3>
+          <p>Real PiEEG recordings and ready-to-run machine-learning notebooks. Train and test models with no hardware.</p>
+          <span class="go">Explore datasets</span>
+        </a>
+        <a href="https://www.thingiverse.com/PiEEG/designs" rel="noopener">
+          <span class="big">3D print</span>
+          <h3>Free headset designs</h3>
+          <p>Headsets, electrode holders and enclosures for almost every PiEEG device, free to download on Thingiverse.</p>
+          <span class="go">Download STL files</span>
+        </a>
+        <a href="https://discord.gg/neJ45FR6Sv" rel="noopener">
+          <span class="big">1,000+</span>
+          <h3>Discord members</h3>
+          <p>Researchers, students and developers sharing code, projects and help with setup and signal processing.</p>
+          <span class="go">Join the Discord</span>
+        </a>
+        <a href="https://github.com/pieeg-club" rel="noopener">
+          <span class="big">GitHub</span>
+          <h3>Open-source code</h3>
+          <p>SDKs, firmware and examples for every device, so your whole pipeline is inspectable and reproducible.</p>
+          <span class="go">Browse repositories</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="specs">
+    <div class="wrap">
+      <h2>Every device, side by side</h2>
+      <p class="sub">Sample rate is the streamed rate per channel. Channels count EEG or biopotential inputs only. Pick your study&rsquo;s needs to fade out devices that don&rsquo;t qualify.</p>
+      <p class="needs-label" id="needs-label">What does your study need?</p>
+      <div class="chips" role="group" aria-labelledby="needs-label">
+        <button type="button" class="chip" data-need="ch16" aria-pressed="false">16 or more channels</button>
+        <button type="button" class="chip" data-need="rate" aria-pressed="false">500 SPS or faster</button>
+        <button type="button" class="chip" data-need="raw" aria-pressed="false">Raw data without a licence</button>
+        <button type="button" class="chip" data-need="open" aria-pressed="false">Open-source software</button>
+        <button type="button" class="chip" data-need="bio" aria-pressed="false">Also records EMG and ECG</button>
+        <button type="button" class="chip" data-need="wireless" aria-pressed="false">Wireless</button>
+        <button type="button" class="chip" data-need="now" aria-pressed="false">Available now</button>
+        <button type="button" class="chip clear" id="clear" hidden>Clear</button>
+      </div>
+      <p class="count" id="count" aria-live="polite">Showing all 16 devices.</p>
+      <div class="table-scroll">
+        <table>
+          <caption class="small" style="caption-side:bottom;text-align:left;padding:12px">PiEEG prices from our manufacturing partner Elecrow. Other prices and specs from each manufacturer&rsquo;s store or documentation, September 2026.</caption>
+          <thead>
+            <tr>
+              <th scope="col" class="dev" style="background:var(--soft)">Device</th>
+              <th scope="col">Channels</th>
+              <th scope="col">Sample rate</th>
+              <th scope="col">Resolution</th>
+              <th scope="col">Front end</th>
+              <th scope="col">Electrodes</th>
+              <th scope="col">Connection</th>
+              <th scope="col">Raw data</th>
+              <th scope="col" class="c">Open source</th>
+              <th scope="col" class="c">EMG / ECG</th>
+              <th scope="col" class="r">Price</th>
+              <th scope="col" class="r">Per channel</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr class="group us"><th colspan="13" scope="colgroup">PiEEG</th></tr>
+            <tr class="us-row" data-id="pieeg-8" data-ch="8" data-rate="16000" data-raw="1" data-open="1" data-bio="1" data-wireless="0" data-now="1">
+              <th scope="row" class="dev"><b><a href="https://pieeg.com/hardware/pieeg">PiEEG-8</a></b><span>Raspberry Pi 3/4/5 shield</span></th>
+              <td class="tnum"><b>8</b></td><td class="nowrap tnum">250 SPS – 16 kSPS</td><td>24-bit</td><td>TI ADS1299</td><td>Wet or dry</td><td>SPI to Raspberry Pi</td>
+              <td><span class="ok">Yes, free</span><span class="note">Python on the Pi, LSL, OSC</span></td>
+              <td class="c yes">✓</td><td class="c yes">✓</td><td class="r tnum">$350</td><td class="r tnum"><b>$44</b></td><td>Available</td>
+            </tr>
+            <tr class="us-row" data-id="pieeg-16" data-ch="16" data-rate="16000" data-raw="1" data-open="1" data-bio="1" data-wireless="0" data-now="1">
+              <th scope="row" class="dev"><b><a href="https://pieeg.com/hardware/pieeg-16">PiEEG-16</a></b><span>Raspberry Pi 5 shield</span></th>
+              <td class="tnum"><b>16</b></td><td class="nowrap tnum">250 SPS – 16 kSPS</td><td>24-bit</td><td>2× TI ADS1299</td><td>Wet or dry</td><td>SPI to Raspberry Pi 5</td>
+              <td><span class="ok">Yes, free</span><span class="note">Python on the Pi, LSL, OSC</span></td>
+              <td class="c yes">✓</td><td class="c yes">✓</td><td class="r tnum">$390</td><td class="r tnum"><b>$24</b></td><td>Available</td>
+            </tr>
+            <tr class="us-row" data-id="pieeg-24" data-ch="24" data-rate="0" data-raw="1" data-open="1" data-bio="1" data-wireless="0" data-now="0">
+              <th scope="row" class="dev"><b>PiEEG-24</b><span>Raspberry Pi shield</span></th>
+              <td class="tnum"><b>24</b></td><td>To be announced</td><td>To be announced</td><td>To be announced</td><td>To be announced</td><td>Raspberry Pi</td>
+              <td><span class="ok">Yes, free</span><span class="note">Same open PiEEG software</span></td>
+              <td class="c yes">✓</td><td class="c yes">✓</td><td class="r">Not priced</td><td class="r">—</td><td>Coming soon</td>
+            </tr>
+            <tr class="us-row" data-id="ironbci-8" data-ch="8" data-rate="250" data-raw="1" data-open="1" data-bio="1" data-wireless="1" data-now="1">
+              <th scope="row" class="dev"><b><a href="https://pieeg.com/hardware/ironbci">IronBCI-8</a></b><span>Wearable board, 50 mm</span></th>
+              <td class="tnum"><b>8</b></td><td class="nowrap tnum">250 SPS</td><td>24-bit</td><td>TI ADS1299</td><td>Wet or dry</td><td>Bluetooth LE 5</td>
+              <td><span class="ok">Yes, free</span><span class="note">Python, Android SDK, Web Bluetooth</span></td>
+              <td class="c yes">✓</td><td class="c yes">✓</td><td class="r tnum">$420</td><td class="r tnum"><b>$53</b></td><td>Available</td>
+            </tr>
+            <tr class="us-row" data-id="ironbci-16" data-ch="16" data-rate="250" data-raw="1" data-open="1" data-bio="1" data-wireless="1" data-now="0">
+              <th scope="row" class="dev"><b>IronBCI-16</b><span>Wearable board</span></th>
+              <td class="tnum"><b>16</b></td><td class="nowrap tnum">250 SPS</td><td>24-bit</td><td>—</td><td>Wet or dry</td><td>Bluetooth LE</td>
+              <td><span class="ok">Yes, free</span><span class="note">PiEEG Cloud, PiEEG Server</span></td>
+              <td class="c yes">✓</td><td class="c yes">✓</td><td class="r"><a href="https://pieeg.com/contact">Ask us</a></td><td class="r">—</td><td>On request</td>
+            </tr>
+            <tr class="us-row" data-id="octopus-16" data-ch="16" data-rate="250" data-raw="1" data-open="1" data-bio="1" data-wireless="1" data-now="1">
+              <th scope="row" class="dev"><b><a href="https://pieeg.com/hardware/octopus-16">Octopus 16</a></b><span>Wearable, XIAO ESP32-S3</span></th>
+              <td class="tnum"><b>16</b></td><td class="nowrap tnum">250 SPS</td><td>24-bit</td><td>2× TI ADS131M08</td><td>Dry pogo pins</td><td>Bluetooth LE</td>
+              <td><span class="ok">Yes, free</span><span class="note">PiEEG Server, browser SDK</span></td>
+              <td class="c yes">✓</td><td class="c yes">✓</td><td class="r tnum">$250</td><td class="r tnum"><b>$16</b></td><td>Available</td>
+            </tr>
+            <tr class="us-row" data-id="pieeg-xr" data-ch="8" data-rate="250" data-raw="1" data-open="1" data-bio="1" data-wireless="1" data-now="0">
+              <th scope="row" class="dev"><b><a href="https://pieeg.com/xr">PiEEG XR</a></b><span>VR face mask, 10 dry pads</span></th>
+              <td class="tnum"><b>8</b></td><td class="nowrap tnum">250 SPS</td><td>24-bit</td><td>2× TI ADS1299 + STM32WB</td><td>Flat dry Ag/AgCl</td><td>Bluetooth LE 5, OSC</td>
+              <td><span class="ok">Yes, free</span><span class="note">Facial EMG + frontal EEG to WebXR</span></td>
+              <td class="c yes">✓</td><td class="c yes">✓</td><td class="r">Kickstarter</td><td class="r">—</td><td>Pre-launch</td>
+            </tr>
+            <tr class="us-row" data-id="aura" data-ch="4" data-rate="0" data-raw="1" data-open="1" data-bio="1" data-wireless="1" data-now="0">
+              <th scope="row" class="dev"><b><a href="https://aura.pieeg.com" rel="noopener">Aura</a></b><span>EMG wristband for XR</span></th>
+              <td class="tnum"><b>4</b><span class="note">EMG + 6-axis IMU</span></td><td>To be announced</td><td>To be announced</td><td>To be announced</td><td>Dry</td><td>Bluetooth LE</td>
+              <td><span class="ok">Yes, free</span><span class="note">EMG and IMU on one clock</span></td>
+              <td class="c yes">✓</td><td class="c yes">✓</td><td class="r">Not priced</td><td class="r">—</td><td>Coming soon</td>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr class="group"><th colspan="13" scope="colgroup">OpenBCI</th></tr>
+            <tr data-id="cyton" data-ch="8" data-rate="250" data-raw="1" data-open="1" data-bio="1" data-wireless="1" data-now="1">
+              <th scope="row" class="dev"><b>Cyton</b><span>Wireless board</span></th>
+              <td class="tnum"><b>8</b></td><td class="nowrap tnum">250 SPS</td><td>24-bit</td><td>TI ADS1299</td><td>Sold separately</td><td>RF dongle (USB)</td>
+              <td><span class="ok">Yes, free</span><span class="note">OpenBCI GUI, BrainFlow</span></td>
+              <td class="c yes">✓</td><td class="c yes">✓</td><td class="r tnum">$1,249</td><td class="r tnum"><b>$156</b></td><td>Available</td>
+            </tr>
+            <tr data-id="cyton-daisy" data-ch="16" data-rate="125" data-raw="1" data-open="1" data-bio="1" data-wireless="1" data-now="1">
+              <th scope="row" class="dev"><b>Cyton + Daisy</b><span>Board + expansion</span></th>
+              <td class="tnum"><b>16</b></td><td class="nowrap tnum">125 SPS streamed</td><td>24-bit</td><td>2× TI ADS1299</td><td>Sold separately</td><td>RF dongle (USB)</td>
+              <td><span class="ok">Yes, free</span><span class="note">OpenBCI GUI, BrainFlow</span></td>
+              <td class="c yes">✓</td><td class="c yes">✓</td><td class="r tnum">$2,499</td><td class="r tnum"><b>$156</b></td><td>Available</td>
+            </tr>
+            <tr data-id="ganglion" data-ch="4" data-rate="200" data-raw="1" data-open="1" data-bio="1" data-wireless="1" data-now="1">
+              <th scope="row" class="dev"><b>Ganglion</b><span>Wireless board</span></th>
+              <td class="tnum"><b>4</b></td><td class="nowrap tnum">200 SPS</td><td>24-bit ADC, compressed</td><td>Microchip MCP3912</td><td>Sold separately</td><td>Bluetooth LE</td>
+              <td><span class="ok">Yes, free</span><span class="note">OpenBCI GUI, BrainFlow</span></td>
+              <td class="c yes">✓</td><td class="c yes">✓</td><td class="r tnum">$624.99</td><td class="r tnum"><b>$156</b></td><td>Available</td>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr class="group"><th colspan="13" scope="colgroup">Emotiv</th></tr>
+            <tr data-id="epoc-x" data-ch="14" data-rate="256" data-raw="0" data-open="0" data-bio="0" data-wireless="1" data-now="1">
+              <th scope="row" class="dev"><b>EPOC X</b><span>Headset</span></th>
+              <td class="tnum"><b>14</b></td><td class="nowrap tnum">128 or 256 SPS</td><td>14 or 16-bit</td><td>Proprietary</td><td>Saline felt pads</td><td>Bluetooth LE or dongle</td>
+              <td><span class="paid">Paid licence</span><span class="note">Raw export needs a paid EmotivPRO tier</span></td>
+              <td class="c no">—</td><td class="c no">—</td><td class="r tnum">$1,199</td><td class="r tnum"><b>$86</b></td><td>Available</td>
+            </tr>
+            <tr data-id="insight" data-ch="5" data-rate="128" data-raw="0" data-open="0" data-bio="0" data-wireless="1" data-now="1">
+              <th scope="row" class="dev"><b>Insight</b><span>Headset</span></th>
+              <td class="tnum"><b>5</b></td><td class="nowrap tnum">128 SPS</td><td>14-bit</td><td>Proprietary</td><td>Semi-dry polymer</td><td>Bluetooth LE</td>
+              <td><span class="paid">Paid licence</span><span class="note">Raw export needs a paid EmotivPRO tier</span></td>
+              <td class="c no">—</td><td class="c no">—</td><td class="r tnum">$499</td><td class="r tnum"><b>$100</b></td><td>Available</td>
+            </tr>
+            <tr data-id="flex-2" data-ch="32" data-rate="256" data-raw="0" data-open="0" data-bio="0" data-wireless="1" data-now="1">
+              <th scope="row" class="dev"><b>Flex 2</b><span>Cap</span></th>
+              <td class="tnum"><b>32</b><span class="note">up to 32</span></td><td class="nowrap tnum">128 or 256 SPS</td><td>14 or 16-bit</td><td>Proprietary</td><td>Saline or gel</td><td>Bluetooth LE or dongle</td>
+              <td><span class="paid">Paid licence</span><span class="note">Raw export needs a paid EmotivPRO tier</span></td>
+              <td class="c no">—</td><td class="c no">—</td><td class="r tnum">$2,399</td><td class="r tnum"><b>$75</b></td><td>Available</td>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <tr class="group"><th colspan="13" scope="colgroup">Muse</th></tr>
+            <tr data-id="muse-2" data-ch="4" data-rate="256" data-raw="1" data-open="0" data-bio="0" data-wireless="1" data-now="1">
+              <th scope="row" class="dev"><b>Muse 2</b><span>Headband</span></th>
+              <td class="tnum"><b>4</b></td><td class="nowrap tnum">256 SPS</td><td>12-bit</td><td>Proprietary</td><td>Fixed dry sensors</td><td>Bluetooth LE</td>
+              <td><span>Third-party only</span><span class="note">Mind Monitor, muse-lsl</span></td>
+              <td class="c no">—</td><td class="c no">—</td><td class="r tnum">$249.99</td><td class="r tnum"><b>$62</b></td><td>Available</td>
+            </tr>
+            <tr data-id="muse-athena" data-ch="4" data-rate="256" data-raw="1" data-open="0" data-bio="0" data-wireless="1" data-now="1">
+              <th scope="row" class="dev"><b>Muse S Athena</b><span>Soft headband + fNIRS</span></th>
+              <td class="tnum"><b>4</b><span class="note">EEG, plus fNIRS and PPG</span></td><td class="nowrap tnum">256 SPS</td><td>14-bit</td><td>Proprietary</td><td>Fixed dry sensors</td><td>Bluetooth LE</td>
+              <td><span>Third-party only</span><span class="note">OpenMuse and similar tools</span></td>
+              <td class="c no">—</td><td class="c no">—</td><td class="r tnum">$474.99</td><td class="r tnum"><b>$119</b></td><td>Available</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="head-to-head">
+    <div class="wrap narrow">
+      <h2>Head to head</h2>
+      <div class="h2h">
+        <article id="pieeg-vs-openbci">
+          <h3>PiEEG vs OpenBCI</h3>
+          <div>
+            <p>Same ADS1299 chip, same open-source approach, a fraction of the price.</p>
+            <dl><dt class="better">Where PiEEG wins</dt><dd>16 channels for $390 instead of $2,499. Up to 16 kSPS instead of 250. Full 250 SPS on all 16 wireless channels with Octopus 16, where Cyton + Daisy drops to 125 SPS. Real-time processing on the Raspberry Pi.</dd></dl>
+          </div>
+        </article>
+        <article id="pieeg-vs-emotiv">
+          <h3>PiEEG vs Emotiv</h3>
+          <div>
+            <p>Open hardware you control, instead of a closed headset with a software subscription.</p>
+            <dl><dt class="better">Where PiEEG wins</dt><dd>Raw data with no EmotivPRO subscription. 24-bit instead of 14 or 16-bit. EMG and ECG as well as EEG. Electrodes placed anywhere, and sampling far beyond 256 SPS on the Pi shields.</dd></dl>
+          </div>
+        </article>
+        <article id="pieeg-vs-muse">
+          <h3>PiEEG vs Muse</h3>
+          <div>
+            <p>A multichannel research system instead of a four-sensor wellness headband.</p>
+            <dl><dt class="better">Where PiEEG wins</dt><dd>8 to 24 channels instead of 4, placed across the whole scalp. 24-bit instead of 12 or 14-bit. EMG and ECG, open-source tools, and official raw data access instead of third-party apps.</dd></dl>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="fit">
+    <div class="wrap narrow">
+      <h2>Which PiEEG device fits your study</h2>
+      <ul class="fit"><li><a href="https://pieeg.com/hardware/pieeg-16"><span>Lab ERP, SSVEP or motor imagery with a wet cap</span><strong>PiEEG-16, or PiEEG-8 to start </strong></a></li><li><a href="https://pieeg.com/hardware/pieeg"><span>EMG, ECG or anything above 250 SPS</span><strong>PiEEG-8 or PiEEG-16, up to 16 kSPS </strong></a></li><li><a href="https://pieeg.com/hardware/ironbci"><span>Participants who walk or move away from a desk</span><strong>IronBCI-8 or IronBCI-16 </strong></a></li><li><a href="https://pieeg.com/hardware/octopus-16"><span>Gel-free occipital recording in a few minutes</span><strong>Octopus 16 </strong></a></li><li><a href="https://pieeg.com/xr"><span>Affective computing and facial EMG inside VR</span><strong>PiEEG XR </strong></a></li><li><a href="https://aura.pieeg.com"><span>Hand gestures and wrist motion in XR</span><strong>Aura <span class="tag">Coming soon</span></strong></a></li><li><a href="https://pieeg.com/contact"><span>Denser scalp coverage on a Raspberry Pi</span><strong>PiEEG-24 <span class="tag">Coming soon</span></strong></a></li></ul>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <div class="wrap narrow">
+      <h2>Frequently asked questions</h2>
+      <details><summary>Is PiEEG a good alternative to OpenBCI?</summary><p>Yes. PiEEG-8, PiEEG-16 and IronBCI use the same TI ADS1299 24-bit converter as the OpenBCI Cyton, and both are open source. PiEEG-16 costs $390 for 16 channels, compared with $2,499 for the 16-channel Cyton + Daisy, and samples up to 16 kSPS instead of 125 SPS.</p></details><details><summary>Can I get raw EEG data from PiEEG without a licence?</summary><p>Yes. Every PiEEG device streams raw samples through free, open-source tools in Python, the browser, Lab Streaming Layer and BrainFlow. There is no paid tier for raw data.</p></details><details><summary>Is there a public PiEEG EEG dataset?</summary><p>Yes. PiEEG publishes datasets and ready-to-run notebooks on Kaggle, so you can explore real PiEEG recordings and train models before buying hardware.</p></details><details><summary>Can I 3D print a headset for PiEEG?</summary><p>Yes. Headsets, electrode holders and enclosures for almost every PiEEG device are free to download on Thingiverse.</p></details><details><summary>Where can I get help with PiEEG?</summary><p>Join the PiEEG Discord, where more than 1,000 researchers, students and developers share code, projects and troubleshooting tips. Documentation and source code are on GitHub.</p></details><details><summary>Which PiEEG device should I choose for research?</summary><p>PiEEG-16 for stationary lab work with a wet cap, PiEEG-8 or PiEEG-16 for EMG or anything above 250 SPS, IronBCI for participants who move, Octopus 16 for quick gel-free occipital recordings, and PiEEG XR for facial EMG and EEG inside VR.</p></details>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap narrow">
+      <h2>Planning a study?</h2>
+      <p class="sub">Tell us your paradigm, participant count and budget, and we&rsquo;ll suggest a board, cap and software setup.</p>
+      <div class="btns">
+        <a class="btn btn-dark" href="https://pieeg.com/contact">Contact the PiEEG team</a>
+        <a class="btn btn-line" href="https://discord.gg/neJ45FR6Sv">Ask on Discord</a>
+      </div>
+      <div class="fine small">
+        <p>PiEEG devices are for research and education. They are not medical devices and are not intended for diagnosis or treatment.</p>
+        <p>OpenBCI, Cyton, Ganglion, Emotiv, EPOC, Insight, Flex, Muse and Muse S Athena are trademarks of their respective owners. This comparison is written by PiEEG and is not endorsed by those companies.</p>
+        <p>Sources:
+          <a href="https://shop.openbci.com/collections/frontpage/boards" rel="nofollow noopener">OpenBCI shop</a>,
+          <a href="https://docs.openbci.com/Cyton/CytonLanding/" rel="nofollow noopener">OpenBCI Cyton docs</a>,
+          <a href="https://www.emotiv.com/blog/emotiv-eeg-headset-price" rel="nofollow noopener">Emotiv pricing</a>,
+          <a href="https://www.emotiv.com/emotivpro" rel="nofollow noopener">EmotivPRO</a>,
+          <a href="https://choosemuse.com/products/muse-s-athena" rel="nofollow noopener">Muse S Athena</a>,
+          <a href="https://www.elecrow.com/pieeg.html" rel="noopener">PiEEG at Elecrow</a>.
+          Spotted an out-of-date number? <a href="https://pieeg.com/contact">Let us know</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  var rows = Array.prototype.slice.call(document.querySelectorAll("tr[data-id]"));
+  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip[data-need]"));
+  var clear = document.getElementById("clear");
+  var count = document.getElementById("count");
+  var total = rows.length;
+
+  var tests = {
+    ch16: function (r) { return +r.dataset.ch >= 16; },
+    rate: function (r) { return +r.dataset.rate >= 500; },
+    raw: function (r) { return r.dataset.raw === "1"; },
+    open: function (r) { return r.dataset.open === "1"; },
+    bio: function (r) { return r.dataset.bio === "1"; },
+    wireless: function (r) { return r.dataset.wireless === "1"; },
+    now: function (r) { return r.dataset.now === "1"; }
+  };
+
+  function update() {
+    var active = chips.filter(function (c) { return c.getAttribute("aria-pressed") === "true"; })
+                      .map(function (c) { return c.dataset.need; });
+    var match = 0, ours = 0;
+    rows.forEach(function (r) {
+      var ok = active.every(function (n) { return tests[n](r); });
+      r.classList.toggle("dim", active.length > 0 && !ok);
+      if (ok) { match++; if (r.classList.contains("us-row")) ours++; }
+    });
+    clear.hidden = active.length === 0;
+    if (!active.length) count.textContent = "Showing all " + total + " devices.";
+    else if (!match) count.textContent = "No device meets every need. Remove one to see the closest options.";
+    else count.textContent = match + " of " + total + " devices match, " + ours + " of them from PiEEG.";
+  }
+
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      c.setAttribute("aria-pressed", c.getAttribute("aria-pressed") === "true" ? "false" : "true");
+      update();
+    });
+  });
+  clear.addEventListener("click", function () {
+    chips.forEach(function (c) { c.setAttribute("aria-pressed", "false"); });
+    update();
+  });
+})();
+</script>
+</body>
+</html>

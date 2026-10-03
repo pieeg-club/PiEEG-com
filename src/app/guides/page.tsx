@@ -6,7 +6,7 @@ import { getAllGuides } from "@/lib/guides";
 export const metadata: Metadata = {
   title: "BCI guides — PiEEG",
   description:
-    "Honest comparisons of the PiEEG platform with OpenBCI and Muse. Specs from published pages, no ranking, no medical claims. Written so a person or a model can compare the software stack, not only the board.",
+    "Honest comparisons of the PiEEG platform with OpenBCI, Emotiv and Muse. Specs from published pages, no ranking, no medical claims. Written so a person or a model can compare the software stack, not only the board.",
 };
 
 export default function GuidesPage() {
@@ -32,7 +32,7 @@ export default function GuidesPage() {
             </h1>
 
             <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 leading-relaxed">
-              PiEEG is a developer platform. These notes compare it with OpenBCI and Muse: the stack, the montage, and the raw-data contract. Numbers come from published pages, dated. Where we have not measured something, the page says so.
+              PiEEG is a developer platform. These notes compare it with OpenBCI, Emotiv and Muse: the stack, the montage, and the raw-data contract. Numbers come from published pages, dated. Where we have not measured something, the page says so.
             </p>
           </div>
         </div>

@@ -4,6 +4,9 @@ import Link from "next/link";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import { getAllGuides, getGuideBySlug } from "@/lib/guides";
 import ArticleContent from "@/components/ArticleContent";
+import CompareEegGuide, {
+  COMPARE_EEG_SLUG,
+} from "@/components/CompareEegGuide";
 
 export async function generateStaticParams() {
   return getAllGuides().map((g) => ({ slug: g.slug }));
@@ -20,11 +23,19 @@ export async function generateMetadata({
   return {
     title: `${guide.title} — PiEEG`,
     description: guide.excerpt,
+    alternates:
+      slug === COMPARE_EEG_SLUG
+        ? { canonical: `https://pieeg.com/guides/${slug}` }
+        : undefined,
     openGraph: {
       title: guide.title,
       description: guide.excerpt,
       images: [guide.image],
       type: "article",
+      url:
+        slug === COMPARE_EEG_SLUG
+          ? `https://pieeg.com/guides/${slug}`
+          : undefined,
     },
   };
 }
@@ -60,6 +71,14 @@ export default async function GuidePage({
           })),
         }
       : null;
+
+  if (slug === COMPARE_EEG_SLUG) {
+    return (
+      <main className="flex-1 bg-white">
+        <CompareEegGuide />
+      </main>
+    );
+  }
 
   return (
     <main className="flex-1">

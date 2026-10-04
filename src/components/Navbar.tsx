@@ -126,7 +126,7 @@ const megaMenuSections = [
     items: [
       { href: "https://1020.pieeg.com", label: "1020 Academy", desc: "Learn BCI with live brain data", Icon: School, external: true },
       { href: "https://ide.pieeg.com", label: "bioIDE", desc: "Write JavaScript against live EEG", Icon: Terminal, external: true },
-      { href: "https://biocircuit.pieeg.com/", label: "bioCircuit", desc: "Browser lab: sensors, motors, blocks", Icon: CircuitBoard, external: true },
+      { href: "https://octobridge.pieeg.com/", label: "octoBridge", desc: "Browser lab: sensors, motors, blocks", Icon: CircuitBoard, external: true },
       { href: "https://cloud.pieeg.com/experiences/signal-lab", label: "Signal Lab", desc: "EEG DSP course on your live stream", Icon: GraduationCap, external: true },
     ],
   },

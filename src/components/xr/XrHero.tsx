@@ -420,7 +420,59 @@ export default function XrHero() {
           <HeroXrScope />
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-mono text-zinc-500 dark:text-zinc-400">
+        {/* Featured In & Field Credibility Strip */}
+        <div className="mt-7 pt-5 border-t border-zinc-200/70 dark:border-zinc-800/70 max-w-5xl mx-auto">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 text-xs">
+            <span className="font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mr-1">
+              Covered by &amp; field-tested:
+            </span>
+            <a
+              href="https://www.uploadvr.com/pieeg-xr-makes-your-vr-avatar-expressive-without-face-tracking/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 font-semibold hover:border-violet-400 dark:hover:border-violet-500 transition-colors"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />
+              UploadVR
+            </a>
+            <a
+              href="https://www.moguravr.com/pieeg-xr-kickstarter-en/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 font-semibold hover:border-rose-400 dark:hover:border-rose-500 transition-colors"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+              Mogura VR (JP)
+            </a>
+            <a
+              href="https://www.notebookcheck.net/For-VR-PiEEG-XR-measures-brain-activity-in-real-time.1311211.0.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 font-semibold hover:border-cyan-400 dark:hover:border-cyan-500 transition-colors"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
+              Notebookcheck
+            </a>
+            <a
+              href="https://www.ukrifter.com/revolutionising-avatar-control-pieegs-brain-computer-interface-for-quest-headsets/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 font-semibold hover:border-amber-400 dark:hover:border-amber-500 transition-colors"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+              UK Rifter
+            </a>
+            <a
+              href="#xr-credibility"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-50/70 dark:bg-emerald-950/30 text-emerald-800 dark:text-emerald-300 font-semibold hover:border-emerald-500 transition-colors"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              Sports Research · María Trapero Ventura
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-mono text-zinc-500 dark:text-zinc-400">
           <a href="#xr-bench" className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
             [01 · Interactive XR Architecture]
           </a>
@@ -429,6 +481,9 @@ export default function XrHero() {
           </a>
           <a href="#xr-hardware-demos" className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
             [03 · Hardware, Demos &amp; Experiences]
+          </a>
+          <a href="#xr-credibility" className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+            [04 · Field Research, VR Press &amp; Ecosystem]
           </a>
         </div>
       </div>

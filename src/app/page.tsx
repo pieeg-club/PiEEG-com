@@ -26,6 +26,7 @@ function GitHubIcon({ className }: { className?: string }) {
 
 const featuredIn = [
   { name: "UploadVR", logo: "UploadVR", url: "https://www.uploadvr.com/pieeg-xr-makes-your-vr-avatar-expressive-without-face-tracking/" },
+  { name: "Mogura VR", logo: "Mogura VR", url: "https://www.moguravr.com/pieeg-xr-kickstarter-en/" },
   { name: "Tom's Hardware", logo: "Tom's Hardware", url: "https://www.tomshardware.com/raspberry-pi/raspberry-pi-powers-briefcase-sized-pieeg-bio-lab-project" },
   { name: "IEEE Spectrum", logo: "IEEE Spectrum", url: "https://spectrum.ieee.org/neurotechnology-diy" },
   { name: "VICE", logo: "VICE", url: "https://www.vice.com/en/article/88x99k/this-affordable-device-will-let-anyone-connect-their-brain-to-a-computer" },
@@ -35,6 +36,7 @@ const featuredIn = [
   { name: "Arduino Blog", logo: "Arduino", url: "https://blog.arduino.cc/2024/05/10/ardeeg-is-an-arduino-uno-r4-wifi-shield-for-measuring-biosignals/" },
   { name: "CNX Software", logo: "CNX Software", url: "https://www.cnx-software.com/2024/05/15/ardeeg-shield-works-with-arduino-uno-r4-wifi-for-biosignals-measurement/" },
   { name: "Notebookcheck", logo: "Notebookcheck", url: "https://www.notebookcheck.net/For-VR-PiEEG-XR-measures-brain-activity-in-real-time.1311211.0.html" },
+  { name: "UK Rifter", logo: "UK Rifter", url: "https://www.ukrifter.com/revolutionising-avatar-control-pieegs-brain-computer-interface-for-quest-headsets/" },
   { name: "It's FOSS", logo: "It's FOSS", url: "https://itsfoss.com/news/pieeg-kit/" },
   { name: "Electronics Weekly", logo: "Electronics Weekly", url: "https://www.electronicsweekly.com/blogs/gadget-master/arduino/measuring-eeg-and-biosignals-with-arduino-ardeeg-shield-2024-05/" },
 ];
@@ -625,6 +627,7 @@ function WebBCISection() {
 function FeaturedSection() {
   const publications = [
     { name: "UploadVR", kind: "VR press", url: "https://www.uploadvr.com/pieeg-xr-makes-your-vr-avatar-expressive-without-face-tracking/" },
+    { name: "Mogura VR", kind: "VR press (JP)", url: "https://www.moguravr.com/pieeg-xr-kickstarter-en/" },
     { name: "Tom's Hardware", kind: "Hardware", url: "https://www.tomshardware.com/raspberry-pi/raspberry-pi-powers-briefcase-sized-pieeg-bio-lab-project" },
     { name: "IEEE Spectrum", kind: "Science", url: "https://spectrum.ieee.org/neurotechnology-diy" },
     { name: "VICE", kind: "Media", url: "https://www.vice.com/en/article/88x99k/this-affordable-device-will-let-anyone-connect-their-brain-to-a-computer" },
@@ -634,6 +637,7 @@ function FeaturedSection() {
     { name: "Arduino Blog", kind: "Hardware", url: "https://blog.arduino.cc/2024/05/10/ardeeg-is-an-arduino-uno-r4-wifi-shield-for-measuring-biosignals/" },
     { name: "CNX Software", kind: "Embedded", url: "https://www.cnx-software.com/2024/05/15/ardeeg-shield-works-with-arduino-uno-r4-wifi-for-biosignals-measurement/" },
     { name: "Notebookcheck", kind: "Tech", url: "https://www.notebookcheck.net/For-VR-PiEEG-XR-measures-brain-activity-in-real-time.1311211.0.html" },
+    { name: "UK Rifter", kind: "VR press (UK)", url: "https://www.ukrifter.com/revolutionising-avatar-control-pieegs-brain-computer-interface-for-quest-headsets/" },
     { name: "It's FOSS", kind: "Open source", url: "https://itsfoss.com/news/pieeg-kit/" },
     { name: "Electronics Weekly", kind: "Electronics", url: "https://www.electronicsweekly.com/blogs/gadget-master/arduino/measuring-eeg-and-biosignals-with-arduino-ardeeg-shield-2024-05/" },
   ] as const;

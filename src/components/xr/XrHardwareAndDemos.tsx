@@ -7,17 +7,15 @@ import {
   Sparkles,
   Radio,
   Plane,
-  ShieldAlert,
   ExternalLink,
   ArrowRight,
   Rocket,
   Code2 as Github,
-  BookOpen,
   Users,
   Box,
   PlayCircle,
-  Newspaper,
 } from "lucide-react";
+import XrCredibilityAndResearch from "@/components/xr/XrCredibilityAndResearch";
 import {
   XR_ENCLOSURE,
   XR_GITHUB,
@@ -332,7 +330,7 @@ export default function XrHardwareAndDemos() {
           </div>
 
           {/* Live Video Demos */}
-          <div className="mb-14">
+          <div>
             <div className="flex items-center gap-2 mb-5">
               <PlayCircle className="w-4 h-4 text-violet-500" />
               <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
@@ -382,88 +380,11 @@ export default function XrHardwareAndDemos() {
               ))}
             </div>
           </div>
-
-          {/* Research Preprint, Press & Battery Safety Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-            <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/50 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-violet-600 dark:text-violet-400 font-semibold mb-2">
-                  <BookOpen className="w-4 h-4" />
-                  Preprint Citation
-                </div>
-                <p className="text-xs text-zinc-700 dark:text-zinc-300 font-mono leading-relaxed">
-                  El Abbassi, Y.; Rakhmatulin, I.{" "}
-                  <em>
-                    PiEEG XR: A WebXR Brain-Computer Interface Platform for Neural-Adaptive Avatar Control in Mixed
-                    Reality.
-                  </em>{" "}
-                  Preprints 2026, 2026060016.
-                </p>
-              </div>
-              <a
-                href="https://doi.org/10.20944/preprints202606.0016.v1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-violet-600 dark:text-violet-400 hover:underline"
-              >
-                doi.org/10.20944/preprints202606.0016.v1
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-
-            <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/50 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-cyan-600 dark:text-cyan-400 font-semibold mb-2">
-                  <Newspaper className="w-4 h-4" />
-                  Independent Coverage &amp; Companion Wristband
-                </div>
-                <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                  Covered by UploadVR for camera-free biosignal avatar expression. Can be paired alongside{" "}
-                  <a
-                    href="https://aura.pieeg.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cyan-600 dark:text-cyan-400 hover:underline font-semibold"
-                  >
-                    Aura VR
-                  </a>{" "}
-                  (4 dry wrist sEMG contacts + 6-axis IMU) for combined facial and hand/wrist streaming.
-                </p>
-              </div>
-              <a
-                href="https://www.uploadvr.com/pieeg-xr-makes-your-vr-avatar-expressive-without-face-tracking/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline"
-              >
-                Read the UploadVR article
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-
-            <div className="p-5 rounded-2xl border border-amber-500/30 bg-amber-50/40 dark:bg-amber-950/20 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-amber-700 dark:text-amber-400 font-semibold mb-2">
-                  <ShieldAlert className="w-4 h-4" />
-                  Battery Isolation &amp; Research Notice
-                </div>
-                <p className="text-xs text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                  PiEEG XR is a research and developer kit, not a medical device. Operate strictly from a{" "}
-                  <strong>5 V battery bank</strong> or the headset&apos;s internal battery over USB-C. Never connect
-                  the board to mains wall power while worn.
-                </p>
-              </div>
-              <Link
-                href="/liability"
-                className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-amber-700 dark:text-amber-400 hover:underline"
-              >
-                Read safety &amp; liability terms
-                <ArrowRight className="w-3 h-3" />
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
+
+      {/* ── Section 04: Partner Research, VR Press & Ecosystem ─────────────── */}
+      <XrCredibilityAndResearch />
 
       {/* ── Final CTA ──────────────────────────────────────────────────────── */}
       <section className="py-12 sm:py-16 bg-zinc-50/50 dark:bg-zinc-900/25">

@@ -457,7 +457,7 @@ export default function BulkOrderSection() {
       setError(
         err instanceof Error
           ? err.message
-          : "Network error while submitting order. Please try again or email youssef@pieeg.com."
+          : "Network error while submitting order. Please try again or email pieeg@pieeg.com."
       );
     } finally {
       setSubmitting(false);
@@ -924,10 +924,10 @@ export default function BulkOrderSection() {
                     <strong>${submittedOrder.estimatedTotal.toLocaleString("en-US")} USD</strong>) and
                     notified{" "}
                     <a
-                      href="mailto:youssef@pieeg.com"
+                      href="mailto:pieeg@pieeg.com"
                       className="text-cyan-600 dark:text-cyan-400 font-semibold underline"
                     >
-                      youssef@pieeg.com
+                      pieeg@pieeg.com
                     </a>
                     .
                   </p>
@@ -937,13 +937,13 @@ export default function BulkOrderSection() {
                   </p>
                   <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
                     <a
-                      href={`mailto:youssef@pieeg.com?subject=${encodeURIComponent(
+                      href={`mailto:pieeg@pieeg.com?subject=${encodeURIComponent(
                         `PiEEG Bulk Order Quote (#${submittedOrder.id.slice(0, 8).toUpperCase()}) - ${submittedOrder.organization}`
                       )}`}
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs font-bold hover:opacity-90 transition-opacity"
                     >
                       <Mail className="w-4 h-4" />
-                      Email youssef@pieeg.com Directly
+                      Email pieeg@pieeg.com Directly
                     </a>
                     <button
                       type="button"
@@ -963,7 +963,7 @@ export default function BulkOrderSection() {
                     <p className="text-xs text-zinc-500 dark:text-zinc-400">
                       Sent directly to our institutional team (
                       <span className="font-semibold text-zinc-700 dark:text-zinc-300">
-                        youssef@pieeg.com
+                        pieeg@pieeg.com
                       </span>
                       ) — we reply within 24 hours.
                     </p>
@@ -1139,7 +1139,7 @@ export default function BulkOrderSection() {
 
                   <p className="text-[11px] text-center text-zinc-400 dark:text-zinc-500">
                     No payment required today. We&apos;ll email your formal quote &amp; PO
-                    instructions from <strong>youssef@pieeg.com</strong>.
+                    instructions from <strong>pieeg@pieeg.com</strong>.
                   </p>
                 </form>
               )}

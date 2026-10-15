@@ -33,7 +33,7 @@ export default function IronBCI32ProductPage() {
                 </span>
               </div>
               
-              <h1 className="text-5xl font-bold tracking-tight mb-4">
+              <h1 className="title-hero mb-4">
                 IronBCI-32
               </h1>
               

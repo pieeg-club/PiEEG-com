@@ -512,7 +512,7 @@ function WebBCISection() {
             Web BCI Experiences
           </span>
         </div>
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+        <h2 className="title-section mb-4">
           Raw EEG in. Working BCI out.<br />
           <span className="bg-linear-to-r from-cyan-500 via-violet-500 to-pink-500 dark:from-cyan-400 dark:via-violet-400 dark:to-pink-400 bg-clip-text text-transparent">
             JavaScript. Open-source. Yours.
@@ -703,7 +703,7 @@ function FeaturedSection() {
               </p>
               <div className="h-px w-12 bg-linear-to-r from-transparent via-blue-500 to-transparent" />
             </div>
-            <h2 className="text-5xl sm:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+            <h2 className="title-section text-zinc-900 dark:text-zinc-50">
               Trusted by researchers<br />worldwide
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
@@ -794,7 +794,7 @@ function CtaSection() {
             </p>
             <div className="h-px w-12 bg-linear-to-r from-transparent via-cyan-500 to-transparent" />
           </div>
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="title-section text-zinc-900 dark:text-zinc-50">
             Ship your first<br />
             <span className="bg-linear-to-r from-cyan-600 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
               BCI in 60 seconds

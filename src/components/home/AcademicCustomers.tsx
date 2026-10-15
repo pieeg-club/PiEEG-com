@@ -144,7 +144,7 @@ export default function AcademicCustomers() {
         </p>
         <h2
           id="academic-customers-title"
-          className="mb-4 text-[clamp(30px,4vw,48px)] font-semibold leading-[1.08] tracking-[-0.045em] text-zinc-900 dark:text-zinc-50"
+          className="title-section mb-4 text-zinc-900 dark:text-zinc-50"
         >
           Supporting research around the world
         </h2>

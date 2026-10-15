@@ -433,8 +433,8 @@ export default function ExamplesPage() {
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-              Learn by
+            <h1 className="title-hero mb-4">
+              Learn by{" "}
               <br />
               <span className="bg-linear-to-r from-green-500 via-cyan-600 to-blue-600 dark:from-green-400 dark:via-cyan-500 dark:to-blue-500 bg-clip-text text-transparent">
                 building & doing
@@ -476,7 +476,7 @@ export default function ExamplesPage() {
                 PiEEG Server · MIT
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="title-section mb-4">
               Server Experiences
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -562,7 +562,7 @@ export default function ExamplesPage() {
                 PiEEG Cloud
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="title-section mb-4">
               Cloud Experiences
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -626,7 +626,7 @@ export default function ExamplesPage() {
       <section className="py-10 sm:py-14 bg-white dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="title-section mb-4">
               Research Applications
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400">
@@ -706,7 +706,7 @@ export default function ExamplesPage() {
       <section className="py-10 sm:py-14 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="title-section mb-4">
               Recommended Learning Path
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400">
@@ -766,7 +766,7 @@ export default function ExamplesPage() {
       {/* CTA */}
       <section className="py-10 bg-linear-to-br from-green-500 via-cyan-600 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="title-section mb-4">
             Ready to build?
           </h2>
           <p className="text-lg text-green-50 mb-8 max-w-2xl mx-auto">

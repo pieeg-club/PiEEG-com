@@ -60,7 +60,7 @@ export default function NewsletterForm() {
         <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm mb-4">
           <Newspaper className="w-5 h-5 text-cyan-500" />
         </div>
-        <h2 className="text-2xl font-extrabold mb-3">Stay Updated</h2>
+        <h2 className="title-subsection mb-3">Stay Updated</h2>
         <p className="text-zinc-500 dark:text-zinc-400 mb-8 leading-relaxed">
           Get the latest PiEEG news, product launches, and research highlights.
         </p>

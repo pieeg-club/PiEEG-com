@@ -67,8 +67,8 @@ export default async function NewsPage({
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-4">
-              PiEEG
+            <h1 className="title-hero mb-4">
+              PiEEG{" "}
               <br />
               <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
                 News & Updates
@@ -119,7 +119,7 @@ export default async function NewsPage({
         <section className="py-10 border-b border-zinc-200 dark:border-zinc-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-10">
-              <h2 className="text-2xl font-extrabold">Featured Stories</h2>
+              <h2 className="title-subsection">Featured Stories</h2>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -176,7 +176,7 @@ export default async function NewsPage({
       <section className="py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-10">
-            <h2 className="text-2xl font-extrabold">All News</h2>
+            <h2 className="title-subsection">All News</h2>
           </div>
 
           <div className="space-y-6">

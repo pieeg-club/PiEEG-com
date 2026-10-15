@@ -128,7 +128,7 @@ export default function CloudPrivacyAndEcosystem() {
               <p className="text-xs font-mono font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-3">
                 [35+ BROWSER-NATIVE EXPERIENCES]
               </p>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+              <h2 className="title-section text-zinc-900 dark:text-zinc-50">
                 Browser-first ML. Explainable weights. Honest cross-validation.
               </h2>
               <p className="mt-2 text-base text-zinc-600 dark:text-zinc-400 max-w-3xl">
@@ -196,7 +196,7 @@ export default function CloudPrivacyAndEcosystem() {
             <p className="text-xs font-mono font-semibold uppercase tracking-widest text-cyan-600 dark:text-cyan-400 mb-3">
               [05 · DATA ARCHITECTURE &amp; DEPLOYMENT MODES]
             </p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+            <h2 className="title-section text-zinc-900 dark:text-zinc-50">
               What stays in your tab, and the three opt-in paths that touch a server
             </h2>
             <p className="mt-2 text-base text-zinc-600 dark:text-zinc-400 max-w-3xl">
@@ -310,7 +310,7 @@ export default function CloudPrivacyAndEcosystem() {
       {/* ── Final CTA ──────────────────────────────────────────────────────── */}
       <section className="py-12 sm:py-16 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-3">
+          <h2 className="title-section text-zinc-900 dark:text-zinc-50 mb-3">
             Open a tab and inspect the signal
           </h2>
           <p className="text-base text-zinc-600 dark:text-zinc-400 mb-7 max-w-2xl mx-auto">

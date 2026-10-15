@@ -143,7 +143,7 @@ export default function ExplorePage() {
               Explore PiEEG
             </span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-5">
+          <h1 className="title-hero mb-5">
             Everything in one place
           </h1>
           <p className="max-w-2xl mx-auto text-lg sm:text-xl text-zinc-600 dark:text-zinc-400">

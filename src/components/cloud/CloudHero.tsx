@@ -377,8 +377,8 @@ export default function CloudHero() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.04em] leading-[0.95] text-zinc-900 dark:text-zinc-50 mb-5">
-            The Browser-Native
+          <h1 className="title-hero text-zinc-900 dark:text-zinc-50 mb-5">
+            The Browser-Native{" "}
             <span className="block mt-1 bg-linear-to-r from-cyan-500 via-blue-500 to-violet-500 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-400 bg-clip-text text-transparent">
               BCI Operating System
             </span>

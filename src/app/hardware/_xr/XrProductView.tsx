@@ -131,7 +131,7 @@ export default function XrProductView({
                 {badge}
               </div>
 
-              <h1 className="text-6xl lg:text-7xl font-black tracking-tight text-white mb-4 leading-none">
+              <h1 className="title-hero text-white mb-4">
                 {name}
               </h1>
 

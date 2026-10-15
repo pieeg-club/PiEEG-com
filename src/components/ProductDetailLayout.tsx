@@ -131,7 +131,7 @@ export default function ProductDetailLayout({
                 </div>
               )}
 
-              <h1 className="text-6xl lg:text-7xl font-black tracking-tight text-white mb-4 leading-none">
+              <h1 className="title-hero text-white mb-4">
                 {name}
               </h1>
 
@@ -230,7 +230,7 @@ export default function ProductDetailLayout({
       <section className="py-16 bg-white dark:bg-zinc-950 border-b border-zinc-100 dark:border-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+            <h2 className="title-subsection text-zinc-900 dark:text-zinc-100">
               Product Gallery
             </h2>
             <span className="text-sm text-zinc-400 dark:text-zinc-500 hidden sm:block">
@@ -382,7 +382,7 @@ export default function ProductDetailLayout({
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Overview */}
             <div>
-              <h2 className="text-3xl font-bold mb-6 text-zinc-900 dark:text-zinc-100">
+              <h2 className="title-subsection mb-6 text-zinc-900 dark:text-zinc-100">
                 Overview
               </h2>
               <div className="prose prose-zinc dark:prose-invert prose-p:text-zinc-700 dark:prose-p:text-zinc-300 prose-p:leading-relaxed max-w-none">
@@ -392,7 +392,7 @@ export default function ProductDetailLayout({
 
             {/* Technical Specifications */}
             <div>
-              <h2 className="text-3xl font-bold mb-6 text-zinc-900 dark:text-zinc-100">
+              <h2 className="title-subsection mb-6 text-zinc-900 dark:text-zinc-100">
                 Technical Specifications
               </h2>
               <div className="rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
@@ -430,7 +430,7 @@ export default function ProductDetailLayout({
       <section className="py-16 bg-white dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">Key Features</h2>
+            <h2 className="title-section text-zinc-900 dark:text-zinc-100">Key Features</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {features.map((feature, i) => (
@@ -476,7 +476,7 @@ export default function ProductDetailLayout({
       {/* ── CTA ── */}
       <section className={`py-20 bg-gradient-to-br ${ctaGradient} text-white`}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-black mb-4">{ctaTitle}</h2>
+          <h2 className="title-section mb-4">{ctaTitle}</h2>
           <p className={`text-xl mb-10 ${ctaTextColor} opacity-90`}>{ctaSubtitle}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a

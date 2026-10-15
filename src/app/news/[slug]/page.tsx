@@ -67,7 +67,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
               {article.category}
             </div>
             
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.05] mb-5">
+            <h1 className="title-article mb-5">
               {article.title}
             </h1>
 
@@ -138,7 +138,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="rounded-2xl bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-cyan-200 dark:border-cyan-800 p-8 sm:p-10 text-center">
               <div className="text-4xl mb-4">🧠</div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
+              <h2 className="title-subsection mb-3">
                 Ready to Participate?
               </h2>
               <p className="text-zinc-600 dark:text-zinc-400 mb-7 max-w-xl mx-auto leading-relaxed">

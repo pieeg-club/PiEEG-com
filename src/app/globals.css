@@ -26,6 +26,47 @@ body {
   font-family: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
 }
 
+/* ── Shared Typography / Heading Scale ─────────────────────── */
+.title-hero {
+  font-family: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
+  font-size: clamp(2.25rem, 5.2vw, 3.85rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.title-article {
+  font-family: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
+  font-size: clamp(1.875rem, 3.8vw, 3rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+.title-section {
+  font-family: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.title-subsection {
+  font-family: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif);
+  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+.title-hero .bg-clip-text,
+.title-article .bg-clip-text,
+.title-section .bg-clip-text,
+.title-subsection .bg-clip-text {
+  display: inline-block;
+  padding-bottom: 0.08em;
+}
+
 /* ── Neural network pattern ────────────────────────────────── */
 .neural-bg {
   background-image: 

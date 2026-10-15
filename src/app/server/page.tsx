@@ -219,8 +219,8 @@ export default function SignalsPage() {
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-4">
-              Stream biosignals
+            <h1 className="title-hero mb-4">
+              Stream biosignals{" "}
               <br />
               <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
                 in 60 seconds
@@ -313,7 +313,7 @@ export default function SignalsPage() {
       <section className="py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               Quick Start
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400">
@@ -347,7 +347,7 @@ export default function SignalsPage() {
       <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               Server Features
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400">
@@ -383,7 +383,7 @@ export default function SignalsPage() {
       <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               WebSocket API
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400">
@@ -479,7 +479,7 @@ export default function SignalsPage() {
       <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               Supported Devices
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400">
@@ -516,7 +516,7 @@ export default function SignalsPage() {
       <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               Real-time Control
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400">
@@ -545,7 +545,7 @@ export default function SignalsPage() {
       <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               Integrations
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400">
@@ -577,7 +577,7 @@ export default function SignalsPage() {
       <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               Supported Signal Types
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400">
@@ -632,7 +632,7 @@ export default function SignalsPage() {
       {/* CTA */}
       <section className="py-10 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+          <h2 className="title-section mb-4">
             Start streaming in 60 seconds
           </h2>
           <p className="text-zinc-500 dark:text-zinc-400 mb-5 max-w-xl mx-auto leading-relaxed">

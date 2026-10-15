@@ -27,7 +27,7 @@ export default function HardwareBench() {
             </p>
             <div className="h-px w-8 bg-linear-to-r from-transparent via-cyan-500 to-transparent" />
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="title-section text-zinc-900 dark:text-zinc-50">
             See how each device is worn
           </h2>
           <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">

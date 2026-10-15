@@ -48,8 +48,8 @@ export default function ContactPage() {
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-4">
-              We&apos;re here
+            <h1 className="title-hero mb-4">
+              We&apos;re here{" "}
               <br />
               <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
                 to help
@@ -67,7 +67,7 @@ export default function ContactPage() {
       <section className="py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               Choose Your Channel
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400">
@@ -112,7 +112,7 @@ export default function ContactPage() {
       <section className="py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-extrabold tracking-tight mb-2">
+            <h2 className="title-subsection mb-2">
               Follow Us
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400">

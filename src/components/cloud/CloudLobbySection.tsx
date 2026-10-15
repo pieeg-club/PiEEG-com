@@ -133,7 +133,7 @@ export default function CloudLobbySection() {
                 [02 · SESSION LOBBY &amp; TRANSPORTS]
               </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+            <h2 className="title-section text-zinc-900 dark:text-zinc-50">
               Nine hardware &amp; lab sources. Zero drivers.
             </h2>
             <p className="mt-2 text-base text-zinc-600 dark:text-zinc-400 max-w-2xl">

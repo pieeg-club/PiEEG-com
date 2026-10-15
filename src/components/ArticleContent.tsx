@@ -35,12 +35,12 @@ function YouTubeEmbed({ id }: { id: string }) {
 export default function ArticleContent({ content }: ArticleContentProps) {
   const components: Components = {
     h1: ({ children }) => (
-      <h1 className="text-4xl font-bold mb-6 mt-8 text-zinc-900 dark:text-zinc-100">
+      <h1 className="title-article mb-6 mt-8 text-zinc-900 dark:text-zinc-100">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-3xl font-bold mb-4 mt-8 text-zinc-900 dark:text-zinc-100">
+      <h2 className="title-subsection mb-4 mt-8 text-zinc-900 dark:text-zinc-100">
         {children}
       </h2>
     ),

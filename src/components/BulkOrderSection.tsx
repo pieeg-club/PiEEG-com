@@ -490,7 +490,7 @@ export default function BulkOrderSection() {
             Universities · Research Labs · Bulk Orders (5+ Units)
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
+          <h2 className="title-section mb-4">
             Equip your classroom or lab.{" "}
             <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 bg-clip-text text-transparent">
               Save up to 30%.

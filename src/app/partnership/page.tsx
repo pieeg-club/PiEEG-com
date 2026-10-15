@@ -22,7 +22,7 @@ export default function PartnershipPage() {
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+            <h1 className="title-hero mb-4">
               Partner with PiEEG
             </h1>
             
@@ -40,7 +40,7 @@ export default function PartnershipPage() {
       {/* Who We Partner With */}
       <section className="py-10 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8 text-center">Who We Partner With</h2>
+          <h2 className="title-section mb-8 text-center">Who We Partner With</h2>
           
           <div className="space-y-8">
             {/* Startups & Companies */}
@@ -163,7 +163,7 @@ export default function PartnershipPage() {
       <section className="py-10 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-8 rounded-2xl border-2 border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900">
-            <h2 className="text-2xl font-bold mb-4">What We&apos;re Not Looking For</h2>
+            <h2 className="title-subsection mb-4">What We&apos;re Not Looking For</h2>
             <p className="text-zinc-700 dark:text-zinc-300 mb-4">Let&apos;s save everyone time.</p>
             <ul className="space-y-2 text-zinc-600 dark:text-zinc-400">
               <li>• No vague &quot;explore synergies&quot; conversations</li>
@@ -180,7 +180,7 @@ export default function PartnershipPage() {
       {/* Current Partners */}
       <section className="py-10 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8">Current Partners</h2>
+          <h2 className="title-section mb-8">Current Partners</h2>
           
           <div className="space-y-6">
             <div className="p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
@@ -256,7 +256,7 @@ export default function PartnershipPage() {
       {/* CTA */}
       <section className="py-10 bg-linear-to-br from-purple-500 via-blue-600 to-cyan-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-4">Let&apos;s Talk</h2>
+          <h2 className="title-section mb-4">Let&apos;s Talk</h2>
           <div className="text-lg text-purple-50 mb-8 max-w-2xl mx-auto">
             <p className="mb-4">If you have:</p>
             <ul className="text-left inline-block">

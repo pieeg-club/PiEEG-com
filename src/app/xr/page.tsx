@@ -95,13 +95,13 @@ export default function XRPage() {
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-4">
+              <h1 className="title-hero mb-4">
                 PiEEG
                 <span className="bg-linear-to-r from-violet-500 via-cyan-500 to-blue-500 dark:from-violet-400 dark:via-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
                   {" "}XR
-                </span>
+                </span>{" "}
                 <br />
-                <span className="text-2xl sm:text-3xl lg:text-4xl text-zinc-500 dark:text-zinc-400 font-bold">
+                <span className="text-2xl sm:text-3xl lg:text-4xl text-zinc-500 dark:text-zinc-400 font-semibold">
                   Neural Face Interface
                 </span>
               </h1>
@@ -152,7 +152,7 @@ export default function XRPage() {
       {/* ─────────────────── The Missing Link ─────────────────── */}
       <section className="py-10 sm:py-14 border-b border-zinc-200 dark:border-zinc-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+          <h2 className="title-section mb-4">
             The Missing Link in Virtual Reality
           </h2>
           <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 leading-relaxed">
@@ -170,7 +170,7 @@ export default function XRPage() {
       <section className="py-10 sm:py-14 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               A New Dimension of Interaction
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -205,7 +205,7 @@ export default function XRPage() {
                 <Flame className="w-3.5 h-3.5" />
                 Focus-to-Action
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+              <h2 className="title-section mb-4">
                 Mind Over Matter: The Power to Melt
               </h2>
               <p className="text-base text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
@@ -249,7 +249,7 @@ export default function XRPage() {
                 Live Demos
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">See It In Action</h2>
+            <h2 className="title-section mb-3">See It In Action</h2>
             <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
               Real neural signals, real avatars — no post-production magic.
             </p>
@@ -304,7 +304,7 @@ export default function XRPage() {
                 <CircuitBoard className="w-3.5 h-3.5" />
                 Open Source. Open Possibilities.
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+              <h2 className="title-section mb-4">
                 Powered by IronBCI
               </h2>
               <p className="text-base text-zinc-500 dark:text-zinc-400 leading-relaxed mb-6">
@@ -367,7 +367,7 @@ export default function XRPage() {
       <section className="py-10 sm:py-14 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">The Hardware</h2>
+            <h2 className="title-section mb-3">The Hardware</h2>
             <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
               A mask built for gamers, designers, and researchers.
             </p>
@@ -416,7 +416,7 @@ export default function XRPage() {
                   Join the Frontier
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+              <h2 className="title-section mb-4">
                 Back PiEEG XR on Kickstarter
               </h2>
               <p className="text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto mb-7">

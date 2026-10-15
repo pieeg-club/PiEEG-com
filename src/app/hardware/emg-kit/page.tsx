@@ -45,7 +45,7 @@ export default function EmgKitPage() {
                 </span>
               </div>
 
-              <h1 className="text-5xl font-bold tracking-tight mb-4">
+              <h1 className="title-hero mb-4">
                 EMG / ECG / EKG Kit
               </h1>
 
@@ -111,7 +111,7 @@ export default function EmgKitPage() {
       {/* Description */}
       <section className="py-12 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-6">About this kit</h2>
+          <h2 className="title-section mb-6">About this kit</h2>
           <div className="space-y-4">
             <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
               The EMG / ECG / EKG Kit expands your PiEEG hardware to measure the full spectrum of biosignals. Whether you are capturing muscle activity (EMG), heart signals (ECG/EKG), or brain signals (EEG), this kit has you covered.
@@ -129,7 +129,7 @@ export default function EmgKitPage() {
       {/* Product Gallery */}
       <section className="py-14 border-t border-zinc-100 dark:border-zinc-900 bg-zinc-50 dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-8">Product Gallery</h2>
+          <h2 className="title-subsection text-zinc-900 dark:text-zinc-100 mb-8">Product Gallery</h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <div className="lg:col-span-2 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden flex flex-col min-h-70 lg:min-h-100">
               <div className="flex-1 flex items-center justify-center p-12">
@@ -169,7 +169,7 @@ export default function EmgKitPage() {
       {/* Specs */}
       <section className="py-12 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-6">Specifications</h2>
+          <h2 className="title-subsection mb-6">Specifications</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-zinc-200 dark:bg-zinc-800 rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800">
             {[
               { label: "Signal Types", value: "EMG, ECG, EKG" },
@@ -191,7 +191,7 @@ export default function EmgKitPage() {
       {/* Features */}
       <section className="py-12 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-8">Key Features</h2>
+          <h2 className="title-subsection mb-8">Key Features</h2>
           <div className="grid sm:grid-cols-3 gap-6">
             {[
               { icon: <Activity className="w-5 h-5 text-orange-500" />, title: "Three Signal Types", description: "Capture EMG (muscles), ECG/EKG (heart), and EEG (brain) with a single kit and a single hardware platform." },
@@ -211,7 +211,7 @@ export default function EmgKitPage() {
       {/* CTA */}
       <section className="py-12 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Measure every biosignal</h2>
+          <h2 className="title-section mb-4">Measure every biosignal</h2>
           <p className="text-zinc-500 dark:text-zinc-400 mb-8">EMG, ECG, EEG — all in one kit. Compatible with every PiEEG hardware platform.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a

@@ -63,8 +63,8 @@ export default function AboutPage() {
       <section className="border-b border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-4">
-              Democratizing
+            <h1 className="title-hero mb-4">
+              Democratizing{" "}
               <br />
               <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
                 Neuroscience Technology
@@ -107,7 +107,7 @@ export default function AboutPage() {
       <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               The Team
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -223,7 +223,7 @@ export default function AboutPage() {
                   Our Mission
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+              <h2 className="title-section mb-4">
                 Breaking Down Barriers to Neuroscience
               </h2>
               <div className="space-y-4">
@@ -257,7 +257,7 @@ export default function AboutPage() {
       <section className="py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               Our Core Values
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400">
@@ -290,7 +290,7 @@ export default function AboutPage() {
       <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            <h2 className="title-section">
               About Us
             </h2>
           </div>
@@ -313,7 +313,7 @@ export default function AboutPage() {
       <section className="py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               Global Presence
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -376,7 +376,7 @@ export default function AboutPage() {
       <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               Academic Recognition
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -429,7 +429,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-10 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+          <h2 className="title-section mb-4">
             Join the Movement
           </h2>
           <p className="text-zinc-500 dark:text-zinc-400 mb-8 max-w-2xl mx-auto leading-relaxed">

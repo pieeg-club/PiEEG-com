@@ -198,8 +198,8 @@ export default function SupportPage() {
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-              Get help with
+            <h1 className="title-hero mb-4">
+              Get help with{" "}
               <br />
               <span className="bg-linear-to-r from-blue-500 via-cyan-600 to-purple-600 dark:from-blue-400 dark:via-cyan-500 dark:to-purple-500 bg-clip-text text-transparent">
                 PiEEG hardware &amp; software
@@ -237,7 +237,7 @@ export default function SupportPage() {
       <section id="quickstart" className="py-10 sm:py-14 bg-white dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="title-section mb-4">
               Quick Start Guide
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400">
@@ -307,7 +307,7 @@ export default function SupportPage() {
       <section id="guides" className="py-10 sm:py-14 bg-zinc-50 dark:bg-zinc-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="title-section mb-4">
               Complete Documentation
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400">
@@ -364,7 +364,7 @@ export default function SupportPage() {
       <section className="py-10 sm:py-14 bg-white dark:bg-zinc-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <h2 className="title-section mb-4">
               Additional Resources
             </h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400">
@@ -406,7 +406,7 @@ export default function SupportPage() {
                 <Code2 className="w-8 h-8" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold mb-4">API Reference</h2>
+                <h2 className="title-subsection mb-4">API Reference</h2>
                 <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed">
                   Complete reference for the WebSocket data stream (port 1616) and data format. Plain JSON frames — works in any language with WebSocket support.
                 </p>
@@ -439,7 +439,7 @@ export default function SupportPage() {
       {/* CTA */}
       <section className="py-10 bg-linear-to-br from-blue-500 via-cyan-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <h2 className="title-section mb-4">
             Can&apos;t find what you&apos;re looking for?
           </h2>
           <p className="text-lg text-cyan-50 mb-8 max-w-2xl mx-auto">

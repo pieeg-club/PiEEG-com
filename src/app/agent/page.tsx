@@ -309,7 +309,7 @@ export default function AgentPage() {
             </div>
 
             {/* Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+            <h1 className="title-hero mb-6">
               <span className="bg-clip-text text-transparent bg-linear-to-r from-cyan-600 via-purple-600 to-pink-600">
                 Talk to Your Brain
               </span>
@@ -374,7 +374,7 @@ export default function AgentPage() {
       <section className="py-24 relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">See It In Action</h2>
+            <h2 className="title-section mb-4">See It In Action</h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400">
               Watch realistic conversations with your brain copilot
             </p>
@@ -392,7 +392,7 @@ export default function AgentPage() {
       <section className="py-24 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Comprehensive Analysis Tools</h2>
+            <h2 className="title-section mb-4">Comprehensive Analysis Tools</h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400">
               All the capabilities of a neuroscience lab, accessible through conversation
             </p>
@@ -420,7 +420,7 @@ export default function AgentPage() {
       <section className="py-24 bg-zinc-900 dark:bg-black text-white">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Quick Start</h2>
+            <h2 className="title-section mb-4">Quick Start</h2>
             <p className="text-lg text-zinc-400">One command. No Node.js required.</p>
           </div>
 
@@ -520,7 +520,7 @@ export default function AgentPage() {
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Built for Research</h2>
+            <h2 className="title-section mb-4">Built for Research</h2>
             <p className="text-lg text-zinc-600 dark:text-zinc-400">
               Designed for neurofeedback research and UX prototyping — not clinical use
             </p>
@@ -578,7 +578,7 @@ export default function AgentPage() {
         <div className="absolute inset-0 bg-linear-to-br from-cyan-500/10 via-purple-500/10 to-pink-500/10" />
 
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Talk to Your Brain?</h2>
+          <h2 className="title-section mb-6">Ready to Talk to Your Brain?</h2>
           <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-8">
             Join researchers and makers building the future of brain-computer interfaces
           </p>

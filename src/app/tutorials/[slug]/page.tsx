@@ -82,7 +82,7 @@ export default async function TutorialPage({
             </span>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.05] mb-5">
+          <h1 className="title-article mb-5">
             {tutorial.title}
           </h1>
 

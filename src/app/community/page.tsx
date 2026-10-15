@@ -178,8 +178,8 @@ export default function OpenSourcePage() {
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-4">
-              Built in the open,
+            <h1 className="title-hero mb-4">
+              Built in the open,{" "}
               <br />
               <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
                 powered by community
@@ -239,7 +239,7 @@ export default function OpenSourcePage() {
       <section className="py-10 sm:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               Our Repositories
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -306,7 +306,7 @@ export default function OpenSourcePage() {
       <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               Ways to Contribute
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -351,7 +351,7 @@ export default function OpenSourcePage() {
       <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
+            <h2 className="title-section mb-3">
               Our Open-Source Principles
             </h2>
             <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
@@ -387,7 +387,7 @@ export default function OpenSourcePage() {
                 <BookOpen className="w-8 h-8" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold mb-4">MIT-Licensed Software</h2>
+                <h2 className="title-subsection mb-4">MIT-Licensed Software</h2>
                 <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed">
                   PiEEG software and SDKs — including pieeg-server — are MIT licensed. You&apos;re free to use, modify, distribute, and build upon our code for research, education, and commercial purposes.
                 </p>
@@ -420,7 +420,7 @@ export default function OpenSourcePage() {
       {/* Community Links */}
       <section className="py-10 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-extrabold tracking-tight mb-3">
+          <h2 className="title-section mb-3">
             Join Our Community
           </h2>
           <p className="text-zinc-500 dark:text-zinc-400 mb-10">

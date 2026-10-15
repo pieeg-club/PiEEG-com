@@ -22,7 +22,7 @@ export default function JobPage() {
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+            <h1 className="title-hero mb-4">
               Join the PiEEG Team
             </h1>
             
@@ -36,7 +36,7 @@ export default function JobPage() {
       {/* Why Join Us */}
       <section className="py-10 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8 text-center">Why Join PiEEG?</h2>
+          <h2 className="title-section mb-8 text-center">Why Join PiEEG?</h2>
           
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             <div className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-center">
@@ -67,7 +67,7 @@ export default function JobPage() {
       {/* Areas of Interest */}
       <section className="py-10 bg-zinc-50 dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8 text-center">Areas of Interest</h2>
+          <h2 className="title-section mb-8 text-center">Areas of Interest</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="p-6 rounded-xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800">
@@ -154,7 +154,7 @@ export default function JobPage() {
       {/* What We Offer */}
       <section className="py-10 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8 text-center">What We Offer</h2>
+          <h2 className="title-section mb-8 text-center">What We Offer</h2>
           
           <div className="space-y-4">
             <div className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900">
@@ -191,7 +191,7 @@ export default function JobPage() {
       {/* Volunteer */}
       <section className="py-10 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-8 text-center">Volunteer & Contributor Opportunities</h2>
+          <h2 className="title-section mb-8 text-center">Volunteer & Contributor Opportunities</h2>
           
           <p className="text-lg text-zinc-700 dark:text-zinc-300 text-center mb-8">
             You don't need to be an employee to contribute! Join our open-source community:
@@ -234,7 +234,7 @@ export default function JobPage() {
       {/* CTA */}
       <section className="py-10 bg-linear-to-br from-green-500 via-cyan-600 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-4">Interested in Joining Us?</h2>
+          <h2 className="title-section mb-4">Interested in Joining Us?</h2>
           <p className="text-lg text-green-50 mb-8">
             Send us your resume, portfolio, or just introduce yourself. We're always looking for passionate people who believe in democratizing neuroscience.
           </p>

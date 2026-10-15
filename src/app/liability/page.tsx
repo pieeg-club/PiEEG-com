@@ -34,7 +34,7 @@ export default function LiabilityPage() {
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+            <h1 className="title-hero mb-4">
               Liabilities & Safety
             </h1>
           </div>

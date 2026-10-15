@@ -49,7 +49,7 @@ export default function CloudWorkbenches() {
               <p className="text-xs font-mono font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-3">
                 [03 · LIVE LAB (BIO-PEN) · CLOUD.PIEEG.COM/LAB]
               </p>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+              <h2 className="title-section text-zinc-900 dark:text-zinc-50">
                 Write multi-stage DSP &amp; classifiers at 15 Hz. Share in one URL.
               </h2>
               <p className="mt-2 text-base text-zinc-600 dark:text-zinc-400 max-w-3xl">
@@ -217,7 +217,7 @@ return {
               <p className="text-xs font-mono font-semibold uppercase tracking-widest text-amber-600 dark:text-amber-400 mb-3">
                 [04 · LOCAL BRIDGE &amp; NEURAL STREAM · WEBRTC P2P → OSC]
               </p>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+              <h2 className="title-section text-zinc-900 dark:text-zinc-50">
                 One TouchDesigner OSC In CHOP receives the whole headset.
               </h2>
               <p className="mt-2 text-base text-zinc-600 dark:text-zinc-400 max-w-3xl">

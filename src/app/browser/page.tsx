@@ -108,8 +108,8 @@ export default function BrowserPage() {
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.02] mb-4">
-              Your brain state,
+            <h1 className="title-hero mb-4">
+              Your brain state,{" "}
               <br />
               <span className="bg-linear-to-r from-violet-500 via-purple-500 to-pink-500 dark:from-violet-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
                 on every page
@@ -173,7 +173,7 @@ export default function BrowserPage() {
       <section className="py-10 sm:py-14 border-b border-zinc-200 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">Quick Start</h2>
+            <h2 className="title-section mb-3">Quick Start</h2>
             <p className="text-zinc-500 dark:text-zinc-400">Three steps to brain-aware browsing</p>
           </div>
 
@@ -205,7 +205,7 @@ export default function BrowserPage() {
       <section className="py-10 sm:py-14 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">What It Does</h2>
+            <h2 className="title-section mb-3">What It Does</h2>
             <p className="text-zinc-500 dark:text-zinc-400">Your browser becomes brain-aware</p>
           </div>
 
@@ -240,7 +240,7 @@ export default function BrowserPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 items-start">
             <div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Staying Up to Date</h2>
+              <h2 className="title-subsection mb-3">Staying Up to Date</h2>
               <p className="text-zinc-500 dark:text-zinc-400 mb-4">
                 Unpacked extensions don&apos;t auto-update. PiEEG Chrome checks GitHub every 6 hours and shows a banner when a new version is available.
               </p>
@@ -256,7 +256,7 @@ export default function BrowserPage() {
             </div>
 
             <div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Default Ports</h2>
+              <h2 className="title-subsection mb-3">Default Ports</h2>
               <div className="space-y-3">
                 {ports.map((p) => (
                   <div key={p.service} className="flex items-center justify-between p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60">
@@ -277,7 +277,7 @@ export default function BrowserPage() {
       <section className="py-10 sm:py-14 border-b border-zinc-200 dark:border-zinc-800">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">Permissions Used</h2>
+            <h2 className="title-section mb-3">Permissions Used</h2>
             <p className="text-zinc-500 dark:text-zinc-400">What the extension requests and why</p>
           </div>
 
@@ -298,7 +298,7 @@ export default function BrowserPage() {
       {/* CTA */}
       <section className="py-10 sm:py-14">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+          <h2 className="title-section mb-4">
             Ready to try it?
           </h2>
           <p className="text-zinc-500 dark:text-zinc-400 mb-6">

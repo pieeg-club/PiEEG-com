@@ -84,7 +84,7 @@ export default function ResearchReview() {
           </p>
           <h2
             id="from-partners-title"
-            className="mb-6 text-[clamp(28px,3.5vw,40px)] font-semibold leading-[1.08] tracking-[-0.045em]"
+            className="title-subsection mb-6"
           >
             PiEEG XR in sports research
           </h2>
@@ -123,7 +123,7 @@ export default function ResearchReview() {
           </p>
           <h2
             id="research-review-title"
-            className="text-[clamp(30px,4vw,48px)] font-semibold leading-[1.08] tracking-[-0.045em]"
+            className="title-section"
           >
             What researchers are saying
           </h2>

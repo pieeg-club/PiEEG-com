@@ -24,7 +24,7 @@ export default function GuidesPage() {
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.05] mb-4">
+            <h1 className="title-hero mb-4">
               How to choose a{" "}
               <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
                 BCI

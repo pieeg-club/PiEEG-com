@@ -18,7 +18,7 @@ type ThemeContextValue = {
 };
 
 export const THEME_STORAGE_KEY = "theme";
-const DEFAULT_THEME: Theme = "dark";
+const DEFAULT_THEME: Theme = "light";
 
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 

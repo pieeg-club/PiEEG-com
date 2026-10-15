@@ -793,14 +793,6 @@ export function mountCloudBench(root) {
     } else {
       b.innerHTML = `<div class="chat" id="cloud-chat"></div>`;
       chatState = { script: SCRIPTS[p.panel.script], i: 0, chars: 0, wait: 0.35, node: null };
-      if (reduce) {
-        chatState = null;
-        b.querySelector("#cloud-chat").innerHTML = SCRIPTS[p.panel.script]
-          .map(
-            ([who, tx]) => `<div class="msg ${who === "you" ? "you" : "bot"}"><span class="who">${who}</span>${tx}</div>`,
-          )
-          .join("");
-      }
     }
   }
 
@@ -860,7 +852,7 @@ export function mountCloudBench(root) {
       cs.node = d.querySelector(".tx");
       cs.chars = 0;
     }
-    cs.chars += dt * (reduce ? 9999 : 54);
+    cs.chars += dt * 54;
     const shown = text.slice(0, Math.floor(cs.chars));
     cs.node.textContent = shown;
     if (shown.length >= text.length) {

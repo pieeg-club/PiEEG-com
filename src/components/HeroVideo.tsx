@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 
 const BASE_OPACITY = 0.15;
 const FADE_S = 1.5;
+const DEFAULT_VIDEO_SRC = "https://pieeg.lon1.cdn.digitaloceanspaces.com/ironbci-video-tiny.mp4";
 
-export default function HeroVideo() {
+export default function HeroVideo({ src = DEFAULT_VIDEO_SRC }: { src?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
   const rafRef = useRef<number>(0);
@@ -72,7 +73,7 @@ export default function HeroVideo() {
   return (
     <video
       ref={videoRef}
-      src="https://pieeg.lon1.cdn.digitaloceanspaces.com/ironbci-video-tiny.mp4"
+      src={src}
       autoPlay
       muted
       playsInline

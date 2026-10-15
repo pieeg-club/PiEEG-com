@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import HeroVideo from "@/components/HeroVideo";
 import {
   Glasses,
   Rocket,
@@ -334,10 +335,15 @@ export default function XrHero() {
       className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 pt-10 sm:pt-14 pb-12"
       style={{ contain: "layout style" }}
     >
-      <div className="absolute inset-0 bg-linear-to-br from-violet-500/6 via-cyan-500/4 to-blue-500/6 pointer-events-none" />
+      {/* Background XR video (same smooth loop fade as home page) */}
+      <HeroVideo src="https://pieeg.lon1.cdn.digitaloceanspaces.com/pieeg-xr-video.mp4" />
+
+      {/* Layered cinematic overlays */}
+      <div className="absolute inset-0 bg-linear-to-br from-violet-500/8 via-cyan-500/5 to-blue-500/8 dark:from-violet-500/12 dark:via-cyan-500/8 dark:to-blue-500/12 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-t from-white via-white/15 to-white/55 dark:from-zinc-950 dark:via-zinc-950/15 dark:to-zinc-950/55 pointer-events-none" />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[64px_64px] pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-violet-500/30 bg-violet-50/70 dark:bg-violet-950/40 text-xs font-medium text-violet-800 dark:text-violet-300 mb-5">
             <Glasses className="w-3.5 h-3.5 text-violet-500" />

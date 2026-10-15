@@ -1,45 +1,56 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   Cloud,
   Rocket,
   FlaskConical,
   Bot,
-  Code2,
   Play,
   ArrowRight,
   Radio,
   ShieldCheck,
-  Terminal,
   Usb,
   Bluetooth,
   Cpu,
 } from "lucide-react";
 
-function GitHubIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
-    </svg>
-  );
-}
-
-const TRACE_COLORS = [
-  { ch: "Fp1", color: "#22d3ee" },
-  { ch: "Fp2", color: "#38bdf8" },
-  { ch: "C3", color: "#a78bfa" },
-  { ch: "O1", color: "#34d399" },
+const TRACE_CHANNELS = [
+  { ch: "Fp1", region: "Frontal L", color: "#22d3ee", p0: 0.2, p1: 1.1, alphaW: 0.22, blinkW: 1.05 },
+  { ch: "Fp2", region: "Frontal R", color: "#38bdf8", p0: 0.5, p1: 1.7, alphaW: 0.24, blinkW: 0.98 },
+  { ch: "C3", region: "Central L", color: "#a78bfa", p0: 1.9, p1: 2.8, alphaW: 0.42, blinkW: 0.12 },
+  { ch: "O1", region: "Occipital L", color: "#34d399", p0: 3.1, p1: 0.6, alphaW: 0.85, blinkW: 0.0 },
 ];
+
+const g1 = (x: number, m: number, s: number) => {
+  const z = (x - m) / s;
+  return Math.exp(-z * z);
+};
+
+function synthEEG(t: number, c: (typeof TRACE_CHANNELS)[number], idx: number) {
+  const bg =
+    Math.sin(6.283 * 7.8 * t + c.p0) * 0.32 +
+    Math.sin(6.283 * 13.1 * t + c.p1) * 0.22 +
+    Math.sin(6.283 * 3.7 * t + idx) * 0.18 +
+    Math.sin(6.283 * 22.4 * t + idx * 1.7) * 0.09;
+  const env = 0.55 + 0.45 * Math.sin(6.283 * 0.22 * t + c.p0);
+  const alpha = c.alphaW * env * Math.sin(6.283 * 10.2 * t + c.p1);
+  const bt = (t % 3.6) - 1.4;
+  const blink = c.blinkW * (g1(bt, 0, 0.095) * 1.45 - g1(bt, 0.14, 0.12) * 0.35);
+  return bg + alpha * 1.15 + blink;
+}
 
 function HeroSignalScope() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const pausedRef = useRef(false);
+  const [paused, setPaused] = useState(false);
+  const alphaBarRef = useRef<HTMLDivElement>(null);
+  const betaBarRef = useRef<HTMLDivElement>(null);
+  const alphaValRef = useRef<HTMLSpanElement>(null);
+  const betaValRef = useRef<HTMLSpanElement>(null);
+  const frameCountRef = useRef<HTMLSpanElement>(null);
+  const rmsRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -47,18 +58,25 @@ function HeroSignalScope() {
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
 
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
+    let stopped = false;
     let visible = true;
-    let t = 0;
+    let simT = 0;
     let lastNow = 0;
+    let lastHudUpdate = 0;
+    let cw = 0;
+    let ch = 0;
+    let dpr = 1;
 
     function resize() {
-      if (!canvas) return;
+      if (!canvas || !ctx) return;
       const rect = canvas.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      canvas.width = Math.max(320, Math.floor(rect.width * dpr));
-      canvas.height = Math.max(160, Math.floor(rect.height * dpr));
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cw = Math.max(320, Math.floor(rect.width || canvas.clientWidth || 640));
+      ch = Math.max(180, Math.floor(rect.height || canvas.clientHeight || 224));
+      canvas.width = cw * dpr;
+      canvas.height = ch * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
     resize();
@@ -67,91 +85,137 @@ function HeroSignalScope() {
 
     function draw(now: number) {
       if (!canvas || !ctx) return;
+      if (!cw) resize();
       const dt = Math.min(0.05, (now - (lastNow || now)) / 1000);
       lastNow = now;
-      if (!reduce) t += dt;
+      if (!pausedRef.current) {
+        simT += dt;
+      }
 
-      const w = canvas.width;
-      const h = canvas.height;
-      ctx.fillStyle = "#08090c";
-      ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = "#07080a";
+      ctx.fillRect(0, 0, cw, ch);
 
-      // Subtle grid lines
-      ctx.strokeStyle = "rgba(255,255,255,0.05)";
+      const rows = TRACE_CHANNELS.length;
+      const rowH = ch / rows;
+      const winSec = 4;
+
+      // Vertical 1-second time grid + horizontal channel dividers
+      ctx.strokeStyle = "rgba(255,255,255,0.055)";
       ctx.lineWidth = 1;
       ctx.beginPath();
-      const rows = TRACE_COLORS.length;
       for (let r = 1; r < rows; r++) {
-        const y = Math.round((h / rows) * r) + 0.5;
+        const y = Math.round(rowH * r) + 0.5;
         ctx.moveTo(0, y);
-        ctx.lineTo(w, y);
+        ctx.lineTo(cw, y);
       }
-      const cols = 8;
-      for (let c = 1; c < cols; c++) {
-        const x = Math.round((w / cols) * c) + 0.5;
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, h);
+      const gridOffset = ((simT % 1) / winSec) * cw;
+      for (let s = 0; s <= winSec + 1; s++) {
+        const x = Math.round((cw * s) / winSec - gridOffset) + 0.5;
+        if (x >= 0 && x <= cw) {
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, ch);
+        }
       }
       ctx.stroke();
 
-      // Draw 4 channel traces
-      const pts = 180;
-      const rowH = h / rows;
+      // Draw scrolling 4-second waveforms
+      const pts = Math.min(340, Math.max(120, Math.floor(cw * 0.6)));
+      const amp = rowH * 0.34;
+
       for (let r = 0; r < rows; r++) {
+        const chan = TRACE_CHANNELS[r];
         const midY = rowH * (r + 0.5);
-        const amp = rowH * 0.28;
-        ctx.strokeStyle = TRACE_COLORS[r].color;
-        ctx.lineWidth = 1.6;
+
+        // Subtle zero baseline
+        ctx.strokeStyle = "rgba(255,255,255,0.03)";
+        ctx.lineWidth = 1;
         ctx.beginPath();
-        for (let i = 0; i <= pts; i++) {
-          const u = i / pts;
-          const x = u * w;
-          const phase = t * 2.4 + u * 8 + r * 1.4;
-          const alpha = Math.sin(phase * 2.8) * 0.52;
-          const beta = Math.sin(phase * 6.5 + r) * 0.22;
-          const slow = Math.sin(phase * 0.7) * 0.2;
-          // Periodic frontal blink bump on Fp1/Fp2
-          const blinkCycle = (t * 0.45 + u * 0.9) % 1;
-          const blink =
-            r < 2 && blinkCycle > 0.46 && blinkCycle < 0.54
-              ? Math.sin(((blinkCycle - 0.46) / 0.08) * Math.PI) * 0.85
-              : 0;
-          const y = midY - (alpha + beta + slow + blink) * amp;
-          if (i === 0) ctx.moveTo(x, y);
+        ctx.moveTo(0, midY);
+        ctx.lineTo(cw, midY);
+        ctx.stroke();
+
+        // Waveform trace
+        ctx.strokeStyle = chan.color;
+        ctx.lineWidth = 1.65;
+        ctx.beginPath();
+        for (let k = 0; k <= pts; k++) {
+          const u = k / pts;
+          const tt = simT - winSec + winSec * u;
+          const v = Math.max(-1.45, Math.min(1.45, synthEEG(tt, chan, r)));
+          const x = u * cw;
+          const y = midY - v * amp;
+          if (k === 0) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
         }
         ctx.stroke();
+
+        // Leading playhead dot on the right edge
+        const headV = Math.max(-1.45, Math.min(1.45, synthEEG(simT, chan, r)));
+        const headY = midY - headV * amp;
+        ctx.fillStyle = chan.color;
+        ctx.beginPath();
+        ctx.arc(cw - 4, headY, 2.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Update telemetry readouts at ~6 Hz (zero React re-renders)
+      if (!pausedRef.current && now - lastHudUpdate > 160) {
+        lastHudUpdate = now;
+        const alphaRel = 0.34 + 0.18 * Math.sin(simT * 0.55 + 0.8);
+        const betaRel = 0.21 + 0.09 * Math.sin(simT * 0.83 + 2.1);
+        if (alphaBarRef.current) alphaBarRef.current.style.width = `${Math.round(alphaRel * 100)}%`;
+        if (betaBarRef.current) betaBarRef.current.style.width = `${Math.round(betaRel * 100)}%`;
+        if (alphaValRef.current) alphaValRef.current.textContent = alphaRel.toFixed(2);
+        if (betaValRef.current) betaValRef.current.textContent = betaRel.toFixed(2);
+        if (frameCountRef.current) {
+          frameCountRef.current.textContent = (48200 + Math.floor(simT * 250)).toLocaleString();
+        }
+        for (let r = 0; r < rows; r++) {
+          const el = rmsRefs.current[r];
+          if (el) {
+            const baseRms = r < 2 ? 18.4 : r === 2 ? 11.2 : 15.6;
+            const mod = Math.sin(simT * 1.3 + r * 1.1) * 2.8;
+            el.textContent = `${(baseRms + mod).toFixed(1)} µV`;
+          }
+        }
       }
     }
 
-    function loop(now: number) {
-      raf = 0;
-      if (!visible) return;
-      draw(now);
-      if (!reduce) {
-        raf = requestAnimationFrame(loop);
-      }
+    function startLoop() {
+      if (stopped || raf) return;
+      lastNow = 0;
+      raf = requestAnimationFrame(function tick(now) {
+        raf = 0;
+        if (stopped) return;
+        if (visible) draw(now);
+        raf = requestAnimationFrame(tick);
+      });
     }
 
     const io = new IntersectionObserver(
       (entries) => {
         visible = entries.some((e) => e.isIntersecting);
-        if (visible && !raf) {
-          lastNow = 0;
-          raf = requestAnimationFrame(loop);
-        }
+        if (visible) startLoop();
       },
-      { threshold: 0.05 },
+      { threshold: 0.05, rootMargin: "80px" },
     );
     io.observe(canvas);
-    raf = requestAnimationFrame(loop);
+    startLoop();
 
     return () => {
+      stopped = true;
       cancelAnimationFrame(raf);
+      raf = 0;
       io.disconnect();
       ro.disconnect();
     };
   }, []);
+
+  const togglePause = () => {
+    const next = !pausedRef.current;
+    pausedRef.current = next;
+    setPaused(next);
+  };
 
   return (
     <div className="relative rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-zinc-950 text-zinc-100 shadow-2xl overflow-hidden">
@@ -159,46 +223,60 @@ function HeroSignalScope() {
       <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 border-b border-zinc-800 bg-zinc-900/90 text-xs font-mono">
         <div className="flex items-center gap-2">
           <span className="flex gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-            <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-            <span className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+            <span className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/70" />
           </span>
           <span className="ml-2 px-2.5 py-0.5 rounded bg-zinc-950 border border-zinc-800 text-zinc-300">
-            https://cloud.pieeg.com
+            https://cloud.pieeg.com/dashboard
           </span>
         </div>
         <div className="flex items-center gap-3 text-[11px] text-zinc-400">
           <span className="inline-flex items-center gap-1.5 text-emerald-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            Float32Array Ring
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            250 Hz · <span ref={frameCountRef}>48,200</span> samples
           </span>
-          <span>250 Hz</span>
           <span className="hidden sm:inline text-cyan-400">Hampel + IIR 1-40 Hz</span>
           <span className="hidden md:inline text-violet-400">Worker FFT</span>
+          <button
+            type="button"
+            onClick={togglePause}
+            className="px-2 py-0.5 rounded border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white transition-colors cursor-pointer"
+          >
+            {paused ? "Resume" : "Pause"}
+          </button>
         </div>
       </div>
 
       {/* Scope body */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_260px]">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_270px]">
         <div className="relative">
           <canvas
             ref={canvasRef}
-            className="block w-full h-48 sm:h-56"
+            className="block w-full h-52 sm:h-60"
             aria-label="Simulated 4-channel browser EEG waveform preview"
           />
-          {/* Channel labels */}
+          {/* Channel labels + live RMS */}
           <div className="pointer-events-none absolute inset-y-0 left-3 flex flex-col justify-around py-2 text-[11px] font-mono">
-            {TRACE_COLORS.map((t) => (
+            {TRACE_CHANNELS.map((t, i) => (
               <div
                 key={t.ch}
-                className="inline-flex items-center gap-1.5 px-1.5 py-0.5 rounded bg-zinc-950/80 border border-zinc-800/80"
+                className="inline-flex items-center gap-2 px-2 py-0.5 rounded bg-zinc-950/85 border border-zinc-800/90"
               >
                 <span
                   className="w-2 h-2 rounded-full"
                   style={{ backgroundColor: t.color }}
                 />
-                <span className="text-zinc-200 font-semibold">{t.ch}</span>
-                <span className="text-zinc-500">24-bit</span>
+                <span className="text-zinc-100 font-semibold">{t.ch}</span>
+                <span className="text-zinc-500 hidden sm:inline">{t.region}</span>
+                <span
+                  ref={(el) => {
+                    rmsRefs.current[i] = el;
+                  }}
+                  className="text-zinc-400 tabular-nums"
+                >
+                  15.2 µV
+                </span>
               </div>
             ))}
           </div>
@@ -232,10 +310,40 @@ function HeroSignalScope() {
                 <span className="text-amber-400">WebRTC DTLS → OSC</span>
               </div>
             </div>
+
+            {/* Live relative band bars */}
+            <div className="mt-3.5 pt-3 border-t border-zinc-800/80 space-y-2">
+              <div>
+                <div className="flex justify-between text-[11px] mb-1">
+                  <span className="text-emerald-400">α Alpha (8-13 Hz)</span>
+                  <span ref={alphaValRef} className="text-zinc-300 tabular-nums">0.42</span>
+                </div>
+                <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden">
+                  <div
+                    ref={alphaBarRef}
+                    className="h-full rounded-full bg-emerald-400 transition-[width] duration-150"
+                    style={{ width: "42%" }}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="flex justify-between text-[11px] mb-1">
+                  <span className="text-amber-400">β Beta (13-30 Hz)</span>
+                  <span ref={betaValRef} className="text-zinc-300 tabular-nums">0.24</span>
+                </div>
+                <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden">
+                  <div
+                    ref={betaBarRef}
+                    className="h-full rounded-full bg-amber-400 transition-[width] duration-150"
+                    style={{ width: "24%" }}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-4 pt-3 border-t border-zinc-800/80 flex items-center justify-between text-[11px] text-zinc-500">
-            <span>Default: local to tab</span>
+          <div className="mt-3.5 pt-2.5 border-t border-zinc-800/80 flex items-center justify-between text-[11px] text-zinc-500">
+            <span>Simulated 4s window</span>
             <Link
               href="#cloud-bench"
               className="text-cyan-400 hover:underline inline-flex items-center gap-1"

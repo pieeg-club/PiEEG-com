@@ -425,8 +425,13 @@ body {
   border-radius: 9999px;
   transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.nav-underline:hover::after {
-  width: calc(100% - 1.5rem);
+.nav-underline:hover::after,
+.nav-underline[aria-current="page"]::after {
+  width: calc(100% - 1.25rem);
+}
+.nav-underline[aria-current="page"]::after {
+  height: 2px;
+  box-shadow: 0 0 8px rgba(34, 211, 238, 0.65);
 }
 
 /* Subtle glow ring for the glass nav pill */

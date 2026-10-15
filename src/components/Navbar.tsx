@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef, useCallback, Fragment } from "react";
 import { ThemeToggle } from "./ThemeToggle";
 import {
@@ -156,12 +157,27 @@ const mobileExtraLinks = megaMenuSections.flatMap((s) => s.items).filter(
 );
 
 export function Navbar() {
+  const pathname = usePathname() ?? "/";
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
 
   const closeMega = useCallback(() => setMegaOpen(false), []);
   const closeMobile = useCallback(() => setMobileOpen(false), []);
+
+  const isRouteActive = useCallback(
+    (href: string) => {
+      if (!href || href.startsWith("http")) return false;
+      if (href === "/") return pathname === "/";
+      return pathname === href || pathname.startsWith(`${href}/`);
+    },
+    [pathname],
+  );
+
+  const isXrActive = isRouteActive("/xr");
+  const isMoreRouteActive =
+    isRouteActive("/explore") ||
+    mobileExtraLinks.some((item) => !("external" in item && item.external) && isRouteActive(item.href));
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -224,8 +240,10 @@ export function Navbar() {
                   {gi > 0 && (
                     <span aria-hidden="true" className="w-px h-3.5 rounded-full bg-zinc-300/80 dark:bg-zinc-700/80 mx-1 shrink-0" />
                   )}
-                  {group.map((link) => (
-                    ("external" in link && link.external) ? (
+                  {group.map((link) => {
+                    const isExternal = "external" in link && link.external;
+                    const active = !isExternal && isRouteActive(link.href);
+                    return isExternal ? (
                       <a
                         key={link.href}
                         href={link.href}
@@ -241,28 +259,43 @@ export function Navbar() {
                         key={link.href}
                         href={link.href}
                         onClick={closeMega}
-                        className="nav-tech nav-underline relative px-3 py-1.5 rounded-full text-[11px] font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors duration-200"
+                        aria-current={active ? "page" : undefined}
+                        className={`nav-tech nav-underline relative px-3.5 py-1.5 rounded-full text-[11px] transition-all duration-200 ${
+                          active
+                            ? "font-bold text-cyan-700 dark:text-cyan-300 bg-cyan-500/15 dark:bg-cyan-400/15 ring-1 ring-inset ring-cyan-500/45 dark:ring-cyan-400/45 shadow-xs"
+                            : "font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
+                        }`}
                       >
                         {link.label}
                       </Link>
-                    )
-                  ))}
-                  {/* ── XR (styled distinctly, right after Hardware) ── */}
+                    );
+                  })}
+                  {/* ── XR (right after first group) ── */}
                   {gi === 0 && (
-                    <a
+                    <Link
                       href="/xr"
-                      rel="noopener noreferrer"
                       onClick={closeMega}
-                      className="group/xr relative flex items-center gap-1.5 ml-1 pl-2.5 pr-3 py-1.5 rounded-full text-[11px] font-semibold bg-linear-to-r from-cyan-500/10 to-purple-500/10 dark:from-cyan-500/15 dark:to-purple-500/15 ring-1 ring-inset ring-cyan-500/25 dark:ring-cyan-400/25 hover:from-cyan-500/20 hover:to-purple-500/20 hover:ring-cyan-500/50 dark:hover:ring-cyan-400/50 transition-all duration-200"
+                      aria-current={isXrActive ? "page" : undefined}
+                      className={`group/xr nav-underline relative flex items-center gap-1.5 ml-1 pl-2.5 pr-3 py-1.5 rounded-full text-[11px] transition-all duration-200 ${
+                        isXrActive
+                          ? "font-bold bg-linear-to-r from-cyan-500/20 to-purple-500/20 dark:from-cyan-400/20 dark:to-purple-400/20 ring-1 ring-inset ring-cyan-500/55 dark:ring-cyan-400/55 shadow-xs"
+                          : "font-semibold hover:bg-linear-to-r hover:from-cyan-500/10 hover:to-purple-500/10 dark:hover:from-cyan-500/15 dark:hover:to-purple-500/15"
+                      }`}
                     >
                       <span className="relative flex items-center justify-center">
                         <Glasses className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400 transition-transform duration-200 group-hover/xr:scale-110" />
                         <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-green-500 ring-2 ring-white dark:ring-zinc-950" />
                       </span>
-                      <span className="nav-tech bg-clip-text text-transparent bg-linear-to-r from-cyan-600 to-purple-600 dark:from-cyan-400 dark:to-purple-400">
+                      <span
+                        className={`nav-tech ${
+                          isXrActive
+                            ? "text-cyan-700 dark:text-cyan-300"
+                            : "bg-clip-text text-transparent bg-linear-to-r from-cyan-600 to-purple-600 dark:from-cyan-400 dark:to-purple-400"
+                        }`}
+                      >
                         XR
                       </span>
-                    </a>
+                    </Link>
                   )}
                 </Fragment>
               ))}
@@ -273,15 +306,16 @@ export function Navbar() {
                 aria-expanded={megaOpen}
                 aria-haspopup="true"
                 aria-controls="mega-menu-panel"
-                className={`nav-tech relative flex items-center gap-1.5 px-3.5 py-2 rounded-full text-[11px] font-medium transition-all duration-200 select-none ${
-                  megaOpen
-                    ? "text-zinc-900 dark:text-zinc-100 bg-white/80 dark:bg-zinc-800/80 shadow-sm ring-1 ring-zinc-200/70 dark:ring-zinc-700/70"
-                    : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-white/60 dark:hover:bg-zinc-800/60"
+                aria-current={isMoreRouteActive ? "page" : undefined}
+                className={`nav-tech nav-underline relative flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] transition-all duration-200 select-none ${
+                  megaOpen || isMoreRouteActive
+                    ? "font-bold text-cyan-700 dark:text-cyan-300 bg-cyan-500/15 dark:bg-cyan-400/15 ring-1 ring-inset ring-cyan-500/45 dark:ring-cyan-400/45 shadow-xs"
+                    : "font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-white/60 dark:hover:bg-zinc-800/60"
                 }`}
               >
-                <Sparkles className={`w-3.5 h-3.5 transition-all duration-300 ${megaOpen ? "text-cyan-500 scale-110" : ""}`} />
+                <Sparkles className={`w-3.5 h-3.5 transition-all duration-300 ${megaOpen || isMoreRouteActive ? "text-cyan-500 scale-110" : ""}`} />
                 More
-                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaOpen ? "rotate-180 text-cyan-500" : ""}`} />
+                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${megaOpen ? "rotate-180 text-cyan-500" : isMoreRouteActive ? "text-cyan-500" : ""}`} />
               </button>
             </div>
           </nav>
@@ -402,49 +436,74 @@ export function Navbar() {
                   </h3>
                 </div>
                 <ul className="space-y-1">
-                  {section.items.map((item) => (
-                    <li key={item.href}>
-                      {("external" in item && item.external) ? (
-                        <a
-                          href={item.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={closeMega}
-                          className="group flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
-                        >
-                          <span className="mt-0.5 flex items-center justify-center w-8 h-8 shrink-0 rounded-lg bg-zinc-100 dark:bg-zinc-800/80 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700 transition-colors">
-                            <item.Icon className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
-                          </span>
-                          <span className="flex-1 min-w-0">
-                            <span className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                              {item.label}
+                  {section.items.map((item) => {
+                    const isExternal = "external" in item && item.external;
+                    const active = !isExternal && isRouteActive(item.href);
+                    return (
+                      <li key={item.href}>
+                        {isExternal ? (
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={closeMega}
+                            className="group flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
+                          >
+                            <span className="mt-0.5 flex items-center justify-center w-8 h-8 shrink-0 rounded-lg bg-zinc-100 dark:bg-zinc-800/80 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700 transition-colors">
+                              <item.Icon className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
                             </span>
-                            <span className="block text-xs text-zinc-500 dark:text-zinc-500 mt-0.5 leading-snug">
-                              {item.desc}
+                            <span className="flex-1 min-w-0">
+                              <span className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                                {item.label}
+                              </span>
+                              <span className="block text-xs text-zinc-500 dark:text-zinc-500 mt-0.5 leading-snug">
+                                {item.desc}
+                              </span>
                             </span>
-                          </span>
-                        </a>
-                      ) : (
-                        <Link
-                          href={item.href}
-                          onClick={closeMega}
-                          className="group flex items-start gap-3 p-3 rounded-xl hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
-                        >
-                          <span className="mt-0.5 flex items-center justify-center w-8 h-8 shrink-0 rounded-lg bg-zinc-100 dark:bg-zinc-800/80 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700 transition-colors">
-                            <item.Icon className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
-                          </span>
-                          <span className="flex-1 min-w-0">
-                            <span className="block text-sm font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
-                              {item.label}
+                          </a>
+                        ) : (
+                          <Link
+                            href={item.href}
+                            onClick={closeMega}
+                            aria-current={active ? "page" : undefined}
+                            className={`group flex items-start gap-3 p-3 rounded-xl transition-all duration-150 ${
+                              active
+                                ? "bg-cyan-500/12 dark:bg-cyan-400/12 ring-1 ring-inset ring-cyan-500/40 dark:ring-cyan-400/40"
+                                : "hover:bg-zinc-50 dark:hover:bg-zinc-900/60"
+                            }`}
+                          >
+                            <span
+                              className={`mt-0.5 flex items-center justify-center w-8 h-8 shrink-0 rounded-lg transition-colors ${
+                                active
+                                  ? "bg-cyan-500/20 dark:bg-cyan-400/20"
+                                  : "bg-zinc-100 dark:bg-zinc-800/80 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700"
+                              }`}
+                            >
+                              <item.Icon
+                                className={`w-4 h-4 ${
+                                  active ? "text-cyan-600 dark:text-cyan-300" : "text-zinc-500 dark:text-zinc-400"
+                                }`}
+                              />
                             </span>
-                            <span className="block text-xs text-zinc-500 dark:text-zinc-500 mt-0.5 leading-snug">
-                              {item.desc}
+                            <span className="flex-1 min-w-0">
+                              <span
+                                className={`block text-sm font-semibold transition-colors ${
+                                  active
+                                    ? "text-cyan-700 dark:text-cyan-300"
+                                    : "text-zinc-900 dark:text-zinc-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400"
+                                }`}
+                              >
+                                {item.label}
+                              </span>
+                              <span className="block text-xs text-zinc-500 dark:text-zinc-500 mt-0.5 leading-snug">
+                                {item.desc}
+                              </span>
                             </span>
-                          </span>
-                        </Link>
-                      )}
-                    </li>
-                  ))}
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}
@@ -500,8 +559,10 @@ export function Navbar() {
       >
         <div className="px-4 py-4 space-y-1">
           {/* Main links */}
-          {navLinks.map((link) => (
-            ("external" in link && link.external) ? (
+          {navLinks.map((link) => {
+            const isExternal = "external" in link && link.external;
+            const active = !isExternal && isRouteActive(link.href);
+            return isExternal ? (
               <a
                 key={link.href}
                 href={link.href}
@@ -517,18 +578,25 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={closeMobile}
-                className="flex items-center px-4 py-3 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
+                aria-current={active ? "page" : undefined}
+                className={`flex items-center px-4 py-3 rounded-xl text-sm transition-all duration-150 ${
+                  active
+                    ? "font-bold text-cyan-700 dark:text-cyan-300 bg-cyan-500/12 dark:bg-cyan-400/12 ring-1 ring-inset ring-cyan-500/40 dark:ring-cyan-400/40"
+                    : "font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900/60"
+                }`}
               >
                 {link.label}
               </Link>
-            )
-          ))}
+            );
+          })}
 
           {/* Extra links from mega menu */}
           <div className="pt-3 border-t border-zinc-100 dark:border-zinc-800 mt-3">
             <p className="px-4 pb-2 text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">More</p>
-            {mobileExtraLinks.map((item) => (
-              ("external" in item && item.external) ? (
+            {mobileExtraLinks.map((item) => {
+              const isExternal = "external" in item && item.external;
+              const active = !isExternal && isRouteActive(item.href);
+              return isExternal ? (
                 <a
                   key={item.href}
                   href={item.href}
@@ -545,17 +613,27 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={closeMobile}
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
+                  aria-current={active ? "page" : undefined}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-150 ${
+                    active
+                      ? "font-bold text-cyan-700 dark:text-cyan-300 bg-cyan-500/12 dark:bg-cyan-400/12 ring-1 ring-inset ring-cyan-500/40 dark:ring-cyan-400/40"
+                      : "font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900/60"
+                  }`}
                 >
-                  <item.Icon className="w-4 h-4 text-zinc-400 shrink-0" />
+                  <item.Icon className={`w-4 h-4 shrink-0 ${active ? "text-cyan-600 dark:text-cyan-300" : "text-zinc-400"}`} />
                   {item.label}
                 </Link>
-              )
-            ))}
+              );
+            })}
             <Link
               href="/explore"
               onClick={closeMobile}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-all duration-150"
+              aria-current={isRouteActive("/explore") ? "page" : undefined}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-150 ${
+                isRouteActive("/explore")
+                  ? "font-bold text-cyan-700 dark:text-cyan-300 bg-cyan-500/12 dark:bg-cyan-400/12 ring-1 ring-inset ring-cyan-500/40 dark:ring-cyan-400/40"
+                  : "font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-900/60"
+              }`}
             >
               <LayoutGrid className="w-4 h-4 text-zinc-400 shrink-0" />
               Explore all pages

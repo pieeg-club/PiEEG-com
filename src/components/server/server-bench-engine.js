@@ -1,5 +1,9 @@
 /* Interactive pieeg-server architecture bench - follows the home-bench instrument design. */
 
+/**
+ * @param {HTMLElement | null} root
+ * @returns {() => void}
+ */
 export function mountServerBench(root) {
   if (!root) return () => {};
   let raf = 0;

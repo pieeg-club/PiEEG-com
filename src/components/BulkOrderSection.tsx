@@ -196,7 +196,7 @@ const DISCOUNT_TIERS = [
     description: "Maximum savings for department-wide deployments, hackathons, and multi-site studies.",
     perks: [
       "30% off all BCI hardware boards",
-      "Full access to the free PiEEG ecosystem",
+      "Full access to the PiEEG ecosystem",
       "1-on-1 live onboarding with the PiEEG team",
       "Priority assistance for large-scale deployments",
       "Direct conversation with the founders for 50+ boards",

@@ -44,11 +44,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} dark`}
+      style={{ colorScheme: "dark" }}
       suppressHydrationWarning
     >
       <head>
-        <Script id="theme-script" strategy="beforeInteractive">
+        <Script id="theme-script" strategy="afterInteractive">
           {`(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t='dark';}var e=document.documentElement;e.classList.remove('light','dark');e.classList.add(t);e.style.colorScheme=t;}catch(_){}})();`}
         </Script>
         <Script

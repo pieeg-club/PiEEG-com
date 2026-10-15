@@ -1,10 +1,11 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Cpu, Code, ChevronRight, ExternalLink, Package, Tag, BookOpen } from "lucide-react";
+import { ArrowRight, Cpu, Code, ChevronRight, ExternalLink, Package, Tag, BookOpen, GraduationCap } from "lucide-react";
 import ProductsGrid from "@/components/ProductsGrid";
 import HardwareSelectorButton from "@/components/HardwareSelectorButton";
 import HeroVideo from "@/components/HeroVideo";
+import BulkOrderSection from "@/components/BulkOrderSection";
 import { ProductPrice } from "@/components/ProductOffer";
 import { enclosuresFor } from "@/lib/thingiverse";
 
@@ -371,7 +372,7 @@ export default function ProductsPage() {
           </p>
 
           {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-3 mb-16">
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
             <HardwareSelectorButton />
             <Link
               href="#hardware"
@@ -379,6 +380,13 @@ export default function ProductsPage() {
             >
               Explore Products
               <ChevronRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="#bulk-orders"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-cyan-500/40 bg-cyan-500/10 text-sm font-bold text-cyan-700 dark:text-cyan-300 hover:bg-cyan-500/20 backdrop-blur-sm transition-all hover:-translate-y-px"
+            >
+              <GraduationCap className="w-4 h-4" />
+              Bulk &amp; Academic (5+ · Save up to 30%)
             </Link>
             <Link
               href="#accessories"
@@ -435,6 +443,16 @@ export default function ProductsPage() {
               className="shrink-0 px-5 py-3.5 text-sm font-semibold border-b-2 border-transparent hover:border-zinc-400 dark:hover:border-zinc-500 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all"
             >
               Accessories
+            </a>
+            <a
+              href="#bulk-orders"
+              className="shrink-0 px-5 py-3.5 text-sm font-semibold border-b-2 border-transparent hover:border-cyan-500 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 transition-all inline-flex items-center gap-2"
+            >
+              <GraduationCap className="w-4 h-4" />
+              Bulk &amp; Institutional (5+ Units)
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-500/15 text-cyan-700 dark:text-cyan-300">
+                15–30% Off
+              </span>
             </a>
           </div>
         </div>
@@ -503,18 +521,33 @@ export default function ProductsPage() {
                   <p className="text-[11px] font-semibold text-zinc-400 dark:text-zinc-500 mb-3">
                     {accessory.specs}
                   </p>
-                  <Link
-                    href={accessory.href}
-                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold text-xs hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
-                  >
-                    View Details
-                  </Link>
+                  <div className="flex items-center gap-2">
+                    <Link
+                      href={accessory.href}
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold text-xs hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
+                    >
+                      View Details
+                    </Link>
+                    {accessory.status === "Available" && (
+                      <a
+                        href={accessory.purchaseUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 text-xs font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                      >
+                        Buy
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Bulk & Institutional Orders Section */}
+      <BulkOrderSection />
 
       {/* Why Choose PiEEG */}
       <section className="py-10 sm:py-14">

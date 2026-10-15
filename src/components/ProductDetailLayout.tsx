@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, ChevronRight, ShoppingCart, AlertTriangle } from "lucide-react";
+import { ExternalLink, ChevronRight, ShoppingCart, AlertTriangle, GraduationCap } from "lucide-react";
 import { ReactNode } from "react";
 import { ProductJsonLd, ProductPrice } from "@/components/ProductOffer";
 import { EnclosureLinks } from "@/components/EnclosureLink";
@@ -186,6 +186,20 @@ export default function ProductDetailLayout({
               {enclosureLinks && enclosureLinks.length > 0 && (
                 <EnclosureLinks links={enclosureLinks} tone="ondark" className="mt-4" />
               )}
+              </div>
+
+              {/* Bulk & Academic Discount Banner */}
+              <div className="mt-6 inline-flex flex-wrap items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs text-zinc-300">
+                <GraduationCap className="w-4 h-4 text-cyan-400 shrink-0" />
+                <span>Ordering for a university, course, or research lab?</span>
+                <Link
+                  href={`/hardware?product=${productId}#bulk-orders`}
+                  className="font-bold text-cyan-400 hover:text-cyan-300 underline underline-offset-2"
+                >
+                  {["8ch-dry-cap", "8ch-wet-cap", "16ch-cap", "32ch-wet-cap", "emg-kit", "conductive-gel"].includes(productId)
+                    ? "Request Institutional PO / Bundle Quote →"
+                    : "Save 15–30% on 5+ Boards with Institutional Quote & PO →"}
+                </Link>
               </div>
             </div>
 

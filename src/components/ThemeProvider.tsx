@@ -56,8 +56,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     applyTheme(next);
   }, []);
 
-  // Keep multiple tabs in sync.
+  // Sync the DOM class on mount and keep multiple tabs in sync.
   useEffect(() => {
+    applyTheme(readStoredTheme());
     const onStorage = (event: StorageEvent) => {
       if (
         event.key === THEME_STORAGE_KEY &&

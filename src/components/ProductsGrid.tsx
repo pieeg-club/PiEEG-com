@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ShoppingCart, ChevronRight } from "lucide-react";
+import { ArrowRight, ShoppingCart, ChevronRight, GraduationCap } from "lucide-react";
 import { ProductPrice } from "@/components/ProductOffer";
 import { EnclosureLinks } from "@/components/EnclosureLink";
 import type { EnclosureLink } from "@/lib/thingiverse";
@@ -196,6 +196,30 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
                 <EnclosureLinks links={product.enclosureLinks} className="mt-3" />
               )}
               </div>
+
+              {product.status === "Available" && (
+                <div className="mt-3 pt-3 border-t border-zinc-100 dark:border-zinc-900 flex items-center justify-between gap-2">
+                  <span className="text-[11px] text-zinc-500 dark:text-zinc-400 inline-flex items-center gap-1.5">
+                    <GraduationCap className="w-3.5 h-3.5 text-cyan-500 shrink-0" />
+                    Ordering 5+ for a lab or university?
+                  </span>
+                  <a
+                    href="#bulk-quote-builder"
+                    onClick={() => {
+                      if (typeof window !== "undefined") {
+                        window.dispatchEvent(
+                          new CustomEvent("pieeg:select-bulk-product", {
+                            detail: { productId: product.id, quantity: 5 },
+                          })
+                        );
+                      }
+                    }}
+                    className="text-[11px] font-bold text-cyan-600 dark:text-cyan-400 hover:underline shrink-0"
+                  >
+                    Get 15–30% Bulk Discount →
+                  </a>
+                </div>
+              )}
             </div>
           </article>
         ))}

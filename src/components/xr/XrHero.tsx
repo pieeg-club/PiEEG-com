@@ -15,7 +15,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 
-const KICKSTARTER_URL =
+const KICKSTARTER_URL = 
   "https://www.kickstarter.com/projects/42415505/pieeg-xr-neural-face-interface-for-spatial-computing";
 
 const TRACE_CHANNELS = [

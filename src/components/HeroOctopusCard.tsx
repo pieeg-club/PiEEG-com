@@ -19,7 +19,7 @@ const BANNERS = [
     badge: "8-CH fEMG",
   },
   {
-    image: "/news-images/aura-vr-wristband.png",
+    src: "https://pieeg.lon1.cdn.digitaloceanspaces.com/Aura-Real-Time-Muscle-SnapYT.App.mp4",
     title: "Aura VR",
     subtitle: "EMG + IMU wristband for XR",
     link: "https://aura.pieeg.com",
@@ -48,8 +48,6 @@ export default function HeroOctopusCard() {
     return null;
   }
 
-  const isImage = "image" in selected;
-
   return (
     <div className="group hidden lg:block fixed z-50 bottom-24 right-4 sm:right-6 w-64">
       {/* Close button */}
@@ -73,39 +71,29 @@ export default function HeroOctopusCard() {
       >
         <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-xl shadow-zinc-950/10 dark:shadow-zinc-950/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
           <div className="relative aspect-video overflow-hidden bg-zinc-950">
-            {isImage ? (
-              <img
-                src={selected.image}
-                alt=""
+            {shouldLoad && (
+              <video
+                ref={videoRef}
+                src={selected.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                disablePictureInPicture
+                disableRemotePlayback
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-            ) : (
-              shouldLoad && (
-                <video
-                  ref={videoRef}
-                  src={selected.src}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  disablePictureInPicture
-                  disableRemotePlayback
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              )
             )}
 
             {/* Gradient scrim for legibility */}
             <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
 
-            {!isImage && (
-              <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm shadow-lg transition-transform duration-300 group-hover:scale-110">
-                  <Play className="h-4 w-4 translate-x-px fill-zinc-900 text-zinc-900" />
-                </div>
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90 backdrop-blur-sm shadow-lg transition-transform duration-300 group-hover:scale-110">
+                <Play className="h-4 w-4 translate-x-px fill-zinc-900 text-zinc-900" />
               </div>
-            )}
+            </div>
 
             <div className="absolute left-2.5 top-2.5 inline-flex items-center gap-1.5 rounded-full bg-black/50 backdrop-blur-sm px-2 py-1 text-[10px] font-medium text-white">
               <span className="relative flex h-1.5 w-1.5">

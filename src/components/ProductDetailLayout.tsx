@@ -198,7 +198,7 @@ export default function ProductDetailLayout({
                 >
                   {["8ch-dry-cap", "8ch-wet-cap", "16ch-cap", "32ch-wet-cap", "emg-kit", "conductive-gel"].includes(productId)
                     ? "Request Institutional PO / Bundle Quote →"
-                    : "Save 15–30% on 5+ Boards with Institutional Quote & PO →"}
+                    : "Save 10–20% on 5+ Boards with Institutional Quote & PO →"}
                 </Link>
               </div>
             </div>

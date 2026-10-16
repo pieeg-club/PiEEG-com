@@ -154,16 +154,30 @@ export const BULK_CATALOG: BulkCatalogItem[] = [
 ];
 
 
-const DISCOUNT_TIERS = [
+const DISCOUNT_TIERS: Array<{
+  minUnits: number | null;
+  maxUnits: number | null;
+  percent: number | null;
+  headline?: string;
+  subline?: string;
+  badge: string;
+  title: string;
+  description: string;
+  perks: string[];
+  gradient: string;
+  featured?: boolean;
+  ctaHref?: string;
+  ctaLabel?: string;
+}> = [
   {
     minUnits: 5,
     maxUnits: 9,
-    percent: 15,
-    badge: "5–9 Boards",
+    percent: 10,
+    badge: "5–9 Devices",
     title: "Starter Lab & Capstone",
     description: "Ideal for PhD research groups, senior capstones, and pilot BCI experiments.",
     perks: [
-      "15% off all BCI hardware boards",
+      "10% off all BCI hardware boards",
       "Free PiEEG Cloud, Server & open-source SDKs",
       "35+ interactive BCI experiments & demos",
       "Official university quotes & PO support",
@@ -172,9 +186,9 @@ const DISCOUNT_TIERS = [
   },
   {
     minUnits: 10,
-    maxUnits: 24,
+    maxUnits: null,
     percent: 20,
-    badge: "10–24 Boards · Most Popular",
+    badge: "10+ Devices · Most Popular",
     title: "University Course & Lab",
     description: "Designed for undergraduate/graduate neuroscience labs and neurotech clubs.",
     perks: [
@@ -188,21 +202,25 @@ const DISCOUNT_TIERS = [
     featured: true,
   },
   {
-    minUnits: 25,
+    minUnits: null,
     maxUnits: null,
-    percent: 30,
-    badge: "25+ Boards",
-    title: "Institutional & Hackathon Fleet",
-    description: "Maximum savings for department-wide deployments, hackathons, and multi-site studies.",
+    percent: null,
+    headline: "Contact Us",
+    subline: "for hackathons",
+    badge: "Hackathons & Events",
+    title: "Hackathons & Custom Fleet",
+    description: "Organizing a neurotech hackathon, student competition, or large institutional deployment? Reach out to our team.",
     perks: [
-      "30% off all BCI hardware boards",
+      "Tailored hackathon packs & event pricing",
       "Full access to the PiEEG ecosystem",
       "1-on-1 live onboarding with the PiEEG team",
-      "Priority assistance for large-scale deployments",
-      "Direct conversation with the founders for 50+ boards",
-      "Custom collaboration opportunities for institutions",
+      "Priority assistance for event organizers",
+      "Direct conversation with the founders",
+      "Custom collaboration & sponsorship options",
     ],
     gradient: "from-violet-500 to-fuchsia-600",
+    ctaHref: "/contact",
+    ctaLabel: "Contact Us for Hackathons →",
   },
 ];
 
@@ -239,9 +257,8 @@ const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") || "https://pieeg-cloud.fly.dev";
 
 export function getDiscountPercent(totalUnits: number): number {
-  if (totalUnits >= 25) return 30;
   if (totalUnits >= 10) return 20;
-  if (totalUnits >= 5) return 15;
+  if (totalUnits >= 5) return 10;
   return 0;
 }
 
@@ -466,15 +483,12 @@ export default function BulkOrderSection() {
 
   const nextTierHint = useMemo(() => {
     if (boardUnits < 5) {
-      return `Add ${5 - boardUnits} more BCI board${5 - boardUnits === 1 ? "" : "s"} to unlock the 15% Institutional Discount on boards!`;
+      return `Add ${5 - boardUnits} more BCI board${5 - boardUnits === 1 ? "" : "s"} to unlock the 10% Institutional Discount on boards!`;
     }
     if (boardUnits < 10) {
-      return `Add ${10 - boardUnits} more BCI board${10 - boardUnits === 1 ? "" : "s"} to jump from 15% → 20% OFF on boards!`;
+      return `Add ${10 - boardUnits} more BCI board${10 - boardUnits === 1 ? "" : "s"} to jump from 10% → 20% OFF on boards!`;
     }
-    if (boardUnits < 25) {
-      return `Add ${25 - boardUnits} more BCI board${25 - boardUnits === 1 ? "" : "s"} to unlock maximum 30% OFF Fleet Pricing on boards!`;
-    }
-    return "Maximum 30% Institutional Fleet Discount unlocked on all BCI boards!";
+    return "Maximum 20% Institutional Discount unlocked on all BCI boards! Organizing a hackathon? Contact us directly.";
   }, [boardUnits]);
 
   return (
@@ -493,7 +507,7 @@ export default function BulkOrderSection() {
           <h2 className="title-section mb-4">
             Equip your classroom or lab.{" "}
             <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 bg-clip-text text-transparent">
-              Save up to 30%.
+              Save up to 20%.
             </span>
           </h2>
 
@@ -541,7 +555,7 @@ export default function BulkOrderSection() {
               <div className="flex items-center gap-2 mb-1">
                 <h3 className="font-bold text-base">Ordering 5+ Units for a Lab or Institution?</h3>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-500 text-white">
-                  15% – 30% OFF
+                  10% – 20% OFF
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-300 mb-2.5">
@@ -563,6 +577,7 @@ export default function BulkOrderSection() {
         <div className="grid md:grid-cols-3 gap-5 mb-12">
           {DISCOUNT_TIERS.map((tier) => {
             const isUnlocked =
+              tier.minUnits !== null &&
               boardUnits >= tier.minUnits &&
               (tier.maxUnits === null || boardUnits <= tier.maxUnits);
             return (
@@ -590,10 +605,10 @@ export default function BulkOrderSection() {
 
                 <div className="flex items-baseline gap-2 mb-1">
                   <span className="text-4xl font-black tracking-tight text-zinc-900 dark:text-white">
-                    {tier.percent}% OFF
+                    {tier.percent !== null ? `${tier.percent}% OFF` : tier.headline}
                   </span>
                   <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
-                    on BCI boards
+                    {tier.percent !== null ? "on BCI boards" : tier.subline}
                   </span>
                 </div>
 
@@ -615,6 +630,15 @@ export default function BulkOrderSection() {
                     </li>
                   ))}
                 </ul>
+
+                {tier.ctaHref && tier.ctaLabel && (
+                  <a
+                    href={tier.ctaHref}
+                    className="mt-4 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-linear-to-r from-violet-500 to-fuchsia-600 text-white text-xs font-bold hover:opacity-90 transition-opacity"
+                  >
+                    {tier.ctaLabel}
+                  </a>
+                )}
               </div>
             );
           })}
@@ -693,7 +717,7 @@ export default function BulkOrderSection() {
                     1. Select Hardware &amp; Quantities
                   </h3>
                   <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                    Volume discounts (15–30%) apply to BCI boards (5+ boards). EEG caps &amp; kits can be bundled on the same PO at standard list price.
+                    Volume discounts (10–20%) apply to BCI boards (5+ boards). EEG caps &amp; kits can be bundled on the same PO at standard list price.
                   </p>
                 </div>
 
@@ -837,7 +861,7 @@ export default function BulkOrderSection() {
                       onClick={bumpToFiveUnits}
                       className="text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:underline"
                     >
-                      + Bump to 5 units for 15% off
+                      + Bump to 5 units for 10% off
                     </button>
                   )}
                 </div>

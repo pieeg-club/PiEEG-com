@@ -225,7 +225,7 @@ export default function ContactPage() {
                 Do you offer educational discounts?
               </summary>
               <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                Yes! Universities and educational institutions qualify for 20-30% discounts on bulk orders. Contact us with your institution email for details.
+                Yes! Universities and educational institutions qualify for 10% off 5+ devices, 20% off 10+ devices, and custom support for hackathons. Contact us with your institution email for details.
               </p>
             </details>
 

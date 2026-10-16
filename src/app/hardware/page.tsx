@@ -386,7 +386,7 @@ export default function ProductsPage() {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-cyan-500/40 bg-cyan-500/10 text-sm font-bold text-cyan-700 dark:text-cyan-300 hover:bg-cyan-500/20 backdrop-blur-sm transition-all hover:-translate-y-px"
             >
               <GraduationCap className="w-4 h-4" />
-              Bulk &amp; Academic (5+ · Save up to 30%)
+              Bulk &amp; Academic (5+ · Save up to 20%)
             </Link>
             <Link
               href="#accessories"
@@ -451,7 +451,7 @@ export default function ProductsPage() {
               <GraduationCap className="w-4 h-4" />
               Bulk &amp; Institutional (5+ Units)
               <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-500/15 text-cyan-700 dark:text-cyan-300">
-                15–30% Off
+                10–20% Off
               </span>
             </a>
           </div>

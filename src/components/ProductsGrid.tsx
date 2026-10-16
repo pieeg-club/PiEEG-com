@@ -216,7 +216,7 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
                     }}
                     className="text-[11px] font-bold text-cyan-600 dark:text-cyan-400 hover:underline shrink-0"
                   >
-                    Get 15–30% Bulk Discount →
+                    Get 10–20% Bulk Discount →
                   </a>
                 </div>
               )}

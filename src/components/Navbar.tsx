@@ -8,7 +8,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { SocialMenu, PIEEG_SOCIAL_LINKS } from "./SocialMenu";
 import {
   ChevronDown, Users, Mail, Briefcase, Building2, Code2,
-  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal, Watch, CircuitBoard, School, Scale, FlaskConical,
+  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal, Watch, CircuitBoard, School, Scale, FlaskConical, Camera,
 } from "lucide-react";
 
 function GitHubIcon({ className }: { className?: string }) {
@@ -99,6 +99,7 @@ const megaMenuSections = [
     textAccent: "text-purple-600 dark:text-purple-400",
     items: [
       { href: "/cloud", label: "Cloud Platform", desc: "Zero-install BCI in your browser", Icon: Cloud },
+      { href: "https://cloud.pieeg.com/experiences/optical-physiological-bench", label: "Optical Physiological Bench", desc: "Webcam rPPG & optical bench with live EEG", Icon: Camera, external: true },
       { href: "/xr", label: "PiEEG XR", desc: "Neural face interface for VR", Icon: Glasses },
       { href: "https://aura.pieeg.com", label: "Aura VR", desc: "EMG + IMU wristband for XR", Icon: Watch, external: true },
       { href: "/agent", label: "AI Agent", desc: "Your AI copilot for brain data", Icon: Bot },

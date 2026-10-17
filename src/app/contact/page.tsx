@@ -169,6 +169,24 @@ export default function ContactPage() {
             </a>
 
             <a
+              href="https://www.tiktok.com/@pieeg_official"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            >
+              TikTok
+            </a>
+
+            <a
+              href="https://www.threads.com/@pieeg_official"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            >
+              Threads
+            </a>
+
+            <a
               href="https://www.facebook.com/groups/pieeg"
               target="_blank"
               rel="noopener noreferrer"
@@ -184,6 +202,15 @@ export default function ContactPage() {
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
               Reddit
+            </a>
+
+            <a
+              href="https://www.kaggle.com/pieegbiolabplatform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            >
+              Kaggle
             </a>
 
             <a

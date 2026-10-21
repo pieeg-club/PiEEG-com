@@ -80,6 +80,15 @@ export const BULK_CATALOG: BulkCatalogItem[] = [
     elecrowUrl: "https://www.elecrow.com/octopus-16-brain-computer-interface-with-16-eeg-channel.html",
   },
   {
+    id: "octobio-kit",
+    name: "OctoBio Kit",
+    category: "board",
+    tagline: "16-ch EEG + Arduino Brain-to-Hardware Kit",
+    price: 370,
+    image: "/hardware/octobio-kit/octobio-1-262a4266.jpg",
+    elecrowUrl: "https://www.elecrow.com/biocircuit.html",
+  },
+  {
     id: "microbci",
     name: "MicroBCI",
     category: "board",

@@ -90,6 +90,17 @@
       "currency": "USD",
       "availability": "InStock"
     },
+    "octobio-kit": {
+      "name": "OctoBio Kit",
+      "description": "Brain-to-hardware learning kit. 16-channel wireless EEG board plus an Arduino starter kit with browser block programming.",
+      "image": "/hardware/octobio-kit/octobio-1-262a4266.jpg",
+      "path": "/hardware/octobio-kit",
+      "elecrowUrl": "https://www.elecrow.com/biocircuit.html",
+      "sku": "PIA24028P",
+      "price": 370,
+      "currency": "USD",
+      "availability": "InStock"
+    },
     "8ch-dry-cap": {
       "name": "8 Channel Dry EEG Cap Kit",
       "description": "EEG dry electrode cap with press-fit electrodes. No conductive gel required.",

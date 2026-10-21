@@ -254,6 +254,31 @@ const hardwareProducts = [
     purchaseUrl: "https://www.elecrow.com/octopus-16-brain-computer-interface-with-16-eeg-channel.html",
     github: "https://github.com/pieeg-club/Octopus_16",
     categories: ["wireless", "16ch+"]
+  },
+  {
+    id: "octobio-kit",
+    name: "OctoBio Kit",
+    tagline: "Brain-to-hardware learning kit",
+    description:
+      "Brain-to-hardware learning kit. 16-channel EEG + Arduino starter kit. Read brain rhythms, drive real lights, motors and screens, and program it all with blocks in the browser.",
+    channels: "16 channels",
+    platform: "Octopus 16 + Arduino Starter Kit",
+    signals: ["EEG"],
+    features: [
+      "16-channel dry pogo-pin EEG (Octopus 16)",
+      "All-in-One Starter Kit for Arduino included",
+      "5-level browser block programming at octobridge.pieeg.com",
+      "Web Bluetooth + Web Serial live at once",
+      "Classroom-ready lessons from primary school to university"
+    ],
+    status: "Available",
+    badge: "Education Kit",
+    gradient: "from-cyan-500 to-amber-500",
+    bgGradient: "from-cyan-50 to-amber-50 dark:from-cyan-950/30 dark:to-amber-950/30",
+    image: "/hardware/octobio-kit/octobio-1-262a4266.jpg",
+    purchaseUrl: "https://www.elecrow.com/biocircuit.html",
+    github: "https://github.com/pieeg-club/Octopus_16",
+    categories: ["wireless", "16ch+"]
   }
 ];
 

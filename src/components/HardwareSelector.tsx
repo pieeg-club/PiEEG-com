@@ -77,6 +77,12 @@ const steps: Record<string, Step> = {
     subtitle: "Pick the ecosystem you're most comfortable with.",
     options: [
       {
+        label: "Browser Blocks + Arduino Kit",
+        description: "No coding install — 16-ch EEG + starter kit",
+        icon: <GraduationCap className="w-5 h-5" />,
+        result: "octobio-kit",
+      },
+      {
         label: "Raspberry Pi",
         description: "Linux, Python, large community",
         icon: <Cpu className="w-5 h-5" />,
@@ -98,7 +104,7 @@ const steps: Record<string, Step> = {
         label: "No preference",
         description: "Recommend the easiest entry point",
         icon: <Sparkles className="w-5 h-5" />,
-        result: "pieeg",
+        result: "octobio-kit",
       },
     ],
   },
@@ -296,6 +302,18 @@ const products: Record<string, Product> = {
     gradient: "from-orange-500 to-red-600",
     href: "/hardware/jneeg",
     purchaseUrl: "https://www.elecrow.com/jneeg.html",
+  },
+  "octobio-kit": {
+    id: "octobio-kit",
+    name: "OctoBio Kit",
+    tagline: "Brain-to-hardware learning kit",
+    why: "Combines the 16-channel Octopus 16 wireless EEG board with an Arduino starter kit and 5-level drag-and-drop block programming in the browser.",
+    channels: "16 channels",
+    platform: "Octopus 16 + Arduino Kit",
+    badge: "Education Kit",
+    gradient: "from-cyan-500 to-amber-500",
+    href: "/hardware/octobio-kit",
+    purchaseUrl: "https://www.elecrow.com/biocircuit.html",
   },
 };
 

@@ -26,6 +26,8 @@ const sections = [
     items: [
       { href: "/hardware", label: "All Hardware", desc: "Browse every shield & kit", Icon: Cpu },
       { href: "/hardware/pieeg-xr", label: "PiEEG XR", desc: "Neural face interface for VR", Icon: Glasses },
+      { href: "/hardware/octobio-kit", label: "OctoBio Kit", desc: "16-ch EEG + Arduino starter kit", Icon: Layers },
+      { href: "/hardware/octopus-16", label: "Octopus 16", desc: "16-channel wireless ESP32 BCI", Icon: Layers },
       { href: "/hardware/pieeg", label: "PiEEG-8", desc: "Raspberry Pi EEG shield — 8 ch", Icon: Layers },
       { href: "/hardware/pieeg-16", label: "PiEEG-16", desc: "16-channel upgrade", Icon: Layers },
       { href: "/hardware/ironbci", label: "IronBCI", desc: "Wearable BLE BCI", Icon: Layers },

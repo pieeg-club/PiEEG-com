@@ -28,6 +28,8 @@ Every folder contains a single `page.tsx` file that you edit to update that prod
 | `/hardware/microbci` | [microbci/](microbci/) |
 | `/hardware/ardeeg` | [ardeeg/](ardeeg/) |
 | `/hardware/jneeg` | [jneeg/](jneeg/) |
+| `/hardware/octopus-16` | [octopus-16/](octopus-16/) |
+| `/hardware/octobio-kit` | [octobio-kit/](octobio-kit/) |
 | `/hardware/emg-kit` | [emg-kit/](emg-kit/) |
 | `/hardware/8ch-wet-cap` | [8ch-wet-cap/](8ch-wet-cap/) |
 | `/hardware/8ch-dry-cap` | [8ch-dry-cap/](8ch-dry-cap/) |

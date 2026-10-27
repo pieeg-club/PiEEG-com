@@ -275,7 +275,7 @@ const hardwareProducts = [
     badge: "Education Kit",
     gradient: "from-cyan-500 to-amber-500",
     bgGradient: "from-cyan-50 to-amber-50 dark:from-cyan-950/30 dark:to-amber-950/30",
-    image: "/hardware/octobio-kit/octobio-1-262a4266.jpg",
+    image: "/hardware/octobio-kit/octobio-1-262a4266.png",
     purchaseUrl: "https://www.elecrow.com/biocircuit.html",
     github: "https://github.com/pieeg-club/Octopus_16",
     categories: ["wireless", "16ch+"]

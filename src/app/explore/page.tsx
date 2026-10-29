@@ -3,7 +3,7 @@ import Link from "next/link";
 import {
   Users, Mail, Briefcase, Building2, Code2, Zap, Globe,
   BookOpen, Newspaper, Cpu, Layers, LifeBuoy, MessageCircle,
-  ArrowRight, Sparkles, ExternalLink, Cloud, Bot, Monitor, Glasses,
+  ArrowRight, Sparkles, ExternalLink, Cloud, Bot, Monitor, Glasses, Watch,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -49,6 +49,7 @@ const sections = [
       { href: "/cloud", label: "PiEEG Cloud", desc: "Zero-install browser BCI platform", Icon: Cloud },
       { href: "/xr", label: "PiEEG XR", desc: "Neural face interface for VR", Icon: Glasses },
       { href: "/agent", label: "Meet Buddy", desc: "AI copilot for your brain data", Icon: Bot },
+      { href: "https://apps.garmin.com/apps/8e994535-c853-45ca-abe3-ccef61119c8b", label: "octoWatch (Garmin)", desc: "16-ch Octopus-16 EEG on Garmin watches", Icon: Watch },
       { href: "/browser", label: "Browser Extension", desc: "Brain state overlay on every page", Icon: Monitor },
       { href: "/server", label: "Server Overview", desc: "All tools & SDKs", Icon: Globe },
       { href: "/examples", label: "Examples & Demos", desc: "Real-world BCI code & tutorials", Icon: Zap },

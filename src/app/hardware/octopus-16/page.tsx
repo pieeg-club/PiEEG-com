@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, ExternalLink, ShoppingCart } from "lucide-react";
+import { ChevronRight, ExternalLink, ShoppingCart, Watch } from "lucide-react";
 import { ProductJsonLd, ProductPrice } from "@/components/ProductOffer";
 import { EnclosureLinks } from "@/components/EnclosureLink";
 import { enclosuresFor } from "@/lib/thingiverse";
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 const PURCHASE_URL =
   "https://www.elecrow.com/octopus-16-brain-computer-interface-with-16-eeg-channel.html";
 const GITHUB_URL = "https://github.com/pieeg-club/Octopus_16";
+const GARMIN_APP_URL = "https://apps.garmin.com/apps/8e994535-c853-45ca-abe3-ccef61119c8b";
 const enclosureLinks = enclosuresFor("octopus-16");
 
 export default function Octopus16ProductPage() {
@@ -121,6 +122,16 @@ export default function Octopus16ProductPage() {
                   className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl border border-white/20 bg-white/5 text-white hover:bg-white/10 font-bold text-base transition-all duration-200"
                 >
                   GitHub
+                  <ExternalLink className="w-4 h-4 opacity-60" />
+                </a>
+                <a
+                  href={GARMIN_APP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-6 py-4 rounded-xl border border-cyan-500/40 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/20 font-bold text-base transition-all duration-200"
+                >
+                  <Watch className="w-5 h-5" />
+                  Garmin Connect IQ App
                   <ExternalLink className="w-4 h-4 opacity-60" />
                 </a>
                 {enclosureLinks.length > 0 && (

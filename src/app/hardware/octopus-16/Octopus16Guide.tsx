@@ -231,9 +231,9 @@ export default function Octopus16Guide() {
               <div className="num">6</div>
               <div className="step-body">
                 <div>
-                  <h3>Connect in the browser</h3>
+                  <h3>Connect in the browser or on your Garmin watch</h3>
                   <p>Open cloud.pieeg.com, find the Octopus 16 card under Connect Your Device and press Connect. Pick your board in the Bluetooth dialog and the stream starts: 16 channels at 250 Hz, filtered in the browser.</p>
-                  <p className="muted">Web Bluetooth needs Chrome or Edge over HTTPS. Firefox, Safari and iOS don’t support it. Building your own page? The PiEEG JavaScript SDK connects in one call.</p>
+                  <p className="muted">Wearing a Garmin smartwatch? Install <a href="https://apps.garmin.com/apps/8e994535-c853-45ca-abe3-ccef61119c8b" target="_blank" rel="noopener noreferrer" style={{color: "#22d3ee", textDecoration: "underline"}}>octoWatch from the Garmin Connect IQ Store</a> to stream live 250 Hz EEG, Alpha/Beta/Theta readiness, and 10–20 contact quality directly to your wrist over BLE. Web Bluetooth in the browser needs Chrome or Edge over HTTPS.</p>
                 </div>
                 <div className="code">
                   <div className="tabs" id="pairTabs" role="tablist" />

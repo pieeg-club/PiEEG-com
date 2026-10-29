@@ -17,6 +17,7 @@ const footerLinks = {
   Resources: [
     { label: "Cloud", href: "/cloud" },
     { label: "XR", href: "/xr" },
+    { label: "octoWatch (Garmin)", href: "https://apps.garmin.com/apps/8e994535-c853-45ca-abe3-ccef61119c8b" },
     { label: "Documentation", href: "/support" },
     { label: "Server", href: "/server" },
     { label: "GitHub", href: "https://github.com/pieeg-club" },

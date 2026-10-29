@@ -98,6 +98,7 @@ const guides = [
     gradient: "from-blue-500 to-indigo-600",
     items: [
       { title: "Jupyter Notebooks", description: "Live streaming and recording analysis notebooks", href: `${DOCS_BASE}/software/integrations/notebooks/` },
+      { title: "octoWatch (Garmin Connect IQ)", description: "Stream 16-ch Octopus-16 EEG directly to Garmin watches", href: `${DOCS_BASE}/software/octowatch/` },
       { title: "Lab Streaming Layer", description: "LSL outlet for OpenViBE, MNE, LabRecorder", href: `${DOCS_BASE}/software/integrations/lsl/` },
       { title: "VRChat OSC", description: "Brain-driven avatar control over OSC/UDP", href: `${DOCS_BASE}/software/integrations/vrchat-osc/` },
       { title: "Webhooks & IFTTT", description: "Trigger automation from EEG detectors", href: `${DOCS_BASE}/software/integrations/webhooks/` },

@@ -120,6 +120,15 @@ export default function PiEEGXRProductPage() {
                   GitHub
                   <ExternalLink className="w-4 h-4 opacity-60" />
                 </a>
+                <a
+                  href="https://docs.pieeg.com/hardware/devices/PiEEG_XR/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl border border-white/20 bg-white/5 text-white hover:bg-white/10 font-bold text-base transition-all duration-200"
+                >
+                  Doc
+                  <ExternalLink className="w-4 h-4 opacity-60" />
+                </a>
                 {/* 3D model: https://www.thingiverse.com/thing:7392535 */}
                 <EnclosureLinks links={[XR_ENCLOSURE]} tone="ondark" className="mt-4" />
               </div>

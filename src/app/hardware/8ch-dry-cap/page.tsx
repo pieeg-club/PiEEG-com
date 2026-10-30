@@ -116,11 +116,42 @@ export default function Cap8DryPage() {
             <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
               The 8 Channel Dry EEG Cap Kit is designed for quick, hassle-free EEG recordings. It comes with dry comfort press-fit electrodes that make direct contact with the scalp — no electrolyte gel, no preparation time.
             </p>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              The cap is fully adjustable to fit different head sizes and is compatible with all PiEEG, PiEEG-16, IronBCI, MicroBCI, ardEEG, and JNEEG hardware platforms.
-            </p>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              Ideal for mobile BCI applications, wearable neuroscience experiments, and any scenario where speed and portability matter more than maximum signal quality.
+A ready-to-wear EEG cap with 8 dry Ag/AgCl electrodes and 2 ear-clip electrodes, pre-placed on the international 10-20 system. No gel, no soldering, no guesswork: put the cap on, plug the cables into your PiEEG board and see brain waves in minutes.
+
+Why this kit?
+| Benefit | Details |
+|---|---|
+| No gel needed | Dry Ag/AgCl electrodes give a fast, clean setup with no washing afterwards. |
+| Plug and play | Every electrode ends in a standard 2.54 mm connector that fits PiEEG boards directly. |
+| Correct positions | 8 electrodes fixed at 10-20 positions covering the front, centre, sides and back of the head. |
+| Complete kit | Cap, 8 signal electrodes and both ear clips (reference and bias), all in one box. |
+| Reusable | Soft, stretchy nylon cap for repeated sessions. |
+
+Compatible devices
+| Device | Host |
+|---|---|
+| PiEEG-8 | Raspberry Pi |
+| IronBCI-8 | Wireless (Bluetooth) |
+| MicroBCI | STM32 NUCLEO-WB55 |
+| JNEEG | NVIDIA Jetson Nano |
+| ardEEG | Arduino UNO R4 WiFi |
+
+Electrode positions
+| Position | Area | Good for |
+|---|---|---|
+| Fp1, Fp2 | Forehead, left and right | Attention, blinks and eye movements |
+| T3, T4 | Temples, left and right | Temporal activity, jaw and face muscle signals |
+| C3, C4 | Top of the head, left and right | Motor activity (hand movement and motor imagery) |
+| O1, O2 | Back of the head, left and right | Alpha rhythm (eyes closed), visual activity |
+| Ear clips | Earlobes | Reference and bias |
+
+Packing list
+| Qty | Item |
+|---|---|
+| 1 | EEG cap, nylon, size L |
+| 8 | Dry Ag/AgCl electrodes, each with a cable and a 2.54 mm connector |
+| 2 | Ear-clip electrodes with 2.54 mm connectors (reference and bias) |
+
             </p>
           </div>
         </div>

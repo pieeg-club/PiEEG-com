@@ -112,16 +112,60 @@ export default function EmgKitPage() {
       <section className="py-12 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="title-section mb-6">About this kit</h2>
-          <div className="space-y-4">
+          <div className="prose prose-lg dark:prose-invert max-w-none space-y-4">
             <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              The EMG / ECG / EKG Kit expands your PiEEG hardware to measure the full spectrum of biosignals. Whether you are capturing muscle activity (EMG), heart signals (ECG/EKG), or brain signals (EEG), this kit has you covered.
+              Everything you need to record muscle (EMG) and heart (ECG / EKG) signals: 3 lead cables with 2.54 mm connectors and 50 high-quality self-adhesive Ag/AgCl snap electrodes. Peel, stick, snap and plug in. Start measuring in under a minute.
             </p>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              The kit includes the electrodes, cables, and connectors required to start recording all three signal types immediately. No soldering, no configuration — just connect and measure.
-            </p>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              Fully compatible with PiEEG, PiEEG-16, IronBCI, MicroBCI, ardEEG, and JNEEG platforms. All PiEEG hardware supports EEG, EMG, and ECG acquisition out of the box.
-            </p>
+
+            <h3>Why this kit?</h3>
+            <table>
+              <tbody>
+                <tr><td><strong>Plug and play</strong></td><td>The cables end in standard 2.54 mm connectors that fit PiEEG boards directly. No soldering, no adapters.</td></tr>
+                <tr><td><strong>Clean, stable signals</strong></td><td>Silver chloride (Ag/AgCl) sensors with a solid gel interface give low-noise contact with the skin.</td></tr>
+                <tr><td><strong>Comfortable for movement</strong></td><td>Soft, flexible, breathable non-woven backing that moves with the body, suitable for long recordings.</td></tr>
+                <tr><td><strong>Quick to apply</strong></td><td>Self-adhesive electrodes stay in place without tape or straps.</td></tr>
+                <tr><td><strong>Plenty of electrodes</strong></td><td>50 electrodes for many sessions and experiments.</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Compatible devices</h3>
+            <table>
+              <thead>
+                <tr><th>Device</th><th>Host</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>PiEEG-8, PiEEG-16</td><td>Raspberry Pi</td></tr>
+                <tr><td>IronBCI-8</td><td>Wireless (Bluetooth)</td></tr>
+                <tr><td>IronBCI-32</td><td>USB</td></tr>
+                <tr><td>MicroBCI</td><td>STM32 NUCLEO-WB55</td></tr>
+                <tr><td>JNEEG</td><td>NVIDIA Jetson Nano</td></tr>
+                <tr><td>ardEEG</td><td>Arduino UNO R4 WiFi</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Where to place the electrodes</h3>
+            <table>
+              <thead>
+                <tr><th>Measurement</th><th>Signal (channel)</th><th>Reference and bias</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>EMG, forearm</td><td>On the belly of the forearm muscle</td><td>On bony spots nearby, such as the elbow and the wrist</td></tr>
+                <tr><td>EMG, biceps</td><td>On the middle of the biceps</td><td>On the elbow and the shoulder</td></tr>
+                <tr><td>ECG / EKG</td><td>Left side of the chest, or left wrist</td><td>Right side of the chest or right wrist, and lower abdomen or right ankle</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Packing list</h3>
+            <table>
+              <thead>
+                <tr><th>Qty</th><th>Item</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>3</td><td>Lead cables with snap connectors and 2.54 mm pin connectors</td></tr>
+                <tr><td>50</td><td>Self-adhesive snap-on electrodes, Ag/AgCl with solid gel, 45 mm diameter</td></tr>
+              </tbody>
+            </table>
+            <p className="text-base text-zinc-500 dark:text-zinc-400">The EEG / biosignal device is not included.</p>
           </div>
         </div>
       </section>

@@ -152,7 +152,7 @@ Packing list
 | 8 | Dry Ag/AgCl electrodes, each with a cable and a 2.54 mm connector |
 | 2 | Ear-clip electrodes with 2.54 mm connectors (reference and bias) |
 
-            </p>
+          
           </div>
         </div>
       </section>

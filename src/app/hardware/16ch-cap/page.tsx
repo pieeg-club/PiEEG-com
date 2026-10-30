@@ -112,16 +112,61 @@ export default function Cap16Page() {
       <section className="py-12 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="title-section mb-6">About this cap</h2>
-          <div className="space-y-4">
+          <div className="prose prose-lg dark:prose-invert max-w-none space-y-4">
             <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              The 16 Channel EEG Cap is designed to unlock higher spatial resolution recordings at an accessible price. With 16 sintered Ag/AgCl gold-plated electrodes, it delivers professional-grade signals suitable for research and BCI development.
+              A ready-to-wear EEG cap with 16 dry Ag/AgCl electrodes and 2 ear-clip electrodes, pre-placed on the international 10-20 system. Cover the whole head (frontal, central, temporal, parietal and occipital areas) with no gel and no guesswork. Put the cap on, plug the cables into your PiEEG-16 and record 16 channels of EEG in minutes.
             </p>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              The textile cap is durable and washable, making it ideal for repeated use across subjects. It pairs directly with the PiEEG-16 shield and the IronBCI platform.
-            </p>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              Standard EEG snap connectors ensure compatibility with the full PiEEG accessory ecosystem. Use with conductive gel for best results.
-            </p>
+
+            <h3>Why this kit?</h3>
+            <table>
+              <tbody>
+                <tr><td><strong>Full-head coverage</strong></td><td>16 electrodes at standard 10-20 positions, from the forehead to the back of the head.</td></tr>
+                <tr><td><strong>No gel needed</strong></td><td>Dry Ag/AgCl electrodes give a fast, clean setup with no washing afterwards.</td></tr>
+                <tr><td><strong>Plug and play</strong></td><td>Every electrode ends in a standard 2.54 mm connector that fits PiEEG boards directly.</td></tr>
+                <tr><td><strong>Complete kit</strong></td><td>Cap, 16 signal electrodes and both ear clips (reference and bias), all in one box.</td></tr>
+                <tr><td><strong>Reusable</strong></td><td>Soft, stretchy nylon cap for repeated sessions.</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Compatible devices</h3>
+            <table>
+              <thead>
+                <tr><th>Device</th><th>Channels used</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>PiEEG-16 (Raspberry Pi)</td><td>All 16</td></tr>
+                <tr><td>PiEEG-8, IronBCI-8, MicroBCI, JNEEG, ardEEG</td><td>Any 8 of the 16</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Electrode positions</h3>
+            <table>
+              <thead>
+                <tr><th>Area</th><th>Positions</th><th>Good for</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Forehead (prefrontal)</td><td>Fp1, Fp2</td><td>Attention, blinks and eye movements</td></tr>
+                <tr><td>Frontal</td><td>F7, F3, F4, F8</td><td>Attention, emotion, frontal asymmetry</td></tr>
+                <tr><td>Central</td><td>C3, C4</td><td>Motor activity (hand movement and motor imagery)</td></tr>
+                <tr><td>Temporal</td><td>T3, T4, T5, T6</td><td>Temporal activity, auditory processing, jaw and face muscles</td></tr>
+                <tr><td>Parietal</td><td>P3, P4</td><td>Sensory processing, attention</td></tr>
+                <tr><td>Occipital</td><td>O1, O2</td><td>Alpha rhythm (eyes closed), visual activity</td></tr>
+                <tr><td>Ear clips</td><td>Ref.1, Ref.2</td><td>Reference and bias</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Packing list</h3>
+            <table>
+              <thead>
+                <tr><th>Qty</th><th>Item</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>EEG cap, nylon, size L</td></tr>
+                <tr><td>16</td><td>Dry Ag/AgCl electrodes, each with a cable and a 2.54 mm connector</td></tr>
+                <tr><td>2</td><td>Ear-clip electrodes with 2.54 mm connectors (reference and bias)</td></tr>
+              </tbody>
+            </table>
+            <p className="text-base text-zinc-500 dark:text-zinc-400">The EEG device is not included.</p>
           </div>
         </div>
       </section>

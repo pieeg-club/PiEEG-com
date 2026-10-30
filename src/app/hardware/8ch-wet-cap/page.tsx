@@ -112,16 +112,74 @@ export default function Cap8WetPage() {
       <section className="py-12 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="title-section mb-6">About this cap</h2>
-          <div className="space-y-4">
+          <div className="prose prose-lg dark:prose-invert max-w-none space-y-4">
             <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              The 8 Channel Wet EEG Cap Kit is built for researchers and developers who need the highest possible signal quality. The sintered Ag/AgCl electrodes are gold-plated for low-impedance contact and long-term durability.
+              A ready-to-wear EEG cap with 8 Ag/AgCl wet electrodes and 2 ear-clip electrodes, pre-placed on the international 10-20 system. With a little conductive gel, wet electrodes give the lowest impedance and the cleanest, most stable EEG signal: the choice for research and demanding experiments. Plug the cables into your PiEEG device and record.
             </p>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              The professional textile cap distributes electrode pressure evenly across the scalp. Combined with electrode gel, this setup achieves impedances suitable for clinical and research-grade EEG acquisition.
-            </p>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              Fully compatible with all PiEEG hardware platforms. Includes the cap, 8 wet electrodes, and the necessary cabling.
-            </p>
+
+            <h3>Why this kit?</h3>
+            <table>
+              <tbody>
+                <tr><td><strong>Best signal quality</strong></td><td>Ag/AgCl electrodes with conductive gel give low impedance and low noise, the standard for high-quality EEG.</td></tr>
+                <tr><td><strong>Stable for long sessions</strong></td><td>Gel keeps the contact steady through hair and small movements, so the signal stays clean over long recordings.</td></tr>
+                <tr><td><strong>Plug and play</strong></td><td>Every electrode ends in a standard 2.54 mm connector that fits PiEEG boards directly.</td></tr>
+                <tr><td><strong>Correct positions</strong></td><td>8 electrodes fixed at 10-20 positions covering the front, centre, sides and back of the head.</td></tr>
+                <tr><td><strong>Complete kit</strong></td><td>Cap, 8 signal electrodes and both ear clips (reference and bias), all in one box.</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Wet or dry electrodes?</h3>
+            <table>
+              <thead>
+                <tr><th></th><th>Wet (this kit)</th><th>Dry</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Signal quality</strong></td><td>Excellent, lowest impedance</td><td>Good</td></tr>
+                <tr><td><strong>Setup</strong></td><td>Apply gel to each electrode</td><td>Put on and record</td></tr>
+                <tr><td><strong>Best for</strong></td><td>Research, long and high-precision recordings</td><td>Quick demos, learning, short sessions</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Compatible devices</h3>
+            <table>
+              <thead>
+                <tr><th>Device</th><th>Host</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>PiEEG-8</td><td>Raspberry Pi</td></tr>
+                <tr><td>IronBCI-8</td><td>Wireless (Bluetooth)</td></tr>
+                <tr><td>MicroBCI</td><td>STM32 NUCLEO-WB55</td></tr>
+                <tr><td>JNEEG</td><td>NVIDIA Jetson Nano</td></tr>
+                <tr><td>ardEEG</td><td>Arduino UNO R4 WiFi</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Electrode positions</h3>
+            <table>
+              <thead>
+                <tr><th>Position</th><th>Area</th><th>Good for</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Fp1, Fp2</td><td>Forehead, left and right</td><td>Attention, blinks and eye movements</td></tr>
+                <tr><td>T3, T4</td><td>Temples, left and right</td><td>Temporal activity, jaw and face muscle signals</td></tr>
+                <tr><td>C3, C4</td><td>Top of the head, left and right</td><td>Motor activity (hand movement and motor imagery)</td></tr>
+                <tr><td>O1, O2</td><td>Back of the head, left and right</td><td>Alpha rhythm (eyes closed), visual activity</td></tr>
+                <tr><td>Ear clips</td><td>Earlobes</td><td>Reference and bias</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Packing list</h3>
+            <table>
+              <thead>
+                <tr><th>Qty</th><th>Item</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>EEG cap, nylon, size L</td></tr>
+                <tr><td>8</td><td>Wet Ag/AgCl electrodes, each with a cable and a 2.54 mm connector</td></tr>
+                <tr><td>2</td><td>Ear-clip electrodes with 2.54 mm connectors (reference and bias)</td></tr>
+              </tbody>
+            </table>
+            <p className="text-base text-zinc-500 dark:text-zinc-400">The EEG device and conductive gel are not included.</p>
           </div>
         </div>
       </section>

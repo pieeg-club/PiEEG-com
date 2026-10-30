@@ -112,16 +112,61 @@ export default function Cap32WetPage() {
       <section className="py-12 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="title-section mb-6">About this kit</h2>
-          <div className="space-y-4">
+          <div className="prose prose-lg dark:prose-invert max-w-none space-y-4">
             <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              This professional-grade kit includes everything required for high-fidelity EEG data acquisition using the IronBCI-32. Featuring a durable nylon cap (Size L), the system utilizes 32 high-quality wet Ag/AgCl electrodes to ensure superior signal quality and low impedance.
+              A ready-to-wear EEG cap with 32 wet Ag/AgCl electrodes and 2 ear-clip electrodes, pre-placed on the international 10-20 system and numbered to match IronBCI-32 channel by channel. Cover the whole head, from the forehead to the back of the head, with research-grade wet electrodes. Plug and play: every electrode ends in a standard 2.54 mm connector.
             </p>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              All components feature a standard 2.54mm pin pitch for seamless plug-and-play compatibility with the IronBCI-32. The two included ear clip electrodes serve as reference and ground channels, following standard EEG conventions.
-            </p>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              The 32 electrode positions follow the international 10-20 system, covering the full scalp from frontal to occipital regions across both hemispheres — ideal for full-brain EEG research and BCI applications.
-            </p>
+
+            <h3>Why this kit?</h3>
+            <table>
+              <tbody>
+                <tr><td><strong>High-density coverage</strong></td><td>32 electrodes across the midline and both hemispheres, for brain mapping, connectivity and advanced BCI research.</td></tr>
+                <tr><td><strong>Best signal quality</strong></td><td>Wet Ag/AgCl electrodes with conductive gel give low impedance and low noise, the standard for high-quality EEG.</td></tr>
+                <tr><td><strong>Made for IronBCI-32</strong></td><td>Each electrode matches its IronBCI-32 channel number, so wiring is quick and the channel order is always right.</td></tr>
+                <tr><td><strong>Plug and play</strong></td><td>Integrated cables with 2.54 mm connectors. No soldering, no adapters.</td></tr>
+                <tr><td><strong>Complete kit</strong></td><td>Cap, 32 signal electrodes and both ear clips (reference and bias), all in one box.</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Electrode positions</h3>
+            <table>
+              <thead>
+                <tr><th>Area</th><th>Channel: position</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Midline</strong> (front to back)</td><td>31: Fpz, 13: Fz, 14: FCz, 15: Cz, 16: CPz, 17: Pz, 32: POz, 18: Oz</td></tr>
+                <tr><td><strong>Left hemisphere</strong></td><td>12: Fp1, 11: F3, 1: F7, 10: FC3, 2: FT7, 9: C3, 3: T7, 8: CP3, 4: TP7, 7: P3, 5: P7, 6: O1</td></tr>
+                <tr><td><strong>Right hemisphere</strong></td><td>25: Fp2, 24: F4, 26: F8, 23: FC4, 27: FT8, 22: C4, 28: T8, 21: CP4, 29: TP8, 20: P4, 30: P8, 19: O2</td></tr>
+                <tr><td><strong>Ear clips</strong></td><td>A1 (left ear) and A2 (right ear): reference and bias</td></tr>
+              </tbody>
+            </table>
+            <p className="text-base text-zinc-500 dark:text-zinc-400">Channel numbers are IronBCI-32 channels. T7, T8, P7 and P8 are the modern names for T3, T4, T5 and T6.</p>
+
+            <h3>Good for</h3>
+            <table>
+              <thead>
+                <tr><th>Region</th><th>Positions</th><th>Typical use</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Prefrontal and frontal</td><td>Fp1, Fpz, Fp2, F7, F3, Fz, F4, F8</td><td>Attention, emotion, eye movements</td></tr>
+                <tr><td>Central</td><td>FC3, FCz, FC4, C3, Cz, C4, CP3, CPz, CP4</td><td>Motor activity, motor imagery BCI</td></tr>
+                <tr><td>Temporal</td><td>FT7, T7, TP7, FT8, T8, TP8</td><td>Auditory processing, language</td></tr>
+                <tr><td>Parietal and occipital</td><td>P7, P3, Pz, P4, P8, POz, O1, Oz, O2</td><td>Alpha rhythm, visual activity, SSVEP</td></tr>
+              </tbody>
+            </table>
+
+            <h3>Packing list</h3>
+            <table>
+              <thead>
+                <tr><th>Qty</th><th>Item</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>EEG cap, nylon, size L</td></tr>
+                <tr><td>32</td><td>Wet Ag/AgCl electrodes with integrated cables and 2.54 mm connectors</td></tr>
+                <tr><td>2</td><td>Ear-clip electrodes with 2.54 mm connectors (reference and bias)</td></tr>
+              </tbody>
+            </table>
+            <p className="text-base text-zinc-500 dark:text-zinc-400">The IronBCI-32 and conductive gel are not included.</p>
           </div>
         </div>
       </section>

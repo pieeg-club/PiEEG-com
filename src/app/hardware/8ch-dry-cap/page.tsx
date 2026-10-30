@@ -5,7 +5,7 @@ import { ChevronRight, ExternalLink, ShoppingCart, Droplets, Shield, Zap } from 
 import { ProductJsonLd, ProductPrice } from "@/components/ProductOffer";
 
 export const metadata: Metadata = {
-  title: "8 Channel Dry EEG Cap Kit — PiEEG",
+  title: "8 Channel Dry EEG Cap Kit",
   description:
     "EEG dry electrodes cap with dry comfort press-fit electrodes. Ready to use, no conductive gel needed. Compatible with PiEEG, PiEEG-16, IronBCI, and more.",
   openGraph: {

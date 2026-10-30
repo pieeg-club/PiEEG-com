@@ -114,45 +114,60 @@ export default function Cap8DryPage() {
           <h2 className="title-section mb-6">About this cap</h2>
           <div className="prose prose-lg dark:prose-invert max-w-none space-y-4">
             <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              The 8 Channel Dry EEG Cap Kit is designed for quick, hassle-free EEG recordings. It comes with dry comfort press-fit electrodes that make direct contact with the scalp — no electrolyte gel, no preparation time.
+              A ready-to-wear EEG cap with 8 dry Ag/AgCl electrodes and 2 ear-clip electrodes, pre-placed on the international 10-20 system. No gel, no soldering, no guesswork: put the cap on, plug the cables into your PiEEG board and see brain waves in minutes.
             </p>
-A ready-to-wear EEG cap with 8 dry Ag/AgCl electrodes and 2 ear-clip electrodes, pre-placed on the international 10-20 system. No gel, no soldering, no guesswork: put the cap on, plug the cables into your PiEEG board and see brain waves in minutes.
 
-Why this kit?
-| Benefit | Details |
-|---|---|
-| No gel needed | Dry Ag/AgCl electrodes give a fast, clean setup with no washing afterwards. |
-| Plug and play | Every electrode ends in a standard 2.54 mm connector that fits PiEEG boards directly. |
-| Correct positions | 8 electrodes fixed at 10-20 positions covering the front, centre, sides and back of the head. |
-| Complete kit | Cap, 8 signal electrodes and both ear clips (reference and bias), all in one box. |
-| Reusable | Soft, stretchy nylon cap for repeated sessions. |
+            <h3>Why this kit?</h3>
+            <table>
+              <tbody>
+                <tr><td><strong>No gel needed</strong></td><td>Dry Ag/AgCl electrodes give a fast, clean setup with no washing afterwards.</td></tr>
+                <tr><td><strong>Plug and play</strong></td><td>Every electrode ends in a standard 2.54 mm connector that fits PiEEG boards directly.</td></tr>
+                <tr><td><strong>Correct positions</strong></td><td>8 electrodes fixed at 10-20 positions covering the front, centre, sides and back of the head.</td></tr>
+                <tr><td><strong>Complete kit</strong></td><td>Cap, 8 signal electrodes and both ear clips (reference and bias), all in one box.</td></tr>
+                <tr><td><strong>Reusable</strong></td><td>Soft, stretchy nylon cap for repeated sessions.</td></tr>
+              </tbody>
+            </table>
 
-Compatible devices
-| Device | Host |
-|---|---|
-| PiEEG-8 | Raspberry Pi |
-| IronBCI-8 | Wireless (Bluetooth) |
-| MicroBCI | STM32 NUCLEO-WB55 |
-| JNEEG | NVIDIA Jetson Nano |
-| ardEEG | Arduino UNO R4 WiFi |
+            <h3>Compatible devices</h3>
+            <table>
+              <thead>
+                <tr><th>Device</th><th>Host</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>PiEEG-8</td><td>Raspberry Pi</td></tr>
+                <tr><td>IronBCI-8</td><td>Wireless (Bluetooth)</td></tr>
+                <tr><td>MicroBCI</td><td>STM32 NUCLEO-WB55</td></tr>
+                <tr><td>JNEEG</td><td>NVIDIA Jetson Nano</td></tr>
+                <tr><td>ardEEG</td><td>Arduino UNO R4 WiFi</td></tr>
+              </tbody>
+            </table>
 
-Electrode positions
-| Position | Area | Good for |
-|---|---|---|
-| Fp1, Fp2 | Forehead, left and right | Attention, blinks and eye movements |
-| T3, T4 | Temples, left and right | Temporal activity, jaw and face muscle signals |
-| C3, C4 | Top of the head, left and right | Motor activity (hand movement and motor imagery) |
-| O1, O2 | Back of the head, left and right | Alpha rhythm (eyes closed), visual activity |
-| Ear clips | Earlobes | Reference and bias |
+            <h3>Electrode positions</h3>
+            <table>
+              <thead>
+                <tr><th>Position</th><th>Area</th><th>Good for</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Fp1, Fp2</td><td>Forehead, left and right</td><td>Attention, blinks and eye movements</td></tr>
+                <tr><td>T3, T4</td><td>Temples, left and right</td><td>Temporal activity, jaw and face muscle signals</td></tr>
+                <tr><td>C3, C4</td><td>Top of the head, left and right</td><td>Motor activity (hand movement and motor imagery)</td></tr>
+                <tr><td>O1, O2</td><td>Back of the head, left and right</td><td>Alpha rhythm (eyes closed), visual activity</td></tr>
+                <tr><td>Ear clips</td><td>Earlobes</td><td>Reference and bias</td></tr>
+              </tbody>
+            </table>
 
-Packing list
-| Qty | Item |
-|---|---|
-| 1 | EEG cap, nylon, size L |
-| 8 | Dry Ag/AgCl electrodes, each with a cable and a 2.54 mm connector |
-| 2 | Ear-clip electrodes with 2.54 mm connectors (reference and bias) |
-
-          
+            <h3>Packing list</h3>
+            <table>
+              <thead>
+                <tr><th>Qty</th><th>Item</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>EEG cap, nylon, size L</td></tr>
+                <tr><td>8</td><td>Dry Ag/AgCl electrodes, each with a cable and a 2.54 mm connector</td></tr>
+                <tr><td>2</td><td>Ear-clip electrodes with 2.54 mm connectors (reference and bias)</td></tr>
+              </tbody>
+            </table>
+            <p className="text-base text-zinc-500 dark:text-zinc-400">The EEG device is not included.</p>
           </div>
         </div>
       </section>

@@ -22,6 +22,33 @@ function GitHubIcon({ className }: { className?: string }) {
   );
 }
 
+function NvidiaInceptionBadge({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="65 55 505 170"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="NVIDIA Inception Program"
+    >
+      <path
+        fill="currentColor"
+        d="M328.82,133v-34h3.63v34Zm34.43,0-18.06-27.3V133h-3.64v-34H345l18.07,27.2V98.92h3.63v34Zm23.56.28a12.13,12.13,0,0,1-8.7-3.53c-3.2-3.21-3.2-6.55-3.2-13.77s0-10.56,3.2-13.77a12.13,12.13,0,0,1,8.7-3.53c6.12,0,10.66,3.73,11.8,10.13h-3.72c-.91-4.16-3.83-6.88-8.08-6.88a8.18,8.18,0,0,0-5.88,2.39c-2.15,2.2-2.39,4.54-2.39,11.66s.24,9.46,2.39,11.66a8.18,8.18,0,0,0,5.88,2.39c4.25,0,7.26-2.72,8.17-6.88h3.63C397.51,129.51,392.88,133.24,386.81,133.24Zm19.4-.28v-34h21.13v3.25h-17.5v12h14.92v3.25H409.84v12.29h17.5V133Zm41.13-14h-9v14h-3.63v-34h12.67c6.21,0,10.51,3.88,10.51,10S453.55,119,447.34,119ZM447,102.17h-8.7V115.7H447c4.25,0,7.22-2.29,7.22-6.79S451.25,102.17,447,102.17Zm28.78,0V133h-3.64V102.17H462.3V98.92h23.32v3.25ZM492.36,133v-34H496v34Zm32.4-3.25a12.49,12.49,0,0,1-17.4,0c-3.2-3.21-3.2-6.55-3.2-13.77s0-10.56,3.2-13.77a12.49,12.49,0,0,1,17.4,0c3.2,3.21,3.2,6.55,3.2,13.77S528,126.5,524.76,129.71Zm-2.82-25.38a8.3,8.3,0,0,0-11.76,0c-2.15,2.19-2.39,4.49-2.39,11.61s.24,9.42,2.39,11.61a8.3,8.3,0,0,0,11.76,0c2.15-2.19,2.39-4.49,2.39-11.61S524.09,106.52,521.94,104.33ZM557.87,133l-18.07-27.3V133h-3.63v-34h3.44l18.07,27.2V98.92h3.63v34ZM341.49,166.77h-9v14h-3.63v-34h12.67c6.21,0,10.51,3.87,10.51,10S347.7,166.77,341.49,166.77ZM341.15,150h-8.7v13.53h8.7c4.26,0,7.22-2.3,7.22-6.79S345.41,150,341.15,150Zm37.45,30.78-7.74-15.1h-8.17v15.1h-3.64v-34H372.1c5.93,0,10.09,3.59,10.09,9.47a8.81,8.81,0,0,1-7.41,9.12l8.08,15.44ZM371.77,150h-9.08v12.48h9.08c4,0,6.78-2.06,6.78-6.22S375.73,150,371.77,150Zm38,27.53a12.46,12.46,0,0,1-17.4,0c-3.2-3.2-3.2-6.55-3.2-13.76s0-10.57,3.2-13.77a12.46,12.46,0,0,1,17.4,0c3.2,3.2,3.2,6.55,3.2,13.77S413,174.32,409.77,177.52ZM407,152.14a8.3,8.3,0,0,0-11.76,0c-2.15,2.2-2.39,4.5-2.39,11.62s.24,9.41,2.39,11.61a8.3,8.3,0,0,0,11.76,0c2.15-2.2,2.39-4.49,2.39-11.61S409.1,154.34,407,152.14Zm34.22,25a12.47,12.47,0,0,1-17.78.38c-3.2-3.2-3.2-6.55-3.2-13.76s0-10.57,3.2-13.77a12.07,12.07,0,0,1,8.7-3.54c6.5,0,10.9,4.21,11.9,10.19h-3.63c-1-4.31-4-6.94-8.27-6.94a8.23,8.23,0,0,0-5.88,2.44c-2.15,2.2-2.39,4.5-2.39,11.62s.24,9.46,2.39,11.66a8.18,8.18,0,0,0,5.88,2.39,8.28,8.28,0,0,0,6.45-2.92,8.88,8.88,0,0,0,1.91-6.16v-2.58h-8.36v-3.21h12v5.4C444.09,172.27,443.27,174.89,441.17,177.14Zm30.5,3.63-7.74-15.1h-8.18v15.1h-3.63v-34h13.05c5.93,0,10.09,3.59,10.09,9.47a8.82,8.82,0,0,1-7.41,9.12l8.08,15.44ZM464.84,150h-9.09v12.48h9.09c4,0,6.78-2.06,6.78-6.22S468.8,150,464.84,150Zm40.47,30.78-2.73-7.69H487.72L485,180.77h-3.87l12.52-34h3.06l12.48,34ZM495.22,152l-6.4,18h12.71ZM541,180.77V154.91l-9.32,20.51h-3.11l-9.47-20.51v25.86h-3.63v-34h3.63l11.09,24.14L541,146.74h3.63v34Z"
+      />
+      <rect className="fill-zinc-300 dark:fill-zinc-700" x="285.3" y="56.18" width="2.49" height="167.43" />
+      <g>
+        <path
+          fill="currentColor"
+          d="M144.75,173.7v31.79h9V173.7Zm-70.87,0v31.83H83V181.32h7c2.33,0,4,.58,5.12,1.77,1.42,1.52,2,4,2,8.42v14h8.8V187.9c0-12.55-8-14.24-15.88-14.24H73.88m85.37,0v31.79h14.61c7.78,0,10.33-1.29,13.07-4.19,1.95-2,3.2-6.49,3.2-11.36,0-4.47-1.06-8.45-2.91-10.93-3.34-4.44-8.15-5.31-15.33-5.31Zm8.94,6.92h3.87c5.62,0,9.25,2.52,9.25,9s-3.63,9-9.25,9h-3.87Zm-36.43-6.92-7.52,25.19L117,173.7h-9.73l10.29,31.79h13L141,173.7Zm62.56,31.79h9V173.7h-9Zm25.25-31.78L207,205.48h8.88l2-5.62h14.88l1.89,5.62h9.64l-12.67-31.77Zm29.33,32.75a2.81,2.81,0,1,1,2.82-2.81A2.81,2.81,0,0,1,248.9,206.46Zm0-5.07a2.27,2.27,0,1,0,2.23,2.26A2.2,2.2,0,0,0,248.9,201.39Zm.51,3.75-.55-1.15h-.32v1.15h-.66v-3h1.22a.94.94,0,0,1,1,.93.82.82,0,0,1-.55.79l.63,1.26Zm-.4-2.43h-.47v.77H249a.39.39,0,1,0,0-.77Zm-23.59-23.2,5.46,14.88H219.79Z"
+        />
+        <path
+          fill="#76b900"
+          d="M132.84,99.24V91.6c.74,0,1.49-.09,2.26-.11,21-.66,34.7,17.94,34.7,17.94S155,130,139,130a19.31,19.31,0,0,1-6.19-1V105.84c8.16,1,9.8,4.58,14.7,12.73l10.91-9.17S150.49,99,137.06,99a38.44,38.44,0,0,0-4.22.25m0-25.23V85.42c.75-.06,1.5-.11,2.26-.14,29.14-1,48.13,23.83,48.13,23.83s-21.81,26.43-44.53,26.43a33.88,33.88,0,0,1-5.86-.52v7a38.34,38.34,0,0,0,4.88.32c21.14,0,36.43-10.76,51.24-23.5,2.45,2,12.5,6.72,14.57,8.81-14.08,11.75-46.89,21.21-65.49,21.21a51.68,51.68,0,0,1-5.2-.27v9.91H213.2V74Zm0,55v6c-19.56-3.47-25-23.73-25-23.73a42.32,42.32,0,0,1,25-12.05v6.6h0c-8.19-1-14.58,6.64-14.58,6.64s3.58,12.83,14.61,16.52M98.1,110.41A48.45,48.45,0,0,1,132.84,91.6V85.42C107.2,87.47,85,109.11,85,109.11s12.58,36.22,47.84,39.53v-6.57C107,138.83,98.1,110.41,98.1,110.41Z"
+        />
+      </g>
+    </svg>
+  );
+}
+
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const featuredIn = [
@@ -63,19 +90,6 @@ function HeroSection() {
 
         {/* ── Hero content ─────────────────────────────────────────────────────── */}
         <div className="flex flex-col items-center gap-5 text-center py-4 sm:py-8 px-4 max-w-4xl mx-auto">
-
-          {/* Eyebrow — latest news */}
-          <a
-            href="/tutorials/run-pieeg-xr-meta-quest"
-            className="group inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-50/70 dark:bg-cyan-950/40 px-3.5 py-1.5 text-xs font-medium text-cyan-700 dark:text-cyan-300 backdrop-blur-sm hover:border-cyan-500/60 transition-colors"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500" />
-            </span>
-            New — Run PiEEG XR inside Meta Quest
-            <ArrowRight className="w-3 h-3 opacity-60 group-hover:translate-x-0.5 transition-transform" />
-          </a>
 
           {/* Headline */}
           <h1 className="hero-fade text-zinc-900 dark:text-zinc-50 tracking-[-0.045em] leading-[0.88]">
@@ -136,20 +150,33 @@ function HeroSection() {
           </p>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 sm:gap-8 w-full max-w-2xl mt-2 pt-5 border-t border-zinc-200/50 dark:border-zinc-800/50">
-          <div className="flex flex-col items-center gap-1.5">
-            <div className="text-3xl font-bold bg-linear-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">28+</div>
-            <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">Media features</div>
+        {/* Stats + NVIDIA Inception Program */}
+        <div className="flex flex-col items-center gap-6 w-full max-w-2xl mt-2 pt-5 border-t border-zinc-200/50 dark:border-zinc-800/50">
+          <div className="grid grid-cols-3 gap-4 sm:gap-8 w-full">
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="text-3xl font-bold bg-linear-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">28+</div>
+              <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">Media features</div>
+            </div>
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="text-3xl font-bold bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">11+</div>
+              <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">Scientific papers</div>
+            </div>
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="text-3xl font-bold bg-linear-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">7</div>
+              <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">Hardware platforms</div>
+            </div>
           </div>
-          <div className="flex flex-col items-center gap-1.5">
-            <div className="text-3xl font-bold bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">11+</div>
-            <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">Scientific papers</div>
-          </div>
-          <div className="flex flex-col items-center gap-1.5">
-            <div className="text-3xl font-bold bg-linear-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">7</div>
-            <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">Hardware platforms</div>
-          </div>
+
+          {/* NVIDIA Inception Program — transparent vector badge at bottom before Featured In */}
+          <a
+            href="https://www.nvidia.com/en-us/startups/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col items-center gap-1.5 pt-2 text-zinc-800 dark:text-zinc-200 hover:text-zinc-950 dark:hover:text-white transition-colors"
+            aria-label="NVIDIA Inception Program Member"
+          >
+            <NvidiaInceptionBadge className="h-12 sm:h-14 w-auto" />
+          </a>
         </div>
 
       </div>

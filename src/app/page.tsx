@@ -1,7 +1,7 @@
 "use client";
 
-import { ArrowRight, Zap, Cpu, ExternalLink, Play, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook, BookOpen, Shield, Fingerprint, Mic, FlaskConical, Waves, User, Compass, ScanFace, Hand, Camera, Database, Gamepad2, PenTool, Lock, Orbit } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, Zap, Cpu, ExternalLink, Play, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook, BookOpen, Shield, Fingerprint, Mic, FlaskConical, Waves, User, Compass, ScanFace, Hand, Camera, Database, Gamepad2, PenTool, Lock, Orbit, VolumeX, Volume2, Glasses, CodeXml } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
 import HardwareBench from "@/components/home/HardwareBench";
@@ -220,6 +220,138 @@ function HeroSection() {
               </a>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── What is PiEEG? ────────────────────────────────────────────────────────────
+
+const whatIsPieegHighlights = [
+  {
+    Icon: Cpu,
+    title: "Research-grade biosignals",
+    description:
+      "Low-cost boards that read EEG, EMG and ECG at 24-bit resolution, up to 500 Hz.",
+  },
+  {
+    Icon: Radio,
+    title: "Software and data analysis",
+    description:
+      "PiEEG Server streams, records and analyses your signals, with modern libraries and methods built in.",
+  },
+  {
+    Icon: Glasses,
+    title: "From desk to VR",
+    description:
+      "Stream to the browser, decode with AI, and bring brain signals into XR headsets.",
+  },
+  {
+    Icon: CodeXml,
+    title: "Hackathons and competitions",
+    description:
+      "We support hackathons, run PiEEG competitions on Kaggle, and host live streams and workshops.",
+  },
+] as const;
+
+function WhatIsPieegSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.loop = true;
+    v.autoplay = true;
+    v.play().catch(() => {});
+  }, []);
+
+  const toggleSound = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    const nextMuted = !v.muted;
+    v.muted = nextMuted;
+    setMuted(nextMuted);
+    if (!nextMuted) {
+      v.play().catch(() => {});
+    }
+  };
+
+  return (
+    <section
+      id="what-is-pieeg"
+      className="scroll-mt-20 pt-16 pb-10 px-4 bg-white dark:bg-zinc-950"
+    >
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-10 flex flex-col gap-4 max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center justify-center gap-2 mx-auto">
+            <div className="h-px w-8 bg-linear-to-r from-transparent via-cyan-500 to-transparent" />
+            <p className="text-xs font-semibold uppercase tracking-widest text-cyan-600 dark:text-cyan-400">
+              About
+            </p>
+            <div className="h-px w-8 bg-linear-to-r from-transparent via-cyan-500 to-transparent" />
+          </div>
+          <h2 className="title-section text-zinc-900 dark:text-zinc-50">
+            What is PiEEG?
+          </h2>
+          <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            PiEEG is a biodata platform that unites hardware, software and data analysis in one simple, research-grade system.
+          </p>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-5 lg:items-center">
+          <div className="lg:col-span-3 relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-900 shadow-2xl shadow-cyan-500/5">
+            <video
+              ref={videoRef}
+              className="block w-full aspect-video object-cover"
+              src="https://pieeg.lon1.cdn.digitaloceanspaces.com/what-is-pieeg.mp4"
+              poster="/home/what-is-pieeg-poster.jpg"
+              autoPlay
+              muted={muted}
+              loop
+              playsInline
+              preload="metadata"
+              controls
+              onVolumeChange={(e) => setMuted(e.currentTarget.muted)}
+              aria-label="PiEEG explainer video: the PiEEG hardware family from 1 to 48 channels, PiEEG Server, mobile and VR apps, and the PiEEG community"
+            />
+            <button
+              type="button"
+              onClick={toggleSound}
+              aria-label={muted ? "Turn sound on" : "Turn sound off"}
+              className="absolute top-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm hover:bg-black/80 transition-colors"
+            >
+              {muted ? (
+                <VolumeX className="w-4 h-4" />
+              ) : (
+                <Volume2 className="w-4 h-4" />
+              )}
+              {muted ? "Sound off" : "Sound on"}
+            </button>
+          </div>
+
+          <ul className="lg:col-span-2 grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            {whatIsPieegHighlights.map(({ Icon, title, description }) => (
+              <li
+                key={title}
+                className="flex gap-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/60 dark:bg-zinc-900/40 p-4"
+              >
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+                  <Icon className="w-5 h-5" />
+                </span>
+                <div>
+                  <p className="font-semibold text-zinc-900 dark:text-zinc-100">
+                    {title}
+                  </p>
+                  <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                    {description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
@@ -974,6 +1106,7 @@ export default function Home() {
   return (
     <main className="flex-1">
       <HeroSection />
+      <WhatIsPieegSection />
       <HardwareBench />
       <PlatformBench />
       <AcademicCustomers />

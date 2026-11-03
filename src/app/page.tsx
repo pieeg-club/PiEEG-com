@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
 import HardwareBench from "@/components/home/HardwareBench";
+import WorldMap from "@/components/home/WorldMap";
 import PlatformBench from "@/components/home/PlatformBench";
 import AcademicCustomers from "@/components/home/AcademicCustomers";
 import ResearchReview from "@/components/home/ResearchReview";
@@ -1107,6 +1108,7 @@ export default function Home() {
     <main className="flex-1">
       <HeroSection />
       <WhatIsPieegSection />
+      <WorldMap />
       <HardwareBench />
       <PlatformBench />
       <AcademicCustomers />

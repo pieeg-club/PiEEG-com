@@ -1456,6 +1456,123 @@
   transform: translate(-50%, 0);
 }
 
+/* ── Email verification modal ── */
+.octopus-maker-page dialog.auth-modal {
+  width: min(440px, calc(100vw - 32px));
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 24px;
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.octopus-maker-page dialog.auth-modal::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.octopus-maker-page .auth-box {
+  padding: 28px;
+  display: grid;
+  gap: 18px;
+}
+
+.octopus-maker-page .auth-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.octopus-maker-page .auth-top h3 {
+  margin: 4px 0 0;
+  font-size: 22px;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.octopus-maker-page .auth-desc {
+  margin: 0;
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.octopus-maker-page .auth-form {
+  display: grid;
+  gap: 12px;
+}
+
+.octopus-maker-page .auth-input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #f5f5f7;
+  color: var(--text);
+  font-size: 15px;
+  font-family: inherit;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.octopus-maker-page .auth-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff;
+}
+
+.octopus-maker-page .auth-input.otp {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-align: center;
+}
+
+.octopus-maker-page .auth-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.octopus-maker-page .auth-err {
+  margin: 0;
+  font-size: 13px;
+  color: #d92d20;
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+  padding: 10px 13px;
+  border-radius: 12px;
+}
+
+.octopus-maker-page .auth-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.octopus-maker-page .auth-sub {
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.octopus-maker-page .auth-sub:hover {
+  text-decoration: underline;
+}
+
 /* ── Responsive ── */
 @media (max-width: 1100px) {
   .octopus-maker-page .p-hero .in {

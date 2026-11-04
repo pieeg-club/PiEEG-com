@@ -1163,6 +1163,119 @@
   object-position: center;
 }
 
+/* ── Consent-based notification card ── */
+.octopus-maker-page .notify-card {
+  margin-top: 28px;
+  padding: 36px 38px;
+  border-radius: 26px;
+  background: var(--card);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.025);
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 44px;
+  align-items: center;
+  scroll-margin-top: 90px;
+}
+
+.octopus-maker-page .notify-copy h3 {
+  margin: 0 0 10px;
+  font-size: 28px;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.octopus-maker-page .notify-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.octopus-maker-page .notify-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.octopus-maker-page .notify-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 12px;
+}
+
+.octopus-maker-page .notify-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.octopus-maker-page .notify-field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--body);
+  letter-spacing: -0.01em;
+}
+
+.octopus-maker-page .notify-field label span {
+  color: var(--accent);
+}
+
+.octopus-maker-page .notify-field input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #f5f5f7;
+  color: var(--text);
+  font-size: 14.5px;
+  font-family: inherit;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.octopus-maker-page .notify-field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.12);
+}
+
+.octopus-maker-page .notify-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.octopus-maker-page .notify-consent input[type="checkbox"] {
+  margin-top: 3px;
+  width: 16px;
+  height: 16px;
+  flex: none;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.octopus-maker-page .notify-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.octopus-maker-page .notify-legal {
+  font-size: 12px;
+  color: var(--dim);
+  font-weight: 500;
+}
+
 .octopus-maker-page .comm-links {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1698,9 +1811,17 @@
   .octopus-maker-page .how,
   .octopus-maker-page .awards,
   .octopus-maker-page .join,
-  .octopus-maker-page .comm-links {
+  .octopus-maker-page .comm-links,
+  .octopus-maker-page .notify-card,
+  .octopus-maker-page .notify-fields {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+  .octopus-maker-page .notify-card {
+    padding: 24px 22px;
+  }
+  .octopus-maker-page .notify-fields {
+    gap: 12px;
   }
   .octopus-maker-page .rbody {
     padding: 25px;

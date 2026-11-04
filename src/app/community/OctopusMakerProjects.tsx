@@ -730,6 +730,9 @@ export default function OctopusMakerProjects() {
               <a className="p-link" href="#how">
                 How it works
               </a>
+              <a className="p-link" href="#notify">
+                Get notified
+              </a>
             </div>
           </div>
 
@@ -825,7 +828,17 @@ export default function OctopusMakerProjects() {
               <b>What happens next:</b> the makers are building now.{" "}
               <span>In {UPDATE_WHEN}</span> we will add each maker&apos;s
               progress report, photos and videos to this page. Likes stay open
-              the whole time, and at the end we will share the final results.
+              the whole time, and at the end we will share the final results.{" "}
+              <a
+                href="#notify"
+                style={{
+                  color: "var(--accent)",
+                  fontWeight: 600,
+                  textDecoration: "none",
+                }}
+              >
+                Get notified for updates &amp; next rounds →
+              </a>
             </p>
           </div>
 
@@ -1152,6 +1165,96 @@ export default function OctopusMakerProjects() {
                 />
               </div>
             </div>
+
+            {/* ── Consent-based notification signup for next round ── */}
+            <div className="notify-card" id="notify">
+              <div className="notify-copy">
+                <div className="label">Stay in the loop</div>
+                <h3>Get notified for the next Maker Projects round</h3>
+                <p>
+                  Want to know when applications open for the next batch of free
+                  Octopus 16 boards, or when Month 1 progress and final results
+                  go live? Subscribe below — we only send updates with your
+                  explicit consent, and you can unsubscribe at any time.
+                </p>
+              </div>
+
+              <form
+                className="notify-form"
+                action="https://newsletter.pieeg.com/subscribe"
+                method="POST"
+                acceptCharset="utf-8"
+                target="_blank"
+              >
+                <div className="notify-fields">
+                  <div className="notify-field">
+                    <label htmlFor="maker-notify-name">Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="maker-notify-name"
+                      placeholder="Your name (optional)"
+                      autoComplete="name"
+                    />
+                  </div>
+                  <div className="notify-field">
+                    <label htmlFor="maker-notify-email">
+                      Email <span aria-hidden="true">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="maker-notify-email"
+                      placeholder="you@example.com"
+                      required
+                      autoComplete="email"
+                    />
+                  </div>
+                </div>
+
+                {/* Honeypot anti-spam field required by Sendy */}
+                <div style={{ display: "none" }} aria-hidden="true">
+                  <label htmlFor="maker-notify-hp">HP</label>
+                  <input
+                    type="text"
+                    name="hp"
+                    id="maker-notify-hp"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
+                <input
+                  type="hidden"
+                  name="list"
+                  value="2qeF7lDYvGmxV1rsHaBxcQ"
+                />
+                <input type="hidden" name="subform" value="yes" />
+
+                <label className="notify-consent">
+                  <input type="checkbox" name="consent" required />
+                  <span>
+                    I agree to receive email notifications from PiEEG about
+                    Maker Projects rounds, progress updates and hardware news.
+                    No spam — unsubscribe in one click anytime.
+                  </span>
+                </label>
+
+                <div className="notify-actions">
+                  <button
+                    type="submit"
+                    name="submit"
+                    id="maker-notify-submit"
+                    className="btn solid"
+                  >
+                    Notify me for next round
+                  </button>
+                  <span className="notify-legal">
+                    100% opt-in · We respect your privacy
+                  </span>
+                </div>
+              </form>
+            </div>
           </section>
 
           {/* ── Compact Discord & GitHub Community Channels ── */}
@@ -1418,7 +1521,15 @@ export default function OctopusMakerProjects() {
                 <p className="auth-desc">
                   To keep community likes fair and prevent automated voting,
                   enter your email for a one-time 6-digit code. You only need to
-                  do this once.
+                  do this once (we never use this email for marketing —{" "}
+                  <a
+                    href="#notify"
+                    onClick={closeAuthModal}
+                    style={{ color: "var(--accent)", fontWeight: 500 }}
+                  >
+                    opt in separately below
+                  </a>{" "}
+                  if you want round updates).
                 </p>
                 <form className="auth-form" onSubmit={handleRequestCode}>
                   <input

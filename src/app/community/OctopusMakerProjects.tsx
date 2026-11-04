@@ -1082,34 +1082,41 @@ export default function OctopusMakerProjects() {
               </p>
             </div>
             <div className="gallery">
-              <figure className="contain">
-                <img
-                  src="/community/octopus-challenge/octopus-overview.jpg"
-                  alt="PiEEG Octopus 16 — 16-channel wireless EEG with 24-bit resolution, dry electrodes and Bluetooth"
-                />
+              <figure className="g-overview">
+                <div className="g-media contain">
+                  <img
+                    src="/community/octopus-challenge/octopus-overview.jpg"
+                    alt="PiEEG Octopus 16 — 16-channel wireless EEG with 24-bit resolution, dry electrodes and Bluetooth"
+                  />
+                </div>
                 <figcaption>Octopus 16 overview</figcaption>
               </figure>
-              <figure>
-                <img
-                  src="/community/octopus-challenge/xiao-mounted.jpg"
-                  alt="Octopus 16 with Seeed Studio XIAO ESP32-S3 mounted"
-                />
-                <figcaption>XIAO ESP32-S3 mounted</figcaption>
-              </figure>
-              <figure>
-                <img
-                  src="/community/octopus-challenge/pogo-pins.jpg"
-                  alt="3D-printed Octopus 16 housings with 16 gold pogo-pin dry electrodes"
-                  style={{ objectPosition: "center 55%" }}
-                />
+              <figure className="g-pogo">
+                <div className="g-media">
+                  <img
+                    src="/community/octopus-challenge/pogo-pins.jpg"
+                    alt="3D-printed Octopus 16 housings with 16 gold pogo-pin dry electrodes"
+                  />
+                </div>
                 <figcaption>16 dry pogo pins</figcaption>
               </figure>
-              <figure className="contain" style={{ gridColumn: "2 / 4" }}>
-                <img
-                  src="/community/octopus-challenge/board-pinout.jpg"
-                  alt="Octopus 16 hardware diagram showing Seeed Studio XIAO ESP32-S3, status LED, power connector and 16-channel pogo-pin electrodes"
-                />
-                <figcaption>Hardware layout &amp; pinout</figcaption>
+              <figure className="g-wearable">
+                <div className="g-media contain">
+                  <img
+                    src="/community/octopus-challenge/xiao-mounted.jpg"
+                    alt="Wearable device using Octopus 16 and Skin Tac adhesive"
+                  />
+                </div>
+                <figcaption>Wearable housing &amp; skin bond</figcaption>
+              </figure>
+              <figure className="g-emg">
+                <div className="g-media contain">
+                  <img
+                    src="/community/octopus-challenge/board-pinout.jpg"
+                    alt="16-channel EMG spatial signal comparison with Octopus 16"
+                  />
+                </div>
+                <figcaption>16-channel spatial EMG &amp; pinout</figcaption>
               </figure>
             </div>
           </section>

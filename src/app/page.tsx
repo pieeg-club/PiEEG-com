@@ -111,7 +111,20 @@ function HeroSection() {
             >
               <div className="absolute inset-0 bg-linear-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
               <Play className="w-4 h-4 relative z-10" />
-              <span className="relative z-10">Try Live Demo</span>
+              <span className="relative z-10">Try Web BCI</span>
+            </a>
+            <a
+              href="https://pieeg-studio.fly.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="BioData Studio — MNE and MOABB all together for everyone in the browser"
+              className="group relative flex items-center gap-2.5 h-12 border border-violet-500/40 dark:border-violet-400/40 bg-violet-500/10 dark:bg-violet-500/15 px-5 text-sm font-semibold text-zinc-900 dark:text-zinc-100 hover:bg-violet-500/15 dark:hover:bg-violet-500/25 hover:border-violet-500/70 dark:hover:border-violet-400/70 hover:shadow-lg hover:shadow-violet-500/20 hover:scale-105 transition-all duration-200 rounded-lg"
+            >
+              <FlaskConical className="w-4 h-4 text-violet-600 dark:text-violet-400" />
+              <span>BioData Studio</span>
+              <span className="inline-flex items-center rounded-full bg-linear-to-r from-violet-600 to-cyan-500 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white shadow-xs">
+                New
+              </span>
             </a>
             <a
               href="/hardware"
@@ -128,6 +141,22 @@ function HeroSection() {
               <BookOpen className="w-4 h-4" /> Docs
             </a>
           </div>
+
+          {/* BioData Studio callout */}
+          <a
+            href="https://pieeg-studio.fly.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-violet-500/25 dark:border-violet-400/25 bg-violet-500/5 dark:bg-violet-500/10 px-4 py-1.5 text-xs text-zinc-600 dark:text-zinc-300 hover:border-violet-500/50 dark:hover:border-violet-400/50 hover:bg-violet-500/10 dark:hover:bg-violet-500/15 transition-all"
+          >
+            <span className="font-semibold text-violet-700 dark:text-violet-300">
+              BioData Studio:
+            </span>
+            <span>
+              MNE &amp; MOABB all together for everyone in the browser
+            </span>
+            <ExternalLink className="w-3 h-3 text-violet-500 dark:text-violet-400 opacity-75 group-hover:translate-x-0.5 group-hover:opacity-100 transition-all" />
+          </a>
 
           {/* Capability strip */}
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 pt-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">

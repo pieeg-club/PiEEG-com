@@ -1082,35 +1082,34 @@ export default function OctopusMakerProjects() {
               </p>
             </div>
             <div className="gallery">
-              <figure>
+              <figure className="contain">
                 <img
-                  src="/community/octopus-challenge/headband.jpg"
-                  alt="Octopus 16 worn on a headband"
-                  style={{ objectPosition: "center 30%" }}
+                  src="/community/octopus-challenge/octopus-overview.jpg"
+                  alt="PiEEG Octopus 16 — 16-channel wireless EEG with 24-bit resolution, dry electrodes and Bluetooth"
                 />
-                <figcaption>On a headband</figcaption>
+                <figcaption>Octopus 16 overview</figcaption>
               </figure>
               <figure>
                 <img
                   src="/community/octopus-challenge/xiao-mounted.jpg"
-                  alt="Octopus 16 with XIAO ESP32-S3 mounted"
+                  alt="Octopus 16 with Seeed Studio XIAO ESP32-S3 mounted"
                 />
                 <figcaption>XIAO ESP32-S3 mounted</figcaption>
               </figure>
-              <figure className="contain">
-                <img
-                  src="/community/octopus-challenge/board-top.jpg"
-                  alt="Octopus 16 board, top view"
-                />
-                <figcaption>Board, top view</figcaption>
-              </figure>
-              <figure style={{ gridColumn: "2 / 4" }}>
+              <figure>
                 <img
                   src="/community/octopus-challenge/pogo-pins.jpg"
-                  alt="16 gold pogo-pin dry electrodes"
-                  style={{ objectPosition: "center 45%" }}
+                  alt="3D-printed Octopus 16 housings with 16 gold pogo-pin dry electrodes"
+                  style={{ objectPosition: "center 55%" }}
                 />
                 <figcaption>16 dry pogo pins</figcaption>
+              </figure>
+              <figure className="contain" style={{ gridColumn: "2 / 4" }}>
+                <img
+                  src="/community/octopus-challenge/board-pinout.jpg"
+                  alt="Octopus 16 hardware diagram showing Seeed Studio XIAO ESP32-S3, status LED, power connector and 16-channel pogo-pin electrodes"
+                />
+                <figcaption>Hardware layout &amp; pinout</figcaption>
               </figure>
             </div>
           </section>
@@ -1141,8 +1140,8 @@ export default function OctopusMakerProjects() {
               </div>
               <div className="panel ph-panel">
                 <img
-                  src="/community/octopus-challenge/hand-laptop.jpg"
-                  alt="Octopus 16 held in a hand in front of a laptop"
+                  src="/community/octopus-challenge/bodyhacker-test.jpg"
+                  alt="Ildar Rakhmatulin holding Octopus 16 BodyHacker units for testing"
                 />
               </div>
             </div>

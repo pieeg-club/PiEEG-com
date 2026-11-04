@@ -11,10 +11,10 @@ export const metadata: Metadata = {
       "Five makers got an Octopus 16 brain-computer interface. Meet them, read their ideas, follow their progress and like your favourite project.",
     images: [
       {
-        url: "/community/octopus-challenge/headband.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Octopus 16 Maker Projects",
+        url: "/community/octopus-challenge/octopus-overview.jpg",
+        width: 1063,
+        height: 1038,
+        alt: "PiEEG Octopus 16 — 16-channel wireless EEG",
       },
     ],
   },

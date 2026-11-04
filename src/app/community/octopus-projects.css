@@ -1,0 +1,1624 @@
+/* Scoped styles for the Octopus 16 Maker Projects & Community page */
+.octopus-maker-page {
+  --bg: #f5f5f7;
+  --card: #fff;
+  --text: #1d1d1f;
+  --body: #515154;
+  --muted: #6e6e73;
+  --dim: #86868b;
+  --line: #d2d2d7;
+  --soft: #e8e8ed;
+  --chip: #f5f5f7;
+  --accent: #0071e3;
+  --accent-ink: #fff;
+  --accent-hover: #0077ed;
+  --st-wait: #86868b;
+  --st-idea: #0071e3;
+  --st-build: #e07a00;
+  --st-done: #1f9d55;
+  --heart: #0071e3;
+  --hdr-line: #e7e7eb;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.016);
+  --font: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  --mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: -0.015em;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 96px;
+}
+
+.octopus-maker-page *,
+.octopus-maker-page *::before,
+.octopus-maker-page *::after {
+  box-sizing: border-box;
+}
+
+.octopus-maker-page a {
+  color: inherit;
+}
+
+.octopus-maker-page button {
+  font: inherit;
+  color: inherit;
+}
+
+.octopus-maker-page img {
+  max-width: 100%;
+  display: block;
+}
+
+.octopus-maker-page :focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.octopus-maker-page .wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.octopus-maker-page section {
+  scroll-margin-top: 84px;
+}
+
+/* ── Breadcrumb ── */
+.octopus-maker-page .crumbs {
+  background: #fff;
+  border-bottom: 1px solid var(--hdr-line);
+}
+
+.octopus-maker-page .crumbs nav {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #86868b;
+}
+
+.octopus-maker-page .crumbs a {
+  text-decoration: none;
+}
+
+.octopus-maker-page .crumbs a:hover {
+  color: var(--text);
+}
+
+.octopus-maker-page .crumbs svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+}
+
+.octopus-maker-page .crumbs span {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ── Hero ── */
+.octopus-maker-page .p-hero {
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  color: #1d1d1f;
+  border-bottom: 1px solid #ebebf0;
+}
+
+.octopus-maker-page .p-hero .in {
+  position: relative;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 64px 32px 86px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+  gap: 60px;
+  align-items: center;
+}
+
+.octopus-maker-page .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  color: #6e6e73;
+  border: 0;
+  margin-bottom: 26px;
+}
+
+.octopus-maker-page .badge i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0071e3;
+}
+
+.octopus-maker-page .p-hero h1 {
+  font-size: clamp(45px, 5vw, 66px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.055em;
+  margin: 0 0 26px;
+}
+
+.octopus-maker-page .p-hero h1 em {
+  font-style: normal;
+  color: #86868b;
+}
+
+.octopus-maker-page .p-hero .lede {
+  font-size: 18px;
+  color: #6e6e73;
+  line-height: 1.6;
+  margin: 0 0 32px;
+  max-width: 570px;
+}
+
+.octopus-maker-page .chips3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+  margin-bottom: 30px;
+  max-width: 560px;
+}
+
+.octopus-maker-page .chips3 div {
+  background: transparent;
+  border: 0;
+  border-left: 1px solid #dedee3;
+  border-radius: 0;
+  padding: 0 0 0 20px;
+}
+
+.octopus-maker-page .chips3 div:first-child {
+  border: 0;
+  padding-left: 0;
+}
+
+.octopus-maker-page .chips3 small {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #86868b;
+  margin-bottom: 4px;
+}
+
+.octopus-maker-page .chips3 b {
+  color: #1d1d1f;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.octopus-maker-page .p-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.octopus-maker-page .pbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 13px;
+  text-decoration: none;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.octopus-maker-page .pbtn.grad {
+  background: #0071e3;
+  color: #fff;
+}
+
+.octopus-maker-page .pbtn.grad:hover {
+  opacity: 0.92;
+  transform: scale(1.02);
+}
+
+.octopus-maker-page .pbtn.ghost {
+  background: transparent;
+  border: 0;
+  color: #0071e3;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.octopus-maker-page .pbtn.ghost:hover {
+  text-decoration: underline;
+}
+
+.octopus-maker-page .pbtn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.octopus-maker-page .p-link {
+  font-size: 13px;
+  color: #0071e3;
+  text-decoration: none;
+}
+
+.octopus-maker-page .p-link:hover {
+  text-decoration: underline;
+}
+
+.octopus-maker-page .p-art {
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Hero: live standings card ── */
+.octopus-maker-page .live {
+  position: relative;
+  width: 100%;
+  color: #1d1d1f;
+  background: #f5f5f7;
+  border: 0;
+  border-radius: 26px;
+  padding: 26px;
+  overflow: hidden;
+}
+
+.octopus-maker-page .live-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.octopus-maker-page .live-top small {
+  color: #1d1d1f;
+  letter-spacing: -0.02em;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.octopus-maker-page .live-top span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #6e6e73;
+  font-weight: 600;
+}
+
+.octopus-maker-page .live-top span i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0071e3;
+}
+
+.octopus-maker-page .live-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px 56px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 18px 0;
+  border-top: 1px solid #dedee3;
+  text-decoration: none;
+  color: inherit;
+}
+
+.octopus-maker-page .live-row:first-of-type {
+  border-top: 0;
+}
+
+.octopus-maker-page .live-row .r {
+  font-weight: 700;
+  font-size: 12px;
+  color: #86868b;
+}
+
+.octopus-maker-page .live-row img {
+  width: 56px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #27272a;
+}
+
+.octopus-maker-page .live-row b {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.octopus-maker-page .live-row .bar {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: #e2e2e7;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.octopus-maker-page .live-row .bar i {
+  display: block;
+  height: 100%;
+  background: #0071e3;
+  border-radius: 3px;
+  transition: width 0.4s;
+}
+
+.octopus-maker-page .live-row .v {
+  font-size: 13px;
+  color: #1d1d1f;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.octopus-maker-page .live-row .v b {
+  font-size: 15px;
+  color: #1d1d1f;
+  display: block;
+}
+
+.octopus-maker-page .live-you {
+  position: relative;
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #ebebf0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #6e6e73;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.octopus-maker-page .live-you b {
+  color: #1d1d1f;
+}
+
+.octopus-maker-page .live-you a {
+  color: #0071e3;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── Main guide area ── */
+.octopus-maker-page .guide {
+  padding: 52px 0 0;
+}
+
+.octopus-maker-page .cta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.octopus-maker-page .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 14.5px;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.octopus-maker-page .btn:hover {
+  border-color: var(--dim);
+}
+
+.octopus-maker-page .btn.solid {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.octopus-maker-page .btn.solid:hover {
+  background: var(--accent-hover);
+}
+
+.octopus-maker-page .sec-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 70px;
+  align-items: end;
+  margin-bottom: 34px;
+}
+
+.octopus-maker-page .sec-head h2 {
+  font-size: clamp(36px, 4vw, 48px);
+  line-height: 1.07;
+  letter-spacing: -0.045em;
+  font-weight: 650;
+  margin: 0;
+}
+
+.octopus-maker-page .sec-head p {
+  color: var(--muted);
+  margin: 0;
+  max-width: 52ch;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.octopus-maker-page .block {
+  margin-bottom: 100px;
+}
+
+.octopus-maker-page .label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin: 0 0 8px;
+}
+
+/* ── Stage strip ── */
+.octopus-maker-page .stages {
+  list-style: none;
+  margin: 0 0 36px;
+  padding: 18px 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  border-top: 1px solid #dcdce1;
+  border-bottom: 1px solid #dcdce1;
+  background: transparent;
+}
+
+.octopus-maker-page .stages li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 8px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dim);
+  text-align: center;
+}
+
+.octopus-maker-page .stages li i {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  font-size: 11.5px;
+  font-weight: 700;
+  background: var(--soft);
+  color: var(--muted);
+}
+
+.octopus-maker-page .stages li.done {
+  color: var(--text);
+}
+
+.octopus-maker-page .stages li.done i {
+  background: #dddde3;
+  color: #515154;
+}
+
+.octopus-maker-page .stages li.now {
+  background: transparent;
+  color: #0071e3;
+}
+
+.octopus-maker-page .stages li.now i {
+  background: #0071e3;
+  color: #fff;
+}
+
+/* ── Next up banner ── */
+.octopus-maker-page .next-up {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: #eaf1fa;
+  border-radius: 18px;
+  padding: 24px 28px;
+  margin: 18px 0 82px;
+}
+
+.octopus-maker-page .next-up p {
+  margin: 0;
+  color: var(--body);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.octopus-maker-page .next-up .nu-ic {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+}
+
+.octopus-maker-page .next-up .nu-ic svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Toolbar ── */
+.octopus-maker-page .toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.octopus-maker-page .seg {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 999px;
+  background: #e8e8ed;
+}
+
+.octopus-maker-page .seg button {
+  border: 0;
+  background: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.octopus-maker-page .seg button[aria-pressed="true"] {
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.octopus-maker-page .total {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.octopus-maker-page .total b {
+  color: var(--text);
+}
+
+.octopus-maker-page .total .local {
+  color: var(--dim);
+  font-weight: 400;
+}
+
+/* ── Result cards ── */
+.octopus-maker-page .results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.octopus-maker-page .rcard {
+  display: flex;
+  flex-direction: column;
+  border-radius: 26px;
+  background: var(--card);
+  border: 1px solid rgba(0, 0, 0, 0.025);
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+  scroll-margin-top: 90px;
+}
+
+.octopus-maker-page .rcard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.045);
+}
+
+.octopus-maker-page .rcard.mine {
+  box-shadow: 0 0 0 1.5px #0071e3;
+}
+
+.octopus-maker-page .rmedia {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  background: #111;
+  overflow: hidden;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  display: block;
+  width: 100%;
+}
+
+.octopus-maker-page .rmedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.octopus-maker-page .rcard:hover .rmedia img {
+  transform: scale(1.03);
+}
+
+.octopus-maker-page .rmedia.contain img {
+  object-fit: contain;
+  background: #fff;
+  padding: 18px;
+}
+
+.octopus-maker-page .rtag {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  display: flex;
+  gap: 6px;
+}
+
+.octopus-maker-page .rtag span {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1d1d1f;
+}
+
+.octopus-maker-page .imgnote {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+
+.octopus-maker-page .rbody {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+.octopus-maker-page .rbody h3 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  font-weight: 650;
+}
+
+.octopus-maker-page .rby {
+  font-size: 13px;
+  color: var(--muted);
+  margin: -4px 0 0;
+}
+
+.octopus-maker-page .rbody p.sum {
+  margin: 0;
+  color: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.octopus-maker-page .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.octopus-maker-page .chips span {
+  font-size: 11px;
+  color: var(--body);
+  background: #f5f5f7;
+  border: 0;
+  border-radius: 999px;
+  padding: 4px 9px;
+}
+
+.octopus-maker-page .upd {
+  border: 0;
+  border-radius: 12px;
+  background: #f5f5f7;
+  padding: 17px 18px;
+  margin: 4px 0 0;
+}
+
+.octopus-maker-page .upd .label {
+  margin: 0 0 2px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: #6e6e73;
+}
+
+.octopus-maker-page .upd p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.octopus-maker-page .upd.done {
+  border: 1.5px solid #bfe6cf;
+  background: #f1faf4;
+}
+
+.octopus-maker-page .upd.done p {
+  color: var(--body);
+}
+
+.octopus-maker-page .story-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 8px 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.octopus-maker-page .story-link:hover {
+  text-decoration: underline;
+}
+
+.octopus-maker-page .ractions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding-top: 10px;
+  margin-top: auto;
+}
+
+.octopus-maker-page .like {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 100px;
+  border: 0;
+  background: #0071e3;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s;
+  touch-action: manipulation;
+  font-family: inherit;
+}
+
+.octopus-maker-page .like:hover {
+  background: #0077ed;
+}
+
+.octopus-maker-page .like:active {
+  transform: scale(0.97);
+}
+
+.octopus-maker-page .like svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.octopus-maker-page .like b {
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 1px 9px;
+  font-size: 13px;
+}
+
+.octopus-maker-page .like[aria-pressed="true"] {
+  background: #eaf3ff;
+  color: #0071e3;
+  box-shadow: inset 0 0 0 1px #0071e3;
+}
+
+.octopus-maker-page .like[aria-pressed="true"] b {
+  background: #dcecff;
+}
+
+.octopus-maker-page .like[disabled] {
+  background: var(--soft);
+  color: var(--muted);
+  cursor: default;
+}
+
+.octopus-maker-page .icon-btn {
+  width: 46px;
+  height: 46px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid #e5e5ea;
+  background: var(--card);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.octopus-maker-page .icon-btn:hover {
+  border-color: var(--dim);
+}
+
+.octopus-maker-page .icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Standings ── */
+.octopus-maker-page .stand {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.octopus-maker-page .panel {
+  border-radius: 24px;
+  background: var(--card);
+  padding: 30px;
+}
+
+.octopus-maker-page .table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+
+.octopus-maker-page .table th {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-align: left;
+  padding: 0 10px 10px;
+}
+
+.octopus-maker-page .table td {
+  padding: 20px 10px;
+  border-top: 1px solid var(--soft);
+  vertical-align: middle;
+}
+
+.octopus-maker-page .table td.rk {
+  font-weight: 400;
+  color: #86868b;
+  width: 36px;
+}
+
+.octopus-maker-page .table td.nm b {
+  display: block;
+  font-weight: 600;
+}
+
+.octopus-maker-page .table td.nm small {
+  color: var(--muted);
+}
+
+.octopus-maker-page .table td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.octopus-maker-page .table .mini {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--soft);
+  overflow: hidden;
+  width: 100%;
+  min-width: 60px;
+}
+
+.octopus-maker-page .table .mini i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+.octopus-maker-page .table tr.mine td {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.octopus-maker-page .awards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.octopus-maker-page .award {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 22px;
+  border-radius: 20px;
+  background: var(--card);
+}
+
+.octopus-maker-page .award b {
+  display: block;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.octopus-maker-page .award span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.octopus-maker-page .award em {
+  font-style: normal;
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+/* ── How voting works ── */
+.octopus-maker-page .how {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.octopus-maker-page .how .panel {
+  padding: 26px;
+}
+
+.octopus-maker-page .how .k {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e5e5eb;
+  color: #6e6e73;
+  font-size: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.octopus-maker-page .how h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.octopus-maker-page .how p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14.5px;
+}
+
+.octopus-maker-page .rules {
+  margin-top: 14px;
+  padding: 22px;
+  border-radius: 18px;
+  background: var(--card);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  font-size: 12px;
+  color: var(--body);
+}
+
+.octopus-maker-page .rules span::before {
+  content: "✓";
+  color: var(--st-done);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+/* ── Hardware gallery ── */
+.octopus-maker-page .gallery {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr 0.85fr;
+  grid-template-rows: 250px 250px;
+  gap: 20px;
+}
+
+.octopus-maker-page .gallery figure {
+  margin: 0;
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.octopus-maker-page .gallery figure:first-child {
+  grid-row: span 2;
+}
+
+.octopus-maker-page .gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.octopus-maker-page .gallery figure.contain img {
+  object-fit: contain;
+  background: #fff;
+}
+
+.octopus-maker-page .gallery figcaption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #1d1d1f;
+  backdrop-filter: blur(6px);
+}
+
+/* ── Join & Community channels ── */
+.octopus-maker-page .join {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 44px;
+  align-items: stretch;
+}
+
+.octopus-maker-page .join .panel {
+  padding: 30px;
+}
+
+.octopus-maker-page .join h3 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  letter-spacing: -0.03em;
+}
+
+.octopus-maker-page .join p {
+  margin: 0 0 20px;
+  color: var(--muted);
+}
+
+.octopus-maker-page .join .ph-panel {
+  padding: 0;
+  overflow: hidden;
+  min-height: 260px;
+}
+
+.octopus-maker-page .join .ph-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 92%;
+}
+
+.octopus-maker-page .comm-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.octopus-maker-page .comm-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 26px 30px;
+  border-radius: 24px;
+  background: var(--card);
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.025);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.octopus-maker-page .comm-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.045);
+}
+
+.octopus-maker-page .comm-card-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.octopus-maker-page .comm-ic {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.octopus-maker-page .comm-ic svg {
+  width: 22px;
+  height: 22px;
+}
+
+.octopus-maker-page .comm-card h3 {
+  margin: 0 0 4px;
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.octopus-maker-page .comm-card p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.octopus-maker-page .comm-arrow {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* ── Notice ── */
+.octopus-maker-page .notice {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 40px;
+  border-radius: 24px;
+  background: var(--card);
+  padding: 36px;
+}
+
+.octopus-maker-page .notice h2 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.octopus-maker-page .notice p {
+  margin: 0 0 10px;
+  color: var(--body);
+}
+
+.octopus-maker-page .notice p:last-child {
+  margin: 0;
+}
+
+/* ── Story dialog ── */
+.octopus-maker-page dialog.story {
+  width: min(920px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 24px;
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.35);
+  overflow: auto;
+}
+
+.octopus-maker-page dialog.story::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.octopus-maker-page .st-head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 26px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--soft);
+}
+
+.octopus-maker-page .status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.octopus-maker-page .status i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--st-idea);
+}
+
+.octopus-maker-page .st-head h2 {
+  margin: 4px 0 2px;
+  font-size: 28px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.octopus-maker-page .st-head .meta {
+  font-size: 14px;
+  color: var(--muted);
+  display: flex;
+  gap: 6px 14px;
+  flex-wrap: wrap;
+}
+
+.octopus-maker-page .st-head .meta a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.octopus-maker-page .st-head .meta a:hover {
+  text-decoration: underline;
+}
+
+.octopus-maker-page .x {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 50%;
+  border: 0;
+  background: var(--soft);
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.octopus-maker-page .st-body {
+  padding: 30px;
+  display: grid;
+  gap: 26px;
+}
+
+.octopus-maker-page .st-result {
+  border-radius: 20px;
+  background: #f5f5f7;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 20px;
+  align-items: center;
+}
+
+.octopus-maker-page .st-result .media {
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.octopus-maker-page .st-result .media img,
+.octopus-maker-page .st-result .media iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0;
+}
+
+.octopus-maker-page .st-result h4 {
+  margin: 0 0 6px;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+.octopus-maker-page .st-result p {
+  margin: 0;
+  color: var(--body);
+  font-size: 14.5px;
+}
+
+.octopus-maker-page .st-result .links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.octopus-maker-page .st-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 28px;
+}
+
+.octopus-maker-page .st-cols p {
+  margin: 0;
+  color: var(--body);
+}
+
+.octopus-maker-page .pitch {
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--text) !important;
+}
+
+.octopus-maker-page .col {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.octopus-maker-page .empty {
+  border: 1.5px dashed var(--line);
+  border-radius: 16px;
+  padding: 14px 16px;
+  color: var(--dim);
+  font-size: 14px;
+}
+
+.octopus-maker-page .st-photo {
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: #111;
+}
+
+.octopus-maker-page .st-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.octopus-maker-page .st-photo.contain img {
+  object-fit: contain;
+  background: #fff;
+  padding: 24px;
+}
+
+.octopus-maker-page .st-foot {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 26px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--soft);
+}
+
+.octopus-maker-page .st-foot .like {
+  flex: 0 0 auto;
+  min-width: 200px;
+}
+
+.octopus-maker-page .st-foot small {
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.octopus-maker-page .toast {
+  position: fixed;
+  top: 84px;
+  left: 50%;
+  z-index: 60;
+  transform: translate(-50%, -20px);
+  opacity: 0;
+  pointer-events: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #1d1d1f;
+  color: #fff;
+  font-weight: 500;
+  font-size: 13px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.octopus-maker-page .toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .octopus-maker-page .p-hero .in {
+    gap: 30px;
+  }
+  .octopus-maker-page .p-hero h1 {
+    font-size: 52px;
+  }
+  .octopus-maker-page .p-cta {
+    flex-wrap: wrap;
+  }
+  .octopus-maker-page .stages li span {
+    display: block;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 860px) {
+  .octopus-maker-page .wrap {
+    padding: 0 20px;
+  }
+  .octopus-maker-page .crumbs nav {
+    padding: 14px 20px;
+  }
+  .octopus-maker-page .p-hero .in {
+    grid-template-columns: 1fr;
+    padding: 38px 20px 52px;
+    gap: 40px;
+  }
+  .octopus-maker-page .p-hero h1 {
+    font-size: 46px;
+  }
+  .octopus-maker-page .p-hero .lede {
+    font-size: 17px;
+  }
+  .octopus-maker-page .badge {
+    font-size: 10px;
+  }
+  .octopus-maker-page .chips3 {
+    gap: 12px;
+  }
+  .octopus-maker-page .chips3 div {
+    padding-left: 12px;
+  }
+  .octopus-maker-page .chips3 b {
+    font-size: 25px;
+  }
+  .octopus-maker-page .chips3 small {
+    font-size: 10px;
+  }
+  .octopus-maker-page .p-art {
+    justify-content: stretch;
+  }
+  .octopus-maker-page .live {
+    padding: 24px;
+  }
+  .octopus-maker-page .guide {
+    padding-top: 32px;
+  }
+  .octopus-maker-page .stages {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 12px 0;
+  }
+  .octopus-maker-page .stages li {
+    justify-content: flex-start;
+    padding: 8px 0;
+  }
+  .octopus-maker-page .stages li span {
+    display: block;
+    font-size: 12px;
+  }
+  .octopus-maker-page .next-up {
+    margin-bottom: 56px;
+    padding: 22px;
+    gap: 10px;
+  }
+  .octopus-maker-page .next-up p {
+    font-size: 14px;
+  }
+  .octopus-maker-page .sec-head {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .octopus-maker-page .sec-head h2 {
+    font-size: 36px;
+  }
+  .octopus-maker-page .sec-head p {
+    font-size: 15px;
+  }
+  .octopus-maker-page .results,
+  .octopus-maker-page .how,
+  .octopus-maker-page .awards,
+  .octopus-maker-page .join,
+  .octopus-maker-page .comm-links {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .octopus-maker-page .rbody {
+    padding: 25px;
+  }
+  .octopus-maker-page .rbody h3 {
+    font-size: 26px;
+  }
+  .octopus-maker-page .panel {
+    padding: 18px;
+  }
+  .octopus-maker-page .table th.hide-sm,
+  .octopus-maker-page .table td.hide-sm {
+    display: none;
+  }
+  .octopus-maker-page .table .nm b {
+    font-size: 13px;
+  }
+  .octopus-maker-page .table .nm small {
+    font-size: 11px;
+  }
+  .octopus-maker-page .award {
+    padding: 22px;
+  }
+  .octopus-maker-page .block {
+    margin-bottom: 64px;
+  }
+  .octopus-maker-page .gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 12px;
+  }
+  .octopus-maker-page .gallery figure {
+    aspect-ratio: 1 / 1;
+    grid-column: auto !important;
+  }
+  .octopus-maker-page .gallery figure:first-child {
+    grid-row: auto;
+    grid-column: 1 / -1 !important;
+    aspect-ratio: 4 / 3;
+  }
+  .octopus-maker-page .notice {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 24px;
+  }
+  .octopus-maker-page .st-head,
+  .octopus-maker-page .st-body,
+  .octopus-maker-page .st-foot {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .octopus-maker-page .st-result,
+  .octopus-maker-page .st-cols {
+    grid-template-columns: 1fr;
+  }
+  .octopus-maker-page .st-foot {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .octopus-maker-page .st-foot .like {
+    min-width: 0;
+  }
+  .octopus-maker-page .toolbar {
+    gap: 15px;
+  }
+  .octopus-maker-page .total {
+    font-size: 11px;
+  }
+}

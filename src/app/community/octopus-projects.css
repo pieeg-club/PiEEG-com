@@ -1276,6 +1276,59 @@
   font-weight: 500;
 }
 
+.octopus-maker-page .notify-actions .btn[disabled] {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.octopus-maker-page .notify-err {
+  margin: 0;
+  font-size: 13px;
+  color: #d92d20;
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+  padding: 10px 13px;
+  border-radius: 12px;
+}
+
+.octopus-maker-page .notify-success {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 24px;
+  border-radius: 18px;
+  background: #f1faf4;
+  border: 1.5px solid #bfe6cf;
+}
+
+.octopus-maker-page .notify-success-ic {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--st-done);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.octopus-maker-page .notify-success h4 {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 650;
+  color: #14532d;
+  letter-spacing: -0.02em;
+}
+
+.octopus-maker-page .notify-success p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #166534;
+}
+
 .octopus-maker-page .comm-links {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

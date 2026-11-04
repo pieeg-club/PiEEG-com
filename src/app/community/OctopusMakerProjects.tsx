@@ -243,6 +243,16 @@ export default function OctopusMakerProjects() {
   const [authLoading, setAuthLoading] = useState(false);
   const [authError, setAuthError] = useState<string | null>(null);
 
+  // Next-round notification subscription state
+  const [notifyName, setNotifyName] = useState("");
+  const [notifyEmail, setNotifyEmail] = useState("");
+  const [notifyHp, setNotifyHp] = useState("");
+  const [notifyConsent, setNotifyConsent] = useState(false);
+  const [notifyStatus, setNotifyStatus] = useState<
+    "idle" | "loading" | "success" | "already" | "error"
+  >("idle");
+  const [notifyError, setNotifyError] = useState<string | null>(null);
+
   const dialogRef = useRef<HTMLDialogElement>(null);
   const authDialogRef = useRef<HTMLDialogElement>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -614,6 +624,56 @@ export default function OctopusMakerProjects() {
         () => showToast("Link copied"),
         () => {}
       );
+    }
+  };
+
+  const handleNotifySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const trimmedEmail = notifyEmail.trim();
+    if (!trimmedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+      setNotifyStatus("error");
+      setNotifyError("Please enter a valid email address.");
+      return;
+    }
+    if (!notifyConsent) {
+      setNotifyStatus("error");
+      setNotifyError("Please tick the box to confirm your consent.");
+      return;
+    }
+
+    setNotifyStatus("loading");
+    setNotifyError(null);
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: notifyName.trim(),
+          email: trimmedEmail,
+          hp: notifyHp,
+          list: "2qeF7lDYvGmxV1rsHaBxcQ",
+        }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.success) {
+        setNotifyStatus(data.alreadySubscribed ? "already" : "success");
+        showToast(
+          data.alreadySubscribed
+            ? "You're already on the notification list!"
+            : "Subscribed! We'll notify you for the next round."
+        );
+      } else {
+        setNotifyStatus("error");
+        setNotifyError(
+          data.error || "Could not subscribe right now. Please try again."
+        );
+      }
+    } catch {
+      setNotifyStatus("error");
+      setNotifyError("Network error. Please try again.");
     }
   };
 
@@ -1179,81 +1239,112 @@ export default function OctopusMakerProjects() {
                 </p>
               </div>
 
-              <form
-                className="notify-form"
-                action="https://newsletter.pieeg.com/subscribe"
-                method="POST"
-                acceptCharset="utf-8"
-                target="_blank"
-              >
-                <div className="notify-fields">
-                  <div className="notify-field">
-                    <label htmlFor="maker-notify-name">Name</label>
+              {notifyStatus === "success" || notifyStatus === "already" ? (
+                <div className="notify-success" role="status" aria-live="polite">
+                  <div className="notify-success-ic" aria-hidden="true">
+                    ✓
+                  </div>
+                  <div>
+                    <h4>
+                      {notifyStatus === "already"
+                        ? "You're already on the list!"
+                        : "You're on the list!"}
+                    </h4>
+                    <p>
+                      {notifyStatus === "already"
+                        ? `We already have ${notifyEmail} registered for Maker Projects & PiEEG updates.`
+                        : `We'll send an email to ${notifyEmail} when Month 1 progress, final results and the next Maker Projects round go live.`}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <form className="notify-form" onSubmit={handleNotifySubmit}>
+                  <div className="notify-fields">
+                    <div className="notify-field">
+                      <label htmlFor="maker-notify-name">Name</label>
+                      <input
+                        type="text"
+                        name="name"
+                        id="maker-notify-name"
+                        placeholder="Your name (optional)"
+                        autoComplete="name"
+                        value={notifyName}
+                        onChange={(e) => setNotifyName(e.target.value)}
+                        disabled={notifyStatus === "loading"}
+                      />
+                    </div>
+                    <div className="notify-field">
+                      <label htmlFor="maker-notify-email">
+                        Email <span aria-hidden="true">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        id="maker-notify-email"
+                        placeholder="you@example.com"
+                        required
+                        autoComplete="email"
+                        value={notifyEmail}
+                        onChange={(e) => setNotifyEmail(e.target.value)}
+                        disabled={notifyStatus === "loading"}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Honeypot anti-spam field required by Sendy */}
+                  <div style={{ display: "none" }} aria-hidden="true">
+                    <label htmlFor="maker-notify-hp">HP</label>
                     <input
                       type="text"
-                      name="name"
-                      id="maker-notify-name"
-                      placeholder="Your name (optional)"
-                      autoComplete="name"
+                      name="hp"
+                      id="maker-notify-hp"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={notifyHp}
+                      onChange={(e) => setNotifyHp(e.target.value)}
                     />
                   </div>
-                  <div className="notify-field">
-                    <label htmlFor="maker-notify-email">
-                      Email <span aria-hidden="true">*</span>
-                    </label>
+
+                  <label className="notify-consent">
                     <input
-                      type="email"
-                      name="email"
-                      id="maker-notify-email"
-                      placeholder="you@example.com"
+                      type="checkbox"
+                      name="consent"
                       required
-                      autoComplete="email"
+                      checked={notifyConsent}
+                      onChange={(e) => setNotifyConsent(e.target.checked)}
+                      disabled={notifyStatus === "loading"}
                     />
+                    <span>
+                      I agree to receive email notifications from PiEEG about
+                      Maker Projects rounds, progress updates and hardware news.
+                      No spam — unsubscribe in one click anytime.
+                    </span>
+                  </label>
+
+                  {notifyError && (
+                    <p className="notify-err" role="alert">
+                      {notifyError}
+                    </p>
+                  )}
+
+                  <div className="notify-actions">
+                    <button
+                      type="submit"
+                      name="submit"
+                      id="maker-notify-submit"
+                      className="btn solid"
+                      disabled={notifyStatus === "loading"}
+                    >
+                      {notifyStatus === "loading"
+                        ? "Subscribing…"
+                        : "Notify me for next round"}
+                    </button>
+                    <span className="notify-legal">
+                      100% opt-in · We respect your privacy
+                    </span>
                   </div>
-                </div>
-
-                {/* Honeypot anti-spam field required by Sendy */}
-                <div style={{ display: "none" }} aria-hidden="true">
-                  <label htmlFor="maker-notify-hp">HP</label>
-                  <input
-                    type="text"
-                    name="hp"
-                    id="maker-notify-hp"
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
-                </div>
-
-                <input
-                  type="hidden"
-                  name="list"
-                  value="2qeF7lDYvGmxV1rsHaBxcQ"
-                />
-                <input type="hidden" name="subform" value="yes" />
-
-                <label className="notify-consent">
-                  <input type="checkbox" name="consent" required />
-                  <span>
-                    I agree to receive email notifications from PiEEG about
-                    Maker Projects rounds, progress updates and hardware news.
-                    No spam — unsubscribe in one click anytime.
-                  </span>
-                </label>
-
-                <div className="notify-actions">
-                  <button
-                    type="submit"
-                    name="submit"
-                    id="maker-notify-submit"
-                    className="btn solid"
-                  >
-                    Notify me for next round
-                  </button>
-                  <span className="notify-legal">
-                    100% opt-in · We respect your privacy
-                  </span>
-                </div>
-              </form>
+                </form>
+              )}
             </div>
           </section>
 

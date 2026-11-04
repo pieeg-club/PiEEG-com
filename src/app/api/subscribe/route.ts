@@ -1,8 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+const SENDY_SUBSCRIBE_URL = 'https://newsletter.pieeg.com/subscribe';
+const DEFAULT_SENDY_LIST = '2qeF7lDYvGmxV1rsHaBxcQ';
+
 export async function POST(req: NextRequest) {
   try {
-    const { email } = await req.json();
+    const body = await req.json();
+    const email = typeof body.email === 'string' ? body.email.trim() : '';
+    const name = typeof body.name === 'string' ? body.name.trim() : '';
+    const hp = typeof body.hp === 'string' ? body.hp : '';
+    const list =
+      typeof body.list === 'string' && body.list.trim()
+        ? body.list.trim()
+        : DEFAULT_SENDY_LIST;
+
+    // Honeypot check: silently succeed if filled by a bot
+    if (hp) {
+      return NextResponse.json({ success: true });
+    }
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
@@ -11,58 +26,63 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const BEEHIIV_API_KEY = process.env.BEEHIIV_API_KEY;
-    const BEEHIIV_PUBLICATION_ID = process.env.BEEHIIV_PUBLICATION_ID;
+    const formData = new URLSearchParams();
+    formData.set('name', name);
+    formData.set('email', email);
+    formData.set('hp', '');
+    formData.set('list', list);
+    formData.set('subform', 'yes');
+    formData.set('boolean', 'true');
 
-    if (!BEEHIIV_API_KEY || !BEEHIIV_PUBLICATION_ID) {
-      console.warn('Beehiiv not configured');
+    const sendyRes = await fetch(SENDY_SUBSCRIBE_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+      },
+      body: formData.toString()
+    });
+
+    const sendyText = (await sendyRes.text()).trim();
+    const lower = sendyText.toLowerCase();
+
+    if (
+      sendyText === '1' ||
+      lower === 'true' ||
+      lower.includes("you're subscribed") ||
+      lower.includes('you are subscribed') ||
+      lower.includes('check your email') ||
+      lower.includes('confirmation email')
+    ) {
+      return NextResponse.json({ success: true });
+    }
+
+    if (lower.includes('already subscribed')) {
+      return NextResponse.json({ success: true, alreadySubscribed: true });
+    }
+
+    if (lower.includes('invalid email')) {
       return NextResponse.json(
-        { error: 'Newsletter not configured' },
-        { status: 500 }
+        { error: 'Please enter a valid email address.' },
+        { status: 400 }
       );
     }
 
-    const response = await fetch(
-      `https://api.beehiiv.com/v2/publications/${BEEHIIV_PUBLICATION_ID}/subscriptions`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${BEEHIIV_API_KEY}`
-        },
-        body: JSON.stringify({
-          email,
-          reactivate_existing: false,
-          send_welcome_email: true,
-          utm_source: 'website',
-          utm_medium: 'newsletter_form',
-          utm_campaign: 'pieeg_com_news',
-          referring_site: req.headers.get('referer') || 'direct'
-        })
-      }
+    if (sendyRes.ok) {
+      return NextResponse.json({ success: true });
+    }
+
+    console.error('Sendy error:', sendyRes.status, sendyText.slice(0, 300));
+    return NextResponse.json(
+      { error: 'Subscription failed. Please try again.' },
+      { status: 502 }
     );
-
-    const data = await response.json().catch(() => ({}));
-
-    if (!response.ok) {
-      const txt = JSON.stringify(data).toLowerCase();
-      if (response.status === 400 && txt.includes('already')) {
-        return NextResponse.json({ success: true, alreadySubscribed: true });
-      }
-      console.error('Beehiiv API error:', data);
-      return NextResponse.json(
-        {
-          error: data.errors?.[0]?.message || data.error || 'Subscription failed'
-        },
-        { status: response.status }
-      );
-    }
-
-    return NextResponse.json({ success: true, data });
   } catch (err) {
     console.error('Subscription error:', err);
     return NextResponse.json(
-      { error: 'Internal server error', message: err instanceof Error ? err.message : 'Unknown error' },
+      {
+        error: 'Internal server error',
+        message: err instanceof Error ? err.message : 'Unknown error'
+      },
       { status: 500 }
     );
   }

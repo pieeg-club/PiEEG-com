@@ -30,7 +30,7 @@ const products = [
 const team = [
   {
     name: "Ildar Rakhmatulin",
-    role: "Founder & Lead Engineer",
+    role: "Co-Founder & Lead Engineer",
     bio: "PhD scientist, engineer, and entrepreneur in bioscience. With an academic background spanning Imperial College London, Heriot-Watt University, and the University of Edinburgh, Ildar has published numerous papers on deep neural networks for EEG feature extraction, low-cost brain-computer interfaces, and applied AI. His work is widely cited in neurotechnology and BCI research. He launched PiEEG on CrowdSupply and raised 5× the initial goal.",
     location: "Edinburgh, Scotland, UK",
     email: "ildar@pieeg.com",

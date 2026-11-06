@@ -163,15 +163,13 @@ export default function ProductDetailLayout({
 
               {/* CTA buttons */}
               <div className="flex flex-wrap gap-4">
-                <a
-                  href={purchaseUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href={`/store/${productId}`}
                   className={`inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-gradient-to-r ${gradient} text-white font-bold text-base shadow-2xl hover:opacity-90 hover:scale-[1.02] transition-all duration-200`}
                 >
                   <ShoppingCart className="w-5 h-5" />
-                  Buy on Elecrow
-                </a>
+                  Buy in Store
+                </Link>
                 {githubUrl && (
                   <a
                     href={githubUrl}
@@ -479,15 +477,13 @@ export default function ProductDetailLayout({
           <h2 className="title-section mb-4">{ctaTitle}</h2>
           <p className={`text-xl mb-10 ${ctaTextColor} opacity-90`}>{ctaSubtitle}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href={purchaseUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={`/store/${productId}`}
               className={`inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-white ${ctaButtonTextColor} hover:bg-zinc-100 font-bold text-base shadow-2xl transition-all`}
             >
               <ShoppingCart className="w-5 h-5" />
-              Buy on Elecrow
-            </a>
+              Buy in Store
+            </Link>
             {ctaSecondaryLabel && ctaSecondaryHref && (
               <a
                 href={ctaSecondaryHref}

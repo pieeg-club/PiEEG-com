@@ -24,6 +24,7 @@ const sections = [
     bg: "bg-cyan-50 dark:bg-cyan-950/30",
     dot: "bg-cyan-500",
     items: [
+      { href: "/store", label: "PiEEG Store", desc: "Shop all boards, caps & kits", Icon: Cpu },
       { href: "/hardware", label: "All Hardware", desc: "Browse every shield & kit", Icon: Cpu },
       { href: "/hardware/pieeg-xr", label: "PiEEG XR", desc: "Neural face interface for VR", Icon: Glasses },
       { href: "/hardware/octobio-kit", label: "OctoBio Kit", desc: "16-ch EEG + Arduino starter kit", Icon: Layers },

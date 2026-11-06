@@ -26,6 +26,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pieeg.com"),
   title: "PiEEG — Low-Cost Brain-Computer Interface Hardware for Research",
   description:
     "PiEEG offers affordable, research-grade BCI hardware for EEG, EMG, ECG, and EOG. High-quality biosignal acquisition on Raspberry Pi, Arduino, STM32, and more. For research purposes only.",

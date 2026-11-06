@@ -161,15 +161,13 @@ export default function XrProductView({
               <ProductPrice productId={productId} variant="onDark" fallback="Coming soon" />
 
               <div className="flex flex-wrap gap-4">
-                <a
-                  href={XR_KICKSTARTER}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href={`/store/${productId}`}
                   className={`inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-gradient-to-r ${ctaClassName} text-white font-bold text-base shadow-2xl hover:opacity-90 hover:scale-[1.02] transition-all duration-200`}
                 >
                   <Rocket className="w-5 h-5" />
-                  Back on Kickstarter
-                </a>
+                  View in Store
+                </Link>
                 <a
                   href={XR_GITHUB}
                   target="_blank"

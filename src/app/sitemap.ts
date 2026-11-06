@@ -4,6 +4,7 @@ import type { MetadataRoute } from 'next';
 import { getAllNews } from '@/lib/news';
 import { getAllTutorials } from '@/lib/tutorials';
 import { getAllGuides } from '@/lib/guides';
+import { getAllStoreProducts } from '@/lib/store-catalog';
 
 const BASE_URL = 'https://pieeg.com';
 
@@ -19,6 +20,7 @@ const STATIC_ROUTES = [
   'examples',
   'explore',
   'hardware',
+  'store',
   'job',
   'liability',
   'news',
@@ -65,6 +67,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
+  const storeEntries: MetadataRoute.Sitemap = getAllStoreProducts().map(
+    (product) => ({
+      url: `${BASE_URL}${product.storePath}`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    })
+  );
+
   const newsEntries: MetadataRoute.Sitemap = getAllNews().map((article) => ({
     url: `${BASE_URL}/news/${article.slug}`,
     lastModified: article.date ? new Date(article.date) : now,
@@ -90,6 +101,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticEntries,
+    ...storeEntries,
     ...hardwareEntries,
     ...newsEntries,
     ...tutorialEntries,

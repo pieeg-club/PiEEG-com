@@ -182,16 +182,14 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
                   View Details
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <a
-                  href={product.purchaseUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href={`/store/${product.id}`}
                   className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-sm font-bold text-zinc-700 dark:text-zinc-300 transition-all"
-                  aria-label={`${product.purchaseLabel ?? "Buy"} ${product.name}`}
+                  aria-label={`${product.purchaseLabel ?? "Buy"} ${product.name} in Store`}
                 >
                   <ShoppingCart className="w-4 h-4" />
                   {product.purchaseLabel ?? "Buy"}
-                </a>
+                </Link>
               {product.enclosureLinks && product.enclosureLinks.length > 0 && (
                 <EnclosureLinks links={product.enclosureLinks} className="mt-3" />
               )}

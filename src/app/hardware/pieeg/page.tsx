@@ -104,15 +104,13 @@ export default function PiEEGProductPage() {
               <ProductPrice productId="pieeg" variant="onDark" />
 
               <div className="flex flex-wrap gap-4">
-                <a
-                  href={PURCHASE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/store/pieeg"
                   className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-base shadow-2xl hover:opacity-90 hover:scale-[1.02] transition-all duration-200"
                 >
                   <ShoppingCart className="w-5 h-5" />
-                  Buy on Elecrow
-                </a>
+                  Buy in Store
+                </Link>
                 <a
                   href={GITHUB_URL}
                   target="_blank"

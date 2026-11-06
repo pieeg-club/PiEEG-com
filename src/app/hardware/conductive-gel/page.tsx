@@ -71,9 +71,13 @@ export default function ConductiveGelPage() {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <div className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-400 dark:text-zinc-500 font-bold cursor-not-allowed">
-                  Coming Soon
-                </div>
+                <Link
+                  href="/store/conductive-gel"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-linear-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold shadow-lg transition-all"
+                >
+                  <ShoppingCart className="w-5 h-5" />
+                  View in Store &amp; Join Waitlist
+                </Link>
                 <Link
                   href="/hardware"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border-2 border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 font-bold transition-all text-zinc-700 dark:text-zinc-300"

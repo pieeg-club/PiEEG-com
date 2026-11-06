@@ -431,15 +431,14 @@ export default function HardwareSelector({ onClose }: { onClose: () => void }) {
               </div>
 
               <div className="flex gap-3">
-                <a
-                  href={result.purchaseUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href={`/store/${result.id}`}
+                  onClick={onClose}
                   className={`flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-linear-to-r ${result.gradient} text-white font-bold text-sm hover:opacity-90 transition-opacity shadow-md`}
                 >
                   <ShoppingCart className="w-4 h-4" />
-                  Buy Now
-                </a>
+                  Buy in Store
+                </Link>
                 <Link
                   href={result.href}
                   onClick={onClose}

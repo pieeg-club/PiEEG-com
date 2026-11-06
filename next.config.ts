@@ -9,6 +9,19 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: projectRoot,
   },
+  experimental: {
+    turbopackFileSystemCacheForDev: false,
+    preloadEntriesOnStart: false,
+    webpackMemoryOptimizations: true,
+    optimizePackageImports: [
+      "lucide-react",
+      "d3-geo",
+      "d3-selection",
+      "d3-timer",
+      "d3-transition",
+      "d3-zoom",
+    ],
+  },
 
   images: {
     remotePatterns: [
@@ -56,10 +69,9 @@ const nextConfig: NextConfig = {
       { source: "/index.html@p=54", destination: "/news", permanent: true },
       { source: "/index.html@p=54.html", destination: "/news", permanent: true },
 
-      { source: "/shop", destination: "/hardware", permanent: true },
-      { source: "/pieeg-shop", destination: "/hardware", permanent: true },
-      { source: "/pieeg-shop", destination: "/hardware", permanent: true },
-      { source: "/pieeg-shop/index.html", destination: "/hardware", permanent: true },      { source: "/products", destination: "/hardware", permanent: true },
+      { source: "/shop", destination: "/store", permanent: true },
+      { source: "/pieeg-shop", destination: "/store", permanent: true },
+      { source: "/pieeg-shop/index.html", destination: "/store", permanent: true },      { source: "/products", destination: "/hardware", permanent: true },
       { source: "/products", destination: "/hardware", permanent: true },      { source: "/index.html@p=74", destination: "/hardware", permanent: true },
       { source: "/index.html@p=74.html", destination: "/hardware", permanent: true },
 

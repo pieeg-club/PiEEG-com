@@ -70,15 +70,13 @@ export default function Cap8DryPage() {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <a
-                  href="https://www.elecrow.com/cap-eeg-kit.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/store/8ch-dry-cap"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-linear-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold shadow-lg transition-all"
                 >
                   <ShoppingCart className="w-5 h-5" />
-                  Buy on Elecrow
-                </a>
+                  Buy in Store
+                </Link>
                 <Link
                   href="/hardware"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border-2 border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 font-bold transition-all text-zinc-700 dark:text-zinc-300"
@@ -260,15 +258,13 @@ export default function Cap8DryPage() {
           <h2 className="title-section mb-4">Ready to use out of the box</h2>
           <p className="text-zinc-500 dark:text-zinc-400 mb-8">No setup, no gel. Connect the cap to your PiEEG hardware and start measuring.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="https://www.elecrow.com/cap-eeg-kit.html"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/store/8ch-dry-cap"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-bold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-lg"
             >
               <ShoppingCart className="w-5 h-5" />
-              Buy on Elecrow
-            </a>
+              Buy in Store
+            </Link>
             <Link
               href="/hardware"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors text-zinc-700 dark:text-zinc-300"

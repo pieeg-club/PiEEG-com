@@ -66,6 +66,7 @@ function DiscordIcon({ className }: { className?: string }) {
 const navGroups = [
   [
     { href: "/hardware", label: "Hardware" },
+    { href: "/store", label: "Store" },
     { href: "/cloud", label: "Cloud" },
     { href: "/agent", label: "AI" },
     { href: "/server", label: "Server" },
@@ -98,6 +99,7 @@ const megaMenuSections = [
     accent: "bg-purple-500",
     textAccent: "text-purple-600 dark:text-purple-400",
     items: [
+      { href: "/store", label: "PiEEG Store", desc: "Shop all BCI boards, caps & kits", Icon: ShoppingCart },
       { href: "/cloud", label: "Cloud Platform", desc: "Zero-install BCI in your browser", Icon: Cloud },
       { href: "https://cloud.pieeg.com/experiences/oculomotor-bench", label: "Oculomotor & Pupillometry Bench", desc: "Dual-eye VOG, PLR & EOG coupling bench", Icon: Eye, external: true },
       { href: "https://cloud.pieeg.com/experiences/optical-physiological-bench", label: "Optical Physiological Bench", desc: "Webcam rPPG & optical bench with live EEG", Icon: Camera, external: true },
@@ -372,15 +374,14 @@ export function Navbar() {
             </button>
 
             {/* Shopping Cart */}
-            <a
-              href="https://www.pieeg.com/hardware"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/store"
+              onClick={() => { closeMega(); closeMobile(); }}
               className="hidden sm:flex items-center justify-center w-9 h-9 rounded-full border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 hover:scale-105 transition-all duration-200"
-              aria-label="Shop"
+              aria-label="PiEEG Store"
             >
               <ShoppingCart className="w-4.5 h-4.5" />
-            </a>
+            </Link>
 
             <span className="shop-aurora hover:scale-105 transition-transform duration-200">
               <a

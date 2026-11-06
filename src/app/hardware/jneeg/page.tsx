@@ -42,15 +42,13 @@ export default function JNEEGProductPage() {
               <ProductPrice productId="jneeg" />
 
               <div className="flex flex-wrap gap-4 mb-8">
-                <a
-                  href="https://www.elecrow.com/jneeg.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/store/jneeg"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-linear-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold shadow-lg transition-all"
                 >
-                  Buy on Elecrow
+                  Buy in Store
                   <ExternalLink className="w-5 h-5" />
-                </a>
+                </Link>
                 <a
                   href="https://github.com/Pi-EEG/EEG-with-JetsonNano"
                   target="_blank"
@@ -234,15 +232,13 @@ export default function JNEEGProductPage() {
             Purchase JNEEG from our official manufacturing partner Elecrow
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="https://www.elecrow.com/jneeg.html"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/store/jneeg"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-orange-600 hover:bg-zinc-100 font-bold shadow-xl transition-all"
             >
-              Buy on Elecrow
+              Buy in Store
               <ExternalLink className="w-5 h-5" />
-            </a>
+            </Link>
             <Link
               href="/support"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-white hover:bg-white/10 font-bold transition-all"

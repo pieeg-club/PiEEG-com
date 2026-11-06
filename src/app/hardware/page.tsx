@@ -400,8 +400,15 @@ export default function ProductsPage() {
           <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
             <HardwareSelectorButton />
             <Link
-              href="#hardware"
+              href="/store"
               className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-semibold hover:bg-zinc-700 dark:hover:bg-zinc-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-px"
+            >
+              Visit Store
+              <ChevronRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="#hardware"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-zinc-300 dark:border-zinc-700 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 backdrop-blur-sm transition-all hover:-translate-y-px"
             >
               Explore Products
               <ChevronRight className="w-4 h-4" />
@@ -553,16 +560,12 @@ export default function ProductsPage() {
                     >
                       View Details
                     </Link>
-                    {accessory.status === "Available" && (
-                      <a
-                        href={accessory.purchaseUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 text-xs font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-                      >
-                        Buy
-                      </a>
-                    )}
+                    <Link
+                      href={`/store/${accessory.id}`}
+                      className="inline-flex items-center justify-center px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 text-xs font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                    >
+                      Buy
+                    </Link>
                   </div>
                 </div>
               </div>

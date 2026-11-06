@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import { ExternalLink, Code2 as GitHubIcon, Shield } from "lucide-react";
+import Link from "next/link";
+import { ExternalLink, Code2 as GitHubIcon, Shield, ShoppingCart } from "lucide-react";
 import { ProductJsonLd, ProductPrice } from "@/components/ProductOffer";
 import { EnclosureLinks } from "@/components/EnclosureLink";
 import { enclosuresFor } from "@/lib/thingiverse";
@@ -44,15 +45,13 @@ export default function IronBCI32ProductPage() {
               <ProductPrice productId="ironbci-32" />
 
               <div className="flex flex-wrap gap-4 mb-8">
-                <a
-                  href="https://www.elecrow.com/ironbci-32.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/store/ironbci-32"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-linear-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white font-bold shadow-lg transition-all"
                 >
-                  Buy on Elecrow
-                  <ExternalLink className="w-5 h-5" />
-                </a>
+                  <ShoppingCart className="w-5 h-5" />
+                  Buy in Store
+                </Link>
                 <a
                   href="https://github.com/pieeg-club/ironbci-32"
                   target="_blank"

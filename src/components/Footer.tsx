@@ -3,6 +3,7 @@ import Image from "next/image";
 
 const footerLinks = {
   Hardware: [
+    { label: "PiEEG Store", href: "/store" },
     { label: "PiEEG XR", href: "/hardware/pieeg-xr" },
     { label: "OctoBio Kit", href: "/hardware/octobio-kit" },
     { label: "Octopus 16", href: "/hardware/octopus-16" },

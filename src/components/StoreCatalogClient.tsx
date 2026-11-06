@@ -57,10 +57,12 @@ export default function StoreCatalogClient() {
   const [channelFilter, setChannelFilter] = useState<"all" | StoreProduct["channelFilter"]>("all");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const featuredProducts = useMemo(
-    () => STORE_PRODUCTS.filter((p) => p.featured),
-    []
-  );
+  const featuredProducts = useMemo(() => {
+    const flagshipSlugs = ["pieeg-16", "ironbci-32", "octobio-kit"];
+    return flagshipSlugs
+      .map((slug) => STORE_PRODUCTS.find((p) => p.slug === slug))
+      .filter((p): p is StoreProduct => Boolean(p));
+  }, []);
 
   const filteredProducts = useMemo(() => {
     return STORE_PRODUCTS.filter((p) => {

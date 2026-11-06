@@ -21,7 +21,6 @@ import {
   Truck,
   Code2,
   Rocket,
-  SlidersHorizontal,
 } from "lucide-react";
 import {
   STORE_PRODUCTS,
@@ -78,11 +77,10 @@ export default function StoreCatalogClient() {
 
   return (
     <div className="space-y-20">
-      {/* ── Apple Store Style Category Ribbon ── */}
+      {/* ── Category + search bar (wraps; no overflow scrollbar) ── */}
       <section aria-label="Store categories" className="pt-2">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-zinc-200 dark:border-zinc-800">
-          {/* Category pills */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-none">
+        <div className="flex flex-col gap-3 pb-6 border-b border-zinc-200">
+          <div className="flex flex-wrap items-center gap-2">
             {STORE_CATEGORIES.map((cat) => {
               const active = category === cat.id;
               return (
@@ -90,19 +88,13 @@ export default function StoreCatalogClient() {
                   key={cat.id}
                   type="button"
                   onClick={() => setCategory(cat.id)}
-                  className={`group shrink-0 inline-flex items-center gap-2.5 px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                  className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                     active
-                      ? "bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 shadow-md"
-                      : "bg-zinc-100/80 dark:bg-zinc-900/80 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/70 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 border border-zinc-200/60 dark:border-zinc-800"
+                      ? "bg-zinc-900 text-white shadow-md"
+                      : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-900 border border-zinc-200/60"
                   }`}
                 >
-                  <span
-                    className={
-                      active
-                        ? "text-cyan-400 dark:text-cyan-600"
-                        : "text-zinc-400 group-hover:text-cyan-500 transition-colors"
-                    }
-                  >
+                  <span className={active ? "text-cyan-400" : "text-zinc-400"}>
                     {CATEGORY_ICONS[cat.id]}
                   </span>
                   <span>{cat.label}</span>
@@ -111,9 +103,8 @@ export default function StoreCatalogClient() {
             })}
           </div>
 
-          {/* Search + Channel sub-filter */}
-          <div className="flex flex-wrap items-center gap-2.5">
-            <div className="relative flex-1 sm:flex-initial sm:w-60">
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="relative w-full sm:w-56">
               <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="search"
@@ -121,21 +112,20 @@ export default function StoreCatalogClient() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search boards, caps, specs..."
                 aria-label="Search store products"
-                className="w-full pl-9 pr-3.5 py-2 rounded-xl text-xs sm:text-sm bg-zinc-100/80 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                className="w-full pl-9 pr-3.5 py-2 rounded-xl text-xs sm:text-sm bg-zinc-100 border border-zinc-200 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
             </div>
 
-            <div className="inline-flex items-center gap-1 p-1 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 overflow-x-auto">
-              <SlidersHorizontal className="w-3.5 h-3.5 text-zinc-400 ml-2 mr-1 shrink-0 hidden sm:block" />
+            <div className="inline-flex flex-wrap items-center gap-1 p-1 rounded-xl bg-zinc-100 border border-zinc-200">
               {CHANNEL_FILTERS.map((cf) => (
                 <button
                   key={cf.id}
                   type="button"
                   onClick={() => setChannelFilter(cf.id)}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${
+                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     channelFilter === cf.id
-                      ? "bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 shadow-xs"
-                      : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200"
+                      ? "bg-white text-zinc-900 shadow-xs"
+                      : "text-zinc-500 hover:text-zinc-900"
                   }`}
                 >
                   {cf.label}

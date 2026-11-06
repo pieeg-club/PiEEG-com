@@ -1,14 +1,20 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 
 export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+  const pathname = usePathname();
 
   useEffect(() => setMounted(true), []);
+
+  if (pathname === "/store") {
+    return null;
+  }
 
   if (!mounted) {
     return <div className="w-9 h-9 shrink-0" aria-hidden />;

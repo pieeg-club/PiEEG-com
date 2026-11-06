@@ -8,6 +8,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import { usePathname } from "next/navigation";
 
 type Theme = "light" | "dark";
 
@@ -41,24 +42,39 @@ function readStoredTheme(): Theme {
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isStoreEntry = pathname === "/store";
   // The blocking script in the document head has already applied the correct
   // class before paint. Initialize from the same source so the provider's
   // state matches the DOM without causing a flash.
   const [theme, setThemeState] = useState<Theme>(readStoredTheme);
 
-  const setTheme = useCallback((next: Theme) => {
-    setThemeState(next);
-    try {
-      window.localStorage.setItem(THEME_STORAGE_KEY, next);
-    } catch {
-      // Ignore persistence failures.
-    }
-    applyTheme(next);
-  }, []);
+  const setTheme = useCallback(
+    (next: Theme) => {
+      if (isStoreEntry) {
+        applyTheme("light");
+        return;
+      }
+      setThemeState(next);
+      try {
+        window.localStorage.setItem(THEME_STORAGE_KEY, next);
+      } catch {
+        // Ignore persistence failures.
+      }
+      applyTheme(next);
+    },
+    [isStoreEntry],
+  );
 
-  // Sync the DOM class on mount and keep multiple tabs in sync.
+  // Sync the DOM class on mount/route change and keep multiple tabs in sync.
   useEffect(() => {
-    applyTheme(readStoredTheme());
+    if (isStoreEntry) {
+      applyTheme("light");
+      return;
+    }
+    const stored = readStoredTheme();
+    setThemeState(stored);
+    applyTheme(stored);
     const onStorage = (event: StorageEvent) => {
       if (
         event.key === THEME_STORAGE_KEY &&
@@ -70,11 +86,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     };
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
-  }, []);
+  }, [isStoreEntry]);
+
+  const effectiveTheme: Theme = isStoreEntry ? "light" : theme;
 
   const value = useMemo<ThemeContextValue>(
-    () => ({ theme, resolvedTheme: theme, setTheme }),
-    [theme, setTheme],
+    () => ({ theme: effectiveTheme, resolvedTheme: effectiveTheme, setTheme }),
+    [effectiveTheme, setTheme],
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;

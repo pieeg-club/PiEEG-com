@@ -66,7 +66,6 @@ function DiscordIcon({ className }: { className?: string }) {
 const navGroups = [
   [
     { href: "/hardware", label: "Hardware" },
-    { href: "/store", label: "Store" },
     { href: "/cloud", label: "Cloud" },
     { href: "/agent", label: "AI" },
     { href: "/server", label: "Server" },

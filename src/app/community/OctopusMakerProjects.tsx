@@ -17,11 +17,11 @@ const LIKES_OPEN = true; // set false to freeze likes and show the final result
 const FINAL = false; // set true when you publish the final results
 
 const STAGES = [
-  "Boards shipped",
-  "Makers & ideas",
-  "Month 1 progress",
-  "Likes continue",
-  "Final results",
+  "Winners selected & shipped",
+  "Meet the winners",
+  "Month 1 showcase",
+  "Community cheers",
+  "Final showcase",
 ];
 
 export interface ProjectLink {
@@ -43,6 +43,7 @@ export interface MakerProject {
   slot: number;
   title: string;
   author: string;
+  awardTitle: string;
   pitch: string;
   image: string;
   imagePos?: string;
@@ -62,6 +63,7 @@ const PROJECTS: MakerProject[] = [
     slot: 1,
     title: "NeuroGEAR",
     author: "Dr. Jaime Andrés Rincón Arango",
+    awardTitle: "Neural Robotics Pioneer",
     pitch:
       "From neural intent to autonomous robotic action: choose an object with your brain, and an AI-driven robot arm picks it up.",
     image: "/community/octopus-challenge/jaime.jpg",
@@ -82,6 +84,7 @@ const PROJECTS: MakerProject[] = [
     slot: 2,
     title: "Do you like jazz?",
     author: "Jonah Golder & Dylan Deshler",
+    awardTitle: "Neural Audio Innovators",
     pitch: "Listen and respond to your body's electrical signals through music.",
     image: "/community/octopus-challenge/jonah.jpg",
     imagePos: "center 25%",
@@ -112,6 +115,7 @@ const PROJECTS: MakerProject[] = [
     slot: 3,
     title: "OctoSpell & OctoGame",
     author: "Hanneke Scheppink",
+    awardTitle: "Zero-Calibration BCI Builder",
     pitch:
       "Spell with your brain in seconds, and challenge a friend to hands-free brain games.",
     image: "/community/octopus-challenge/hanneke.jpg",
@@ -136,6 +140,7 @@ const PROJECTS: MakerProject[] = [
     slot: 4,
     title: "Brain-Driven FPV Rover",
     author: "Qasim Iqbal",
+    awardTitle: "AR Teleoperation Architect",
     pitch:
       "Steer a rover hands-free: live video in AR glasses, with EEG-based controls.",
     image: "/community/octopus-challenge/octopus.jpg",
@@ -156,6 +161,7 @@ const PROJECTS: MakerProject[] = [
     slot: 5,
     title: "Mind-Guided Drone View",
     author: "Polina Lekhnitskaia",
+    awardTitle: "Aerial BCI Explorer",
     pitch:
       "Walk around with a drone above you, see its live view in your glasses, and move it with EEG signals.",
     image: "/community/octopus-challenge/polina.jpg",
@@ -218,6 +224,43 @@ function ShareIcon() {
     >
       <path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7" />
       <path d="M16 6l-4-4-4 4M12 2v14" />
+    </svg>
+  );
+}
+
+function TrophyIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+      <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+      <path d="M4 22h16" />
+      <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+      <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+      <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+    </svg>
+  );
+}
+
+function SparkleIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z" />
     </svg>
   );
 }
@@ -614,17 +657,41 @@ export default function OctopusMakerProjects() {
     }
   };
 
+  const getProjectUrl = (p: MakerProject) => {
+    if (typeof window === "undefined") return `https://pieeg.com/community#${p.id}`;
+    return window.location.href.split("#")[0] + "#" + p.id;
+  };
+
   const shareProject = (p: MakerProject) => {
-    const url = window.location.href.split("#")[0] + "#" + p.id;
-    const text = `Like "${p.title}" in the PiEEG Octopus 16 Maker Projects`;
+    const url = getProjectUrl(p);
+    const text = `Cheer on "${p.title}" by ${p.author} — selected Cohort #1 winner in the PiEEG Octopus 16 BCI Maker Challenge!`;
     if (navigator.share) {
-      navigator.share({ title: text, url }).catch(() => {});
+      navigator.share({ title: text, text, url }).catch(() => {});
     } else if (navigator.clipboard) {
       navigator.clipboard.writeText(url).then(
-        () => showToast("Link copied"),
+        () => showToast(`Link to ${p.title} copied — share it to cheer them on!`),
         () => {}
       );
     }
+  };
+
+  const shareOnX = (p: MakerProject) => {
+    const url = getProjectUrl(p);
+    const text = `Check out "${p.title}" by ${p.author} — selected winner in the @PiEEG_ Octopus 16 BCI Maker Challenge! 🧠⚡ Cheer them on:`;
+    window.open(
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
+  const shareOnLinkedIn = (p: MakerProject) => {
+    const url = getProjectUrl(p);
+    window.open(
+      `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
   };
 
   const handleNotifySubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -684,7 +751,7 @@ export default function OctopusMakerProjects() {
       return (
         <button className="like" type="button" disabled>
           <HeartIcon />
-          <span>{plural(n, "like")}</span>
+          <span>{plural(n, "cheer")}</span>
         </button>
       );
     }
@@ -693,11 +760,11 @@ export default function OctopusMakerProjects() {
         className="like"
         type="button"
         aria-pressed={on}
-        aria-label={`${on ? "Remove your like from" : "Like"} ${p.title}`}
+        aria-label={`${on ? "Remove your cheer from" : "Cheer for"} ${p.title}`}
         onClick={() => toggleLike(p)}
       >
         <HeartIcon />
-        <span>{on ? "Liked" : "Like"}</span>
+        <span>{on ? "Cheered" : "Cheer this build"}</span>
         <b>{n}</b>
       </button>
     );
@@ -708,12 +775,12 @@ export default function OctopusMakerProjects() {
   const anyProgress = PROJECTS.some((p) => p.progress);
   const progressCount = PROJECTS.filter((p) => p.progress).length;
   const stageLabel = FINAL
-    ? "Final results"
+    ? "Cohort #1 · Final Showcase"
     : !LIKES_OPEN
-      ? "Likes closed"
+      ? "Cohort #1 · Community Cheers Closed"
       : CURRENT_STAGE >= 2
-        ? "Month 1 progress is in · likes open"
-        : "Meet the makers · likes open";
+        ? "Cohort #1 · Month 1 Demos Live · Cheer the Winners"
+        : "Cohort #1 · 5 Selected Grant Winners · Cheer Them On";
 
   const activeProject = activeStoryId
     ? PROJECTS.find((p) => p.id === activeStoryId) || null
@@ -742,7 +809,7 @@ export default function OctopusMakerProjects() {
           >
             <path d="m9 18 6-6-6-6" />
           </svg>
-          <span>Octopus 16 Maker Projects</span>
+          <span>Octopus 16 Maker Challenge Winners</span>
         </nav>
       </div>
 
@@ -750,45 +817,49 @@ export default function OctopusMakerProjects() {
       <section className="p-hero">
         <div className="in">
           <div>
-            <div className="badge">
-              <i />
+            <div className="badge winner-pill">
+              <TrophyIcon />
               <span>{stageLabel}</span>
             </div>
             <h1>
-              Octopus 16 Maker Projects
+              Meet our Cohort #1
               <br />
-              <em>Meet the makers</em>
+              <em>BCI Maker Winners.</em>
             </h1>
             <p className="lede">
-              We sent Octopus 16 boards to five makers around the world. Here
-              are their ideas. In about one month, each maker will share their
-              progress here. Follow their progress and like the projects you
-              enjoy. At the end, we will share the final results.
+              Out of builders around the world, these{" "}
+              <b style={{ color: "var(--text)" }}>five pioneering makers</b> won
+              an Octopus 16 hardware grant for the audacity of their ideas—from
+              mind-guided drones and robotic arms to zero-calibration spellers
+              and neural jazz. Explore their builds, cheer them on with a like,
+              and share their work—or pitch your own BCI idea to join the next
+              spotlight cohort.
             </p>
             <div className="chips3">
               <div>
-                <small>Makers</small>
-                <b>{PROJECTS.length}</b>
+                <small>Grant Winners</small>
+                <b>{PROJECTS.length} Selected</b>
               </div>
               <div>
-                <small>Progress update</small>
+                <small>Live Demos</small>
                 <b>{anyProgress ? `${progressCount} of 5 in` : "~1 month"}</b>
               </div>
               <div>
-                <small>Likes so far</small>
+                <small>Community Cheers</small>
                 <b>{totalLikes}</b>
               </div>
             </div>
             <div className="p-cta">
               <a className="pbtn grad" href="#results">
                 <HeartIcon />
-                Like a project
+                Cheer the winners
               </a>
-              <a className="pbtn ghost" href="#standings">
-                See community likes
+              <a className="pbtn apply-cta" href="#join">
+                <SparkleIcon />
+                Pitch your project for Round 2
               </a>
-              <a className="p-link" href="#how">
-                How it works
+              <a className="p-link" href="#standings">
+                Leaderboard
               </a>
               <a className="p-link" href="#notify">
                 Get notified
@@ -799,18 +870,27 @@ export default function OctopusMakerProjects() {
           <div className="p-art">
             <div className="live" aria-live="polite">
               <div className="live-top">
-                <small>Most liked</small>
+                <div>
+                  <div className="live-eyebrow">
+                    <TrophyIcon />
+                    <span>Cohort #1 Spotlight</span>
+                  </div>
+                  <small>Most cheered builds</small>
+                </div>
                 <span>
                   <i />
                   Live
                 </span>
               </div>
               <div>
-                {topThree.map((p) => {
+                {topThree.map((p, idx) => {
                   const n = likesOf(p);
+                  const medal = idx === 0 ? "🥇" : idx === 1 ? "🥈" : "🥉";
                   return (
                     <a key={p.id} className="live-row" href={`#${p.id}`}>
-                      <span className="r">{p.slot}</span>
+                      <span className="r" title={`Rank #${idx + 1}`}>
+                        {totalLikes > 0 ? medal : `#${p.slot}`}
+                      </span>
                       <img
                         src={p.image}
                         alt=""
@@ -818,13 +898,14 @@ export default function OctopusMakerProjects() {
                       />
                       <span style={{ minWidth: 0 }}>
                         <b>{p.title}</b>
+                        <span className="live-author">{p.author}</span>
                         <span className="bar">
                           <i style={{ width: `${(n / maxTopLikes) * 100}%` }} />
                         </span>
                       </span>
                       <span className="v">
                         <b>{n}</b>
-                        {n === 1 ? "like" : "likes"}
+                        {n === 1 ? "cheer" : "cheers"}
                       </span>
                     </a>
                   );
@@ -834,18 +915,18 @@ export default function OctopusMakerProjects() {
                 {mine.size > 0 ? (
                   <>
                     <span>
-                      You liked <b>{plural(mine.size, "project")}</b>.
+                      You cheered <b>{plural(mine.size, "winner")}</b>.
                     </span>
-                    <a href="#results">See all →</a>
+                    <a href="#results">Cheer more →</a>
                   </>
                 ) : (
                   <>
                     <span>
                       {totalLikes > 0
-                        ? "You haven't liked a project yet."
-                        : "No likes yet. Be the first!"}
+                        ? "Back your favourite builders with a cheer!"
+                        : "Be the first to cheer these winners on!"}
                     </span>
-                    <a href="#results">Like now →</a>
+                    <a href="#results">Cheer now →</a>
                   </>
                 )}
               </div>
@@ -872,32 +953,24 @@ export default function OctopusMakerProjects() {
 
           <div className="next-up">
             <span className="nu-ic" aria-hidden="true">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7v5l3 2" />
-              </svg>
+              <TrophyIcon />
             </span>
             <p>
-              <b>What happens next:</b> the makers are building now.{" "}
-              <span>In {UPDATE_WHEN}</span> we will add each maker&apos;s
-              progress report, photos and videos to this page. Likes stay open
-              the whole time, and at the end we will share the final results.{" "}
+              <b>Why these 5 builders are here:</b> Each maker below won a free
+              Octopus 16 hardware grant from a global pool of applicants. They
+              are turning their concepts into real brain-computer interface
+              prototypes right now, with live Month 1 demos arriving{" "}
+              <span>in {UPDATE_WHEN}</span>. Cheer for your favourites, share
+              their cards to boost their visibility, or{" "}
               <a
-                href="#notify"
+                href="#join"
                 style={{
                   color: "var(--accent)",
                   fontWeight: 600,
                   textDecoration: "none",
                 }}
               >
-                Get notified for updates &amp; next rounds →
+                pitch your own BCI application to be featured next →
               </a>
             </p>
           </div>
@@ -905,11 +978,14 @@ export default function OctopusMakerProjects() {
           {/* ── Projects ── */}
           <section className="block" id="results">
             <div className="sec-head">
-              <h2>The makers</h2>
+              <div>
+                <div className="label">Cohort #1 Official Selection</div>
+                <h2>The 5 Winning Builders</h2>
+              </div>
               <p>
-                Each card shows the maker and their idea. Open a card to read
-                the full plan. Tap the <b>heart</b> on every project you like:
-                you can like as many projects as you want.
+                These makers earned their spot on this page. Open any project to
+                read their full engineering plan, check out their profiles, and
+                tap the <b>heart</b> to cheer on as many builds as you love.
               </p>
             </div>
             <div className="toolbar">
@@ -919,112 +995,177 @@ export default function OctopusMakerProjects() {
                   aria-pressed={sortMode === "slot"}
                   onClick={() => setSortMode("slot")}
                 >
-                  Board order
+                  Winner order
                 </button>
                 <button
                   type="button"
                   aria-pressed={sortMode === "votes"}
                   onClick={() => setSortMode("votes")}
                 >
-                  Most liked
+                  Most cheered
                 </button>
               </div>
               <div className="total">
-                <b>{plural(totalLikes, "like")}</b> across{" "}
-                {plural(sortedProjects.length, "project")}
+                <b>{plural(totalLikes, "cheer")}</b> across{" "}
+                {plural(sortedProjects.length, "winning build")}
                 {userEmail ? (
                   <span className="local"> · verified as {userEmail}</span>
                 ) : !shared ? (
                   <span className="local">
                     {" "}
-                    · preview: shows only your likes
+                    · preview: shows only your cheers
                   </span>
                 ) : null}
               </div>
             </div>
 
             <div className="results">
-              {sortedProjects.map((p) => (
-                <article
-                  key={p.id}
-                  className={`rcard${mine.has(p.id) ? " mine" : ""}`}
-                  id={p.id}
-                >
-                  <button
-                    className={`rmedia${p.containMedia ? " contain" : ""}`}
-                    type="button"
-                    aria-label={`Open ${p.title}`}
-                    onClick={() => setActiveStoryId(p.id)}
+              {sortedProjects.map((p) => {
+                const isTopLeader =
+                  totalLikes > 0 &&
+                  ranked[0]?.id === p.id &&
+                  likesOf(p) > (ranked[1] ? likesOf(ranked[1]) : 0);
+
+                return (
+                  <article
+                    key={p.id}
+                    className={`rcard${mine.has(p.id) ? " mine" : ""}${isTopLeader ? " leader" : ""}`}
+                    id={p.id}
                   >
-                    <img
-                      src={p.image}
-                      alt={p.author}
-                      style={{ objectPosition: p.imagePos || "center" }}
-                    />
-                    <span className="rtag">
-                      <span>Board {p.slot}</span>
-                    </span>
-                    {p.imageNote && (
-                      <span className="imgnote">{p.imageNote}</span>
-                    )}
-                  </button>
-                  <div className="rbody">
-                    <h3>{p.title}</h3>
-                    <p className="rby">by {p.author}</p>
-                    <p className="sum">{p.pitch}</p>
-                    <div className="chips">
-                      {p.tags.map((t) => (
-                        <span key={t}>{t}</span>
-                      ))}
-                    </div>
-                    {p.progress ? (
-                      <div className="upd done">
-                        <div className="label">
-                          Month 1 progress · {fmtDate(p.progress.date)}
-                        </div>
-                        <p>
-                          <b>{p.progress.headline || ""}</b>{" "}
-                          {p.progress.text || ""}
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="upd">
-                        <div className="label">Month 1 progress</div>
-                        <p>Coming {UPDATE_WHEN}.</p>
-                      </div>
-                    )}
                     <button
-                      className="story-link"
+                      className={`rmedia${p.containMedia ? " contain" : ""}`}
                       type="button"
+                      aria-label={`Open ${p.title}`}
                       onClick={() => setActiveStoryId(p.id)}
                     >
-                      Read the full plan →
+                      <img
+                        src={p.image}
+                        alt={p.author}
+                        style={{ objectPosition: p.imagePos || "center" }}
+                      />
+                      <span className="rtag">
+                        <span className="winner-tag">
+                          <TrophyIcon />
+                          Winner #{p.slot}
+                        </span>
+                        {isTopLeader && (
+                          <span className="leader-tag">🔥 #1 Most Cheered</span>
+                        )}
+                      </span>
+                      {p.imageNote && (
+                        <span className="imgnote">{p.imageNote}</span>
+                      )}
                     </button>
-                    <div className="ractions">
-                      {renderLikeButton(p)}
+                    <div className="rbody">
+                      <div className="honor-ribbon">
+                        <TrophyIcon />
+                        <span>
+                          Selected Grant Winner · <b>{p.awardTitle}</b>
+                        </span>
+                      </div>
+                      <h3>{p.title}</h3>
+                      <div className="rby-row">
+                        <p className="rby">
+                          Built by <b>{p.author}</b>
+                        </p>
+                        {p.links.length > 0 && (
+                          <div className="maker-socials" aria-label={`${p.author} links`}>
+                            {p.links.map((l) => (
+                              <a
+                                key={l.url}
+                                href={l.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="social-pill"
+                              >
+                                {l.label} ↗
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <p className="sum">{p.pitch}</p>
+                      <div className="chips">
+                        {p.tags.map((t) => (
+                          <span key={t}>{t}</span>
+                        ))}
+                      </div>
+                      {p.progress ? (
+                        <div className="upd done">
+                          <div className="label">
+                            Month 1 progress · {fmtDate(p.progress.date)}
+                          </div>
+                          <p>
+                            <b>{p.progress.headline || ""}</b>{" "}
+                            {p.progress.text || ""}
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="upd">
+                          <div className="label">Live Build Status</div>
+                          <p>
+                            Hardware shipped &amp; building now · Month 1 demo in{" "}
+                            {UPDATE_WHEN}.
+                          </p>
+                        </div>
+                      )}
                       <button
-                        className="icon-btn"
+                        className="story-link"
                         type="button"
-                        aria-label={`Share ${p.title}`}
-                        onClick={() => shareProject(p)}
+                        onClick={() => setActiveStoryId(p.id)}
                       >
-                        <ShareIcon />
+                        Read full engineering plan &amp; story →
                       </button>
+                      <div className="ractions">
+                        {renderLikeButton(p)}
+                        <div className="share-group" role="group" aria-label={`Share ${p.title}`}>
+                          <button
+                            className="icon-btn"
+                            type="button"
+                            title="Copy link or share project"
+                            aria-label={`Share ${p.title}`}
+                            onClick={() => shareProject(p)}
+                          >
+                            <ShareIcon />
+                          </button>
+                          <button
+                            className="icon-btn txt-btn"
+                            type="button"
+                            title={`Share ${p.title} on LinkedIn`}
+                            aria-label={`Share ${p.title} on LinkedIn`}
+                            onClick={() => shareOnLinkedIn(p)}
+                          >
+                            in
+                          </button>
+                          <button
+                            className="icon-btn txt-btn"
+                            type="button"
+                            title={`Share ${p.title} on X`}
+                            aria-label={`Share ${p.title} on X`}
+                            onClick={() => shareOnX(p)}
+                          >
+                            𝕏
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                );
+              })}
             </div>
           </section>
 
           {/* ── Standings ── */}
           <section className="block" id="standings">
             <div className="sec-head">
-              <h2>Community likes</h2>
+              <div>
+                <div className="label">Community Backing</div>
+                <h2>Live Cheerboard</h2>
+              </div>
               <p>
                 {totalLikes
-                  ? `${plural(totalLikes, "like")} so far. Final results will be shared at the end${CLOSES ? ` (${CLOSES})` : ""}.`
-                  : "No likes yet. Final results will be shared at the end."}
+                  ? `${plural(totalLikes, "community cheer")} cast so far. Show these builders some love—every cheer and share helps spotlight their work${CLOSES ? ` until ${CLOSES}` : ""}.`
+                  : "Cheer on the builders whose BCI applications inspire you most. Final community showcase will be celebrated at the end."}
               </p>
             </div>
             <div className="stand">
@@ -1032,37 +1173,54 @@ export default function OctopusMakerProjects() {
                 <table className="table">
                   <thead>
                     <tr>
-                      <th>Board</th>
-                      <th>Project</th>
-                      <th className="hide-sm">Share</th>
-                      <th style={{ textAlign: "right" }}>Likes</th>
+                      <th>Rank</th>
+                      <th>Winning Builder &amp; Project</th>
+                      <th className="hide-sm">Community Support</th>
+                      <th style={{ textAlign: "right" }}>Cheers</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {ranked.map((p) => (
-                      <tr
-                        key={p.id}
-                        className={mine.has(p.id) ? "mine" : undefined}
-                      >
-                        <td className="rk">{p.slot}</td>
-                        <td className="nm">
-                          <b>{p.title}</b>
-                          <small>
-                            {p.author}
-                            {mine.has(p.id) ? " · you liked this" : ""}
-                          </small>
-                        </td>
-                        <td className="hide-sm" style={{ width: "30%" }}>
-                          <div className="mini">
-                            <i style={{ width: `${pct(p)}%` }} />
-                          </div>
-                        </td>
-                        <td className="num">
-                          <b>{likesOf(p)}</b>
-                          {totalLikes ? ` · ${pct(p)}%` : ""}
-                        </td>
-                      </tr>
-                    ))}
+                    {ranked.map((p, idx) => {
+                      const medal =
+                        idx === 0
+                          ? "🥇"
+                          : idx === 1
+                            ? "🥈"
+                            : idx === 2
+                              ? "🥉"
+                              : `#${idx + 1}`;
+                      return (
+                        <tr
+                          key={p.id}
+                          className={mine.has(p.id) ? "mine" : undefined}
+                          onClick={() => setActiveStoryId(p.id)}
+                          style={{ cursor: "pointer" }}
+                        >
+                          <td className="rk">
+                            {totalLikes > 0 ? medal : `#${p.slot}`}
+                          </td>
+                          <td className="nm">
+                            <div className="nm-top">
+                              <b>{p.title}</b>
+                              <span className="nm-badge">{p.awardTitle}</span>
+                            </div>
+                            <small>
+                              by {p.author}
+                              {mine.has(p.id) ? " · you cheered this!" : ""}
+                            </small>
+                          </td>
+                          <td className="hide-sm" style={{ width: "30%" }}>
+                            <div className="mini">
+                              <i style={{ width: `${pct(p)}%` }} />
+                            </div>
+                          </td>
+                          <td className="num">
+                            <b>{likesOf(p)}</b>
+                            {totalLikes ? ` · ${pct(p)}%` : ""}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -1070,23 +1228,15 @@ export default function OctopusMakerProjects() {
             <div className="awards">
               <div className="award">
                 <div>
-                  <b>Final results</b>
-                  <span>Shared at the end</span>
-                  <em>
-                    {FINAL
-                      ? "Final results are in"
-                      : totalLikes &&
-                          likesOf(ranked[0]) >
-                            (ranked[1] ? likesOf(ranked[1]) : 0)
-                        ? `Most liked so far: ${ranked[0].title}`
-                        : "Likes are open"}
-                  </em>
+                  <b>🏆 Cohort #1 Grant Winners</b>
+                  <span>Selected from global maker applications</span>
+                  <em>All 5 builders earned a free Octopus 16 BCI</em>
                 </div>
               </div>
               <div className="award">
                 <div>
-                  <b>Month 1 progress</b>
-                  <span>Each maker&apos;s report, photos and video</span>
+                  <b>🚀 Month 1 Live Demos</b>
+                  <span>Real hardware builds, signal plots &amp; video</span>
                   <em>
                     {anyProgress
                       ? "Progress reports are in"
@@ -1096,9 +1246,17 @@ export default function OctopusMakerProjects() {
               </div>
               <div className="award">
                 <div>
-                  <b>Likes stay open</b>
-                  <span>Before and after the progress updates</span>
-                  <em>Like as many projects as you want</em>
+                  <b>❤️ Community Champion</b>
+                  <span>Backed by verified community cheers</span>
+                  <em>
+                    {FINAL
+                      ? "Final results are in"
+                      : totalLikes &&
+                          likesOf(ranked[0]) >
+                            (ranked[1] ? likesOf(ranked[1]) : 0)
+                        ? `Leading right now: ${ranked[0].title}`
+                        : "Cheer as many builds as you want"}
+                  </em>
                 </div>
               </div>
             </div>
@@ -1107,40 +1265,43 @@ export default function OctopusMakerProjects() {
           {/* ── How it works ── */}
           <section className="block" id="how">
             <div className="sec-head">
-              <h2>How it works</h2>
-              <p>No account, no sign-up. It takes ten seconds.</p>
+              <h2>How the Maker Challenge works</h2>
+              <p>Celebrating bold BCI builders—and opening the door for yours.</p>
             </div>
             <div className="how">
               <div className="panel">
                 <div className="k">1</div>
-                <h3>Meet the makers</h3>
+                <h3>Pitch &amp; Win Hardware</h3>
                 <p>
-                  Five makers received an Octopus 16. Read each idea and open a
-                  card for the full plan.
+                  Makers pitch their boldest brain-computer interface ideas. The
+                  most exciting applications win a free Octopus 16 board and an
+                  official spot on this showcase page.
                 </p>
               </div>
               <div className="panel">
                 <div className="k">2</div>
-                <h3>Like your favourites</h3>
+                <h3>Cheer &amp; Amplify</h3>
                 <p>
-                  Tap the heart on every project you like. Tap again to remove
-                  your like.
+                  Tap the heart on every project that excites you and share
+                  their winner cards on LinkedIn or X so the whole neurotech
+                  world sees what they&apos;re building.
                 </p>
               </div>
               <div className="panel">
                 <div className="k">3</div>
-                <h3>Come back in a month</h3>
+                <h3>Follow the Live Builds</h3>
                 <p>
-                  We will add each maker&apos;s progress. Likes stay open, and
-                  at the end we will share the final results.
+                  In {UPDATE_WHEN}, each winner publishes their Month 1 demo,
+                  code, photos and videos right here—followed by the final
+                  community showcase.
                 </p>
               </div>
             </div>
             <div className="rules">
-              <span>One like per project per visitor</span>
-              <span>Like as many projects as you want</span>
-              <span>Progress updates added {UPDATE_WHEN}</span>
-              <span>Final results shared at the end</span>
+              <span>5 selected winners in Cohort #1</span>
+              <span>Cheer for as many projects as you want</span>
+              <span>Month 1 demos go live {UPDATE_WHEN}</span>
+              <span>Round 2 &amp; Community Showcase pitches open below</span>
             </div>
           </section>
 
@@ -1197,24 +1358,63 @@ export default function OctopusMakerProjects() {
           {/* ── Join next round ── */}
           <section className="block" id="join">
             <div className="join">
-              <div className="panel">
-                <div className="label">Get involved</div>
-                <h3>Want to build one too?</h3>
+              <div className="panel join-showcase">
+                <div className="badge winner-pill" style={{ marginBottom: 14 }}>
+                  <SparkleIcon />
+                  <span>Round 2 &amp; Community Spotlight</span>
+                </div>
+                <h3>Want your BCI build featured here next?</h3>
                 <p>
-                  The free boards go to makers: DIY geeks, tinkerers and
-                  hobbyists. Email us your idea and you could take part in a
-                  future group. Universities and labs can buy Octopus 16
-                  directly.
+                  We don&apos;t just ship hardware—we spotlight the builders
+                  pushing open-source neurotech forward. Whether you&apos;re
+                  pitching a bold idea for our next{" "}
+                  <b style={{ color: "var(--text)" }}>free Octopus 16 grant cohort</b>{" "}
+                  or you&apos;ve already built an application with PiEEG that
+                  deserves the stage, we want to highlight your work.
                 </p>
+
+                <ul className="perks-list">
+                  <li>
+                    <span className="perk-ic">🏆</span>
+                    <div>
+                      <b>Official Winner Badge &amp; Showcase Card</b>
+                      <span>
+                        Get your project, engineering write-up, and GitHub /
+                        LinkedIn links featured permanently on this page.
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <span className="perk-ic">⚡</span>
+                    <div>
+                      <b>Free Octopus 16 Hardware Grant</b>
+                      <span>
+                        Selected Cohort #2 makers receive a 16-channel wireless
+                        Octopus 16 board shipped directly to their door.
+                      </span>
+                    </div>
+                  </li>
+                  <li>
+                    <span className="perk-ic">📣</span>
+                    <div>
+                      <b>Global BCI Community Amplification</b>
+                      <span>
+                        Your demos and breakthroughs are shared across our
+                        community channels, newsletter, and live cheerboard.
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+
                 <div className="cta">
                   <a
                     className="btn solid"
-                    href="mailto:pieeg@pieeg.com?subject=Octopus%2016%20Maker%20Projects"
+                    href="mailto:pieeg@pieeg.com?subject=Octopus%2016%20Maker%20Grant%20%2F%20Community%20Spotlight%20Pitch&body=Hi%20PiEEG%20team%2C%0A%0AI%27d%20love%20to%20pitch%20my%20BCI%20application%20for%20the%20Community%20Showcase%20%2F%20next%20Octopus%2016%20Maker%20Cohort!%0A%0A-%20Name%20%26%20Links%20(GitHub%20%2F%20LinkedIn%20%2F%20Website)%3A%20%0A-%20Project%20Title%3A%20%0A-%20One-sentence%20Pitch%3A%20%0A-%20How%20it%20works%20%2F%20Hardware%20used%3A%20"
                   >
-                    Email pieeg@pieeg.com
+                    Pitch your BCI project →
                   </a>
                   <Link className="btn" href="/hardware/octopus-16">
-                    About Octopus 16
+                    Explore Octopus 16
                   </Link>
                 </div>
               </div>
@@ -1436,17 +1636,20 @@ export default function OctopusMakerProjects() {
           <>
             <div className="st-head">
               <div>
-                <span className="status">
-                  <i />
-                  Board {activeProject.slot} ·{" "}
-                  {activeProject.progress
-                    ? "Month 1 progress in"
-                    : "Idea · building now"}
-                </span>
+                <div className="honor-ribbon" style={{ marginBottom: 6 }}>
+                  <TrophyIcon />
+                  <span>
+                    Selected Grant Winner #{activeProject.slot} ·{" "}
+                    <b>{activeProject.awardTitle}</b> ·{" "}
+                    {activeProject.progress
+                      ? "Month 1 demo live"
+                      : "Hardware shipped · building now"}
+                  </span>
+                </div>
                 <h2 id="stTitle">{activeProject.title}</h2>
                 <div className="meta">
                   <span>
-                    by{" "}
+                    Built by{" "}
                     <b style={{ color: "var(--text)" }}>
                       {activeProject.author}
                     </b>
@@ -1474,6 +1677,39 @@ export default function OctopusMakerProjects() {
             </div>
 
             <div className="st-body">
+              <div className="st-brag-bar">
+                <div>
+                  <b>Celebrate this builder&apos;s work</b>
+                  <span>
+                    Share {activeProject.author}&apos;s selected project with
+                    your network to cheer them on.
+                  </span>
+                </div>
+                <div className="st-brag-actions">
+                  <button
+                    type="button"
+                    className="brag-btn"
+                    onClick={() => shareOnLinkedIn(activeProject)}
+                  >
+                    Share on LinkedIn ↗
+                  </button>
+                  <button
+                    type="button"
+                    className="brag-btn"
+                    onClick={() => shareOnX(activeProject)}
+                  >
+                    Post on 𝕏 ↗
+                  </button>
+                  <button
+                    type="button"
+                    className="brag-btn"
+                    onClick={() => shareProject(activeProject)}
+                  >
+                    Copy winner link
+                  </button>
+                </div>
+              </div>
+
               {activeProject.progress ? (
                 <div className="st-result">
                   {activeProject.progress.video ? (
@@ -1566,7 +1802,10 @@ export default function OctopusMakerProjects() {
             </div>
 
             <div className="st-foot">
-              <small>{plural(likesOf(activeProject), "like")}</small>
+              <small>
+                <b>{plural(likesOf(activeProject), "community cheer")}</b> ·
+                Cohort #1 Selected Winner
+              </small>
               {renderLikeButton(activeProject)}
             </div>
           </>

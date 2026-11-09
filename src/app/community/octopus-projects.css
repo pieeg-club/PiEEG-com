@@ -281,28 +281,33 @@
 .octopus-maker-page .live-top {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 12px;
   margin-bottom: 18px;
 }
 
 .octopus-maker-page .live-top small {
+  display: block;
   color: #1d1d1f;
   letter-spacing: -0.02em;
   font-size: 19px;
-  font-weight: 600;
+  font-weight: 650;
+  line-height: 1.2;
 }
 
-.octopus-maker-page .live-top span {
+.octopus-maker-page .live-top > span {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: 12px;
   color: #6e6e73;
   font-weight: 600;
+  padding-top: 2px;
+  flex-shrink: 0;
 }
 
-.octopus-maker-page .live-top span i {
+.octopus-maker-page .live-top > span i {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -1802,15 +1807,15 @@
 }
 
 .octopus-maker-page .live-eyebrow {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
   color: #b45309;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 
 .octopus-maker-page .live-eyebrow svg {

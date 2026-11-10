@@ -37,9 +37,10 @@ const COMMUNITY_TABS = [
   {
     id: "hackathons",
     label: "Hackathons",
-    href: "/news/neuroscience-hackathon-announcement",
+    href: "/community/hackathons",
     Icon: Calendar,
-    badge: "Events",
+    badge: "Sponsorship",
+    matchPrefix: "/community/hackathons",
   },
 ];
 

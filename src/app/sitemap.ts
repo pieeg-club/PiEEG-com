@@ -21,6 +21,7 @@ const STATIC_ROUTES = [
   'cloud',
   'community',
   'community/open-ideas',
+  'community/hackathons',
   'contact',
   'examples',
   'explore',

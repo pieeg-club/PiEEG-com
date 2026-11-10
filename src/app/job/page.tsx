@@ -188,16 +188,29 @@ export default function JobPage() {
         </div>
       </section>
 
-      {/* Volunteer */}
+      {/* Open Source & Independent Project Ideas */}
       <section className="py-10 bg-white dark:bg-zinc-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="title-section mb-8 text-center">Volunteer & Contributor Opportunities</h2>
+          <h2 className="title-section mb-8 text-center">Open Project Ideas &amp; Independent Contributions</h2>
           
           <p className="text-lg text-zinc-700 dark:text-zinc-300 text-center mb-8">
-            You don't need to be an employee to contribute! Join our open-source community:
+            Looking to build an open-source neurotech project on your own initiative? Explore our public project ideas and community channels:
           </p>
 
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-3 gap-6">
+            <div className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-center">
+              <h3 className="font-bold mb-3">Open Project Ideas</h3>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
+                16 open-source EEG, BCI &amp; neurotech ideas you can build independently in your own repo
+              </p>
+              <Link
+                href="/community/open-ideas"
+                className="inline-flex items-center gap-2 text-cyan-600 dark:text-cyan-400 font-semibold hover:underline"
+              >
+                Browse Open Ideas →
+              </Link>
+            </div>
+
             <div className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-center">
               <h3 className="font-bold mb-3">GitHub Contributions</h3>
               <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
@@ -216,7 +229,7 @@ export default function JobPage() {
             <div className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 text-center">
               <h3 className="font-bold mb-3">Discord Community</h3>
               <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
-                Help answer questions, share projects, mentor newcomers
+                Help answer questions, share projects, connect with builders
               </p>
               <a
                 href="https://discord.gg/neJ45FR6Sv"

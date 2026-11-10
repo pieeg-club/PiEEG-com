@@ -5,6 +5,10 @@ import { getAllNews } from '@/lib/news';
 import { getAllTutorials } from '@/lib/tutorials';
 import { getAllGuides } from '@/lib/guides';
 import { getAllStoreProducts } from '@/lib/store-catalog';
+import {
+  getAllOpenIdeas,
+  getHighlightedCommunityBuilds,
+} from '@/lib/open-ideas';
 
 const BASE_URL = 'https://pieeg.com';
 
@@ -16,6 +20,7 @@ const STATIC_ROUTES = [
   'browser',
   'cloud',
   'community',
+  'community/open-ideas',
   'contact',
   'examples',
   'explore',
@@ -99,6 +104,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const openIdeaEntries: MetadataRoute.Sitemap = getAllOpenIdeas().map(
+    (idea) => ({
+      url: `${BASE_URL}/community/open-ideas/${idea.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })
+  );
+
+  const highlightedBuildEntries: MetadataRoute.Sitemap =
+    getHighlightedCommunityBuilds().map((build) => ({
+      url: `${BASE_URL}/community/open-ideas/${build.slug}`,
+      lastModified: build.date ? new Date(build.date) : now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    }));
+
   return [
     ...staticEntries,
     ...storeEntries,
@@ -106,5 +128,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...newsEntries,
     ...tutorialEntries,
     ...guideEntries,
+    ...openIdeaEntries,
+    ...highlightedBuildEntries,
   ];
 }

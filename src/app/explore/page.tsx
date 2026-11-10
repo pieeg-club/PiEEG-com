@@ -81,7 +81,8 @@ const sections = [
     dot: "bg-rose-500",
     items: [
       { href: "/partnership", label: "Partnership", desc: "White-label, reseller & collabs", Icon: Building2 },
-      { href: "/community", label: "Community", desc: "Forums, Discord & open source", Icon: MessageCircle },
+      { href: "/community", label: "Community & Competition", desc: "Octopus 16 Maker Challenge", Icon: MessageCircle },
+      { href: "/community/open-ideas", label: "Open Project Ideas", desc: "16 open neurotech ideas to build", Icon: Sparkles },
     ],
   },
   {

@@ -25,10 +25,11 @@ const footerLinks = {
     { label: "Community", href: "/community" },
   ],
   Community: [
+    { label: "Open Project Ideas", href: "/community/open-ideas" },
+    { label: "PiEEG Competition", href: "/community" },
     { label: "Discord", href: "https://discord.gg/neJ45FR6Sv" },
     { label: "YouTube", href: "https://www.youtube.com/@pieeg" },
     { label: "LinkedIn", href: "https://www.linkedin.com/company/pieeg/" },
-    { label: "Open Source", href: "/community" },
   ],
   Company: [
     { label: "About", href: "/about" },

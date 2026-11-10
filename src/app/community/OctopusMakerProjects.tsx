@@ -788,31 +788,6 @@ export default function OctopusMakerProjects() {
 
   return (
     <div className="octopus-maker-page">
-      {/* ── Breadcrumb ── */}
-      <div className="crumbs">
-        <nav aria-label="Breadcrumb">
-          <Link href="/">Home</Link>
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="m9 18 6-6-6-6" />
-          </svg>
-          <Link href="/community">Community</Link>
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="m9 18 6-6-6-6" />
-          </svg>
-          <span>Octopus 16 Maker Challenge Winners</span>
-        </nav>
-      </div>
-
       {/* ── Hero ── */}
       <section className="p-hero">
         <div className="in">

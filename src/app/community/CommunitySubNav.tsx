@@ -12,21 +12,6 @@ import {
 
 const COMMUNITY_TABS = [
   {
-    id: "open-ideas",
-    label: "Open Ideas & Volunteers",
-    href: "/community/open-ideas",
-    Icon: Lightbulb,
-    badge: "16 Ideas",
-    matchPrefix: "/community/open-ideas",
-  },
-  {
-    id: "hackathons",
-    label: "Hackathons",
-    href: "/news/neuroscience-hackathon-announcement",
-    Icon: Calendar,
-    badge: "Events",
-  },
-  {
     id: "competition",
     label: "PiEEG Competition",
     href: "/community",
@@ -40,6 +25,21 @@ const COMMUNITY_TABS = [
     href: "https://www.kaggle.com/pieegbiolabplatform/code",
     Icon: Database,
     external: true,
+  },
+  {
+    id: "open-ideas",
+    label: "Open Ideas & Volunteers",
+    href: "/community/open-ideas",
+    Icon: Lightbulb,
+    badge: "16 Ideas",
+    matchPrefix: "/community/open-ideas",
+  },
+  {
+    id: "hackathons",
+    label: "Hackathons",
+    href: "/news/neuroscience-hackathon-announcement",
+    Icon: Calendar,
+    badge: "Events",
   },
 ];
 

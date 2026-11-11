@@ -40,4 +40,8 @@ export const STORE_EXTRAS: Record<string, StoreExtras> = {
     Docs: dynamic(() => import("@/components/pieegxr-store/PieegXRDocs")),
     Guide: dynamic(() => import("@/components/pieegxr-store/PieegXRStoreGuide")),
   },
+  ardeeg: {
+    Docs: dynamic(() => import("@/components/ardeeg-store/ArdEEGDocs")),
+    Guide: dynamic(() => import("@/components/ardeeg-store/ArdEEGStoreGuide")),
+  },
 };

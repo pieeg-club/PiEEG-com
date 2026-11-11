@@ -32,8 +32,7 @@ import {
 } from "@/lib/store-catalog";
 import StoreDirectWaitlist from "@/components/StoreDirectWaitlist";
 import { EnclosureLinks } from "@/components/EnclosureLink";
-import IronBCI32Docs from "@/components/ironbci-32-store/IronBCI32Docs";
-import IronBCI32StoreGuide from "@/components/ironbci-32-store/IronBCI32StoreGuide";
+import { STORE_EXTRAS } from "@/components/store-extras";
 
 interface StoreProductClientProps {
   product: StoreProduct;
@@ -45,8 +44,8 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
   const [copied, setCopied] = useState<boolean>(false);
 
   const isAvailable = product.availability === "InStock";
-  // IronBCI-32 has an extra documentation column in the hero and an interactive guide.
-  const isIronBCI32 = product.slug === "ironbci-32";
+  // Some products have a documentation column in the hero and an interactive guide (see store-extras.tsx).
+  const { Docs: ProductDocs, Guide: ProductGuide } = STORE_EXTRAS[product.slug] ?? {};
   const isKickstarter = product.availability === "Kickstarter";
   const priceDisplay = getStoreProductPriceDisplay(product);
 
@@ -157,8 +156,8 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
 
       {/* ── Main Apple-Style 2-Column Buy Stage ── */}
       <section className="py-10 sm:py-14 lg:py-16 bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
-        <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8${isIronBCI32 ? " ib-hero-wrap" : ""}`}>
-          <div className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start${isIronBCI32 ? " ib-hero-grid" : ""}`}>
+        <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8${ProductDocs ? " ib-hero-wrap" : ""}`}>
+          <div className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start${ProductDocs ? " ib-hero-grid" : ""}`}>
             {/* LEFT COLUMN: Sticky Interactive Media Gallery (7 cols) */}
             <div className="lg:col-span-7 lg:sticky lg:top-32 space-y-4">
               {/* Primary Viewer Stage */}
@@ -524,8 +523,8 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
               </div>
             </div>
 
-            {/* IronBCI-32: technical documentation (third column on wide screens) */}
-            {isIronBCI32 && <IronBCI32Docs />}
+            {/* Technical documentation (third column on wide screens), if this product has one */}
+            {ProductDocs && <ProductDocs />}
           </div>
         </div>
       </section>
@@ -772,8 +771,8 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
         </div>
       </section>
 
-      {/* ── IronBCI-32: interactive guide (where to use it, how to set it up, safety) ── */}
-      {isIronBCI32 && <IronBCI32StoreGuide />}
+      {/* ── Interactive guide (where to use it, how to set it up), if this product has one ── */}
+      {ProductGuide && <ProductGuide />}
 
       {/* ── Buyer FAQ Section ── */}
       <section className="py-14 bg-white dark:bg-zinc-950">

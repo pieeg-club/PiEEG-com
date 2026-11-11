@@ -48,4 +48,8 @@ export const STORE_EXTRAS: Record<string, StoreExtras> = {
   jneeg: {
     Docs: dynamic(() => import("@/components/jneeg-store/JNEEGDocs")),
   },
+  // MicroBCI has no interactive guide yet: documentation panel only.
+  microbci: {
+    Docs: dynamic(() => import("@/components/microbci-store/MicroBCIDocs")),
+  },
 };

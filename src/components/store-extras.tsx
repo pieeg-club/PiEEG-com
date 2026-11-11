@@ -52,4 +52,8 @@ export const STORE_EXTRAS: Record<string, StoreExtras> = {
   microbci: {
     Docs: dynamic(() => import("@/components/microbci-store/MicroBCIDocs")),
   },
+  "octobio-kit": {
+    Docs: dynamic(() => import("@/components/octobio-store/OctoBioDocs")),
+    Guide: dynamic(() => import("@/components/octobio-store/OctoBioStoreGuide")),
+  },
 };

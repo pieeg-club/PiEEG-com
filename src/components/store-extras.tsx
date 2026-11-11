@@ -44,4 +44,8 @@ export const STORE_EXTRAS: Record<string, StoreExtras> = {
     Docs: dynamic(() => import("@/components/ardeeg-store/ArdEEGDocs")),
     Guide: dynamic(() => import("@/components/ardeeg-store/ArdEEGStoreGuide")),
   },
+  // JNEEG has no interactive guide yet: documentation panel only.
+  jneeg: {
+    Docs: dynamic(() => import("@/components/jneeg-store/JNEEGDocs")),
+  },
 };

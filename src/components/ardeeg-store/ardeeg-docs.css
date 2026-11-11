@@ -1,0 +1,55 @@
+/* ardEEG documentation panel (store page, third hero column). */
+.ib-docs{font-family:inherit;display:flex;flex-direction:column;gap:20px;min-width:0}
+.ib-card{background:#f3f2f6;border-radius:4px;overflow:hidden}
+.ib-bar{display:flex;align-items:stretch;background:#533192;color:#fff;min-height:42px}
+.ib-bar-ic{display:flex;align-items:center;justify-content:center;width:42px;flex:none;background:#3f256f}
+.ib-bar-t{display:flex;align-items:center;padding:0 14px;font-size:15px;font-weight:500;letter-spacing:.01em}
+.ib-body{padding:16px 16px 18px}
+.ib-featured{padding:18px 16px 26px}
+.ib-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.ib-doc{display:flex;gap:11px;align-items:flex-start;padding:8px 6px;border-radius:4px;text-decoration:none;transition:background .15s}
+.ib-doc:hover{background:#e8e2f5}
+.ib-pdf{width:17px;height:20px;flex:none;margin-top:1px}
+.ib-doc-t{display:flex;flex-direction:column;gap:3px;min-width:0}
+.ib-doc-name{color:#533192;font-size:14px;line-height:1.3;font-weight:500}
+.ib-doc:hover .ib-doc-name{text-decoration:underline;text-underline-offset:2px}
+.ib-doc-meta{color:#8a8698;font-size:10.5px;font-weight:600;letter-spacing:.01em}
+.ib-zip{margin-top:12px;display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:999px;background:#fff;border:1.5px solid #533192;color:#533192;font-size:13px;font-weight:700;text-decoration:none;transition:all .15s}
+.ib-zip:hover{background:#533192;color:#fff}
+.ib-zip-s{margin-left:auto;font-weight:500;font-size:11px;opacity:.75}
+.ib-note{margin:10px 2px 0;font-size:11px;color:#8a8698}
+.ib-learn{background:#f5f5f8;border-top:4px solid #533192;padding:20px 20px 24px}
+.ib-learn h3{margin:0 0 8px;font-size:22px;font-weight:500;color:#533192;letter-spacing:-.01em}
+.ib-learn p{margin:0 0 18px;font-size:14.5px;line-height:1.55;color:#4b4858}
+.ib-btn{display:inline-block;padding:11px 26px;border-radius:999px;background:#533192;color:#fff;font-weight:700;font-size:15px;text-decoration:none;transition:background .15s}
+.ib-btn:hover{background:#3f256f}
+.ib-link{display:block;margin-top:14px;font-size:12.5px;font-weight:600;color:#533192;text-decoration:none}
+.ib-link:hover{text-decoration:underline}
+.dark .ib-card,.dark .ib-learn{background:#18181b}
+.dark .ib-doc:hover{background:#27213a}
+.dark .ib-doc-name,.dark .ib-learn h3,.dark .ib-link{color:#bea1f5}
+.dark .ib-learn p{color:#a1a1aa}
+.dark .ib-zip{background:transparent;border-color:#bea1f5;color:#bea1f5}
+.dark .ib-zip:hover{background:#533192;color:#fff;border-color:#533192}
+/* layout: third column on wide screens, full row on laptops, stacked on mobile */
+@media (min-width:1024px) and (max-width:1279px){
+  .ib-hero-grid>.lg\:col-span-5{grid-row:span 2}
+  .ib-hero-grid>.lg\:sticky{position:static!important}
+  .ib-hero-grid>.ib-docs{grid-column:1 / span 7;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+  .ib-docs>.ib-card-docs{grid-column:2;grid-row:1 / span 2}
+}
+@media (min-width:1280px){
+  .ib-hero-grid>.max-w-7xl,.ib-hero-wrap{max-width:1500px!important}
+  .ib-hero-grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr) 300px!important;gap:40px!important}
+  .ib-hero-grid>*{grid-column:auto!important}
+  .ib-hero-grid>.ib-docs{grid-column:auto!important;display:flex;align-items:stretch}
+}
+.ib-gh{margin-top:8px;display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:999px;background:#1f2328;border:1.5px solid #1f2328;color:#fff;font-size:13px;font-weight:700;text-decoration:none;transition:opacity .15s}
+.ib-gh:hover{opacity:.88}
+.ib-gh-s{margin-left:auto;font-weight:500;font-size:11px;opacity:.75}
+.dark .ib-gh{background:#fff;border-color:#fff;color:#1f2328}
+.ib-mail{margin:10px 0 0;font-size:12px;color:#6b6878}
+.ib-mail a{color:#533192;font-weight:600;text-decoration:none}
+.ib-mail a:hover{text-decoration:underline}
+.dark .ib-mail{color:#a1a1aa}
+.dark .ib-mail a{color:#bea1f5}

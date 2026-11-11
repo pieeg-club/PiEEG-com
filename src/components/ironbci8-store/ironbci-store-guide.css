@@ -1,0 +1,392 @@
+/* IronBCI guide styles, converted from ironbci-page.html.
+   Every rule is scoped to #ironbci-guide. Fonts use the site's next/font Geist variables.
+   The kit image is embedded below (no public/ files needed). */
+#ironbci-guide{
+  --bg:#050607; --stage:#090b0e; --panel:#0c0e12; --raise:#15181d;
+  --line:rgba(255,255,255,.07); --line2:rgba(255,255,255,.13);
+  --text:#eef0f3; --muted:#9aa2ad; --dim:#626973;
+  --accent:#5aa9ff; --eog:#b690ff;
+  --eeg:#3fc8ff; --emg:#ffae42; --ecg:#ff5a74;
+  --power:#45dd8b; --data:#7fb2ff;
+  --sig:var(--eeg);
+  --font:var(--font-geist-sans),'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:var(--font-geist-mono),'Geist Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+}
+#ironbci-guide, #ironbci-guide *{box-sizing:border-box}
+#ironbci-guide{scroll-behavior:smooth}
+#ironbci-guide,#ironbci-guide{margin:0}
+#ironbci-guide{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+#ironbci-guide button{font:inherit;color:inherit}
+#ironbci-guide a{color:inherit}
+#ironbci-guide :focus-visible{outline:2px solid var(--data);outline-offset:2px}
+#ironbci-guide .wrap{max-width:1320px;margin:0 auto;padding:0 28px}
+@media (prefers-reduced-motion:reduce){#ironbci-guide{scroll-behavior:auto}}
+
+#ironbci-guide .top{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(5,6,7,.85);backdrop-filter:blur(10px);z-index:20}
+#ironbci-guide .top .wrap{display:flex;align-items:center;gap:12px;height:58px}
+#ironbci-guide .brand{font-weight:800;letter-spacing:-.02em;font-size:18px;text-decoration:none}
+#ironbci-guide .crumb{color:var(--muted);font-size:14px;text-decoration:none}
+#ironbci-guide .crumb::before{content:"/";margin-right:12px;color:var(--dim)}
+#ironbci-guide a.crumb:hover{color:var(--text)}
+#ironbci-guide .top nav{margin-left:auto;display:flex;gap:4px}
+#ironbci-guide .top nav a{font-size:14px;color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:9px}
+#ironbci-guide .top nav a:hover{color:var(--text);background:rgba(255,255,255,.04)}
+
+#ironbci-guide .hero{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:center;padding:56px 0 36px}
+#ironbci-guide .hero h1,#ironbci-guide .hero h2.ig-title{font-size:clamp(76px,11vw,148px);line-height:.86;letter-spacing:-.06em;font-weight:900;margin:0 0 22px;
+  background:linear-gradient(180deg,#fff 30%,#cfd3d9);-webkit-background-clip:text;background-clip:text;color:transparent}
+#ironbci-guide .hero .lede{font-size:21px;line-height:1.4;letter-spacing:-.01em;margin:0 0 14px;max-width:26ch}
+#ironbci-guide .hero .sub{color:var(--muted);margin:0 0 28px;max-width:48ch}
+#ironbci-guide .cta{display:flex;gap:10px;flex-wrap:wrap}
+#ironbci-guide .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:12px;font-weight:600;font-size:14.5px;text-decoration:none;border:1px solid var(--line2);background:none;cursor:pointer}
+#ironbci-guide .btn:hover{border-color:rgba(255,255,255,.45)}
+#ironbci-guide .btn.solid{background:var(--accent);border-color:var(--accent);color:#04111f}
+#ironbci-guide .btn.solid:hover{background:#7dbbff}
+#ironbci-guide #board{width:100%;height:auto;display:block}
+#ironbci-guide #board text{font-family:var(--font)}
+
+#ironbci-guide .facts{display:grid;grid-template-columns:repeat(6,1fr);border:1px solid var(--line);border-radius:18px;margin:0 0 88px;background:var(--panel)}
+#ironbci-guide .facts div{padding:16px 18px;border-left:1px solid var(--line)}
+#ironbci-guide .facts div:first-child{border-left:0}
+#ironbci-guide .facts dt{font-size:13px;color:var(--muted);margin-bottom:3px}
+#ironbci-guide .facts dd{margin:0;font-size:15px;font-weight:600;letter-spacing:-.01em}
+
+#ironbci-guide .sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:28px}
+#ironbci-guide .sec-head h2{font-size:clamp(38px,5vw,64px);line-height:.95;letter-spacing:-.045em;font-weight:800;margin:0}
+#ironbci-guide .sec-head p{color:var(--muted);margin:0;max-width:52ch;font-size:16.5px}
+#ironbci-guide section{scroll-margin-top:76px}
+
+#ironbci-guide .uses{display:grid;grid-template-columns:250px minmax(0,1fr);gap:18px;margin-bottom:100px}
+#ironbci-guide .use-list{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
+#ironbci-guide .use-list button{width:100%;text-align:left;border:1px solid transparent;background:none;border-radius:12px;padding:11px 14px;cursor:pointer;display:grid;grid-template-columns:10px 1fr;column-gap:12px;align-items:baseline}
+#ironbci-guide .use-list button i{width:8px;height:8px;border-radius:50%;background:var(--c);transform:translateY(-1px);opacity:.55}
+#ironbci-guide .use-list b{font-weight:600;font-size:15px}
+#ironbci-guide .use-list span{grid-column:2;font-size:12.5px;color:var(--dim)}
+#ironbci-guide .use-list button:hover{background:rgba(255,255,255,.03)}
+#ironbci-guide .use-list button[aria-selected="true"]{background:var(--raise);border-color:var(--line2)}
+#ironbci-guide .use-list button[aria-selected="true"] i{opacity:1;box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 22%,transparent)}
+#ironbci-guide .use-list button[aria-selected="true"] span{color:var(--muted)}
+
+#ironbci-guide .use-stage{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);border:1px solid var(--line);border-radius:24px;overflow:hidden;
+  background:radial-gradient(70% 70% at 22% 45%, color-mix(in srgb,var(--sig) 10%, transparent), transparent 70%), var(--stage);transition:background .6s}
+#ironbci-guide .body-col{position:relative;border-right:1px solid var(--line);display:flex;flex-direction:column}
+#ironbci-guide #body{width:100%;height:auto;display:block;transition:opacity .22s}
+#ironbci-guide #body.swap{opacity:0}
+#ironbci-guide #body text{font-family:var(--font)}
+#ironbci-guide .body-cap{padding:0 20px 18px;font-size:13px;color:var(--muted);margin-top:auto}
+#ironbci-guide .body-cap b{color:var(--text);font-weight:600}
+#ironbci-guide .demo{padding:24px 26px 24px;display:flex;flex-direction:column;gap:16px;min-width:0}
+#ironbci-guide .demo .sig{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+#ironbci-guide .demo .sig i{width:8px;height:8px;border-radius:50%;background:var(--sig)}
+#ironbci-guide .demo h3{font-size:30px;letter-spacing:-.03em;line-height:1.05;margin:4px 0 0;font-weight:800}
+#ironbci-guide .demo p.lead{margin:0;color:#c7ccd3;max-width:58ch}
+#ironbci-guide .controls{display:flex;gap:8px;flex-wrap:wrap}
+#ironbci-guide .ctl{border:1px solid var(--line2);background:rgba(255,255,255,.02);border-radius:11px;padding:9px 15px;font-weight:600;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;user-select:none;-webkit-user-select:none;touch-action:manipulation}
+#ironbci-guide .ctl:hover{border-color:rgba(255,255,255,.4)}
+#ironbci-guide .ctl[aria-pressed="true"],#ironbci-guide .ctl.held{background:color-mix(in srgb,var(--sig) 16%,transparent);border-color:var(--sig)}
+#ironbci-guide .ctl .k{font-size:11.5px;color:var(--dim);font-weight:500;border:1px solid var(--line2);border-radius:5px;padding:0 5px}
+#ironbci-guide #demoCanvas{display:block;width:100%;border-radius:14px;background:#06070a;border:1px solid var(--line)}
+#ironbci-guide .readout{min-height:92px}
+#ironbci-guide .with{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;color:var(--dim)}
+#ironbci-guide .with span.chip{color:#c7ccd3;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:8px;padding:3px 9px}
+#ironbci-guide .sim-note{font-size:12px;color:var(--dim)}
+
+#ironbci-guide .meters{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+#ironbci-guide .meter .lab{display:flex;justify-content:space-between;font-size:13.5px;color:var(--muted);margin-bottom:6px}
+#ironbci-guide .meter .lab b{color:var(--text);font-variant-numeric:tabular-nums;font-weight:600}
+#ironbci-guide .meter .track{height:10px;border-radius:6px;background:rgba(255,255,255,.06);overflow:hidden}
+#ironbci-guide .meter .fill{height:100%;border-radius:6px;background:var(--sig);width:0;transition:width .15s linear}
+#ironbci-guide .big{font-size:44px;font-weight:800;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+#ironbci-guide .row-flex{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+#ironbci-guide .muted{color:var(--muted);font-size:13.5px}
+#ironbci-guide .article{width:220px;height:84px;border:1px solid var(--line2);border-radius:10px;overflow:hidden;position:relative;background:#0b0d10}
+#ironbci-guide .article .inner{position:absolute;inset:0 0 auto 0;padding:10px 12px;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+#ironbci-guide .article .inner i{display:block;height:6px;border-radius:3px;background:rgba(255,255,255,.14);margin:0 0 8px}
+#ironbci-guide .article .inner i.h{height:9px;background:rgba(255,255,255,.3);width:60%}
+#ironbci-guide .osc{font-family:var(--mono);font-size:13px;display:grid;gap:4px}
+#ironbci-guide .osc div{display:grid;grid-template-columns:260px 52px 1fr;gap:10px;align-items:center}
+#ironbci-guide .osc .addr{color:#9aa2ad}#ironbci-guide .osc .v{color:var(--text);text-align:right}
+#ironbci-guide .osc .bar{height:6px;border-radius:3px;background:rgba(255,255,255,.06);overflow:hidden}
+#ironbci-guide .osc .bar b{display:block;height:100%;background:var(--sig)}
+#ironbci-guide .bands{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:end;height:110px}
+#ironbci-guide .bands .b{display:flex;flex-direction:column;align-items:stretch;gap:6px;height:100%;justify-content:flex-end}
+#ironbci-guide .bands .col{border-radius:6px 6px 3px 3px;background:var(--sig);min-height:4px;transition:height .12s linear}
+#ironbci-guide .bands small{font-size:12px;color:var(--muted);line-height:1.25}
+#ironbci-guide .bands small b{display:block;color:var(--text);font-weight:600}
+#ironbci-guide .rules{display:grid;gap:6px;font-size:13.5px}
+#ironbci-guide .rule{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:10px;padding:7px 11px}
+#ironbci-guide .rule.fired{border-color:var(--sig);background:color-mix(in srgb,var(--sig) 8%,transparent)}
+#ironbci-guide .rule code{font-family:var(--mono);font-size:12.5px;color:#c7ccd3}
+#ironbci-guide pre.payload{margin:0;font-family:var(--mono);font-size:12px;color:#aab2bd;background:#07080a;border:1px solid var(--line);border-radius:10px;padding:10px 12px;overflow:auto;max-height:120px}
+#ironbci-guide .lamp{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line2);transition:background .4s,box-shadow .4s}
+#ironbci-guide .lamp.on{background:radial-gradient(circle,#ffe7a8,#e9a526 70%);box-shadow:0 0 40px rgba(255,200,90,.45)}
+#ironbci-guide .lamp svg{width:28px;height:28px}
+#ironbci-guide .markers{font-family:var(--mono);font-size:12.5px;color:#aab2bd;display:grid;gap:3px}
+
+#ironbci-guide .steps{list-style:none;margin:0 0 90px;padding:0;counter-reset:s}
+#ironbci-guide .step{display:grid;grid-template-columns:84px minmax(0,1fr);gap:0 20px;position:relative;padding-bottom:40px}
+#ironbci-guide .step::before{content:"";position:absolute;left:27px;top:60px;bottom:0;width:2px;background:linear-gradient(var(--line2),var(--line))}
+#ironbci-guide .step:last-child::before{display:none}
+#ironbci-guide .num{width:56px;height:56px;border-radius:16px;border:1px solid var(--line2);display:grid;place-items:center;font-weight:800;font-size:22px;letter-spacing:-.03em;background:var(--panel);font-variant-numeric:tabular-nums}
+#ironbci-guide .step.done .num{background:var(--accent);border-color:var(--accent);color:#04111f}
+#ironbci-guide .step-body{border:1px solid var(--line);border-radius:22px;background:var(--panel);padding:22px 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:28px;align-items:start}
+#ironbci-guide .step-body.single{grid-template-columns:1fr}
+#ironbci-guide .step h3{font-size:24px;letter-spacing:-.025em;margin:2px 0 8px;font-weight:700;line-height:1.15}
+#ironbci-guide .step p{margin:0 0 10px;color:#c7ccd3}
+#ironbci-guide .step p.muted{color:var(--muted);font-size:14px}
+#ironbci-guide .tick{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+#ironbci-guide .tick label{display:flex;gap:12px;align-items:flex-start;cursor:pointer;padding:7px 10px;border-radius:10px}
+#ironbci-guide .tick label:hover{background:rgba(255,255,255,.03)}
+#ironbci-guide .tick input{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:1.5px solid var(--dim);border-radius:5px;margin:2px 0 0;flex:none;display:grid;place-items:center;cursor:pointer}
+#ironbci-guide .tick input:checked{background:var(--accent);border-color:var(--accent)}
+#ironbci-guide .tick input:checked::after{content:"";width:9px;height:5px;border:2px solid #04111f;border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+#ironbci-guide .tick input:checked + span{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--dim)}
+#ironbci-guide .tick span small{display:block;color:var(--dim);font-size:12.5px;text-decoration:none}
+#ironbci-guide .progress{font-size:13.5px;color:var(--muted);margin-top:10px}
+#ironbci-guide .progress b{color:var(--text)}
+#ironbci-guide .dodont{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+#ironbci-guide .dodont h4{margin:0 0 8px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px}
+#ironbci-guide .dodont ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:14px;color:#c7ccd3}
+#ironbci-guide .dodont li{padding-left:22px;position:relative}
+#ironbci-guide .dodont .yes li::before,#ironbci-guide .dodont .no li::before{position:absolute;left:0;top:0;font-weight:700}
+#ironbci-guide .dodont .yes li::before{content:"✓";color:var(--power)}
+#ironbci-guide .dodont .no li::before{content:"✕";color:var(--ecg)}
+#ironbci-guide .code{position:relative;background:#07080a;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+#ironbci-guide .code pre{margin:0;padding:16px 18px;font-family:var(--mono);font-size:13.5px;line-height:1.7;overflow:auto;color:#dfe3e8}
+#ironbci-guide .code .c{color:#626973}
+#ironbci-guide .code .p{color:var(--accent)}
+#ironbci-guide .copy{position:absolute;top:10px;right:10px;border:1px solid var(--line2);background:#101318;border-radius:8px;padding:4px 10px;font-size:12.5px;font-weight:600;cursor:pointer}
+#ironbci-guide .copy:hover{border-color:rgba(255,255,255,.4)}
+#ironbci-guide .tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);padding:8px 8px 0}
+#ironbci-guide .tabs button{border:0;background:none;padding:7px 12px 9px;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+#ironbci-guide .tabs button[aria-selected="true"]{color:var(--text);border-bottom-color:var(--accent)}
+#ironbci-guide .urls{display:grid;gap:8px}
+#ironbci-guide .url{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:10px 12px 10px 14px;background:#07080a}
+#ironbci-guide .url code{font-family:var(--mono);font-size:14px}
+#ironbci-guide .url small{display:block;color:var(--dim);font-size:12.5px;font-family:var(--font)}
+#ironbci-guide .url .copy{position:static}
+#ironbci-guide table.ports{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+#ironbci-guide .ports td{padding:8px 0;border-top:1px solid var(--line)}
+#ironbci-guide .ports td:first-child{font-family:var(--mono);color:var(--accent);width:80px}
+#ironbci-guide #seat,#ironbci-guide #wire{width:100%;height:auto;display:block}
+#ironbci-guide #seat text,#ironbci-guide #wire text{font-family:var(--font)}
+#ironbci-guide .shield-g{transition:transform .8s cubic-bezier(.3,1.3,.5,1)}
+#ironbci-guide .seated .shield-g{transform:translateY(60px)}
+#ironbci-guide .wire-list{display:grid;grid-template-columns:1fr 1fr;gap:2px 16px;font-size:13.5px;margin-top:10px}
+#ironbci-guide .wire-list div{display:flex;justify-content:space-between;padding:4px 8px;border-radius:7px;cursor:default}
+#ironbci-guide .wire-list div.on{background:rgba(255,255,255,.06)}
+#ironbci-guide .wire-list b{font-weight:600}
+#ironbci-guide .wire-list span{color:var(--muted)}
+
+#ironbci-guide .safety-band{border:1px solid rgba(255,90,116,.25);background:rgba(255,90,116,.05);border-radius:22px;padding:26px 28px;display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:28px;margin-bottom:60px}
+#ironbci-guide .safety-band h2{margin:0;font-size:28px;letter-spacing:-.03em;line-height:1.1}
+#ironbci-guide .safety-band ul{margin:0;padding:0 0 0 18px;display:grid;gap:8px;color:#e2d4d6}
+#ironbci-guide footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--dim);font-size:13.5px}
+#ironbci-guide footer .wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between}
+#ironbci-guide footer nav{display:flex;gap:18px;flex-wrap:wrap}
+#ironbci-guide footer a{color:var(--muted);text-decoration:none}
+#ironbci-guide footer a:hover{color:var(--text)}
+
+@media (max-width:1100px){
+  #ironbci-guide .hero{grid-template-columns:1fr;padding-top:36px}
+  #ironbci-guide .facts{grid-template-columns:repeat(3,1fr)}
+  #ironbci-guide .facts div:nth-child(4){border-left:0}
+  #ironbci-guide .facts div:nth-child(n+4){border-top:1px solid var(--line)}
+  #ironbci-guide .uses{grid-template-columns:1fr}
+  #ironbci-guide .use-list{flex-direction:row;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+  #ironbci-guide .use-list li{flex:none}
+  #ironbci-guide .use-list button{white-space:nowrap}
+  #ironbci-guide .use-list span{display:none}
+  #ironbci-guide .step-body{grid-template-columns:1fr}
+  #ironbci-guide .sec-head{grid-template-columns:1fr;gap:12px}
+}
+@media (max-width:760px){
+  #ironbci-guide .wrap{padding:0 16px}
+  #ironbci-guide .top nav{display:none}
+  #ironbci-guide .use-stage{grid-template-columns:1fr}
+  #ironbci-guide .body-col{border-right:0;border-bottom:1px solid var(--line)}
+  #ironbci-guide #body{max-width:360px;margin:0 auto}
+  #ironbci-guide .facts{grid-template-columns:1fr 1fr}
+  #ironbci-guide .facts div{border-left:0!important;border-top:1px solid var(--line)}
+  #ironbci-guide .facts div:nth-child(-n+2){border-top:0}
+  #ironbci-guide .facts div:nth-child(even){border-left:1px solid var(--line)!important}
+  #ironbci-guide .step{grid-template-columns:1fr}
+  #ironbci-guide .step::before{display:none}
+  #ironbci-guide .num{margin-bottom:12px}
+  #ironbci-guide .dodont{grid-template-columns:1fr}
+  #ironbci-guide .osc div{grid-template-columns:1fr 46px}
+  #ironbci-guide .osc .bar{display:none}
+  #ironbci-guide .safety-band{grid-template-columns:1fr}
+  #ironbci-guide .wire-list{grid-template-columns:1fr}
+}
+
+#ironbci-guide .seg-mini{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line2);border-radius:12px;margin-top:6px}
+#ironbci-guide .seg-mini button{border:0;background:none;border-radius:9px;padding:7px 13px;font-weight:600;font-size:14px;color:var(--muted);cursor:pointer}
+#ironbci-guide .seg-mini button[aria-pressed="true"]{background:var(--raise);color:var(--text)}
+#ironbci-guide #polarity{width:100%;height:auto;display:block}
+#ironbci-guide .verdict{margin:8px 0 0;padding:11px 14px;border-radius:12px;font-size:14px}
+#ironbci-guide .verdict.ok{background:rgba(69,221,139,.07);border:1px solid rgba(69,221,139,.3);color:#cfeedd}
+#ironbci-guide .verdict.bad{background:rgba(255,90,116,.08);border:1px solid rgba(255,90,116,.35);color:#f3d3d8}
+#ironbci-guide .modes td:first-child{font-family:var(--font);color:var(--text);font-weight:600;width:120px}
+#ironbci-guide .switchbox{display:grid;gap:12px;border:1px solid var(--line);border-radius:16px;padding:18px;background:#07080a}
+#ironbci-guide .sw-row{display:flex;align-items:center;gap:14px}
+#ironbci-guide .sw-row b{display:block;font-weight:600}#ironbci-guide .sw-row span{font-size:13px;color:var(--muted)}
+#ironbci-guide .sw{width:58px;height:32px;border-radius:999px;border:1px solid var(--line2);background:#15181d;position:relative;cursor:pointer;flex:none;transition:background .2s}
+#ironbci-guide .sw i{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#aeb4bc;transition:transform .2s cubic-bezier(.3,1.4,.5,1),background .2s}
+#ironbci-guide .sw[aria-checked="true"]{background:color-mix(in srgb,var(--accent) 30%,#15181d);border-color:var(--accent)}
+#ironbci-guide .sw[aria-checked="true"] i{transform:translateX(26px);background:#eaf4ff}
+#ironbci-guide .state{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:#c7ccd3;margin:4px 0 0;border-top:1px solid var(--line);padding-top:12px}
+#ironbci-guide .warn{color:#ffb4c0}
+#ironbci-guide .led{width:14px;height:14px;border-radius:50%;background:#23262b;border:1px solid var(--line2);flex:none;margin-top:3px;transition:background .2s,box-shadow .2s}
+#ironbci-guide .led.lit{background:#ff5a74;box-shadow:0 0 12px #ff5a74}
+#ironbci-guide .led.green.lit{background:var(--power);box-shadow:0 0 12px var(--power)}
+#ironbci-guide .led.blue.lit{background:var(--accent);box-shadow:0 0 12px var(--accent)}
+#ironbci-guide .led.blinking{animation:blink 1.2s steps(2,start) infinite}
+@keyframes blink{50%{opacity:.25}}
+#ironbci-guide .charge{border:1px solid var(--line);border-radius:16px;padding:18px;background:#07080a;display:grid;gap:14px}
+#ironbci-guide .leds{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#ironbci-guide .ledrow{display:flex;gap:10px;align-items:flex-start}#ironbci-guide .ledrow b{display:block;font-weight:600;font-size:14px}#ironbci-guide .ledrow span{font-size:13px;color:var(--muted)}
+#ironbci-guide .batt{display:flex;align-items:center;gap:12px;font-variant-numeric:tabular-nums;font-weight:600}
+#ironbci-guide .cell{flex:1;height:22px;border:1.5px solid #8b93a1;border-radius:6px;padding:2px;position:relative}
+#ironbci-guide .cell::after{content:"";position:absolute;right:-6px;top:6px;width:4px;height:8px;border-radius:0 2px 2px 0;background:#8b93a1}
+#ironbci-guide .lvl{height:100%;border-radius:3px;background:var(--power);transition:width .12s linear}
+#ironbci-guide .charge .state{border-top:0;padding-top:0;margin:0}
+#ironbci-guide .gazebox{width:220px;height:92px;border:1px solid var(--line2);border-radius:12px;background:#07080a;position:relative;overflow:hidden}
+#ironbci-guide .gline{position:absolute;left:10%;right:10%;top:50%;height:1px;background:rgba(255,255,255,.08)}
+#ironbci-guide .gz{position:absolute;top:50%;left:50%;width:18px;height:18px;border-radius:50%;background:var(--sig);box-shadow:0 0 18px var(--sig);transform:translate(-50%,-50%);transition:left .08s linear,height .08s}
+#ironbci-guide .gz.blink{height:3px}
+#ironbci-guide .phone{width:150px;border:2px solid #3a3f47;border-radius:22px;padding:10px 10px 12px;background:#07080a}
+#ironbci-guide .ph-top{display:flex;justify-content:space-between;font-size:11.5px;margin-bottom:6px}#ironbci-guide .ph-top .blue{color:var(--accent)}
+#ironbci-guide #phSvg{width:100%;height:130px;display:block;background:#0b0d10;border-radius:8px}
+#ironbci-guide .ph-btn{margin-top:8px;text-align:center;font-size:12px;font-weight:600;border:1px solid var(--line2);border-radius:8px;padding:4px}
+#ironbci-guide .browser{border:1px solid var(--line2);border-radius:14px;overflow:hidden;background:#0b0d10}
+#ironbci-guide .bbar{display:flex;align-items:center;gap:6px;padding:8px 10px;border-bottom:1px solid var(--line);background:#101318}
+#ironbci-guide .bbar>i{width:9px;height:9px;border-radius:50%;background:#2c3036}
+#ironbci-guide .url{font-family:var(--mono);font-size:12px;color:#9aa2ad;background:#07080a;border-radius:7px;padding:3px 10px;margin-left:8px;flex:1}
+#ironbci-guide .badge{font-size:12px;font-weight:600;color:#04111f;background:var(--accent);border-radius:999px;padding:2px 9px}
+#ironbci-guide .bbody{padding:14px;min-height:120px;display:grid;place-items:center}
+#ironbci-guide .lobby{display:grid;gap:6px;justify-items:center;text-align:center;font-size:14px}#ironbci-guide .lobby span{color:var(--muted);font-size:13px}
+#ironbci-guide .lobby.live b{color:var(--accent)}
+#ironbci-guide .picker{width:min(320px,100%);border:1px solid var(--line2);border-radius:12px;background:#15181d;padding:12px;display:grid;gap:8px;font-size:14px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
+#ironbci-guide .picker .dev{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border-radius:8px;color:var(--muted)}
+#ironbci-guide .picker .dev.on{background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--text)}
+#ironbci-guide .bars{display:inline-flex;gap:2px;align-items:flex-end}#ironbci-guide .bars i{width:3px;background:var(--accent);border-radius:1px}#ironbci-guide .bars i:nth-child(1){height:5px}#ironbci-guide .bars i:nth-child(2){height:8px}#ironbci-guide .bars i:nth-child(3){height:11px}
+#ironbci-guide .pk-btns{display:flex;justify-content:flex-end;gap:6px}
+#ironbci-guide .ctl.primary{background:var(--accent);border-color:var(--accent);color:#04111f}
+#ironbci-guide .spin{width:22px;height:22px;border-radius:50%;border:2.5px solid rgba(255,255,255,.12);border-top-color:var(--accent);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){#ironbci-guide .spin,#ironbci-guide .led.blinking{animation:none}}
+#ironbci-guide{--bg:#f5f5f7;--stage:#fff;--panel:#fff;--raise:#e8e8ed;--line:rgba(0,0,0,.08);--line2:rgba(0,0,0,.16);--text:#1d1d1f;--muted:#6e6e73;--dim:#76767c;--accent:#0071e3;--eeg:#0071e3;--emg:#ad6500;--ecg:#d72e50;--eog:#8653bc;--power:#248a3d;--data:#0071e3;--font:-apple-system,BlinkMacSystemFont,'Helvetica Neue','Segoe UI',sans-serif;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace}
+#ironbci-guide{font-size:16px;letter-spacing:-.012em}
+#ironbci-guide .top{background:rgba(255,255,255,.83);backdrop-filter:saturate(180%) blur(20px);border-color:#00000008}
+#ironbci-guide .brand{font-weight:650;letter-spacing:-.04em;font-size:20px}
+#ironbci-guide .crumb,#ironbci-guide .top nav a{font-size:13px}
+#ironbci-guide .top nav a{border-radius:100px}
+#ironbci-guide .top nav a:hover{background:#00000004}
+#ironbci-guide .hero{padding:64px 0 44px;gap:48px}
+#ironbci-guide .hero h1,#ironbci-guide .hero h2.ig-title{font-size:clamp(54px,6.2vw,90px);font-weight:650;letter-spacing:-.055em;line-height:1.04;background:none;color:#1d1d1f;margin-bottom:22px}
+#ironbci-guide .hero .lede{font-size:23px;line-height:1.4;letter-spacing:-.025em}
+#ironbci-guide .hero .sub{line-height:1.65;font-size:16px}
+#ironbci-guide .btn{border-radius:100px;padding:12px 22px;font-size:14px;font-weight:400;background:#fff;border-color:#d2d2d7}
+#ironbci-guide .btn:hover{border-color:#a1a1a6;background:#fafafa}
+#ironbci-guide .btn.solid{color:#fff;background:#0071e3;border-color:#0071e3}
+#ironbci-guide .btn.solid:hover{background:#0077ed;border-color:#0077ed}
+#ironbci-guide #board{filter:drop-shadow(0 16px 20px #0000000a)}
+#ironbci-guide .facts{border:0;border-radius:24px;box-shadow:0 8px 24px #00000003}
+#ironbci-guide .facts div{padding:20px}
+#ironbci-guide .facts dt{font-size:12px}
+#ironbci-guide .facts dd{font-size:14px;font-weight:600}
+#ironbci-guide .sec-head h2{font-weight:650;line-height:1.06;font-size:clamp(36px,4.7vw,60px);letter-spacing:-.045em}
+#ironbci-guide .sec-head p{font-size:16px;line-height:1.65}
+#ironbci-guide .uses{gap:24px}
+#ironbci-guide .use-list{gap:6px}
+#ironbci-guide .use-list button{padding:14px;border-radius:16px}
+#ironbci-guide .use-list button:hover{background:#eaeaec}
+#ironbci-guide .use-list button[aria-selected="true"]{background:#fff;border-color:#dedee3;box-shadow:0 4px 18px #00000004}
+#ironbci-guide .use-list button[aria-selected="true"] i{box-shadow:none}
+#ironbci-guide .use-list span{font-size:12px}
+#ironbci-guide .use-stage{border:0;border-radius:28px;background:#fff;box-shadow:0 8px 30px #00000004}
+#ironbci-guide .body-col{background:linear-gradient(155deg,#fff,#f0f1f4)}
+#ironbci-guide .body-cap{font-size:13px;line-height:1.6;padding:0 22px 22px}
+#ironbci-guide .demo{padding:28px;gap:18px}
+#ironbci-guide .demo h3{font-weight:650;line-height:1.12;letter-spacing:-.03em}
+#ironbci-guide .demo p.lead{color:#515154;font-size:15px;line-height:1.65}
+#ironbci-guide .ctl{border-radius:100px;font-size:13px;font-weight:500;padding:9px 15px;background:#fff;border-color:#d2d2d7}
+#ironbci-guide .ctl:hover{border-color:#a1a1a6;background:#f5f5f7}
+#ironbci-guide .ctl[aria-pressed="true"],#ironbci-guide .ctl.held{background:#eaf3ff;border-color:#0071e3}
+#ironbci-guide .ctl.primary{background:#0071e3;border-color:#0071e3;color:#fff}
+#ironbci-guide #demoCanvas,#ironbci-guide #erp,#ironbci-guide #humCanvas{background:#fafafa;border-color:#e8e8ed;border-radius:14px}
+#ironbci-guide .with span.chip{background:#f5f5f7;color:#515154;border:0;border-radius:100px;padding:4px 10px}
+#ironbci-guide .meter .track,#ironbci-guide .osc .bar{background:#e8e8ed}
+#ironbci-guide .big{font-weight:650}
+#ironbci-guide .rule code,#ironbci-guide .osc .addr,#ironbci-guide .markers{color:#6e6e73}
+#ironbci-guide pre.payload{background:#f5f5f7;color:#515154}
+#ironbci-guide .article{background:#f5f5f7}
+#ironbci-guide .article .inner i{background:#d2d2d7}
+#ironbci-guide .article .inner i.h{background:#a1a1a6}
+#ironbci-guide .num{border:0;border-radius:50%;background:#e8e8ed;font-size:20px;font-weight:600}
+#ironbci-guide .step.done .num{color:#fff;background:#0071e3}
+#ironbci-guide .step-body{border:0;border-radius:28px;padding:28px;background:#fff;box-shadow:0 8px 24px #00000003}
+#ironbci-guide .step h3{font-weight:600;font-size:25px;line-height:1.2}
+#ironbci-guide .step p,#ironbci-guide .dodont ul{color:#515154;font-size:15px;line-height:1.65}
+#ironbci-guide .tick label:hover{background:#f5f5f7}
+#ironbci-guide .tick input:checked::after{border-color:#fff}
+#ironbci-guide .tick span{font-size:14px}
+#ironbci-guide .tick span small{font-size:12px}
+#ironbci-guide .code{background:#f5f5f7;border:1px solid #e8e8ed;border-radius:16px}
+#ironbci-guide .code pre{color:#303036;font-size:13px}
+#ironbci-guide .code .c{color:#76767c}
+#ironbci-guide .copy{background:#fff;border-color:#d2d2d7;border-radius:100px;font-weight:400}
+#ironbci-guide .copy:hover{border-color:#a1a1a6}
+#ironbci-guide .tabs button{font-size:13px;font-weight:500}
+#ironbci-guide .url{background:#f5f5f7;color:#515154}
+#ironbci-guide .safety-band{background:#fff;border:1px solid #f0d5d8;border-radius:28px;padding:32px}
+#ironbci-guide .safety-band h2{font-weight:600}
+#ironbci-guide .safety-band ul{color:#6e5155;font-size:15px;line-height:1.65}
+#ironbci-guide .seg-mini{background:#e8e8ed;border:0;border-radius:100px;padding:4px}
+#ironbci-guide .seg-mini button{border-radius:100px;font-weight:500}
+#ironbci-guide .seg-mini button[aria-pressed="true"]{background:#fff;box-shadow:0 1px 5px #0000000b}
+#ironbci-guide .verdict.ok{background:#f0f8f2;border-color:#c5e2ce;color:#326a43}
+#ironbci-guide .verdict.bad{background:#fff1f2;border-color:#eed1d6;color:#944355}
+#ironbci-guide .browser,#ironbci-guide .bbar,#ironbci-guide .picker,#ironbci-guide .mini{background:#f5f5f7}
+#ironbci-guide .picker{box-shadow:0 12px 40px #00000012}
+#ironbci-guide .bbar{border-color:#dedee3}
+#ironbci-guide .bbar>i{background:#c5c5cb}
+#ironbci-guide .badge{background:#e7f1ff;color:#0071e3}
+#ironbci-guide .grid9 button,#ironbci-guide .ic,#ironbci-guide .outlet{background:#fafafa}
+#ironbci-guide .grid9 i{background:#e8e8ed}
+#ironbci-guide .grid9 .tgt{border-color:#0071e3}
+#ironbci-guide .grid9 .hl{background:#d5e8ff}
+#ironbci-guide .grid9 .dec{background:#e7f1ff;border-color:#0071e3}
+#ironbci-guide pre.console{background:#f5f5f7;color:#0071e3}
+#ironbci-guide #cable,#ironbci-guide #iso,#ironbci-guide #wire,#ironbci-guide #gelMap{background:#15171d;border-radius:18px}
+#ironbci-guide .banks div.on{background:#f5f5f7}
+#ironbci-guide footer{font-size:12px;color:#86868b}
+#ironbci-guide #s1 .step-body>div::after{content:"";display:block;height:196px;margin-top:18px;background-image:url("/products/ironbci-8/guide-cap.webp");background-size:contain;background-repeat:no-repeat;background-position:center}
+@media(max-width:1100px){#ironbci-guide .hero{padding-top:40px;gap:20px}#ironbci-guide #board{max-width:660px;margin:0 auto}}
+@media(max-width:760px){#ironbci-guide .hero{padding:36px 0 30px}#ironbci-guide .hero h1,#ironbci-guide .hero h2.ig-title{font-size:clamp(48px,12vw,76px)}#ironbci-guide .hero .lede{font-size:21px}#ironbci-guide .facts{border-radius:20px}#ironbci-guide .facts div{padding:16px}#ironbci-guide .facts dd{font-size:13px}#ironbci-guide .demo,#ironbci-guide .step-body{padding:22px}#ironbci-guide .use-stage,#ironbci-guide .step-body,#ironbci-guide .safety-band{border-radius:22px}#ironbci-guide .sec-head h2{font-size:38px}#ironbci-guide .safety-band{padding:24px}#ironbci-guide .top .wrap{gap:8px}#ironbci-guide .crumb::before{margin-right:8px}#ironbci-guide .crumb{font-size:12px}#ironbci-guide #s1 .step-body>div::after{height:180px}}
+
+
+#ironbci-guide .switchbox,#ironbci-guide .charge{background:#fafafa;border-color:#e8e8ed;border-radius:20px}
+#ironbci-guide .sw{background:#e8e8ed;border-color:#d2d2d7}
+#ironbci-guide .sw i{background:#fff;box-shadow:0 1px 4px #00000018}
+#ironbci-guide .sw[aria-checked="true"]{background:#0071e3;border-color:#0071e3}
+#ironbci-guide .sw[aria-checked="true"] i{background:#fff}
+#ironbci-guide #polarity{background:#15171d;border-radius:18px}
+#ironbci-guide .phone{background:#fafafa;border-color:#d2d2d7}
+#ironbci-guide .state{color:#515154}
+
+
+
+#ironbci-guide{display:block;position:relative;isolation:isolate;overflow-x:clip;text-align:left;background:var(--bg);color:var(--text);font-family:var(--font)}
+#ironbci-guide .ig-title{font-size:clamp(76px,11vw,148px);line-height:.86;letter-spacing:-.06em;font-weight:900;margin:0 0 22px}
+
+#ironbci-guide [id]{scroll-margin-top:120px}
+#ironbci-guide .ig-video{margin:0 0 88px}
+#ironbci-guide .ig-frame{position:relative;aspect-ratio:16/9;max-width:960px;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 8px 24px #0000000f}
+#ironbci-guide .ig-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media(max-width:760px){#ironbci-guide .ig-video{margin-bottom:56px}#ironbci-guide .ig-frame{border-radius:16px}}
+
+/* Store page: "Interactive guide" label and spacing (no hero/facts block here) */
+#ironbci-guide .ig-kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0891b2;margin:48px 0 6px}
+#ironbci-guide .ig-main{padding-bottom:40px}

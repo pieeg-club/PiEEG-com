@@ -32,4 +32,8 @@ export const STORE_EXTRAS: Record<string, StoreExtras> = {
     Docs: dynamic(() => import("@/components/octopus16-store/Octopus16Docs")),
     Guide: dynamic(() => import("@/components/octopus16-store/Octopus16StoreGuide")),
   },
+  ironbci: {
+    Docs: dynamic(() => import("@/components/ironbci8-store/IronBCIDocs")),
+    Guide: dynamic(() => import("@/components/ironbci8-store/IronBCIStoreGuide")),
+  },
 };

@@ -36,4 +36,8 @@ export const STORE_EXTRAS: Record<string, StoreExtras> = {
     Docs: dynamic(() => import("@/components/ironbci8-store/IronBCIDocs")),
     Guide: dynamic(() => import("@/components/ironbci8-store/IronBCIStoreGuide")),
   },
+  "pieeg-xr": {
+    Docs: dynamic(() => import("@/components/pieegxr-store/PieegXRDocs")),
+    Guide: dynamic(() => import("@/components/pieegxr-store/PieegXRStoreGuide")),
+  },
 };

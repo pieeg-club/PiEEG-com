@@ -21,6 +21,11 @@ const DOCS = [
 
 const ZIP = { file: "PiEEG-8_Documentation_Set.zip", size: "2.42 MB" };
 
+// "Request Information" opens an email to PiEEG with the subject and a short template filled in.
+const REQUEST_MAILTO = `mailto:pieeg@pieeg.com?subject=${encodeURIComponent("PiEEG-8 information request")}&body=${encodeURIComponent(
+  "Hi PiEEG team,\n\nI would like more information about PiEEG-8.\n\nName:\nUniversity / company:\nCountry:\nQuantity:\nMy question:\n"
+)}`;
+
 function DownloadIcon({ size = 20 }: { size?: number }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -119,9 +124,12 @@ export default function PiEEG8Docs() {
           Whether you need more technical detail, a quote for a class or lab, or help choosing caps and electrodes, we are here
           to help.
         </p>
-        <a className="ib-btn" href="mailto:pieeg@pieeg.com?subject=PiEEG-8%20information%20request">
+        <a className="ib-btn" href={REQUEST_MAILTO}>
           Request Information
         </a>
+        <p className="ib-mail">
+          or write to <a href="mailto:pieeg@pieeg.com">pieeg@pieeg.com</a> · <a href="/contact">Contact page</a>
+        </p>
         <a className="ib-link" href="https://docs.pieeg.com/hardware/devices/pieeg-8/" target="_blank" rel="noopener">
           Online docs · docs.pieeg.com →
         </a>

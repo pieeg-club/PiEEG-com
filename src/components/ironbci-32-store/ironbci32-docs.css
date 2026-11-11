@@ -44,3 +44,8 @@
   .ib-hero-grid>*{grid-column:auto!important}
   .ib-hero-grid>.ib-docs{grid-column:auto!important;display:flex;align-items:stretch}
 }
+.ib-mail{margin:10px 0 0;font-size:12px;color:#6b6878}
+.ib-mail a{color:#533192;font-weight:600;text-decoration:none}
+.ib-mail a:hover{text-decoration:underline}
+.dark .ib-mail{color:#a1a1aa}
+.dark .ib-mail a{color:#bea1f5}

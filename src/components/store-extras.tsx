@@ -28,4 +28,8 @@ export const STORE_EXTRAS: Record<string, StoreExtras> = {
     Docs: dynamic(() => import("@/components/pieeg16-store/PiEEG16Docs")),
     Guide: dynamic(() => import("@/components/pieeg16-store/PiEEG16StoreGuide")),
   },
+  "octopus-16": {
+    Docs: dynamic(() => import("@/components/octopus16-store/Octopus16Docs")),
+    Guide: dynamic(() => import("@/components/octopus16-store/Octopus16StoreGuide")),
+  },
 };

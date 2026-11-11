@@ -19,6 +19,11 @@ const DOCS = [
 
 const ZIP = { file: "IronBCI-32_Documentation_Set.zip", size: "5.46 MB" };
 
+// "Request Information" opens an email to PiEEG with the subject and a short template filled in.
+const REQUEST_MAILTO = `mailto:pieeg@pieeg.com?subject=${encodeURIComponent("IronBCI-32 information request")}&body=${encodeURIComponent(
+  "Hi PiEEG team,\n\nI would like more information about IronBCI-32.\n\nName:\nUniversity / company:\nCountry:\nQuantity:\nMy question:\n"
+)}`;
+
 function DownloadIcon({ size = 20 }: { size?: number }) {
   return (
     <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -104,9 +109,12 @@ export default function IronBCI32Docs() {
           Whether you need more technical detail, an institutional quote or help choosing caps and electrodes, we are here to
           help.
         </p>
-        <a className="ib-btn" href="mailto:pieeg@pieeg.com?subject=IronBCI-32%20information%20request">
+        <a className="ib-btn" href={REQUEST_MAILTO}>
           Request Information
         </a>
+        <p className="ib-mail">
+          or write to <a href="mailto:pieeg@pieeg.com">pieeg@pieeg.com</a> · <a href="/contact">Contact page</a>
+        </p>
         <a className="ib-link" href="https://docs.pieeg.com/hardware/devices/ironbci-32/" target="_blank" rel="noopener">
           Online docs · docs.pieeg.com →
         </a>

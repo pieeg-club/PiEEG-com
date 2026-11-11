@@ -48,3 +48,8 @@
 .ib-gh:hover{opacity:.88}
 .ib-gh-s{margin-left:auto;font-weight:500;font-size:11px;opacity:.75}
 .dark .ib-gh{background:#fff;border-color:#fff;color:#1f2328}
+.ib-mail{margin:10px 0 0;font-size:12px;color:#6b6878}
+.ib-mail a{color:#533192;font-weight:600;text-decoration:none}
+.ib-mail a:hover{text-decoration:underline}
+.dark .ib-mail{color:#a1a1aa}
+.dark .ib-mail a{color:#bea1f5}

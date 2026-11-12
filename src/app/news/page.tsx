@@ -16,6 +16,7 @@ const mediaFeatures = [
   // VR & XR Media (PiEEG XR Coverage)
   { name: "UploadVR", url: "https://www.uploadvr.com/pieeg-xr-makes-your-vr-avatar-expressive-without-face-tracking/" },
   { name: "Notebookcheck", url: "https://www.notebookcheck.net/For-VR-PiEEG-XR-measures-brain-activity-in-real-time.1311211.0.html" },
+  { name: "MoguLive", url: "https://www.moguravr.com/pieeg-xr-review/" },
   { name: "Mogura VR", url: "https://www.moguravr.com/pieeg-xr-kickstarter-en/" },
   { name: "UK Rifter", url: "https://www.ukrifter.com/revolutionising-avatar-control-pieegs-brain-computer-interface-for-quest-headsets/" },
   

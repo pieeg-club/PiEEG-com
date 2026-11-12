@@ -105,6 +105,7 @@ const megaMenuSections = [
       { href: "/xr", label: "PiEEG XR", desc: "Neural face interface for VR", Icon: Glasses },
       { href: "https://aura.pieeg.com", label: "Aura VR", desc: "EMG + IMU wristband for XR", Icon: Watch, external: true },
       { href: "/agent", label: "AI Agent", desc: "Your AI copilot for brain data", Icon: Bot },
+      { href: "/news/octokin-open-source-physical-ai", label: "OctoKin (Physical AI · MIT)", desc: "Open-source biosignals for ROS 2 & NVIDIA Isaac", Icon: Bot },
       { href: "https://apps.garmin.com/apps/8e994535-c853-45ca-abe3-ccef61119c8b", label: "octoWatch (Garmin)", desc: "16-ch Octopus-16 EEG on Garmin watches", Icon: Watch, external: true },
       { href: "https://play.google.com/store/apps/details?id=com.bodypress.governorhq", label: "BodyPress Mobile", desc: "Neural data on your phone", Icon: Smartphone, external: true },
       { href: "/browser", label: "Browser Extension", desc: "Brain state overlay on every page", Icon: Monitor },

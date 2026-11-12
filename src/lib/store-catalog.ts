@@ -328,10 +328,10 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     signals: ["EEG"],
     gradient: "from-cyan-500 to-amber-500",
     accentText: "text-amber-500",
-    heroImage: "/hardware/octobio-kit/octobio-1-262a4266.jpg",
+    heroImage: "/hardware/octobio-kit/octobio-1-262a4266.png",
     gallery: [
       {
-        src: "/hardware/octobio-kit/octobio-1-262a4266.jpg",
+        src: "/hardware/octobio-kit/octobio-1-262a4266.png",
         alt: "OctoBio Kit complete package with Octopus 16 and Arduino starter kit",
         caption: "Complete OctoBio Kit — Octopus 16 wireless EEG + All-in-One Arduino Starter Kit",
       },

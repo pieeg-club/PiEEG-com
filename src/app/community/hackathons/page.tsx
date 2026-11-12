@@ -14,6 +14,8 @@ import {
   ShieldAlert,
   GraduationCap,
   Zap,
+  Terminal,
+  ExternalLink,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -189,6 +191,16 @@ export default function HackathonsPage() {
                   <Mail className="w-4 h-4" />
                   <span>Apply for Hackathon Sponsorship</span>
                 </a>
+                <a
+                  href="https://github.com/pieeg-club/hello_world_octopus_16"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold border border-cyan-300 dark:border-cyan-800 bg-cyan-50/70 dark:bg-cyan-950/40 text-cyan-800 dark:text-cyan-300 hover:bg-cyan-100/70 dark:hover:bg-cyan-950/70 transition-colors"
+                >
+                  <Terminal className="w-4 h-4" />
+                  <span>60-Sec Hackathon Starter Repo</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
                 <Link
                   href="/store#bulk-orders"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 transition-colors"
@@ -281,6 +293,97 @@ export default function HackathonsPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== 60-SECOND HACKATHON STARTER REPO ========== */}
+      <section className="py-14 border-t border-zinc-200 dark:border-zinc-800 bg-linear-to-b from-cyan-50/40 via-white to-white dark:from-cyan-950/15 dark:via-zinc-950 dark:to-zinc-950">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 lg:grid-cols-12 items-center rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/80 p-6 sm:p-10 shadow-sm">
+            <div className="lg:col-span-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-300 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/60 text-cyan-800 dark:text-cyan-300 text-xs font-bold uppercase tracking-wider mb-4">
+                <Terminal className="w-3.5 h-3.5" />
+                <span>Official Participant Starter Kit</span>
+              </div>
+
+              <h2 className="title-section mb-3">
+                Hello Octopus 16 — 60-Second BCI Hackathon Starter
+              </h2>
+
+              <p className="text-zinc-600 dark:text-zinc-400 mb-5 leading-relaxed">
+                Don&apos;t burn Saturday morning writing BLE parsers or DSP filters.{" "}
+                <strong className="text-zinc-900 dark:text-zinc-100">
+                  hello_world_octopus_16
+                </strong>{" "}
+                gives every hackathon team a live 60 fps 16-channel Web Bluetooth
+                workbench, a built-in 250 Hz simulator (so teammates can code
+                before touching hardware), a Python{" "}
+                <code className="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-xs font-mono">
+                  bleak + numpy
+                </code>{" "}
+                streamer, and ready-to-paste AI prompts for{" "}
+                <strong className="text-zinc-900 dark:text-zinc-100">
+                  GitHub Copilot, Claude Code, and Cursor
+                </strong>
+                .
+              </p>
+
+              <div className="rounded-xl bg-zinc-950 text-zinc-100 p-4 font-mono text-xs sm:text-sm mb-6 overflow-x-auto border border-zinc-800">
+                <div className="text-zinc-400 select-none mb-1">
+                  # Clone &amp; launch the 16-ch workbench in 30 seconds
+                </div>
+                <div>
+                  git clone https://github.com/pieeg-club/hello_world_octopus_16.git
+                </div>
+                <div>cd hello_world_octopus_16 &amp;&amp; npm start</div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href="https://github.com/pieeg-club/hello_world_octopus_16"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold bg-cyan-600 text-white hover:bg-cyan-500 transition-colors"
+                >
+                  <span>Open Starter Repo on GitHub</span>
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+                <Link
+                  href="/news/hello-world-octopus-16"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
+                >
+                  <span>Read Workbench Overview</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6">
+              <a
+                href="https://github.com/pieeg-club/hello_world_octopus_16"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-950 shadow-lg"
+              >
+                <div className="relative aspect-video">
+                  <Image
+                    src="/news-images/hello-world-octopus-16.png"
+                    alt="Hello Octopus 16 — 60fps 16-Channel BCI Hackathon Workbench"
+                    fill
+                    className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                  />
+                </div>
+                <div className="px-4 py-3 bg-zinc-900/95 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-300">
+                  <span>
+                    16-Ch 60 fps Oscilloscope · 18-Pin Hex Contact Map · 250 Hz Simulator · AI Prompts
+                  </span>
+                  <span className="text-cyan-400 font-semibold shrink-0 ml-2">
+                    github.com/pieeg-club/hello_world_octopus_16 →
+                  </span>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </section>

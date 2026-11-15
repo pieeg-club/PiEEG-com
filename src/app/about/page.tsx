@@ -1,12 +1,36 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, GraduationCap, Mail, MapPin, Shield } from "lucide-react";
+import {
+  ArrowRight,
+  Bot,
+  Camera,
+  CircuitBoard,
+  Cloud,
+  Cpu,
+  Eye,
+  FlaskConical,
+  Glasses,
+  Globe,
+  GraduationCap,
+  Layers,
+  Mail,
+  MapPin,
+  Monitor,
+  Radio,
+  School,
+  Shield,
+  Smartphone,
+  Sparkles,
+  Terminal,
+  Watch,
+  Zap,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About — PiEEG",
   description:
-    "PiEEG exists to make research-grade EEG, EMG, ECG, and EOG acquisition accessible — without the cost and delay of custom instrumentation. Founded by Ildar Rakhmatulin, PhD and Youssef El Abbassi.",
+    "PiEEG is a full-stack biosignal ecosystem — from 8-to-48 channel EEG/EMG/ECG/EOG hardware to cloud, XR, AI agents, and physical AI. Founded by Ildar Rakhmatulin, PhD and Youssef El Abbassi.",
 };
 
 function LinkedInIcon({ className }: { className?: string }) {
@@ -65,8 +89,7 @@ const founders: {
     role: "Co-Founder & CTO",
     location: "Gatineau, Quebec, Canada",
     photo: "/youssef.jpeg",
-    photoPosition: "50% 12%",
-    photoClass: "scale-[1.28] origin-[50%_18%]",
+    photoPosition: "50% 20%",
     email: "youssef@pieeg.com",
     github: "https://github.com/yelabb/",
     linkedin: "https://www.linkedin.com/in/yelabb",
@@ -102,49 +125,122 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-          <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
-            Why we exist
-          </p>
-          <h2 className="title-section mb-4 text-zinc-900 dark:text-zinc-50">
-            Research-grade acquisition, without building the instrument first.
-          </h2>
-          <p className="mb-6 max-w-2xl text-[17px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-            Custom biosignal hardware is slow, expensive, and usually a distraction from the experiment. PiEEG exists to make research-grade EEG, EMG, ECG, and EOG acquisition accessible — analog front-end and software designed together — so researchers and product teams can record data and move faster.
-          </p>
-          <p className="mb-12 max-w-2xl text-[16px] leading-[1.7] text-zinc-500 dark:text-zinc-400">
-            We remove the years of electronics work that used to sit between a question and a dataset.
-          </p>
+      <section className="relative overflow-hidden border-b border-zinc-200 bg-zinc-50/40 py-16 sm:py-24 dark:border-zinc-800 dark:bg-zinc-950">
+        {/* Ambient glow */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 flex items-center justify-center"
+        >
+          <div className="h-72 w-160 rounded-full bg-linear-to-r from-cyan-500/10 via-violet-500/10 to-emerald-500/10 blur-3xl dark:from-cyan-400/12 dark:via-violet-500/12 dark:to-emerald-400/10" />
+        </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            <figure className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
-              <Image
-                src="/products/pieeg-clean.png"
-                alt="PiEEG-8 analog front-end board"
-                width={960}
-                height={640}
-                sizes="(min-width: 1024px) 480px, 100vw"
-                className="aspect-4/3 w-full object-contain p-6"
-              />
-              <figcaption className="border-t border-zinc-800 px-5 py-3 text-xs font-medium uppercase tracking-[0.14em] text-zinc-400">
-                PiEEG-8 analog front-end
-              </figcaption>
-            </figure>
-            <figure className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
-              <Image
-                src="/news-images/pieeg-software.jpg"
-                alt="PiEEG Server showing live 8-channel EEG, spectrum, and topographic map"
-                width={960}
-                height={640}
-                sizes="(min-width: 1024px) 480px, 100vw"
-                className="aspect-4/3 w-full object-cover object-top"
-              />
-              <figcaption className="border-t border-zinc-800 px-5 py-3 text-xs font-medium uppercase tracking-[0.14em] text-zinc-400">
-                Live acquisition in PiEEG Server
-              </figcaption>
-            </figure>
+        <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="mb-3 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-cyan-600 dark:text-cyan-400">
+                <span className="size-1.5 rounded-full bg-cyan-500 animate-ping" />
+                What we built
+              </p>
+              <h2 className="title-section text-zinc-900 dark:text-zinc-50">
+                One ecosystem. Electrode to everything.
+              </h2>
+            </div>
+            <p className="max-w-sm text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+              Hardware, cloud, AI, XR, wearables, and robotics — designed together and shipped open.
+            </p>
           </div>
+        </div>
+
+        {/* Animated floating bubble streams */}
+        <div className="relative mt-12 space-y-3.5 marquee-fade">
+          {[
+            [
+              { label: "PiEEG-8 & 16", tag: "RPi Shield", href: "/hardware/pieeg", Icon: Cpu, dot: "bg-cyan-500" },
+              { label: "Octopus-16", tag: "Coin 16-ch BLE", href: "/hardware/octopus-16", Icon: Radio, dot: "bg-cyan-400" },
+              { label: "IronBCI-32", tag: "32-ch Pro", href: "/hardware/ironbci-32", Icon: Layers, dot: "bg-blue-500" },
+              { label: "PiEEG XR", tag: "VR Face BCI", href: "/xr", Icon: Glasses, dot: "bg-violet-500" },
+              { label: "Aura VR", tag: "EMG Wristband", href: "https://aura.pieeg.com", Icon: Watch, dot: "bg-purple-500", external: true },
+              { label: "ArdEEG & JNEEG", tag: "Arduino · Jetson", href: "/hardware", Icon: CircuitBoard, dot: "bg-sky-500" },
+              { label: "MicroBCI", tag: "STM32", href: "/hardware/microbci", Icon: Cpu, dot: "bg-teal-500" },
+              { label: "OctoBio Kit", tag: "16-ch Lab Kit", href: "/hardware/octobio-kit", Icon: Sparkles, dot: "bg-cyan-500" },
+            ],
+            [
+              { label: "PiEEG Cloud", tag: "Zero-Install Web", href: "/cloud", Icon: Cloud, dot: "bg-violet-500" },
+              { label: "Buddy AI + MCP", tag: "Neural Copilot", href: "/agent", Icon: Bot, dot: "bg-fuchsia-500" },
+              { label: "PiEEG Studio", tag: "MNE & MOABB in Browser", href: "https://cloud.pieeg.com", Icon: FlaskConical, dot: "bg-indigo-500", external: true },
+              { label: "PiEEG Server", tag: "Real-Time Stream", href: "/server", Icon: Globe, dot: "bg-cyan-500" },
+              { label: "Oculomotor Bench", tag: "Pupillometry & EOG", href: "https://cloud.pieeg.com/experiences/oculomotor-bench", Icon: Eye, dot: "bg-emerald-500", external: true },
+              { label: "Optical rPPG Bench", tag: "Webcam + Live EEG", href: "https://cloud.pieeg.com/experiences/optical-physiological-bench", Icon: Camera, dot: "bg-teal-500", external: true },
+              { label: "pieeg.js", tag: "Web Serial & BLE SDK", href: "/server", Icon: Zap, dot: "bg-amber-500" },
+              { label: "BLE Web Flasher", tag: "OTA Firmware", href: "https://firmware.pieeg.com", Icon: Cpu, dot: "bg-blue-500", external: true },
+            ],
+            [
+              { label: "OctoKin", tag: "ROS 2 & NVIDIA Isaac", href: "/news/octokin-open-source-physical-ai", Icon: Bot, dot: "bg-emerald-500" },
+              { label: "OpenClaw", tag: "Robotic Control", href: "/news/openclaw-brain-control", Icon: CircuitBoard, dot: "bg-teal-500" },
+              { label: "octoWatch", tag: "Garmin Connect IQ", href: "https://apps.garmin.com/apps/8e994535-c853-45ca-abe3-ccef61119c8b", Icon: Watch, dot: "bg-cyan-500", external: true },
+              { label: "BodyPress", tag: "Meta Quest & Mobile", href: "https://www.meta.com/experiences/bodypress/1271355469389420", Icon: Smartphone, dot: "bg-purple-500", external: true },
+              { label: "1020 Academy", tag: "Interactive BCI", href: "https://1020.pieeg.com", Icon: School, dot: "bg-amber-500", external: true },
+              { label: "bioIDE", tag: "Live EEG JS", href: "https://ide.pieeg.com", Icon: Terminal, dot: "bg-pink-500", external: true },
+              { label: "Bio-Pen & octoBridge", tag: "Live DSP Lab", href: "https://cloud.pieeg.com/lab", Icon: FlaskConical, dot: "bg-violet-500", external: true },
+              { label: "Browser Extension", tag: "Live Web Overlay", href: "/browser", Icon: Monitor, dot: "bg-sky-500" },
+              { label: "GPS/GNSS Sync", tag: "Global Hyperscanning", href: "/news/gps-gnss-global-eeg-synchronization", Icon: Globe, dot: "bg-emerald-400" },
+            ],
+          ].map((row, rowIndex) => {
+            const loop = [...row, ...row];
+            return (
+              <div key={rowIndex} className="flex overflow-hidden py-1">
+                <div
+                  className={`flex w-max items-center gap-3.5 px-2 ${
+                    rowIndex % 2 === 1
+                      ? "animate-scroll-slow-reverse"
+                      : "animate-scroll-slow"
+                  }`}
+                >
+                  {loop.map((item, idx) => {
+                    const Icon = item.Icon;
+                    const pillClass =
+                      "group inline-flex items-center gap-3 rounded-full border border-zinc-200/90 bg-white/90 px-4 py-2.5 shadow-sm backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5 hover:border-cyan-500/50 hover:shadow-md hover:shadow-cyan-500/10 dark:border-zinc-800/90 dark:bg-zinc-900/85 dark:hover:border-cyan-400/50";
+                    const content = (
+                      <>
+                        <span className="relative flex size-8 shrink-0 items-center justify-center rounded-full bg-zinc-100 text-zinc-700 transition-colors group-hover:bg-cyan-500/15 group-hover:text-cyan-600 dark:bg-zinc-800 dark:text-zinc-200 dark:group-hover:text-cyan-300">
+                          <Icon className="size-4" />
+                          <span
+                            className={`absolute -top-0.5 -right-0.5 size-2 rounded-full ring-2 ring-white dark:ring-zinc-900 ${item.dot}`}
+                          />
+                        </span>
+                        <span className="text-sm font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+                          {item.label}
+                        </span>
+                        <span className="rounded-full bg-zinc-100 px-2.5 py-0.5 text-[11px] font-medium text-zinc-500 dark:bg-zinc-800/90 dark:text-zinc-400">
+                          {item.tag}
+                        </span>
+                      </>
+                    );
+
+                    return "external" in item && item.external ? (
+                      <a
+                        key={`${item.label}-${idx}`}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={pillClass}
+                      >
+                        {content}
+                      </a>
+                    ) : (
+                      <Link
+                        key={`${item.label}-${idx}`}
+                        href={item.href}
+                        className={pillClass}
+                      >
+                        {content}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 

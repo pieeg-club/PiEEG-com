@@ -169,6 +169,16 @@ export function Navbar() {
   );
 
   const isXrActive = isRouteActive("/xr");
+  const isInformationalPage = [
+    "/about",
+    "/contact",
+    "/job",
+    "/partnership",
+    "/liability",
+    "/news",
+    "/community",
+    "/support",
+  ].some((path) => pathname === path || pathname.startsWith(`${path}/`));
   const isMoreRouteActive =
     isRouteActive("/explore") ||
     mobileExtraLinks.some((item) => !("external" in item && item.external) && isRouteActive(item.href));
@@ -384,14 +394,23 @@ export function Navbar() {
               <ShoppingCart className="w-4.5 h-4.5" />
             </Link>
 
-            <span className="shop-aurora hover:scale-105 transition-transform duration-200">
+            {isInformationalPage ? (
               <a
                 href="https://cloud.pieeg.com"
-                className="nav-tech flex h-9 items-center rounded-full bg-white dark:bg-zinc-950 px-5 text-[11px] font-semibold text-zinc-900 dark:text-zinc-100"
+                className="nav-tech flex h-9 items-center rounded-full border border-zinc-200/80 px-4 text-[11px] font-medium text-zinc-600 transition-colors hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-800/80 dark:text-zinc-400 dark:hover:border-zinc-700 dark:hover:bg-zinc-900/60 dark:hover:text-zinc-100"
               >
                 Connect Device
               </a>
-            </span>
+            ) : (
+              <span className="shop-aurora hover:scale-105 transition-transform duration-200">
+                <a
+                  href="https://cloud.pieeg.com"
+                  className="nav-tech flex h-9 items-center rounded-full bg-white dark:bg-zinc-950 px-5 text-[11px] font-semibold text-zinc-900 dark:text-zinc-100"
+                >
+                  Connect Device
+                </a>
+              </span>
+            )}
           </div>
 
         </div>

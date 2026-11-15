@@ -1,455 +1,371 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Users, Target, Lightbulb, Globe, ArrowRight, Shield, Code2 as Github, MapPin, BookOpen, Cpu, GraduationCap, Mail } from "lucide-react";
+import { ArrowRight, GraduationCap, Mail, MapPin, Shield } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About — PiEEG",
   description:
-    "PiEEG provides access to neurobiology through research-grade biosignal hardware compatible with various electrodes for EEG, EMG, ECG, allowing the study and application of data in real-world conditions.",
+    "PiEEG exists to make research-grade EEG, EMG, ECG, and EOG acquisition accessible — without the cost and delay of custom instrumentation. Founded by Ildar Rakhmatulin, PhD and Youssef El Abbassi.",
 };
 
-const products = [
-  { name: "PiEEG XR",    img: "/products/pieeg-xr.png",     href: "/hardware/pieeg-xr" },
-  { name: "OctoBio Kit", img: "/hardware/octobio-kit/octobio-1-262a4266.jpg", href: "/hardware/octobio-kit" },
-  { name: "Octopus 16",  img: "/products/octopus16.png",    href: "/hardware/octopus-16" },
-  { name: "PiEEG-8",     img: "/products/pieeg.png",        href: "/hardware/pieeg" },
-  { name: "PiEEG 16",    img: "/products/pieeg-16.png",     href: "/hardware/pieeg-16" },
-  { name: "IronBCI",     img: "/products/ironbci.jpg",      href: "/hardware/ironbci" },
-  { name: "IronBCI 32",  img: "/products/ironbci-32.png",   href: "/hardware/ironbci-32" },
-  { name: "MicroBCI",    img: "/products/microbci.png",     href: "/hardware/microbci" },
-  { name: "JnEEG",       img: "/products/jneeg.png",        href: "/hardware/jneeg" },
-  { name: "ArdEEG",      img: "/products/ardeeg.png",       href: "/hardware/ardeeg" },
-  { name: "16ch Cap",    img: "/products/cap16.png",        href: "/hardware/16ch-cap" },
-  { name: "8ch Dry Cap", img: "/products/cap8-dry.png",     href: "/hardware/8ch-dry-cap" },
-  { name: "8ch Wet Cap", img: "/products/cap8-wet.jpg",     href: "/hardware/8ch-wet-cap" },
-  { name: "EMG Kit",     img: "/products/emg-kit.jpg",      href: "/hardware/emg-kit" },
-  { name: "Gel",         img: "/products/gel.png",          href: "/hardware/conductive-gel" },
-];
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
+}
 
-const team = [
+function GitHubIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844a9.59 9.59 0 012.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+    </svg>
+  );
+}
+
+const founders: {
+  name: string;
+  role: string;
+  location: string;
+  photo: string;
+  photoPosition: string;
+  photoClass?: string;
+  email: string;
+  github: string;
+  linkedin: string;
+  scholar: string;
+  bio: string[];
+  notes: string[];
+}[] = [
   {
     name: "Ildar Rakhmatulin",
     role: "Co-Founder & Lead Engineer",
-    bio: "PhD scientist, engineer, and entrepreneur in bioscience. With an academic background spanning Imperial College London, Heriot-Watt University, and the University of Edinburgh, Ildar has published numerous papers on deep neural networks for EEG feature extraction, low-cost brain-computer interfaces, and applied AI. His work is widely cited in neurotechnology and BCI research. He launched PiEEG on CrowdSupply and raised 5× the initial goal.",
     location: "Edinburgh, Scotland, UK",
+    photo: "/ildar.png",
+    photoPosition: "50% 18%",
     email: "ildar@pieeg.com",
     github: "https://github.com/Ildaron",
     linkedin: "https://www.linkedin.com/in/ildar-rakhmatulin-262a66112",
     scholar: "https://scholar.google.com/citations?user=L8q-KSoAAAAJ&hl=en",
-    gradient: "from-cyan-500 to-blue-600",
-    initials: "IR",
-    photo: "/ildar.png",
-    tags: ["PhD", "Hardware Design", "Signal Processing", "Machine Learning", "Udemy Instructor"],
+    bio: [
+      "PhD scientist, engineer, and entrepreneur in bioscience. With an academic background spanning Imperial College London, Heriot-Watt University, and the University of Edinburgh, Ildar has published numerous papers on deep neural networks for EEG feature extraction, low-cost brain-computer interfaces, and applied AI. His work is widely cited in neurotechnology and BCI research. He launched PiEEG on CrowdSupply and raised 5× the initial goal.",
+    ],
+    notes: [
+      "PhD",
+      "Hardware Design",
+      "Signal Processing",
+      "Machine Learning",
+      "Udemy Instructor",
+    ],
   },
   {
     name: "Youssef El Abbassi",
-    role: "Co-Founder & Software Architect",
-    bio: "Software architect and BCI developer building the open-source software ecosystem around PiEEG. Creator of PiEEG-Server, he is focused on making advanced brain-computer interface tools more accessible to developers, researchers, and creators.",
+    role: "Co-Founder & CTO",
     location: "Gatineau, Quebec, Canada",
+    photo: "/youssef.jpeg",
+    photoPosition: "50% 12%",
+    photoClass: "scale-[1.28] origin-[50%_18%]",
     email: "youssef@pieeg.com",
     github: "https://github.com/yelabb/",
     linkedin: "https://www.linkedin.com/in/yelabb",
     scholar: "https://scholar.google.ca/citations?user=qGJWrOYAAAAJ",
-    gradient: "from-violet-500 to-purple-600",
-    initials: "YA",
-    photo: "/youssef.png",
-    tags: ["Real-Time Systems", "PiEEG-Server", "Open Source", "Edge AI", "XR", "Web"],
+    bio: [
+      "Software architect and BCI developer building the open-source software ecosystem around PiEEG. Creator of PiEEG-Server, he is focused on making advanced brain-computer interface tools more accessible to developers, researchers, and creators.",
+    ],
+    notes: [
+      "Real-Time Systems",
+      "PiEEG-Server",
+      "Open Source",
+      "Edge AI",
+      "XR",
+      "Web",
+    ],
   },
 ];
 
 export default function AboutPage() {
   return (
     <main className="flex-1">
-      {/* Hero Section */}
       <section className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="title-hero mb-4">
-              Democratizing{" "}
-              <br />
-              <span className="bg-linear-to-r from-cyan-500 via-blue-500 to-violet-600 dark:from-cyan-400 dark:via-blue-400 dark:to-violet-500 bg-clip-text text-transparent">
-                Neuroscience Technology
-              </span>
-            </h1>
-            <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto leading-relaxed">
-              PiEEG is an initiative making brain-computer interface technology accessible to researchers, students, and makers worldwide.
-            </p>
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+          <p className="mb-5 text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
+            About PiEEG
+          </p>
+          <h1 className="title-hero mb-6 max-w-4xl text-zinc-900 dark:text-zinc-50">
+            A biosignal company built by people who design both the instrument and the stack.
+          </h1>
+          <p className="max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+            PiEEG makes research-grade EEG, EMG, ECG, and EOG hardware, and the software to acquire, stream, and interpret those signals. Labs and product teams use it when they need biosignal data without years of custom electronics.
+          </p>
+        </div>
+      </section>
+
+      <section className="border-b border-zinc-200 dark:border-zinc-800">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
+            Why we exist
+          </p>
+          <h2 className="title-section mb-4 text-zinc-900 dark:text-zinc-50">
+            Research-grade acquisition, without building the instrument first.
+          </h2>
+          <p className="mb-6 max-w-2xl text-[17px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+            Custom biosignal hardware is slow, expensive, and usually a distraction from the experiment. PiEEG exists to make research-grade EEG, EMG, ECG, and EOG acquisition accessible — analog front-end and software designed together — so researchers and product teams can record data and move faster.
+          </p>
+          <p className="mb-12 max-w-2xl text-[16px] leading-[1.7] text-zinc-500 dark:text-zinc-400">
+            We remove the years of electronics work that used to sit between a question and a dataset.
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <figure className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
+              <Image
+                src="/products/pieeg-clean.png"
+                alt="PiEEG-8 analog front-end board"
+                width={960}
+                height={640}
+                sizes="(min-width: 1024px) 480px, 100vw"
+                className="aspect-4/3 w-full object-contain p-6"
+              />
+              <figcaption className="border-t border-zinc-800 px-5 py-3 text-xs font-medium uppercase tracking-[0.14em] text-zinc-400">
+                PiEEG-8 analog front-end
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
+              <Image
+                src="/news-images/pieeg-software.jpg"
+                alt="PiEEG Server showing live 8-channel EEG, spectrum, and topographic map"
+                width={960}
+                height={640}
+                sizes="(min-width: 1024px) 480px, 100vw"
+                className="aspect-4/3 w-full object-cover object-top"
+              />
+              <figcaption className="border-t border-zinc-800 px-5 py-3 text-xs font-medium uppercase tracking-[0.14em] text-zinc-400">
+                Live acquisition in PiEEG Server
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
 
-      {/* Product Image Strip */}
-      <div className="marquee-fade overflow-hidden border-b border-zinc-200 dark:border-zinc-800 py-5">
-        <div className="flex gap-5 animate-marquee w-max px-5">
-          {[...products, ...products].map((p, i) => (
-            <Link
-              key={i}
-              href={p.href}
-              className="flex flex-col items-center gap-2 group shrink-0"
-            >
-              <div className="w-20 h-20 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-sm group-hover:shadow-md group-hover:scale-105 group-hover:border-cyan-400 dark:group-hover:border-cyan-500 transition-all duration-200">
-                <Image
-                  src={p.img}
-                  alt={p.name}
-                  width={80}
-                  height={80}
-                  className="w-full h-full object-cover"
-                />
+      <section className="border-b border-zinc-200 dark:border-zinc-800">
+        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-px bg-zinc-200 sm:grid-cols-4 dark:bg-zinc-800">
+          {[
+            { value: "2022", label: "Founded", detail: "Edinburgh, Scotland" },
+            { value: "9", label: "Biosignal boards", detail: "8–48 channels" },
+            { value: "12+", label: "Peer-reviewed papers", detail: "by our founders" },
+            { value: "NVIDIA", label: "Inception", detail: "startup program member" },
+          ].map((fact) => (
+            <div key={fact.label} className="bg-white px-5 py-8 dark:bg-zinc-950">
+              <div className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+                {fact.value}
               </div>
-              <span className="text-[10px] font-semibold text-zinc-400 dark:text-zinc-500 group-hover:text-cyan-500 transition-colors text-center leading-tight max-w-[80px]">
-                {p.name}
-              </span>
-            </Link>
+              <div className="mt-1 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                {fact.label}
+              </div>
+              <div className="mt-0.5 text-xs text-zinc-500">{fact.detail}</div>
+            </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* Team */}
-      <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="title-section mb-3">
-              The Team
-            </h2>
-            <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
-              Engineers, scientists, and hackers building the future of accessible neuroscience.
-            </p>
-          </div>
+      <section className="border-b border-zinc-200 dark:border-zinc-800">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
+            Leadership
+          </p>
+          <h2 className="title-section mb-4 text-zinc-900 dark:text-zinc-50">
+            Founders
+          </h2>
+          <p className="mb-14 max-w-2xl text-[17px] leading-relaxed text-zinc-500 dark:text-zinc-400">
+            Hardware science in Edinburgh. Software architecture in Canada. One platform from electrode to application.
+          </p>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {team.map((member) => (
-              <div
-                key={member.name}
-                className="p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex flex-col gap-5"
+          <div className="space-y-20">
+            {founders.map((person, index) => (
+              <article
+                key={person.email}
+                className={`grid items-start gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16 ${
+                  index === 1 ? "lg:[&>div:first-child]:order-2" : ""
+                }`}
               >
-                {/* Header */}
-                <div className="flex items-start gap-4">
-                    {member.photo ? (
-                    <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-md shrink-0">
-                      <Image
-                        src={member.photo}
-                        alt={member.name}
-                        width={80}
-                        height={80}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ) : (
-                    <div className={`w-20 h-20 rounded-2xl bg-linear-to-br ${member.gradient} flex items-center justify-center text-white font-extrabold text-lg shadow-md shrink-0`}>
-                      {member.initials}
-                    </div>
-                  )}
-                  <div>
-                    <h3 className="text-base font-extrabold text-zinc-900 dark:text-zinc-100">{member.name}</h3>
-                    <p className={`text-sm font-semibold bg-linear-to-r ${member.gradient} bg-clip-text text-transparent`}>
-                      {member.role}
-                    </p>
-                    <div className="flex items-center gap-1 mt-1">
-                      <MapPin className="w-3 h-3 text-zinc-400" />
-                      <span className="text-xs text-zinc-400">{member.location}</span>
-                    </div>
+                <div>
+                  <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
+                    <Image
+                      src={person.photo}
+                      alt={person.name}
+                      width={720}
+                      height={900}
+                      sizes="(min-width: 1024px) 420px, 100vw"
+                      className={`aspect-4/5 w-full object-cover ${person.photoClass ?? ""}`}
+                      style={{ objectPosition: person.photoPosition }}
+                    />
                   </div>
                 </div>
 
-                {/* Bio */}
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed flex-1">
-                  {member.bio}
-                </p>
+                <div className="lg:pt-4">
+                  <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-400 dark:text-zinc-500">
+                    {person.role}
+                  </p>
+                  <h3 className="title-subsection mt-2 mb-3 text-zinc-900 dark:text-zinc-50">
+                    {person.name}
+                  </h3>
+                  <p className="mb-6 inline-flex items-center gap-1.5 text-sm text-zinc-500 dark:text-zinc-400">
+                    <MapPin className="size-3.5" aria-hidden="true" />
+                    {person.location}
+                  </p>
 
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1.5">
-                  {member.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-xs font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                  <div className="space-y-4 text-[16px] leading-[1.7] text-zinc-600 dark:text-zinc-400">
+                    {person.bio.map((paragraph) => (
+                      <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                    ))}
+                  </div>
 
-                {/* Links */}
-                <div className="flex items-center gap-3 pt-1 border-t border-zinc-100 dark:border-zinc-800">
-                  <a
-                    href={member.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
-                  >
-                    <Github className="w-3.5 h-3.5" />
-                    GitHub
-                  </a>
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
-                  >
-                    <Users className="w-3.5 h-3.5" />
-                    LinkedIn
-                  </a>
-                  {member.scholar && (
+                  <ul className="mt-8 space-y-2 border-t border-zinc-200 pt-6 dark:border-zinc-800">
+                    {person.notes.map((item) => (
+                      <li key={item} className="text-sm leading-6 text-zinc-700 dark:text-zinc-300">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2">
                     <a
-                      href={member.scholar}
+                      href={person.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-950 dark:text-zinc-300 dark:decoration-zinc-600 dark:hover:text-zinc-50"
                     >
-                      <GraduationCap className="w-3.5 h-3.5" />
+                      <LinkedInIcon className="size-3.5" />
+                      LinkedIn
+                    </a>
+                    <a
+                      href={person.scholar}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-950 dark:text-zinc-300 dark:decoration-zinc-600 dark:hover:text-zinc-50"
+                    >
+                      <GraduationCap className="size-3.5" />
                       Scholar
                     </a>
-                  )}
-                  <a
-                    href={`mailto:${member.email}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
-                  >
-                    <Mail className="w-3.5 h-3.5" />
-                    {member.email}
-                  </a>
+                    <a
+                      href={person.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-950 dark:text-zinc-300 dark:decoration-zinc-600 dark:hover:text-zinc-50"
+                    >
+                      <GitHubIcon className="size-3.5" />
+                      GitHub
+                    </a>
+                    <a
+                      href={`mailto:${person.email}`}
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-950 dark:text-zinc-300 dark:decoration-zinc-600 dark:hover:text-zinc-50"
+                    >
+                      <Mail className="size-3.5" />
+                      Email
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="py-10 sm:py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-sm mb-4">
-                <Target className="w-4 h-4 text-cyan-500" />
-                <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
-                  Our Mission
-                </span>
-              </div>
-              <h2 className="title-section mb-4">
-                Breaking Down Barriers to Neuroscience
-              </h2>
-              <div className="space-y-4">
-                <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                  For years, the PiEEG team has been dedicated to breaking down the barriers of neuroscience. We believe that measuring the human body&apos;s signals—whether it&apos;s the brain (EEG), muscles (EMG), or eyes (EOG)—shouldn&apos;t be restricted to high-cost equipment.
-                </p>
-                <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                  Our mission is to make PiEEG the universal bridge between biology and technology for research purposes. Designed for simplicity and compatible with a vast range of electrodes, our hardware lets you go from unboxing to data-tracking in minutes. If you can run a Python script, you can explore the human nervous system.
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { value: "11+", label: "Science Papers", sub: "peer-reviewed citations", from: "from-cyan-500", to: "to-blue-500" },
-                { value: "28+", label: "Media Features", sub: "podcasts & outlets", from: "from-blue-500", to: "to-indigo-500" },
-                { value: "MIT", label: "Open Software", sub: "MIT-licensed SDKs", from: "from-violet-500", to: "to-purple-500" },
-                { value: "Global", label: "Community", sub: "worldwide researchers", from: "from-pink-500", to: "to-rose-500" },
-              ].map(({ value, label, sub, from, to }) => (
-                <div key={label} className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex flex-col gap-1">
-                  <div className={`text-2xl font-extrabold bg-linear-to-br ${from} ${to} bg-clip-text text-transparent`}>{value}</div>
-                  <div className="text-sm font-bold text-zinc-900 dark:text-zinc-100">{label}</div>
-                  <div className="text-xs text-zinc-500 dark:text-zinc-400">{sub}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Values */}
-      <section className="py-10 sm:py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="title-section mb-3">
-              Our Core Values
-            </h2>
-            <p className="text-zinc-500 dark:text-zinc-400">
-              Principles that guide everything we build
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              { icon: Globe, title: "Open & Transparent", desc: "Software and SDKs are MIT licensed and fully public. No vendor lock-in. Our GitHub repositories are the source of truth for every line of code.", from: "from-cyan-500", to: "to-blue-600" },
-              { icon: Users, title: "Community-Driven", desc: "Built by neuroscientists, for neuroscientists. Our roadmap is shaped by real user needs, not corporate agendas. Every voice matters.", from: "from-blue-500", to: "to-violet-600" },
-              { icon: Lightbulb, title: "Innovation First", desc: "We push the boundaries of what's possible with accessible hardware. From 32-channel EEG to edge AI integration, we're constantly exploring.", from: "from-violet-500", to: "to-purple-600" },
-              { icon: Target, title: "Quality Matters", desc: "Low-cost doesn't mean low-quality. We use medical-grade components, rigorous testing, and peer-reviewed validation to ensure research-grade results.", from: "from-green-500", to: "to-emerald-600" },
-            ].map(({ icon: Icon, title, desc, from, to }) => (
-              <div key={title} className="p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex gap-5">
-                <div className={`w-11 h-11 rounded-xl bg-linear-to-br ${from} ${to} flex items-center justify-center text-white shadow-md shrink-0`}>
-                  <Icon className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold mb-2">{title}</h3>
-                  <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">{desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Story */}
-      <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="title-section">
-              About Us
-            </h2>
-          </div>
-
-          <div className="space-y-5">
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              PiEEG provides access to neurobiology through research-grade biosignal hardware compatible with various electrodes for EEG, EMG, ECG, allowing the study and application of data in real-world conditions.
-            </p>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              PiEEG is a project born from a shared interest in hardware engineering, signal processing, and neuroscience. Our team consists of researchers and engineers who believe that the tools for exploring biosignals should be accessible to everyone.
-            </p>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              Over the years, we have contributed to the field by publishing our findings on Brain-Computer Interfaces (BCIs) and developing open-source software tools. Our goal isn&apos;t just to build devices, but to provide a transparent platform where others can experiment with neural interfaces. By combining our experience in hardware design with machine learning, we work to ensure PiEEG remains a reliable, entry-level tool for non-medical research and exploration.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Global Presence */}
-      <section className="py-10 sm:py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="title-section mb-3">
-              Global Presence
-            </h2>
-            <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
-              PiEEG hardware is used by researchers and makers across the world, with dedicated regional support.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex gap-4">
-              <div className="w-11 h-11 rounded-xl bg-linear-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white shadow-md shrink-0">
-                <MapPin className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-bold mb-1">Headquarters</h3>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400">Edinburgh, Scotland, UK</p>
-                <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-1">Founded & led by Ildar Rakhmatulin, PhD</p>
-              </div>
-            </div>
-
-            <div className="p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex gap-4">
-              <div className="w-11 h-11 rounded-xl bg-linear-to-br from-red-500 to-orange-500 flex items-center justify-center text-white shadow-md shrink-0">
-                <Globe className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-bold mb-1">China Representative</h3>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400">Official Chinese distribution & support</p>
-                <a
-                  href="https://www.pieeg.cn/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-semibold text-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 mt-1 inline-block transition-colors"
-                >
-                  pieeg.cn →
-                </a>
-              </div>
-            </div>
-
-            <div className="p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex gap-4">
-              <div className="w-11 h-11 rounded-xl bg-linear-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white shadow-md shrink-0">
-                <Cpu className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-bold mb-1">Hardware Manufacturing</h3>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400">Sold & shipped through Elecrow</p>
-                <a
-                  href="https://www.elecrow.com/catalogsearch/result/?q=pieeg"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-semibold text-cyan-500 hover:text-cyan-600 dark:hover:text-cyan-400 mt-1 inline-block transition-colors"
-                >
-                  Shop on Elecrow →
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Academic Recognition */}
-      <section className="py-10 sm:py-14 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="title-section mb-3">
-              Academic Recognition
-            </h2>
-            <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
-              PiEEG is used and cited in research institutions worldwide.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              { icon: BookOpen, value: "11+", label: "Science Papers", sub: "peer-reviewed citations", from: "from-cyan-500", to: "to-blue-600" },
-              { icon: Globe, value: "28+", label: "Media Features", sub: "podcasts & outlets", from: "from-blue-500", to: "to-indigo-600" },
-              { icon: Users, value: "1800+", label: "GitHub Stars", sub: "across all repositories", from: "from-violet-500", to: "to-purple-600" },
-              { icon: Cpu, value: "7", label: "Hardware Platforms", sub: "from 8 to 32 channels", from: "from-green-500", to: "to-emerald-600" },
-            ].map(({ icon: Icon, value, label, sub, from, to }) => (
-              <div key={label} className="p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm flex flex-col gap-3">
-                <div className={`w-10 h-10 rounded-xl bg-linear-to-br ${from} ${to} flex items-center justify-center text-white shadow-md`}>
-                  <Icon className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className={`text-3xl font-extrabold bg-linear-to-br ${from} ${to} bg-clip-text text-transparent`}>{value}</div>
-                  <div className="text-sm font-bold text-zinc-900 dark:text-zinc-100">{label}</div>
-                  <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{sub}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Disclaimer */}
-      <section className="py-12 bg-red-50 dark:bg-red-950/20 border-y border-red-200 dark:border-red-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-4">
-            <Shield className="w-6 h-6 text-red-600 dark:text-red-400 shrink-0 mt-1" />
-            <div>
-              <p className="text-red-900 dark:text-red-100 font-bold mb-2 text-lg">
-                NOT A MEDICAL DEVICE
-              </p>
-              <p className="text-red-800 dark:text-red-200 text-sm leading-relaxed">
-                PiEEG devices are NOT FDA/CE approved medical devices. They are intended for education, research, and hobby applications only. You are fully responsible for safe use. Please read our{" "}
-                <Link href="/liability" className="underline font-semibold">
-                  Liability statement
-                </Link>{" "}
-                before purchase or use.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-10 bg-zinc-50/50 dark:bg-zinc-900/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="title-section mb-4">
-            Join the Movement
-          </h2>
-          <p className="text-zinc-500 dark:text-zinc-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Be part of the community democratizing neuroscience technology. Contribute code, share research, or just say hello.
+      <section className="border-b border-zinc-200 py-16 sm:py-20 dark:border-zinc-800">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
+            The company
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <h2 className="title-section mb-4 text-zinc-900 dark:text-zinc-50">
+            Where we work
+          </h2>
+          <p className="mb-10 max-w-2xl text-[16px] leading-[1.7] text-zinc-600 dark:text-zinc-400">
+            PiEEG is based in Edinburgh. Software is built in Canada. Hardware is manufactured with Elecrow, with distribution in China.
+          </p>
+
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-200 sm:grid-cols-2 dark:border-zinc-800 dark:bg-zinc-800">
+            {[
+              {
+                title: "Headquarters",
+                body: "Edinburgh, Scotland",
+              },
+              {
+                title: "Software",
+                body: "Gatineau, Quebec",
+              },
+              {
+                title: "China",
+                body: "pieeg.cn",
+                href: "https://www.pieeg.cn/",
+              },
+              {
+                title: "Manufacturing",
+                body: "Elecrow",
+                href: "https://www.elecrow.com/catalogsearch/result/?q=pieeg",
+              },
+            ].map((item) => (
+              <div key={item.title} className="bg-white p-6 dark:bg-zinc-950">
+                <h3 className="mb-1 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                  {item.title}
+                </h3>
+                {"href" in item && item.href ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-zinc-500 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-900 dark:text-zinc-400 dark:decoration-zinc-600 dark:hover:text-zinc-50"
+                  >
+                    {item.body}
+                  </a>
+                ) : (
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400">{item.body}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-red-200 bg-red-50 py-10 dark:border-red-900/60 dark:bg-red-950/20">
+        <div className="mx-auto flex max-w-5xl items-start gap-4 px-4 sm:px-6 lg:px-8">
+          <Shield className="mt-0.5 size-5 shrink-0 text-red-600 dark:text-red-400" aria-hidden="true" />
+          <div>
+            <p className="mb-1 font-semibold text-red-900 dark:text-red-100">
+              Not a medical device
+            </p>
+            <p className="text-sm leading-relaxed text-red-800 dark:text-red-200">
+              PiEEG products are not FDA or CE approved medical devices. They are intended for education, research, and engineering only. Read our{" "}
+              <Link href="/liability" className="underline font-semibold">
+                liability statement
+              </Link>{" "}
+              before purchase or use.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="title-section mb-4 text-zinc-900 dark:text-zinc-50">
+            Work with us
+          </h2>
+          <p className="mx-auto mb-8 max-w-xl text-zinc-500 dark:text-zinc-400">
+            Research groups, universities, and companies use PiEEG as the biosignal layer so they can focus on the application.
+          </p>
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
-              href="/community"
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-bold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-lg"
+              href="/partnership"
+              className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-7 py-3 font-semibold text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
-              Get Involved
-              <ArrowRight className="w-4 h-4" />
+              Discuss a partnership
+              <ArrowRight className="size-4" />
             </Link>
             <Link
               href="/hardware"
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+              className="inline-flex items-center gap-2 rounded-xl border border-zinc-300 px-7 py-3 font-semibold transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
             >
-              Browse Hardware
+              Explore our hardware
             </Link>
           </div>
         </div>

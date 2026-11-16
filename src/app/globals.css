@@ -462,3 +462,72 @@ body {
   color: rgb(88, 101, 242);
   border-color: rgb(88, 101, 242, 0.5);
 }
+
+/* ── Modern Monochrome & Surface Refinement (About-page aesthetic) ──
+   Eliminates dated rainbow gradients and multi-color boxes on buttons,
+   badges, icon tiles, headings, and CTA banners in favor of the About
+   page's clean zinc palette, while keeping special/animated elements
+   (.shop-aurora, .header-scanline, benches) intact. */
+
+/* 1. Gradient CTA buttons & links → clean high-contrast zinc buttons */
+:is(a, button):is([class*="bg-linear-to-"], [class*="bg-gradient-to-"]).text-white {
+  background-image: none !important;
+  background-color: #18181b !important;
+  color: #ffffff !important;
+  box-shadow: 0 1px 2px 0 rgba(9, 9, 11, 0.08) !important;
+}
+:is(a, button):is([class*="bg-linear-to-"], [class*="bg-gradient-to-"]).text-white:hover {
+  background-color: #27272a !important;
+}
+.dark :is(a, button):is([class*="bg-linear-to-"], [class*="bg-gradient-to-"]).text-white {
+  background-color: #f4f4f5 !important;
+  color: #09090b !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25) !important;
+}
+.dark :is(a, button):is([class*="bg-linear-to-"], [class*="bg-gradient-to-"]).text-white:hover {
+  background-color: #e4e4e7 !important;
+}
+
+/* Neutralize inner gradient-swap hover layers inside CTA buttons */
+:is(a, button) > div:is([class*="bg-linear-to-"], [class*="bg-gradient-to-"]) {
+  display: none !important;
+}
+
+/* 2. Colored gradient icon tiles, step boxes & pill badges → unified neutral zinc */
+:is(div, span):is([class*="bg-linear-to-"], [class*="bg-gradient-to-"]):is(.text-white, :has(> svg.text-white)):not(:has(p, ul, ol, pre, table, form)) {
+  background-image: none !important;
+  background-color: #18181b !important;
+  color: #ffffff !important;
+  box-shadow: 0 1px 2px 0 rgba(9, 9, 11, 0.06) !important;
+}
+.dark :is(div, span):is([class*="bg-linear-to-"], [class*="bg-gradient-to-"]):is(.text-white, :has(> svg.text-white)):not(:has(p, ul, ol, pre, table, form)) {
+  background-color: #27272a !important;
+  color: #fafafa !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Remove rainbow top accent bars on cards */
+div:is(.h-1, .h-1\.5):is([class*="bg-linear-to-"], [class*="bg-gradient-to-"]) {
+  display: none !important;
+}
+
+/* 3. Full-bleed gradient CTA sections → clean dark zinc architectural surface */
+section:is([class*="bg-linear-to-br"], [class*="bg-gradient-to-br"]).text-white {
+  background-image: none !important;
+  background-color: #09090b !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 4. Rainbow gradient text (.bg-clip-text.text-transparent) → crisp solid zinc typography */
+.bg-clip-text.text-transparent {
+  background-image: none !important;
+  color: #18181b !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+.dark .bg-clip-text.text-transparent {
+  color: #fafafa !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+

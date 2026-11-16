@@ -107,28 +107,27 @@ function HeroSection() {
               href="https://cloud.pieeg.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex items-center gap-2 h-12 bg-linear-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 px-6 text-sm font-semibold text-white dark:text-zinc-950 hover:shadow-xl hover:shadow-cyan-500/30 hover:scale-105 transition-all duration-200 rounded-lg overflow-hidden"
+              className="group relative flex items-center gap-2 h-12 bg-zinc-900 dark:bg-zinc-100 px-6 text-sm font-semibold text-white dark:text-zinc-900 hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors duration-200 rounded-xl"
             >
-              <div className="absolute inset-0 bg-linear-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <Play className="w-4 h-4 relative z-10" />
-              <span className="relative z-10">Try Web BCI</span>
+              <Play className="w-4 h-4" />
+              <span>Try Web BCI</span>
             </a>
             <a
               href="https://pieeg-studio.fly.dev"
               target="_blank"
               rel="noopener noreferrer"
               title="BioData Studio — MNE and MOABB all together for everyone in the browser"
-              className="group relative flex items-center gap-2.5 h-12 border border-violet-500/40 dark:border-violet-400/40 bg-violet-500/10 dark:bg-violet-500/15 px-5 text-sm font-semibold text-zinc-900 dark:text-zinc-100 hover:bg-violet-500/15 dark:hover:bg-violet-500/25 hover:border-violet-500/70 dark:hover:border-violet-400/70 hover:shadow-lg hover:shadow-violet-500/20 hover:scale-105 transition-all duration-200 rounded-lg"
+              className="group relative flex items-center gap-2.5 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-5 text-sm font-semibold text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors duration-200 rounded-xl"
             >
-              <FlaskConical className="w-4 h-4 text-violet-600 dark:text-violet-400" />
+              <FlaskConical className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
               <span>BioData Studio</span>
-              <span className="inline-flex items-center rounded-full bg-linear-to-r from-violet-600 to-cyan-500 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white shadow-xs">
+              <span className="inline-flex items-center rounded-full bg-zinc-900 dark:bg-zinc-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white dark:text-zinc-900">
                 New
               </span>
             </a>
             <a
               href="/hardware"
-              className="flex items-center gap-2 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-6 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
+              className="flex items-center gap-2 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-6 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors duration-200 rounded-xl"
             >
               Shop Hardware <ArrowRight className="w-3.5 h-3.5" />
             </a>
@@ -136,7 +135,7 @@ function HeroSection() {
               href="https://docs.pieeg.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-6 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-lg"
+              className="flex items-center gap-2 h-12 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-6 text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors duration-200 rounded-xl"
             >
               <BookOpen className="w-4 h-4" /> Docs
             </a>
@@ -147,24 +146,24 @@ function HeroSection() {
             href="https://pieeg-studio.fly.dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-violet-500/25 dark:border-violet-400/25 bg-violet-500/5 dark:bg-violet-500/10 px-4 py-1.5 text-xs text-zinc-600 dark:text-zinc-300 hover:border-violet-500/50 dark:hover:border-violet-400/50 hover:bg-violet-500/10 dark:hover:bg-violet-500/15 transition-all"
+            className="group inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/80 px-4 py-1.5 text-xs text-zinc-600 dark:text-zinc-300 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
           >
-            <span className="font-semibold text-violet-700 dark:text-violet-300">
+            <span className="font-semibold text-zinc-900 dark:text-zinc-100">
               BioData Studio:
             </span>
             <span>
               MNE &amp; MOABB all together for everyone in the browser
             </span>
-            <ExternalLink className="w-3 h-3 text-violet-500 dark:text-violet-400 opacity-75 group-hover:translate-x-0.5 group-hover:opacity-100 transition-all" />
+            <ExternalLink className="w-3 h-3 text-zinc-500 dark:text-zinc-400 opacity-75 group-hover:translate-x-0.5 group-hover:opacity-100 transition-all" />
           </a>
 
           {/* Capability strip */}
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 pt-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-            <span className="inline-flex items-center gap-1.5"><Globe className="w-3.5 h-3.5 text-cyan-500" /> Browser-native</span>
-            <span className="inline-flex items-center gap-1.5"><Radio className="w-3.5 h-3.5 text-amber-500" /> Wireless BLE + USB</span>
-            <span className="inline-flex items-center gap-1.5"><Cpu className="w-3.5 h-3.5 text-sky-500" /> 24-bit · up to 500 Hz</span>
-            <span className="inline-flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-violet-500" /> Real-time ML &amp; AI copilot</span>
-            <span className="inline-flex items-center gap-1.5"><GitHubIcon className="w-3.5 h-3.5 text-emerald-500" /> MIT open-source</span>
+            <span className="inline-flex items-center gap-1.5"><Globe className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" /> Browser-native</span>
+            <span className="inline-flex items-center gap-1.5"><Radio className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" /> Wireless BLE + USB</span>
+            <span className="inline-flex items-center gap-1.5"><Cpu className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" /> 24-bit · up to 500 Hz</span>
+            <span className="inline-flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" /> Real-time ML &amp; AI copilot</span>
+            <span className="inline-flex items-center gap-1.5"><GitHubIcon className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" /> MIT open-source</span>
           </div>
 
           {/* Disclaimer */}
@@ -177,15 +176,15 @@ function HeroSection() {
         <div className="flex flex-col items-center gap-6 w-full max-w-3xl mt-2 pt-5 border-t border-zinc-200/50 dark:border-zinc-800/50">
           <div className="grid grid-cols-2 sm:grid-cols-4 items-center gap-6 sm:gap-8 w-full">
             <div className="flex flex-col items-center gap-1.5">
-              <div className="text-3xl font-bold bg-linear-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">28+</div>
+              <div className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">28+</div>
               <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">Media features</div>
             </div>
             <div className="flex flex-col items-center gap-1.5">
-              <div className="text-3xl font-bold bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">11+</div>
+              <div className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">11+</div>
               <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">Scientific papers</div>
             </div>
             <div className="flex flex-col items-center gap-1.5">
-              <div className="text-3xl font-bold bg-linear-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">7</div>
+              <div className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">7</div>
               <div className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 text-center uppercase tracking-wide">Hardware platforms</div>
             </div>
             <a
@@ -693,18 +692,15 @@ function WebBCISection() {
   ];
 
   return (
-    <section className="py-16 bg-linear-to-b from-white via-slate-50/60 to-white dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 overflow-hidden">
+    <section className="py-16 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden">
       {/* Header */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-12 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-200 dark:border-cyan-800 bg-cyan-50 dark:bg-cyan-950/50 mb-6">
-          <Sparkles className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-          <span className="text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
-            Web BCI Experiences
-          </span>
-        </div>
-        <h2 className="title-section mb-4">
+        <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
+          Web BCI Experiences
+        </p>
+        <h2 className="title-section mb-4 text-zinc-900 dark:text-zinc-50">
           Raw EEG in. Working BCI out.<br />
-          <span className="bg-linear-to-r from-cyan-500 via-violet-500 to-pink-500 dark:from-cyan-400 dark:via-violet-400 dark:to-pink-400 bg-clip-text text-transparent">
+          <span className="text-zinc-500 dark:text-zinc-400">
             JavaScript. Open-source. Yours.
           </span>
         </h2>
@@ -730,25 +726,24 @@ function WebBCISection() {
                   href={"href" in exp && exp.href ? exp.href : `${BASE_EXP_URL}/${exp.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group w-72 shrink-0 flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer"
+                  className="group w-72 shrink-0 flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
                 >
-                  <div className={`h-1 bg-linear-to-r ${exp.gradient}`} />
                   <div className="p-5 flex flex-col gap-3">
                     <div className="flex items-start justify-between">
-                      <div className={`p-2 rounded-lg bg-linear-to-br ${exp.gradient}`}>
-                        <Icon className="w-4 h-4 text-white" />
+                      <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200">
+                        <Icon className="w-4 h-4" />
                       </div>
                       <ExternalLink className="w-3.5 h-3.5 text-zinc-400 opacity-0 group-hover:opacity-100 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-all" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-zinc-900 dark:text-zinc-100 mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                      <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-1 transition-colors">
                         {exp.name}
                       </h3>
                       <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed line-clamp-2">
                         {exp.description}
                       </p>
                     </div>
-                    <span className="self-start px-2 py-0.5 rounded-full text-[10px] font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
+                    <span className="self-start px-2 py-0.5 rounded-full text-[10px] font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
                       {exp.tag}
                     </span>
                   </div>
@@ -769,25 +764,24 @@ function WebBCISection() {
                   href={"href" in exp && exp.href ? exp.href : `${BASE_EXP_URL}/${exp.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group w-72 shrink-0 flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer"
+                  className="group w-72 shrink-0 flex flex-col rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
                 >
-                  <div className={`h-1 bg-linear-to-r ${exp.gradient}`} />
                   <div className="p-5 flex flex-col gap-3">
                     <div className="flex items-start justify-between">
-                      <div className={`p-2 rounded-lg bg-linear-to-br ${exp.gradient}`}>
-                        <Icon className="w-4 h-4 text-white" />
+                      <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200">
+                        <Icon className="w-4 h-4" />
                       </div>
                       <ExternalLink className="w-3.5 h-3.5 text-zinc-400 opacity-0 group-hover:opacity-100 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-all" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-zinc-900 dark:text-zinc-100 mb-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                      <h3 className="font-semibold text-zinc-900 dark:text-zinc-100 mb-1 transition-colors">
                         {exp.name}
                       </h3>
                       <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed line-clamp-2">
                         {exp.description}
                       </p>
                     </div>
-                    <span className="self-start px-2 py-0.5 rounded-full text-[10px] font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
+                    <span className="self-start px-2 py-0.5 rounded-full text-[10px] font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
                       {exp.tag}
                     </span>
                   </div>
@@ -802,7 +796,7 @@ function WebBCISection() {
       <div className="text-center mt-12 px-4">
         <Link
           href="/examples"
-          className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-semibold text-sm hover:bg-zinc-700 dark:hover:bg-zinc-100 transition-all hover:scale-105 shadow-lg shadow-zinc-900/20 dark:shadow-white/10"
+          className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold text-sm hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
         >
           Explore all experiences
           <ArrowRight className="w-4 h-4" />
@@ -883,18 +877,14 @@ function FeaturedSection() {
   };
 
   return (
-    <section className="overflow-hidden py-20 bg-linear-to-b from-white via-blue-50/30 to-white dark:from-zinc-950 dark:via-blue-950/10 dark:to-zinc-950">
+    <section className="overflow-hidden py-20 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
       <div className="mx-auto max-w-7xl px-4">
         
         <div className="flex flex-col items-center text-center gap-10">
-          <div className="flex flex-col gap-6 max-w-3xl">
-            <div className="inline-flex items-center justify-center gap-2 mx-auto">
-              <div className="h-px w-12 bg-linear-to-r from-transparent via-blue-500 to-transparent" />
-              <p className="text-xs font-mono font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400">
-                [RECOGNITION]
-              </p>
-              <div className="h-px w-12 bg-linear-to-r from-transparent via-blue-500 to-transparent" />
-            </div>
+          <div className="flex flex-col gap-4 max-w-3xl">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
+              Recognition
+            </p>
             <h2 className="title-section text-zinc-900 dark:text-zinc-50">
               Trusted by researchers<br />worldwide
             </h2>
@@ -902,47 +892,38 @@ function FeaturedSection() {
               Featured in 28+ media publications and cited in 11+ scientific papers.{" "}
               <a 
                 href="/news" 
-                className="text-blue-600 dark:text-blue-400 hover:underline inline-flex items-center gap-1.5 font-mono"
+                className="text-zinc-900 dark:text-zinc-100 underline decoration-zinc-300 dark:decoration-zinc-700 underline-offset-4 hover:decoration-zinc-900 dark:hover:decoration-zinc-100 inline-flex items-center gap-1.5 font-medium"
               >
-                [view_all_coverage]
-                <ExternalLink className="w-4 h-4" />
+                View all coverage
+                <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </p>
           </div>
 
-          {/* Stats bar */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
-            <div className="relative group">
-              <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity" />
-              <div className="relative flex flex-col items-center gap-3 p-8 rounded-2xl border-2 border-blue-200 dark:border-blue-800/40 bg-blue-50/50 dark:bg-blue-950/20">
-                <div className="text-5xl font-bold bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                  28+
-                </div>
-                <div className="text-sm font-medium text-zinc-600 dark:text-zinc-400 text-center">
-                  Media features & podcasts
-                </div>
+          {/* Stats bar — clean About-page bento style */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-200 dark:border-zinc-800 dark:bg-zinc-800 w-full max-w-4xl">
+            <div className="flex flex-col items-center gap-2 bg-white px-6 py-8 dark:bg-zinc-950">
+              <div className="text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+                28+
+              </div>
+              <div className="text-sm font-medium text-zinc-500 dark:text-zinc-400 text-center">
+                Media features & podcasts
               </div>
             </div>
-            <div className="relative group">
-              <div className="absolute inset-0 bg-linear-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity" />
-              <div className="relative flex flex-col items-center gap-3 p-8 rounded-2xl border-2 border-purple-200 dark:border-purple-800/40 bg-purple-50/50 dark:bg-purple-950/20">
-                <div className="text-5xl font-bold bg-linear-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                  11+
-                </div>
-                <div className="text-sm font-medium text-zinc-600 dark:text-zinc-400 text-center">
-                  Scientific papers
-                </div>
+            <div className="flex flex-col items-center gap-2 bg-white px-6 py-8 dark:bg-zinc-950">
+              <div className="text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+                11+
+              </div>
+              <div className="text-sm font-medium text-zinc-500 dark:text-zinc-400 text-center">
+                Scientific papers
               </div>
             </div>
-            <div className="relative group">
-              <div className="absolute inset-0 bg-linear-to-br from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity" />
-              <div className="relative flex flex-col items-center gap-3 p-8 rounded-2xl border-2 border-cyan-200 dark:border-cyan-800/40 bg-cyan-50/50 dark:bg-cyan-950/20">
-                <div className="text-5xl font-bold bg-linear-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
-                  100+
-                </div>
-                <div className="text-sm font-medium text-zinc-600 dark:text-zinc-400 text-center">
-                  Universities & labs
-                </div>
+            <div className="flex flex-col items-center gap-2 bg-white px-6 py-8 dark:bg-zinc-950">
+              <div className="text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+                100+
+              </div>
+              <div className="text-sm font-medium text-zinc-500 dark:text-zinc-400 text-center">
+                Universities & labs
               </div>
             </div>
           </div>
@@ -969,154 +950,126 @@ function CtaSection() {
   };
 
   return (
-    <section className="py-10 px-4 bg-linear-to-b from-white via-zinc-50 to-white dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-cyan-400/10 dark:bg-cyan-400/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/2 right-1/4 w-96 h-96 bg-purple-400/10 dark:bg-purple-400/5 rounded-full blur-3xl" />
-      </div>
-
+    <section className="py-16 sm:py-20 px-4 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 relative overflow-hidden">
       <div className="relative z-10 mx-auto max-w-5xl flex flex-col items-center text-center gap-8">
 
-        <div className="flex flex-col gap-6">
-          <div className="inline-flex items-center justify-center gap-2 mx-auto">
-            <div className="h-px w-12 bg-linear-to-r from-transparent via-cyan-500 to-transparent" />
-            <p className="text-xs font-mono font-semibold uppercase tracking-widest text-cyan-600 dark:text-cyan-400">
-              [GET_STARTED]
-            </p>
-            <div className="h-px w-12 bg-linear-to-r from-transparent via-cyan-500 to-transparent" />
-          </div>
+        <div className="flex flex-col gap-4">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
+            Get started
+          </p>
           <h2 className="title-section text-zinc-900 dark:text-zinc-50">
-            Ship your first<br />
-            <span className="bg-linear-to-r from-cyan-600 via-blue-600 to-purple-600 dark:from-cyan-400 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-              BCI in 60 seconds
-            </span>
+            Ship your first BCI in 60 seconds
           </h2>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl mx-auto">
             Install pieeg-server, connect your hardware, and start streaming brainwaves instantly.
           </p>
         </div>
 
         {/* Install Code Block */}
         <div className="w-full max-w-3xl">
-          <div className="relative group">
-            {/* Glow effect */}
-            <div className="absolute -inset-1 bg-linear-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition duration-300"></div>
-            
-            <div className="relative rounded-2xl border border-zinc-200/50 dark:border-zinc-700/50 bg-white dark:bg-zinc-900/90 overflow-hidden shadow-2xl backdrop-blur-sm">
-              {/* Terminal chrome */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 backdrop-blur">
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-400/80" />
-                    <div className="w-3 h-3 rounded-full bg-amber-400/80" />
-                    <div className="w-3 h-3 rounded-full bg-green-400/80" />
-                  </div>
-                  <span className="ml-2 text-sm font-mono text-zinc-500 dark:text-zinc-500">
-                    terminal
-                  </span>
+          <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 overflow-hidden shadow-sm">
+            {/* Terminal chrome */}
+            <div className="flex items-center justify-between px-6 py-3.5 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" />
                 </div>
-                <button
-                  onClick={handleCopy}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-cyan-500 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-white transition-all duration-200"
-                  aria-label="Copy command"
-                >
-                  {copied ? (
-                    <>
-                      <Check className="w-4 h-4" />
-                      Copied!
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-4 h-4" />
-                      Copy
-                    </>
-                  )}
-                </button>
+                <span className="ml-1 text-xs font-mono text-zinc-500">
+                  terminal
+                </span>
               </div>
-              
-              {/* Code */}
-              <div className="px-8 py-8 bg-linear-to-br from-white via-white to-cyan-50/20 dark:from-zinc-900/90 dark:via-zinc-900/90 dark:to-cyan-950/10">
-                <pre className="text-base md:text-lg font-mono leading-relaxed">
-                  <code>
-                    <span className="text-purple-500 dark:text-purple-400">$ </span>
-                    <span className="text-zinc-900 dark:text-zinc-100 font-semibold">{installCommand}</span>
-                  </code>
-                </pre>
-              </div>
+              <button
+                onClick={handleCopy}
+                className="flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-mono bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors"
+                aria-label="Copy command"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-3.5 h-3.5" />
+                    Copied
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5" />
+                    Copy
+                  </>
+                )}
+              </button>
+            </div>
+            
+            {/* Code */}
+            <div className="px-8 py-7 bg-white dark:bg-zinc-950">
+              <pre className="text-base md:text-lg font-mono leading-relaxed">
+                <code>
+                  <span className="text-zinc-400 dark:text-zinc-500 select-none">$ </span>
+                  <span className="text-zinc-900 dark:text-zinc-100 font-medium">{installCommand}</span>
+                </code>
+              </pre>
             </div>
           </div>
           
           {/* Quick steps */}
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="group relative">
-              <div className="absolute inset-0 bg-linear-to-br from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300" />
-              <div className="relative flex items-start gap-4 p-6 rounded-xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-linear-to-br from-cyan-500 to-cyan-600 dark:from-cyan-400 dark:to-cyan-500 text-white text-lg font-bold font-mono shrink-0 shadow-lg shadow-cyan-500/30">
-                  1
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-base font-semibold text-zinc-900 dark:text-zinc-100 font-mono mb-1">INSTALL</p>
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400">One pip command</p>
-                </div>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="flex items-start gap-4 p-5 rounded-xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 text-left">
+              <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-sm font-semibold font-mono shrink-0">
+                1
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 font-mono mb-0.5">INSTALL</p>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">One pip command</p>
               </div>
             </div>
             
-            <div className="group relative">
-              <div className="absolute inset-0 bg-linear-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300" />
-              <div className="relative flex items-start gap-4 p-6 rounded-xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-linear-to-br from-blue-500 to-blue-600 dark:from-blue-400 dark:to-blue-500 text-white text-lg font-bold font-mono shrink-0 shadow-lg shadow-blue-500/30">
-                  2
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-base font-semibold text-zinc-900 dark:text-zinc-100 font-mono mb-1">CONNECT</p>
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400">Auto-detects hardware</p>
-                </div>
+            <div className="flex items-start gap-4 p-5 rounded-xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 text-left">
+              <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-sm font-semibold font-mono shrink-0">
+                2
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 font-mono mb-0.5">CONNECT</p>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">Auto-detects hardware</p>
               </div>
             </div>
             
-            <div className="group relative">
-              <div className="absolute inset-0 bg-linear-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300" />
-              <div className="relative flex items-start gap-4 p-6 rounded-xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-linear-to-br from-purple-500 to-purple-600 dark:from-purple-400 dark:to-purple-500 text-white text-lg font-bold font-mono shrink-0 shadow-lg shadow-purple-500/30">
-                  3
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-base font-semibold text-zinc-900 dark:text-zinc-100 font-mono mb-1">STREAM</p>
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400">Live in your browser</p>
-                </div>
+            <div className="flex items-start gap-4 p-5 rounded-xl bg-white dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 text-left">
+              <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-sm font-semibold font-mono shrink-0">
+                3
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 font-mono mb-0.5">STREAM</p>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">Live in your browser</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* CTAs */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
+        <div className="flex flex-wrap items-center justify-center gap-3 mt-4">
           <a
             href="https://cloud.pieeg.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex items-center gap-3 h-16 bg-linear-to-r from-cyan-500 to-blue-600 dark:from-cyan-400 dark:to-blue-500 px-10 text-lg font-semibold text-white dark:text-zinc-950 hover:shadow-2xl hover:shadow-cyan-500/30 hover:scale-105 transition-all duration-200 rounded-xl overflow-hidden"
+            className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-7 py-3.5 font-semibold text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
-            <div className="absolute inset-0 bg-linear-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-            <Play className="w-6 h-6 relative z-10" />
-            <span className="relative z-10">Try Live Demo</span>
+            <Play className="w-4 h-4" />
+            <span>Try Live Demo</span>
           </a>
           <a
             href="/support"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 h-16 border-2 border-zinc-300 dark:border-zinc-700 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm px-10 text-lg font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-xl"
+            className="inline-flex items-center gap-2 rounded-xl border border-zinc-300 px-7 py-3.5 font-semibold text-zinc-900 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800"
           >
             Documentation
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-4 h-4" />
           </a>
           <a
             href="/hardware"
-            className="flex items-center gap-3 h-16 border-2 border-zinc-300 dark:border-zinc-700 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm px-10 text-lg font-medium text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-200 rounded-xl"
+            className="inline-flex items-center gap-2 rounded-xl border border-zinc-300 px-7 py-3.5 font-semibold text-zinc-900 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-800"
           >
             Shop Hardware
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-4 h-4" />
           </a>
         </div>
 

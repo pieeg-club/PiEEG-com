@@ -71,9 +71,9 @@ export function CommunitySubNav() {
   return (
     <div className="border-b border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/90 dark:bg-zinc-900/80 backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 py-2.5">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2.5 py-2.5">
           {/* Left breadcrumb / label */}
-          <div className="flex items-center gap-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+          <div className="flex items-center gap-2 text-xs font-medium text-zinc-500 dark:text-zinc-400 whitespace-nowrap shrink-0">
             <Link
               href="/"
               className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
@@ -92,14 +92,14 @@ export function CommunitySubNav() {
           {/* Sub-navigation pills */}
           <nav
             aria-label="Community sections"
-            className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5"
+            className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 min-w-0"
           >
             {COMMUNITY_TABS.map((tab) => {
               const active = isTabActive(tab);
               const Icon = tab.Icon;
 
               const baseClasses =
-                "group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-150 border";
+                "group inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap shrink-0 transition-all duration-150 border";
               const activeClasses =
                 "bg-cyan-600 text-white border-cyan-600 shadow-xs dark:bg-cyan-500 dark:text-zinc-950 dark:border-cyan-400";
               const inactiveClasses =

@@ -79,6 +79,23 @@ function HeroSection() {
         <div className="w-175 h-125 rounded-full bg-cyan-400/5 dark:bg-cyan-400/8 blur-[80px]" />
       </div>
 
+      {/* Top-left Monthly Live indicator */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-5">
+        <Link
+          href="/live"
+          className="group inline-flex items-center gap-2.5 rounded-full border border-zinc-200/90 dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md px-3.5 py-1.5 shadow-2xs transition-all hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-sm"
+        >
+          <span className="relative flex size-2.5 items-center justify-center">
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-rose-400 opacity-75" />
+            <span className="relative inline-flex size-2 rounded-full bg-rose-500 ring-2 ring-rose-500/20" />
+          </span>
+          <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-700 dark:text-zinc-200">
+            PiEEG Monthly Live
+          </span>
+          <ArrowRight className="w-3 h-3 text-zinc-400 dark:text-zinc-500 transition-transform group-hover:translate-x-0.5 group-hover:text-zinc-700 dark:group-hover:text-zinc-200" />
+        </Link>
+      </div>
+
       {/* Main content — fills leftover height so Featured In stays on the first fold */}
       <div className="relative z-10 flex-1 w-full max-w-6xl mx-auto flex flex-col items-center justify-center gap-5 px-4 py-8">
 

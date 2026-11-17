@@ -8,6 +8,7 @@ import {
   Calendar,
   Database,
   ExternalLink,
+  Radio,
 } from "lucide-react";
 
 const COMMUNITY_TABS = [
@@ -18,6 +19,14 @@ const COMMUNITY_TABS = [
     Icon: Trophy,
     badge: "Cohort #1",
     exactMatch: true,
+  },
+  {
+    id: "live",
+    label: "PiEEG Live",
+    href: "/live",
+    Icon: Radio,
+    badge: "Monthly",
+    matchPrefix: "/live",
   },
   {
     id: "kaggle",

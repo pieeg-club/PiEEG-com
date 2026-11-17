@@ -29,6 +29,7 @@ const STATIC_ROUTES = [
   'store',
   'job',
   'liability',
+  'live',
   'news',
   'guides',
   'partnership',

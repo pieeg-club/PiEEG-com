@@ -25,6 +25,7 @@ const footerLinks = {
     { label: "Community", href: "/community" },
   ],
   Community: [
+    { label: "PiEEG Monthly Live", href: "/live" },
     { label: "PiEEG Competition", href: "/community" },
     { label: "Open Project Ideas", href: "/community/open-ideas" },
     { label: "Hackathons", href: "/community/hackathons" },

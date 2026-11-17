@@ -3,7 +3,7 @@ import Link from "next/link";
 import {
   Users, Mail, Briefcase, Building2, Code2, Zap, Globe,
   BookOpen, Newspaper, Cpu, Layers, LifeBuoy, MessageCircle,
-  ArrowRight, Sparkles, ExternalLink, Cloud, Bot, Monitor, Glasses, Watch,
+  ArrowRight, Sparkles, ExternalLink, Cloud, Bot, Monitor, Glasses, Watch, Radio,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -81,6 +81,7 @@ const sections = [
     dot: "bg-rose-500",
     items: [
       { href: "/partnership", label: "Partnership", desc: "White-label, reseller & collabs", Icon: Building2 },
+      { href: "/live", label: "PiEEG Monthly Live", desc: "Monthly stream & live Q&A", Icon: Radio },
       { href: "/community", label: "Community & Competition", desc: "Octopus 16 Maker Challenge", Icon: MessageCircle },
       { href: "/community/open-ideas", label: "Open Project Ideas", desc: "16 open neurotech ideas to build", Icon: Sparkles },
     ],

@@ -45,7 +45,7 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
 
   const isAvailable = product.availability === "InStock";
   // Some products have a documentation column in the hero and an interactive guide (see store-extras.tsx).
-  const { Docs: ProductDocs, Guide: ProductGuide, Media: ProductMedia } = STORE_EXTRAS[product.slug] ?? {};
+  const { Docs: ProductDocs, Guide: ProductGuide, Media: ProductMedia, Buy: ProductBuy } = STORE_EXTRAS[product.slug] ?? {};
   const isKickstarter = product.availability === "Kickstarter";
   const priceDisplay = getStoreProductPriceDisplay(product);
 
@@ -116,12 +116,18 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
               <a href="#specs" className="hover:text-zinc-900 dark:hover:text-white transition-colors">
                 Tech Specs
               </a>
-              <Link
-                href={product.hardwarePath}
-                className="text-cyan-600 dark:text-cyan-400 hover:underline"
-              >
-                Interactive Guide →
-              </Link>
+              {ProductBuy ? (
+                <a href="#subscribe" className="text-cyan-600 dark:text-cyan-400 hover:underline">
+                  Get Notified →
+                </a>
+              ) : (
+                <Link
+                  href={product.hardwarePath}
+                  className="text-cyan-600 dark:text-cyan-400 hover:underline"
+                >
+                  Interactive Guide →
+                </Link>
+              )}
             </div>
 
             <div className="flex items-center gap-2.5">
@@ -357,7 +363,7 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
                     </span>
                   )}
                   <p className="text-[11px] text-zinc-400 mt-1">
-                    Fulfilled worldwide via Elecrow
+                    {ProductBuy ? "Subscribe to hear first" : "Fulfilled worldwide via Elecrow"}
                   </p>
                 </div>
               </div>
@@ -382,7 +388,11 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
                 ))}
               </div>
 
-              {/* ── DUAL PURCHASE ACTION BOX (Elecrow + Disabled Direct Store + Sendy Waitlist) ── */}
+              {/* Upcoming products replace the purchase box with their own subscribe form */}
+              {ProductBuy ? (
+                <ProductBuy />
+              ) : (
+              /* ── DUAL PURCHASE ACTION BOX (Elecrow + Disabled Direct Store + Sendy Waitlist) ── */
               <div className="rounded-3xl border-2 border-zinc-900/10 dark:border-white/10 bg-white dark:bg-zinc-900/50 p-5 sm:p-6 space-y-4 shadow-lg shadow-zinc-900/5">
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
@@ -470,17 +480,20 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
                 {/* Inline Sendy Waitlist for Direct Store (List ID: jsw5exWDIC1KbuAgvAoliQ) */}
                 <StoreDirectWaitlist productName={product.name} compact />
               </div>
+              )}
 
               {/* Secondary links: Interactive Hardware Guide + Share + Bulk Quote */}
               <div className="space-y-3">
                 <div className="flex flex-wrap items-center gap-2.5">
-                  <Link
-                    href={product.hardwarePath}
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs sm:text-sm font-bold text-zinc-800 dark:text-zinc-200 transition-colors"
-                  >
-                    <BookOpen className="w-4 h-4 text-cyan-500" />
-                    Interactive Setup Guide & Pinout
-                  </Link>
+                  {!ProductBuy && (
+                    <Link
+                      href={product.hardwarePath}
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs sm:text-sm font-bold text-zinc-800 dark:text-zinc-200 transition-colors"
+                    >
+                      <BookOpen className="w-4 h-4 text-cyan-500" />
+                      Interactive Setup Guide & Pinout
+                    </Link>
+                  )}
 
                   <button
                     type="button"
@@ -742,17 +755,25 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
               <h2 className="text-2xl font-black tracking-tight text-zinc-900 dark:text-white mb-2">
                 Technical Specifications
               </h2>
-              <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mb-6">
-                Want interactive pinout diagrams, live signal simulations, and step-by-step wiring code?
-              </p>
-              <Link
-                href={product.hardwarePath}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs sm:text-sm font-bold hover:opacity-90 transition-opacity"
-              >
-                <BookOpen className="w-4 h-4" />
-                Open {product.name} Engineering Guide
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              {ProductBuy ? (
+                <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mb-6">
+                  Preliminary data. Full specifications are announced to subscribers first.
+                </p>
+              ) : (
+                <>
+                  <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mb-6">
+                    Want interactive pinout diagrams, live signal simulations, and step-by-step wiring code?
+                  </p>
+                  <Link
+                    href={product.hardwarePath}
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-xs sm:text-sm font-bold hover:opacity-90 transition-opacity"
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    Open {product.name} Engineering Guide
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </>
+              )}
             </div>
 
             <div className="lg:col-span-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 overflow-hidden bg-white dark:bg-zinc-950">
@@ -842,6 +863,13 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
               >
                 <Rocket className="w-3.5 h-3.5" />
                 Kickstarter
+              </a>
+            ) : ProductBuy ? (
+              <a
+                href="#subscribe"
+                className={`inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-linear-to-r ${product.gradient} text-white font-bold text-xs shadow-md`}
+              >
+                Get Notified
               </a>
             ) : null}
           </div>

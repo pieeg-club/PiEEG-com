@@ -9,6 +9,10 @@ export async function POST(req: NextRequest) {
     const email = typeof body.email === 'string' ? body.email.trim() : '';
     const name = typeof body.name === 'string' ? body.name.trim() : '';
     const hp = typeof body.hp === 'string' ? body.hp : '';
+    // Optional tags for product sign-ups (e.g. IronBCI-128). Sent to Sendy as the custom
+    // fields "Product" and "Role"; Sendy ignores them if the list has no such fields.
+    const product = typeof body.product === 'string' ? body.product.trim().slice(0, 60) : '';
+    const role = typeof body.role === 'string' ? body.role.trim().slice(0, 60) : '';
     const list =
       typeof body.list === 'string' && body.list.trim()
         ? body.list.trim()
@@ -33,6 +37,8 @@ export async function POST(req: NextRequest) {
     formData.set('list', list);
     formData.set('subform', 'yes');
     formData.set('boolean', 'true');
+    if (product) formData.set('Product', product);
+    if (role) formData.set('Role', role);
 
     const sendyRes = await fetch(SENDY_SUBSCRIBE_URL, {
       method: 'POST',

@@ -76,6 +76,7 @@ const CHANNEL_FILTERS: { id: "all" | StoreProduct["channelFilter"]; label: strin
   { id: "8ch", label: "8 Channels" },
   { id: "16ch", label: "16 Channels" },
   { id: "32ch", label: "32 Channels" },
+  { id: "128ch", label: "128 Channels" },
   { id: "accessory", label: "Kits & Gel" },
 ];
 
@@ -228,6 +229,13 @@ export default function StoreCatalogClient() {
                           <Rocket className="w-3.5 h-3.5" />
                           Kickstarter
                         </a>
+                      ) : product.hardwarePath === `${product.storePath}#subscribe` ? (
+                        <Link
+                          href={product.hardwarePath}
+                          className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-linear-to-r ${product.gradient} text-white font-bold text-xs sm:text-sm hover:opacity-90 transition-opacity shadow-xs`}
+                        >
+                          Get Notified
+                        </Link>
                       ) : (
                         <button
                           type="button"

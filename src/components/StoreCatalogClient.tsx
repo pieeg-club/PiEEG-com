@@ -16,6 +16,7 @@ import {
   Layers,
   Package,
   Box,
+  Bell,
   Search,
   GraduationCap,
   ShieldCheck,
@@ -44,16 +45,17 @@ const CATEGORY_ICONS: Record<StoreCategory, React.ReactNode> = {
   xr: <Glasses className="w-4 h-4" />,
   "caps-accessories": <Package className="w-4 h-4" />,
   cases: <Box className="w-4 h-4" />,
+  upcoming: <Bell className="w-4 h-4" />,
 };
 
-// Unfiltered catalog is shown in three sections.
+// Unfiltered catalog is shown in four sections.
 const CATALOG_SECTIONS: { id: string; kicker: string; title: string; desc: string; match: (p: StoreProduct) => boolean }[] = [
   {
     id: "hardware",
     kicker: "Boards & Shields",
     title: "Hardware",
     desc: "EEG boards and shields for Raspberry Pi, Arduino, STM32, Jetson, wireless and VR.",
-    match: (p) => p.category !== "caps-accessories" && p.category !== "cases",
+    match: (p) => p.category !== "caps-accessories" && p.category !== "cases" && p.category !== "upcoming",
   },
   {
     id: "accessories",
@@ -68,6 +70,13 @@ const CATALOG_SECTIONS: { id: string; kicker: string; title: string; desc: strin
     title: "3D-Printed Cases",
     desc: "PLA enclosures for PiEEG, IronBCI-32 and Octopus 16. Open-source STL files.",
     match: (p) => p.category === "cases",
+  },
+  {
+    id: "upcoming",
+    kicker: "In Development",
+    title: "Upcoming",
+    desc: "New PiEEG devices on the way. Subscribe on a product page to hear first.",
+    match: (p) => p.category === "upcoming",
   },
 ];
 

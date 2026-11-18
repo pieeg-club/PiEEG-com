@@ -11,7 +11,8 @@ export type StoreCategory =
   | "mcu-kits"
   | "xr"
   | "caps-accessories"
-  | "cases";
+  | "cases"
+  | "upcoming";
 
 export interface StoreGalleryItem {
   src: string;
@@ -98,6 +99,7 @@ export const STORE_CATEGORIES: {
   { id: "xr", label: "Spatial & VR (XR)", shortDesc: "Neural face gaskets for VR headsets" },
   { id: "caps-accessories", label: "EEG Caps & Kits", shortDesc: "Dry & wet 10-20 caps, EMG & gel" },
   { id: "cases", label: "3D-Printed Cases", shortDesc: "PLA enclosures for PiEEG, IronBCI-32 & Octopus 16" },
+  { id: "upcoming", label: "Upcoming", shortDesc: "New devices in development — subscribe to hear first" },
 ];
 
 const COMMON_STORE_FAQS: StoreFaqItem[] = [
@@ -672,7 +674,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     headline: "IronBCI-128 — Coming Soon",
     summary:
       "A 128-channel brain–computer interface from PiEEG. IronBCI-128 is the next step for the IronBCI family: 128 channels on one compact 70 × 70 mm octagonal board. Subscribe and we'll let you know the moment IronBCI-128 is ready to order.",
-    category: "mcu-kits",
+    category: "upcoming",
     channelFilter: "128ch",
     channels: "128 channels",
     platform: "IronBCI family · USB-C",

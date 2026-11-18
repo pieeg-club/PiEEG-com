@@ -20,6 +20,7 @@ const STATIC_ROUTES = [
   'browser',
   'cloud',
   'community',
+  'community/discussions',
   'community/open-ideas',
   'community/hackathons',
   'contact',

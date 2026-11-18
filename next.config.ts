@@ -77,6 +77,8 @@ const nextConfig: NextConfig = {
 
       { source: "/links", destination: "/community", permanent: true },
       { source: "/links/index.html", destination: "/community", permanent: true },
+      { source: "/discussions", destination: "/community/discussions", permanent: false },
+      { source: "/discussions/:threadId", destination: "/community/discussions/:threadId", permanent: false },
       { source: "/software", destination: "/server", permanent: true },
 
       { source: "/signal-processing-with-python-for-neuroscience-practical-course", destination: "/server", permanent: true },

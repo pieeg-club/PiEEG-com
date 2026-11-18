@@ -57,6 +57,7 @@ Welcome! This README is your **CMS dashboard**. Click any section below to open 
 | Home | [src/app/](src/app/) → `page.tsx` |
 | About | [src/app/about/](src/app/about/) |
 | Community | [src/app/community/](src/app/community/) |
+| Community Discussions | [src/app/community/discussions/](src/app/community/discussions/) |
 | Contact | [src/app/contact/](src/app/contact/) |
 | Examples | [src/app/examples/](src/app/examples/) |
 | Explore | [src/app/explore/](src/app/explore/) |

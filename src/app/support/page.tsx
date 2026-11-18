@@ -223,6 +223,13 @@ export default function SupportPage() {
                 <ExternalLink className="w-4 h-4" />
               </a>
               <Link
+                href="/community/discussions"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-cyan-300 dark:border-cyan-700 bg-cyan-50/70 dark:bg-cyan-950/40 text-cyan-800 dark:text-cyan-200 hover:bg-cyan-100/70 dark:hover:bg-cyan-900/50 font-semibold transition-all"
+              >
+                Community Q&amp;A
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
                 href="#guides"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 font-semibold transition-all"
               >

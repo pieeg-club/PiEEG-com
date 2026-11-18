@@ -9,9 +9,18 @@ import {
   Database,
   ExternalLink,
   Radio,
+  MessageSquare,
 } from "lucide-react";
 
 const COMMUNITY_TABS = [
+  {
+    id: "discussions",
+    label: "Discussions",
+    href: "/community/discussions",
+    Icon: MessageSquare,
+    badge: "Q&A",
+    matchPrefix: "/community/discussions",
+  },
   {
     id: "competition",
     label: "PiEEG Competition",

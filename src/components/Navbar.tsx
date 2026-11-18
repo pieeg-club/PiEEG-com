@@ -8,7 +8,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { SocialMenu, PIEEG_SOCIAL_LINKS } from "./SocialMenu";
 import {
   ChevronDown, Users, Mail, Briefcase, Building2, Code2,
-  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal, Watch, CircuitBoard, School, Scale, FlaskConical, Camera, Eye, Radio,
+  Zap, BookOpen, Newspaper, Sparkles, ArrowRight, Menu, X, Globe, LayoutGrid, Monitor, Cloud, Bot, Glasses, Cpu, ShoppingCart, GraduationCap, Smartphone, Terminal, Watch, CircuitBoard, School, Scale, FlaskConical, Camera, Eye, Radio, MessageSquare,
 } from "lucide-react";
 
 function GitHubIcon({ className }: { className?: string }) {
@@ -137,6 +137,7 @@ const megaMenuSections = [
       { href: "/support", label: "Support", desc: "Docs, FAQ & troubleshooting", Icon: BookOpen },
       { href: "/news", label: "Latest News", desc: "Updates & announcements", Icon: Newspaper },
       { href: "/live", label: "PiEEG Monthly Live", desc: "Monthly neurotech stream & live Q&A", Icon: Radio },
+      { href: "/community/discussions", label: "Community Discussions", desc: "Technical Q&A, DSP tips & forum", Icon: MessageSquare },
       { href: "/community", label: "PiEEG Competition", desc: "Maker Challenge Cohort #1", Icon: Sparkles },
       { href: "/community/open-ideas", label: "Open Ideas & Volunteers", desc: "Build your own open neurotech project", Icon: Code2 },
       { href: "https://firmware.pieeg.com/", label: "Octopus-16 Firmware", desc: "Flash 16-ch EEG over Bluetooth", Icon: Cpu, external: true },

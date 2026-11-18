@@ -768,6 +768,129 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     ],
   },
   {
+    slug: "octopus-headband",
+    name: "Octopus Headband",
+    shortName: "Octopus Headband",
+    eyebrow: "Upcoming · Open-source headband BCI",
+    badge: "Coming Soon",
+    tagline: "Open-source headband BCI powered by Octopus 16. Sign up if you're interested.",
+    headline: "Octopus Headband — Coming Soon",
+    summary:
+      "An open-source headband brain–computer interface powered by the real Octopus 16 board, with a 1000 mAh battery on the band. The data protocol is fully open, and the software includes an app constructor, so you can start in minutes and adapt the app to your own needs. It connects to the PiEEG server for games and VR, the module is easy to move to a new position, and you can scale up to 48 channels.",
+    category: "upcoming",
+    channelFilter: "16ch",
+    channels: "16 → 48 channels",
+    platform: "Octopus 16 · 1000 mAh",
+    signals: ["EEG", "BCI"],
+    gradient: "from-violet-500 to-fuchsia-600",
+    accentText: "text-violet-500",
+    heroImage: "/products/octopus-headband/octopus-headband.jpg",
+    gallery: [
+      {
+        src: "/products/octopus-headband/octopus-headband.jpg",
+        alt: "Octopus Headband with the Octopus module on the front and a 1000 mAh battery on the band",
+        caption: "Octopus Headband — Octopus module and 1000 mAh battery on an adjustable band (concept)",
+      },
+      {
+        src: "/products/octopus-headband/octopus-headband-electrodes.jpg",
+        alt: "Inside of the Octopus Headband with the 16 gold dry electrodes",
+        caption: "16 gold dry electrodes on the inside — move them to a new position in seconds",
+      },
+      {
+        src: "/products/octopus16.png",
+        alt: "Octopus 16 board with dry gold pogo-pin electrodes",
+        caption: "Octopus 16 — the board that powers the headband",
+      },
+      {
+        src: "/community/octopus-challenge/pogo-pins.jpg",
+        alt: "Octopus 16 modules held in a hand, showing the gold pogo-pin electrodes",
+        caption: "Real Octopus modules with 16 gold pogo-pin electrodes",
+      },
+      {
+        src: "/community/octopus-challenge/octopus-overview.jpg",
+        alt: "Octopus 16 — 16-channel wireless EEG with 24-bit resolution, dry electrodes and Bluetooth",
+        caption: "Octopus 16 — 24-bit, dry electrodes, Bluetooth",
+      },
+    ],
+    price: null,
+    priceLabel: "Coming soon",
+    currency: "USD",
+    sku: null,
+    availability: "ComingSoon",
+    hardwarePath: "/store/octopus-headband#subscribe",
+    storePath: "/store/octopus-headband",
+    enclosureLinks: [],
+    keySpecs: [
+      { label: "Powered by", value: "Octopus 16", sublabel: "Dry pogo-pin EEG" },
+      { label: "Battery", value: "1000 mAh", sublabel: "On the band, USB-C" },
+      { label: "Channels", value: "16 → 48", sublabel: "Scale up when you need" },
+      { label: "Software", value: "Open", sublabel: "Open protocol + app constructor" },
+    ],
+    highlights: [
+      {
+        title: "Open Protocol, Open Source",
+        description:
+          "The data protocol is fully open, so you can read the signals in any language and build on top of them.",
+      },
+      {
+        title: "App Constructor Inside",
+        description:
+          "Start with a ready-made app and adapt it to your own needs with the built-in app constructor.",
+      },
+      {
+        title: "Games & VR via PiEEG Server",
+        description:
+          "Connect to the PiEEG server to play games or drive VR with your brain signals.",
+      },
+      {
+        title: "Move It, Scale It",
+        description:
+          "Change the module position on the head in seconds, and expand from 16 up to 48 channels.",
+      },
+    ],
+    inTheBox: [
+      { qty: "1×", item: "Octopus Headband with Octopus 16", detail: "Final contents announced at launch" },
+      { qty: "1×", item: "1000 mAh rechargeable battery", detail: "Mounts on the band" },
+    ],
+    requirements: [
+      "Specifications may change — Octopus Headband is in development",
+      "Computer, phone or VR headset to run the app",
+    ],
+    recommendedWith: ["octopus-16", "ironbci-128"],
+    fullSpecs: [
+      { label: "EEG module", value: "Octopus 16 (16 channels, dry gold pogo-pin electrodes)" },
+      { label: "Channels", value: "16, expandable up to 48" },
+      { label: "Battery", value: "1000 mAh rechargeable, USB-C" },
+      { label: "Data protocol", value: "Fully open and documented" },
+      { label: "Software", value: "App constructor to build and adapt your own app" },
+      { label: "Integration", value: "PiEEG server — games and VR" },
+      { label: "Positioning", value: "Module moves easily to a new position on the head" },
+      { label: "Price & availability", value: "Announced to subscribers first" },
+    ],
+    faqs: [
+      {
+        q: "When will Octopus Headband be available?",
+        a: "It is in development. Sign up on this page and we'll email you as soon as it is ready to order.",
+      },
+      {
+        q: "Is it really open source?",
+        a: "Yes. The data protocol is fully open, so you can read and use the signals in your own software.",
+      },
+      {
+        q: "Can I build my own app?",
+        a: "Yes. The software includes an app constructor, so you can start with a ready app and adapt it to your needs.",
+      },
+      {
+        q: "Can I use it for games or VR?",
+        a: "Yes. Octopus Headband connects to the PiEEG server for games and VR.",
+      },
+      {
+        q: "Can I start with Octopus 16 now?",
+        a: "Yes. Octopus 16 is available today — it is the same board that powers the headband.",
+      },
+    ],
+  },
+  {
     slug: "pieeg-xr",
     name: "PiEEG XR",
     shortName: "PiEEG XR",

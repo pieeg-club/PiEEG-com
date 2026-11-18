@@ -1,0 +1,59 @@
+/* Octopus 16 Enclosure hero media (3D model + animation tabs). Scoped to .oc16m. */
+.oc16m .oc-stage{position:relative;border:1px solid #e4e4e7;border-radius:24px;overflow:hidden;aspect-ratio:4/3;display:flex;flex-direction:column;
+  background:radial-gradient(ellipse at 50% 40%,#fff 0%,#f6f3fc 60%,#eeeaf7 100%)}
+@media(max-width:560px){.oc16m .oc-stage{aspect-ratio:auto;height:440px}}
+.oc16m .oc-media{position:relative;flex:1;min-height:0}
+.oc16m .oc-panel{position:absolute;inset:0;display:none}
+.oc16m .oc-panel.on{display:block}
+.oc16m .oc-img{width:100%;height:100%;object-fit:contain;display:block;padding:12px}
+.oc16m .oc-cap{position:relative;z-index:3;padding:12px 20px;border-top:1px solid rgba(228,228,231,.8);background:rgba(255,255,255,.82);
+  backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.oc16m .oc-cap span:first-child{font-size:12px;font-weight:500;color:#52525b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.oc16m .oc-count{font-size:11px;color:#a1a1aa;font-family:ui-monospace,monospace;white-space:nowrap;flex-shrink:0}
+
+/* 3D viewer */
+.oc16m .oc-v3d{position:absolute;inset:0}
+.oc16m .oc-v3d [data-canvas]{position:absolute;inset:0;cursor:grab;touch-action:none}
+.oc16m .oc-v3d [data-canvas]:active{cursor:grabbing}
+.oc16m .loading{position:absolute;inset:0;display:grid;place-items:center;font-size:13px;color:#71717a}
+.oc16m .oc-v3d.ready .loading{display:none}
+.oc16m .vbar{position:absolute;z-index:2;display:flex;gap:3px;padding:3px;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);
+  border:1px solid #e4e4e7;border-radius:12px;box-shadow:0 4px 14px rgba(24,24,27,.07)}
+.oc16m .vbar button{font:inherit;font-size:12px;font-weight:600;border:0;background:transparent;color:#3f3f46;padding:6px 10px;border-radius:9px;
+  cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.oc16m .vbar button:hover{background:#f4f4f5}
+.oc16m .vbar button.on{background:#18181b;color:#fff}
+.oc16m .vbar svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.oc16m .vbar.boards{top:12px;left:12px}
+.oc16m .vbar.views{top:12px;right:12px}
+.oc16m .vbar.tools{bottom:12px;left:50%;transform:translateX(-50%)}
+.oc16m .dot{width:8px;height:8px;border-radius:50%;background:#1f7a52;display:inline-block}
+.oc16m .vhint{position:absolute;z-index:1;bottom:58px;left:50%;transform:translateX(-50%);font-size:11px;color:#71717a;pointer-events:none;white-space:nowrap}
+@media(max-width:560px){
+  .oc16m .vbar.views{top:auto;bottom:56px;right:50%;transform:translateX(50%)}
+  .oc16m .vbar button{padding:6px 7px;font-size:11px;gap:4px}
+  .oc16m .vbar.tools svg{display:none}
+  .oc16m .vhint{display:none}
+}
+
+/* thumbnails */
+.oc16m .oc-thumbs{display:flex;gap:12px;overflow-x:auto;padding-bottom:4px}
+.oc16m .oc-thumb{position:relative;width:80px;height:80px;border-radius:16px;border:1px solid #e4e4e7;background:#fafafa;opacity:.75;cursor:pointer;
+  flex-shrink:0;overflow:hidden;padding:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font:inherit;transition:all .15s}
+.oc16m .oc-thumb:hover{opacity:1}
+.oc16m .oc-thumb.on{opacity:1;border-color:#06b6d4;box-shadow:0 0 0 3px rgba(6,182,212,.3);background:#fff}
+.oc16m .oc-thumb img{width:100%;height:100%;object-fit:contain}
+.oc16m .oc-thumb.t3d{background:#18181b;color:#e4e4e7;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.oc16m .oc-thumb.t3d svg{width:22px;height:22px;stroke:#22d3ee;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.oc16m .oc-play{position:absolute;right:6px;bottom:5px;font-size:9px;color:#fff;background:rgba(24,24,27,.75);border-radius:999px;padding:2px 5px}
+
+/* dark mode */
+.dark .oc16m .oc-stage{border-color:#27272a;background:radial-gradient(ellipse at 50% 40%,#2a2a33 0%,#1c1c22 60%,#141418 100%)}
+.dark .oc16m .oc-cap{background:rgba(9,9,11,.8);border-top-color:#27272a}
+.dark .oc16m .oc-cap span:first-child{color:#a1a1aa}
+.dark .oc16m .vbar{background:rgba(24,24,27,.9);border-color:#3f3f46}
+.dark .oc16m .vbar button{color:#d4d4d8}
+.dark .oc16m .vbar button:hover{background:#27272a}
+.dark .oc16m .vbar button.on{background:#fafafa;color:#18181b}
+.dark .oc16m .oc-thumb{border-color:#27272a;background:#18181b}
+.dark .oc16m .oc-thumb.on{background:#27272a}

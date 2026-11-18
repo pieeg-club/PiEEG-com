@@ -23,6 +23,10 @@ export const STORE_EXTRAS: Record<string, StoreExtras> = {
     Guide: dynamic(() => import("@/components/ironbci-32-store/IronBCI32StoreGuide")),
   },
   // Upcoming product: subscribe form instead of the purchase box.
+  "octopus-headband": {
+    Docs: dynamic(() => import("@/components/octopus-headband-store/OctopusHeadbandInfo")),
+    Buy: dynamic(() => import("@/components/octopus-headband-store/OctopusHeadbandSubscribe")),
+  },
   "ironbci-128": {
     Docs: dynamic(() => import("@/components/ironbci128-store/IronBCI128Docs")),
     Buy: dynamic(() => import("@/components/ironbci128-store/IronBCI128Subscribe")),

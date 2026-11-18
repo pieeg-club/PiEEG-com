@@ -159,17 +159,17 @@ const PROJECTS: MakerProject[] = [
   {
     id: "eeg-drone",
     slot: 5,
-    title: "Mind-Guided Drone View",
+    title: "Stuck on the Word",
     author: "Polina Lekhnitskaia",
-    awardTitle: "Aerial BCI Explorer",
+    awardTitle: "Word Recall Explorer",
     pitch:
-      "Walk around with a drone above you, see its live view in your glasses, and move it with EEG signals.",
+      "A home EEG headband that notices the struggle to recall a word.",
     image: "/community/octopus-challenge/polina.jpg",
     imagePos: "center 35%",
-    idea: "Pair Octopus 16 with Viture Pro 2 AR glasses, a mini PC and a drone. The drone streams its live video straight to the glasses, and the user moves it using EEG signals read by Octopus 16.",
+    idea: "Flashcard apps only see right or wrong, not the “it’s on the tip of my tongue” moment. With the Octopus 16, I’ll record myself during vocabulary practice, compare tip-of-the-tongue and easy words, find the 3–4 channels that matter most, and build a simple headband that shows the first letter when the searching lasts. I start with language learners; the longer goal is home practice for people with aphasia after stroke.",
     description: "",
     why: "",
-    tags: ["EEG", "AR glasses", "Drones"],
+    tags: ["EEG", "Language learning", "Aphasia"],
     links: [],
     progress: null,
   },
@@ -805,7 +805,7 @@ export default function OctopusMakerProjects() {
               Out of builders around the world, these{" "}
               <b style={{ color: "var(--text)" }}>five pioneering makers</b> won
               an Octopus 16 hardware grant for the audacity of their ideas—from
-              mind-guided drones and robotic arms to zero-calibration spellers
+              brain-driven rovers and robotic arms to zero-calibration spellers
               and neural jazz. Explore their builds, cheer them on with a like,
               and share their work—or pitch your own BCI idea to join the next
               spotlight cohort.

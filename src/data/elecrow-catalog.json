@@ -90,6 +90,17 @@
       "currency": "USD",
       "availability": "InStock"
     },
+    "octopus-16-enclosure": {
+      "name": "Octopus 16 Enclosure",
+      "description": "3D-printed PLA twist-lock case for the Octopus 16 wireless EEG board: base ring, threaded box and screw-on lid. No screws or tools.",
+      "image": "/products/octopus-16-enclosure/enclosure-closed.png",
+      "path": "/store/octopus-16-enclosure",
+      "elecrowUrl": "https://www.elecrow.com/octopus-16-enclosure-3d-printed-pla-twist-lock-case-for-octopus-16-wireless-eeg-board.html",
+      "sku": "PIA40213P",
+      "price": 38,
+      "currency": "USD",
+      "availability": "InStock"
+    },
     "octobio-kit": {
       "name": "OctoBio Kit",
       "description": "Brain-to-hardware learning kit. 16-channel wireless EEG board plus an Arduino starter kit with browser block programming.",

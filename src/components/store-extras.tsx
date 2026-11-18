@@ -4,6 +4,7 @@
  * Extra blocks for individual store pages (/store/[slug]):
  *   Docs  – technical documentation panel, shown as a third column in the hero
  *   Guide – interactive guide, shown after Technical Specifications
+ *   Media – replaces the photo gallery at the top left of the hero (e.g. an interactive 3D model)
  *
  * To add a device: create its folder in src/components/<device>-store/ and add one line
  * below, keyed by the product slug from src/lib/store-catalog.ts. Each block is loaded
@@ -13,7 +14,7 @@
 import dynamic from "next/dynamic";
 import type { ComponentType } from "react";
 
-type StoreExtras = { Docs?: ComponentType; Guide?: ComponentType };
+type StoreExtras = { Docs?: ComponentType; Guide?: ComponentType; Media?: ComponentType };
 
 export const STORE_EXTRAS: Record<string, StoreExtras> = {
   "ironbci-32": {
@@ -31,6 +32,10 @@ export const STORE_EXTRAS: Record<string, StoreExtras> = {
   "octopus-16": {
     Docs: dynamic(() => import("@/components/octopus16-store/Octopus16Docs")),
     Guide: dynamic(() => import("@/components/octopus16-store/Octopus16StoreGuide")),
+  },
+  "octopus-16-enclosure": {
+    Docs: dynamic(() => import("@/components/octopus16-enclosure-store/Octopus16EnclosureDocs")),
+    Media: dynamic(() => import("@/components/octopus16-enclosure-store/Octopus16EnclosureMedia"), { ssr: false }),
   },
   ironbci: {
     Docs: dynamic(() => import("@/components/ironbci8-store/IronBCIDocs")),

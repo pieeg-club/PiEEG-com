@@ -297,7 +297,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
       "3.7V LiPo battery or isolated 5V USB power source",
       "Desktop Chrome/Edge (for Web Bluetooth) or Python 3.9+ environment",
     ],
-    recommendedWith: ["16ch-cap", "emg-kit", "octobio-kit"],
+    recommendedWith: ["octopus-16-enclosure", "16ch-cap", "octobio-kit"],
     fullSpecs: [
       { label: "Channels", value: "16 EEG channels + Reference + Bias" },
       { label: "ADCs", value: "2× Texas Instruments ADS131M08 (24-bit simultaneous sampling)" },
@@ -1512,6 +1512,118 @@ export const STORE_PRODUCTS: StoreProduct[] = [
       { label: "Availability", value: "Coming Soon — Join Direct Store Waitlist" },
     ],
     faqs: COMMON_STORE_FAQS,
+  },
+  {
+    slug: "octopus-16-enclosure",
+    name: "Octopus 16 Enclosure",
+    shortName: "Octopus 16 Enclosure",
+    eyebrow: "3D-Printed Case · Octopus 16",
+    badge: "New",
+    tagline: "3D-printed PLA twist-lock case for the Octopus 16 wireless EEG board.",
+    headline: "Buy Octopus 16 Enclosure",
+    summary:
+      "A three-part 3D-printed PLA case for the Octopus 16 board and its XIAO ESP32-S3. The board drops into the box with its 18 pogo pins through the floor, the lid screws on top, and the box screws into the base ring. No screws or tools needed.",
+    category: "caps-accessories",
+    channelFilter: "accessory",
+    channels: "Fits Octopus 16",
+    platform: "PLA · Twist-lock",
+    signals: ["EEG"],
+    gradient: "from-violet-500 to-fuchsia-600",
+    accentText: "text-violet-500",
+    heroImage: "/products/octopus-16-enclosure/enclosure-closed.png",
+    gallery: [
+      {
+        src: "/products/octopus-16-enclosure/enclosure-closed.png",
+        alt: "Octopus 16 Enclosure assembled: base ring, threaded box and lid",
+        caption: "Assembled: base ring, threaded box and screw-on lid (3D render)",
+      },
+      {
+        src: "/products/octopus-16-enclosure/enclosure-exploded.png",
+        alt: "Octopus 16 Enclosure exploded view with the Octopus 16 board and XIAO inside",
+        caption: "Exploded view: Octopus 16 and XIAO drop into the box, pins through the floor",
+      },
+    ],
+    ...catalogInfo("octopus-16-enclosure"),
+    hardwarePath: "/hardware/octopus-16",
+    storePath: "/store/octopus-16-enclosure",
+    githubUrl: "https://github.com/pieeg-club/Octopus_16",
+    enclosureLinks: enclosuresFor("octopus-16"),
+    keySpecs: [
+      { label: "Fits", value: "Octopus 16", sublabel: "Ø 26 mm board + XIAO" },
+      { label: "Material", value: "PLA", sublabel: "3D printed, non-conductive" },
+      { label: "Size", value: "50 × 54 × 30 mm", sublabel: "Assembled, base to lid" },
+      { label: "Closing", value: "Threaded", sublabel: "Twist on, no tools" },
+    ],
+    highlights: [
+      {
+        title: "Built around the pogo pins",
+        description:
+          "The 18 holes in the box floor line up exactly with the board's 18 pogo pins. About 8 mm of each pin sticks out below the base, ready to touch the scalp.",
+      },
+      {
+        title: "Twist together, no tools",
+        description:
+          "The lid screws into the box and the box screws into the base. Take it apart in seconds to flash the XIAO or swap boards.",
+      },
+      {
+        title: "Power and cable openings",
+        description:
+          "The power bank plugs into the XIAO's USB-C through a side opening with the case closed. A small opening on the other side leaves room for the 6-pin connector cable.",
+      },
+    ],
+    inTheBox: [
+      { qty: "1×", item: "Base ring", detail: "PLA, internal thread, flat tab and 12 small holes for fixing to a strap or cap" },
+      { qty: "1×", item: "Threaded box", detail: "PLA, 18 pogo-pin holes in the floor, USB-C opening and a small cable opening" },
+      { qty: "1×", item: "Screw-on lid", detail: "PLA, knurled grip, short post that rests above the XIAO" },
+    ],
+    requirements: [
+      "Octopus 16 board with XIAO ESP32-S3 (not included)",
+      "Small 5V power bank, up to 2 A (mandatory while worn)",
+      "USB-C data cable (for flashing, off the head)",
+      "Elastic strap or headband to hold it in place",
+    ],
+    recommendedWith: ["octopus-16", "16ch-cap", "octobio-kit"],
+    fullSpecs: [
+      { label: "Compatible Board", value: "Octopus 16 with Seeed XIAO ESP32-S3 (Ø 26 mm round board, 18 pogo pins)" },
+      { label: "Material", value: "PLA (non-conductive), FDM 3D printed" },
+      { label: "Printed Parts", value: "3 — base ring, box and lid" },
+      { label: "Base Ring", value: "50 × 54 × 13.5 mm including the mounting tab" },
+      { label: "Box", value: "Ø 35.5 × 24.7 mm" },
+      { label: "Lid", value: "Ø 37 × 11 mm" },
+      { label: "Assembled Size", value: "≈ 50 × 54 × 30 mm; pogo pins stick out about 8 mm below the base" },
+      { label: "Closing", value: "Threaded: lid into box, box into base. No screws." },
+      { label: "Openings", value: "18 pogo-pin holes (Ø 4.7 mm), USB-C side opening, small cable opening" },
+      { label: "Weight", value: "≈ 15–20 g (depends on infill)" },
+      { label: "Print Settings (DIY)", value: "0.2 mm layers, 15–20 % infill; STL files on Thingiverse" },
+      { label: "SKU", value: "PIA40213P" },
+    ],
+    faqs: [
+      {
+        q: "Do I need any screws or tools?",
+        a: "No. The lid screws into the box and the box screws into the base by hand.",
+      },
+      {
+        q: "Can I plug in the power bank with the case closed?",
+        a: "Yes. The XIAO's USB-C port sits behind the wide opening in the side of the box. Flash the firmware with the device off the head; while worn, use a power bank only.",
+      },
+      {
+        q: "Do the pogo pins still reach the scalp?",
+        a: "Yes. The pins pass through the box floor and stick out about 8 mm below the base ring, and they still compress under strap pressure as on the bare board.",
+      },
+      {
+        q: "Does the case make Octopus 16 safe to use plugged into a computer?",
+        a: "No. The case is a mechanical cover only and adds no electrical isolation. While it is on a head, power it from a small 5V power bank only.",
+      },
+      {
+        q: "Is PLA a good material for this case?",
+        a: "PLA is stiff, non-conductive and fine at room and body temperature. It softens at around 55–60 °C, so don't leave the case in a hot car or in direct summer sun.",
+      },
+      {
+        q: "Can I print it myself?",
+        a: "Yes. The STL files are on Thingiverse. Print the three parts in PLA with the settings in the specifications table.",
+      },
+      ...COMMON_STORE_FAQS,
+    ],
   },
 ];
 

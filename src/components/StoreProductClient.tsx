@@ -45,7 +45,7 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
 
   const isAvailable = product.availability === "InStock";
   // Some products have a documentation column in the hero and an interactive guide (see store-extras.tsx).
-  const { Docs: ProductDocs, Guide: ProductGuide } = STORE_EXTRAS[product.slug] ?? {};
+  const { Docs: ProductDocs, Guide: ProductGuide, Media: ProductMedia } = STORE_EXTRAS[product.slug] ?? {};
   const isKickstarter = product.availability === "Kickstarter";
   const priceDisplay = getStoreProductPriceDisplay(product);
 
@@ -160,6 +160,10 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
           <div className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start${ProductDocs ? " ib-hero-grid" : ""}`}>
             {/* LEFT COLUMN: Sticky Interactive Media Gallery (7 cols) */}
             <div className="lg:col-span-7 lg:sticky lg:top-32 space-y-4">
+              {ProductMedia ? (
+                <ProductMedia />
+              ) : (
+              <>
               {/* Primary Viewer Stage */}
               <div className="relative rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/70 overflow-hidden aspect-4/3 flex flex-col justify-between">
                 {/* Ambient glow */}
@@ -250,6 +254,9 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
                   </button>
                 )}
               </div>
+
+              </>
+              )}
 
               {/* Trust Strip under gallery */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">

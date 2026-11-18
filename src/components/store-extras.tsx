@@ -21,6 +21,10 @@ export const STORE_EXTRAS: Record<string, StoreExtras> = {
     Docs: dynamic(() => import("@/components/ironbci-32-store/IronBCI32Docs")),
     Guide: dynamic(() => import("@/components/ironbci-32-store/IronBCI32StoreGuide")),
   },
+  "ironbci-32-enclosure": {
+    Docs: dynamic(() => import("@/components/ironbci32-enclosure-store/IronBCI32EnclosureDocs")),
+    Media: dynamic(() => import("@/components/ironbci32-enclosure-store/IronBCI32EnclosureMedia"), { ssr: false }),
+  },
   pieeg: {
     Docs: dynamic(() => import("@/components/pieeg8-store/PiEEG8Docs")),
     Guide: dynamic(() => import("@/components/pieeg8-store/PiEEG8StoreGuide")),

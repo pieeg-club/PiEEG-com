@@ -648,7 +648,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
       "32-Channel Wet EEG Cap Kit + Conductive Gel (recommended)",
       "Battery-powered laptop or USB isolator for safe human recording",
     ],
-    recommendedWith: ["32ch-wet-cap", "conductive-gel", "emg-kit"],
+    recommendedWith: ["ironbci-32-enclosure", "32ch-wet-cap", "conductive-gel"],
     fullSpecs: [
       { label: "Channels", value: "32 simultaneous differential channels + Reference + Bias" },
       { label: "ADCs", value: "4× Analog Devices AD7771 (24-bit, 8ch each)" },
@@ -1721,6 +1721,108 @@ export const STORE_PRODUCTS: StoreProduct[] = [
       {
         q: "Will it fit a Raspberry Pi 4?",
         a: "The case is designed around the Raspberry Pi 5. The Pi 4 has its USB and Ethernet ports in different places, so the side openings won't line up.",
+      },
+      {
+        q: "Is PLA a good material for this case?",
+        a: "PLA is stiff, non-conductive and fine at room and body temperature. It softens at around 55–60 °C, so don't leave the case in a hot car or in direct summer sun.",
+      },
+      ...COMMON_STORE_FAQS,
+    ],
+  },
+  {
+    slug: "ironbci-32-enclosure",
+    name: "IronBCI-32 Enclosure",
+    shortName: "IronBCI-32 Enclosure",
+    eyebrow: "3D-Printed Case · IronBCI-32",
+    badge: "New",
+    tagline: "3D-printed PLA case for the IronBCI-32 32-channel EEG board.",
+    headline: "Buy IronBCI-32 Enclosure",
+    summary:
+      "A two-part 3D-printed PLA case for the IronBCI-32 board. The board sits on six posts in the bottom tray, the lid closes over it, and four screws from underneath hold everything together. All four electrode headers and both Micro-USB ports stay reachable from the sides.",
+    category: "caps-accessories",
+    channelFilter: "accessory",
+    channels: "Fits IronBCI-32",
+    platform: "PLA · 4 screws",
+    signals: ["EEG"],
+    gradient: "from-red-500 to-orange-600",
+    accentText: "text-red-500",
+    heroImage: "/products/ironbci-32-enclosure/enclosure-closed.png",
+    gallery: [
+      {
+        src: "/products/ironbci-32-enclosure/enclosure-closed.png",
+        alt: "IronBCI-32 Enclosure assembled with the board inside",
+        caption: "Assembled: bottom tray, lid and IronBCI-32 (3D render)",
+      },
+      {
+        src: "/products/ironbci-32-enclosure/enclosure-exploded.png",
+        alt: "IronBCI-32 Enclosure exploded view",
+        caption: "Exploded view: tray, board, lid and four screws",
+      },
+    ],
+    ...catalogInfo("ironbci-32-enclosure"),
+    hardwarePath: "/hardware/ironbci-32",
+    storePath: "/store/ironbci-32-enclosure",
+    enclosureLinks: [],
+    keySpecs: [
+      { label: "Fits", value: "IronBCI-32", sublabel: "70 mm octagon board" },
+      { label: "Material", value: "PLA", sublabel: "3D printed, non-conductive" },
+      { label: "Size", value: "76 × 76 × 29 mm", sublabel: "Assembled, with lid" },
+      { label: "Fixing", value: "4 screws", sublabel: "M2.5 × 16 mm, from underneath" },
+    ],
+    highlights: [
+      {
+        title: "Made for the IronBCI-32 octagon",
+        description:
+          "Six posts sit exactly under the board's six mounting holes, and the board's top ends level with the tray rim. Two small holes in the lid line up with the board's push-buttons.",
+      },
+      {
+        title: "Everything reachable with the lid on",
+        description:
+          "The lid's legs leave the four header sides and the two USB corners open, so electrodes, the Power cable and the Data Stream cable plug in with the case closed.",
+      },
+      {
+        title: "PLA, open-source and repairable",
+        description:
+          "Printed in non-conductive PLA. Four screws from underneath clamp the tray, board and lid together and come out again easily.",
+      },
+    ],
+    inTheBox: [
+      { qty: "1×", item: "Bottom tray", detail: "PLA, six posts matching the board's mounting holes, recessed screw holes underneath" },
+      { qty: "1×", item: "Lid", detail: "PLA, open sides for the four electrode headers and both Micro-USB ports, two button holes" },
+      { qty: "4×", item: "M2.5 × 16 mm pan-head screws", detail: "Through the tray posts and board into the lid" },
+    ],
+    requirements: [
+      "IronBCI-32 board (not included)",
+      "Small Phillips screwdriver",
+      "Two Micro-USB cables: one for power, one full data cable",
+      "5V USB battery power bank and a laptop running on battery (mandatory during human recording)",
+    ],
+    recommendedWith: ["ironbci-32", "32ch-wet-cap", "conductive-gel"],
+    fullSpecs: [
+      { label: "Compatible Board", value: "IronBCI-32 (70 × 70 mm octagon, 1.6 mm PCB)" },
+      { label: "Material", value: "PLA (non-conductive), FDM 3D printed" },
+      { label: "Printed Parts", value: "2 — bottom tray and lid" },
+      { label: "Bottom Tray", value: "76.4 × 76.4 × 12.2 mm" },
+      { label: "Lid", value: "76.4 × 76.4 × 16.6 mm" },
+      { label: "Assembled Size", value: "≈ 76 × 76 × 29 mm; electrode header pins stick out about 3 mm on each side" },
+      { label: "Board Mounting", value: "6 posts matching the board's 6 mounting holes" },
+      { label: "Fixing", value: "4 × M2.5 × 16 mm pan-head screws from underneath; 2 spare holes" },
+      { label: "Openings", value: "4 electrode header sides, 2 Micro-USB (Power, Data Stream), 2 button holes in the lid" },
+      { label: "Weight", value: "≈ 30–40 g (depends on infill)" },
+      { label: "SKU", value: "PIA40214P" },
+    ],
+    faqs: [
+      {
+        q: "Do I need to open the case to connect electrodes or USB?",
+        a: "No. The four electrode headers stick out through the open sides of the lid, and the Power and Data Stream Micro-USB ports sit in the open corners.",
+      },
+      {
+        q: "Why do the screws go in from underneath?",
+        a: "The screw holes open on the bottom of the tray. Each screw passes up through a post and the board's mounting hole into the lid, so one screw holds all three parts together.",
+      },
+      {
+        q: "Does the case make IronBCI-32 safe to use on mains power?",
+        a: "No. The case is a mechanical cover only and adds no electrical isolation. Keep following the battery-only rules: board on a 5V USB battery, laptop on its own battery, unplugged from the wall.",
       },
       {
         q: "Is PLA a good material for this case?",

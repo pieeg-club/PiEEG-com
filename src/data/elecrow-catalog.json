@@ -57,6 +57,17 @@
       "currency": "USD",
       "availability": "InStock"
     },
+    "ironbci-32-enclosure": {
+      "name": "IronBCI-32 Enclosure",
+      "description": "3D-printed PLA case for the IronBCI-32 32-channel EEG board: bottom tray and lid, four M2.5 × 16 mm screws from underneath.",
+      "image": "/products/ironbci-32-enclosure/enclosure-closed.png",
+      "path": "/store/ironbci-32-enclosure",
+      "elecrowUrl": "https://www.elecrow.com/ironbci-32-enclosure-3d-printed-pla-case-for-ironbci-32-32-channel-eeg-board.html",
+      "sku": "PIA40214P",
+      "price": 40,
+      "currency": "USD",
+      "availability": "InStock"
+    },
     "microbci": {
       "name": "MicroBCI",
       "description": "8-channel STM32 NUCLEO-WB55 EEG shield. SPI 250 SPS, Python and mobile SDK.",

@@ -681,10 +681,10 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     signals: ["EEG", "BCI"],
     gradient: "from-amber-500 to-orange-600",
     accentText: "text-amber-500",
-    heroImage: "/products/ironbci-128/ironbci-128.jpg",
+    heroImage: "/products/ironbci-128/ironbci-128.png",
     gallery: [
       {
-        src: "/products/ironbci-128/ironbci-128.jpg",
+        src: "/products/ironbci-128/ironbci-128.png",
         alt: "IronBCI-128 128-channel octagonal board, top side",
         caption: "IronBCI-128 — 128 channels on a 70 × 70 mm octagonal board (pre-production)",
       },

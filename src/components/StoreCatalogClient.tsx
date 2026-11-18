@@ -15,6 +15,7 @@ import {
   Glasses,
   Layers,
   Package,
+  Box,
   Search,
   GraduationCap,
   ShieldCheck,
@@ -42,7 +43,33 @@ const CATEGORY_ICONS: Record<StoreCategory, React.ReactNode> = {
   "mcu-kits": <Layers className="w-4 h-4" />,
   xr: <Glasses className="w-4 h-4" />,
   "caps-accessories": <Package className="w-4 h-4" />,
+  cases: <Box className="w-4 h-4" />,
 };
+
+// Unfiltered catalog is shown in three sections.
+const CATALOG_SECTIONS: { id: string; kicker: string; title: string; desc: string; match: (p: StoreProduct) => boolean }[] = [
+  {
+    id: "hardware",
+    kicker: "Boards & Shields",
+    title: "Hardware",
+    desc: "EEG boards and shields for Raspberry Pi, Arduino, STM32, Jetson, wireless and VR.",
+    match: (p) => p.category !== "caps-accessories" && p.category !== "cases",
+  },
+  {
+    id: "accessories",
+    kicker: "Caps · Electrodes · Gel",
+    title: "Accessories",
+    desc: "EEG caps, electrodes, the EMG kit and conductive gel.",
+    match: (p) => p.category === "caps-accessories",
+  },
+  {
+    id: "cases",
+    kicker: "PLA Enclosures",
+    title: "3D-Printed Cases",
+    desc: "PLA enclosures for PiEEG, IronBCI-32 and Octopus 16. Open-source STL files.",
+    match: (p) => p.category === "cases",
+  },
+];
 
 const CHANNEL_FILTERS: { id: "all" | StoreProduct["channelFilter"]; label: string }[] = [
   { id: "all", label: "All Channels" },
@@ -76,6 +103,156 @@ export default function StoreCatalogClient() {
       return true;
     });
   }, [category, channelFilter, searchQuery]);
+
+  const showSections = category === "all" && channelFilter === "all" && !searchQuery.trim();
+
+  const renderCard = (product: StoreProduct) => {
+              const isAvailable = product.availability === "InStock";
+              const isKickstarter = product.availability === "Kickstarter";
+
+              return (
+                <article
+                  key={product.slug}
+                  className="group flex flex-col rounded-3xl border border-zinc-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-black/40 transition-all duration-300"
+                >
+                  {/* Top Header inside card */}
+                  <div className="p-6 pb-3">
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                        {product.platform}
+                      </span>
+                      {product.badge ? (
+                        <span
+                          className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider text-white bg-linear-to-r ${product.gradient}`}
+                        >
+                          {product.badge}
+                        </span>
+                      ) : isAvailable ? (
+                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                          In Stock
+                        </span>
+                      ) : null}
+                    </div>
+
+                    <Link href={product.storePath} className="block group/link">
+                      <h3 className="text-2xl font-black tracking-tight text-zinc-900 dark:text-zinc-100 group-hover/link:text-cyan-600 dark:group-hover/link:text-cyan-400 transition-colors">
+                        {product.name}
+                      </h3>
+                    </Link>
+                    <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1 line-clamp-2 min-h-10">
+                      {product.tagline}
+                    </p>
+                  </div>
+
+                  {/* Product Studio Image Stage */}
+                  <Link
+                    href={product.storePath}
+                    className="relative mx-6 my-2 rounded-2xl bg-zinc-50 dark:bg-zinc-900/70 border border-zinc-100 dark:border-zinc-800/80 flex items-center justify-center p-6 h-52 overflow-hidden"
+                  >
+                    <div
+                      className={`absolute inset-8 bg-linear-to-br ${product.gradient} opacity-10 blur-2xl rounded-full pointer-events-none`}
+                    />
+                    <Image
+                      src={product.heroImage}
+                      alt={product.name}
+                      width={320}
+                      height={220}
+                      className="object-contain max-h-40 w-auto relative z-10 drop-shadow-xl group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </Link>
+
+                  {/* Spec chips */}
+                  <div className="px-6 py-3 flex flex-wrap items-center gap-1.5">
+                    <span className="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border border-zinc-200/70 dark:border-zinc-800">
+                      {product.channels}
+                    </span>
+                    {product.signals.map((sig) => (
+                      <span
+                        key={sig}
+                        className="px-2 py-1 rounded-lg text-[11px] font-semibold bg-cyan-500/8 text-cyan-700 dark:text-cyan-300 border border-cyan-500/20"
+                      >
+                        {sig}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Price & Dual-Channel Action Footer */}
+                  <div className="p-6 pt-3 mt-auto border-t border-zinc-100 dark:border-zinc-900 space-y-3">
+                    <div className="flex items-baseline justify-between">
+                      <div>
+                        <span className="text-2xl font-black tracking-tight text-zinc-900 dark:text-white">
+                          {getStoreProductPriceDisplay(product)}
+                        </span>
+                        {typeof product.price === "number" && (
+                          <span className="ml-1.5 text-xs font-semibold text-zinc-400">
+                            USD
+                          </span>
+                        )}
+                      </div>
+                      <Link
+                        href={product.hardwarePath}
+                        className="text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white underline underline-offset-4"
+                      >
+                        Tech Specs & Guide →
+                      </Link>
+                    </div>
+
+                    {/* Primary Store Page CTA + Quick Elecrow Link */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <Link
+                        href={product.storePath}
+                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 font-bold text-xs sm:text-sm hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-xs"
+                      >
+                        <ShoppingBag className="w-3.5 h-3.5" />
+                        View in Store
+                      </Link>
+
+                      {isAvailable && product.elecrowUrl ? (
+                        <a
+                          href={product.elecrowUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-linear-to-r ${product.gradient} text-white font-bold text-xs sm:text-sm hover:opacity-90 transition-opacity shadow-xs`}
+                        >
+                          Buy on Elecrow
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      ) : isKickstarter && product.kickstarterUrl ? (
+                        <a
+                          href={product.kickstarterUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-linear-to-r ${product.gradient} text-white font-bold text-xs sm:text-sm hover:opacity-90 transition-opacity shadow-xs`}
+                        >
+                          <Rocket className="w-3.5 h-3.5" />
+                          Kickstarter
+                        </a>
+                      ) : (
+                        <button
+                          type="button"
+                          disabled
+                          className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 text-zinc-400 dark:text-zinc-500 font-bold text-xs sm:text-sm cursor-not-allowed"
+                        >
+                          Coming Soon
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Disabled Direct Store indicator button */}
+                    <button
+                      type="button"
+                      disabled
+                      title="Direct checkout on pieeg.com is launching soon"
+                      className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl border border-dashed border-zinc-300 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/40 text-zinc-400 dark:text-zinc-500 text-[11px] font-semibold cursor-not-allowed select-none"
+                    >
+                      <Lock className="w-3 h-3 text-cyan-500/70" />
+                      <span>Buy Direct on pieeg.com — Coming Soon</span>
+                    </button>
+                  </div>
+                </article>
+              );
+  };
 
   return (
     <div className="space-y-20">
@@ -278,155 +455,44 @@ export default function StoreCatalogClient() {
               Reset Filters
             </button>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map((product) => {
-              const isAvailable = product.availability === "InStock";
-              const isKickstarter = product.availability === "Kickstarter";
-
-              return (
-                <article
-                  key={product.slug}
-                  className="group flex flex-col rounded-3xl border border-zinc-200/90 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-xl hover:shadow-zinc-900/5 dark:hover:shadow-black/40 transition-all duration-300"
+        ) : showSections ? (
+          <div>
+            <nav aria-label="Store sections" className="sticky top-16 z-20 -mx-1 mb-2 px-1 py-3 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md flex flex-wrap gap-2">
+              {CATALOG_SECTIONS.map((sec) => (
+                <a
+                  key={sec.id}
+                  href={`#section-${sec.id}`}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-sm font-bold text-zinc-700 dark:text-zinc-200 hover:bg-zinc-900 hover:text-white dark:hover:bg-white dark:hover:text-zinc-900 transition-colors"
                 >
-                  {/* Top Header inside card */}
-                  <div className="p-6 pb-3">
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
-                        {product.platform}
-                      </span>
-                      {product.badge ? (
-                        <span
-                          className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider text-white bg-linear-to-r ${product.gradient}`}
-                        >
-                          {product.badge}
-                        </span>
-                      ) : isAvailable ? (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                          In Stock
-                        </span>
-                      ) : null}
+                  {sec.title}
+                  <span className="text-[11px] font-semibold text-zinc-400">{STORE_PRODUCTS.filter(sec.match).length}</span>
+                </a>
+              ))}
+            </nav>
+            {CATALOG_SECTIONS.map((sec, i) => {
+              const items = filteredProducts.filter(sec.match);
+              if (items.length === 0) return null;
+              return (
+                <div
+                  key={sec.id}
+                  id={`section-${sec.id}`}
+                  className={`scroll-mt-36 ${i > 0 ? "mt-14 pt-12 border-t border-zinc-200 dark:border-zinc-800" : "mt-6"}`}
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-7">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400 mb-1">{sec.kicker}</p>
+                      <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-zinc-900 dark:text-white">{sec.title}</h3>
                     </div>
-
-                    <Link href={product.storePath} className="block group/link">
-                      <h3 className="text-2xl font-black tracking-tight text-zinc-900 dark:text-zinc-100 group-hover/link:text-cyan-600 dark:group-hover/link:text-cyan-400 transition-colors">
-                        {product.name}
-                      </h3>
-                    </Link>
-                    <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-1 line-clamp-2 min-h-10">
-                      {product.tagline}
-                    </p>
+                    <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 max-w-md">{sec.desc}</p>
                   </div>
-
-                  {/* Product Studio Image Stage */}
-                  <Link
-                    href={product.storePath}
-                    className="relative mx-6 my-2 rounded-2xl bg-zinc-50 dark:bg-zinc-900/70 border border-zinc-100 dark:border-zinc-800/80 flex items-center justify-center p-6 h-52 overflow-hidden"
-                  >
-                    <div
-                      className={`absolute inset-8 bg-linear-to-br ${product.gradient} opacity-10 blur-2xl rounded-full pointer-events-none`}
-                    />
-                    <Image
-                      src={product.heroImage}
-                      alt={product.name}
-                      width={320}
-                      height={220}
-                      className="object-contain max-h-40 w-auto relative z-10 drop-shadow-xl group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </Link>
-
-                  {/* Spec chips */}
-                  <div className="px-6 py-3 flex flex-wrap items-center gap-1.5">
-                    <span className="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border border-zinc-200/70 dark:border-zinc-800">
-                      {product.channels}
-                    </span>
-                    {product.signals.map((sig) => (
-                      <span
-                        key={sig}
-                        className="px-2 py-1 rounded-lg text-[11px] font-semibold bg-cyan-500/8 text-cyan-700 dark:text-cyan-300 border border-cyan-500/20"
-                      >
-                        {sig}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Price & Dual-Channel Action Footer */}
-                  <div className="p-6 pt-3 mt-auto border-t border-zinc-100 dark:border-zinc-900 space-y-3">
-                    <div className="flex items-baseline justify-between">
-                      <div>
-                        <span className="text-2xl font-black tracking-tight text-zinc-900 dark:text-white">
-                          {getStoreProductPriceDisplay(product)}
-                        </span>
-                        {typeof product.price === "number" && (
-                          <span className="ml-1.5 text-xs font-semibold text-zinc-400">
-                            USD
-                          </span>
-                        )}
-                      </div>
-                      <Link
-                        href={product.hardwarePath}
-                        className="text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white underline underline-offset-4"
-                      >
-                        Tech Specs & Guide →
-                      </Link>
-                    </div>
-
-                    {/* Primary Store Page CTA + Quick Elecrow Link */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      <Link
-                        href={product.storePath}
-                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 font-bold text-xs sm:text-sm hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-xs"
-                      >
-                        <ShoppingBag className="w-3.5 h-3.5" />
-                        View in Store
-                      </Link>
-
-                      {isAvailable && product.elecrowUrl ? (
-                        <a
-                          href={product.elecrowUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-linear-to-r ${product.gradient} text-white font-bold text-xs sm:text-sm hover:opacity-90 transition-opacity shadow-xs`}
-                        >
-                          Buy on Elecrow
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </a>
-                      ) : isKickstarter && product.kickstarterUrl ? (
-                        <a
-                          href={product.kickstarterUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-linear-to-r ${product.gradient} text-white font-bold text-xs sm:text-sm hover:opacity-90 transition-opacity shadow-xs`}
-                        >
-                          <Rocket className="w-3.5 h-3.5" />
-                          Kickstarter
-                        </a>
-                      ) : (
-                        <button
-                          type="button"
-                          disabled
-                          className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 text-zinc-400 dark:text-zinc-500 font-bold text-xs sm:text-sm cursor-not-allowed"
-                        >
-                          Coming Soon
-                        </button>
-                      )}
-                    </div>
-
-                    {/* Disabled Direct Store indicator button */}
-                    <button
-                      type="button"
-                      disabled
-                      title="Direct checkout on pieeg.com is launching soon"
-                      className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl border border-dashed border-zinc-300 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-900/40 text-zinc-400 dark:text-zinc-500 text-[11px] font-semibold cursor-not-allowed select-none"
-                    >
-                      <Lock className="w-3 h-3 text-cyan-500/70" />
-                      <span>Buy Direct on pieeg.com — Coming Soon</span>
-                    </button>
-                  </div>
-                </article>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">{items.map(renderCard)}</div>
+                </div>
               );
             })}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProducts.map(renderCard)}
           </div>
         )}
       </section>

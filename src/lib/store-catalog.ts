@@ -10,7 +10,8 @@ export type StoreCategory =
   | "sbc-shields"
   | "mcu-kits"
   | "xr"
-  | "caps-accessories";
+  | "caps-accessories"
+  | "cases";
 
 export interface StoreGalleryItem {
   src: string;
@@ -96,6 +97,7 @@ export const STORE_CATEGORIES: {
   { id: "mcu-kits", label: "Arduino, STM32 & Education", shortDesc: "Embedded shields & classroom kits" },
   { id: "xr", label: "Spatial & VR (XR)", shortDesc: "Neural face gaskets for VR headsets" },
   { id: "caps-accessories", label: "EEG Caps & Kits", shortDesc: "Dry & wet 10-20 caps, EMG & gel" },
+  { id: "cases", label: "3D-Printed Cases", shortDesc: "PLA enclosures for PiEEG, IronBCI-32 & Octopus 16" },
 ];
 
 const COMMON_STORE_FAQS: StoreFaqItem[] = [
@@ -1523,7 +1525,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     headline: "Buy Octopus 16 Enclosure",
     summary:
       "A three-part 3D-printed PLA case for the Octopus 16 board and its XIAO ESP32-S3. The board drops into the box with its 18 pogo pins through the floor, the lid screws on top, and the box screws into the base ring. No screws or tools needed.",
-    category: "caps-accessories",
+    category: "cases",
     channelFilter: "accessory",
     channels: "Fits Octopus 16",
     platform: "PLA · Twist-lock",
@@ -1635,7 +1637,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     headline: "Buy PiEEG Pi 5 Enclosure",
     summary:
       "One 3D-printed PLA case for a Raspberry Pi 5 with either PiEEG-8 or PiEEG-16 on top. The lid's two slots sit right over the electrode headers of both shields, so you can plug in leads with the case closed. Four screws hold the lid at the corners.",
-    category: "caps-accessories",
+    category: "cases",
     channelFilter: "accessory",
     channels: "Fits PiEEG-8 & 16",
     platform: "PLA · Raspberry Pi 5",
@@ -1739,7 +1741,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     headline: "Buy IronBCI-32 Enclosure",
     summary:
       "A two-part 3D-printed PLA case for the IronBCI-32 board. The board sits on six posts in the bottom tray, the lid closes over it, and four screws from underneath hold everything together. All four electrode headers and both Micro-USB ports stay reachable from the sides.",
-    category: "caps-accessories",
+    category: "cases",
     channelFilter: "accessory",
     channels: "Fits IronBCI-32",
     platform: "PLA · 4 screws",

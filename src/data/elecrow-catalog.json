@@ -24,6 +24,17 @@
       "currency": "USD",
       "availability": "InStock"
     },
+    "pieeg-pi5-enclosure": {
+      "name": "PiEEG Pi 5 Enclosure",
+      "description": "3D-printed PLA case for a Raspberry Pi 5 with PiEEG-8 or PiEEG-16. Lid slots over the electrode headers; four M2.5 lid screws.",
+      "image": "/products/pieeg-pi5-enclosure/enclosure-closed.png",
+      "path": "/store/pieeg-pi5-enclosure",
+      "elecrowUrl": "https://www.elecrow.com/eeg-pi-5-enclosure-3d-printed-pla-case-for-pieeg-8-pieeg-16-eeg-shields.html",
+      "sku": "PIA40212P",
+      "price": 35,
+      "currency": "USD",
+      "availability": "InStock"
+    },
     "ironbci": {
       "name": "IronBCI",
       "description": "8-channel wearable wireless BCI with BLE 5. 250 SPS, 24-bit resolution, Python and Android SDK.",

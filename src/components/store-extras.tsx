@@ -29,6 +29,10 @@ export const STORE_EXTRAS: Record<string, StoreExtras> = {
     Docs: dynamic(() => import("@/components/pieeg16-store/PiEEG16Docs")),
     Guide: dynamic(() => import("@/components/pieeg16-store/PiEEG16StoreGuide")),
   },
+  "pieeg-pi5-enclosure": {
+    Docs: dynamic(() => import("@/components/pieeg-pi5-enclosure-store/PiEEGPi5EnclosureDocs")),
+    Media: dynamic(() => import("@/components/pieeg-pi5-enclosure-store/PiEEGPi5EnclosureMedia"), { ssr: false }),
+  },
   "octopus-16": {
     Docs: dynamic(() => import("@/components/octopus16-store/Octopus16Docs")),
     Guide: dynamic(() => import("@/components/octopus16-store/Octopus16StoreGuide")),

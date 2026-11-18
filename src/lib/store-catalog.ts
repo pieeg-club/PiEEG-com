@@ -204,7 +204,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
       "5V USB battery power bank (mandatory for mains isolation during human recording)",
       "EEG Cap (8ch Dry or Wet Cap) or EMG/ECG electrode cables",
     ],
-    recommendedWith: ["8ch-dry-cap", "8ch-wet-cap", "emg-kit", "conductive-gel"],
+    recommendedWith: ["pieeg-pi5-enclosure", "8ch-dry-cap", "8ch-wet-cap"],
     fullSpecs: [
       { label: "Channels", value: "8 differential + 1 Reference (SRB1) + 1 Bias" },
       { label: "ADC Converter", value: "Texas Instruments ADS1299 (24-bit Delta-Sigma)" },
@@ -478,7 +478,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
       "5V USB battery power bank (required for isolated operation)",
       "16-Channel EEG Cap or two 8-Channel electrode harnesses",
     ],
-    recommendedWith: ["16ch-cap", "conductive-gel", "emg-kit"],
+    recommendedWith: ["pieeg-pi5-enclosure", "16ch-cap", "conductive-gel"],
     fullSpecs: [
       { label: "Channels", value: "16 differential biosignal channels + Reference + Bias" },
       { label: "Resolution", value: "24-bit per channel" },
@@ -1621,6 +1621,110 @@ export const STORE_PRODUCTS: StoreProduct[] = [
       {
         q: "Can I print it myself?",
         a: "Yes. The STL files are on Thingiverse. Print the three parts in PLA with the settings in the specifications table.",
+      },
+      ...COMMON_STORE_FAQS,
+    ],
+  },
+  {
+    slug: "pieeg-pi5-enclosure",
+    name: "PiEEG Pi 5 Enclosure",
+    shortName: "PiEEG Pi 5 Enclosure",
+    eyebrow: "3D-Printed Case · PiEEG-8 & PiEEG-16",
+    badge: "New",
+    tagline: "3D-printed PLA case for a Raspberry Pi 5 with PiEEG-8 or PiEEG-16.",
+    headline: "Buy PiEEG Pi 5 Enclosure",
+    summary:
+      "One 3D-printed PLA case for a Raspberry Pi 5 with either PiEEG-8 or PiEEG-16 on top. The lid's two slots sit right over the electrode headers of both shields, so you can plug in leads with the case closed. Four screws hold the lid at the corners.",
+    category: "caps-accessories",
+    channelFilter: "accessory",
+    channels: "Fits PiEEG-8 & 16",
+    platform: "PLA · Raspberry Pi 5",
+    signals: ["EEG"],
+    gradient: "from-cyan-500 to-blue-600",
+    accentText: "text-cyan-500",
+    heroImage: "/products/pieeg-pi5-enclosure/enclosure-closed.png",
+    gallery: [
+      {
+        src: "/products/pieeg-pi5-enclosure/enclosure-closed.png",
+        alt: "PiEEG Pi 5 Enclosure assembled with lid and four screws",
+        caption: "Assembled: case body, lid and four M2.5 screws (3D render)",
+      },
+      {
+        src: "/products/pieeg-pi5-enclosure/enclosure-exploded.png",
+        alt: "PiEEG Pi 5 Enclosure exploded view with Raspberry Pi 5 and PiEEG-16",
+        caption: "Exploded view: Raspberry Pi 5, PiEEG shield and lid",
+      },
+    ],
+    ...catalogInfo("pieeg-pi5-enclosure"),
+    hardwarePath: "/hardware/pieeg",
+    storePath: "/store/pieeg-pi5-enclosure",
+    githubUrl: "https://github.com/pieeg-club/PiEEG-8",
+    enclosureLinks: [],
+    keySpecs: [
+      { label: "Fits", value: "PiEEG-8 & 16", sublabel: "Same case, same lid" },
+      { label: "Host", value: "Raspberry Pi 5", sublabel: "Port openings for Pi 5" },
+      { label: "Material", value: "PLA", sublabel: "3D printed, non-conductive" },
+      { label: "Size", value: "106 × 75 × 37 mm", sublabel: "Assembled, with lid" },
+    ],
+    highlights: [
+      {
+        title: "One case for PiEEG-8 and PiEEG-16",
+        description:
+          "Both shields share the Raspberry Pi HAT footprint, and the lid's two slots line up with either board: electrodes 1–8 on the left, electrodes 9–16 (or the PiEEG-8 jumpers) on the right.",
+      },
+      {
+        title: "Shaped around the Raspberry Pi 5",
+        description:
+          "Openings for USB-C power, both micro-HDMI ports, USB, Ethernet and the microSD slot, plus side vents. Four posts sit at the Pi's standard mounting holes.",
+      },
+      {
+        title: "PLA, open-source and repairable",
+        description:
+          "Printed in non-conductive PLA. Four screws close the lid at the corner lugs, so it opens again easily. The STL files are open source, so you can print a spare yourself.",
+      },
+    ],
+    inTheBox: [
+      { qty: "1×", item: "Case body for Raspberry Pi 5", detail: "PLA, four mounting posts, Pi 5 port openings and side vents" },
+      { qty: "1×", item: "PiEEG-8/16 lid with screw ears", detail: "PLA, two slots over the electrode headers, countersunk screw holes" },
+      { qty: "4×", item: "M2.5 countersunk lid screws, 8 mm", detail: "Into the case's corner lugs" },
+    ],
+    requirements: [
+      "Raspberry Pi 5 (not included)",
+      "PiEEG-8 or PiEEG-16 shield (not included)",
+      "Small Phillips screwdriver",
+      "5V USB battery power bank (mandatory for mains isolation during human recording)",
+    ],
+    recommendedWith: ["pieeg", "pieeg-16", "16ch-cap"],
+    fullSpecs: [
+      { label: "Compatible Shields", value: "PiEEG-8, PiEEG-16" },
+      { label: "Host Board", value: "Raspberry Pi 5 (not Raspberry Pi 4)" },
+      { label: "Material", value: "PLA (non-conductive), FDM 3D printed" },
+      { label: "Printed Parts", value: "2 — case body and lid" },
+      { label: "Case Body", value: "105.8 × 75.2 × 35.5 mm" },
+      { label: "Lid", value: "105.8 × 75.2 × 3.6 mm including the four screw ears" },
+      { label: "Assembled Size", value: "≈ 106 × 75 × 37 mm" },
+      { label: "Lid Fixing", value: "4 × M2.5 countersunk screws, 8 mm, into the corner lugs" },
+      { label: "Pi Mounting", value: "4 posts at 58 × 49 mm (standard Raspberry Pi holes)" },
+      { label: "Openings", value: "USB-C, 2× micro-HDMI, USB, Ethernet, microSD, side vents, 2 lid slots for electrode leads" },
+      { label: "Weight", value: "≈ 35–45 g (depends on infill)" },
+      { label: "SKU", value: "PIA40212P" },
+    ],
+    faqs: [
+      {
+        q: "Does the same box really fit both PiEEG-8 and PiEEG-16?",
+        a: "Yes. Both shields have the same outline and mounting holes and plug onto the same 40-pin header. The lid's slots line up with the electrode headers on both boards, so there is one case and one lid for both.",
+      },
+      {
+        q: "Can I connect electrodes with the lid closed?",
+        a: "Yes. The electrode headers sit under the two lid slots, so the electrode leads plug in through the slots. On PiEEG-8 the right slot also gives access to the jumpers.",
+      },
+      {
+        q: "Will it fit a Raspberry Pi 4?",
+        a: "The case is designed around the Raspberry Pi 5. The Pi 4 has its USB and Ethernet ports in different places, so the side openings won't line up.",
+      },
+      {
+        q: "Is PLA a good material for this case?",
+        a: "PLA is stiff, non-conductive and fine at room and body temperature. It softens at around 55–60 °C, so don't leave the case in a hot car or in direct summer sun.",
       },
       ...COMMON_STORE_FAQS,
     ],

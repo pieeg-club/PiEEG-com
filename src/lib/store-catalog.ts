@@ -46,7 +46,7 @@ export interface StoreProduct {
   headline: string;
   summary: string;
   category: Exclude<StoreCategory, "all">;
-  channelFilter: "8ch" | "16ch" | "32ch" | "accessory";
+  channelFilter: "8ch" | "16ch" | "32ch" | "128ch" | "accessory";
   featured?: boolean;
   channels: string;
   platform: string;
@@ -661,6 +661,109 @@ export const STORE_PRODUCTS: StoreProduct[] = [
       { label: "SKU", value: "PIA24025P" },
     ],
     faqs: COMMON_STORE_FAQS,
+  },
+  {
+    slug: "ironbci-128",
+    name: "IronBCI-128",
+    shortName: "IronBCI-128",
+    eyebrow: "Upcoming · IronBCI family",
+    badge: "Coming Soon",
+    tagline: "A 128-channel brain–computer interface from PiEEG. Subscribe to hear first.",
+    headline: "IronBCI-128 — Coming Soon",
+    summary:
+      "A 128-channel brain–computer interface from PiEEG. IronBCI-128 is the next step for the IronBCI family: 128 channels on one compact 70 × 70 mm octagonal board. Subscribe and we'll let you know the moment IronBCI-128 is ready to order.",
+    category: "mcu-kits",
+    channelFilter: "128ch",
+    channels: "128 channels",
+    platform: "IronBCI family · USB-C",
+    signals: ["EEG", "BCI"],
+    gradient: "from-amber-500 to-orange-600",
+    accentText: "text-amber-500",
+    heroImage: "/products/ironbci-128/ironbci-128.jpg",
+    gallery: [
+      {
+        src: "/products/ironbci-128/ironbci-128.jpg",
+        alt: "IronBCI-128 128-channel octagonal board, top side",
+        caption: "IronBCI-128 — 128 channels on a 70 × 70 mm octagonal board (pre-production)",
+      },
+      {
+        src: "/products/ironbci-128/ironbci-128-top.png",
+        alt: "IronBCI-128 PCB top side rendered from the Gerber files",
+        caption: "Top side, rendered from the pre-production Gerber files",
+      },
+      {
+        src: "/products/ironbci-128/ironbci-128-bottom.png",
+        alt: "IronBCI-128 PCB bottom side rendered from the Gerber files",
+        caption: "Bottom side — 4-layer PCB with parts on both sides",
+      },
+    ],
+    price: null,
+    priceLabel: "Coming soon",
+    currency: "USD",
+    sku: null,
+    availability: "ComingSoon",
+    hardwarePath: "/store/ironbci-128#subscribe",
+    storePath: "/store/ironbci-128",
+    enclosureLinks: [],
+    keySpecs: [
+      { label: "Channels", value: "128", sublabel: "4× IronBCI-32" },
+      { label: "Board", value: "70 × 70 mm", sublabel: "Compact octagon" },
+      { label: "PCB", value: "4-layer", sublabel: "Parts on both sides" },
+      { label: "Connection", value: "USB-C", sublabel: "One cable to the host" },
+    ],
+    highlights: [
+      {
+        title: "128 Channels, Same Footprint",
+        description:
+          "Four times the channel count of IronBCI-32 on the same compact 70 × 70 mm octagonal board.",
+      },
+      {
+        title: "Double-Sided 4-Layer PCB",
+        description:
+          "Components on both sides and a solid inner ground plane keep 128 channels on a board that fits in your hand.",
+      },
+      {
+        title: "Subscribers Hear First",
+        description:
+          "Full specifications, pricing and availability will be announced to IronBCI-128 subscribers first.",
+      },
+    ],
+    inTheBox: [
+      { qty: "1×", item: "IronBCI-128 128-Channel Board", detail: "Final contents announced at launch" },
+    ],
+    requirements: [
+      "Specifications may change — IronBCI-128 is in development",
+      "Battery-powered laptop or USB isolator for safe human recording",
+    ],
+    recommendedWith: ["ironbci-32", "conductive-gel"],
+    fullSpecs: [
+      { label: "Channels", value: "128" },
+      { label: "Board", value: "70 × 70 mm regular octagon, 1.6 mm thick" },
+      { label: "PCB", value: "4 copper layers, parts on both sides" },
+      { label: "Connection", value: "USB-C" },
+      { label: "Mounting", value: "6 × Ø 3.2 mm holes (M3)" },
+      { label: "Board-to-board", value: "4 connector positions per side, 2 × 20 pins, 1.27 mm pitch" },
+      { label: "Resolution / sample rate", value: "To be announced" },
+      { label: "Price & availability", value: "Announced to subscribers first" },
+    ],
+    faqs: [
+      {
+        q: "When will IronBCI-128 be available?",
+        a: "IronBCI-128 is in development. Subscribe on this page and we'll email you the moment it is ready to order.",
+      },
+      {
+        q: "How much will IronBCI-128 cost?",
+        a: "Pricing has not been announced yet. Subscribers get the price and order date first.",
+      },
+      {
+        q: "What will I receive if I subscribe?",
+        a: "One email when IronBCI-128 is ready, plus the full specifications. No spam, and you can unsubscribe any time.",
+      },
+      {
+        q: "Can I start with IronBCI-32 now?",
+        a: "Yes. IronBCI-32 is available today and is part of the same IronBCI family.",
+      },
+    ],
   },
   {
     slug: "pieeg-xr",

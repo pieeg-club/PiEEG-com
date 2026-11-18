@@ -5,6 +5,7 @@
  *   Docs  – technical documentation panel, shown as a third column in the hero
  *   Guide – interactive guide, shown after Technical Specifications
  *   Media – replaces the photo gallery at the top left of the hero (e.g. an interactive 3D model)
+ *   Buy   – replaces the purchase box (e.g. a subscribe form for an upcoming product)
  *
  * To add a device: create its folder in src/components/<device>-store/ and add one line
  * below, keyed by the product slug from src/lib/store-catalog.ts. Each block is loaded
@@ -14,12 +15,17 @@
 import dynamic from "next/dynamic";
 import type { ComponentType } from "react";
 
-type StoreExtras = { Docs?: ComponentType; Guide?: ComponentType; Media?: ComponentType };
+type StoreExtras = { Docs?: ComponentType; Guide?: ComponentType; Media?: ComponentType; Buy?: ComponentType };
 
 export const STORE_EXTRAS: Record<string, StoreExtras> = {
   "ironbci-32": {
     Docs: dynamic(() => import("@/components/ironbci-32-store/IronBCI32Docs")),
     Guide: dynamic(() => import("@/components/ironbci-32-store/IronBCI32StoreGuide")),
+  },
+  // Upcoming product: subscribe form instead of the purchase box.
+  "ironbci-128": {
+    Docs: dynamic(() => import("@/components/ironbci128-store/IronBCI128Docs")),
+    Buy: dynamic(() => import("@/components/ironbci128-store/IronBCI128Subscribe")),
   },
   "ironbci-32-enclosure": {
     Docs: dynamic(() => import("@/components/ironbci32-enclosure-store/IronBCI32EnclosureDocs")),

@@ -623,6 +623,17 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     heroImage: "/products/ironbci-32.png",
     gallery: [
       {
+        src: "/products/ironbci-32/ironbci32-3d-thumb.png",
+        model3d: "/products/ironbci-32/3d/ironbci32-3d-board.html",
+        alt: "Interactive 3D model of the IronBCI-32 board with components on both sides",
+        caption: "Interactive 3D model — drag to rotate, tap Bottom for the MCU side",
+      },
+      {
+        src: "/products/ironbci-32/ironbci32-board-overview.png",
+        alt: "IronBCI-32 board overview: 32 electrode channels on four headers, ADCs, MCU, isolation, USB and connectors",
+        caption: "Board overview — 32 channels on four 2×10 headers, top and bottom side",
+      },
+      {
         src: "/products/ironbci-32.png",
         alt: "IronBCI-32 32-channel professional EEG board",
         caption: "IronBCI-32 — 32-channel synchronized 24-bit research acquisition system",

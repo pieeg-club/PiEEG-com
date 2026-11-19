@@ -925,24 +925,25 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     heroImage: "/products/pieeg-xr.png",
     gallery: [
       {
+        src: "/products/pieeg-xr/pieeg-xr-3d-thumb.png",
+        model3d: "/products/pieeg-xr/3d/pieeg-xr-3d-model.html",
+        alt: "Interactive 3D model of PiEEG XR: silicone face mask with 10 dry electrodes, cable and BCI box",
+        caption: "Interactive 3D model — drag to rotate, tap Face side to see the 10 electrodes",
+      },
+      {
+        src: "/products/pieeg-xr/pieeg-xr-electrode-map.png",
+        alt: "PiEEG XR electrode map: 8 channels plus Reference and Bias on the face mask, connector J3.3 and signal path",
+        caption: "Electrode map — forehead Ch3–Ch6, temples Ch1, Ch2, Ch7, Ch8, Reference and Bias",
+      },
+      {
         src: "/products/pieeg-xr.png",
         alt: "PiEEG XR neural face gasket for VR headsets",
         caption: "PiEEG XR — Dry electrodes integrated directly into the VR face gasket",
       },
       {
-        src: "/products/pieeg-xr-kit.jpg",
-        alt: "PiEEG XR kit with VR headset",
-        caption: "Snaps onto standard VR headsets with wireless BLE 5.0 streaming",
-      },
-      {
-        src: "/products/pieeg-xr-focus.png",
-        alt: "PiEEG XR Focus-to-Action gameplay demo",
-        caption: "Focus-to-Action API: control in-game physics and shaders with neural band power",
-      },
-      {
-        src: "/products/pieeg-xr-poster.png",
-        alt: "PiEEG XR facial EMG expression mapping",
-        caption: "Real-time facial EMG decoding for camera-free avatar micro-expressions",
+        src: "/products/pieeg-xr/ironbci-8-module.png",
+        alt: "IronBCI-8 24-bit Bluetooth module, the electronics core of PiEEG XR",
+        caption: "Powered by the IronBCI 24-bit ADS1299 + Bluetooth LE core",
       },
     ],
     videoId: "X3xSN6h-QzM",

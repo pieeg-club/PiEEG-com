@@ -527,6 +527,17 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     heroImage: "/products/ironbci-top.png",
     gallery: [
       {
+        src: "/products/ironbci-8/ironbci8-3d-thumb.png",
+        model3d: "/products/ironbci-8/3d/ironbci8-3d-model.html",
+        alt: "Interactive 3D model of the IronBCI-8 three-board stack",
+        caption: "Interactive 3D model — drag to rotate, tap Explode to see all three boards",
+      },
+      {
+        src: "/products/ironbci-8/ironbci8-board-overview.png",
+        alt: "IronBCI-8 board overview: Bluetooth, ADC and power boards with electrodes, connectors, switches and LEDs",
+        caption: "Board overview — Bluetooth, ADC and power boards, 8 electrodes plus Reference and Bias",
+      },
+      {
         src: "/products/ironbci-top.png",
         alt: "IronBCI 3-board stacked wireless BCI top view",
         caption: "IronBCI — 50 mm diameter stacked PCB architecture with BLE 5.0",
@@ -542,7 +553,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
         caption: "Mounts directly onto open-source 3D-printable headsets or EEG caps",
       },
     ],
-    videoId: "gWpfsLuq_eE",
+    videoId: "X3xSN6h-QzM",
     ...catalogInfo("ironbci"),
     hardwarePath: "/hardware/ironbci",
     storePath: "/store/ironbci",

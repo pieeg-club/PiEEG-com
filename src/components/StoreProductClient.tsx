@@ -187,6 +187,14 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
                       className="w-full h-full border-0"
                     />
                   </div>
+                ) : currentGalleryItem.model3d ? (
+                  <div className="relative flex-1 bg-white">
+                    <iframe
+                      src={currentGalleryItem.model3d}
+                      title={currentGalleryItem.alt}
+                      className="absolute inset-0 w-full h-full border-0"
+                    />
+                  </div>
                 ) : (
                   <div className="relative flex-1 flex items-center justify-center p-8 sm:p-12">
                     <Image
@@ -239,6 +247,11 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
                         height={72}
                         className="object-contain max-h-14 w-auto"
                       />
+                      {item.model3d && (
+                        <span className="absolute left-1.5 top-1.5 px-1.5 py-0.5 rounded-md bg-zinc-900 text-white text-[10px] font-bold leading-none">
+                          3D
+                        </span>
+                      )}
                     </button>
                   );
                 })}

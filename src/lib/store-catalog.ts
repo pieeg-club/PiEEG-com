@@ -18,6 +18,8 @@ export interface StoreGalleryItem {
   src: string;
   alt: string;
   caption: string;
+  /** Optional interactive 3D viewer page (in /public). `src` is then used as its thumbnail. */
+  model3d?: string;
 }
 
 export interface StoreBoxItem {
@@ -154,6 +156,17 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     heroImage: "/products/pieeg.png",
     gallery: [
       {
+        src: "/products/pieeg-8/pieeg8-3d-thumb.png",
+        model3d: "/products/pieeg-8/3d/pieeg8-3d-board.html",
+        alt: "Interactive 3D model of the PiEEG-8 board with components",
+        caption: "Interactive 3D model — drag to rotate, scroll or pinch to zoom",
+      },
+      {
+        src: "/products/pieeg-8/pieeg8-board-overview.png",
+        alt: "PiEEG-8 board overview: electrodes, GPIO 40 pinout, ADS1299, regulators, LEDs and user switches",
+        caption: "Board overview — 8 differential inputs plus Reference and Bias, GPIO 40 pinout",
+      },
+      {
         src: "/products/pieeg.png",
         alt: "PiEEG-8 8-channel Raspberry Pi EEG shield",
         caption: "PiEEG-8 8-Channel Shield — 40-pin Raspberry Pi HAT form factor",
@@ -163,13 +176,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
         alt: "PiEEG-8 clean board top view",
         caption: "Precision 24-bit ADS1299 analog front-end with gold-plated electrode headers",
       },
-      {
-        src: "/products/pieeg-pinout.jpg",
-        alt: "PiEEG-8 electrode and GPIO pinout diagram",
-        caption: "8 differential biosignal inputs plus Reference and Bias channels",
-      },
     ],
-    videoId: "0ocAPWok5YU",
     ...catalogInfo("pieeg"),
     hardwarePath: "/hardware/pieeg",
     storePath: "/store/pieeg",

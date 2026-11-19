@@ -430,27 +430,32 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     heroImage: "/products/pieeg16.jpg",
     gallery: [
       {
+        src: "/products/pieeg-16/pieeg16-3d-thumb.png",
+        model3d: "/products/pieeg-16/3d/pieeg16-3d-board.html",
+        alt: "Interactive 3D model of the PiEEG-16 board with components",
+        caption: "Interactive 3D model — drag to rotate, scroll or pinch to zoom",
+      },
+      {
+        src: "/products/pieeg-16/pieeg16-board-overview.png",
+        alt: "PiEEG-16 board overview: 16 electrodes, Reference and Bias, two ADS1299, GPIO 40 pinout",
+        caption: "Board overview — 16 channels plus Reference and Bias, GPIO 40 pinout",
+      },
+      {
         src: "/products/pieeg16.jpg",
-        alt: "PiEEG-16 16-Channel Raspberry Pi EEG shield",
+        alt: "PiEEG-16 16-channel EEG shield on a Raspberry Pi",
         caption: "PiEEG-16 — 16-channel high-density Raspberry Pi shield",
       },
       {
         src: "/products/pieeg16-top.jpg",
-        alt: "PiEEG-16 top view",
+        alt: "PiEEG-16 board, underside",
         caption: "Dual-stage 24-bit ADC architecture for 16 synchronized EEG/EMG/ECG channels",
       },
       {
         src: "/products/pieeg16-angle.jpg",
-        alt: "PiEEG-16 angled board view",
+        alt: "PiEEG-16 board, top side",
         caption: "Direct 40-pin GPIO mounting for Raspberry Pi 4 and Raspberry Pi 5",
       },
-      {
-        src: "/products/pieeg16-demo.png",
-        alt: "PiEEG-16 live signal recording demo",
-        caption: "Real-time 16-channel signal visualization and Python DSP pipeline",
-      },
     ],
-    videoId: "tjCazk2Efqs",
     ...catalogInfo("pieeg-16"),
     hardwarePath: "/hardware/pieeg-16",
     storePath: "/store/pieeg-16",

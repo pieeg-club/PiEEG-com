@@ -937,3 +937,9 @@ html:not(.dark) .home-bench .bench-note {
     animation: none;
   }
 }
+
+/* Person model: motion toggle, weight shifting and blinking */
+.hw-bench #hw-person{will-change:transform}
+.hw-bench #hw-eyelids{pointer-events:none}
+.hw-bench #hw-motion{white-space:nowrap;border:1px solid var(--line2);border-radius:9px;min-height:36px;margin-left:auto;padding:5px 12px}
+@media (max-width:600px){.hw-bench #hw-motion{margin-left:0}}

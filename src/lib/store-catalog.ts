@@ -460,6 +460,11 @@ export const STORE_PRODUCTS: StoreProduct[] = [
         alt: "PiEEG-16 board, top side",
         caption: "Direct 40-pin GPIO mounting for Raspberry Pi 4 and Raspberry Pi 5",
       },
+      {
+        src: "/products/pieeg-16/pieeg16-case-photo.jpg",
+        alt: "Optional 3D-printed PLA case for Raspberry Pi 5 with PiEEG-16, with the PiEEG logo on the lid",
+        caption: "Case not included — 3D-print it yourself or buy it ready-made from the PiEEG store",
+      },
     ],
     ...catalogInfo("pieeg-16"),
     hardwarePath: "/hardware/pieeg-16",

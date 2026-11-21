@@ -176,6 +176,11 @@ export const STORE_PRODUCTS: StoreProduct[] = [
         alt: "PiEEG-8 clean board top view",
         caption: "Precision 24-bit ADS1299 analog front-end with gold-plated electrode headers",
       },
+      {
+        src: "/products/pieeg-8/pieeg8-case-photo.jpg",
+        alt: "Optional 3D-printed PLA case for Raspberry Pi 5 with PiEEG-8, with the PiEEG logo on the lid",
+        caption: "Case not included — 3D-print it yourself or buy it ready-made from the PiEEG store",
+      },
     ],
     ...catalogInfo("pieeg"),
     hardwarePath: "/hardware/pieeg",

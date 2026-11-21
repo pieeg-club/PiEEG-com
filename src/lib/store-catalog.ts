@@ -256,24 +256,50 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     heroImage: "/products/octopus16.png",
     gallery: [
       {
+        src: "/products/octopus-16/octopus16-3d-thumb.png",
+        model3d: "/products/octopus-16/3d/octopus16-3d-board.html",
+        alt: "Interactive 3D model of the Octopus 16 board with pogo pins and XIAO sockets",
+        caption: "Interactive 3D model — drag to rotate, tap Pins for the channel map, XIAO to fit the MCU",
+      },
+      {
+        src: "/products/octopus-16/octopus16-board-overview.png",
+        alt: "Octopus 16 board overview: ADCs, oscillator, XIAO sockets, stacking connector, pogo-pin channel map and XIAO pin map",
+        caption: "Board overview — 16 channels plus REF and GND in one pogo-pin cluster, XIAO pin map",
+      },
+      {
         src: "/products/octopus16.png",
         alt: "Octopus 16 wireless 16-channel EEG board",
         caption: "Octopus 16 — Compact circular 16-channel wireless BCI board",
       },
       {
-        src: "/products/octopus16-worn.jpeg",
-        alt: "Octopus 16 worn on headband",
-        caption: "Wearable form factor with direct dry pogo-pin scalp contact",
+        src: "/products/octopus-16/octopus16-mount-cutout.png",
+        alt: "Octopus 16 with the XIAO module plugged into its sockets",
+        caption: "XIAO module plugged into the board sockets above the pogo-pin array",
       },
       {
-        src: "/products/octopus16-mount.jpeg",
-        alt: "Octopus 16 3D-printed mount and hardware view",
-        caption: "Modular mounting for headbands, caps, and custom 3D-printed rigs",
+        src: "/products/octopus-16/octopus16-component-side.png",
+        alt: "Octopus 16 component side with two ADS131M08 ADCs and XIAO sockets",
+        caption: "Component side — two ADS131M08 24-bit ADCs, shared oscillator and XIAO sockets",
+      },
+      {
+        src: "/products/octopus-16/octopus16-pin-side.png",
+        alt: "Octopus 16 pin side with 18 gold pogo pins",
+        caption: "Pin side — 18 spring-loaded gold pogo pins: 16 channels, REF and GND",
       },
       {
         src: "/products/octopus16-firmware.jpg",
         alt: "Octopus 16 web firmware and streaming utility",
         caption: "One-click browser flashing and Web Bluetooth streaming to PiEEG Cloud",
+      },
+      {
+        src: "/products/octopus-16/octopus16-case-photo-1.jpg",
+        alt: "Optional 3D-printed Octopus 16 holder with the XIAO USB opening",
+        caption: "Case not included — 3D-print it yourself or buy it ready-made from the PiEEG store",
+      },
+      {
+        src: "/products/octopus-16/octopus16-case-photo-2.jpg",
+        alt: "Optional 3D-printed Octopus 16 holder with the pogo pins through the base",
+        caption: "Case not included — 3D-print it yourself or buy it ready-made from the PiEEG store",
       },
     ],
     ...catalogInfo("octopus-16"),

@@ -658,6 +658,16 @@ export const STORE_PRODUCTS: StoreProduct[] = [
         alt: "IronBCI-32 angled connector view",
         caption: "Direct 2.54 mm header array matching the 32-Channel Wet EEG Cap Kit",
       },
+      {
+        src: "/products/ironbci-32/ironbci32-case-photo-1.jpg",
+        alt: "Optional 3D-printed octagonal case for IronBCI-32 with brass screws and micro-USB opening",
+        caption: "Case not included — 3D-print it yourself or buy it ready-made from the PiEEG store",
+      },
+      {
+        src: "/products/ironbci-32/ironbci32-case-photo-2.jpg",
+        alt: "Optional 3D-printed IronBCI-32 case with electrode headers through the side windows",
+        caption: "Case not included — 3D-print it yourself or buy it ready-made from the PiEEG store",
+      },
     ],
     ...catalogInfo("ironbci-32"),
     hardwarePath: "/hardware/ironbci-32",

@@ -27,6 +27,10 @@ const TABS = [
   { kind: "3d", caption: "Interactive 3D model — switch boards, open the lid or explode the parts" },
   { kind: "img", src: `${BASE}/assembly-pieeg8.gif`, thumb: `${BASE}/enclosure-closed.png`, caption: "Assembly with PiEEG-8 — Pi 5 in, shield on, lid on, 4 screws", alt: "Animation: Raspberry Pi 5 and PiEEG-8 assembled into the case" },
   { kind: "img", src: `${BASE}/assembly-pieeg16.gif`, thumb: `${BASE}/enclosure-exploded.png`, caption: "Assembly with PiEEG-16 — Pi 5 in, shield on, lid on, 4 screws", alt: "Animation: Raspberry Pi 5 and PiEEG-16 assembled into the case" },
+  { kind: "photo", src: `${BASE}/photo-closed-top.jpg`, thumb: `${BASE}/photo-closed-top-thumb.jpg`, caption: "Printed case, closed — PiEEG-16 headers through the lid slots, 4 screws", alt: "3D-printed PiEEG Pi 5 enclosure closed, with PiEEG-16 headers visible through the lid" },
+  { kind: "photo", src: `${BASE}/photo-ports.jpg`, thumb: `${BASE}/photo-ports-thumb.jpg`, caption: "Ethernet and USB ports of the Raspberry Pi 5 stay open", alt: "Front of the enclosure showing the Raspberry Pi 5 Ethernet and four USB ports" },
+  { kind: "tall", src: `${BASE}/photo-lid.jpg`, thumb: `${BASE}/photo-lid-thumb.jpg`, caption: "Side vents, micro-HDMI and power openings, PiEEG logo on the lid", alt: "PiEEG Pi 5 enclosure with lid, showing hexagon vents and side port openings" },
+  { kind: "tall", src: `${BASE}/photo-parts.jpg`, thumb: `${BASE}/photo-parts-thumb.jpg`, caption: "The two printed parts: vented box and lid with electrode-header slots", alt: "PiEEG Pi 5 enclosure parts: open box with standoffs and the lid" },
 ] as const;
 
 function loadScript(src: string): Promise<void> {
@@ -129,10 +133,10 @@ export default function PiEEGPi5EnclosureMedia() {
             </div>
           </div>
           {TABS.map((t, i) =>
-            t.kind === "img" && tab === i ? (
+            t.kind !== "3d" && tab === i ? (
               <div key={t.src} className="oc-panel on">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="oc-img" src={t.src} alt={t.alt} />
+                <img className={`oc-img${t.kind === "photo" ? " photo" : ""}`} src={t.src} alt={t.alt} />
               </div>
             ) : null
           )}
@@ -166,9 +170,9 @@ export default function PiEEGPi5EnclosureMedia() {
               </>
             ) : (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={t.thumb} alt="" />
+              <img src={t.thumb} alt="" className={t.kind === "photo" || t.kind === "tall" ? "photo" : undefined} />
             )}
-            {i > 0 && <span className="oc-play">{i === 1 ? "8 ▶" : "16 ▶"}</span>}
+            {(i === 1 || i === 2) && <span className="oc-play">{i === 1 ? "8 ▶" : "16 ▶"}</span>}
           </button>
         ))}
       </div>

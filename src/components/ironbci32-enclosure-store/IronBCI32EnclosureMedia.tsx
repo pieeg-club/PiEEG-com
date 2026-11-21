@@ -27,6 +27,8 @@ const TABS = [
   { kind: "3d", caption: "Interactive 3D model — open the lid, explode the parts or look underneath" },
   { kind: "img", src: `${BASE}/assembly.gif`, thumb: `${BASE}/enclosure-exploded.png`, caption: "Assembly — board in, lid on, turn over, 4 screws", alt: "Animation: assembling IronBCI-32 in the enclosure" },
   { kind: "img", src: `${BASE}/enclosure-closed.png`, thumb: `${BASE}/enclosure-closed.png`, caption: "Assembled: bottom tray and lid with IronBCI-32 inside (3D render)", alt: "IronBCI-32 Enclosure assembled" },
+  { kind: "photo", src: `${BASE}/photo-usb-side.jpg`, thumb: `${BASE}/photo-usb-side-thumb.jpg`, caption: "Printed case, closed — 6 brass screws, micro-USB opening on the side", alt: "3D-printed IronBCI-32 enclosure with brass screws and the micro-USB port" },
+  { kind: "photo", src: `${BASE}/photo-headers.jpg`, thumb: `${BASE}/photo-headers-thumb.jpg`, caption: "Electrode headers reach out through the side windows, LED holes on the lid", alt: "IronBCI-32 enclosure showing the 2×10 electrode headers through the side windows" },
 ] as const;
 
 function loadScript(src: string): Promise<void> {
@@ -125,10 +127,10 @@ export default function IronBCI32EnclosureMedia() {
             </div>
           </div>
           {TABS.map((t, i) =>
-            t.kind === "img" && tab === i ? (
+            t.kind !== "3d" && tab === i ? (
               <div key={t.src} className="oc-panel on">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="oc-img" src={t.src} alt={t.alt} />
+                <img className={`oc-img${t.kind === "photo" ? " photo" : ""}`} src={t.src} alt={t.alt} />
               </div>
             ) : null
           )}
@@ -162,7 +164,7 @@ export default function IronBCI32EnclosureMedia() {
               </>
             ) : (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={t.thumb} alt="" />
+              <img src={t.thumb} alt="" className={t.kind === "photo" ? "photo" : undefined} />
             )}
             {i === 1 && <span className="oc-play">▶</span>}
           </button>

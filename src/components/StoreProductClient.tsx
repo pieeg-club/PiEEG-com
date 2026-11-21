@@ -580,7 +580,7 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
                 </h2>
               </div>
               <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400">
-                Recommended caps, electrodes, and kits verified for {product.name}.
+                Recommended accessories and kits verified for {product.name}.
               </p>
             </div>
 
@@ -821,7 +821,7 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
           <div className="flex items-center gap-2.5 mb-8">
             <HelpCircle className="w-5 h-5 text-cyan-500" />
             <h2 className="text-2xl font-black tracking-tight text-zinc-900 dark:text-white">
-              Ordering, Shipping &amp; Direct Store FAQ
+              Questions, Ordering &amp; Shipping
             </h2>
           </div>
 

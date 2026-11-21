@@ -2,7 +2,7 @@
 
 /**
  * Octopus 16 Enclosure hero media (/store/octopus-16-enclosure): replaces the photo gallery
- * with tabs for an interactive 3D model, the assembly animation and two renders.
+ * with tabs for an interactive 3D model, the assembly animation, a render and three photos.
  *
  * The 3D viewer is a prebuilt script (three.js bundled in), loaded only on this page:
  *   /public/products/octopus-16-enclosure/viewer/octopus16-enclosure-models.js  (case STL + board layout)
@@ -27,6 +27,9 @@ const TABS = [
   { kind: "3d", caption: "Interactive 3D model — open the lid, explode the parts or look underneath" },
   { kind: "img", src: `${BASE}/assembly.gif`, thumb: `${BASE}/enclosure-exploded.png`, caption: "Assembly — XIAO on, board in, lid on, box into base", alt: "Animation: assembling Octopus 16 in the enclosure" },
   { kind: "img", src: `${BASE}/enclosure-closed.png`, thumb: `${BASE}/enclosure-closed.png`, caption: "Assembled: base ring, threaded box and screw-on lid (3D render)", alt: "Octopus 16 Enclosure assembled" },
+  { kind: "photo", src: `${BASE}/photo-assembled.jpg`, thumb: `${BASE}/photo-assembled-thumb.jpg`, caption: "Printed enclosure, assembled — PiEEG logo on the knurled lid", alt: "3D-printed Octopus 16 Enclosure, assembled, with the PiEEG logo on the lid" },
+  { kind: "photo", src: `${BASE}/photo-pogo-pins.jpg`, thumb: `${BASE}/photo-pogo-pins-thumb.jpg`, caption: "Underside: 16 gold pogo-pin electrodes through the floor of the box", alt: "Octopus 16 Enclosure upside down showing 16 gold pogo-pin electrodes" },
+  { kind: "photo", src: `${BASE}/photo-parts.jpg`, thumb: `${BASE}/photo-parts-thumb.jpg`, caption: "The three printed parts: threaded box, base ring and lid", alt: "Octopus 16 Enclosure parts: threaded box with pin holes, base ring and PiEEG lid" },
 ] as const;
 
 function loadScript(src: string): Promise<void> {
@@ -125,10 +128,10 @@ export default function Octopus16EnclosureMedia() {
             </div>
           </div>
           {TABS.map((t, i) =>
-            t.kind === "img" && tab === i ? (
+            t.kind !== "3d" && tab === i ? (
               <div key={t.src} className="oc-panel on">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="oc-img" src={t.src} alt={t.alt} />
+                <img className={`oc-img${t.kind === "photo" ? " photo" : ""}`} src={t.src} alt={t.alt} />
               </div>
             ) : null
           )}
@@ -162,7 +165,7 @@ export default function Octopus16EnclosureMedia() {
               </>
             ) : (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={t.thumb} alt="" />
+              <img src={t.thumb} alt="" className={t.kind === "photo" ? "photo" : undefined} />
             )}
             {i === 1 && <span className="oc-play">▶</span>}
           </button>

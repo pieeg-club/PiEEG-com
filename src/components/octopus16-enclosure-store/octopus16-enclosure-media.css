@@ -57,3 +57,5 @@
 .dark .oc16m .vbar button.on{background:#fafafa;color:#18181b}
 .dark .oc16m .oc-thumb{border-color:#27272a;background:#18181b}
 .dark .oc16m .oc-thumb.on{background:#27272a}
+.oc16m .oc-img.photo{object-fit:cover;padding:0}
+.oc16m .oc-thumb img.photo{object-fit:cover}

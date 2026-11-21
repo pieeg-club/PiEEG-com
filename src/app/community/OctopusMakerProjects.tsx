@@ -175,19 +175,36 @@ const PROJECTS: MakerProject[] = [
   },
 ];
 
-/* ---------- LIKES BACKEND ----------
-   Connected to PiEEG Cloud REST API (https://pieeg-cloud.fly.dev/v1/octopus-likes).
-   Uses passwordless 6-digit email OTP verification so every visitor can like projects
-   once per verified email, with automatic JWT refresh. */
+/* ---------- COMPETITION VOTES BACKEND ----------
+   Connected to PiEEG Cloud REST API (https://pieeg-cloud.fly.dev/v1/competition-votes).
+   Permissive voting (no login/OTP required): identifies guests via persistent browser
+   X-Voter-Id (with IP fallback) and optionally syncs with Bearer token if signed in. */
 const CLOUD_API =
   process.env.NEXT_PUBLIC_PIEEG_CLOUD_URL || "https://pieeg-cloud.fly.dev";
-const LIKES_URL = `${CLOUD_API}/v1/octopus-likes`;
+const VOTES_URL = `${CLOUD_API}/v1/competition-votes`;
 const REFRESH_URL = `${CLOUD_API}/v1/auth/refresh`;
 
 const LS_KEY = "octopus16-challenge-likes";
+const LS_VOTER_ID_KEY = "pieeg_voter_id";
 const LS_TOKEN_KEY = "octopus16-auth-token";
 const LS_REFRESH_KEY = "octopus16-refresh-token";
 const LS_EMAIL_KEY = "octopus16-auth-email";
+
+function getVoterId(): string {
+  try {
+    let id = localStorage.getItem(LS_VOTER_ID_KEY);
+    if (!id) {
+      id =
+        typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+          ? crypto.randomUUID()
+          : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
+      localStorage.setItem(LS_VOTER_ID_KEY, id);
+    }
+    return id;
+  } catch {
+    return "";
+  }
+}
 
 function plural(n: number, w: string) {
   return `${n} ${w}${n === 1 ? "" : "s"}`;
@@ -273,18 +290,9 @@ export default function OctopusMakerProjects() {
   const [activeStoryId, setActiveStoryId] = useState<string | null>(null);
   const [toastMsg, setToastMsg] = useState<string | null>(null);
 
-  // Auth / OTP state for voting
+  // Optional synced account state (if user signed in elsewhere on Community)
   const [token, setToken] = useState<string | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
-  const [pendingProject, setPendingProject] = useState<MakerProject | null>(
-    null
-  );
-  const [authStep, setAuthStep] = useState<"email" | "otp">("email");
-  const [emailInput, setEmailInput] = useState("");
-  const [otpInput, setOtpInput] = useState("");
-  const [honeypot, setHoneypot] = useState("");
-  const [authLoading, setAuthLoading] = useState(false);
-  const [authError, setAuthError] = useState<string | null>(null);
 
   // Next-round notification subscription state
   const [notifyName, setNotifyName] = useState("");
@@ -297,7 +305,6 @@ export default function OctopusMakerProjects() {
   const [notifyError, setNotifyError] = useState<string | null>(null);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const authDialogRef = useRef<HTMLDialogElement>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const showToast = useCallback((msg: string) => {
@@ -347,7 +354,7 @@ export default function OctopusMakerProjects() {
     }
   }, []);
 
-  // Load visitor's liked project IDs + auth token from localStorage and fetch shared counts
+  // Load visitor's liked project IDs + optional auth token from localStorage and fetch shared counts
   useEffect(() => {
     let savedToken: string | null = null;
     try {
@@ -361,9 +368,8 @@ export default function OctopusMakerProjects() {
       savedToken = localStorage.getItem(LS_TOKEN_KEY);
       const savedEmail = localStorage.getItem(LS_EMAIL_KEY);
       if (savedToken) setToken(savedToken);
-      if (savedEmail) {
+      if (savedToken && savedEmail) {
         setUserEmail(savedEmail);
-        setEmailInput(savedEmail);
       }
     } catch {
       // ignore storage errors
@@ -371,31 +377,47 @@ export default function OctopusMakerProjects() {
 
     const loadInitialSnapshot = async () => {
       try {
-        const headers: Record<string, string> = {};
-        if (savedToken) headers["Authorization"] = `Bearer ${savedToken}`;
-        let r = await fetch(LIKES_URL, { headers, cache: "no-store" });
-        if (!r.ok) throw new Error("Failed to fetch likes");
+        const voterId = getVoterId();
+        const buildHeaders = (bearer: string | null): Record<string, string> => ({
+          ...(voterId ? { "X-Voter-Id": voterId } : {}),
+          ...(bearer ? { Authorization: `Bearer ${bearer}` } : {}),
+        });
+
+        let r = await fetch(VOTES_URL, {
+          headers: buildHeaders(savedToken),
+          cache: "no-store",
+        });
+
+        if (r.status === 401 && savedToken) {
+          const refreshed = await refreshAccessToken();
+          r = await fetch(VOTES_URL, {
+            headers: buildHeaders(refreshed),
+            cache: "no-store",
+          });
+        }
+
+        if (!r.ok) throw new Error("Failed to fetch votes");
         let j = await r.json();
 
         // If we had a saved token but it expired, try refreshing once
         if (savedToken && !j.authenticated) {
           const refreshed = await refreshAccessToken();
           if (refreshed) {
-            r = await fetch(LIKES_URL, {
-              headers: { Authorization: `Bearer ${refreshed}` },
+            const retryRes = await fetch(VOTES_URL, {
+              headers: buildHeaders(refreshed),
               cache: "no-store",
             });
-            if (r.ok) j = await r.json();
+            if (retryRes.ok) j = await retryRes.json();
           }
         }
 
         if (j && typeof j.counts === "object") {
           setCounts(j.counts);
           setShared(true);
-          if (j.authenticated && Array.isArray(j.liked)) {
+          if (Array.isArray(j.liked)) {
             saveLikedSet(new Set(j.liked));
-            if (j.email) setUserEmail(j.email);
           }
+          setUserEmail(j.authenticated && j.email ? j.email : null);
         }
       } catch {
         setShared(false);
@@ -423,17 +445,6 @@ export default function OctopusMakerProjects() {
     }
   }, [activeStoryId]);
 
-  // Sync auth dialog open/close state with pendingProject
-  useEffect(() => {
-    const d = authDialogRef.current;
-    if (!d) return;
-    if (pendingProject) {
-      if (!d.open) d.showModal();
-    } else {
-      if (d.open) d.close();
-    }
-  }, [pendingProject]);
-
   const closeStory = useCallback(() => {
     setActiveStoryId(null);
     window.history.replaceState(
@@ -441,12 +452,6 @@ export default function OctopusMakerProjects() {
       "",
       window.location.pathname + window.location.search
     );
-  }, []);
-
-  const closeAuthModal = useCallback(() => {
-    setPendingProject(null);
-    setAuthError(null);
-    setOtpInput("");
   }, []);
 
   const likesOf = useCallback(
@@ -472,15 +477,6 @@ export default function OctopusMakerProjects() {
 
   const toggleLike = async (project: MakerProject) => {
     if (!LIKES_OPEN) return;
-
-    // Require email verification before casting shared votes
-    if (!token) {
-      setAuthError(null);
-      setAuthStep("email");
-      setOtpInput("");
-      setPendingProject(project);
-      return;
-    }
 
     const isLikedNow = !mine.has(project.id);
     const prevMine = new Set(mine);
@@ -509,36 +505,41 @@ export default function OctopusMakerProjects() {
     saveLikedSet(nextMine);
 
     try {
+      const voterId = getVoterId();
       let activeToken: string | null = token;
-      let r = await fetch(LIKES_URL, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          Authorization: `Bearer ${activeToken}`,
-        },
-        body: JSON.stringify({ id: project.id, like: isLikedNow }),
+      if (!activeToken) {
+        try {
+          activeToken = localStorage.getItem(LS_TOKEN_KEY);
+        } catch {
+          // ignore storage errors
+        }
+      }
+
+      const buildHeaders = (bearer: string | null): Record<string, string> => ({
+        "Content-Type": "application/json",
+        ...(voterId ? { "X-Voter-Id": voterId } : {}),
+        ...(bearer ? { Authorization: `Bearer ${bearer}` } : {}),
       });
 
-      if (r.status === 401) {
-        activeToken = await refreshAccessToken();
-        if (activeToken) {
-          r = await fetch(LIKES_URL, {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-              Authorization: `Bearer ${activeToken}`,
-            },
-            body: JSON.stringify({ id: project.id, like: isLikedNow }),
-          });
-        } else {
-          // Session expired — revert optimistic update and prompt for email code
-          saveLikedSet(prevMine);
-          setCounts(prevCounts);
-          setAuthError(null);
-          setAuthStep("email");
-          setPendingProject(project);
-          return;
-        }
+      const payload = JSON.stringify({
+        id: project.id,
+        like: isLikedNow,
+        website: "",
+      });
+
+      let r = await fetch(VOTES_URL, {
+        method: "POST",
+        headers: buildHeaders(activeToken),
+        body: payload,
+      });
+
+      if (r.status === 401 && activeToken) {
+        const refreshed = await refreshAccessToken();
+        r = await fetch(VOTES_URL, {
+          method: "POST",
+          headers: buildHeaders(refreshed),
+          body: payload,
+        });
       }
 
       if (!r.ok) {
@@ -561,99 +562,6 @@ export default function OctopusMakerProjects() {
       saveLikedSet(prevMine);
       setCounts(prevCounts);
       showToast("Network error — please try again");
-    }
-  };
-
-  const handleRequestCode = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const trimmedEmail = emailInput.trim().toLowerCase();
-    if (!trimmedEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
-      setAuthError("Please enter a valid email address.");
-      return;
-    }
-
-    setAuthLoading(true);
-    setAuthError(null);
-    try {
-      const r = await fetch(`${LIKES_URL}/request-code`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email: trimmedEmail, website: honeypot }),
-      });
-      const j = await r.json().catch(() => null);
-      if (!r.ok) {
-        setAuthError(
-          j?.message || "Could not send verification code. Please try again."
-        );
-        return;
-      }
-      setAuthStep("otp");
-    } catch {
-      setAuthError("Network error. Please check your connection and try again.");
-    } finally {
-      setAuthLoading(false);
-    }
-  };
-
-  const handleVerifyCode = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const trimmedEmail = emailInput.trim().toLowerCase();
-    const trimmedOtp = otpInput.trim();
-    if (trimmedOtp.length !== 6) {
-      setAuthError("Please enter the 6-digit code from your email.");
-      return;
-    }
-
-    setAuthLoading(true);
-    setAuthError(null);
-    try {
-      const r = await fetch(`${LIKES_URL}/verify-code`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          email: trimmedEmail,
-          otp: trimmedOtp,
-          id: pendingProject?.id,
-          website: honeypot,
-        }),
-      });
-      const j = await r.json().catch(() => null);
-      if (!r.ok) {
-        setAuthError(j?.message || "Invalid or expired verification code.");
-        return;
-      }
-
-      const accessToken = j?.access?.token;
-      const refreshToken = j?.refresh?.token;
-      if (accessToken) {
-        setToken(accessToken);
-        setUserEmail(trimmedEmail);
-        try {
-          localStorage.setItem(LS_TOKEN_KEY, accessToken);
-          if (refreshToken) localStorage.setItem(LS_REFRESH_KEY, refreshToken);
-          localStorage.setItem(LS_EMAIL_KEY, trimmedEmail);
-        } catch {
-          // ignore storage errors
-        }
-      }
-
-      if (j && typeof j.counts === "object") {
-        setCounts(j.counts);
-        setShared(true);
-      }
-      if (j && Array.isArray(j.liked)) {
-        saveLikedSet(new Set(j.liked));
-      }
-
-      const likedTitle = pendingProject?.title;
-      closeAuthModal();
-      if (likedTitle) {
-        showToast(`You liked ${likedTitle}`);
-      }
-    } catch {
-      setAuthError("Network error. Please try again.");
-    } finally {
-      setAuthLoading(false);
     }
   };
 
@@ -1784,140 +1692,6 @@ export default function OctopusMakerProjects() {
               {renderLikeButton(activeProject)}
             </div>
           </>
-        )}
-      </dialog>
-
-      {/* ── Email OTP verification modal for voting ── */}
-      <dialog
-        ref={authDialogRef}
-        className="auth-modal"
-        aria-labelledby="authTitle"
-        onClose={closeAuthModal}
-        onClick={(e) => {
-          if (e.target === authDialogRef.current) closeAuthModal();
-        }}
-      >
-        {pendingProject && (
-          <div className="auth-box">
-            <div className="auth-top">
-              <div>
-                <span className="status">
-                  <i />
-                  Verify once to like
-                </span>
-                <h3 id="authTitle">
-                  {authStep === "email"
-                    ? `Like "${pendingProject.title}"`
-                    : "Enter verification code"}
-                </h3>
-              </div>
-              <button
-                className="x"
-                type="button"
-                aria-label="Close"
-                onClick={closeAuthModal}
-              >
-                ×
-              </button>
-            </div>
-
-            {authStep === "email" ? (
-              <>
-                <p className="auth-desc">
-                  To keep community likes fair and prevent automated voting,
-                  enter your email for a one-time 6-digit code. You only need to
-                  do this once (we never use this email for marketing —{" "}
-                  <a
-                    href="#notify"
-                    onClick={closeAuthModal}
-                    style={{ color: "var(--accent)", fontWeight: 500 }}
-                  >
-                    opt in separately below
-                  </a>{" "}
-                  if you want round updates).
-                </p>
-                <form className="auth-form" onSubmit={handleRequestCode}>
-                  <input
-                    className="auth-hp"
-                    type="text"
-                    name="website"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    value={honeypot}
-                    onChange={(e) => setHoneypot(e.target.value)}
-                  />
-                  <input
-                    className="auth-input"
-                    type="email"
-                    required
-                    placeholder="you@example.com"
-                    value={emailInput}
-                    onChange={(e) => setEmailInput(e.target.value)}
-                    disabled={authLoading}
-                    autoFocus
-                  />
-                  {authError && <p className="auth-err">{authError}</p>}
-                  <div className="auth-actions">
-                    <button
-                      className="like"
-                      type="submit"
-                      disabled={authLoading}
-                    >
-                      {authLoading ? "Sending code…" : "Send 6-digit code"}
-                    </button>
-                  </div>
-                </form>
-              </>
-            ) : (
-              <>
-                <p className="auth-desc">
-                  We sent a 6-digit code to <b>{emailInput}</b>. Enter it below
-                  to confirm your like on <b>{pendingProject.title}</b>.
-                </p>
-                <form className="auth-form" onSubmit={handleVerifyCode}>
-                  <input
-                    className="auth-input otp"
-                    type="text"
-                    inputMode="numeric"
-                    pattern="[0-9]{6}"
-                    maxLength={6}
-                    required
-                    placeholder="000000"
-                    value={otpInput}
-                    onChange={(e) =>
-                      setOtpInput(e.target.value.replace(/\D/g, "").slice(0, 6))
-                    }
-                    disabled={authLoading}
-                    autoFocus
-                  />
-                  {authError && <p className="auth-err">{authError}</p>}
-                  <div className="auth-actions">
-                    <button
-                      className="like"
-                      type="submit"
-                      disabled={authLoading || otpInput.length !== 6}
-                    >
-                      <HeartIcon />
-                      <span>
-                        {authLoading ? "Verifying…" : "Verify & Like"}
-                      </span>
-                    </button>
-                    <button
-                      className="auth-sub"
-                      type="button"
-                      disabled={authLoading}
-                      onClick={() => {
-                        setAuthStep("email");
-                        setAuthError(null);
-                      }}
-                    >
-                      Use a different email
-                    </button>
-                  </div>
-                </form>
-              </>
-            )}
-          </div>
         )}
       </dialog>
 

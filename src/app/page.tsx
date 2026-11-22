@@ -9,6 +9,7 @@ import WorldMap from "@/components/home/WorldMap";
 import PlatformBench from "@/components/home/PlatformBench";
 import AcademicCustomers from "@/components/home/AcademicCustomers";
 import ResearchReview from "@/components/home/ResearchReview";
+import GithubContributors from "@/components/home/GithubContributors";
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -1112,6 +1113,7 @@ export default function Home() {
       <PlatformBench />
       <AcademicCustomers />
       <ResearchReview />
+      <GithubContributors />
       <WebBCISection />
       <FeaturedSection />
       <CtaSection />

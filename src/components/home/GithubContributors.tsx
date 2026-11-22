@@ -20,17 +20,9 @@ export default function GithubContributors() {
     >
       <div className="mx-auto max-w-6xl px-6">
         <div className="rounded-2xl border border-zinc-200 bg-zinc-50/80 px-6 py-10 sm:px-10 dark:border-zinc-800 dark:bg-zinc-900/50">
-          <div className="mx-auto max-w-190 text-center">
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
-              Built in the open
-            </p>
-            <h2 id="contributors-title" className="title-subsection mb-4">
-              Contributors to PiEEG Club on GitHub
-            </h2>
-            <p className="m-0 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-300">
-              {contributors.length} people across {data.repoCount} open-source repositories. Thank you!
-            </p>
-          </div>
+          <h2 id="contributors-title" className="title-subsection m-0 text-center">
+            Contributors to PiEEG Club on GitHub
+          </h2>
 
           <ul className="m-0 mt-8 grid list-none grid-cols-3 gap-x-4 gap-y-6 p-0 sm:grid-cols-5 lg:grid-cols-7">
             {contributors.map((person) => {
@@ -64,6 +56,21 @@ export default function GithubContributors() {
                 </li>
               );
             })}
+            <li>
+              <a
+                href={ORG_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center gap-2 text-center no-underline"
+              >
+                <span className="flex size-16 items-center justify-center rounded-full bg-zinc-900 text-2xl font-semibold text-white ring-2 ring-white transition group-hover:-translate-y-0.5 group-hover:ring-cyan-500 dark:bg-zinc-100 dark:text-zinc-900 dark:ring-zinc-900 dark:group-hover:ring-cyan-400">
+                  +
+                </span>
+                <span className="w-full truncate text-xs font-semibold uppercase tracking-[0.12em] text-zinc-800 group-hover:text-zinc-950 dark:text-zinc-200 dark:group-hover:text-zinc-50">
+                  And more
+                </span>
+              </a>
+            </li>
           </ul>
 
           <div className="mt-10 flex flex-col items-center gap-2 text-center">

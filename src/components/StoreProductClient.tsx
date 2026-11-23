@@ -366,9 +366,9 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
                       In Stock · Ready to Ship
                     </span>
                   ) : isKickstarter ? (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-violet-500/10 text-violet-700 dark:text-violet-300 border border-violet-500/20">
-                      <Rocket className="w-3.5 h-3.5" />
-                      Kickstarter Campaign
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-teal-500/10 text-teal-700 dark:text-teal-300 border border-teal-500/30">
+                      <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
+                      Now Live on Kickstarter
                     </span>
                   ) : (
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20">
@@ -376,7 +376,11 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
                     </span>
                   )}
                   <p className="text-[11px] text-zinc-400 mt-1">
-                    {ProductBuy ? "Subscribe to hear first" : "Fulfilled worldwide via Elecrow"}
+                    {ProductBuy
+                      ? "Subscribe to hear first"
+                      : isKickstarter
+                        ? "Goal £5,000 · Campaign ends 31 Dec"
+                        : "Fulfilled worldwide via Elecrow"}
                   </p>
                 </div>
               </div>
@@ -451,7 +455,7 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
                       <span className="text-left">
                         <span className="block leading-tight">Back on Kickstarter</span>
                         <span className="block text-[11px] font-medium text-white/80">
-                          Official Launch Campaign
+                          Now Live · Goal £5,000 · Ends 31 Dec
                         </span>
                       </span>
                     </span>

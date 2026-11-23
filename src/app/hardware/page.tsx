@@ -8,6 +8,7 @@ import HeroVideo from "@/components/HeroVideo";
 import BulkOrderSection from "@/components/BulkOrderSection";
 import { ProductPrice } from "@/components/ProductOffer";
 import { enclosuresFor } from "@/lib/thingiverse";
+import { pieegXrKickstarterUrl } from "@/lib/kickstarter";
 
 export const metadata: Metadata = {
   title: "Products — PiEEG",
@@ -15,8 +16,7 @@ export const metadata: Metadata = {
     "Explore our line of research-grade brain-computer interface hardware. From 8 to 32 channels, compatible with Raspberry Pi, Arduino, and Jetson Nano.",
 };
 
-const XR_KICKSTARTER =
-  "https://www.kickstarter.com/projects/42415505/pieeg-xr-neural-face-interface-for-spatial-computing";
+const XR_KICKSTARTER = pieegXrKickstarterUrl("hardware_grid");
 
 // Hardware Products
 const hardwareProducts = [
@@ -36,14 +36,14 @@ const hardwareProducts = [
       "Avatar expression from facial EMG",
       "Open-source 3D model"
     ],
-    status: "Coming Soon",
-    badge: "Newest",
+    status: "Kickstarter Live",
+    badge: "Live on Kickstarter",
     gradient: "from-violet-500 to-cyan-600",
     bgGradient: "from-violet-50 to-cyan-50 dark:from-violet-950/30 dark:to-cyan-950/30",
     image: "/products/pieeg-xr.png",
     purchaseUrl: XR_KICKSTARTER,
-    purchaseLabel: "Kickstarter",
-    priceLabel: "Coming soon",
+    purchaseLabel: "Back on Kickstarter",
+    priceLabel: "Live on Kickstarter",
     enclosureLinks: enclosuresFor("pieeg-xr"),
     github: "https://github.com/pieeg-club/ironbci",
     youtube: "https://www.youtube.com/watch?v=X3xSN6h-QzM",

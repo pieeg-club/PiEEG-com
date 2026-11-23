@@ -1,4 +1,5 @@
 import { elecrowCatalog, formatUsd, type Availability } from "./elecrow-catalog";
+import { pieegXrKickstarterUrl } from "./kickstarter";
 import { enclosuresFor, type EnclosureLink } from "./thingiverse";
 
 export const SENDY_STORE_LIST_ID = "jsw5exWDIC1KbuAgvAoliQ";
@@ -1007,9 +1008,9 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     name: "PiEEG XR",
     shortName: "PiEEG XR",
     eyebrow: "Neural Face Interface for VR Headsets",
-    badge: "Newest · XR",
+    badge: "Live on Kickstarter",
     tagline: "8-channel dry-electrode VR face gasket for facial EMG and frontal EEG.",
-    headline: "Reserve PiEEG XR",
+    headline: "Back PiEEG XR on Kickstarter",
     summary:
       "Snap-on neural face interface for spatial computing and VR headsets. Captures 8 channels of facial micro-expression EMG and frontal EEG at 24-bit resolution over BLE 5.0—driving live avatar expressions and Focus-to-Action mechanics.",
     category: "xr",
@@ -1046,12 +1047,11 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     ],
     videoId: "X3xSN6h-QzM",
     price: null,
-    priceLabel: "Kickstarter",
+    priceLabel: "Live on Kickstarter",
     currency: "USD",
     sku: "PIEEG-XR-8",
     availability: "Kickstarter",
-    kickstarterUrl:
-      "https://www.kickstarter.com/projects/42415505/pieeg-xr-neural-face-interface-for-spatial-computing",
+    kickstarterUrl: pieegXrKickstarterUrl("store_pieeg_xr"),
     hardwarePath: "/hardware/pieeg-xr",
     storePath: "/store/pieeg-xr",
     githubUrl: "https://github.com/pieeg-club/ironbci",
@@ -1094,7 +1094,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
       { label: "Signals Measured", value: "Frontal EEG, EOG & Facial EMG" },
       { label: "ADC Resolution", value: "24-bit @ 250 SPS (IronBCI core)" },
       { label: "Wireless", value: "Bluetooth Low Energy 5.0" },
-      { label: "Availability", value: "Launching on Kickstarter + Direct Store Soon" },
+      { label: "Availability", value: "Now Live on Kickstarter (Goal £5,000 · Ends 31 Dec)" },
     ],
     faqs: COMMON_STORE_FAQS,
   },
@@ -1103,9 +1103,9 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     name: "PiEEG XR-16",
     shortName: "PiEEG XR-16",
     eyebrow: "16-Channel Face + Visual Cortex VR Interface",
-    badge: "16-Ch XR",
+    badge: "Live on Kickstarter · 16-Ch",
     tagline: "PiEEG XR face gasket plus 8 posterior visual-cortex sensors (16 channels total).",
-    headline: "Reserve PiEEG XR-16",
+    headline: "Back PiEEG XR-16 on Kickstarter",
     summary:
       "Everything in PiEEG XR plus eight rear electrodes over the occipital visual cortex. Built for SSVEP, visual evoked potentials (VEP), and full-head spatial computing research inside VR.",
     category: "xr",
@@ -1135,12 +1135,11 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     ],
     videoId: "X3xSN6h-QzM",
     price: null,
-    priceLabel: "Kickstarter",
+    priceLabel: "Live on Kickstarter",
     currency: "USD",
     sku: "PIEEG-XR-16",
     availability: "Kickstarter",
-    kickstarterUrl:
-      "https://www.kickstarter.com/projects/42415505/pieeg-xr-neural-face-interface-for-spatial-computing",
+    kickstarterUrl: pieegXrKickstarterUrl("store_xr_16"),
     hardwarePath: "/hardware/xr-16",
     storePath: "/store/xr-16",
     githubUrl: "https://github.com/pieeg-club/ironbci",
@@ -1176,7 +1175,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
       { label: "Channels", value: "16 channels (8 facial/frontal + 8 occipital visual cortex)" },
       { label: "Resolution", value: "24-bit, 250 SPS per channel" },
       { label: "Wireless", value: "BLE 5.0" },
-      { label: "Availability", value: "Kickstarter / Direct Store Soon" },
+      { label: "Availability", value: "Now Live on Kickstarter (Ends 31 Dec)" },
     ],
     faqs: COMMON_STORE_FAQS,
   },

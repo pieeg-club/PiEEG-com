@@ -16,8 +16,9 @@ import {
   ExternalLink,
 } from "lucide-react";
 
-const KICKSTARTER_URL = 
-  "https://www.kickstarter.com/projects/42415505/pieeg-xr-neural-face-interface-for-spatial-computing";
+import { pieegXrKickstarterUrl } from "@/lib/kickstarter";
+
+const KICKSTARTER_URL = pieegXrKickstarterUrl("xr_hero");
 
 const TRACE_CHANNELS = [
   { ch: "Fp1", region: "Forehead L · EEG/EOG", color: "#22d3ee", p0: 0.2, p1: 1.1, alphaW: 0.35, blinkW: 1.15, emgW: 0.08 },
@@ -345,11 +346,14 @@ export default function XrHero() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-violet-500/30 bg-violet-50/70 dark:bg-violet-950/40 text-xs font-medium text-violet-800 dark:text-violet-300 mb-5">
-            <Glasses className="w-3.5 h-3.5 text-violet-500" />
-            <span>PiEEG XR</span>
-            <span className="text-zinc-300 dark:text-zinc-700">·</span>
-            <span className="font-mono text-[11px]">10 dry Ag/AgCl · ADS1299 · STM32WB BLE 5</span>
+          <div className="inline-flex flex-wrap items-center justify-center gap-2 px-3.5 py-1.5 rounded-full border border-teal-400/50 bg-zinc-950/90 text-xs font-medium text-teal-300 mb-5 shadow-xs">
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-teal-300 opacity-75" />
+              <span className="relative inline-flex size-2 rounded-full bg-teal-300" />
+            </span>
+            <span className="font-mono text-[11px] font-bold uppercase tracking-wider">Now Live on Kickstarter</span>
+            <span className="text-zinc-600">·</span>
+            <span className="text-zinc-300">Goal £5,000 · Ends 31 Dec</span>
           </div>
 
           <h1 className="title-hero text-zinc-900 dark:text-zinc-50 mb-5">

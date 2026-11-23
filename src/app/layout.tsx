@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { KickstarterTopBar } from "@/components/KickstarterTopBar";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ChatAgent } from "@/components/ChatAgent";
@@ -93,11 +94,27 @@ export default function RootLayout({
                 setTimeout(go, 1000);
               });
             }
+
+            if (!window.__pieegKickstarterConversion) {
+              window.__pieegKickstarterConversion = true;
+              document.addEventListener('click', function (event) {
+                var node = event.target;
+                if (!node || !node.closest) return;
+                var link = node.closest('a[href*="kickstarter.com"]');
+                if (!link) return;
+                gtag('event', 'kickstarter_click', {
+                  event_category: 'outbound',
+                  event_label: link.href,
+                  transport_type: 'beacon'
+                });
+              });
+            }
           `}
         </Script>
       </head>
       <body className="antialiased min-h-screen flex flex-col bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50">
         <ThemeProvider>
+          <KickstarterTopBar />
           <Navbar />
           {children}
           <Footer />

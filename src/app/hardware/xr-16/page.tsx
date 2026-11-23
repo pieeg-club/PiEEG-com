@@ -4,11 +4,11 @@ import XrProductView from "../_xr/XrProductView";
 export const metadata: Metadata = {
   title: "PiEEG XR-16 — 16-Channel Neural Face Interface | PiEEG",
   description:
-    "PiEEG XR face gasket plus eight visual-cortex sensors. 16-channel EEG and facial EMG, 24-bit, BLE 5. Price coming soon on Kickstarter.",
+    "PiEEG XR face gasket plus eight visual-cortex sensors. 16-channel EEG and facial EMG, 24-bit, BLE 5. Now live on Kickstarter.",
   openGraph: {
-    title: "PiEEG XR-16 — 16-Channel Neural Face Interface",
+    title: "PiEEG XR-16 — 16-Channel Neural Face Interface (Live on Kickstarter)",
     description:
-      "PiEEG XR face gasket plus eight visual-cortex sensors. 16-channel EEG and facial EMG, 24-bit, BLE 5.",
+      "PiEEG XR face gasket plus eight visual-cortex sensors. 16-channel EEG and facial EMG, 24-bit, BLE 5. Now live on Kickstarter.",
     images: [{ url: "/products/xr-16.png", width: 1200, height: 630, alt: "PiEEG XR-16 neural face interface" }],
   },
 };
@@ -19,8 +19,8 @@ export default function Xr16ProductPage() {
       productId="xr-16"
       name="PiEEG XR-16"
       tagline="Face interface plus eight visual-cortex sensors"
-      badge="16-ch XR"
-      badgeClassName="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20"
+      badge="Live on Kickstarter · 16-ch XR"
+      badgeClassName="bg-teal-400/10 text-teal-300 border border-teal-400/40"
       channels="16 channels"
       platform="VR headset · BLE 5"
       signals="EEG · EMG"

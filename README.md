@@ -8,6 +8,18 @@ Welcome! This README is your **CMS dashboard**. Click any section below to open 
 
 ---
 
+## 🚀 Live Campaign Banner (PiEEG XR Kickstarter)
+
+> Site-wide announcement bar, floating promo card, and campaign metadata.
+
+| Action | Location |
+|--------|----------|
+| 🎯 Update campaign URL, goal, end date, or snooze window | [src/lib/kickstarter.ts](src/lib/kickstarter.ts) |
+| 📣 Edit or disable the global top announcement bar | [src/components/KickstarterTopBar.tsx](src/components/KickstarterTopBar.tsx) |
+| 🎬 Edit the floating video promo card & mobile scroll pill | [src/components/HeroOctopusCard.tsx](src/components/HeroOctopusCard.tsx) |
+
+---
+
 ## 📰 News Articles
 
 > Add, edit or remove news articles displayed on the `/news` page.
@@ -34,6 +46,8 @@ Welcome! This README is your **CMS dashboard**. Click any section below to open 
 |---------|--------|
 | PiEEG | [src/app/hardware/pieeg/](src/app/hardware/pieeg/) |
 | PiEEG 16 | [src/app/hardware/pieeg-16/](src/app/hardware/pieeg-16/) |
+| PiEEG XR | [src/app/hardware/pieeg-xr/](src/app/hardware/pieeg-xr/) |
+| PiEEG XR-16 | [src/app/hardware/xr-16/](src/app/hardware/xr-16/) |
 | IronBCI | [src/app/hardware/ironbci/](src/app/hardware/ironbci/) |
 | IronBCI 32 | [src/app/hardware/ironbci-32/](src/app/hardware/ironbci-32/) |
 | MicroBCI | [src/app/hardware/microbci/](src/app/hardware/microbci/) |

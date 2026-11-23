@@ -1,20 +1,21 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, ExternalLink, Rocket } from "lucide-react";
+import { ChevronRight, ExternalLink, Rocket, ShoppingBag } from "lucide-react";
 import { ProductPrice } from "@/components/ProductOffer";
 import { EnclosureLinks } from "@/components/EnclosureLink";
-import { XR_ENCLOSURE, XR_GITHUB, XR_KICKSTARTER, xrYoutube } from "../_xr/media";
+import { pieegXrKickstarterUrl } from "@/lib/kickstarter";
+import { XR_ENCLOSURE, XR_GITHUB, xrYoutube } from "../_xr/media";
 import PieegXRGuide from "./PieegXRGuide";
 
 export const metadata: Metadata = {
   title: "PiEEG XR — Neural Face Interface for Spatial Computing | PiEEG",
   description:
-    "Face-gasket neural interface for VR headsets. 8-channel facial EMG and EEG, 24-bit IronBCI front-end, BLE 5. Price coming soon on Kickstarter.",
+    "Face-gasket neural interface for VR headsets. 8-channel facial EMG and EEG, 24-bit IronBCI front-end, BLE 5. Now live on Kickstarter.",
   openGraph: {
-    title: "PiEEG XR — Neural Face Interface",
+    title: "PiEEG XR — Neural Face Interface (Live on Kickstarter)",
     description:
-      "Face-gasket neural interface for VR headsets. 8-channel facial EMG and EEG, 24-bit IronBCI front-end, BLE 5.",
+      "Face-gasket neural interface for VR headsets. 8-channel facial EMG and EEG, 24-bit IronBCI front-end, BLE 5. Now live on Kickstarter.",
     images: [
       { url: "/products/pieeg-xr.png", width: 1200, height: 630, alt: "PiEEG XR neural face interface" },
     ],
@@ -66,8 +67,9 @@ export default function PiEEGXRProductPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: copy */}
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6 bg-violet-500/10 text-violet-400 border border-violet-500/20">
-                Newest
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6 bg-teal-400/10 text-teal-300 border border-teal-400/40">
+                <span className="size-2 rounded-full bg-teal-300 animate-pulse" />
+                Now Live on Kickstarter
               </div>
 
               <h1 className="title-hero text-white mb-4">
@@ -99,14 +101,24 @@ export default function PiEEGXRProductPage() {
                 </div>
               </div>
 
-              <ProductPrice productId="pieeg-xr" variant="onDark" fallback="Coming soon" />
+              <ProductPrice productId="pieeg-xr" variant="onDark" fallback="Live on Kickstarter" />
 
               <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/store/pieeg-xr"
-                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-gradient-to-r from-violet-500 to-cyan-600 text-white font-bold text-base shadow-2xl hover:opacity-90 hover:scale-[1.02] transition-all duration-200"
+                <a
+                  href={pieegXrKickstarterUrl("hardware_pieeg_xr")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-teal-400 text-zinc-950 font-bold text-base shadow-2xl shadow-teal-400/20 hover:bg-teal-300 hover:scale-[1.02] transition-all duration-200"
                 >
                   <Rocket className="w-5 h-5" />
+                  Back on Kickstarter
+                  <ExternalLink className="w-4 h-4 opacity-80" />
+                </a>
+                <Link
+                  href="/store/pieeg-xr"
+                  className="inline-flex items-center gap-2.5 px-6 py-4 rounded-xl border border-white/20 bg-white/5 text-white hover:bg-white/10 font-bold text-base transition-all duration-200"
+                >
+                  <ShoppingBag className="w-5 h-5" />
                   View in Store
                 </Link>
                 <a

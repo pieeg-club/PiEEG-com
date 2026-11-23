@@ -1,5 +1,6 @@
-export const XR_KICKSTARTER =
-  "https://www.kickstarter.com/projects/42415505/pieeg-xr-neural-face-interface-for-spatial-computing";
+import { pieegXrKickstarterUrl } from "@/lib/kickstarter";
+
+export const XR_KICKSTARTER = pieegXrKickstarterUrl("xr_demos");
 
 export const XR_GITHUB = "https://github.com/pieeg-club/PiEEG_XR_Hardware";
 

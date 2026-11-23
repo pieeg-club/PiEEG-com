@@ -4,6 +4,7 @@ import {
   ChevronRight,
   ExternalLink,
   Rocket,
+  ShoppingBag,
   Waves,
   Radio,
   Cpu,
@@ -15,8 +16,9 @@ import {
 } from "lucide-react";
 import { ProductPrice } from "@/components/ProductOffer";
 import { EnclosureLinks } from "@/components/EnclosureLink";
+import { pieegXrKickstarterUrl } from "@/lib/kickstarter";
 import type { EnclosureLink } from "@/lib/thingiverse";
-import { XR_GITHUB, XR_KICKSTARTER, xrDemoVideos, xrYoutube } from "./media";
+import { XR_GITHUB, xrDemoVideos, xrYoutube } from "./media";
 
 export type XrProductViewProps = {
   productId: string;
@@ -158,14 +160,24 @@ export default function XrProductView({
                 </div>
               </div>
 
-              <ProductPrice productId={productId} variant="onDark" fallback="Coming soon" />
+              <ProductPrice productId={productId} variant="onDark" fallback="Live on Kickstarter" />
 
               <div className="flex flex-wrap gap-4">
-                <Link
-                  href={`/store/${productId}`}
-                  className={`inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-gradient-to-r ${ctaClassName} text-white font-bold text-base shadow-2xl hover:opacity-90 hover:scale-[1.02] transition-all duration-200`}
+                <a
+                  href={pieegXrKickstarterUrl(`hardware_${productId}`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-teal-400 text-zinc-950 font-bold text-base shadow-2xl shadow-teal-400/20 hover:bg-teal-300 hover:scale-[1.02] transition-all duration-200"
                 >
                   <Rocket className="w-5 h-5" />
+                  Back on Kickstarter
+                  <ExternalLink className="w-4 h-4 opacity-80" />
+                </a>
+                <Link
+                  href={`/store/${productId}`}
+                  className={`inline-flex items-center gap-2.5 px-6 py-4 rounded-xl bg-gradient-to-r ${ctaClassName} text-white font-bold text-base shadow-2xl hover:opacity-90 hover:scale-[1.02] transition-all duration-200`}
+                >
+                  <ShoppingBag className="w-5 h-5" />
                   View in Store
                 </Link>
                 <a

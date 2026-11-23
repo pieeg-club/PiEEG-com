@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ShoppingCart, ChevronRight, GraduationCap } from "lucide-react";
+import { ArrowRight, ExternalLink, Rocket, ShoppingCart, ChevronRight, GraduationCap } from "lucide-react";
 import { ProductPrice } from "@/components/ProductOffer";
 import { EnclosureLinks } from "@/components/EnclosureLink";
 import type { EnclosureLink } from "@/lib/thingiverse";
@@ -182,14 +182,28 @@ export default function ProductsGrid({ products }: ProductsGridProps) {
                   View Details
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link
-                  href={`/store/${product.id}`}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-sm font-bold text-zinc-700 dark:text-zinc-300 transition-all"
-                  aria-label={`${product.purchaseLabel ?? "Buy"} ${product.name} in Store`}
-                >
-                  <ShoppingCart className="w-4 h-4" />
-                  {product.purchaseLabel ?? "Buy"}
-                </Link>
+                {product.purchaseUrl.includes("kickstarter.com") ? (
+                  <a
+                    href={product.purchaseUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-teal-500/40 bg-zinc-950 hover:bg-zinc-900 text-sm font-bold text-teal-300 transition-all"
+                    aria-label={`Back ${product.name} on Kickstarter`}
+                  >
+                    <Rocket className="w-4 h-4" />
+                    <span>{product.purchaseLabel ?? "Kickstarter"}</span>
+                    <ExternalLink className="w-3.5 h-3.5 opacity-75" />
+                  </a>
+                ) : (
+                  <Link
+                    href={`/store/${product.id}`}
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-sm font-bold text-zinc-700 dark:text-zinc-300 transition-all"
+                    aria-label={`${product.purchaseLabel ?? "Buy"} ${product.name} in Store`}
+                  >
+                    <ShoppingCart className="w-4 h-4" />
+                    {product.purchaseLabel ?? "Buy"}
+                  </Link>
+                )}
               {product.enclosureLinks && product.enclosureLinks.length > 0 && (
                 <EnclosureLinks links={product.enclosureLinks} className="mt-3" />
               )}

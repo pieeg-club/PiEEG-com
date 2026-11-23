@@ -162,7 +162,7 @@ const megaMenuSections: MegaMenuSection[] = [
     iconHover: "group-hover:bg-purple-500/15 group-hover:text-purple-600 dark:group-hover:bg-purple-400/15 dark:group-hover:text-purple-300",
     badgeStyle: "bg-purple-500/12 text-purple-700 ring-purple-500/30 dark:bg-purple-400/15 dark:text-purple-300 dark:ring-purple-400/30",
     items: [
-      { href: "/xr", label: "PiEEG XR", desc: "Neural face interface for VR", Icon: Glasses, badge: "VR", keywords: "meta quest headset ar facial emg" },
+      { href: "/xr", label: "PiEEG XR", desc: "Now Live on Kickstarter · VR BCI", Icon: Glasses, badge: "LIVE", keywords: "meta quest headset ar facial emg kickstarter campaign live back" },
       { href: "https://aura.pieeg.com", label: "Aura VR", desc: "EMG + IMU wristband for XR", Icon: Watch, external: true, keywords: "gesture wristband controller spatial" },
       { href: "https://apps.garmin.com/apps/8e994535-c853-45ca-abe3-ccef61119c8b", label: "octoWatch (Garmin)", desc: "16-ch Octopus-16 EEG on Garmin", Icon: Watch, external: true, keywords: "smartwatch connect iq wearable" },
       { href: "https://play.google.com/store/apps/details?id=com.bodypress.governorhq", label: "BodyPress Mobile", desc: "Neural biosignals on your phone", Icon: Smartphone, external: true, keywords: "android google play mobile app" },

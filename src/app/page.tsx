@@ -159,22 +159,6 @@ function HeroSection() {
             </a>
           </div>
 
-          {/* BioData Studio callout */}
-          <a
-            href="https://pieeg-studio.fly.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/80 px-4 py-1.5 text-xs text-zinc-600 dark:text-zinc-300 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-          >
-            <span className="font-semibold text-zinc-900 dark:text-zinc-100">
-              BioData Studio:
-            </span>
-            <span>
-              MNE &amp; MOABB all together for everyone in the browser
-            </span>
-            <ExternalLink className="w-3 h-3 text-zinc-500 dark:text-zinc-400 opacity-75 group-hover:translate-x-0.5 group-hover:opacity-100 transition-all" />
-          </a>
-
           {/* Capability strip */}
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 pt-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
             <span className="inline-flex items-center gap-1.5"><Globe className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" /> Browser-native</span>

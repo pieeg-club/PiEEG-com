@@ -1,9 +1,8 @@
 "use client";
 
-import { ArrowRight, ArrowUpRight, Zap, Cpu, ExternalLink, Play, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook, BookOpen, Shield, Fingerprint, Mic, FlaskConical, Waves, User, Compass, ScanFace, Hand, Camera, Database, Gamepad2, PenTool, Lock, Orbit, VolumeX, Volume2, Glasses, CodeXml } from "lucide-react";
+import { ArrowRight, Zap, Cpu, ExternalLink, Play, Radio, Copy, Check, Brain, Eye, Music, Sparkles, Globe, Webhook, BookOpen, Shield, Fingerprint, Mic, FlaskConical, Waves, User, Compass, ScanFace, Hand, Camera, Database, Gamepad2, PenTool, Lock, Orbit, VolumeX, Volume2, Glasses, CodeXml } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { PIEEG_XR_CAMPAIGN, pieegXrKickstarterUrl } from "@/lib/kickstarter";
 import HeroVideo from "@/components/HeroVideo";
 import HardwareBench from "@/components/home/HardwareBench";
 import WorldMap from "@/components/home/WorldMap";
@@ -81,24 +80,8 @@ function HeroSection() {
         <div className="w-175 h-125 rounded-full bg-cyan-400/5 dark:bg-cyan-400/8 blur-[80px]" />
       </div>
 
-      {/* Top-left indicators: Kickstarter Live + Monthly Live */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-5 flex flex-wrap items-center gap-2.5">
-        <a
-          href={pieegXrKickstarterUrl("hero_pill")}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2.5 rounded-full border border-teal-400/60 bg-zinc-950/90 backdrop-blur-md px-3.5 py-1.5 shadow-sm shadow-teal-500/10 transition-all hover:border-teal-300 hover:bg-zinc-900"
-        >
-          <span className="relative flex size-2.5 items-center justify-center">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-teal-300 opacity-75" />
-            <span className="relative inline-flex size-2 rounded-full bg-teal-400 ring-2 ring-teal-400/25" />
-          </span>
-          <span className="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-teal-300">
-            Now Live on Kickstarter · PiEEG XR
-          </span>
-          <ArrowUpRight className="w-3 h-3 text-teal-300 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </a>
-
+      {/* Top-left Monthly Live indicator */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pt-5">
         <Link
           href="/live"
           className="group inline-flex items-center gap-2.5 rounded-full border border-zinc-200/90 dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md px-3.5 py-1.5 shadow-2xs transition-all hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-sm"
@@ -174,47 +157,6 @@ function HeroSection() {
             >
               <BookOpen className="w-4 h-4" /> Docs
             </a>
-          </div>
-
-          {/* PiEEG XR Kickstarter founder callout */}
-          <div className="w-full max-w-2xl rounded-2xl border border-teal-500/35 bg-zinc-950/95 text-left text-white px-4 py-3.5 sm:px-5 shadow-xl shadow-zinc-950/15 backdrop-blur-md">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="min-w-0">
-                <div className="flex flex-wrap items-center gap-2 text-[10px] font-mono uppercase tracking-[0.12em]">
-                  <span className="inline-flex items-center gap-1.5 text-teal-300 font-bold">
-                    <span className="size-1.5 rounded-full bg-teal-300 animate-pulse" />
-                    Live on Kickstarter
-                  </span>
-                  <span className="text-zinc-600">·</span>
-                  <span className="text-zinc-400">
-                    Goal {PIEEG_XR_CAMPAIGN.goal} · {PIEEG_XR_CAMPAIGN.endsLabel}
-                  </span>
-                </div>
-                <p className="mt-1 text-xs sm:text-sm text-zinc-200 leading-snug">
-                  We&apos;ve never asked before.{" "}
-                  <span className="font-bold text-teal-300">Today we need your support</span>{" "}
-                  for <strong className="font-semibold text-white">PiEEG XR</strong> — the open-source bio-data face interface for VR.
-                </p>
-              </div>
-              <div className="flex shrink-0 items-center gap-2">
-                <a
-                  href={pieegXrKickstarterUrl("hero_card")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-teal-400 px-4 py-2 text-xs font-bold text-zinc-950 hover:bg-teal-300 transition-colors"
-                >
-                  <span>Back Us</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.25]" />
-                </a>
-                <Link
-                  href="/xr"
-                  className="inline-flex items-center gap-1 rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-xs font-medium text-zinc-200 hover:border-zinc-500 hover:text-white transition-colors"
-                >
-                  <Glasses className="w-3.5 h-3.5 text-teal-300" />
-                  <span>Details</span>
-                </Link>
-              </div>
-            </div>
           </div>
 
           {/* Capability strip */}

@@ -96,7 +96,7 @@ export function KickstarterTopBar() {
             <span className="font-semibold text-white">PiEEG XR</span>
             <span className="hidden md:inline text-zinc-300"> — Open-source neural face interface for VR</span>
             <span className="hidden lg:inline font-mono text-[11px] text-zinc-400">
-              {" "}· Goal {PIEEG_XR_CAMPAIGN.goal} · {PIEEG_XR_CAMPAIGN.endsLabel}
+              {" "}· {PIEEG_XR_CAMPAIGN.endsLabel}
             </span>
           </p>
 

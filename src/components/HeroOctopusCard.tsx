@@ -146,7 +146,7 @@ export default function HeroOctopusCard() {
                       Support <span className="text-teal-300">PiEEG XR</span>
                     </div>
                     <div className="mt-0.5 font-mono text-[10px] text-zinc-400">
-                      Goal {PIEEG_XR_CAMPAIGN.goal} · {PIEEG_XR_CAMPAIGN.endsLabel}
+                      {PIEEG_XR_CAMPAIGN.endsLabel}
                     </div>
                   </div>
                   <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-teal-400 px-2.5 py-1 text-[11px] font-bold text-zinc-950 transition-colors group-hover:bg-teal-300">

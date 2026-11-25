@@ -379,7 +379,7 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
                     {ProductBuy
                       ? "Subscribe to hear first"
                       : isKickstarter
-                        ? "Goal £5,000 · Campaign ends 31 Dec"
+                        ? "Campaign ends 31 Dec"
                         : "Fulfilled worldwide via Elecrow"}
                   </p>
                 </div>
@@ -455,7 +455,7 @@ export default function StoreProductClient({ product }: StoreProductClientProps)
                       <span className="text-left">
                         <span className="block leading-tight">Back on Kickstarter</span>
                         <span className="block text-[11px] font-medium text-white/80">
-                          Now Live · Goal £5,000 · Ends 31 Dec
+                          Now Live · Ends 31 Dec
                         </span>
                       </span>
                     </span>

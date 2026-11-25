@@ -353,7 +353,7 @@ export default function XrHero() {
             </span>
             <span className="font-mono text-[11px] font-bold uppercase tracking-wider">Now Live on Kickstarter</span>
             <span className="text-zinc-600">·</span>
-            <span className="text-zinc-300">Goal £5,000 · Ends 31 Dec</span>
+            <span className="text-zinc-300">Ends 31 Dec</span>
           </div>
 
           <h1 className="title-hero text-zinc-900 dark:text-zinc-50 mb-5">

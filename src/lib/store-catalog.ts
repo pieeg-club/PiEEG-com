@@ -1094,7 +1094,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
       { label: "Signals Measured", value: "Frontal EEG, EOG & Facial EMG" },
       { label: "ADC Resolution", value: "24-bit @ 250 SPS (IronBCI core)" },
       { label: "Wireless", value: "Bluetooth Low Energy 5.0" },
-      { label: "Availability", value: "Now Live on Kickstarter (Goal £5,000 · Ends 31 Dec)" },
+      { label: "Availability", value: "Now Live on Kickstarter (Ends 31 Dec)" },
     ],
     faqs: COMMON_STORE_FAQS,
   },

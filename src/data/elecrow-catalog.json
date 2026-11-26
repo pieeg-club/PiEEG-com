@@ -90,6 +90,17 @@
       "currency": "USD",
       "availability": "InStock"
     },
+    "easyexg": {
+      "name": "EasyEXG",
+      "description": "EMG, ECG, EOG and EEG bio-signal sensor for Arduino, ESP32, STM32 and Raspberry Pi Pico. INA333 + OPA4388 analog front end, 221× / 1 048× gain, 0.16–501 Hz.",
+      "image": "/products/easyexg/easyexg-board.webp",
+      "path": "/store/easyexg",
+      "elecrowUrl": "https://www.elecrow.com/easyexg-emg-ecg-eog-eeg-bio-signal-sensor-for-arduino-esp32-stm32-raspberry-pi-pico.html",
+      "sku": null,
+      "price": 39,
+      "currency": "USD",
+      "availability": "InStock"
+    },
     "jneeg": {
       "name": "JNEEG",
       "description": "8-channel Jetson Nano EEG shield for machine learning signal processing. 24-bit, 250 SPS to 16 kSPS.",

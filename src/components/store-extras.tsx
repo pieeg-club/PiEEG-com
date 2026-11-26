@@ -63,6 +63,10 @@ export const STORE_EXTRAS: Record<string, StoreExtras> = {
     Docs: dynamic(() => import("@/components/pieegxr-store/PieegXRDocs")),
     Guide: dynamic(() => import("@/components/pieegxr-store/PieegXRStoreGuide")),
   },
+  easyexg: {
+    Docs: dynamic(() => import("@/components/easyexg-store/EasyEXGDocs")),
+    Guide: dynamic(() => import("@/components/easyexg-store/EasyEXGStoreGuide")),
+  },
   ardeeg: {
     Docs: dynamic(() => import("@/components/ardeeg-store/ArdEEGDocs")),
     Guide: dynamic(() => import("@/components/ardeeg-store/ArdEEGStoreGuide")),

@@ -50,7 +50,7 @@ export interface StoreProduct {
   headline: string;
   summary: string;
   category: Exclude<StoreCategory, "all">;
-  channelFilter: "8ch" | "16ch" | "32ch" | "128ch" | "accessory";
+  channelFilter: "1ch" | "8ch" | "16ch" | "32ch" | "128ch" | "accessory";
   featured?: boolean;
   channels: string;
   platform: string;
@@ -1255,6 +1255,148 @@ export const STORE_PRODUCTS: StoreProduct[] = [
       { label: "SKU", value: "CQA240229AR" },
     ],
     faqs: COMMON_STORE_FAQS,
+  },
+  {
+    slug: "easyexg",
+    name: "EasyEXG",
+    shortName: "EasyEXG",
+    eyebrow: "EMG · ECG · EOG · EEG Bio-Signal Sensor",
+    badge: "New",
+    tagline: "One analog front end for muscle, heart, eyes and brain — three wires to any Arduino, ESP32, STM32 or Raspberry Pi Pico.",
+    headline: "Buy EasyEXG",
+    summary:
+      "EasyEXG is a single-channel bio-signal amplifier for EMG, ECG, EOG and EEG. Plug in a standard 3-lead electrode cable, connect GND, VCC and OUT to any microcontroller with an ADC, and read your body's signals with analogRead(). A TI INA333 instrumentation amplifier and a TI OPA4388 quad op-amp give 221× or 1 048× gain, a 0.16–501 Hz band and an active driven-right-leg reference that removes mains hum.",
+    category: "mcu-kits",
+    channelFilter: "1ch",
+    channels: "1 channel",
+    platform: "Arduino · ESP32 · STM32 · Pico",
+    signals: ["EMG", "ECG", "EOG", "EEG"],
+    gradient: "from-emerald-500 to-teal-600",
+    accentText: "text-emerald-500",
+    heroImage: "/products/easyexg/easyexg-board.webp",
+    gallery: [
+      {
+        src: "/products/easyexg/easyexg-3d-thumb.png",
+        model3d: "/products/easyexg/3d/easyexg-3d-board.html",
+        alt: "Interactive 3D model of the EasyEXG board with the 3.5 mm jack, INA333, OPA4388 and pin headers",
+        caption: "Interactive 3D model — drag to rotate, tap JP1 to bridge the gain jumper",
+      },
+      {
+        src: "/products/easyexg/easyexg-board-overview.webp",
+        alt: "EasyEXG board overview: J1 electrode jack, J2 electrode header, J3 output header, INA333, OPA4388, JP1 gain jumper and the signal chain",
+        caption: "Board overview — connectors, ICs, gain jumper and the signal chain",
+      },
+      {
+        src: "/products/easyexg/easyexg-photo-1.webp",
+        alt: "EasyEXG V1.1 board, top side, with the 3.5 mm electrode jack and pin headers",
+        caption: "EasyEXG V1.1 — 46 × 26 mm, parts on the top side only",
+      },
+      {
+        src: "/products/easyexg/easyexg-photo-2.webp",
+        alt: "EasyEXG bottom side with the printed pinout",
+        caption: "Bottom side — pinout and jack wiring printed on the board",
+      },
+      {
+        src: "/products/easyexg/easyexg-applications.webp",
+        alt: "EasyEXG measuring muscle (EMG), heart (ECG), eye movement (EOG) and brain waves (EEG)",
+        caption: "One board, four signals — only the jumper and electrode positions change",
+      },
+      {
+        src: "/products/easyexg/easyexg-how-it-works.webp",
+        alt: "Electrodes on the body connected to EasyEXG, whose output goes to the ADC of any microcontroller",
+        caption: "3-lead electrode cable in, one analog signal out to any MCU",
+      },
+      {
+        src: "/products/easyexg/easyexg-annotated.webp",
+        alt: "EasyEXG annotated: J1 jack, J2 electrode pins, U1 INA333, U2 OPA4388, JP1 HI GAIN and J3 output",
+        caption: "What's on the board",
+      },
+      {
+        src: "/products/easyexg/easyexg-dimensions.webp",
+        alt: "EasyEXG dimensions: 46.0 × 26.0 mm, 48.0 mm including the jack nose, two M2 mounting holes",
+        caption: "Compact: 46 × 26 mm, two M2 mounting holes",
+      },
+      {
+        src: "/products/easyexg/easyexg-pinout-bottom.webp",
+        alt: "EasyEXG wiring: GND, VCC and OUT to a microcontroller, VREF optional",
+        caption: "Simple wiring — three wires to your microcontroller",
+      },
+    ],
+    ...catalogInfo("easyexg"),
+    hardwarePath: "/store/easyexg#easyexg-guide",
+    storePath: "/store/easyexg",
+    githubUrl: "https://github.com/pieeg-club/EasyEXG",
+    enclosureLinks: enclosuresFor("easyexg"),
+    keySpecs: [
+      { label: "Signals", value: "EMG · ECG · EOG · EEG", sublabel: "1 differential channel + REF" },
+      { label: "Gain", value: "221× / 1 048×", sublabel: "Set by solder jumper JP1" },
+      { label: "Bandwidth", value: "0.16–501 Hz", sublabel: "−3 dB, 2nd-order low-pass" },
+      { label: "Supply", value: "3.3 V or 5 V", sublabel: "Any MCU with an ADC" },
+    ],
+    highlights: [
+      {
+        title: "Four Signals, One Board",
+        description:
+          "Record muscle activity, heartbeat, eye movement and frontal brain waves with the same board. Leave JP1 open (221×) for EMG and EOG, bridge it (1 048×) for ECG and EEG.",
+      },
+      {
+        title: "Low-Noise Analog Chain",
+        description:
+          "TI INA333 instrumentation amplifier (CMRR ≥ 100 dB), 0.16 Hz high-pass, 500 Hz 2nd-order Sallen-Key low-pass and a driven-right-leg reference on a TI OPA4388 quad op-amp.",
+      },
+      {
+        title: "Three Wires to Any Microcontroller",
+        description:
+          "GND, VCC and OUT to Arduino UNO R4 WiFi, UNO, Nano, ESP32, ESP8266, STM32 or Raspberry Pi Pico. Ready-made USB and Wi-Fi sketches plus the EasyEXG Studio Python viewer.",
+      },
+    ],
+    inTheBox: [
+      { qty: "1×", item: "EasyEXG bio-signal board", detail: "3.5 mm electrode jack (J1), 3-pin electrode header (J2), 4-pin output header (J3)" },
+      { qty: "1×", item: "Open-source sketches & Python viewer", detail: "USB sketch, Wi-Fi sketch and EasyEXG Studio on GitHub" },
+    ],
+    requirements: [
+      "Microcontroller with an ADC: Arduino UNO R4 WiFi, UNO, Nano, ESP32, ESP8266, STM32 or Raspberry Pi Pico (not included)",
+      "3-lead snap electrode cable with a 3.5 mm TRS plug and Ag/AgCl gel electrodes (not included)",
+      "5 V power bank or a laptop on battery while electrodes are on a person",
+      "Soldering iron, only to bridge JP1 for ECG / EEG",
+    ],
+    recommendedWith: ["emg-kit", "ardeeg", "octobio-kit"],
+    fullSpecs: [
+      { label: "Channels", value: "1 differential input (IN+, IN−) plus REF / driven right leg" },
+      { label: "Signals", value: "EMG, ECG, EOG, EEG" },
+      { label: "Instrumentation Amplifier", value: "TI INA333, gain 9.9×, CMRR ≥ 100 dB" },
+      { label: "Op-Amp", value: "TI OPA4388 quad: VCC/2 reference, driven right leg, high-pass + gain, low-pass" },
+      { label: "Total Gain", value: "221× (JP1 open, EMG / EOG) · 1 048× (JP1 bridged, ECG / EEG)" },
+      { label: "Bandwidth (−3 dB)", value: "0.16–501 Hz · low-pass 500 Hz, 2nd-order Sallen-Key (Q = 0.73)" },
+      { label: "Max Input Before Clipping", value: "10.9 / 7.2 mV (221×) · 2.3 / 1.5 mV (1 048×) at 5 V / 3.3 V" },
+      { label: "Output", value: "1 analog signal, rests at VCC/2" },
+      { label: "Supply", value: "3.3 V or 5 V, absolute max 5.5 V" },
+      { label: "DRL Current Limit", value: "390 kΩ, about 13 µA into the body at 5 V" },
+      { label: "Electrode Connectors", value: "J1: 3.5 mm TRS jack (CUI SJ-3523-SMT) · J2: 3-pin 2.54 mm header" },
+      { label: "Output Connector", value: "J3: 4-pin 2.54 mm header (GND, VCC, OUT, VREF)" },
+      { label: "PCB", value: "46.0 × 26.0 × 1.6 mm, 2-layer FR-4, components on top only, 2 × M2 holes" },
+      { label: "Isolation", value: "None — battery operation required while electrodes are on a person" },
+      { label: "Licence", value: "Open hardware, CC BY-NC 4.0" },
+    ],
+    faqs: [
+      {
+        q: "Which microcontrollers work with EasyEXG?",
+        a: "Any board with an analog input. The Wi-Fi sketch runs on the Arduino UNO R4 WiFi, ESP32 and ESP8266; the USB sketch runs on any Arduino-compatible board, including UNO, Nano, Mega, STM32 (Arduino core) and Raspberry Pi Pico (Arduino-Pico core). Power EasyEXG from the same voltage as the ADC: 5 V on an UNO, 3.3 V on an ESP32 or Pico.",
+      },
+      {
+        q: "Do I need to solder anything?",
+        a: "Only to switch the gain. JP1 ships open (221×) for EMG and EOG. For ECG and EEG, bridge its two pads with a small solder blob (1 048×). Remove the solder with wick to go back.",
+      },
+      {
+        q: "Which electrodes and cable do I need?",
+        a: "A 3-lead snap electrode cable with a 3.5 mm TRS plug (Tip = IN+, Ring = IN−, Sleeve = REF), as used for EMG / ECG modules, and disposable Ag/AgCl gel electrodes — three per session. Loose wires can go to the 3-pin header J2 instead.",
+      },
+      {
+        q: "Is EasyEXG safe to use on a person?",
+        a: "Only on battery. EasyEXG has no patient isolation, so while electrodes are on a person the board and everything cabled to it must run from a power bank or a laptop on battery with the charger unplugged. It is a research and education tool, not a medical device.",
+      },
+      ...COMMON_STORE_FAQS,
+    ],
   },
   {
     slug: "microbci",

@@ -82,6 +82,7 @@ const CATALOG_SECTIONS: { id: string; kicker: string; title: string; desc: strin
 
 const CHANNEL_FILTERS: { id: "all" | StoreProduct["channelFilter"]; label: string }[] = [
   { id: "all", label: "All Channels" },
+  { id: "1ch", label: "1 Channel" },
   { id: "8ch", label: "8 Channels" },
   { id: "16ch", label: "16 Channels" },
   { id: "32ch", label: "32 Channels" },

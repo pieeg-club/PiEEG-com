@@ -7,18 +7,45 @@ import { Check, Copy, Quote } from "lucide-react";
 const REVIEW_EMAIL = "pieeg@pieeg.com";
 const REVIEW_MAILTO = `mailto:${REVIEW_EMAIL}?subject=${encodeURIComponent("My PiEEG experience")}`;
 
-const partner = {
-  quote:
-    "PiEEG XR is enabling us to gain a deeper insight into our immersive experiences, adding a neurophysiological dimension to the study of how athletes respond during specific training tasks. Its integration with virtual reality environments opens up new possibilities for objectively investigating what happens whilst performing different exercises and how the response changes in the face of varying demands. Although we are still working on methodological optimisation and signal quality control, it is so far proving to be a tool with great potential for sports-related research.",
-  name: "María Trapero Ventura",
-  roles: [
-    "Preparadora física Atlético de Madrid",
-    "Health & Prevention Specialist - BeFootball",
-    "Profesora en UAX",
-  ],
-  href: "https://www.linkedin.com/in/mar%C3%ADa-trapero-ventura/",
-  photo: "/home/testimonials/maria.webp",
+type Partner = {
+  title: string;
+  quote: string;
+  name: string;
+  roles: readonly string[];
+  href: string;
+  linkLabel: string;
+  photo: string;
+  photoPosition: string;
 };
+
+const partners: readonly Partner[] = [
+  {
+    title: "PiEEG XR in sports research",
+    quote:
+      "PiEEG XR is enabling us to gain a deeper insight into our immersive experiences, adding a neurophysiological dimension to the study of how athletes respond during specific training tasks. Its integration with virtual reality environments opens up new possibilities for objectively investigating what happens whilst performing different exercises and how the response changes in the face of varying demands. Although we are still working on methodological optimisation and signal quality control, it is so far proving to be a tool with great potential for sports-related research.",
+    name: "María Trapero Ventura",
+    roles: [
+      "Preparadora física Atlético de Madrid",
+      "Health & Prevention Specialist - BeFootball",
+      "Profesora en UAX",
+    ],
+    href: "https://www.linkedin.com/in/mar%C3%ADa-trapero-ventura/",
+    linkLabel: "LinkedIn",
+    photo: "/home/testimonials/maria.webp",
+    photoPosition: "22% center",
+  },
+  {
+    title: "PiEEG XR in VR wellness",
+    quote:
+      "At Alma Digital we create immersive wellness experiences in VR: breathwork, meditation and drawing in light. PiEEG XR sits inside the headset, takes a minute to put on, and is open enough to plug straight into our own tools. Now the experience can respond to the person's state as it happens, and show them something real about it at the end.",
+    name: "Beltrán Lihn & Vicente Manzano",
+    roles: ["Alma Digital · Immersive wellness experiences in VR"],
+    href: "https://almadigitalstudio.com",
+    linkLabel: "almadigitalstudio.com",
+    photo: "/home/testimonials/alma-digital.webp",
+    photoPosition: "60% center",
+  },
+];
 
 const reviews = [
   {
@@ -61,52 +88,82 @@ export default function ResearchReview() {
       aria-labelledby="from-partners-title"
       className="scroll-mt-20 border-b border-zinc-200 bg-white py-20 text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50"
     >
-      <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 md:grid-cols-[280px_minmax(0,1fr)] md:gap-14">
-        <a
-          href={partner.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mx-auto block w-full max-w-[280px] overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800"
+      <div className="mx-auto max-w-7xl px-6">
+        <h2
+          id="from-partners-title"
+          className="title-section mb-14 text-center"
         >
-          <Image
-            src={partner.photo}
-            alt={partner.name}
-            width={720}
-            height={1280}
-            sizes="280px"
-            className="aspect-3/4 w-full object-cover object-[22%_center]"
-          />
-        </a>
+          Real-world applications
+        </h2>
 
-        <div>
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
-            From partners
-          </p>
-          <h2
-            id="from-partners-title"
-            className="title-subsection mb-6"
-          >
-            PiEEG XR in sports research
-          </h2>
-          <blockquote className="m-0 text-[17px] leading-[1.7] text-zinc-600 dark:text-zinc-300">
-            <p className="m-0">{partner.quote}</p>
-          </blockquote>
-          <footer className="mt-8 border-t border-zinc-200 pt-5 dark:border-zinc-800">
-            <p className="m-0 text-base font-semibold tracking-[-0.02em]">{partner.name}</p>
-            <ul className="m-0 mt-2 list-none space-y-1 p-0 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
-              {partner.roles.map((role) => (
-                <li key={role}>{role}</li>
-              ))}
-            </ul>
-            <a
-              href={partner.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-950 dark:text-zinc-300 dark:decoration-zinc-600 dark:hover:text-zinc-50"
-            >
-              LinkedIn
-            </a>
-          </footer>
+        {/* On lg+ both cards share one row grid (subgrid), so titles, quotes
+            and name blocks line up across the two columns. */}
+        <div className="grid gap-16 lg:grid-cols-2 lg:grid-rows-[auto_auto_1fr_auto] lg:gap-x-20 lg:gap-y-0 xl:grid-rows-[auto_1fr_auto]">
+          {partners.map((partner, i) => {
+            const flip = i % 2 === 1;
+            return (
+              <article
+                key={partner.name}
+                aria-labelledby={`from-partners-card-${i}`}
+                className={`grid gap-6 sm:gap-x-8 lg:row-span-4 lg:grid-rows-subgrid lg:gap-y-0 xl:row-span-3 ${
+                  flip
+                    ? "sm:grid-cols-[minmax(0,1fr)_200px] lg:grid-cols-1 xl:grid-cols-[minmax(0,1fr)_200px]"
+                    : "sm:grid-cols-[200px_minmax(0,1fr)] lg:grid-cols-1 xl:grid-cols-[200px_minmax(0,1fr)]"
+                } ${i > 0 ? "border-t border-zinc-200 pt-16 lg:border-t-0 lg:pt-0 dark:border-zinc-800" : ""}`}
+              >
+                <a
+                  href={partner.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`mx-auto block w-full max-w-[240px] self-start overflow-hidden rounded-2xl border border-zinc-200 sm:max-w-none lg:mx-0 lg:mb-8 lg:max-w-[220px] xl:row-span-3 xl:mb-0 xl:max-w-none dark:border-zinc-800 ${
+                    flip ? "sm:order-2 lg:order-none xl:order-2" : ""
+                  }`}
+                >
+                  <Image
+                    src={partner.photo}
+                    alt={partner.name}
+                    width={600}
+                    height={800}
+                    sizes="(min-width: 640px) 220px, 240px"
+                    className="aspect-3/4 w-full object-cover"
+                    style={{ objectPosition: partner.photoPosition }}
+                  />
+                </a>
+
+                <div
+                  className={`flex flex-col lg:row-span-3 lg:grid lg:grid-rows-subgrid ${
+                    flip ? "sm:order-1 lg:order-none xl:order-1" : ""
+                  }`}
+                >
+                  <h3
+                    id={`from-partners-card-${i}`}
+                    className="mb-5 text-2xl font-semibold tracking-[-0.03em] sm:text-[1.75rem]"
+                  >
+                    {partner.title}
+                  </h3>
+                  <blockquote className="m-0 text-[15px] leading-[1.7] text-zinc-600 dark:text-zinc-300">
+                    <p className="m-0">{partner.quote}</p>
+                  </blockquote>
+                  <footer className="mt-6 border-t border-zinc-200 pt-5 dark:border-zinc-800">
+                    <p className="m-0 text-base font-semibold tracking-[-0.02em]">{partner.name}</p>
+                    <ul className="m-0 mt-2 list-none space-y-1 p-0 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+                      {partner.roles.map((role) => (
+                        <li key={role}>{role}</li>
+                      ))}
+                    </ul>
+                    <a
+                      href={partner.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-3 inline-flex text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-950 dark:text-zinc-300 dark:decoration-zinc-600 dark:hover:text-zinc-50"
+                    >
+                      {partner.linkLabel}
+                    </a>
+                  </footer>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

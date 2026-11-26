@@ -1273,7 +1273,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     signals: ["EMG", "ECG", "EOG", "EEG"],
     gradient: "from-emerald-500 to-teal-600",
     accentText: "text-emerald-500",
-    heroImage: "/products/easyexg/easyexg-board.webp",
+    heroImage: "/products/easyexg/easyexg-board-cutout.png",
     gallery: [
       {
         src: "/products/easyexg/easyexg-3d-thumb.png",

@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
 import {
-  Glasses,
   Rocket,
   Code2 as Github,
   Play,
@@ -14,11 +14,18 @@ import {
   Radio,
   Waves,
   ExternalLink,
+  Glasses,
+  Sparkles,
+  Eye,
+  Smile,
+  Brain,
 } from "lucide-react";
 
 import { pieegXrKickstarterUrl } from "@/lib/kickstarter";
 
 const KICKSTARTER_URL = pieegXrKickstarterUrl("xr_hero");
+
+type SimMode = "auto" | "smile" | "blink" | "focus";
 
 const TRACE_CHANNELS = [
   { ch: "Fp1", region: "Forehead L · EEG/EOG", color: "#22d3ee", p0: 0.2, p1: 1.1, alphaW: 0.35, blinkW: 1.15, emgW: 0.08 },
@@ -32,17 +39,21 @@ const g1 = (x: number, m: number, s: number) => {
   return Math.exp(-z * z);
 };
 
-function synthXrChannel(t: number, c: (typeof TRACE_CHANNELS)[number], idx: number) {
+function synthXrChannel(t: number, c: (typeof TRACE_CHANNELS)[number], idx: number, mode: SimMode) {
+  const focusBoost = mode === "focus" ? 1.8 : 1;
   const bg =
-    Math.sin(6.283 * 7.8 * t + c.p0) * 0.26 +
-    Math.sin(6.283 * 13.1 * t + c.p1) * 0.2 +
-    Math.sin(6.283 * 3.7 * t + idx) * 0.14;
-  const env = 0.55 + 0.45 * Math.sin(6.283 * 0.22 * t + c.p0);
+    Math.sin(6.283 * 7.8 * t + c.p0) * 0.22 +
+    Math.sin(6.283 * 13.1 * t + c.p1) * 0.18 * focusBoost +
+    Math.sin(6.283 * 3.7 * t + idx) * 0.12;
+  const env = mode === "focus" ? 0.95 : 0.55 + 0.45 * Math.sin(6.283 * 0.22 * t + c.p0);
   const alpha = c.alphaW * env * Math.sin(6.283 * 10.2 * t + c.p1);
-  const bt = (t % 3.6) - 1.4;
-  const blink = c.blinkW * (g1(bt, 0, 0.095) * 1.45 - g1(bt, 0.14, 0.12) * 0.35);
+
+  const bt = mode === "blink" ? (t % 1.1) - 0.45 : (t % 3.6) - 1.4;
+  const blinkAmp = mode === "blink" ? 1.65 : mode === "auto" ? 1.45 : 0.15;
+  const blink = c.blinkW * (g1(bt, 0, 0.095) * blinkAmp - g1(bt, 0.14, 0.12) * 0.35);
+
   const st = (t % 5.2) - 2.6;
-  const smileGate = g1(st, 0, 0.55);
+  const smileGate = mode === "smile" ? 0.96 : mode === "auto" ? g1(st, 0, 0.55) : 0.06;
   const emg =
     c.emgW *
     smileGate *
@@ -50,16 +61,30 @@ function synthXrChannel(t: number, c: (typeof TRACE_CHANNELS)[number], idx: numb
   return bg + alpha + blink + emg;
 }
 
+const SIM_PRESETS: { id: SimMode; label: string; Icon: typeof Sparkles }[] = [
+  { id: "auto", label: "Auto Cycle", Icon: Sparkles },
+  { id: "smile", label: "Smile (fEMG)", Icon: Smile },
+  { id: "blink", label: "Blink (EOG)", Icon: Eye },
+  { id: "focus", label: "Deep Focus", Icon: Brain },
+];
+
 function HeroXrScope() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pausedRef = useRef(false);
+  const modeRef = useRef<SimMode>("auto");
   const [paused, setPaused] = useState(false);
+  const [mode, setMode] = useState<SimMode>("auto");
   const smileBarRef = useRef<HTMLDivElement>(null);
   const focusBarRef = useRef<HTMLDivElement>(null);
   const smileValRef = useRef<HTMLSpanElement>(null);
   const focusValRef = useRef<HTMLSpanElement>(null);
   const blinkValRef = useRef<HTMLSpanElement>(null);
   const frameRef = useRef<HTMLSpanElement>(null);
+
+  const selectMode = (nextMode: SimMode) => {
+    modeRef.current = nextMode;
+    setMode(nextMode);
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -98,6 +123,8 @@ function HeroXrScope() {
       const dt = Math.min(0.05, (now - (lastNow || now)) / 1000);
       lastNow = now;
       if (!pausedRef.current) simT += dt;
+
+      const curMode = modeRef.current;
 
       ctx.fillStyle = "#07080a";
       ctx.fillRect(0, 0, cw, ch);
@@ -139,12 +166,12 @@ function HeroXrScope() {
         ctx.stroke();
 
         ctx.strokeStyle = chan.color;
-        ctx.lineWidth = 1.65;
+        ctx.lineWidth = 1.75;
         ctx.beginPath();
         for (let k = 0; k <= pts; k++) {
           const u = k / pts;
           const tt = simT - winSec + winSec * u;
-          const v = Math.max(-1.45, Math.min(1.45, synthXrChannel(tt, chan, r)));
+          const v = Math.max(-1.45, Math.min(1.45, synthXrChannel(tt, chan, r, curMode)));
           const x = u * cw;
           const y = midY - v * amp;
           if (k === 0) ctx.moveTo(x, y);
@@ -152,20 +179,28 @@ function HeroXrScope() {
         }
         ctx.stroke();
 
-        const headV = Math.max(-1.45, Math.min(1.45, synthXrChannel(simT, chan, r)));
+        const headV = Math.max(-1.45, Math.min(1.45, synthXrChannel(simT, chan, r, curMode)));
         ctx.fillStyle = chan.color;
         ctx.beginPath();
-        ctx.arc(cw - 4, midY - headV * amp, 2.6, 0, Math.PI * 2);
+        ctx.arc(cw - 4, midY - headV * amp, 2.8, 0, Math.PI * 2);
         ctx.fill();
       }
 
-      if (!pausedRef.current && now - lastHudUpdate > 160) {
+      if (!pausedRef.current && now - lastHudUpdate > 140) {
         lastHudUpdate = now;
         const st = (simT % 5.2) - 2.6;
-        const smile = Math.min(0.98, Math.max(0.04, 0.08 + g1(st, 0, 0.55) * 0.88));
-        const focus = 0.38 + 0.24 * Math.sin(simT * 0.62 + 0.9);
-        const bt = (simT % 3.6) - 1.4;
-        const isBlink = Math.abs(bt) < 0.14;
+        const smile =
+          curMode === "smile"
+            ? 0.91 + 0.05 * Math.sin(simT * 5)
+            : curMode === "auto"
+              ? Math.min(0.98, Math.max(0.04, 0.08 + g1(st, 0, 0.55) * 0.88))
+              : 0.07 + 0.02 * Math.sin(simT * 2);
+        const focus =
+          curMode === "focus"
+            ? 0.86 + 0.06 * Math.sin(simT * 1.4)
+            : 0.42 + 0.22 * Math.sin(simT * 0.62 + 0.9);
+        const bt = curMode === "blink" ? (simT % 1.1) - 0.45 : (simT % 3.6) - 1.4;
+        const isBlink = curMode === "blink" ? Math.abs(bt) < 0.2 : curMode === "auto" && Math.abs(bt) < 0.14;
         if (smileBarRef.current) smileBarRef.current.style.width = `${Math.round(smile * 100)}%`;
         if (focusBarRef.current) focusBarRef.current.style.width = `${Math.round(focus * 100)}%`;
         if (smileValRef.current) smileValRef.current.textContent = smile.toFixed(2);
@@ -214,24 +249,49 @@ function HeroXrScope() {
   };
 
   return (
-    <div className="relative rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-zinc-950 text-zinc-100 shadow-2xl overflow-hidden">
-      <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 border-b border-zinc-800 bg-zinc-900/90 text-xs font-mono">
+    <div className="relative rounded-2xl border border-zinc-200/90 dark:border-zinc-800 bg-zinc-950 text-zinc-100 shadow-2xl overflow-hidden">
+      <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 border-b border-zinc-800 bg-zinc-900/95 text-xs font-mono">
         <div className="flex items-center gap-2">
           <span className="flex gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-400/70" />
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-red-400/75" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400/75" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/75" />
           </span>
           <span className="ml-2 px-2.5 py-0.5 rounded bg-zinc-950 border border-zinc-800 text-zinc-300">
             BLE 5 · PiEEG XR · 8 ch + REF/BIAS @ 250 SPS
           </span>
         </div>
+
+        <div className="flex flex-wrap items-center gap-1.5" role="group" aria-label="Simulate facial or neural state">
+          <span className="text-[10px] uppercase tracking-wider text-zinc-500 mr-1 hidden md:inline">
+            Test signal:
+          </span>
+          {SIM_PRESETS.map((p) => {
+            const Icon = p.Icon;
+            const active = mode === p.id;
+            return (
+              <button
+                key={p.id}
+                type="button"
+                onClick={() => selectMode(p.id)}
+                className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-mono transition-colors cursor-pointer ${
+                  active
+                    ? "bg-violet-600 text-white border border-violet-400/60 shadow-xs"
+                    : "bg-zinc-950/80 text-zinc-400 border border-zinc-800 hover:text-zinc-200 hover:border-zinc-700"
+                }`}
+              >
+                <Icon className="w-3 h-3" />
+                {p.label}
+              </button>
+            );
+          })}
+        </div>
+
         <div className="flex items-center gap-3 text-[11px] text-zinc-400">
           <span className="inline-flex items-center gap-1.5 text-emerald-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            24-bit ADS1299 · n=<span ref={frameRef}>24,100</span>
+            n=<span ref={frameRef}>24,100</span>
           </span>
-          <span className="hidden sm:inline text-violet-400">EEG + EOG + fEMG</span>
           <button
             type="button"
             onClick={togglePause}
@@ -246,7 +306,7 @@ function HeroXrScope() {
         <div className="relative">
           <canvas
             ref={canvasRef}
-            className="block w-full h-52 sm:h-60"
+            className="block w-full h-52 sm:h-56"
             aria-label="Simulated 4-channel PiEEG XR face mask waveform"
           />
           <div className="pointer-events-none absolute inset-y-0 left-3 flex flex-col justify-around py-2 text-[11px] font-mono">
@@ -263,7 +323,7 @@ function HeroXrScope() {
           </div>
         </div>
 
-        <div className="border-t lg:border-t-0 lg:border-l border-zinc-800 p-4 flex flex-col justify-between bg-zinc-900/40 font-mono text-xs">
+        <div className="border-t lg:border-t-0 lg:border-l border-zinc-800 p-4 flex flex-col justify-between bg-zinc-900/50 font-mono text-xs">
           <div>
             <div className="text-[11px] uppercase tracking-wider text-zinc-500 mb-2.5">
               Decoded XR parameters
@@ -333,105 +393,145 @@ function HeroXrScope() {
 export default function XrHero() {
   return (
     <section
-      className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 pt-10 sm:pt-14 pb-12"
+      className="relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800 pt-8 sm:pt-12 pb-12"
       style={{ contain: "layout style" }}
     >
-      {/* Background XR video (same smooth loop fade as home page) */}
+      {/* Background XR video */}
       <HeroVideo src="https://pieeg.lon1.cdn.digitaloceanspaces.com/pieeg-xr-video.mp4" />
 
       {/* Layered cinematic overlays */}
-      <div className="absolute inset-0 bg-linear-to-br from-violet-500/8 via-cyan-500/5 to-blue-500/8 dark:from-violet-500/12 dark:via-cyan-500/8 dark:to-blue-500/12 pointer-events-none" />
-      <div className="absolute inset-0 bg-linear-to-t from-white via-white/15 to-white/55 dark:from-zinc-950 dark:via-zinc-950/15 dark:to-zinc-950/55 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-br from-violet-500/8 via-cyan-500/5 to-blue-500/8 dark:from-violet-500/14 dark:via-cyan-500/8 dark:to-blue-500/12 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-t from-white via-white/25 to-white/65 dark:from-zinc-950 dark:via-zinc-950/25 dark:to-zinc-950/65 pointer-events-none" />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[64px_64px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center mb-10">
-          <div className="inline-flex flex-wrap items-center justify-center gap-2 px-3.5 py-1.5 rounded-full border border-teal-400/50 bg-zinc-950/90 text-xs font-medium text-teal-300 mb-5 shadow-xs">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-teal-300 opacity-75" />
-              <span className="relative inline-flex size-2 rounded-full bg-teal-300" />
-            </span>
-            <span className="font-mono text-[11px] font-bold uppercase tracking-wider">Now Live on Kickstarter</span>
-            <span className="text-zinc-600">·</span>
-            <span className="text-zinc-300">Ends 31 Dec</span>
-          </div>
-
-          <h1 className="title-hero text-zinc-900 dark:text-zinc-50 mb-5">
-            Neural Face Interface{" "}
-            <span className="block mt-1 bg-linear-to-r from-violet-500 via-cyan-500 to-blue-500 dark:from-violet-400 dark:via-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
-              for Spatial Computing
-            </span>
-          </h1>
-
-          <p className="text-base sm:text-lg lg:text-xl text-zinc-600 dark:text-zinc-300 max-w-3xl mx-auto leading-relaxed mb-7">
-            A silicone facial gasket with ten flat dry Ag/AgCl electrodes (8 active + REF + BIAS) that snaps onto your
-            VR headset. A strap-mounted IronBCI box digitizes frontal EEG, EOG blinks, and facial EMG at 24-bit /
-            250 SPS and streams over Bluetooth LE 5 into PiEEG Cloud,{" "}
-            <code className="font-mono text-sm">pieeg-server</code>, VRChat OSC, or BodyPress.
-          </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-3">
+        {/* Asymmetric Above-the-Fold Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center mb-10">
+          {/* Left Column: Campaign Hook + Primary CTAs */}
+          <div className="lg:col-span-6 text-center lg:text-left">
             <a
               href={KICKSTARTER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-sm font-semibold transition-colors shadow-md shadow-violet-500/20"
+              className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2 px-3.5 py-1.5 rounded-full border border-emerald-400/50 bg-zinc-950/90 text-xs font-medium text-emerald-300 mb-5 shadow-sm hover:border-emerald-300 transition-colors"
             >
-              <Rocket className="w-4 h-4" />
-              Back on Kickstarter
-              <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+              <span className="relative flex size-2">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-300 opacity-75" />
+                <span className="relative inline-flex size-2 rounded-full bg-emerald-300" />
+              </span>
+              <span className="font-mono text-[11px] font-bold uppercase tracking-wider">
+                Live on Kickstarter
+              </span>
+              <span className="text-zinc-600">·</span>
+              <span className="text-zinc-200 font-mono text-[11px]">Ends 31 Dec</span>
+              <ArrowRight className="w-3 h-3 text-emerald-300" />
             </a>
-            <Link
-              href="/hardware/pieeg-xr"
-              className="inline-flex items-center gap-2 h-11 px-5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 text-sm font-semibold hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
-            >
-              <Cpu className="w-4 h-4 text-cyan-500" />
-              Hardware &amp; Setup Guide
-            </Link>
-            <a
-              href="https://cloud.pieeg.com/lobby"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 h-11 px-5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 text-sm font-semibold hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
-            >
-              <Play className="w-4 h-4 text-amber-500" />
-              Open Cloud Lobby
-              <ExternalLink className="w-3.5 h-3.5 opacity-70" />
-            </a>
-            <a
-              href="https://github.com/pieeg-club/PiEEG_XR_Hardware"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 h-11 px-5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 text-sm font-semibold hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
-            >
-              <Github className="w-4 h-4" />
-              GitHub
-              <ExternalLink className="w-3.5 h-3.5 opacity-70" />
-            </a>
+
+            <h1 className="title-hero text-zinc-900 dark:text-zinc-50 mb-4">
+              Neural Face Interface{" "}
+              <span className="block mt-1 text-violet-600 dark:text-violet-400">
+                for Spatial Computing
+              </span>
+            </h1>
+
+            <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed mb-6 max-w-xl mx-auto lg:mx-0">
+              Snap a 10-electrode dry Ag/AgCl silicone gasket onto your VR headset and stream{" "}
+              <strong className="text-zinc-900 dark:text-zinc-100 font-semibold">
+                frontal EEG, EOG blinks, and facial EMG
+              </strong>{" "}
+              at 24-bit / 250 SPS over BLE 5—driving VRChat avatars, WebXR, and neurofeedback without face cameras.
+            </p>
+
+            {/* Primary & Secondary CTAs */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-6">
+              <a
+                href={KICKSTARTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 h-12 px-6 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-all shadow-lg shadow-violet-600/25 hover:shadow-violet-500/35"
+              >
+                <Rocket className="w-4 h-4" />
+                Back on Kickstarter
+                <ExternalLink className="w-3.5 h-3.5 opacity-85" />
+              </a>
+              <Link
+                href="/hardware/pieeg-xr"
+                className="inline-flex items-center gap-2 h-12 px-5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white/90 dark:bg-zinc-900/90 text-zinc-900 dark:text-zinc-100 text-sm font-semibold hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
+              >
+                <Cpu className="w-4 h-4 text-cyan-500" />
+                Setup &amp; Specs
+              </Link>
+              <a
+                href="https://cloud.pieeg.com/lobby"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 h-12 px-4 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white/90 dark:bg-zinc-900/90 text-zinc-900 dark:text-zinc-100 text-sm font-semibold hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
+              >
+                <Play className="w-4 h-4 text-amber-500" />
+                Cloud
+              </a>
+              <a
+                href="https://github.com/pieeg-club/PiEEG_XR_Hardware"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="PiEEG XR Hardware on GitHub"
+                className="inline-flex items-center justify-center w-12 h-12 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white/90 dark:bg-zinc-900/90 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+            </div>
+
+            {/* Crisp Hardware Proof Strip */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-2 text-xs font-mono text-zinc-600 dark:text-zinc-400">
+              <span className="inline-flex items-center gap-1.5">
+                <Glasses className="w-3.5 h-3.5 text-violet-500" /> Quest 3 / 3S / 2 / Pro &amp; Pico
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Waves className="w-3.5 h-3.5 text-cyan-500" /> ADS1299 24-bit · 250 SPS
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Bluetooth className="w-3.5 h-3.5 text-blue-500" /> BLE 5 · 100% Open Source
+              </span>
+            </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 mt-6 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-            <span className="inline-flex items-center gap-1.5">
-              <Waves className="w-3.5 h-3.5 text-cyan-500" /> 8 ch + REF/BIAS (1.0 µVpp noise)
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Cpu className="w-3.5 h-3.5 text-violet-500" /> ADS1299 24-bit · 250 SPS
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Bluetooth className="w-3.5 h-3.5 text-blue-500" /> STM32WB BLE 5
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Radio className="w-3.5 h-3.5 text-amber-500" /> VRChat OSC · WebXR · BodyPress
-            </span>
+          {/* Right Column: Spatial Computing Key Visual */}
+          <div className="lg:col-span-6">
+            <div className="max-w-lg mx-auto rounded-3xl border border-zinc-800/90 bg-zinc-950 shadow-2xl overflow-hidden">
+              <div className="relative aspect-square w-full">
+                <Image
+                  src="/xr/xr-headset-main.png"
+                  alt="PiEEG XR neural face interface on VR headset driving real-time avatar expressions"
+                  fill
+                  priority
+                  loading="eager"
+                  sizes="(max-width: 1024px) 100vw, 480px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="px-4 py-3 border-t border-zinc-800/90 bg-zinc-900/90 flex flex-wrap items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-semibold text-cyan-300">
+                  <Radio className="w-3.5 h-3.5 text-cyan-400" />
+                  8ch / 16ch IronBCI · BLE 5 · 250 SPS
+                </span>
+                <a
+                  href="#xr-scope"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-100 text-xs font-mono border border-zinc-700 transition-colors"
+                >
+                  Interactive Scope ↓
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto">
+        {/* Interactive 4-Channel Scope */}
+        <div id="xr-scope" className="scroll-mt-24 max-w-6xl mx-auto">
           <HeroXrScope />
         </div>
 
         {/* Featured In & Field Credibility Strip */}
-        <div className="mt-7 pt-5 border-t border-zinc-200/70 dark:border-zinc-800/70 max-w-5xl mx-auto">
+        <div className="mt-7 pt-5 border-t border-zinc-200/70 dark:border-zinc-800/70 max-w-6xl mx-auto">
           <div className="flex flex-wrap items-center justify-center gap-2.5 text-xs">
             <span className="font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mr-1">
               Covered by &amp; field-tested:
@@ -482,18 +582,21 @@ export default function XrHero() {
           </div>
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-mono text-zinc-500 dark:text-zinc-400">
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-mono text-zinc-500 dark:text-zinc-400">
+          <a href="#xr-capabilities" className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+            [Spatial Capabilities]
+          </a>
           <a href="#xr-bench" className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
-            [01 · Interactive XR Architecture]
+            [01 · XR Architecture]
           </a>
           <a href="#xr-routes" className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
-            [02 · 4 Headset Connection Routes]
+            [02 · 4 Connection Routes]
           </a>
           <a href="#xr-hardware-demos" className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
-            [03 · Hardware, Demos &amp; Experiences]
+            [03 · Hardware &amp; Demos]
           </a>
           <a href="#xr-credibility" className="hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
-            [04 · Field Research, VR Press &amp; Ecosystem]
+            [04 · Research &amp; Press]
           </a>
         </div>
       </div>

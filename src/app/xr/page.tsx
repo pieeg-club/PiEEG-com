@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import XrHero from "@/components/xr/XrHero";
+import XrShowcaseStrip from "@/components/xr/XrShowcaseStrip";
 import XrBench from "@/components/xr/XrBench";
 import XrConnectionRoutes from "@/components/xr/XrConnectionRoutes";
 import XrHardwareAndDemos from "@/components/xr/XrHardwareAndDemos";
@@ -14,6 +15,7 @@ export default function XRPage() {
   return (
     <main className="flex-1">
       <XrHero />
+      <XrShowcaseStrip />
       <XrBench />
       <XrConnectionRoutes />
       <XrHardwareAndDemos />

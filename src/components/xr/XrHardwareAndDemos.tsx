@@ -134,18 +134,54 @@ export default function XrHardwareAndDemos() {
             </div>
           </div>
 
+          {/* Kickstarter Backer Highlights */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+            <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/60 px-4 py-3">
+              <div className="text-[11px] font-mono uppercase tracking-wider text-violet-600 dark:text-violet-400 font-semibold">
+                Open Hardware
+              </div>
+              <div className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100 mt-0.5">
+                KiCad Schematics &amp; STEP
+              </div>
+            </div>
+            <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/60 px-4 py-3">
+              <div className="text-[11px] font-mono uppercase tracking-wider text-cyan-600 dark:text-cyan-400 font-semibold">
+                Zero Lock-In
+              </div>
+              <div className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100 mt-0.5">
+                MIT Software &amp; Raw µV
+              </div>
+            </div>
+            <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/60 px-4 py-3">
+              <div className="text-[11px] font-mono uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-semibold">
+                Headset Ready
+              </div>
+              <div className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100 mt-0.5">
+                Quest 3 / 3S / 2 / Pro &amp; Pico
+              </div>
+            </div>
+            <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/60 px-4 py-3">
+              <div className="text-[11px] font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 font-semibold">
+                Kickstarter Live
+              </div>
+              <div className="text-xs sm:text-sm font-semibold text-zinc-900 dark:text-zinc-100 mt-0.5">
+                Campaign Ends 31 Dec
+              </div>
+            </div>
+          </div>
+
           {/* Two Hardware Edition Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
             {/* PiEEG XR (8-ch) */}
             <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/60 dark:bg-zinc-900/50 overflow-hidden flex flex-col justify-between">
               <div>
-                <div className="relative h-60 bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 p-6 flex items-center justify-center">
+                <div className="relative h-64 bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 p-5 flex items-center justify-center">
                   <Image
                     src="/products/pieeg-xr.png"
                     alt="PiEEG XR 8-channel neural face interface gasket and strap box"
-                    width={360}
-                    height={240}
-                    className="object-contain max-h-48 w-auto"
+                    width={420}
+                    height={260}
+                    className="object-contain max-h-52 w-auto"
                   />
                   <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-violet-500/20 text-violet-300 border border-violet-500/30">
                     8 ch + REF/BIAS · BLE 5
@@ -166,38 +202,38 @@ export default function XrHardwareAndDemos() {
                 </div>
               </div>
               <div className="px-6 pb-6 flex flex-wrap items-center gap-3">
-                <Link
-                  href="/hardware/pieeg-xr"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-xs font-semibold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
-                >
-                  <Cpu className="w-3.5 h-3.5" />
-                  Product &amp; Interactive Setup Guide
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
                 <a
                   href={XR_KICKSTARTER}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 text-xs font-semibold hover:bg-white dark:hover:bg-zinc-800 transition-colors"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold transition-all shadow-sm"
                 >
-                  <Rocket className="w-3.5 h-3.5 text-violet-500" />
-                  Kickstarter
+                  <Rocket className="w-3.5 h-3.5" />
+                  Back XR on Kickstarter
                 </a>
+                <Link
+                  href="/hardware/pieeg-xr"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 text-xs font-semibold hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
+                >
+                  <Cpu className="w-3.5 h-3.5 text-cyan-500" />
+                  Setup Guide
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </div>
 
             {/* PiEEG XR-16 (16-ch) */}
             <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/60 dark:bg-zinc-900/50 overflow-hidden flex flex-col justify-between">
               <div>
-                <div className="relative h-60 bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 p-6 flex items-center justify-center">
+                <div className="relative h-64 bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 overflow-hidden flex items-center justify-center">
                   <Image
                     src="/products/xr-16.png"
                     alt="PiEEG XR-16 16-channel face gasket plus eight visual-cortex sensors"
-                    width={360}
-                    height={240}
-                    className="object-contain max-h-48 w-auto"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
                   />
-                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[11px] font-mono font-semibold bg-zinc-950/85 text-cyan-300 border border-cyan-500/35 backdrop-blur-xs">
                     16 ch (8 Face + 8 Occipital) · BLE 5
                   </span>
                 </div>
@@ -215,19 +251,21 @@ export default function XrHardwareAndDemos() {
                 </div>
               </div>
               <div className="px-6 pb-6 flex flex-wrap items-center gap-3">
+                <a
+                  href={XR_KICKSTARTER}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-white text-xs font-semibold transition-all shadow-sm"
+                >
+                  <Rocket className="w-3.5 h-3.5" />
+                  Back XR-16 on Kickstarter
+                </a>
                 <Link
                   href="/hardware/xr-16"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-xs font-semibold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 text-xs font-semibold hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
                 >
-                  <Glasses className="w-3.5 h-3.5" />
-                  Inspect PiEEG XR-16
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-                <Link
-                  href="/hardware/ironbci"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 text-xs font-semibold hover:bg-white dark:hover:bg-zinc-800 transition-colors"
-                >
-                  IronBCI Front-End
+                  <Glasses className="w-3.5 h-3.5 text-cyan-500" />
+                  Inspect XR-16
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -387,41 +425,49 @@ export default function XrHardwareAndDemos() {
       <XrCredibilityAndResearch />
 
       {/* ── Final CTA ──────────────────────────────────────────────────────── */}
-      <section className="py-12 sm:py-16 bg-zinc-50/50 dark:bg-zinc-900/25">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="title-section text-zinc-900 dark:text-zinc-50 mb-3">
-            Snap the gasket onto your headset or test in Mock Studio
-          </h2>
-          <p className="text-base text-zinc-600 dark:text-zinc-400 mb-7 max-w-2xl mx-auto">
-            Back PiEEG XR on Kickstarter, inspect the 8-step interactive setup and noise verification guide, or open
-            PiEEG Cloud right now to test Face Trainer v2 and Avatar Studio.
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <a
-              href={XR_KICKSTARTER}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-semibold text-sm transition-colors shadow-md shadow-violet-500/20"
-            >
-              <Rocket className="w-4 h-4" />
-              Back on Kickstarter
-            </a>
-            <Link
-              href="/hardware/pieeg-xr"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 font-semibold text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
-            >
-              Interactive Setup Guide
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <a
-              href="https://discord.gg/neJ45FR6Sv"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 font-semibold text-sm hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
-            >
-              <Users className="w-4 h-4 text-cyan-500" />
-              Discord Community
-            </a>
+      <section className="py-12 sm:py-16 px-4 bg-white dark:bg-zinc-950">
+        <div className="max-w-5xl mx-auto rounded-3xl border border-zinc-800 bg-zinc-950 text-zinc-100 p-8 sm:p-12 text-center relative overflow-hidden shadow-2xl">
+          <div className="absolute inset-0 bg-linear-to-br from-violet-600/20 via-transparent to-cyan-500/20 pointer-events-none" />
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-400/40 bg-emerald-500/10 text-emerald-300 text-xs font-mono font-semibold mb-5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              KICKSTARTER LIVE · ENDS 31 DEC
+            </div>
+            <h2 className="title-section text-white mb-3">
+              Bring open-source neural sensing to your VR headset
+            </h2>
+            <p className="text-base text-zinc-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Back PiEEG XR on Kickstarter, inspect the 8-step interactive setup and noise verification guide, or open
+              PiEEG Cloud right now to test Face Trainer v2 and Avatar Studio.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={XR_KICKSTARTER}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 h-12 px-7 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold text-sm transition-all shadow-lg shadow-violet-600/25"
+              >
+                <Rocket className="w-4 h-4" />
+                Back on Kickstarter
+                <ExternalLink className="w-3.5 h-3.5 opacity-85" />
+              </a>
+              <Link
+                href="/hardware/pieeg-xr"
+                className="inline-flex items-center gap-2 h-12 px-6 rounded-xl border border-zinc-700 bg-zinc-900 hover:bg-zinc-800 text-zinc-100 font-semibold text-sm transition-colors"
+              >
+                Interactive Setup Guide
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <a
+                href="https://discord.gg/neJ45FR6Sv"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 h-12 px-6 rounded-xl border border-zinc-700 bg-zinc-900 hover:bg-zinc-800 text-zinc-100 font-semibold text-sm transition-colors"
+              >
+                <Users className="w-4 h-4 text-cyan-400" />
+                Discord Community
+              </a>
+            </div>
           </div>
         </div>
       </section>

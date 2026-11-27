@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Check, Copy, Quote } from "lucide-react";
+import { ArrowUpRight, Check, ChevronLeft, ChevronRight, Copy, Pause, Play, Quote } from "lucide-react";
 
 const REVIEW_EMAIL = "pieeg@pieeg.com";
 const REVIEW_MAILTO = `mailto:${REVIEW_EMAIL}?subject=${encodeURIComponent("My PiEEG experience")}`;
@@ -108,30 +108,52 @@ const accentStyles = {
 
 export default function ResearchReview() {
   const [copied, setCopied] = useState(false);
-  const [visibleCards, setVisibleCards] = useState<Record<number, boolean>>({});
-  const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+
+  const totalSlides = partners.length;
+
+  const goToSlide = useCallback(
+    (index: number) => {
+      setActiveSlide(((index % totalSlides) + totalSlides) % totalSlides);
+    },
+    [totalSlides]
+  );
+
+  const nextSlide = useCallback(() => {
+    goToSlide(activeSlide + 1);
+  }, [activeSlide, goToSlide]);
+
+  const prevSlide = useCallback(() => {
+    goToSlide(activeSlide - 1);
+  }, [activeSlide, goToSlide]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = Number(entry.target.getAttribute("data-card-index"));
-            if (!Number.isNaN(idx)) {
-              setVisibleCards((prev) => (prev[idx] ? prev : { ...prev, [idx]: true }));
-            }
-          }
-        });
-      },
-      { threshold: 0.14 }
-    );
+    if (isPaused) return;
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+    const timer = window.setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % totalSlides);
+    }, 7000);
+    return () => window.clearInterval(timer);
+  }, [isPaused, totalSlides]);
 
-    cardRefs.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
+  function handleTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0]?.clientX ?? null;
+  }
 
-    return () => observer.disconnect();
-  }, []);
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (touchStartX.current === null) return;
+    const endX = e.changedTouches[0]?.clientX ?? touchStartX.current;
+    const delta = touchStartX.current - endX;
+    touchStartX.current = null;
+    if (Math.abs(delta) > 48) {
+      if (delta > 0) nextSlide();
+      else prevSlide();
+    }
+  }
 
   async function copyEmail() {
     try {
@@ -157,7 +179,7 @@ export default function ResearchReview() {
       />
 
       <div className="relative mx-auto max-w-7xl px-6">
-        <div className="mx-auto mb-14 max-w-2xl text-center">
+        <div className="mx-auto mb-12 max-w-2xl text-center">
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-400">
             Field Deployments · PiEEG XR
           </p>
@@ -172,7 +194,7 @@ export default function ResearchReview() {
         {/* Continuous horizontal signal marquee */}
         <div
           aria-hidden="true"
-          className="marquee-fade mb-14 overflow-hidden border-y border-zinc-200/80 py-3 dark:border-zinc-800/80"
+          className="marquee-fade mb-10 overflow-hidden border-y border-zinc-200/80 py-3 dark:border-zinc-800/80"
         >
           <div className="academia-marquee-track flex w-max items-center gap-8">
             {[...applicationSignals, ...applicationSignals].map((item, idx) => (
@@ -187,131 +209,244 @@ export default function ResearchReview() {
           </div>
         </div>
 
-        <div className="space-y-10 lg:space-y-12">
-          {partners.map((partner, i) => {
-            const flip = i % 2 === 1;
-            const styles = accentStyles[partner.accent];
-            const isVisible = visibleCards[i] ?? false;
-
-            return (
-              <article
-                key={partner.name}
-                ref={(el) => {
-                  cardRefs.current[i] = el;
-                }}
-                data-card-index={i}
-                aria-labelledby={`from-partners-card-${i}`}
-                className={`group relative overflow-hidden rounded-3xl border border-zinc-200/90 bg-zinc-50/70 shadow-sm transition-all duration-700 ease-out hover:border-zinc-300 hover:shadow-xl dark:border-zinc-800/90 dark:bg-zinc-900/50 dark:hover:border-zinc-700 ${
-                  isVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-6 opacity-0"
-                }`}
-              >
-                {/* Ambient corner accent */}
-                <div
-                  aria-hidden="true"
-                  className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${styles.glow} opacity-60 transition-opacity duration-500 group-hover:opacity-100`}
-                />
-
-                <div className="relative grid lg:min-h-[560px] lg:grid-cols-12">
-                  {/* Full-height image panel */}
-                  <a
-                    href={partner.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${partner.title} — ${partner.name}`}
-                    className={`relative block h-[380px] overflow-hidden bg-zinc-200 sm:h-[460px] lg:col-span-5 lg:h-full dark:bg-zinc-900 ${
-                      flip ? "lg:order-2" : ""
+        {/* Carousel region */}
+        <div
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Real-world applications"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocusCapture={() => setIsPaused(true)}
+          onBlurCapture={() => setIsPaused(false)}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowRight") {
+              e.preventDefault();
+              nextSlide();
+            } else if (e.key === "ArrowLeft") {
+              e.preventDefault();
+              prevSlide();
+            }
+          }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* Top switcher tabs & controls */}
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+            <div
+              role="tablist"
+              aria-label="Application stories"
+              className="flex flex-wrap items-center gap-2"
+            >
+              {partners.map((partner, i) => {
+                const isActive = activeSlide === i;
+                const styles = accentStyles[partner.accent];
+                return (
+                  <button
+                    key={partner.title}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-controls={`partner-slide-${i}`}
+                    onClick={() => goToSlide(i)}
+                    className={`inline-flex items-center gap-2.5 rounded-full border px-4 py-2 text-xs font-semibold tracking-wide transition-all cursor-pointer ${
+                      isActive
+                        ? "border-zinc-900 bg-zinc-900 text-white shadow-sm dark:border-zinc-100 dark:bg-zinc-100 dark:text-zinc-950"
+                        : "border-zinc-200 bg-zinc-50 text-zinc-600 hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-400 dark:hover:border-zinc-700 dark:hover:text-zinc-100"
                     }`}
                   >
-                    <Image
-                      src={partner.photo}
-                      alt={partner.name}
-                      fill
-                      sizes="(min-width: 1024px) 42vw, 100vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                      style={{ objectPosition: partner.photoPosition }}
+                    <span
+                      className={`size-2 rounded-full ${
+                        isActive ? styles.dot : "bg-zinc-400/60 dark:bg-zinc-600"
+                      }`}
                     />
+                    <span className="font-mono text-[11px] opacity-70">{partner.index}</span>
+                    <span>{partner.title}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setIsPaused((p) => !p)}
+                aria-label={isPaused ? "Resume auto-play" : "Pause auto-play"}
+                className="inline-flex size-9 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition-colors hover:border-zinc-400 hover:text-zinc-950 cursor-pointer dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:text-zinc-100"
+              >
+                {isPaused ? <Play className="size-3.5" /> : <Pause className="size-3.5" />}
+              </button>
+              <button
+                type="button"
+                onClick={prevSlide}
+                aria-label="Previous application"
+                className="inline-flex size-9 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-800 transition-colors hover:border-zinc-400 hover:bg-zinc-50 cursor-pointer dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800"
+              >
+                <ChevronLeft className="size-4" />
+              </button>
+              <span className="min-w-[44px] text-center font-mono text-xs text-zinc-500 dark:text-zinc-400">
+                0{activeSlide + 1} / 0{totalSlides}
+              </span>
+              <button
+                type="button"
+                onClick={nextSlide}
+                aria-label="Next application"
+                className="inline-flex size-9 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-800 transition-colors hover:border-zinc-400 hover:bg-zinc-50 cursor-pointer dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800"
+              >
+                <ChevronRight className="size-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Sliding viewport */}
+          <div className="overflow-hidden rounded-3xl border border-zinc-200/90 bg-zinc-50/70 shadow-sm dark:border-zinc-800/90 dark:bg-zinc-900/50">
+            <div
+              className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+              style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+            >
+              {partners.map((partner, i) => {
+                const flip = i % 2 === 1;
+                const styles = accentStyles[partner.accent];
+                const isActive = activeSlide === i;
+
+                return (
+                  <article
+                    key={partner.name}
+                    id={`partner-slide-${i}`}
+                    role="tabpanel"
+                    aria-hidden={!isActive}
+                    aria-labelledby={`from-partners-card-${i}`}
+                    className="group relative w-full shrink-0"
+                  >
+                    {/* Ambient corner accent */}
                     <div
                       aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-t from-zinc-950/75 via-zinc-950/15 to-transparent"
+                      className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${styles.glow} opacity-65 transition-opacity duration-500 group-hover:opacity-100`}
                     />
-                    <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3">
-                      <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-zinc-950/60 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur-md">
-                        <span className={`size-2 rounded-full ${styles.dot}`} />
-                        <span>{partner.badge}</span>
-                      </div>
-                      <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-zinc-950/60 text-white backdrop-blur-md transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                        <ArrowUpRight className="size-4" aria-hidden="true" />
-                      </span>
-                    </div>
-                  </a>
 
-                  {/* Editorial content panel */}
-                  <div
-                    className={`relative flex flex-col justify-between p-8 sm:p-10 lg:col-span-7 lg:p-14 ${
-                      flip ? "lg:order-1" : ""
-                    }`}
-                  >
-                    <div>
-                      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-                        <span
-                          className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${styles.pill}`}
-                        >
-                          <span className={`size-1.5 rounded-full ${styles.dot}`} />
-                          {partner.category}
-                        </span>
-                        <span
-                          className={`font-mono text-xs font-semibold tracking-[0.2em] ${styles.indexText}`}
-                        >
-                          {partner.index} / 02
-                        </span>
-                      </div>
-
-                      <h3
-                        id={`from-partners-card-${i}`}
-                        className="text-2xl font-semibold tracking-[-0.035em] text-zinc-950 sm:text-3xl lg:text-[2.15rem] lg:leading-[1.15] dark:text-white"
-                      >
-                        {partner.title}
-                      </h3>
-
-                      <blockquote
-                        className={`mt-7 border-l-2 pl-5 text-[15.5px] leading-[1.78] text-zinc-700 sm:text-base dark:text-zinc-300 ${styles.quoteBar}`}
-                      >
-                        <p className="m-0">{partner.quote}</p>
-                      </blockquote>
-                    </div>
-
-                    <footer className="mt-10 flex flex-col gap-5 border-t border-zinc-200/80 pt-6 sm:flex-row sm:items-end sm:justify-between dark:border-zinc-800/80">
-                      <div>
-                        <p className="m-0 text-base font-semibold tracking-[-0.02em] text-zinc-950 dark:text-white">
-                          {partner.name}
-                        </p>
-                        <ul className="m-0 mt-1.5 list-none space-y-0.5 p-0 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
-                          {partner.roles.map((role) => (
-                            <li key={role}>{role}</li>
-                          ))}
-                        </ul>
-                      </div>
-
+                    <div className="relative grid lg:min-h-[560px] lg:grid-cols-12">
+                      {/* Full-height image panel */}
                       <a
                         href={partner.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/link inline-flex shrink-0 items-center gap-1.5 self-start rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-900 no-underline transition-colors hover:border-zinc-900 hover:bg-zinc-900 hover:text-white sm:self-auto dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-100 dark:hover:bg-zinc-100 dark:hover:text-zinc-950"
+                        tabIndex={isActive ? 0 : -1}
+                        aria-label={`${partner.title} (${partner.name})`}
+                        className={`relative block h-[380px] overflow-hidden bg-zinc-200 sm:h-[460px] lg:col-span-5 lg:h-full dark:bg-zinc-900 ${
+                          flip ? "lg:order-2" : ""
+                        }`}
                       >
-                        <span>{partner.linkLabel}</span>
-                        <ArrowUpRight
-                          className="size-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
-                          aria-hidden="true"
+                        <Image
+                          src={partner.photo}
+                          alt={partner.name}
+                          fill
+                          sizes="(min-width: 1024px) 42vw, 100vw"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                          style={{ objectPosition: partner.photoPosition }}
                         />
+                        <div
+                          aria-hidden="true"
+                          className="absolute inset-0 bg-gradient-to-t from-zinc-950/75 via-zinc-950/15 to-transparent"
+                        />
+                        <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3">
+                          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-zinc-950/60 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur-md">
+                            <span className={`size-2 rounded-full ${styles.dot}`} />
+                            <span>{partner.badge}</span>
+                          </div>
+                          <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-zinc-950/60 text-white backdrop-blur-md transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                            <ArrowUpRight className="size-4" aria-hidden="true" />
+                          </span>
+                        </div>
                       </a>
-                    </footer>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+
+                      {/* Editorial content panel */}
+                      <div
+                        className={`relative flex flex-col justify-between p-8 sm:p-10 lg:col-span-7 lg:p-14 ${
+                          flip ? "lg:order-1" : ""
+                        }`}
+                      >
+                        <div>
+                          <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+                            <span
+                              className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${styles.pill}`}
+                            >
+                              <span className={`size-1.5 rounded-full ${styles.dot}`} />
+                              {partner.category}
+                            </span>
+                            <span
+                              className={`font-mono text-xs font-semibold tracking-[0.2em] ${styles.indexText}`}
+                            >
+                              {partner.index} / 0{totalSlides}
+                            </span>
+                          </div>
+
+                          <h3
+                            id={`from-partners-card-${i}`}
+                            className="text-2xl font-semibold tracking-[-0.035em] text-zinc-950 sm:text-3xl lg:text-[2.15rem] lg:leading-[1.15] dark:text-white"
+                          >
+                            {partner.title}
+                          </h3>
+
+                          <blockquote
+                            className={`mt-7 border-l-2 pl-5 text-[15.5px] leading-[1.78] text-zinc-700 sm:text-base dark:text-zinc-300 ${styles.quoteBar}`}
+                          >
+                            <p className="m-0">{partner.quote}</p>
+                          </blockquote>
+                        </div>
+
+                        <footer className="mt-10 flex flex-col gap-5 border-t border-zinc-200/80 pt-6 sm:flex-row sm:items-end sm:justify-between dark:border-zinc-800/80">
+                          <div>
+                            <p className="m-0 text-base font-semibold tracking-[-0.02em] text-zinc-950 dark:text-white">
+                              {partner.name}
+                            </p>
+                            <ul className="m-0 mt-1.5 list-none space-y-0.5 p-0 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+                              {partner.roles.map((role) => (
+                                <li key={role}>{role}</li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <a
+                            href={partner.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            tabIndex={isActive ? 0 : -1}
+                            className="group/link inline-flex shrink-0 items-center gap-1.5 self-start rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-900 no-underline transition-colors hover:border-zinc-900 hover:bg-zinc-900 hover:text-white sm:self-auto dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-100 dark:hover:bg-zinc-100 dark:hover:text-zinc-950"
+                          >
+                            <span>{partner.linkLabel}</span>
+                            <ArrowUpRight
+                              className="size-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+                              aria-hidden="true"
+                            />
+                          </a>
+                        </footer>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Bottom pill indicators */}
+          <div className="mt-6 flex items-center justify-center gap-2" aria-label="Slide indicators">
+            {partners.map((partner, i) => {
+              const isActive = activeSlide === i;
+              return (
+                <button
+                  key={partner.title}
+                  type="button"
+                  onClick={() => goToSlide(i)}
+                  aria-label={`Show ${partner.title}`}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    isActive
+                      ? "w-8 bg-cyan-600 dark:bg-cyan-400"
+                      : "w-2 bg-zinc-300 hover:bg-zinc-400 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+                  }`}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

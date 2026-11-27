@@ -83,6 +83,8 @@ function lastMonday(year: number, month: number): Date {
   return new Date(day.getTime() - londonOffset(day) * 60000);
 }
 
+const FIRST_SESSION = lastMonday(2027, 0);
+
 function upcomingSessions(count = 4, now = new Date()): Date[] {
   const current = new Date(now);
   const events: Date[] = [];
@@ -90,7 +92,10 @@ function upcomingSessions(count = 4, now = new Date()): Date[] {
   const year = current.getUTCFullYear();
   while (events.length < count) {
     const start = lastMonday(year, month++);
-    if (start.getTime() + DURATION_MS > current.getTime()) {
+    if (
+      start.getTime() >= FIRST_SESSION.getTime() &&
+      start.getTime() + DURATION_MS > current.getTime()
+    ) {
       events.push(start);
     }
   }

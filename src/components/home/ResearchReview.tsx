@@ -1,17 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Check, Copy, Quote } from "lucide-react";
+import { ArrowUpRight, Check, Copy, Quote } from "lucide-react";
 
 const REVIEW_EMAIL = "pieeg@pieeg.com";
 const REVIEW_MAILTO = `mailto:${REVIEW_EMAIL}?subject=${encodeURIComponent("My PiEEG experience")}`;
 
 type Partner = {
+  index: string;
+  category: string;
+  accent: "emerald" | "cyan";
   title: string;
   quote: string;
   name: string;
   roles: readonly string[];
+  badge: string;
   href: string;
   linkLabel: string;
   photo: string;
@@ -20,6 +24,9 @@ type Partner = {
 
 const partners: readonly Partner[] = [
   {
+    index: "01",
+    category: "Sports Neuroscience",
+    accent: "emerald",
     title: "PiEEG XR in sports research",
     quote:
       "PiEEG XR is enabling us to gain a deeper insight into our immersive experiences, adding a neurophysiological dimension to the study of how athletes respond during specific training tasks. Its integration with virtual reality environments opens up new possibilities for objectively investigating what happens whilst performing different exercises and how the response changes in the face of varying demands. Although we are still working on methodological optimisation and signal quality control, it is so far proving to be a tool with great potential for sports-related research.",
@@ -29,23 +36,37 @@ const partners: readonly Partner[] = [
       "Health & Prevention Specialist - BeFootball",
       "Profesora en UAX",
     ],
+    badge: "Atlético de Madrid · BeFootball · UAX",
     href: "https://www.linkedin.com/in/mar%C3%ADa-trapero-ventura/",
     linkLabel: "LinkedIn",
     photo: "/home/testimonials/maria.webp",
     photoPosition: "22% center",
   },
   {
+    index: "02",
+    category: "Immersive Biofeedback",
+    accent: "cyan",
     title: "PiEEG XR in VR wellness",
     quote:
       "At Alma Digital we create immersive wellness experiences in VR: breathwork, meditation and drawing in light. PiEEG XR sits inside the headset, takes a minute to put on, and is open enough to plug straight into our own tools. Now the experience can respond to the person's state as it happens, and show them something real about it at the end.",
     name: "Beltrán Lihn & Vicente Manzano",
     roles: ["Alma Digital · Immersive wellness experiences in VR"],
+    badge: "Alma Digital Studio · VR Wellness",
     href: "https://almadigitalstudio.com",
     linkLabel: "almadigitalstudio.com",
     photo: "/home/testimonials/alma-digital.webp",
-    photoPosition: "60% center",
+    photoPosition: "58% center",
   },
 ];
+
+const applicationSignals = [
+  "Neurophysiological Training",
+  "In-Headset EEG Integration",
+  "Real-Time Biofeedback",
+  "Athlete Cognitive Load",
+  "Breathwork & Meditation",
+  "Open Research Pipeline",
+] as const;
 
 const reviews = [
   {
@@ -68,8 +89,49 @@ const reviews = [
   },
 ] as const;
 
+const accentStyles = {
+  emerald: {
+    pill: "border-emerald-500/25 bg-emerald-500/10 text-emerald-700 dark:border-emerald-400/25 dark:bg-emerald-400/10 dark:text-emerald-300",
+    dot: "bg-emerald-500 dark:bg-emerald-400",
+    quoteBar: "border-emerald-500/50 dark:border-emerald-400/50",
+    glow: "from-emerald-500/15 via-transparent to-transparent dark:from-emerald-400/15",
+    indexText: "text-emerald-600/80 dark:text-emerald-400/80",
+  },
+  cyan: {
+    pill: "border-cyan-500/25 bg-cyan-500/10 text-cyan-700 dark:border-cyan-400/25 dark:bg-cyan-400/10 dark:text-cyan-300",
+    dot: "bg-cyan-500 dark:bg-cyan-400",
+    quoteBar: "border-cyan-500/50 dark:border-cyan-400/50",
+    glow: "from-cyan-500/15 via-transparent to-transparent dark:from-cyan-400/15",
+    indexText: "text-cyan-600/80 dark:text-cyan-400/80",
+  },
+} as const;
+
 export default function ResearchReview() {
   const [copied, setCopied] = useState(false);
+  const [visibleCards, setVisibleCards] = useState<Record<number, boolean>>({});
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Number(entry.target.getAttribute("data-card-index"));
+            if (!Number.isNaN(idx)) {
+              setVisibleCards((prev) => (prev[idx] ? prev : { ...prev, [idx]: true }));
+            }
+          }
+        });
+      },
+      { threshold: 0.14 }
+    );
+
+    cardRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   async function copyEmail() {
     try {
@@ -86,80 +148,166 @@ export default function ResearchReview() {
     <section
       id="from-partners"
       aria-labelledby="from-partners-title"
-      className="scroll-mt-20 border-b border-zinc-200 bg-white py-20 text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50"
+      className="relative scroll-mt-20 overflow-hidden border-b border-zinc-200 bg-white py-24 text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50"
     >
-      <div className="mx-auto max-w-7xl px-6">
-        <h2
-          id="from-partners-title"
-          className="title-section mb-14 text-center"
-        >
-          Real-world applications
-        </h2>
+      {/* Subtle atmospheric backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(6,182,212,0.08),transparent_65%)] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(34,211,238,0.08),transparent_65%)]"
+      />
 
-        {/* On lg+ both cards share one row grid (subgrid), so titles, quotes
-            and name blocks line up across the two columns. */}
-        <div className="grid gap-16 lg:grid-cols-2 lg:grid-rows-[auto_auto_1fr_auto] lg:gap-x-20 lg:gap-y-0 xl:grid-rows-[auto_1fr_auto]">
+      <div className="relative mx-auto max-w-7xl px-6">
+        <div className="mx-auto mb-14 max-w-2xl text-center">
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-cyan-700 dark:text-cyan-400">
+            Field Deployments · PiEEG XR
+          </p>
+          <h2 id="from-partners-title" className="title-section">
+            Real-world applications
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+            From elite sports science labs to immersive VR wellness studios, teams integrate PiEEG XR directly inside the headset.
+          </p>
+        </div>
+
+        {/* Continuous horizontal signal marquee */}
+        <div
+          aria-hidden="true"
+          className="marquee-fade mb-14 overflow-hidden border-y border-zinc-200/80 py-3 dark:border-zinc-800/80"
+        >
+          <div className="academia-marquee-track flex w-max items-center gap-8">
+            {[...applicationSignals, ...applicationSignals].map((item, idx) => (
+              <span
+                key={`${item}-${idx}`}
+                className="flex items-center gap-3 whitespace-nowrap text-xs font-medium uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400"
+              >
+                <span className="size-1.5 rounded-full bg-cyan-500/70 dark:bg-cyan-400/70" />
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="space-y-10 lg:space-y-12">
           {partners.map((partner, i) => {
             const flip = i % 2 === 1;
+            const styles = accentStyles[partner.accent];
+            const isVisible = visibleCards[i] ?? false;
+
             return (
               <article
                 key={partner.name}
+                ref={(el) => {
+                  cardRefs.current[i] = el;
+                }}
+                data-card-index={i}
                 aria-labelledby={`from-partners-card-${i}`}
-                className={`grid gap-6 sm:gap-x-8 lg:row-span-4 lg:grid-rows-subgrid lg:gap-y-0 xl:row-span-3 ${
-                  flip
-                    ? "sm:grid-cols-[minmax(0,1fr)_200px] lg:grid-cols-1 xl:grid-cols-[minmax(0,1fr)_200px]"
-                    : "sm:grid-cols-[200px_minmax(0,1fr)] lg:grid-cols-1 xl:grid-cols-[200px_minmax(0,1fr)]"
-                } ${i > 0 ? "border-t border-zinc-200 pt-16 lg:border-t-0 lg:pt-0 dark:border-zinc-800" : ""}`}
+                className={`group relative overflow-hidden rounded-3xl border border-zinc-200/90 bg-zinc-50/70 shadow-sm transition-all duration-700 ease-out hover:border-zinc-300 hover:shadow-xl dark:border-zinc-800/90 dark:bg-zinc-900/50 dark:hover:border-zinc-700 ${
+                  isVisible
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-6 opacity-0"
+                }`}
               >
-                <a
-                  href={partner.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`mx-auto block w-full max-w-[240px] self-start overflow-hidden rounded-2xl border border-zinc-200 sm:max-w-none lg:mx-0 lg:mb-8 lg:max-w-[220px] xl:row-span-3 xl:mb-0 xl:max-w-none dark:border-zinc-800 ${
-                    flip ? "sm:order-2 lg:order-none xl:order-2" : ""
-                  }`}
-                >
-                  <Image
-                    src={partner.photo}
-                    alt={partner.name}
-                    width={600}
-                    height={800}
-                    sizes="(min-width: 640px) 220px, 240px"
-                    className="aspect-3/4 w-full object-cover"
-                    style={{ objectPosition: partner.photoPosition }}
-                  />
-                </a>
-
+                {/* Ambient corner accent */}
                 <div
-                  className={`flex flex-col lg:row-span-3 lg:grid lg:grid-rows-subgrid ${
-                    flip ? "sm:order-1 lg:order-none xl:order-1" : ""
-                  }`}
-                >
-                  <h3
-                    id={`from-partners-card-${i}`}
-                    className="mb-5 text-2xl font-semibold tracking-[-0.03em] sm:text-[1.75rem]"
+                  aria-hidden="true"
+                  className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${styles.glow} opacity-60 transition-opacity duration-500 group-hover:opacity-100`}
+                />
+
+                <div className="relative grid lg:min-h-[560px] lg:grid-cols-12">
+                  {/* Full-height image panel */}
+                  <a
+                    href={partner.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${partner.title} — ${partner.name}`}
+                    className={`relative block h-[380px] overflow-hidden bg-zinc-200 sm:h-[460px] lg:col-span-5 lg:h-full dark:bg-zinc-900 ${
+                      flip ? "lg:order-2" : ""
+                    }`}
                   >
-                    {partner.title}
-                  </h3>
-                  <blockquote className="m-0 text-[15px] leading-[1.7] text-zinc-600 dark:text-zinc-300">
-                    <p className="m-0">{partner.quote}</p>
-                  </blockquote>
-                  <footer className="mt-6 border-t border-zinc-200 pt-5 dark:border-zinc-800">
-                    <p className="m-0 text-base font-semibold tracking-[-0.02em]">{partner.name}</p>
-                    <ul className="m-0 mt-2 list-none space-y-1 p-0 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
-                      {partner.roles.map((role) => (
-                        <li key={role}>{role}</li>
-                      ))}
-                    </ul>
-                    <a
-                      href={partner.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-3 inline-flex text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-4 hover:text-zinc-950 dark:text-zinc-300 dark:decoration-zinc-600 dark:hover:text-zinc-50"
-                    >
-                      {partner.linkLabel}
-                    </a>
-                  </footer>
+                    <Image
+                      src={partner.photo}
+                      alt={partner.name}
+                      fill
+                      sizes="(min-width: 1024px) 42vw, 100vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                      style={{ objectPosition: partner.photoPosition }}
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-gradient-to-t from-zinc-950/75 via-zinc-950/15 to-transparent"
+                    />
+                    <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3">
+                      <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-zinc-950/60 px-3.5 py-1.5 text-xs font-medium text-white backdrop-blur-md">
+                        <span className={`size-2 rounded-full ${styles.dot}`} />
+                        <span>{partner.badge}</span>
+                      </div>
+                      <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-white/20 bg-zinc-950/60 text-white backdrop-blur-md transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                        <ArrowUpRight className="size-4" aria-hidden="true" />
+                      </span>
+                    </div>
+                  </a>
+
+                  {/* Editorial content panel */}
+                  <div
+                    className={`relative flex flex-col justify-between p-8 sm:p-10 lg:col-span-7 lg:p-14 ${
+                      flip ? "lg:order-1" : ""
+                    }`}
+                  >
+                    <div>
+                      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+                        <span
+                          className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] ${styles.pill}`}
+                        >
+                          <span className={`size-1.5 rounded-full ${styles.dot}`} />
+                          {partner.category}
+                        </span>
+                        <span
+                          className={`font-mono text-xs font-semibold tracking-[0.2em] ${styles.indexText}`}
+                        >
+                          {partner.index} / 02
+                        </span>
+                      </div>
+
+                      <h3
+                        id={`from-partners-card-${i}`}
+                        className="text-2xl font-semibold tracking-[-0.035em] text-zinc-950 sm:text-3xl lg:text-[2.15rem] lg:leading-[1.15] dark:text-white"
+                      >
+                        {partner.title}
+                      </h3>
+
+                      <blockquote
+                        className={`mt-7 border-l-2 pl-5 text-[15.5px] leading-[1.78] text-zinc-700 sm:text-base dark:text-zinc-300 ${styles.quoteBar}`}
+                      >
+                        <p className="m-0">{partner.quote}</p>
+                      </blockquote>
+                    </div>
+
+                    <footer className="mt-10 flex flex-col gap-5 border-t border-zinc-200/80 pt-6 sm:flex-row sm:items-end sm:justify-between dark:border-zinc-800/80">
+                      <div>
+                        <p className="m-0 text-base font-semibold tracking-[-0.02em] text-zinc-950 dark:text-white">
+                          {partner.name}
+                        </p>
+                        <ul className="m-0 mt-1.5 list-none space-y-0.5 p-0 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+                          {partner.roles.map((role) => (
+                            <li key={role}>{role}</li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <a
+                        href={partner.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/link inline-flex shrink-0 items-center gap-1.5 self-start rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-medium text-zinc-900 no-underline transition-colors hover:border-zinc-900 hover:bg-zinc-900 hover:text-white sm:self-auto dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-100 dark:hover:bg-zinc-100 dark:hover:text-zinc-950"
+                      >
+                        <span>{partner.linkLabel}</span>
+                        <ArrowUpRight
+                          className="size-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+                          aria-hidden="true"
+                        />
+                      </a>
+                    </footer>
+                  </div>
                 </div>
               </article>
             );
